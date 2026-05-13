@@ -12,73 +12,79 @@ from typing import Optional
 QUESTIONS_PATH = Path("sets/sks/questions.json")
 PROGRESS_PATH = Path("sets/sks/progress.json")
 
+FIELDS_PATH = Path("sets")
 
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
 
-def load_questions() -> dict:
+def load_questions(field) -> dict:
     """Load questions from the questions.json file."""
-    with open(QUESTIONS_PATH, encoding="utf-8") as f:
-        return json.load(f)
-
-
-def load_progress() -> dict:
-    """Load progress data keyed by question ID."""
-    if not PROGRESS_PATH.exists():
+    path = FIELDS_PATH / field / "questions.json"
+    if not path.exists():
         return {}
-    with open(PROGRESS_PATH, encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def save_progress(progress: dict) -> None:
+def load_progress(field: str) -> dict:
+    """Load progress data keyed by question ID."""
+    path = FIELDS_PATH / field / "progress.json"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save_progress(field: str, progress: dict) -> None:
     """Save progress data to progress.json."""
-    with open(PROGRESS_PATH, "w", encoding="utf-8") as f:
+    path = FIELDS_PATH / field / "progress.json"
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(progress, f, ensure_ascii=False, indent=2)
 
 
-def get_all_questions() -> list[dict]:
+def get_all_questions(field: str) -> list[dict]:
     """Return all questions with their progress data injected."""
-    store = load_questions()
-    progress = load_progress()
+    store = load_questions(field)
+    progress = load_progress(field)
     questions = store["questions"]
-    
-    for q in questions:
-        q_id = str(q["id"])
-        q["progress"] = progress.get(q_id, _default_progress())
-    
-    return questions
+        
+    return questions, progress
 
 
-def get_question_by_id(qid: str) -> Optional[dict]:
-    return next((q for q in get_all_questions() if q["id"] == qid), None)
+def get_question_by_id(field: str, qid: str) -> Optional[dict]:
+    questions, _ = get_all_questions(field)
+    return next((q for q in questions if q["id"] == int(qid)), None)
 
 
-def get_next_question(topic: Optional[str] = None) -> Optional[dict]:
+def get_next_question(field: str, topic: Optional[str] = None) -> Optional[dict]:
     """
     Return the question with the lowest success-rate among those with at
     least one attempt; fall back to any unattempted question, then random.
     Optionally filter by topic.
     """
-    questions = get_all_questions()
+    questions, progress = get_all_questions(field)
     if topic:
         questions = [q for q in questions if q["topic"] == topic]
     if not questions:
         return None
 
-    unattempted = [q for q in questions if q["progress"]["attempts"] == 0]
+    unattempted = [
+        q for q in questions
+        if progress.get(str(q["id"]), {}).get("attempts", 0) == 0
+    ]
     if unattempted:
         return random.choice(unattempted)
 
     return min(
         questions,
-        key=lambda q: _success_rate(q["progress"]),
+        key=lambda q: _success_rate(progress[q.id]),
     )
 
 
-def record_attempt(qid: str, correct: bool, score: int) -> dict:
+def record_attempt(field: str, qid: str, correct: bool, score: int) -> dict:
     """Persist one attempt and return the updated progress block."""
-    progress = load_progress()
+    progress = load_progress(field)
     q_id = str(qid)
     
     if q_id not in progress:
@@ -95,28 +101,84 @@ def record_attempt(qid: str, correct: bool, score: int) -> dict:
     p["last_score"] = score
     p["last_attempt"] = datetime.now(timezone.utc).isoformat()
     
-    save_progress(progress)
+    save_progress(field, progress)
     return p
 
 
-def get_topics() -> list[str]:
-    return sorted({q["topic"] for q in get_all_questions()})
+def get_fields() -> list[str]:
+    all_fields = [p.name for p in FIELDS_PATH.iterdir() if p.is_dir()]
+    return sorted(all_fields)
 
 
-def get_stats() -> dict:
-    questions = get_all_questions()
-    total = len(questions)
-    attempted = sum(1 for q in questions if q["progress"]["attempts"] > 0)
-    total_attempts = sum(q["progress"]["attempts"] for q in questions)
-    total_correct = sum(q["progress"]["correct"] for q in questions)
+def get_topics(field: str) -> list[str]:
+    questions, _ = get_all_questions(field)
+    return sorted({q["topic"] for q in questions})
+
+
+def get_stats(field: str, ids: list[int]) -> dict:
+    questions, progress = get_all_questions(field)
+    if (ids == None):
+        ids = [q["id"] for q in questions]
+
+    total_questions = len(ids)
+
+    attempted_questions = 0
+    correct_questions = 0
+    total_attempts = 0
+    total_correct = 0
+    total_score = 0
+    total_streak = 0
+
+    for question_id in ids:
+        p = progress.get(str(question_id))
+
+        if p is None:
+            continue
+
+        attempted_questions += 1
+
+        attempts = p.get("attempts", 0)
+        correct = p.get("correct", 0)
+
+        total_attempts += attempts
+        total_correct += correct
+
+        total_score += p.get("last_score", 0)
+        total_streak += p.get("streak", 0)
+
+        if p.get("last_result") == "correct":
+            correct_questions += 1
+
+    incorrect_questions = attempted_questions - correct_questions
+
     return {
-        "total": total,
-        "attempted": attempted,
-        "unattempted": total - attempted,
+        "total": total_questions,
+        "attempted": attempted_questions,
+        "unattempted_questions": (
+            total_questions - attempted_questions
+        ),
+        "total_correct": correct_questions,
+        "incorrect_questions": incorrect_questions,
+        "completion_percent": (
+            attempted_questions / total_questions * 100
+            if total_questions else 0
+        ),
+        "success_rate": (
+            total_correct / total_attempts * 100
+            if total_attempts else 0
+        ),
+        "average_score": (
+            total_score / attempted_questions
+            if attempted_questions else 0
+        ),
+        "average_streak": (
+            total_streak / attempted_questions
+            if attempted_questions else 0
+        ),
         "total_attempts": total_attempts,
-        "total_correct": total_correct,
         "overall_rate": round(total_correct / total_attempts * 100, 1) if total_attempts else 0,
     }
+
 
 
 # ---------------------------------------------------------------------------
