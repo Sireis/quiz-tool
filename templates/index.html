@@ -313,6 +313,24 @@
 
 <aside>
   <div class="sidebar-section">
+    <h3>Felder</h3>
+    <div id="fields-list">
+    </div>
+  </div>
+  
+  <div class="sidebar-section">
+    <h3>Prüfungen</h3>
+    <div id="examens-list">
+    </div>
+  </div>
+  
+  <div class="sidebar-section">
+    <h3>Sets</h3>
+    <div id="sets-list">
+    </div>
+  </div>
+
+  <div class="sidebar-section">
     <h3>Statistik</h3>
     <div class="stats-grid">
       <div class="stat-box"><span class="val" id="stat-total">–</span><span class="lbl">Fragen</span></div>
@@ -365,7 +383,7 @@
     <div class="expected-label">Musterlösung</div>
     <div id="expected-answer-text"></div>
     <br>
-    <button class="primary" onclick="loadNextQuestion()">Nächste Frage →</button>
+    <button class="primary" onclick="loadNextQuestion(selectedField)">Nächste Frage →</button>
   </div>
 </main>
 
@@ -375,19 +393,45 @@
 </footer>
 
 <script>
+  let selectedField = null;
   let currentQuestion = null;
   let activeTopic = '';
 
   // ── Init ──────────────────────────────────────────────────────────────────
   async function init() {
-    await Promise.all([loadTopics(), loadStats(), loadProgressList()]);
-    await loadNextQuestion();
+    const fields = await loadFields();
+
+    const saved = localStorage.getItem("selectedField");
+
+    const current =
+      saved && fields.includes(saved)
+        ? saved
+        : fields.at(-1);
+
+    await selectField(current);
   }
 
   // ── Data loaders ──────────────────────────────────────────────────────────
-  async function loadTopics() {
-    const topics = await fetch('/api/topics').then(r => r.json());
+  async function loadFields() {
+    const fields = await fetch('/api/fields').then(r => r.json());
+    const list = document.getElementById('fields-list');
+    fields.forEach(t => {
+      const btn = document.createElement('button');
+      btn.className = 'topic-btn';
+      btn.textContent = t;
+      btn.dataset.field = t;
+      btn.onclick = () => selectField(t);
+      list.appendChild(btn);
+    });
+
+    return fields;
+  }
+
+  async function loadTopics(field) {
+    const topics = await fetch(`/api/fields/${field}/topics`).then(r => r.json());
     const list = document.getElementById('topic-list');
+    list.innerHTML = "";
+
     topics.forEach(t => {
       const btn = document.createElement('button');
       btn.className = 'topic-btn';
@@ -398,16 +442,16 @@
     });
   }
 
-  async function loadStats() {
-    const s = await fetch('/api/stats').then(r => r.json());
+  async function loadStats(field) {
+    const s = await fetch(`/api/fields/${field}/stats`).then(r => r.json());
     document.getElementById('stat-total').textContent     = s.total;
     document.getElementById('stat-attempted').textContent = s.attempted;
     document.getElementById('stat-correct').textContent   = s.total_correct;
     document.getElementById('stat-rate').textContent      = s.total_attempts ? s.overall_rate + '%' : '–';
   }
 
-  async function loadProgressList() {
-    const questions = await fetch('/api/questions').then(r => r.json());
+  async function loadProgressList(field) {
+    const questions = await fetch(`/api/fields/${field}/questions`).then(r => r.json());
     const list = document.getElementById('progress-list');
     list.innerHTML = '';
     questions.forEach(q => {
@@ -424,13 +468,13 @@
     });
   }
 
-  async function loadNextQuestion() {
+  async function loadNextQuestion(field) {
     resetResultCard();
     document.getElementById('answer-input').value = '';
     document.getElementById('answer-input').disabled = false;
     document.getElementById('submit-btn').disabled = false;
 
-    const url = '/api/question' + (activeTopic ? `?topic=${encodeURIComponent(activeTopic)}` : '');
+    const url = `/api/fields/${field}/question` + (activeTopic ? `?topic=${encodeURIComponent(activeTopic)}` : '');
     const q = await fetch(url).then(r => r.json());
     if (q.error) { document.getElementById('question-text').textContent = q.error; return; }
 
@@ -457,11 +501,11 @@
       const res = await fetch('/api/assess', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: currentQuestion.id, answer }),
+        body: JSON.stringify({ field: selectedField, id: currentQuestion.id, answer }),
       }).then(r => r.json());
 
       showResult(res);
-      await Promise.all([loadStats(), loadProgressList()]);
+      await Promise.all([loadStats(selectedField), loadProgressList(selectedField)]);
     } catch (e) {
       console.error(e);
     } finally {
@@ -495,11 +539,34 @@
     card.className = '';
   }
 
+  async function selectField(field) {
+    selectedField = field;
+    localStorage.setItem("selectedField", field);
+
+    highlightFieldButton(field);
+
+    await Promise.all([
+      loadTopics(field),
+      loadStats(field),
+      loadProgressList(field),
+    ]);
+
+    await loadNextQuestion(field);
+  }
+
+  function highlightFieldButton(field) {
+    document.querySelectorAll('.topic-btn')
+      .forEach(b => b.classList.remove('active'));
+
+    const btn = document.querySelector(`[data-field="${field}"]`);
+    if (btn) btn.classList.add('active');
+  }
+
   function selectTopic(topic, btn) {
     activeTopic = topic;
     document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    loadNextQuestion();
+    loadNextQuestion(selectedField);
   }
 
   // Enter to submit
