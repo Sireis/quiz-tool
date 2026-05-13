@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKS Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:    #0d1b2a;
+      --deep:    #152535;
+      --panel:   #1a2e42;
+      --brass:   #c8973a;
+      --brass-l: #e0b860;
+      --wake:    #3a7ca5;
+      --foam:    #8cb8d0;
+      --text:    #d4c8b0;
+      --muted:   #7a8fa0;
+      --correct: #4caf82;
+      --wrong:   #c0523a;
+      --radius:  6px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 260px 1fr;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    }
+
+    /* ── Header ── */
+    header {
+      grid-area: header;
+      border-bottom: 1px solid var(--brass);
+      padding: 18px 32px;
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      background: var(--deep);
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--brass), var(--brass-l), var(--brass), transparent);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--brass-l);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    header h1 span { color: var(--muted); font-size: 0.9rem; font-family: 'IBM Plex Mono', monospace; margin-left: 10px; }
+
+    /* ── Sidebar ── */
+    aside {
+      grid-area: sidebar;
+      border-right: 1px solid #1e3347;
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: var(--deep);
+    }
+    .sidebar-section h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .stat-box {
+      background: var(--panel);
+      border: 1px solid #253d54;
+      border-radius: var(--radius);
+      padding: 10px;
+      text-align: center;
+    }
+    .stat-box .val {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--brass-l);
+      display: block;
+    }
+    .stat-box .lbl {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Topic filter */
+    #topic-list { display: flex; flex-direction: column; gap: 4px; }
+    .topic-btn {
+      background: none;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.82rem;
+      padding: 7px 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .topic-btn:hover { border-color: var(--wake); color: var(--foam); }
+    .topic-btn.active { background: var(--panel); border-color: var(--brass); color: var(--brass-l); }
+
+    /* Progress list */
+    #progress-list { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+    .prog-item {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.72rem;
+      padding: 5px 6px;
+      border-radius: 4px;
+      background: var(--panel);
+      gap: 6px;
+    }
+    .prog-item .q-short { color: var(--text); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .prog-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .prog-dot.none   { background: #2a3d50; }
+    .prog-dot.ok     { background: var(--correct); }
+    .prog-dot.fail   { background: var(--wrong); }
+
+    /* ── Main ── */
+    main {
+      grid-area: main;
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 860px;
+    }
+
+    /* Question card */
+    .card {
+      background: var(--panel);
+      border: 1px solid #253d54;
+      border-radius: 8px;
+      padding: 28px 32px;
+    }
+    .card-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--brass);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex; gap: 12px; align-items: center;
+    }
+    .card-meta .sep { color: #2a3d50; }
+    #question-text {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* Answer section */
+    .answer-area { display: flex; flex-direction: column; gap: 14px; }
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      resize: vertical;
+      background: var(--deep);
+      border: 1px solid #253d54;
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      line-height: 1.6;
+    }
+    textarea:focus { border-color: var(--wake); }
+    textarea::placeholder { color: #3a5268; }
+
+    .btn-row { display: flex; gap: 12px; align-items: center; }
+    button.primary {
+      background: var(--brass);
+      color: var(--navy);
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      padding: 10px 22px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.15s, transform 0.1s;
+    }
+    button.primary:hover { background: var(--brass-l); }
+    button.primary:active { transform: scale(0.97); }
+    button.primary:disabled { opacity: 0.4; cursor: default; }
+    button.secondary {
+      background: none;
+      color: var(--muted);
+      border: 1px solid #253d54;
+      border-radius: var(--radius);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      padding: 9px 18px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    button.secondary:hover { border-color: var(--foam); color: var(--foam); }
+
+    /* Result */
+    #result-card {
+      display: none;
+      border-radius: 8px;
+      padding: 22px 28px;
+      border-left: 4px solid;
+      animation: fadeSlide 0.25s ease;
+    }
+    #result-card.correct { background: #0d2b1f; border-color: var(--correct); }
+    #result-card.wrong   { background: #2b0f0a; border-color: var(--wrong); }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .result-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .result-verdict {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .result-verdict.ok   { color: var(--correct); }
+    .result-verdict.fail { color: var(--wrong); }
+    .score-bar-wrap { width: 80px; height: 6px; background: #1a2a20; border-radius: 3px; overflow: hidden; }
+    .score-bar { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+    .score-bar.ok   { background: var(--correct); }
+    .score-bar.fail { background: var(--wrong); }
+    #result-feedback { font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px; }
+    .expected-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    #expected-answer-text { font-size: 0.88rem; line-height: 1.6; color: var(--foam); }
+
+    /* Loading overlay */
+    #loading {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    #loading.visible { display: flex; }
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid #253d54;
+      border-top-color: var(--brass);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer {
+      grid-area: footer;
+      border-top: 1px solid #1e3347;
+      padding: 12px 32px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: #2f4a5e;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #253d54; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SKS Trainer <span>/ Sportküstenschifferschein</span></h1>
+</header>
+
+<aside>
+  <div class="sidebar-section">
+    <h3>Statistik</h3>
+    <div class="stats-grid">
+      <div class="stat-box"><span class="val" id="stat-total">–</span><span class="lbl">Fragen</span></div>
+      <div class="stat-box"><span class="val" id="stat-attempted">–</span><span class="lbl">Versucht</span></div>
+      <div class="stat-box"><span class="val" id="stat-correct">–</span><span class="lbl">Richtig</span></div>
+      <div class="stat-box"><span class="val" id="stat-rate">–</span><span class="lbl">Quote</span></div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>Themen</h3>
+    <div id="topic-list">
+      <button class="topic-btn active" data-topic="">Alle Themen</button>
+    </div>
+  </div>
+
+  <div class="sidebar-section" style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
+    <h3>Fragenstatus</h3>
+    <div id="progress-list"></div>
+  </div>
+</aside>
+
+<main>
+  <div class="card" id="question-card">
+    <div class="card-meta">
+      <span id="q-topic">–</span>
+      <span class="sep">·</span>
+      <span id="q-subtopic">–</span>
+      <span class="sep">·</span>
+      <span id="q-id" style="color:var(--muted)">–</span>
+    </div>
+    <div id="question-text">Lade Frage…</div>
+  </div>
+
+  <div class="answer-area">
+    <textarea id="answer-input" placeholder="Antwort eingeben…" rows="4"></textarea>
+    <div class="btn-row">
+      <button class="primary" id="submit-btn" onclick="submitAnswer()">Antwort prüfen</button>
+      <button class="secondary" onclick="loadNextQuestion()">Überspringen →</button>
+      <div id="loading"><div class="spinner"></div> Bewertung läuft…</div>
+    </div>
+  </div>
+
+  <div id="result-card">
+    <div class="result-header">
+      <span class="result-verdict" id="result-verdict"></span>
+      <div class="score-bar-wrap"><div class="score-bar" id="score-bar"></div></div>
+    </div>
+    <div id="result-feedback"></div>
+    <div class="expected-label">Musterlösung</div>
+    <div id="expected-answer-text"></div>
+    <br>
+    <button class="primary" onclick="loadNextQuestion()">Nächste Frage →</button>
+  </div>
+</main>
+
+<footer>
+  <span>SKS Trainer</span>
+  <span id="footer-backend">backend: gpt4all</span>
+</footer>
+
+<script>
+  let currentQuestion = null;
+  let activeTopic = '';
+
+  // ── Init ──────────────────────────────────────────────────────────────────
+  async function init() {
+    await Promise.all([loadTopics(), loadStats(), loadProgressList()]);
+    await loadNextQuestion();
+  }
+
+  // ── Data loaders ──────────────────────────────────────────────────────────
+  async function loadTopics() {
+    const topics = await fetch('/api/topics').then(r => r.json());
+    const list = document.getElementById('topic-list');
+    topics.forEach(t => {
+      const btn = document.createElement('button');
+      btn.className = 'topic-btn';
+      btn.textContent = t;
+      btn.dataset.topic = t;
+      btn.onclick = () => selectTopic(t, btn);
+      list.appendChild(btn);
+    });
+  }
+
+  async function loadStats() {
+    const s = await fetch('/api/stats').then(r => r.json());
+    document.getElementById('stat-total').textContent     = s.total;
+    document.getElementById('stat-attempted').textContent = s.attempted;
+    document.getElementById('stat-correct').textContent   = s.total_correct;
+    document.getElementById('stat-rate').textContent      = s.total_attempts ? s.overall_rate + '%' : '–';
+  }
+
+  async function loadProgressList() {
+    const questions = await fetch('/api/questions').then(r => r.json());
+    const list = document.getElementById('progress-list');
+    list.innerHTML = '';
+    questions.forEach(q => {
+      const p = q.progress;
+      const dot = p.attempts === 0 ? 'none' : (p.last_result === 'correct' ? 'ok' : 'fail');
+      const el = document.createElement('div');
+      el.className = 'prog-item';
+      el.innerHTML = `<div class="prog-dot ${dot}"></div>
+        <span class="q-short" title="${q.question}">${q.question}</span>
+        <span style="font-family:monospace;font-size:0.65rem;color:var(--muted);flex-shrink:0">
+          ${p.attempts > 0 ? p.correct + '/' + p.attempts : ''}
+        </span>`;
+      list.appendChild(el);
+    });
+  }
+
+  async function loadNextQuestion() {
+    resetResultCard();
+    document.getElementById('answer-input').value = '';
+    document.getElementById('answer-input').disabled = false;
+    document.getElementById('submit-btn').disabled = false;
+
+    const url = '/api/question' + (activeTopic ? `?topic=${encodeURIComponent(activeTopic)}` : '');
+    const q = await fetch(url).then(r => r.json());
+    if (q.error) { document.getElementById('question-text').textContent = q.error; return; }
+
+    currentQuestion = q;
+    document.getElementById('q-topic').textContent    = q.topic;
+    document.getElementById('q-subtopic').textContent = q.subtopic || '';
+    document.getElementById('q-id').textContent       = q.id;
+    document.getElementById('question-text').textContent = q.question;
+    document.getElementById('answer-input').focus();
+  }
+
+  // ── Submit ─────────────────────────────────────────────────────────────────
+  async function submitAnswer() {
+    if (!currentQuestion) return;
+    const answer = document.getElementById('answer-input').value.trim();
+    if (!answer) return;
+
+    document.getElementById('submit-btn').disabled = true;
+    document.getElementById('answer-input').disabled = true;
+    document.getElementById('loading').classList.add('visible');
+    resetResultCard();
+
+    try {
+      const res = await fetch('/api/assess', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: currentQuestion.id, answer }),
+      }).then(r => r.json());
+
+      showResult(res);
+      await Promise.all([loadStats(), loadProgressList()]);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      document.getElementById('loading').classList.remove('visible');
+    }
+  }
+
+  // ── UI helpers ─────────────────────────────────────────────────────────────
+  function showResult(res) {
+    const card     = document.getElementById('result-card');
+    const verdict  = document.getElementById('result-verdict');
+    const bar      = document.getElementById('score-bar');
+    const feedback = document.getElementById('result-feedback');
+    const expected = document.getElementById('expected-answer-text');
+
+    const cls = res.correct ? 'correct' : 'wrong';
+    card.className = cls;
+    card.style.display = 'block';
+
+    verdict.textContent  = res.correct ? '✓ Richtig' : '✗ Falsch';
+    verdict.className    = 'result-verdict ' + (res.correct ? 'ok' : 'fail');
+    bar.style.width      = res.score + '%';
+    bar.className        = 'score-bar ' + (res.correct ? 'ok' : 'fail');
+    feedback.textContent = res.feedback;
+    expected.textContent = res.expected_answer;
+  }
+
+  function resetResultCard() {
+    const card = document.getElementById('result-card');
+    card.style.display = 'none';
+    card.className = '';
+  }
+
+  function selectTopic(topic, btn) {
+    activeTopic = topic;
+    document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    loadNextQuestion();
+  }
+
+  // Enter to submit
+  document.getElementById('answer-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.ctrlKey) submitAnswer();
+  });
+
+  init();
+</script>
+</body>
+</html>

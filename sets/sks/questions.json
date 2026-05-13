@@ -1,0 +1,3463 @@
+{
+  "context": "Es handelt sich um Fragen aus der theoretischen Prüfung des Sportküstenschifferscheins.",
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Worauf müssen Sie als Schiffsführer vor Reiseantritt hinsichtlich der Seekarten und Seebücher achten?",
+      "answer": "Auf Vollständigkeit der Unterlagen und deren Berichtigung auf den neuesten Stand."
+    },
+    {
+      "id": 2,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Warum muss in der GPS-Navigation das jeweilige Kartendatum unbedingt berücksichtigt werden?",
+      "answer": "Weil sich das von GPS verwendete Bezugssystem WGS 84 (World Geodetic System 1984) von anderen verwendeten Bezugssystemen (Kartendatum) unterscheiden kann."
+    },
+    {
+      "id": 3,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Differenzen können zwischen WGS 84 und anderen Bezugssystemen auftreten?",
+      "answer": "Die Differenzen von φ und λ liegen im Allgemeinen in der Größenordnung von 0,1 kbl bis 1 kbl, also etwa von 20 bis 200 m. Es können größere Unterschiede auftreten."
+    },
+    {
+      "id": 4,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo finden Sie in der Seekarte Angaben über das benutzte Bezugssystem und ggf. entsprechende Korrekturhinweise?",
+      "answer": "Am Kartenrand unter dem Titel."
+    },
+    {
+      "id": 5,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie lautet ggf. der Korrekturhinweis bezüglich GPS in der Seekarte, wenn das benutzte Kartendatum (z. B. ED 50) und WGS 84 nicht übereinstimmen?",
+      "answer": "Durch Satellitennavigation (z. B. GPS) erhaltene Positionen im WGS 84 sind 0, ... Minuten nordwärts/südwärts und 0, ... Minuten westwärts/ostwärts zu verlegen, um mit dieser Karte übereinzustimmen."
+    },
+    {
+      "id": 6,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Woran erkennen Sie, bis wann eine deutsche Seekarte \"amtlich\" berichtigt ist?",
+      "answer": "Am Berichtigungsstempel des BSH oder einer amtlichen Seekartenberichtigungsstelle."
+    },
+    {
+      "id": 7,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Woran erkennen Sie, bis wann eine britische Seekarte \"amtlich\" berichtigt ist?",
+      "answer": "Am Berichtigungsstempel auf der Rückseite der Seekarte."
+    },
+    {
+      "id": 8,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet der Stempel auf der britischen Seekarte: Corrected up to N.T.M. 3595 1998?",
+      "answer": "Seekarte ist berichtigt bis zur Mitteilung Nummer 3595 der Admiralty Notices to Mariners (N.T.M.) in 1998."
+    },
+    {
+      "id": 9,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Angaben enthalten die Nachrichten für Seefahrer (NfS)?",
+      "answer": "In den NfS werden für die sichere Schiffsführung wichtige Maßnahmen, Ereignisse und Veränderungen auf den Seeschifffahrtsstraßen, auf der Hohen See sowie in den Hoheitsgewässern anderer Staaten im europäischen und angrenzenden Bereich bekannt gegeben."
+    },
+    {
+      "id": 10,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "In welcher Sprache werden die Nachrichten für Seefahrer (NfS) verfasst?",
+      "answer": "Die Angaben erfolgen in deutscher und in englischer Sprache."
+    },
+    {
+      "id": 11,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Angaben enthalten deutsche und britische Leuchtfeuerverzeichnisse?",
+      "answer": "Beschreibung der Leuchtfeuer, Feuerschiffe und Großtonnen sowie deren geographische Lage."
+    },
+    {
+      "id": 12,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche schwimmenden Schifffahrtszeichen werden in der britischen List of Lights und in deutschen Leuchtfeuerverzeichnissen nicht angegeben?",
+      "answer": "Tonnen kleiner als 8 m Höhe."
+    },
+    {
+      "id": 13,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo finden Sie Angaben über die Merkmale der Schifffahrtszeichen?",
+      "answer": "In den Leuchtfeuerverzeichnissen bzw. in der List of Lights sowie auszugsweise in den Seekarten.\nIn der Karte 1/INTInternational Hydrographic 1 des BSH.\nSchwimmende Schifffahrtszeichen zusätzlich in der Anlage I zur SeeSchStrO (z. B. Tonnen des Lateral- bzw. Kardinalsystems)."
+    },
+    {
+      "id": 14,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Worauf beziehen sich die Höhenangaben der Leuchtfeuer in Leuchtfeuerverzeichnissen in der Nord- und Ostsee?",
+      "answer": "In Gewässern mit Gezeiten (z. B. Nordsee) auf mittleres Hochwasser, in gezeitenlosen Gewässern (z. B. Ostsee) auf mittleren Wasserstand."
+    },
+    {
+      "id": 15,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo finden Sie Angaben über Brückensignale?",
+      "answer": "In den See- und Hafenhandbüchern und in den Seekarten."
+    },
+    {
+      "id": 16,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Themen (Grobgliederung) enthalten die Seehandbücher des BSH?",
+      "answer": "    Schifffahrtsangelegenheiten,\nNaturverhältnisse,\nKüstenkunde und Segelanweisungen."
+    },
+    {
+      "id": 17,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie werden Richtungsangaben in nautischen Veröffentlichungen gemacht?",
+      "answer": "    Rechtweisend in Grad,\nim Uhrzeigersinn (rechtsherum) zählend."
+    },
+    {
+      "id": 18,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "In welchem Quadranten liegt der rote Warnsektor eines Leitfeuers mit der Angabe rot 030°-042° (Begründung!)",
+      "answer": "Im Südwest-Quadranten. Angegeben sind die Peilungen zum Leuchtfeuer."
+    },
+    {
+      "id": 19,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was sind Leitfeuer (direction lights)?",
+      "answer": "Leitfeuer sind Einzelfeuer, die durch Sektoren verschiedener Farbe oder Kennung (Leit- oder Warnsektoren) im Allgemeinen ein Fahrwasser, eine Hafeneinfahrt oder einen freien Seeraum zwischen Untiefen bezeichnen."
+    },
+    {
+      "id": 20,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "1. Was sind Richtfeuer (leading lights)? 2. Wann befindet man sich in einer Richtlinie eines Richtfeuers?",
+      "answer": "Richtfeuer sind Feuer, die als Unter- und Oberfeuer in Deckpeilung als Richtlinie beispielsweise einen Kurs im Fahrwasser, durch eine Hafeneinfahrt oder im freien Seeraum zwischen Untiefen bezeichnen.\nEin Schiff befindet sich in der Richtlinie, wenn Unter- und Oberfeuer senkrecht unter-/übereinander erscheinen."
+    },
+    {
+      "id": 21,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist ein Torfeuer?",
+      "answer": "Ein Torfeuer besteht aus zwei Feuern gleicher Höhe, gleicher Lichtstärke und gleicher Kennung, die zu beiden Seiten der Fahrwasserachse einander genau gegenüber (rechtwinklig zur Fahrwasserachse) und von der Fahrwasserachse gleich weit entfernt angeordnet sind."
+    },
+    {
+      "id": 22,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist die \"Tragweite\" eines Feuers?",
+      "answer": "Unter Tragweite versteht man denjenigen Abstand, in dem ein Feuer einen eben noch deutlichen Lichteindruck im Auge des Beobachters hervorruft."
+    },
+    {
+      "id": 23,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist die \"Nenntragweite\" eines Feuers?",
+      "answer": "Nenntragweite ist die Tragweite eines Feuers für einen definierten Wert bei einer meteorologischen Sichtweite am Tage von 10 sm."
+    },
+    {
+      "id": 24,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wovon hängt die \"Tragweite\" eines Feuers ab?",
+      "answer": "Sie hängt u. a. ab\nvon der Lichtstärke (Helligkeit) des Feuers und \nvom Sichtwert (Lichtdurchlässigkeit der Atmosphäre)."
+    },
+    {
+      "id": 25,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "In der Seekarte finden Sie bei einem Leuchtfeuer die Eintragung: 18 M. Was bedeutet diese Angabe?",
+      "answer": "Es ist die Nenntragweite, hier 18 Seemeilen."
+    },
+    {
+      "id": 26,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist die \"Sichtweite\" eines Feuers? Wovon hängt sie ab?",
+      "answer": "Sichtweite ist die Entfernung, auf die ein Leuchtfeuer über die Erdkrümmung (Kimm) hinweg vom Beobachter gesehen werden kann.\nSie hängt ab\nvon der Feuerhöhe und\nvon der Augeshöhe des Beobachters."
+    },
+    {
+      "id": 27,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie müssen sich Tragweite und Sichtweite zueinander verhalten, damit das Verfahren zur Ortsbestimmung \"Feuer in der Kimm\" angewandt werden kann?",
+      "answer": "Die Tragweite muss mindestens gleich der Sichtweite sein."
+    },
+    {
+      "id": 28,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo findet man Tabellen zur Ermittlung des Abstandes eines Feuers in der Kimm?",
+      "answer": "In deutschen und britischen Leuchtfeuerverzeichnissen."
+    },
+    {
+      "id": 29,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo sind die in Seekarten verwendeten Symbole und Abkürzungen erklärt?",
+      "answer": "In der Karte 1/INT des BSH."
+    },
+    {
+      "id": 30,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wer veröffentlicht die Bekanntmachungen für Seefahrer (BfS) und was umfassen diese Veröffentlichungen?",
+      "answer": "    Die BfS werden von den jeweils zuständigen Behörden der Wasser- und Schifffahrtsverwaltung des Bundes bzw. der Länder veröffentlicht.\nSie enthalten alle wichtigen Maßnahmen und Ereignisse auf den Seeschifffahrtsstraßen und der ausschließlichen Wirtschaftszone Deutschlands."
+    },
+    {
+      "id": 31,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie werden die Bekanntmachungen für Seefahrer (BfS) der Sportschifffahrt zur Kenntnis gebracht?",
+      "answer": "Die BfS werden an den amtlichen Aushangstellen (z. B. bei Wasser- und Schifffahrtsämtern, Hafenverwaltungen, WSP-Dienststellen, Schleusen, Yachthäfen) für das betreffende Seegebiet, in dem die Aushangstelle liegt, und für die angrenzenden Reviere und Gebiete sowie im Internet unter www.elwis.de zur Kenntnis gebracht."
+    },
+    {
+      "id": 32,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Zählen Sie die am häufigsten vorkommenden Ereignisse und Maßnahmen auf, über die die Bekanntmachungen für Seefahrer (BfS) unterrichten.",
+      "answer": "    Änderungen an Befeuerung, Betonnung und Landmarken,\nveränderte Wassertiefen,\nWracke, Schifffahrtshindernisse, Rohrleitungen usw.,\nBauarbeiten, Baggerarbeiten, militärische Übungen und damit zusammenhängende Sperrungen oder Behinderungen."
+    },
+    {
+      "id": 33,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wer gibt die nautischen Warnnachrichten (NWN) heraus und von wem werden sie verbreitet?",
+      "answer": "Nautische Warnnachrichten (NWN) werden von den Verkehrszentralen für deren Zuständigkeitsbereich und von dem ständig besetzten Seewarndienst Emden für das gesamte deutsche Warngebiet zur Verbreitung über Funk herausgegeben. Der Rundfunksender Deutschlandfunk verbreitet alle über Funk abgegebenen NWN."
+    },
+    {
+      "id": 34,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet der Zusatz \"vital\" bei einer nautischen Warnnachricht (NWN)?",
+      "answer": "Die NWN erhält den Zusatz \"vital\", wenn die Warnung auf eine lebensbedrohende Gefahr hinweist."
+    },
+    {
+      "id": 35,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Besonderheit bezüglich des Zusatzes \"vital\" bei einer nautischen Warnnachricht (NWN) gibt es für die Sportschifffahrt?",
+      "answer": "Vitale nautische Warnnachrichten für die Sportschifffahrt werden während der Zeit vom 1. April bis zum 31. Oktober zur Verbreitung über ausgewählte private und öffentlich-rechtliche Rundfunkanstalten weitergeleitet."
+    },
+    {
+      "id": 36,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wer gibt die Nachrichten für Seefahrer (NfS) heraus und wie und wie oft erfolgt die Herausgabe?",
+      "answer": "Die NfS werden vom BSH in Heftform und im Internet herausgegeben und erscheinen einmal wöchentlich."
+    },
+    {
+      "id": 37,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Unterlage steht Ihnen zur Verfügung zur Berichtigung von britischen Seekarten, die nicht von den NfS erfasst werden?",
+      "answer": "Die britischen Notices to Mariners."
+    },
+    {
+      "id": 38,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "1. Was sind P-Nachrichten? 2. Wie verfährt man mit diesen Nachrichten im Berichtigungsverfahren? (Begründung!)",
+      "answer": "P-Nachrichten sind solche, die eine bevorstehende (preliminary) Maßnahme ankündigen. Wegen der begrenzten Geltungsdauer werden keine Berichtigungen auf der Grundlage von P-Nachrichten vom BSH bzw. von amtlichen Seekartenberichtigungsstellen durchgeführt. Deshalb müssen vor Gebrauch jeder Seekarte die noch gültigen P-Nachrichten erfasst und in der Karte vermerkt werden."
+    },
+    {
+      "id": 39,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "1. Was sind T-Nachrichten? 2. Wie verfährt man mit diesen Nachrichten im Berichtigungsverfahren? (Begründung!)",
+      "answer": "T-Nachrichten sind solche, die über einen zeitweiligen (temporary) Zustand unterrichten.\nWegen der begrenzten Geltungsdauer werden keine Berichtigungen auf der Grundlage von T-Nachrichten vom BSH bzw. amtlichen Seekartenberichtigungsstellen durchgeführt. Deshalb müssen vor Gebrauch jeder Seekarte die noch gültigen T-Nachrichten erfasst und in der Karte vermerkt werden."
+    },
+    {
+      "id": 40,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Worauf muss beim Ansteuern einer Küste bei der Auswahl von Seekarten geachtet werden? Begründen Sie Ihre Antwort.",
+      "answer": "Seekarten mit größtmöglichem Maßstab verwenden. Nur in diesen Karten sind alle Schifffahrtszeichen und weitere für die Navigation wichtigen Informationen eingetragen."
+    },
+    {
+      "id": 41,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was müssen Sie bei Kursberechnungen hinsichtlich der in der Seekarte angegebenen Ortsmissweisungen beachten?",
+      "answer": "Die für ein bestimmtes Jahr angegebene Missweisung muss mittels der in der Seekarte angegebenen jährlichen Änderung für das aktuelle Jahr berichtigt werden."
+    },
+    {
+      "id": 42,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was müssen Sie bei der Benutzung von deutschen \"Sportbootkarten\" beachten?",
+      "answer": "Sie werden nach dem Druck weder vom BSH noch von den Seekartenvertriebsstellen berichtigt. Sie müssen also vom Nutzer nach dem Kauf vor Benutzung über die NfS auf den aktuellen Stand berichtigt werden."
+    },
+    {
+      "id": 43,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Nach welcher Faustregel können Sie m/s in Knoten umrechnen?",
+      "answer": "Doppelt so viele Knoten (kn) wie m/s oder m/s multipliziert mit 2 = kn."
+    },
+    {
+      "id": 44,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was müssen Sie beachten, wenn Sie die mit Loggen ermittelte Fahrt z. B. für das Arbeiten in Seekarten berücksichtigen wollen?",
+      "answer": "Die üblichen Logmethoden liefern ausschließlich die \"Fahrt durchs Wasser (FdW)\". Um die \"Fahrt über Grund (FüG)\" zu ermitteln, müssen Stromrichtung und Stromgeschwindigkeit berücksichtigt werden."
+    },
+    {
+      "id": 45,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Fahrt zeigen GPS-Geräte an?",
+      "answer": "Die Fahrt über Grund (FüG)."
+    },
+    {
+      "id": 46,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welchen Kurs zeigen GPS-Geräte an?",
+      "answer": "Den Kurs über Grund (KüG)."
+    },
+    {
+      "id": 47,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Warum müssen Sie Ihre Position regelmäßig in die Seekarte eintragen?",
+      "answer": "Um Abweichungen von der Kurslinie frühzeitig und sicher zu erkennen und um ggf. den Kurs zu berichtigen."
+    },
+    {
+      "id": 48,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist die Besteckversetzung (BV)?",
+      "answer": "Richtung (rw) und Entfernung (in sm) vom Koppelort (Ok) zum beobachteten Ort (Ob), bezogen auf den gleichen Zeitpunkt."
+    },
+    {
+      "id": 49,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Ursachen kann die Besteckversetzung (BV) haben?",
+      "answer": "Die BV kann folgende Ursachen haben:\nungenaues Steuern und Koppeln,\nKursfehler (z. B. ungenaue Steuertafel) und\nfehlende oder unvollständige Berücksichtigung von Strom und Wind."
+    },
+    {
+      "id": 50,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Warum sollte der Winkel zwischen zwei Peilungen nicht kleiner als 30° und nicht größer als 150° sein?",
+      "answer": "Damit der gefundene Standort eine ausreichend sichere Positionsbestimmung ergibt."
+    },
+    {
+      "id": 51,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Warum sind regelmäßige Kompasskontrollen erforderlich?",
+      "answer": "Zur Überprüfung der Funktionsfähigkeit des Kompasses und der Werte in der Ablenkungstabelle."
+    },
+    {
+      "id": 52,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wodurch können auch in gezeitenlosen Revieren erhebliche Wasserstandsschwankungen und Strömungen (z. B. Triftstrom) hervorgerufen werden?",
+      "answer": "Durch Stärke, Dauer und Richtung des Windes oder \"Zurückschwappen\" aufgestauter Wassermassen (z. B. Ostsee)."
+    },
+    {
+      "id": 53,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche navigatorischen Vorbereitungen treffen Sie vor einer Fahrt in Dunkelheit?",
+      "answer": "    Kurse und Kursänderungspunkte möglichst vorausbestimmen,\nUntiefen und Hindernisse in der Karte besonders kennzeichnen,\nin der Seekarte markieren, welche Leuchtfeuer wann und wo in der Kimm erscheinen und\nWegstrecke nach unbefeuerten Tonnen absuchen."
+    },
+    {
+      "id": 54,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Möglichkeiten der terrestrischen Ortsbestimmung muss man kennen?",
+      "answer": "    Kreuzpeilung,\nPeilung und Abstand (Feuer in der Kimm, Radarabstand),\nPeilung und Lotung."
+    },
+    {
+      "id": 55,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Nennen Sie zwei Möglichkeiten der Ortsbestimmung, wenn Sie nur ein Objekt mit bekannten Merkmalen (z. B. Leuchtturm) in Sicht haben.",
+      "answer": "    Peilung und Abstand (Feuer in der Kimm, Radarabstand),\nPeilung und Lotung."
+    },
+    {
+      "id": 56,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Nordrichtungen werden in der Navigation unterschieden? Erläutern Sie diese kurz.",
+      "answer": "rwN: rechtweisend Nord ist die Richtung eines Meridians zum geographischen Nordpol.\nmwN: missweisend Nord ist die Richtung des erdmagnetischen Feldes zum magnetischen Nordpol, abhängig von Schiffsort und Datum (Jahr). In diese Richtung stellt sich eine ungestörte Magnet-(Kompass-)nadel ein.\nMgN: ist die Richtung zu Magnetkompass-Nord. In diese Richtung zeigt die durch das schiffsmagnetische Feld beeinflusste Kompassnadel an Bord."
+    },
+    {
+      "id": 57,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Nennen Sie die Winkel zwischen den Nordrichtungen rechtweisend Nord (rwN), missweisend Nord (mwN) und Magnetkompass-Nord (MgN).",
+      "answer": "    Mw: Missweisung ist der Winkel von rwN nach mwN.\nAbl: Ablenkung (Abl) oder Deviation (Dev) ist der Winkel von mwN nach MgN."
+    },
+    {
+      "id": 58,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Nennen Sie den Winkel zwischen den Nordrichtungen rwN und MgN.",
+      "answer": "Der Winkel von rwN nach MgN ist die Fehlweisung (Fw; Abl + Mw = Fw)."
+    },
+    {
+      "id": 59,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo finden Sie die erforderlichen Werte der Missweisung? Worauf ist dabei zu achten?",
+      "answer": "Die Missweisung findet sich in der Seekarte eingedruckt für ein bestimmtes Jahr.\nDieser Wert muss mit der ebenfalls in der Seekarte angegebenen jährlichen Änderung auf das Jahr der Benutzung berichtigt werden."
+    },
+    {
+      "id": 60,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo finden Sie die erforderlichen Werte der Ablenkung (Abl)? Worauf ist dabei zu achten?",
+      "answer": "\nDie Abl wird einer Ablenkungstabelle entnommen.\nDie Abl ist abhängig vom anliegenden Kurs."
+    },
+    {
+      "id": 61,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Warum muss für jedes Fahrzeug eine eigene Ablenkungstabelle (Steuertafel) erstellt werden?",
+      "answer": "Die Ablenkungstabelle kann auf jedem Schiff andere Werte haben."
+    },
+    {
+      "id": 62,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Worauf müssen Sie achten, wenn eine Magnetkompasspeilung (MgP) auf eine rechtweisende Peilung (rwP) beschickt werden soll?",
+      "answer": "Abl für den anliegenden MgK (Magnetkompasskurs) aus der Steuertafel (Ablenkungstabelle) entnehmen; an den so erhaltenen mwK (missweisenden Kurs) die für das laufende Jahr der Seekarte entnommene Mw anbringen."
+    },
+    {
+      "id": 63,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Unter welchen Voraussetzungen ergibt sich eine brauchbare Standlinie aus einer Lotung?",
+      "answer": "Der Meeresgrund muss ausreichend regelmäßig und ausreichend steil ansteigen/abfallen."
+    },
+    {
+      "id": 64,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Neben den Fahrwassertonnen liegen auf den Seeschifffahrtsstraßen weitere Tonnen aus, die für die Sportschifffahrt besonders wichtig sind. Welche Schifffahrtszeichen sind das?",
+      "answer": "Sonderzeichen zur Bezeichnung von Sperrgebieten und Kardinalzeichen für allgemeine Gefahrenstellen."
+    },
+    {
+      "id": 65,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Aus welchen nautischen Publikationen können Sie Sperr- und Verbotsgebiete mit ihren Grenzen ersehen?",
+      "answer": "Aus den Seekarten, Bekanntmachungen für Seefahrer (BfS) und Nautischen Warnnachrichten (NWN)."
+    },
+    {
+      "id": 66,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Sonderzeichen kennzeichnen Reeden, besondere Gebiete oder Stellen, z. B. Warngebiete?",
+      "answer": "Gelbe Fasstonnen, Leuchttonnen, Spierentonnen oder Stangen."
+    },
+    {
+      "id": 67,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Sonderzeichen kennzeichnen Sperrgebiete?",
+      "answer": "Gelbe Fasstonnen, Leuchttonnen, Spierentonnen oder Stangen mit einem breiten roten Band. Beschriftung auf Fasstonne oder Leuchttonne mit schwarzen Buchstaben: \"Sperrgebiet\" oder \"Sperr-G\"."
+    },
+    {
+      "id": 68,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Farbe haben Feuer auf Sonderzeichen, wenn vorhanden?",
+      "answer": "Farbe gelb."
+    },
+    {
+      "id": 69,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet das Ausliegen der folgenden Schifffahrtszeichen: weiße Fasstonne, Kugeltonne oder Stange mit einem - von oben gesehen - rechtwinkligen gelben Kreuz bzw. bei Stangen mit einem breiten gelben Band?",
+      "answer": "Fahrverbot für Maschinenfahrzeuge und Wassermotorräder auf wegen Badebetrieb gesperrten Wasserflächen."
+    },
+    {
+      "id": 70,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie stehen Sonne und Mond winkelmäßig zur Erde bei Springzeit und bei Nippzeit (die Springverspätung soll hier unberücksichtigt bleiben)?",
+      "answer": "Bei Springzeit befinden sich Mond und Sonne in einer Ebene mit der Erde, bei Nippzeit stehen die Verbindungslinien Erde/Sonne und Erde/Mond im rechten Winkel zueinander."
+    },
+    {
+      "id": 71,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Erklären Sie den Begriff \"Alter der Gezeit\".",
+      "answer": "Das Alter der Gezeit gibt an, in welcher Phase (Nippzeit, Mittzeit, Springzeit) sich das aktuelle Tidengeschehen befindet."
+    },
+    {
+      "id": 72,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Warum findet man z. B. bei Bezugsorten in der Nordsee bzw. im Englischen Kanal zeitweise nur ein Hoch- bzw. Niedrigwasser pro Tag?",
+      "answer": "Die Umlaufzeit des Mondes um die Erde dauert im Mittel 24 h 50 min. (Mondtag) gegenüber dem Sonnentag (= 24 h). Deshalb \"rutscht\" das letzte HW oder NW zeitweise in den nächsten Tag."
+    },
+    {
+      "id": 73,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Weshalb und wie können die tatsächlichen Wasserstände von den Angaben in den Gezeitentafeln teilweise erheblich abweichen?",
+      "answer": "Durch Wind und/oder durch sehr hohen bzw. sehr niedrigen Luftdruck können erhebliche Wasserstandsänderungen entstehen. HWH bzw. NWH können höher oder niedriger sein als angegeben, die Hoch- und Niedrigwasserzeit kann füher oder später eintreten als angegeben."
+    },
+    {
+      "id": 74,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Worauf beziehen sich die Tiefenangaben in Seekarten in den deutschen Gewässern der Ost- und Nordsee?",
+      "answer": "Auf Kartennull (KN)."
+    },
+    {
+      "id": 75,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist Kartennull?",
+      "answer": "Kartennull (KN) ist die Bezugsfläche für die Tiefenangaben in einer Seekarte."
+    },
+    {
+      "id": 76,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie ist Kartennull (KN) in der Ost- und Nordsee und im Englischen Kanal definiert? Wo finden Sie die entsprechenden Angaben zur Kartennullebene?",
+      "answer": "In der Ostsee entspricht KN dem mittleren Wasserstand.\nIn der Nordsee und im Englischen Kanal entspricht KN dem niedrigstmöglichen Gezeitenwasserstand (LAT = Lowest Astronomical Tide).\nIn der jeweiligen Seekarte ist die Kartennullebene beschrieben."
+    },
+    {
+      "id": 77,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was müssen Sie bedenken, wenn Sie die Wassertiefe außerhalb der Niedrigwasserzeit loten?",
+      "answer": "Beim folgenden Niedrigwasser wird die Wassertiefe geringer sein als zum Zeitpunkt der Lotung."
+    },
+    {
+      "id": 78,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist die Kartentiefe?",
+      "answer": "Die Kartentiefe (KT) ist die auf Kartennull bezogene Wassertiefe. Kartentiefe ist Wassertiefe abzüglich Höhe der Gezeit."
+    },
+    {
+      "id": 79,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Mit welcher Wassertiefe können Sie bei einer Lotung normalerweise mindestens rechnen?",
+      "answer": "Mit der Kartentiefe."
+    },
+    {
+      "id": 80,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Bedeutung hat die Angabe \"Springzeit\" für die Wasserstände in Gezeitengebieten?",
+      "answer": "Zur Springzeit sind besonders hohe Hochwasser und besonders niedrige Niedrigwasser zu erwarten."
+    },
+    {
+      "id": 81,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Bedeutung hat die Angabe \"Nippzeit\" für die Wasserstände in Gezeitengebieten?",
+      "answer": "Zur Nippzeit sind besonders niedrige Hochwasser und besonders hohe Niedrigwasser zu erwarten."
+    },
+    {
+      "id": 82,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Bedeutung haben die Angaben \"Nippzeit\" bzw. \"Springzeit\" für die Gezeitenströme?",
+      "answer": "Zur Springzeit setzen die Gezeitenströme z. T. deutlich stärker als zur Nippzeit."
+    },
+    {
+      "id": 83,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo können Sie Informationen über Gezeitenströme in Küstengewässern finden?",
+      "answer": "    In Gezeitenstromatlanten, Seehandbüchern,\nin Seekarten aus Gezeitenstromtabellen, die bezogen sind auf die Hochwasserzeiten des dort genannten Bezugsortes."
+    },
+    {
+      "id": 84,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Auf einer Seekarte finden Sie in Küstennähe die Tiefenangabe 23. Was bedeutet das?",
+      "answer": "Der Ort der Zahl liegt 2,3 m über Kartennull und kann trockenfallen."
+    },
+    {
+      "id": 85,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "In welchem Zusammenhang stehen Kartentiefe (KT), Wassertiefe (WT) und Höhe der Gezeit (H)?",
+      "answer": "WT - H = KT oder KT + H = WT (Lösung auch als Skizze möglich)."
+    },
+    {
+      "id": 86,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Warum ist es in Tidengewässern wichtig, die Uhrzeit einer Lotung festzuhalten?",
+      "answer": "Um anhand der Gezeitentafel feststellen zu können, ob das Wasser steigt oder fällt."
+    },
+    {
+      "id": 87,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist ein Pegel?",
+      "answer": "Eine Skala zur Anzeige des Wasserstandes."
+    },
+    {
+      "id": 88,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welchen Einfluss kann der Wind auf die Gezeiten haben?",
+      "answer": "Der Wind kann Strömungen und Wasserstandsänderungen hervorrufen, die zu den Gezeitenströmen und den Gezeiten hinzutreten."
+    },
+    {
+      "id": 89,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Nennen Sie drei wichtige Vorzüge von GPS.",
+      "answer": "    GPS arbeitet weltweit.\nDie Positionsanzeige ist jederzeit verfügbar.\nDer Positionsfehler ist gering."
+    },
+    {
+      "id": 90,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie groß ist die typische und realistische Genauigkeit von Positionen, die mit GPS und DGPS ermittelt werden?",
+      "answer": "    GPS: 10 - 20 m bei einer Wahrscheinlichkeit von etwa 95 %.\nDGPS: 1 - 10 m bei einer Wahrscheinlichkeit von etwa 95 %."
+    },
+    {
+      "id": 91,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wo muss man mit ungenauen Anzeigen des GPS rechnen?",
+      "answer": "    Bei Abschattung der GPS-Antenne.\nIn der Nähe von Flughäfen und in der Nähe von Fernsehsendern.\nIn der Nähe von Marineeinrichtungen.\nBei Nutzung von UKW-Geräten und anderen elektronischen/elektrischen Geräten an Bord."
+    },
+    {
+      "id": 92,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet die Abkürzung GPS?",
+      "answer": "Global Positioning System."
+    },
+    {
+      "id": 93,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist das Grundprinzip von GPS?",
+      "answer": "Durch Laufzeitmessungen von GPS-Signalen vom Satelliten zum Empfänger und damit durch Abstandsmessungen zu den Satelliten wird die Ortsbestimmung ermöglicht."
+    },
+    {
+      "id": 94,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet die Abkürzung DGPS und nach welchem Prinzip arbeitet DGPS?",
+      "answer": "DGPS = Differential Global Positioning System.\nHierbei handelt es sich um eine regionale Verbesserung der Ortsbestimmung. Dabei werden von Referenzstationen über Funk Korrekturwerte für die GPS-Messwerte an die Schiffe übertragen."
+    },
+    {
+      "id": 95,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist bei Anbringung einer GPS-Antenne zu beachten?",
+      "answer": "    Sie muss ringsum freie Sicht (ohne Abschattungen) haben.\nEinwandfreie Erdung."
+    },
+    {
+      "id": 96,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bewirkt die Bedienung der MOB-Taste bei GPS-Geräten?",
+      "answer": "    Die Position zur Zeit des Tastendrucks wird gespeichert.\nRechtweisende Peilung (rwP) und Distanz zu diesem Punkt werden angezeigt."
+    },
+    {
+      "id": 97,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet die Aussage: \"Die Ortsgenauigkeit beträgt 100 m mit einer Wahrscheinlichkeit von 95 %\"?",
+      "answer": "Das Schiff befindet sich mit einer Wahrscheinlichkeit von 95 % in einem Fehlerkreis von 100 m Radius um den beobachteten Ort. Also: jede 20. Ortsbestimmung (5 %) ist ungenauer als ca. 100 m."
+    },
+    {
+      "id": 98,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie kann man feststellen, ob die GPS-Position genau bzw. zuverlässig ist?",
+      "answer": "    Durch den vom Empfänger angezeigten HDOP (horizontal dilution of precision = Satellitenverteilung).\nDurch die vom Empfänger angezeigte Anzahl der getrackten Satelliten.\nDurch Vergleich mit anderen Navigationssystemen und der Koppelposition."
+    },
+    {
+      "id": 99,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist bei Eintragung eines GPS-Ortes in eine Seekarte zu beachten?",
+      "answer": "Das Bezugssystem muss übereinstimmen. Dieses kann geschehen durch:\nAuswahl und Einstellung des Kartenbezugssystems im Empfänger.\nManuelle Verschiebung des GPS-Ortes um die in der Seekarte angegebenen N/S- und E/W-Korrektur.\nVerwendung von Seekarten, die auf dem System WGS 84 beruhen."
+    },
+    {
+      "id": 100,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was ist ein Wegpunkt?",
+      "answer": "Geographische Koordination eines anzusteuernden Punktes."
+    },
+    {
+      "id": 101,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet WGS 84 und was wird damit erreicht?",
+      "answer": "    Globales Bezugssystem \"World Geodetic System 1984\".\nMit diesem System (= Referenzellipsoid bei GPS) wird weltweit eine optimale Anpassung an die reale Form des gesamten Erdkörpers erreicht."
+    },
+    {
+      "id": 102,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wodurch können Radarechos von kleinen Fahrzeugen und Tonnen auf den Sichtschirmen von Radargeräten \"verschwinden\"?",
+      "answer": "    Durch Seegang und/oder Niederschlag,\ndurch falsche Bedienung,\ndurch zu große Entfernung,\ndurch Gieren des eigenen Fahrzeugs bei relativ vorausorientierter Radarstellung (head up)."
+    },
+    {
+      "id": 103,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie kann man mit Radar den eigenen Schiffsort bestimmen?",
+      "answer": "    Peilung des Objektes gibt einen Peilstrahl als Standlinie.\nAbstandsmessung mit dem VRM (Variable Range Marker) gibt einen Abstandskreis als Standlinie."
+    },
+    {
+      "id": 104,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie kann man gegebenenfalls verhindern, dass sich Echoanzeigen von Zielen (z. B. 2 Tonnen, 2 Molenköpfe) überlappen?",
+      "answer": "    Kurze Impulslänge wählen.\nMessbereich verkleinern."
+    },
+    {
+      "id": 105,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was bedeutet der Begriff AIS auf See?",
+      "answer": "AIS bezeichnet das automatische Identifizierungssystem (Automatic Identification System)."
+    },
+    {
+      "id": 106,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Aufgaben hat AIS?",
+      "answer": "Alle ausgerüsteten Schiffe senden automatisch (also ohne Aufforderung und menschliches Eingreifen) in regelmäßigen kurzen Abständen ihre Identität und einen schiffsbezogenen Datensatz. Außerdem können bei Bedarf sicherheitsrelevante Nachrichten (\"safety related messages\") von Bord oder von Landstationen gesendet werden."
+    },
+    {
+      "id": 107,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Reichweite hat ein AIS-Bordgerät und wovon ist sie abhängig?",
+      "answer": "Die Reichweite und Ausbreitungsbedingungen entsprechen denen von UKW. Bei Handelsschiffen kann man von 20 bis 30 sm ausgehen. Die Reichweite ist abhängig von der Antennenhöhe."
+    },
+    {
+      "id": 108,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie kann die Reichweite eines AIS-Bordgerätes landseitig erhöht werden und wie wirken sich dabei Hindernisse (z. B. Berge) aus?",
+      "answer": "Unter bestimmten Umständen kann die Reichweite heraufgesetzt werden (z. B. mit Hilfe von \"Relaisstationen\"), wobei ggf. auch abschattende Hindernisse umgangen werden können."
+    },
+    {
+      "id": 109,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche AIS-Daten werden von Schiffen aus der Berufsschifffahrt gesendet?",
+      "answer": "    Statische Daten: ID, Rufzeichen, Länge und Breite des Schiffes u. a.\nDynamische Daten (i. W. Sensordaten): UTC, Position, Heading, Kurs und Fahrt über Grund, ggf. Rate-of-turn, Fahrtstatus (z. B. Maschinenfahrzeug mit Fahrt durchs Wasser, Ankerlieger, manövrierbehindertes Fahrzeug).\nReisebezogene Daten: Tiefgang, Zielort (Destinaton), ETA u. a."
+    },
+    {
+      "id": 110,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wann kann man sich auf die Verfügbarkeit und Anzeige vn AIS-Signalen anderer Fahrzeuge verlassen? Nennen Sie die wesentlichen Voraussetzungen!",
+      "answer": "Andere Fahrzeuge werden nur angezeigt, wenn das Fahrzeug auch sendet, d. h., wenn das Fahrzeug mit AIS ausgerüstet ist, das sendende Fahrzeug AIS nicht abgeschaltet hat (darf der Kapitän allerdings nur bei bestimmten zwingenden Gründen), GPS aktiv ist und aus Kapazitätsgründen (z. B. durch zu viele Schiffe in einem Seegebiet = \"target overflow\") keine Fahrzeuge ausgeschlossen werden."
+    },
+    {
+      "id": 111,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Wie ist die Genauigkeit von AIS-Daten zu beurteilen (Position und manuell eingegebene Daten)?",
+      "answer": "    Position:\nMit AIS wird zusätzlich zur GPS-Position eines Schiffes die Information übertragen, ob es sich um einen GPS- oder DGPS-Ort handelt. Ist die GPS-Position eines Schiffes falsch, wird diese falsche Position auf allen anderen Schiffen angezeigt.\nManuell eingegebene Daten:\nEs muss damit gerechnet werden, dass Zielort, Tiefgang, Fahrtstatus u. a. falsch sind, wenn sie - z. B. aus Nachlässigkeit - nicht von der Schiffsführung aufdatiert werden."
+    },
+    {
+      "id": 112,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche besondere Bedeutung hat AIS für die Sportschifffahrt im Vergleich mit der Radaranzeige auf anderen Schiffen?",
+      "answer": "Sportfahrzeuge werden häufig auf den Radargeräten anderer Schiffe nicht sicher angezeigt bzw. die Anzeigen gehen im Seegangsclutter oder in der Informationsfülle unter. Da jetzt auf vielen Schiffen die AIS-Daten zusätzlich im Radar dargestellt werden, besteht die Gefahr, dass Sportfahrzeuge noch weniger auffällig sind, wenn sie nicht selbst mit AIS ausgerüstet sind."
+    },
+    {
+      "id": 113,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welche Navigationsgeräte sollten Sie auf einer Yacht auch bei Kurzfahrten nahe der Küste mindestens an Bord haben?",
+      "answer": "Steuerkompass, Peilkompass, Lot, Log, Uhr."
+    },
+    {
+      "id": 114,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was gehört zur navigatorischen Mindestausrüstung einer Yacht in Küstengewässern? Nennen Sie mindestens 6 Beispiele.",
+      "answer": "Steuerkompass,\nPeileinrichtung,\nterrestrisches oder satellitengestütztes Funknavigationsgerät,\nLog,\nLot,\nFernglas,\nBarometer,\nWeltempfänger für Rundfunk,\nSeebücher und auf den neuesten Stand berichtigte Seekarten für das zu befahrende Seegebiet,\nLogbuch,\nUhr/Zeitmesser."
+    },
+    {
+      "id": 115,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welchen Vorteil hat ein Kugelkompass gegenüber einem Fernglaskompass?",
+      "answer": "    Der Kugelkompass kann auch bei größerer Krängung noch als Messinstrument benutzt werden.\nDie Kugelform verbessert die Ablesbarkeit der Kompassrose (Vergrößerungseffekt)."
+    },
+    {
+      "id": 116,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was beeinflusst die Ablenkung eines Kompasses dauerhaft?",
+      "answer": "Veränderung des magnetischen Zustandes an Bord, z. B. Einbauten und Lageänderung von Ausrüstungsgegenständen."
+    },
+    {
+      "id": 117,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Was beeinflusst die Ablenkung eines Kompasses vorübergehend?",
+      "answer": "Elektronische Geräte (z. B. Radio, Handy), magnetisierte Gegenstände (z. B. Werkzeug, Peilkompass) und Gleichstromleitungen in der Nähe des Kompasses."
+    },
+    {
+      "id": 118,
+      "topic": "Navigation",
+      "subtopic": "",
+      "question": "Welchen Abstand muss magnetisierbares Material vom Magnetkompass haben?",
+      "answer": "Mindestens 1 Meter."
+    },
+    {
+      "id": 119,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was sind \"Sicherheitszonen\" im Sinne der Verordnung zu denKVR?",
+      "answer": "Sicherheitszonen sind Wasserflächen im Umkreis von 500\nm\num Plattformen, Bohrinseln, Forschungsanlagen\nu. a.\n, die nicht befahren werden dürfen."
+    },
+    {
+      "id": 120,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Die Verordnung zu den KVR verbietet die Führung eines Fahrzeugs, wenn man infolge des Genusses alkoholischer Getränke in der sicheren Führung des Fahrzeugs behindert ist.\nWelchen örtlichen Geltungsbereich hat die vorgenannte Verordnung?",
+      "answer": "Die Verordnung gilt auf Seeschifffahrtsstraßen und für Schiffe, die die Bundesflagge führen, seewärts der Begrenzung des Küstenmeeres der Bundesrepublik Deutschland (also weltweit), soweit nicht in den Hoheitsgewässern anderer Staaten abweichende Regelungen gelten."
+    },
+    {
+      "id": 121,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wer darf laut Verordnung zu den KVR ein Fahrzeug nicht führen oder als Mitglied der Crew eine andere Tätigkeit des Brücken- oder Decksdienstes nicht ausüben (allgemein ohne Zahlen zu beantworten)?",
+      "answer": "Wer infolge körperlicher oder geistiger Mängel oder des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung eines Fahrzeugs oder in der sicheren Ausübung einer anderen Tätigkeit des Brücken- oder Decksdienstes behindert ist."
+    },
+    {
+      "id": 122,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Atem-bzw.Blutalkoholkonzentration darf laut Verordnung zu den KVR nicht erreicht werden, damit kein Verbot für ein Führen eines Fahrzeugs oder als Mitglied der Crew für ein Ausüben des Brückendienstes besteht?",
+      "answer": "0,25\nmg/l\noder mehr Alkohol in der Atemluft oder 0,5 Promille oder mehr Alkohol im Blut oder eine Alkoholmenge, die zu einer solchen Atem- oder Blutalkoholkonzentration führt."
+    },
+    {
+      "id": 123,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Die KVR regeln u. a. das Verhalten der Schiffsführungen bei Kollisionsgefahr.Was ist im Rahmen der Verantwortlichkeit bei der Auslegung und Befolgung der KVR zu berücksichtigen?",
+      "answer": "Bei der Auslegung und Befolgung der KVR sind stets alle Gefahren der Schifffahrt und des Zusammenstoßes sowie alle besonderen Umstände einschließlich Behinderungen der betroffenen Fahrzeuge gebührend zu berücksichtigen, die zum Abwenden unmittelbarer Gefahr ggf. auch ein Abweichen von diesen Regeln erfordern können (\nz. B.\nAbweichen von der Kurshaltepflicht, wenn der Ausweichpflichtige nicht angemessen handelt)."
+    },
+    {
+      "id": 124,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Grundregeln für das Verhalten im Verkehr verlangen die KVR, die ein Schiffsführer zu berücksichtigen hat, auch wenn keine konkrete Regel anwendbar ist?",
+      "answer": "Die KVR befreien nicht von den Folgen, die durch unzureichende Einhaltung der KVR oder unzureichende Vorsichtsmaßnahmen entstehen,\nd. h.\n, allgemeine seemännische Praxis oder besondere Umstände des Falles können über die Mindestanforderungen der KVR hinausgehende Maßnahmen erfordern."
+    },
+    {
+      "id": 125,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was sind Verkehrstrennungsgebiete?Wie sind sie zu befahren?",
+      "answer": "Verkehrstrennungsgebiete sind Schifffahrtswege, die durch Trennlinien oder Trennzonen in Einbahnwege geteilt sind.\nDiese dürfen nur in Fahrtrichtung rechts der Trennlinie/Trennzone befahren werden, aber unter Nutzung der vollen Breite des Einbahnweges."
+    },
+    {
+      "id": 126,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist ein \"manövrierunfähiges Fahrzeug\"?",
+      "answer": "Manövrierunfähig ist ein Fahrzeug, das wegen außergewöhnlicher Umstände (z. B. Ruderbruch) nicht regelgerecht manövrieren und daher einem anderen Fahrzeug nicht ausweichen kann."
+    },
+    {
+      "id": 127,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist ein \"manövrierbehindertes Fahrzeug\"?",
+      "answer": "Manövrierbehindert ist ein Fahrzeug, das durch die Art seines Einsatzes behindert ist (z. B. Bagger, Kabelleger), regelgerecht zu manövrieren, und daher einem anderen Fahrzeug nicht ausweichen kann."
+    },
+    {
+      "id": 128,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Nennen Sie mindestens 3 Beispiele für \"manövrierbehinderte Fahrzeuge\".",
+      "answer": "Tonnenleger, Kabelleger, Rohrleger im Einsatz,\nBagger, Vermessungsfahrzeuge im Einsatz,\nVersorger im Einsatz,\nFlugzeugträger im Einsatz,\nMinenräumfahrzeuge im Einsatz,\nFahrzeuge während eines Schleppvorganges, bei dem das schleppende Fahrzeug und sein Anhang erheblich behindert sind, vom Kurs abzuweichen."
+    },
+    {
+      "id": 129,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist unter \"sicherer Geschwindigkeit\" zu verstehen?",
+      "answer": "Das Fahrzeug muss jederzeit innerhalb einer solchen Entfernung zum Stehen gebracht werden können, dass ein Zusammenstoß vermieden wird."
+    },
+    {
+      "id": 130,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Ab welcher Länge müssen Sportfahrzeuge mit den Lichtern/Signalkörpern ausgerüstet sein, die bei Manövrierunfähigkeit zu setzen sind?",
+      "answer": "Fahrzeuge ab 12 m Länge."
+    },
+    {
+      "id": 131,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen in der Dämmerung in der Nordsee in der Zufahrt zur Jade einen großen Tanker mit der üblichen Lichterführung, auf dem kurze Zeit später die Lichter rot-weiß-rot senkrecht übereinander zusätzlich zu den Fahrtlichtern gesetzt werden.Welche rechtliche Bedeutung hat die geänderte Signalgebung für Sie?",
+      "answer": "Beim Erreichen des Geltungsbereiches der\nSeeSchStrO\nkennzeichnet sich der Tanker als Wegerechtschiff, das als manövrierbehindertes Fahrzeug gilt. Diesem so gekennzeichneten Fahrzeug muss im Falle einer Kollisionsgefahr ausgewichen werden."
+    },
+    {
+      "id": 132,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Lichter müssen manövrierbehinderte Fahrzeuge (außer Minenräumfahrzeuge) führen1. ohne Fahrt durchs Wasser (FdW),2. mit FdW,3. vor Anker?",
+      "answer": "Ohne FdW:\nrot-weiß-rot senkrecht übereinander.\nMit FdW:\nrot-weiß-rot senkrecht übereinander und Lichter eines Maschinenfahrzeugs (Topplicht[er]), Seitenlichter, Hecklicht.\nVor Anker:\nrot-weiß-rot senkrecht übereinander und Ankerlicht(er)."
+    },
+    {
+      "id": 133,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie sind manövrierbehinderte und manövrierunfähige Fahrzeuge am Tage bezeichnet?",
+      "answer": "Manövrierbehinderte Fahrzeuge:\nBall-Rhombus-Ball senkrecht übereinander.\nManövrierunfähige Fahrzeuge:\nzwei schwarze Bälle senkrecht übereinander."
+    },
+    {
+      "id": 134,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen Sie Ihr Fahrzeug unter Segel bei Tage und bei Nacht kennzeichnen, wenn Sie gleichzeitig mit Maschinenkraft fahren?",
+      "answer": "Bei Nacht Lichterführung eines Maschinenfahrzeugs entsprechender Größe,\nbei Tage einen Kegel - Spitze unten - im Vorschiff gut sichtbar."
+    },
+    {
+      "id": 135,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was müssen Sie hinsichtlich der Zeiten der Lichterführung beachten?",
+      "answer": "Die Lichter müssen geführt werden\nzwischen Sonnenuntergang und Sonnenaufgang,\nbei verminderter Sicht auch zwischen Sonnenaufgang und Sonnenuntergang."
+    },
+    {
+      "id": 136,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen am Tage ein Fahrzeug, augenscheinlich kürzer als 50 m, mit dem Sichtzeichen \"schwarzer Rhombus\", dahinter in gleichbleibendem Abstand ein weiteres Fahrzeug mit dem gleichen Signalkörper.1. Worum handet es sich?2. Wie sind die Fahrzeuge bei Nacht gekennzeichnet?",
+      "answer": "Es handelt sich um einen Schleppverband länger als 200 m (Heck des Schleppers - Heck des Anhangs).\nDer Schlepper führt nachts drei weiße Topplichter senkrecht übereinander, Seitenlichter, Hecklicht und das gelbe Schlepplicht über dem Hecklicht. Der Anhang führt Seitenlichter und Hecklicht."
+    },
+    {
+      "id": 137,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Man hört bei Nebel folgendes Schallsignal mit der Pfeife(lang-kurz-kurz), unmittelbar gefolgt von(lang-kurz-kurz-kurz) etwa jede Minute.Worum handelt es sich dabei?",
+      "answer": "Es ist das Schallsignal eines Schleppverbandes in Fahrt (schleppendes Fahrzeug lang-kurz-kurz; Anhang lang-kurz-kurz-kurz)."
+    },
+    {
+      "id": 138,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Bei Nebel im Küstenbereich fahrend, hört man etwa jede Minute folgendes Signal: drei Glockenschläge, dannca.5 Sekunden lang rasches Läuten einer Glocke, dann drei Glockenschläge.Wer gibt dieses Signal?",
+      "answer": "Dieses Signal gibt ein Fahrzeug auf Grund unter 100 m Länge."
+    },
+    {
+      "id": 139,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen ein Fahrzeug mit folgender Lichterführung:1. Worum handelt es sich?2. Welches Schallsignal müsste dieses Fahrzeug bei unsichtigem Wetter geben?",
+      "answer": "Treibnetzfischer (Fahrzeug, das nicht trawlt) in Fahrt oder vor Anker mit ausgebrachtem Fanggerät, das waagerecht weiter als 150 m ins Wasser reicht. (Das untere weiße Licht kann auch das Hecklicht sein).\nSchallsignal\n(lang-kurz-kurz) mindestens alle 2 Minuten."
+    },
+    {
+      "id": 140,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen nachts auf See 2 rote Lichter senkrecht übereinander:",
+      "answer": ""
+    },
+    {
+      "id": 141,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Worum handelt es sich?",
+      "answer": "Um ein manövrierunfähiges Fahrzeug in Fahrt ohne Fahrt durchs Wasser."
+    },
+    {
+      "id": 142,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Die Lichteranordnung eines Fahrzeugs ändert sich plötzlichvonin",
+      "answer": ""
+    },
+    {
+      "id": 143,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was schließen Sie daraus?",
+      "answer": "Ein manövrierunfähiges Fahrzeug in Fahrt ohne Fahrt durchs Wasser (FdW) hat FdW aufgenommen, da man jetzt auch das Backbord-Seitenlicht sieht."
+    },
+    {
+      "id": 144,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was bestimmen die KVR über das Ausguckhalten?",
+      "answer": "Es muss jederzeit durch Sehen und Hören sowie durch jedes andere verfügbare Mittel gehöriger Ausguck gehalten werden, der einen vollständigen Überblick über die Lage und die Möglichkeit der Gefahr eines Zusammenstoßes gibt."
+    },
+    {
+      "id": 145,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was bestimmen die KVR für das Verhalten von Fahrzeugen von weniger als 20 m Länge oder von Segelfahrzeugen im Fahrwasser einer Seeschifffahrtsstraße?",
+      "answer": "Fahrzeuge von weniger als 20 m Länge oder Segelfahrzeuge dürfen nicht die Durchfahrt eines Fahrzeuges behindern, das nur innerhalb eines engen Fahrwassers oder einer Fahrrinne sicher fahren kann.\nSie müssen, wenn es die Umstände erfordern, frühzeitig Maßnahmen ergreifen, um genügend Raum für die sichere Durchfahrt des anderen Fahrzeugs zu lassen."
+    },
+    {
+      "id": 146,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist eine \"Küstenverkehrszone\"?",
+      "answer": "Das Gebiet zwischen der Küste und der landwärtigen Grenze eines Verkehrstrennungsgebietes."
+    },
+    {
+      "id": 147,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Fahrzeuge dürfen die Küstenverkehrszone benutzen, ohne einen Hafen innerhalb der Küstenverkehrszone anzusteuern?",
+      "answer": "Fahrzeuge von weniger als 20 m Länge und Segelfahrzeuge."
+    },
+    {
+      "id": 148,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen Maschinenfahrzeuge ohne Radar bei verminderter Sicht ihre Fahrweise einrichten?",
+      "answer": "Maschinenfahrzeuge müssen mit sicherer Geschwindigkeit fahren, die den gegebenen Umständen und Bedingungen der verminderten Sicht angepasst ist."
+    },
+    {
+      "id": 149,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen sich Segelfahrzeuge ohne Radar bei verminderter Sicht verhalten?Was gehört dabei zu den Regeln guter Seemannschaft?",
+      "answer": "Segelfahrzeuge müssen mit sicherer Geschwindigkeit fahren, die den gegebenen Umständen und Bedingungen der verminderten Sicht angepasst ist.\nBei Segelfahrzeugen, die eine Maschine an Bord haben, gehört das Bereithalten der Maschine zu den Regeln guter Seemannschaft."
+    },
+    {
+      "id": 150,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen sich Fahrzeuge ohne Radar bei verminderter Sicht verhalten, wenn sie voraus das Schallsignal eines anderen Fahrzeuges hören?",
+      "answer": "Jedes Fahrzeug, das anscheinend vorlicher als querab das Schallsignal eines anderen Fahrzeuges hört, muss seine Fahrt auf das für die Erhaltung der Steuerfähigkeit geringstmögliche Maß verringern. Erforderlichenfalls muss es jegliche Fahrt wegnehmen und in jedem Fall mit äußerster Vorsicht manövrieren, bis die Gefahr eines Zusammenstoßes vorüber ist."
+    },
+    {
+      "id": 151,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie segeln in der Nordsee bei guter Sicht.Ihnen kommt in stehender Peilung ein Maschinenfahrzeug entgegen, das keine Anstalten macht, seiner Ausweichpflicht nachzukommen.Geben Sie in einer sinnvollen Reihenfolge an, was von Ihnen zu unternehmen ist.Welche dieser Maßnahmen sind zwingend vorgeschrieben?",
+      "answer": "Über Funk versuchen, das andere Fahrzeug auf seine Ausweichpflicht aufmerksam zu machen.\nSchallsignal: mindestens fünf kurze, rasch aufeinander folgende Pfeifentöne geben.\nGgf. Ergänzung zu 2.: Lichtsignal von mindestens fünf kurzen, rasch aufeinander folgenden Blitzen.\nManöver des sogenannten \"vorletzten Augenblicks\" fahren.\nManöver des sogenannten \"letzten Augenblicks\" fahren.\nZwingend vorgeschrieben sind die Maßnahmen nach 2. und 5."
+    },
+    {
+      "id": 152,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Auf einem Segelfahrzeug unter Motor sieht man nachts fast recht voraus ein näher kommendes Fahrzeug mit folgender Lichterführung: oben ein weißes Licht, seitlich darunter ein grünes Licht, zeitweise rechts von dem grünen Licht auf gleicher Höhe auch ein rotes Licht.Um was für ein Fahrzeug handelt es sich, was ist von Ihnen und was ist auf dem anderen Fahrzeug zu unternehmen?",
+      "answer": "Es handelt sich um ein Maschinenfahrzeug von weniger als 50 m Länge, das im Seegang oder durch schlechtes Steuern giert. Man muss annehmen, dass sich zwei Maschinenfahrzeuge auf entgegengesetzten oder fast entgegengesetzten Kursen nähern und die Möglichkeit der Gefahr eines Zusammenstoßes besteht. Beide Fahrzeuge müssen den Kurs nach Steuerbord ändern und dieses durch einen kurzen Ton anzeigen."
+    },
+    {
+      "id": 153,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie muss man sich verhalten, wenn man gezwungen ist, ein Verkehrstrennungsgebiet zu queren?",
+      "answer": "Kielrichtung (\nrwK\n) muss möglichst rechtwinklig zur allgemeinen Verkehrsrichtung zeigen."
+    },
+    {
+      "id": 154,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie muss man sich verhalten, wenn man einen betonnten Schifffahrtsweg (z. B. in der Ostsee) queren will?",
+      "answer": "Die Ausweichregeln der KVR beachten."
+    },
+    {
+      "id": 155,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie ist die Gefahr eines Zusammenstoßes sicher erkennbar?",
+      "answer": "Wenn die Kompasspeilung zu einem anderen Fahrzeug steht und sie sich einander nähern."
+    },
+    {
+      "id": 156,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen Sie Ausweichmanöver durchführen?",
+      "answer": "Möglichst frühzeitig,\ndurchgreifend, sodass das andere Fahrzeug rasch Ihre Absicht erkennen kann, und um sich gut klar zu halten."
+    },
+    {
+      "id": 157,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen Sie sich verhalten, nachdem Sie ein vorgeschriebenes Ausweichmanöver eingeleitet haben?",
+      "answer": "Der Erfolg des Manövers ist laufend zu überprüfen, bis das andere Fahrzeug klar passiert ist."
+    },
+    {
+      "id": 158,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie segeln mit Wind von Steuerbord und sehen nachts in Luv ein einzelnes rotes Licht, das in stehender Peilung näher kommt.\n1. Was ist das für ein Licht?\n2. Wer muss ausweichen? (Begründung!)",
+      "answer": "Das Licht ist das Backbordlicht eines Segelfahrzeugs in Fahrt.\nDas Segelfahrzeug in Luv muss ausweichen, entweder weil es den Wind von Backbord hat oder weil es - wenn mit Wind von Steuerbord segelnd - luvwärts steht."
+    },
+    {
+      "id": 159,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie segeln mit Wind von Backbord und sehen nachts in Luv ein einzelnes grünes Licht, das in stehender Peilung näher kommt.1. Was ist das für ein Licht?2. Wer muss ausweichen? (Begründung!)",
+      "answer": "Das Licht ist das Steuerbordlicht eines Segelfahrzeugs in Fahrt.\nIhr Fahrzeug muss als leewärtiges Fahrzeug ausweichen, weil Sie (mit Wind von Backbord segelnd) nicht erkennen können, von welcher Seite das andere Fahrzeug den Wind hat."
+    },
+    {
+      "id": 160,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie segeln nachts mit raumem Wind und machen gute Fahrt.Sie sehen an Steuerbord voraus ein einzelnes weißes Licht in (nahezu) stehender Peilung.Näher kommend verschwindet das weiße Licht gelegentlich und es erscheint stattdessen in etwa gleicher Höhe und links davon ein rotes Licht.Jeweils kurzfristig sind beide Lichter gleichzeitig zu sehen.1. Worum handelt es sich bei diesen Lichtern?2. Wer muss ausweichen? (Begründung!)",
+      "answer": "Man sieht Hecklicht und/oder Backbord-Seitenlicht eines Segelfahrzeugs in Fahrt, das im Seegang giert.\nIhr Fahrzeug nähert sich aus dem Hecksektor des anderen Fahrzeugs. Es steht eben auf dessen Sektorengrenze und muss als überholendes Fahrzeug ausweichen. Im Zweifel (hier Sektorengrenze!) muss man sich als Überholer betrachten."
+    },
+    {
+      "id": 161,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie segeln nachts mit raumem Wind und sehen nahezu achteraus ein Fahrzeug mit der Lichterführung rot-weiß-rot senkrecht übereinander, das näher kommt.Zusätzlich sehen Sie neben zwei weißen Topplichtern links ein grünes und rechts ein rotes Licht auf gleicher Höhe.1. Was bedeuten diese Lichter?2. Wer muss ausweichen? (Begründung!)",
+      "answer": "Man sieht ein manövrierbehindertes Fahrzeug mit FdW (Topplichter, Seitenlichter).\nDieses Fahrzeug nähert sich im Hecklichtsektor und muss deshalb als Überholer ausweichen."
+    },
+    {
+      "id": 162,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welcher Zeitpunkt ist im freien Seeraum entscheidend für die Verantwortlichkeit (hier = Ausweichpflicht!) der Fahrzeuge untereinander?",
+      "answer": "Der Augenblick des ersten Insichtkommens. Eine spätere Änderung der Lage der Fahrzeuge zueinander verändert nicht die Verantwortlichkeit."
+    },
+    {
+      "id": 163,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Ein anderes Fahrzeug muss Ihnen ausweichen.Welche Verpflichtung nach KVR haben Sie?Was unternehmen Sie, wenn das andere Fahrzeug nicht ausweicht?",
+      "answer": "Mein Fahrzeug ist \"Kurshalter\", d. h. es muss Kurs und Geschwindigkeit beibehalten.\nMein Fahrzeug darf zur Abwendung eines Zusammenstoßes manövrieren, sobald erkennbar wird, dass das andere Fahrzeug nicht angemessen (= regelgerecht) manövriert (\"Manöver des vorletzten Augenblicks!\")\nMein Fahrzeug muss zweckdienlich manövrieren, wenn ein Manöver des Ausweichpflichtigen allein einen Zusammenstoß nicht mehr vermeiden kann (\"Manöver des letzten Augenblicks!\")"
+    },
+    {
+      "id": 164,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welchen Fahrzeugen muss ein Segelfahrzeug ausweichen?",
+      "answer": "Einem manövrierunfähigen Fahrzeug,\neinem manövrierbehinderten Fahrzeug,\neinem fischenden Fahrzeug,\nggf. einem anderen Segelfahrzeug, abhängig von der Segelstellung in Bezug auf den Wind."
+    },
+    {
+      "id": 165,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "1. Wie muss sich ein Sportfahrzeug gegenüber einem tiefgangbehinderten Fahrzeug verhalten?2. Schlagen Sie entsprechende Maßnahmen/Manöver vor.",
+      "answer": "Das Sportfahrzeug muss vermeiden, die sichere Durchfahrt eines tiefgangbehinderten Fahrzeugs zu behindern.\nDieses kann durch eine frühzeitige Kursänderung, Geschwindigkeitsänderung oder beides geschehen."
+    },
+    {
+      "id": 166,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wo unterliegt Ihr Segelfahrzeug bzw. Ihre Motoryacht unter 20 m Länge einem Behinderungsverbot?",
+      "answer": "In engen Fahrwassern,\nauf dem Einbahnweg eines Verkehrstrennungsgebietes (\nVTG\n) gegenüber Maschinenfahrzeugen im VTG."
+    },
+    {
+      "id": 167,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welchen Abstand muss man von Minenräumfahrzeugen halten?",
+      "answer": "Mindestens 1 000 m."
+    },
+    {
+      "id": 168,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Auf einer Motoryacht A sieht man nachts etwa recht voraus Topplicht und beide Seitenlichter eines Fahrzeugs B.Die Lichter werden rasch heller.1. Was ist B?2. Wie ist die Situation zu klären?",
+      "answer": "B ist ein Maschinenfahrzeug von weniger als 50 m Länge in Fahrt.\nA und B müssen ihren Kurs so nach Steuerbord ändern, dass sie einander an der Backbord-Seite passieren. Dabei müssen A und B das Signal \"ein kurzer Ton\" geben."
+    },
+    {
+      "id": 169,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Auf einer Motoryacht A erkennt man nachts etwa 2 Strich an Backbord folgende Lichter des Fahrzeugs B, die rasch näher kommen.Die Kompasspeilung zum Fahrzeug B ändert sich dabei nur geringfügig.1. Worum handelt es sich bei Fahrzeug B?2. Wer muss ausweichen?3. Was muss Fahrzeug A tun?",
+      "answer": "B ist ein Maschinenfahrzeug von weniger als 50 m Länge in Fahrt, dessen Steuerbord-Seite man sieht.\nB muss ausweichen, weil es die Motoryacht A an seiner Steuerbord-Seite hat.\nDie Motoryacht A muss Kurs und Geschwindigkeit beibehalten."
+    },
+    {
+      "id": 170,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welchen Fahrzeugen muss eine Motoryacht ausweichen?",
+      "answer": "Manövrierunfähigen Fahrzeugen,\nmanövrierbehinderten Fahrzeugen,\nfischenden Fahrzeugen,\nSegelfahrzeugen,\nggf. einem anderen Maschinenfahrzeug."
+    },
+    {
+      "id": 171,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Auf einer Motoryacht A sieht man nachts etwa querab an Steuerbord ein einzelnes weißes Licht in (nahezu) stehender Kompasspeilung.Näher kommend erkennt man unterhalb des weißen Lichtes und etwas rechts davon ein rotes Licht (Fahrzeug B).1. Worum handelt es sich?2. Was müssen jeweils beide Fahrzeuge tun? (Begründung!)",
+      "answer": "Topplicht und später Backbord-Seitenlicht eines Maschinenfahrzeuges B von weniger als 50 m Länge in Fahrt.\nA muss ausweichen, weil es B an seiner Steuerbord-Seite hat. A muss das Signal \"ein kurzer Ton\" geben.\nB muss Kurs und Geschwindigkeit beibehalten."
+    },
+    {
+      "id": 172,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Eine Motoryacht, Länge 8 m, treibt nachts manövrierunfähig in der Nordsee und sieht ein großes Fahrzeug direkt auf sich zukommen.Welche Maßnahmen hat die Motoryacht zu ergreifen?",
+      "answer": "Ein Fahrzeug von weniger als 12 m Länge, das die zwei roten Rundumlichter senkrecht übereinander nicht führt, muss folgende Maßnahmen ergreifen:\nDurch jedes andere verfügbare Mittel anzeigen, dass es manövrierunfähig ist, z. B. über\nUKW\n-Sprechfunk oder durch ein Schallsignal oder das Lichtsignal lang-kurz-kurz.\nBei weiterer Annäherung das andere Fahrzeug mit einer starken Handlampe anleuchten und so auf sich aufmerksam machen.\nFühren eines weißen Rundumlichtes, das mit keinem anderen Licht verwechselt werden kann.\nAbfeuern eines Signals \"weißer Stern\" oder \"Blitz-Knall\".\nSofort bei Eintritt der Manövrierunfähigkeit Verkehrszentrale informieren (wenn vorhanden)."
+    },
+    {
+      "id": 173,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie sind Fahrwasser in der Seeschifffahrtsstraßen-Ordnung im Sinne der KVR eingestuft?",
+      "answer": "Fahrwasser der Seeschifffahrtsstraßen gelten als enge Fahrwasser im Sinne der KVR."
+    },
+    {
+      "id": 174,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Erläutern Sie den Begriff \"durchgehende Schifffahrt\" auf einem Fahrwasser einer Seeschifffahrtsstraße.",
+      "answer": "Die durchgehende Schifffahrt umfasst alle Fahrzeuge, die deutlich dem Fahrwasserverlauf einer Seeschifffahrtsstraße folgen. Dies erlaubt nach allgemeiner Verkehrsauffassung ein Abweichen von höchstens ± 10° von der Richtung des Fahrwassers. Dabei ist es gleichgültig, zu welchem Zweck das Fahrzeug betrieben wird."
+    },
+    {
+      "id": 175,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was fordern die Grundregeln für das Verhalten im Verkehr?",
+      "answer": "Jeder Verkehrsteilnehmer\nmuss die Sicherheit und Leichtigkeit des Verkehrs gewährleisten,\ndarf andere (nicht nur Verkehrsteilnehmer!) nicht schädigen, gefährden oder mehr als unvermeidbar behindern oder belästigen."
+    },
+    {
+      "id": 176,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche verkehrsrechtliche Verantwortung hat der Schiffsführer?",
+      "answer": "Befolgung der Vorschriften im Verkehr, u. a. KVR, SeeSchStrO.\nAusrüstung/Einrichtung seines Fahrzeugs zum Führen und Zeigen von Lichtern und Signalkörpern und Geben von Schallsignalen."
+    },
+    {
+      "id": 177,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was sind Seeschifffahrtsstraßen im Sinne der SeeSchStrO?",
+      "answer": "Seeschifffahrtsstraßen im Sinne dieser Verordnung sind:\nWasserflächen zwischen der Küstenlinie bei mittlerem Hochwasser oder der seewärtigen Begrenzung der Binnenwasserstraßen und einer Linie von drei Seemeilen seewärts der Basislinie,\ndie durchgehend durch laterale Zeichen (Tonnen) begrenzten Wasserflächen der seewärtigen Teile der Fahrwasser im Küstenmeer,\nWasserflächen zwischen den Ufern bestimmter Binnenwasserstraßen."
+    },
+    {
+      "id": 178,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was sind Fahrwasser im Sinne der SeeSchStrO?",
+      "answer": "Fahrwasser sind die Teile der Wasserflächen, die durch Tonnen (laterale Zeichen) begrenzt oder gekennzeichnet sind oder die, soweit das nicht der Fall ist, auf den Binnenwasserstraßen für die durchgehende Schifffahrt bestimmt sind."
+    },
+    {
+      "id": 179,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche verkehrsrechtlichen Bestimmungen gelten auf deutschen Seeschifffahrtsstraßen?",
+      "answer": "Auf deutschen Seeschifffahrtsstraßen gelten:\ndie KVR,\ndie Seeschifffahrtsstraßen-Ordnung, ggf. die Bekanntmachungen der Wasser- und Schifffahrtsdirektionen (\nWSD\n) Nord und Nordwest,\nggf. die Hafenordnungen."
+    },
+    {
+      "id": 180,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wo und unter welcher Bedingung gelten im Geltungsbereich der SeeSchStrO die KVR?",
+      "answer": "Die KVR gelten im gesamten Geltungsbereich der SeeSchStrO innerhalb und außerhalb der Fahrwasser, soweit die SeeSchStrO nicht ausdrücklich etwas anderes bestimmt (z. B. Vorfahrt, Grundsatz des Vorranges der spezielleren Rechtsvorschrift vor der allgemeineren)."
+    },
+    {
+      "id": 181,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie haben Segelfahrzeuge in einem Fahrwasser der SeeSchStrO untereinander auszuweichen, wenn sie nicht deutlich der Richtung eines Fahrwassers folgen?",
+      "answer": "Sie haben untereinander nach den Regeln der KVR auszuweichen, wenn sie dadurch vorfahrtberechtigte Fahrzeuge nicht gefährden oder behindern."
+    },
+    {
+      "id": 182,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Auf der Elbe hören Sie nachts vor sich von einem Fahrzeug, das zusätzlich zu seinen Fahrtlichtern ein rotes Rundumlicht führt, fortwährend das Schallsignal kurz-lang.Um welches Schallsignal handelt es sich, wann ist es zu geben und wie verhalten Sie sich?",
+      "answer": "Es handelt sich um das Bleib-weg-Signal, das von einem Fahrzeug gegeben wird, bei dem bestimmte gefährliche Güter oder radioaktive Stoffe frei werden oder drohen frei zu werden oder es besteht Explosionsgefahr.\nMan hat sich mit seinem Fahrzeug möglichst weit von dem anderen Fahrzeug zu entfernen (sicherer Abstand) und darf keine elektrischen Schalter bedienen. Kein offenes Feuer."
+    },
+    {
+      "id": 183,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wann ist von einem Fahrzeug auf einer Seeschifffahrtsstraße das \"allgemeine Gefahr- und Warnsignal\" zu geben und wie lautet es?",
+      "answer": "Gefährdet ein Fahrzeug ein anderes Fahrzeug oder wird es durch dieses selbst gefährdet, hat es, soweit möglich, rechtzeitig das Schallsignal zu geben: ein langer Ton, vier kurze Töne; ein langer Ton, vier kurze Töne."
+    },
+    {
+      "id": 184,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Nennen Sie die speziellen Verhaltensregeln für Sportfahrzeuge im Nord-Ostsee-Kanal (NOK).",
+      "answer": "Sportfahrzeuge dürfen in der Regel die Zufahrten und den NOK lediglich zur Durchfahrt und ohne Lotsen nur während der Tagfahrzeiten und nicht bei verminderter Sicht benutzen.\nSportfahrzeuge müssen ihre Kanalfahrt so einrichten, dass sie vor Ablauf der Tagfahrzeit eine für Sportfahrzeuge bestimmte Liegestelle erreichen können.\nBei plötzlich auftretender verminderter Sicht dürfen Sportfahrzeuge in den Weichengebieten hinter den Dalben oder an geeigneten Liegestellen festmachen."
+    },
+    {
+      "id": 185,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche speziellen Fahrregeln haben Sportfahrzeuge im Nord-Ostsee-Kanal (NOK) einzuhalten?",
+      "answer": "Das Segeln ist auf dem NOK verboten.\nSportfahrzeuge mit Maschinenantrieb dürfen zusätzlich die Segel setzen.\nEin motorbetriebenes Sportfahrzeug darf nur ein Sportfahrzeug schleppen."
+    },
+    {
+      "id": 186,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Während der Durchfahrt durch den Nord-Ostsee-Kanal (NOK) wird man auf einem Sportboot von Nebel überrascht.Was ist zu unternehmen?",
+      "answer": "Schnellstmöglich in einem Weichengebiet hinter den Dalben oder an geeigneten Liegestellen festmachen."
+    },
+    {
+      "id": 187,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen vor dem Einlaufen in den NOK in Brunsbüttel folgende Lichtsignale:1. ein unterbrochenes rotes Licht,2. ein unterbrochenes weißes Licht über einem unterbrochenen roten Licht,3. ein unterbrochenes weißes Licht.Geben Sie die Bedeutung dieser Signale an.",
+      "answer": "Einfahren verboten.\nFreigabe wird vorbereitet.\nSportfahrzeuge können einfahren."
+    },
+    {
+      "id": 188,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Erläutern Sie den Begriff \"Vorfahrt beachten\".",
+      "answer": "\"Vorfahrt beachten\" begründet eine Wartepflicht. Wer die Vorfahrt zu beachten hat, muss rechtzeitig durch sein Fahrverhalten erkennen lassen, dass er warten wird. Er darf nur weiterfahren, wenn er übersehen kann, dass die Schifffahrt im Fahrwasser nicht beeinträchtigt wird. Ggf. hat der Wartepflichtige seinen Kurs und/oder seine Geschwindigkeit zu ändern (gilt rechtlich nicht als Ausweichen!)."
+    },
+    {
+      "id": 189,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Erläutern Sie den Begriff \"Vorfahrt haben\".",
+      "answer": "\"Vorfahrt haben\" gilt nur für ein im Fahrwasser fahrendes oder dem Fahrwasserverlauf folgendes Fahrzeug. Das bedeutet, dass andere Fahrzeuge, die in das Fahrwasser einlaufen wollen, dort drehen oder an- und ablegen wollen, mit diesem Vorhaben warten müssen, bis das vorfahrtberechtigte Fahrzeug vorüber ist. \"Vorfahrt haben\" bedeutet aber nicht: Vorfahrt erzwingen! Ggf. muss ein vorfahrtberechtigtes Fahrzeug Maßnahmen zur Verhinderung einer drohenden Kollision ergreifen."
+    },
+    {
+      "id": 190,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie hat sich ein in das Fahrwasser einlaufendes Fahrzeug gegenüber im Fahrwasser fahrenden Fahrzeugen zu verhalten?",
+      "answer": "Es muss die Vorfahrt der Fahrzeuge im Fahrwasser beachten, d. h., es muss warten, bis das Fahrwasser frei ist. Es muss rechtzeitig durch sein Fahrverhalten erkennen lassen, dass es warten wird."
+    },
+    {
+      "id": 191,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie hat sich ein den Ankerplatz oder Liegeplatz verlassendes Fahrzeug gegenüber im Fahrwasser fahrenden Fahrzeugen zu verhalten?",
+      "answer": "Es muss die Vorfahrt der Fahrzeuge im Fahrwasser beachten, d. h. es muss warten, bis das Fahrwasser frei ist. Es muss rechtzeitig durch sein Fahrverhalten erkennen lassen, dass es warten wird."
+    },
+    {
+      "id": 192,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Fahrregeln muss ein Sportfahrzeug beachten, wenn es der Richtung des Fahrwassers folgt?",
+      "answer": "Beim Fahren im Fahrwasser muss das Sportfahrzeug sich so nahe am äußeren Rand des Fahrwassers an seiner Steuerbordseite halten, wie dieses ohne Gefahr möglich ist."
+    },
+    {
+      "id": 193,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was muss ein Sportfahrzeug in Bezug auf das Fahrwasser beachten, wenn es außerhalb des Fahrwassers fährt?",
+      "answer": "Außerhalb des Fahrwassers ist so zu fahren, dass klar erkennbar ist, dass das Fahrwasser nicht benutzt wird."
+    },
+    {
+      "id": 194,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen sich Segelfahrzeuge verhalten, die, dem Fahrwasserverlauf folgend, sich auf (nahezu) entgegengesetzten Kursen begegnen?",
+      "answer": "Jedes Fahrzeug muss nach Steuerbord ausweichen."
+    },
+    {
+      "id": 195,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was bedeutet \"Queren eines Fahrwassers\" im Sinne der SeeSchStrO?",
+      "answer": "Queren bedeutet deutliches Abweichen vom Fahrwasserverlauf, nach allgemeiner Verkehrsmeinung mehr als 10° (z. B. Kreuzen eines Segelfahrzeuges über die gesamte oder auch nur teilweise Fahrwasserbreite)."
+    },
+    {
+      "id": 196,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie müssen Sie die Geschwindigkeit Ihres Sportbootes einrichten, wenn Sie außerhalb eines Fahrwassers an Stellen mit erkennbarem Badebetrieb vorbeifahren?",
+      "answer": "Höchstgeschwindigkeit 8\nkm/h\nim Abstand von weniger als 500 m vom Ufer."
+    },
+    {
+      "id": 197,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen auf der Elbe bei Nacht ein Fahrzeug mit der nachfolgenden Lichterführung.Um was für ein Fahrzeug handelt es sich?Was bedeuten die beiden roten und die beiden grünen Lichter senkrecht übereinander?",
+      "answer": "Manövrierbehindertes Fahrzeug, Länge wahrscheinlich 50 m oder mehr, von vorn mit Fahrt durchs Wasser, das Unterwasserarbeiten ausführt (z. B. baggert).\nPassierseite an Steuerbord (zwei grüne Rundumlichter übereinander), Passierbehinderung an Backbord-Seite (zwei rote Rundumlichter übereinander)."
+    },
+    {
+      "id": 198,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen auf der Elbe bei Tage ein Fahrzeug mit den nachfolgenden schwarzen Signalkörpern, dessen Bugwelle man klar erkennen kann.Um was für ein Fahrzeug handelt es sich?Was bedeuten die beiden schwarzen Bälle und die beiden schwarzen Rhomben senkrecht übereinander?",
+      "answer": "Entgegenkommendes manövrierbehindertes Fahrzeug von vorn, mit Fahrt durchs Wasser, das Unterwasserarbeiten ausführt (z. B. baggert).\nPassierseite an Backbord des Baggers (zwei schwarze Rhomben übereinander), Passierbehinderung an Steuerbord-Seite des Baggers (zwei schwarze Bälle übereinander)."
+    },
+    {
+      "id": 199,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Beim Passieren von Cuxhaven sichten Sie, elbabwärts segelnd, an Ihrer Steuerbord-Seite die Tonne 32a.Um was für eine Tonne handelt es sich, welche Bezeichnung hat die nächste Tonne an der gleichen Seite?",
+      "answer": "Es handelt sich um eine Backbordfahrwassertonne; die nächste Tonne hat die Aufschrift 32."
+    },
+    {
+      "id": 200,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche besondere Lichterführung/Kennzeichnung ist vorgeschrieben, wenn ein Motorsportfahrzeug ein anderes Sportfahrzeug schleppt?",
+      "answer": "Motorsportfahrzeuge, die andere Sportfahrzeuge schleppen, gelten nicht als schleppende Maschinenfahrzeuge im Sinne der KVR. Daher keine besondere Lichterführung/Kennzeichnung."
+    },
+    {
+      "id": 201,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche besonderen Bestimmungen gelten auf dem Nord-Ostsee-Kanal (NOK) für Sportfahrzeuge beim Schleppen?",
+      "answer": "Ein motorbetriebenes Sportfahrzeug darf nur ein Sportfahrzeug schleppen.\nDas geschleppte Sportfahrzeug darf nur eine Höchstlänge von weniger als 15 m haben.\nDie Mindestgeschwindigkeit beim Schleppen muss 9 km/h betragen."
+    },
+    {
+      "id": 202,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Während einer Revierfahrt erkennen Sie ein Signal an Land, jeweils schwarze Signalkörper:1. Was bedeutet dieses Signal?2. Welches Signal wird stattdessen nachts gezeigt?",
+      "answer": "Außergewöhnliche Schifffahrtsbehinderung.\nNachts: Rundumlichter rot-rot-grün senkrecht übereinander."
+    },
+    {
+      "id": 203,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wer darf laut SeeSchStrO ein Fahrzeug nicht führen oder als Mitglied der Crew eine andere Tätigkeit des Brücken- oder Decksdienstes nicht ausüben (allgemein ohne Zahlen zu beantworten)?",
+      "answer": "Wer infolge körperlicher oder geistiger Mängel oder des Genusses alkoholischer Getränke oder anderer berauschender Mittel in der sicheren Führung eines Fahrzeugs oder in der sicheren Ausübung einer anderen Tätigkeit des Brücken- oder Decksdienstes behindert ist."
+    },
+    {
+      "id": 204,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Atem- bzw. Blutalkoholkonzentration darf laut SeeSchStrO nicht erreicht werden, damit kein Verbot für ein Führen eines Fahrzeugs oder als Mitglied der Crew für ein Ausüben des Brückendienstes besteht?",
+      "answer": "0,25 mg/l oder mehr Alkohol in der Atemluft oder 0,5 Promille oder mehr Alkohol im Blut oder eine Alkoholmenge, die zu einer solchen Atem- oder Blutalkoholkonzentration führt."
+    },
+    {
+      "id": 205,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was müssen Sie beim ersten Anlaufen eines ausländischen Hafens beachten?",
+      "answer": "Die Einreise-, Gesundheits- und Zollformalitäten sind zu erledigen."
+    },
+    {
+      "id": 206,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist ein Flaggenzertifikat?Für welche Fahrzeuge kann es ausgestellt werden?",
+      "answer": "Vom\nBSH\nausgestellter Ausweis, mit dem das Recht und die Pflicht zum Führen der Bundesflagge nachgewiesen wird. Für Fahrzeuge unter 15 m\nLüa\n= \"nicht registerpflichtige Fahrzeuge\"."
+    },
+    {
+      "id": 207,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist das Schiffszertifikat, wer stellt es aus, ab welcher Schiffslänge ist es vorgeschrieben?",
+      "answer": "Das Schiffszertifikat ist der Nachweis, dass ein Schiff im Seeschiffsregister eingetragen ist. Ausgestellt wird es vom Registergericht, Vorgeschrieben ist es ab 15 m Rumpflänge."
+    },
+    {
+      "id": 208,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was versteht man unter dem Begriff \"Küstenmeer\"?",
+      "answer": "Die seewärts der Küstenlinie bei mittlerem Hochwasser oder der Basislinie gelegenen Meeresgewässer bis zu einer Breite von 12\nsm\n."
+    },
+    {
+      "id": 209,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was versteht man unter dem Begriff \"innere Gewässer\"?",
+      "answer": "Als \"innere Gewässer\" bezeichnet man die Gewässer landwärts der Basislinien."
+    },
+    {
+      "id": 210,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was versteht man unter dem Begriff \"Basislinie\" und wo finden Sie diese?",
+      "answer": "Als Basislinie bezeichnet man die Grenze zwischen den inneren Gewässern (eines Staates) und dem Küstenmeer. Basislinien sind in Seekarten eingezeichnet."
+    },
+    {
+      "id": 211,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Aufgaben hat die Bundesstelle für Seeunfalluntersuchung?",
+      "answer": "Amtliche Untersuchung eines schaden- oder gefahrverursachenden Vorkommnisses (Seeunfall) im Zusammenhang mit dem Betrieb eines Schiffes (z. B. Kollision zwischen zwei Fahrzeugen) und Ermittlung der Umstände, durch die es zu dem Seeunfall gekommen ist.\nHerausgabe von Untersuchungsberichten und insbesondere Sicherheitsempfehlungen zur Verhütung von Seeunfällen."
+    },
+    {
+      "id": 212,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wann liegt ein schaden- oder gefahrverursachendes Vorkommnis (Seeunfall) im Sinne des Seesicherheits-Untersuchungs-Gesetzes (SUG) vor?Nennen Sie mindestens 3 Merkmale.",
+      "answer": "Schiffsverlust, Aufgrundlaufen, Kollision eines Schiffes,\nTod oder Verschollenheit oder schwere Verletzung einer Person,\nmaritimer Umweltschaden oder sonstiger Sachschaden,\nGefahr für einen Menschen oder ein Schiff,\nGefahr eines schweren Schadens an einem Schiff, einem meerestechnischen Bauwerk oder an der Meeresumwelt."
+    },
+    {
+      "id": 213,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was müssen Sie nach einem Seeunfall veranlassen?Wie kann es umgesetzt werden?",
+      "answer": "Den Seeunfall unverzüglich der Bundesstelle für Seeunfalluntersuchung melden. Das kann in einem deutschen Einlaufhafen auch über die Wasserschutzpolizei bzw. im Ausland über die zuständigen Hafenbehörden veranlasst werden."
+    },
+    {
+      "id": 214,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Angaben müssen der Bundesstelle für Seeunfalluntersuchung gemeldet werden?Nennen Sie mindestens 5 dieser Angaben.",
+      "answer": "Es sind folgende Angaben zu melden:\nName und derzeitiger Aufenthalt des Meldenden,\nOrt (geographische Position) und Zeit des Unfalles,\nName, Rufzeichen und Flagge des Schiffes sowie Rufnummer des zu diesem Schiff gehörenden mobilen Seefunkdienstes (\nMMSI\n),\nTyp, Verwendungszweck,\nName des Betreibers des Schiffes,\nName des verantwortlichen Schiffsführers,\nHerkunfts- und Zielhafen des Schiffes,\nAnzahl der Besatzungsmitglieder und weiterer Personen an Bord,\nUmfang des Personen- und Sachschadens,\nDarstellung des Verlaufs des Vorkommnisses,\nAngaben über andere Schiffe, die am Unfall beteiligt sind,\nWetterbedingungen,\nDarstellung der Gefahr einer Meeresverschmutzung."
+    },
+    {
+      "id": 215,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "In welcher Vorschrift ist geregelt, welche Angaben der Bundesstelle für Seeunfalluntersuchung bei einem schaden- oder gefahrverursachenden Vorkommnis (Seeunfall) gemeldet werden müssen?Wer ist verantwortlich für die Meldung?",
+      "answer": "Geregelt in der \"Verordnung über die Sicherung der Seefahrt\".\nVerantwortlich für die Meldung sind der Schiffsführer oder bei dessen Verhinderung ein anderes Besatzungsmitglied bzw. ggf. auch der Betreiber des Schiffes, falls keine der vorgenannten Personen dazu in der Lage ist."
+    },
+    {
+      "id": 216,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was sind Seeämter und was sind ihre Aufgaben?",
+      "answer": "Seeämter sind bei den Wasser- und Schifffahrtsdirektionen Nord und Nordwest gebildete Untersuchungsausschüsse zur Untersuchung der Frage, ob gegenüber einem Verfahrensbeteiligten ein Fahrverbot ausgesprochen oder ein Befähigungszeugnis bzw. ein amtlicher Führerschein der Sportschifffahrt entzogen werden muss."
+    },
+    {
+      "id": 217,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche behördlichen Veröffentlichungen für Wassersportler geben Ihnen rechtliche Informationen und Hinweise über das Verhalten auf Seeschifffahrtsstraßen?",
+      "answer": "\"Sicherheit auf dem Wasser, Leitfaden für Wassersportler\".\n\"Sicherheit im See- und Küstenbereich, Sorgfaltsregeln für Wassersportler\"."
+    },
+    {
+      "id": 218,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Sie sehen von Ihrem Sportfahrzeug aus in der Nordsee nördlich von Helgoland eine noch unbekannte Gefahr, z. B. einen teibenden Container.Was haben Sie zu unternehmen?",
+      "answer": "Man muss dies auf dem schnellsten Weg direkt oder über eine Verkehrszentrale bzw. Küstenfunkstelle dem Maritimen Lagezentrum (\nMLZ\n) in Cuxhaven als Meldestelle für Unfälle auf See mitteilen."
+    },
+    {
+      "id": 219,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wann und wo wird eine Flagge des Gastlandes gehisst?",
+      "answer": "Beim Einlaufen in die Küstengewässer des Gastlandes unter der Steuerbordsaling."
+    },
+    {
+      "id": 220,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wann und wo wird die Bundesflagge geführt?",
+      "answer": "Auf in Betrieb befindlichen Yachten während der Flaggzeit in den Küstengewässern, auf See und im Hafen am Flaggenstock am Heck, auf segelnden mehrmastigen Yachten auch im Topp des hintersten Mastes (nicht am Achterstag)."
+    },
+    {
+      "id": 221,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Befahrensregelungen gelten für die Schutzzonen I in den Nationalparks im Deutschen Wattenmeer außerhalb der speziellen Schutzgebiete?",
+      "answer": "Das Verlassen der Fahrwasser zwischen 3\nh\nnach Hochwasser und 3 h vor dem folgenden Hochwasser ist untersagt. In der übrigen Zeit beträgt für Sportfahrzeuge die Höchstgeschwindigkeit außerhalb des Fahrwassers 8\nkn\nund generell im Fahrwasser 12 kn."
+    },
+    {
+      "id": 222,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wo sind die Grenzen der Schutzzonen I und der speziellen Schutzgebiete in den Nationalparks aufgeführt?",
+      "answer": "In den Seekarten."
+    },
+    {
+      "id": 223,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welchen Zweck soll dasMARPOL-Übereinkommen erfüllen?",
+      "answer": "Das MARPOL-Übereinkommen soll die Verschmutzung der Meere verhindern."
+    },
+    {
+      "id": 224,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was sind Sondergebiete im Sinne des MARPOL-Übereinkommens in Europa?",
+      "answer": "Ostsee, Nordsee und Mittelmeer."
+    },
+    {
+      "id": 225,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist nach dem MARPOL-Übereinkommen für die Sportschifffahrt in Sondergebieten grundsätzlich verboten?",
+      "answer": "Das Einleiten von Öl, Schiffsabwässern, Schiffsmüll und anderen Schadstoffen."
+    },
+    {
+      "id": 226,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Gilt das MARPOL-Übereinkommen grundsätzlich auch für Sportfahrzeuge?",
+      "answer": "Das MARPOL-Übereinkommen gilt grundsätzlich für alle Schiffe, somit auch für Sportfahrzeuge."
+    },
+    {
+      "id": 227,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Woraus können Sie Informationen über Entsorgungsmöglichkeiten in deutschen Sportboothäfen entnehmen?",
+      "answer": "Aus der Broschüre \"Entsorgungsmöglichkeiten für Öl, Schiffsmüll und Schiffsabwässer - eine Übersicht für Sport- und Kleinschifffahrt\" des BSH."
+    },
+    {
+      "id": 228,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Wie ist auf Sportfahrzeugen mit ölhaltigem Bilgenwasser zu verfahren, wenn die Bedingungen, unter denen nach MARPOL das Lenzen zulässig ist, nicht eingehalten werden können?",
+      "answer": "Es muss im Hafen entsorgt werden."
+    },
+    {
+      "id": 229,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Was ist hinsichtlich der Entsorgung von Müll in Nord- und Ostsee und im Mittelmeer zu beachten? (Begründung!)",
+      "answer": "Da Nord-, Ostsee und Mittelmeer Sondergebiete nach MARPOL sind, darf dort kein Müll in die See entsorgt werden."
+    },
+    {
+      "id": 230,
+      "topic": "Schifffahrtsrecht",
+      "subtopic": "",
+      "question": "Welche Müllanteile dürfen in Sondergebieten nicht auf See entsorgt werden?",
+      "answer": "Synthetische Seile, Netze, Segel, Kunststofftüten\nu. Ä.\n, Papiererzeugnisse, Lumpen, Glas, Metall, Steingut, Schalungs- oder Verpackungsmaterial."
+    },
+    {
+      "id": 231,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was ist Wind und wie entsteht er?",
+      "answer": "Wind ist bewegte Luft. Die Bewegung entsteht durch die Druckunterschiede zwischen Hoch- und Tiefdruckgebieten."
+    },
+    {
+      "id": 232,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was ist der Taupunkt?",
+      "answer": "Der Taupunkt ist die Temperatur, auf die Luft abgekühlt werden muss, damit sie mit Feuchtigkeit gesättigt ist. Es setzt Kondensation (Taubildung) ein."
+    },
+    {
+      "id": 233,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "In welcher Größe wird in der Schifffahrt die Luftfeuchtigkeit allgemein angegeben?",
+      "answer": "Relative Feuchtigkeit in Prozent."
+    },
+    {
+      "id": 234,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Nennen Sie mindestens 6 Parameter, aus denen sich eine Wetterbeobachtung an Bord zusammensetzt.",
+      "answer": "Windrichtung, Windstärke, Luftdruck, aktuelles Wetter, Bedeckungsgrad, Wolken, Seegang, Strom, Temperatur und\nggf.\nLuftfeuchte."
+    },
+    {
+      "id": 235,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. In welcher Maßeinheit wird die Windstärke angegeben?2. In welchen Maßeinheiten wird die Windgeschwindigkeit angegeben?",
+      "answer": "Nach der Beaufortskala (\nBft\n).\nIn\nkn\n,\nm/s\nund\nkm/h\n."
+    },
+    {
+      "id": 236,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie heißen die Linien gleichen Luftdrucks?2. In welcher Maßeinheit wird der Luftdruck angegeben?",
+      "answer": "Isobaren.\nHektopascal (\nhPa\n) oder vereinzelt auch noch Millibar (\nmb\n, teilweise auch\nmbar\n)."
+    },
+    {
+      "id": 237,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Gefahren kann ein Gewitter mit sich bringen?",
+      "answer": "Böen bis Orkanstärke,\nplötzliche Winddrehungen,\nRegen- oder Hagelschauer mit zum Teil starker Sichtminderung,\nBlitzschlag."
+    },
+    {
+      "id": 238,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wann entstehen besonders starke Gewitter?",
+      "answer": "Besonders zum Ende einer hochsommerlichen Schönwetterperiode im Zusammenhang mit Kaltfronten."
+    },
+    {
+      "id": 239,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Skala wird verwendet für die Angabe der Windrichtung in Seewetterberichten bei1. den Vorhersagen und Aussichten,2. den Stationsmeldungen?",
+      "answer": "Die 8-teilige mit Auflösung in 45°-Stufen.\nDie 16-teilige mit Auflösung in 22,5°-Stufen."
+    },
+    {
+      "id": 240,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Ab welcher Windstärke werden Orkanwarnungen ausgegeben?",
+      "answer": "Ab Windstärke 10 Bft, erfahrungsgemäß mit Böen über Bft 12."
+    },
+    {
+      "id": 241,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Welche Skala wird für die Schätzung der Windstärke verwendet?\n2. Was verstehen Sie unter mäßigem Wind, was unter Starkwind?",
+      "answer": "Die 12-teilige Beaufortskala.\nMäßiger Wind bedeutet Stärke 4 der Beaufortskala, Starkwind 6 und 7 Beaufort."
+    },
+    {
+      "id": 242,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche amtlichen Veröffentlichungen enthalten Sendezeiten und Frequenzen für Seewetterberichte\n1. für Europa,\n2. Europa und weltweit?",
+      "answer": "Das \"Handbuch Nautischer Funkdienst\" und der \"Jachtfunkdienst\".\nDie \"Admiralty List of Radio Signals\"."
+    },
+    {
+      "id": 243,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Nennen Sie 6 Möglichkeiten, um Wetterinformationen an Bord zu erhalten.",
+      "answer": "Hörfunksender (\nUKW\n,\nKW\n,\nMW\n,\nLW\n), Küstenfunkstellen, Verkehrszentralen,\nNAVTEX\n,\nSafetyNet (Satcom)\n,\nOnline\n-Dienste (\nz. B.\nSEEWIS\n-\nOnline\ndes Deutschen Wetterdienstes, T-\nOnline\n),\nRTTY\n(Funkfernschreiben), Faskimile (Wetterfax), Faxpolling (z. B. SEEWIS-Fax des Deutschen Wetterdienstes), Telefonabruf, Törnberatung."
+    },
+    {
+      "id": 244,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Bedeutung für die Wetterentwicklung hat ein Halo um die Sonne und ein Hof um den Mond?",
+      "answer": "Wolkenaufzug, meist Cirrostratus.\nGgf. Niederschlag und Wetterverschlechterung."
+    },
+    {
+      "id": 245,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Bei welchen Wolkenformen müssen Sie mit erhöhter Böigkeit rechnen?",
+      "answer": "Bei Haufenwolken, besonders beim Cumulonimbus (Schauer- und Gewitterwolke)."
+    },
+    {
+      "id": 246,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Welche Formen von Wolken gibt es?\n2. Nennen Sie 6 der 10 Haupttypen!",
+      "answer": "Es gibt Haufenwolken und Schichtwolken.\nCirrus, Cirrostratus, Cirrocumulus, Altostratus, Altocumulus, Nimbostratus, Stratocumulus, Stratus, Cumulus, Cumulonimbus."
+    },
+    {
+      "id": 247,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Welche Höhen unterscheidet man bei Wolken?2. Welche Höhen haben sie etwa in den gemäßigten Breiten?",
+      "answer": "Tiefe, mittelhohe und hohe Wolken.\nTiefe Wolken zwischen 0 und 2\nkm\n, mittelhohe Wolken zwischen 2 und 7 km und hohe Wolken zwischen 7 und 13 km."
+    },
+    {
+      "id": 248,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Woraus bestehen hohe Wolken?",
+      "answer": "Aus kleinen Eiskristallen."
+    },
+    {
+      "id": 249,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Woran erkennt man bei Wolkenbildung eine kräftige Gewitterentwicklung?",
+      "answer": "Am Cumulonimbus, wenn er in großer Höhe einen ambossförmigen Schirm hat."
+    },
+    {
+      "id": 250,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Wolken kündigen oft schon vormittags kräftige Wärmegewitter an?",
+      "answer": "Altocumulus castellanus (mittelhohe türmchenartige Haufenwolken)."
+    },
+    {
+      "id": 251,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie verhält sich der Wind in Bodennähe auf der Nordhalbkugel zwischen Hoch- und Tiefdruckgebieten?",
+      "answer": "Er weht rechtsherum aus dem Hochdruckzentrum heraus und linksherum in den Tiefdruckkern hinein."
+    },
+    {
+      "id": 252,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Was ist eine Front?2. Welche Fronten unterscheidet man im Allgemeinen?",
+      "answer": "Front ist die vordere Grenze einer Luftmasse in Bewegungsrichtung.\nWarm-, Kalt- und Okklusionsfronten."
+    },
+    {
+      "id": 253,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie verhält sich typischerweise der Luftdruck1. vor,2. während und3. nach dem Durchzuug einer Kaltfront?",
+      "answer": "Der Luftdruck ist gleichbleibend oder fälllt nur wenig.\nWährend des Durchgangs der Front erreicht der Luftdruck seinen tiefsten Wert.\nDer Luftdruck steigt wieder deutlich an."
+    },
+    {
+      "id": 254,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was lässt sich aus der Darstellung der Isobaren in einer Wetterkarte erkennen?",
+      "answer": "Windrichtung und Druckgefälle; je enger sie liegen, desto größer ist das Druckgefälle und desto stärker ist der Wind."
+    },
+    {
+      "id": 255,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Warum weht der Wind nicht parallel zu den Isobaren? (Begründung)",
+      "answer": "Durch die Bodenreibung ist der Wind rückgedreht (gegen den Uhrzeigersinn)."
+    },
+    {
+      "id": 256,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie weht der Wind über See in Bodennähe um ein Tiefdruckgebiet?2. Mit wie viel Grad Änderung in der Windrichtung müssen Sie etwa rechnen?",
+      "answer": "Der Wind weht nicht parallel zu den Isobaren, er ist rückgedreht und weht in das Tief hinein.\nEin bis zwei Strich\nbzw.\nca.\n10° bis 20°."
+    },
+    {
+      "id": 257,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie weht der Wind über See in Bodennähe um ein Hochdruckgebiet?2. Mit wie viel Grad Änderung in der Windrichtung müssen Sie etwa rechnen?",
+      "answer": "Der Wind weht nicht parallel zu den Isobaren, er ist rückgedreht und weht aus dem Hoch hinaus.\nEin bis zwei Strich bzw. 10° bis 20°."
+    },
+    {
+      "id": 258,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Verlagerungsgeschwindigkeiten haben Tiefdruckgebiete:1. schnelle,2. mittlere,3. langsame?",
+      "answer": "Schnelle: 30 bis 50 kn.\nMittlere: 15 bis 30 kn.\nLangsame: bis 15 kn."
+    },
+    {
+      "id": 259,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie entstehen Tiefdruckgebiete?",
+      "answer": "Durch das Aufeinandertreffen von kalten Luftmassen aus hohen Breiten und subtropischen warmen Luftmassen."
+    },
+    {
+      "id": 260,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windverhältnisse herrschen in der Nähe des Zentrums eines Hochdruckgebiets?",
+      "answer": "Meist schwache umlaufende Winde."
+    },
+    {
+      "id": 261,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "In welchem Abstand werden Isobaren international dargestellt oder gezeichnet?",
+      "answer": "Im Abstand von 5 hPa oder im Abstand von 5 mbar."
+    },
+    {
+      "id": 262,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Sicht- und Wetterverhältnisse erwarten Sie typischerweise1. vor oder nahe der Warmfront,2. im Warmsektor,3. hinter der Kaltfront?",
+      "answer": "Sichtverschlechterung durch Niederschlag, bedeckt, länger andauernder Regen.\nDiesig oder mäßige Sicht, Wolkenauflockerung, zeitweise Regen\nSichtbesserung, meist gute Sicht. Schauer mit zum Teil kräftigen Böen."
+    },
+    {
+      "id": 263,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windrichtungen erwarten Sie an den Punkten 1, 2, 3, 4, 5 eines Tiefdruckgebiets auf der Nordhalbkugel?",
+      "answer": "Nordost.\nSüd.\nSüdwest.\nNordwest.\nUmlaufender Wind."
+    },
+    {
+      "id": 264,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Um welche Arten von Fronten handelt es sich in der Abbildung, die mit 1, 2 und 3 bezeichnet sind?",
+      "answer": "Okklusionsfront (Tiefausläufer).\nWarmfront.\nKaltfront."
+    },
+    {
+      "id": 265,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Was sind Luftmassengrenzen?2. Welche Luftmassengrenzen kennen Sie? Nennen Sie mindestens 2 Beispiele.",
+      "answer": "Luftmassengrenzen sind Fronten. Sie trennen Luftmassen mit unterschiedlicher Temperatur und Luftfeuchtigkeit.\nKaltfront, Warmfront, Okklusion."
+    },
+    {
+      "id": 266,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welchen lokalen Windsystemen müssen Sie insbesondere im Mittelmeer rechnen?",
+      "answer": "Mit der Land-/Seewind-Zirkulation."
+    },
+    {
+      "id": 267,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Nennen Sie mindestens 3 regionale Windsysteme im Mittelmeer, die beim küstennahen Segeln im Mittelmeer besonders beachtet werden müssen.",
+      "answer": "Mistral,\nScirocco,\nBora und\nEtesien/Meltemi."
+    },
+    {
+      "id": 268,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welchem regionalen Windsystem muss in der Adria gerechnet werden?",
+      "answer": "Mit Bora."
+    },
+    {
+      "id": 269,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welchem regionalen Windsystem muss in der Ägäis gerechnet werden?",
+      "answer": "Mit den Etesien/dem Meltemi."
+    },
+    {
+      "id": 270,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wo bilden sich Tröge um ein Tiefdruckgebiet?",
+      "answer": "Auf der Rückseite von Tiefdruckgebieten in hochreichender Kaltluft. Ein Trog folgt typischerweise einer Kaltfront."
+    },
+    {
+      "id": 271,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Front wird auch als \"Ausläufer\" bezeichnet?",
+      "answer": "Die Okklusion."
+    },
+    {
+      "id": 272,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wodurch und wie entsteht am Tage Seewind?",
+      "answer": "Das Land erwärmt sich bei Sonneneinstrahlung tagsüber stärker als das Wasser. Über Land steigt die erwärmte Luft auf. Das dabei entstehende Bodentief wird durch Seewind (Wind von See) aufgefüllt."
+    },
+    {
+      "id": 273,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Wolkenform zeigt sich am späten Vormittag über Land am Himmel und kündigt Seewind an?",
+      "answer": "Haufenwolke (Cumulus)."
+    },
+    {
+      "id": 274,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windgeschwindigkeiten in Knoten oder Beaufort erreicht der Seewind etwa1. im Mittelmeer,2. in Nord- und Ostsee?",
+      "answer": "Bis zu 25 kn oder Bft 6.\nBis 15 kn, in Einzelfällen bis 20 kn oder Bft 4/5, in Einzelfällen Bft 5/6."
+    },
+    {
+      "id": 275,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Zu welcher Tageszeit müssen Sie mit Seewind rechnen?",
+      "answer": "Von Mittag bis zum frühen Abend."
+    },
+    {
+      "id": 276,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windänderung kann der einsetzende Seewind bewirken?",
+      "answer": "Er verändert den vorher wehenden Wind zum Teil erheblich in Richtung und Stärke."
+    },
+    {
+      "id": 277,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wodurch und wie entsteht nachts Landwind?",
+      "answer": "Das Land kühlt sich bei geringer Bewölkung stark ab. Das Wasser ändert seine Temperatur an der Oberfläche dagegen nur geringfügig. Über dem Wasser steigt daher erwärmte Luft auf. Das dabei entstehende Bodentief wird durch Landwind (Wind von Land) aufgefüllt."
+    },
+    {
+      "id": 278,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windgeschwindigkeiten erreicht nachts der Landwind?",
+      "answer": "Er weht allgemein schwächer als der Seewind, etwa 1 bis 10 kn oder Bft 1-3."
+    },
+    {
+      "id": 279,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wann müssen Sie im Laufe eines Tages mit Landwind rechnen?",
+      "answer": "Von Mitternacht bis zum frühen Morgen."
+    },
+    {
+      "id": 280,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Im Internet finden Sie auf einer \"Wetterseite\" eine Vorhersagekarte mit Windpfeilen.In welcher Höhe über dem Erdboden/der Wasseroberfläche gelten die vorhergesagten Windgeschwindigkeiten?",
+      "answer": "Meistens etwa 10 Meter über dem Erdboden/der Wasseroberfläche."
+    },
+    {
+      "id": 281,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Sie segeln mit Ihrer Yacht \"raumschots\".Nach der nächsten Tonne müssen Sie anluven.Wie wird sich die wahre Windgeschwindigkeit auf Ihrem Windmesser/Anemometer entwickeln?",
+      "answer": "Sie bleib unverändert."
+    },
+    {
+      "id": 282,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windsituation ist mit der Formulierung \"Nordwest 6\" bezüglich\n1. der Schwankungsbreite in Windrichtung und\n2. der Schwankungsbreite in der Windstärke (Böen) verbunden?",
+      "answer": "Die Schwankung in der Windrichtung kann bis zu 45° um die Hauptwindrichtung betragen, also von Westnordwest (\nWNW\n) bis Nordnordwest (\nNNW\n).\nEs können Böen auftreten, die etwa 1 bis 2 Bft über dem Mittelwind liegen."
+    },
+    {
+      "id": 283,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was ist mit dem Zusatz \"Schauerböen\" bei der Windvorhersage verbunden?",
+      "answer": "Besonders während der Passage und auf der Rückseite von Kaltfronten treten in der näheren Umgebung von Schauern Böen auf, die den Mittelwind um 2 Bft überschreiten können."
+    },
+    {
+      "id": 284,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Warum werden Gewitterböen in der Windvorhersage zusätzlich angegeben?",
+      "answer": "Besonders im Sommer können bei Schwachwindlagen Gewitter mit Böen auftreten, die Sturm- oder Orkanstärke erreichen können."
+    },
+    {
+      "id": 285,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie ist der Aufbau von Seewetterberichten?",
+      "answer": "Hinweise auf Starkwind oder Sturm, Wetterlage, Vorhersagen, Aussichten und Stationsmeldungen."
+    },
+    {
+      "id": 286,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche lokalen Effekte, die das vorherrschende Windfeld stark verändern, können in Seewetterberichten nur eingeschränkt berücksichtigt werden?",
+      "answer": "U. a.\nLand-/Seewind-Zirkulation, Düsen- und Kapeffekte."
+    },
+    {
+      "id": 287,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wann werden Starkwindwarnungen verbreitet?2. Welche Bezeichnung hat die Starkwindwarnung im internationalen Sprachgebrauch?",
+      "answer": "Bei erwarteten oder noch andauernden Windstärken zwischen 6 und 7 Bft.\nNear-gale warning."
+    },
+    {
+      "id": 288,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wann werden Sturmwarnungen verbreitet?2. Welche Bezeichnung hat die Sturmwarnung im internationalen Sprachgebrauch?",
+      "answer": "Bei zu erwartenden oder noch andauernden Windstärken von mindestens 8 Bft.\nGale warning\n."
+    },
+    {
+      "id": 289,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Wellenhöhe wird bei der Angabe des Seegangs in Seewetterberichten verwendet?",
+      "answer": "Die kennzeichnende (charakteristische) Wellenhöhe."
+    },
+    {
+      "id": 290,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie ist die kennzeichnende (charakteristische) Wellenhöhe definiert?2. Womit müssen Sie rechnen?",
+      "answer": "Mittlere Höhe der gut ausgeprägten (Mittel des oberen Drittels) - nicht extremen - Wellen.\nEinzelne Wellen können das 1,5fache der kennzeichnenden Wellenhöhe erreichen."
+    },
+    {
+      "id": 291,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was bedeutet rechtdrehender bzw. rückdrehender Wind?",
+      "answer": "Rechtdrehend bedeutet Änderung der Windrichtung im Uhrzeigersinn. Rückdrehend bedeutet Änderung der Windrichtung gegen den Uhrzeigersinn um mindestens 45°."
+    },
+    {
+      "id": 292,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Sie hören am Ende eines Seewetterberichts die Stationsmeldungen.Was sagen Windrichtung und Windgeschwindigkeit gegenüber den Verhältnissen auf See aus?",
+      "answer": "Durch die Umgebung der Wetterstation kann die Windrichtung verfälscht werden. Die Windgeschwindigkeit ist meist reduziert, in Einzelfällen auch erhöht."
+    },
+    {
+      "id": 293,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Sichtweiten umfasst der Begriff \"diesig\"?",
+      "answer": "Sichtweiten über 1 km bis 10 km (bzw. ca. 0,5 bis 6 Seemeilen)."
+    },
+    {
+      "id": 294,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Seegebiete sind international festgelegt.In welchen amtlichen Veröffentlichungen können Sie nachlesen, wo sich das Seegebiet \"Fischer\" befindet?",
+      "answer": "Im \"Handbuch Nautischer Funkdienst\", im \"Jachtfunkdienst für Nord- und Ostsee\" oder in der \"\nAdmiralty List of Radio Signals\n\"."
+    },
+    {
+      "id": 295,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Sie wollen einen Törn in einem für Sie fremden Küstenrevier fahren.Wie können Sie sich über mittlere Windverhältnisse für bestimmte Jahreszeiten oder Monate informieren?",
+      "answer": "In den entsprechenden Hafen-, Revierführern. Außerdem z. B. in Monatskarten."
+    },
+    {
+      "id": 296,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Was für Wetter muss meistens erwartet werden, wenn der Luftdruck über einen Zeitraum von 3 Stunden um 10 hPa fällt?2. Was muss bei einem an Bord beobachteten starken Luftdruckfall beachtet werden?",
+      "answer": "Schwerer Sturm.\nDer Kurs und die Fahrt des Schiffes in Bezug auf das Tiefdruckgebiet."
+    },
+    {
+      "id": 297,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie verändert sich der an Bord beobachtete Luftdruckfall, wenn sich ein Fahrzeug mit Westkurs dem Zentrum eines ostwärts ziehenden Tiefdruckgebiets nähert?",
+      "answer": "Der Luftdruckfall wird verstärkt."
+    },
+    {
+      "id": 298,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welchen Windverhältnissen müssen Sie rechnen, wenn Sie im Hafen liegen und der Wind ablandig weht?",
+      "answer": "Die im Hafen vorherrschenden Windgeschwindigkeiten entsprechen nicht den Verhältnissen auf der freien See."
+    },
+    {
+      "id": 299,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welchen Windverhältnissen müssen Sie rechnen, wenn Sie in einem relativ ungeschützten Hafen liegen und der Wind auflandig weht?",
+      "answer": "Die im Hafen vorherrschenden Windgeschwindigkeiten entsprechen etwa den Verhältnissen auf der freien See."
+    },
+    {
+      "id": 300,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Warum verstärkt sich der Wind in engen Durchfahrten?",
+      "answer": "Durch den Düseneffekt (Trichtereffekt) in Durchfahrten. Dabei wird die Luftströmung \"zusammengepresst\" und beschleunigt."
+    },
+    {
+      "id": 301,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welcher Windentwicklung ist zu rechnen1. in Luv und2. in Lee von Kaps oder Inseln?",
+      "answer": "Die Windrichtung ändert sich in Luv des Kaps zum Teil stark und verläuft oft parallel zum Kap. Die Windgeschwindigkeit nimmt zu.\nDie Windrichtung kann bei besonders hohen Gebirgen auch umlaufend werden. Die Windgeschwindigkeit ist meist schwach, kann dafür örtlich aber sehr böig sein (Fallwinde)."
+    },
+    {
+      "id": 302,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windverhältnisse erwarten Sie in der Nähe von Steilküsten1. bei auflandigem und2. bei ablandigem Wind?",
+      "answer": "Der Wind wird durch Küstenführung zum Teil beschleunigt, wenn er nahezu auflandig oder parallel zur Küste weht.\nWeht der Wind ablandig, muss örtlich mit umlaufenden Winden und erhöhter Böigkeit (Fallwinden) gerechnet werden."
+    },
+    {
+      "id": 303,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie wird sich das Wetter wahrscheinlich entwickeln, wenn der Wind am Abend\n1. abflaut oder\n2. zunimmt?",
+      "answer": "Langsames Abflauen des Windes ist oft ein Zeichen für gutes Wetter.\nWindzunahme am Abend kündigt häufig Starkwind, Sturm und Regen an."
+    },
+    {
+      "id": 304,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Womit müssen Sie auf der Nordhalbkugel rechnen, wenn nach Durchzug einer Kaltfront der Wind rückdreht und der Luftdruck wieder fällt?2. Wie nennt man die Wetterlage?",
+      "answer": "Meist deutliche Wetterverschlechterung mit erneut auffrischendem Wind bis Sturmstärke.\nTroglage."
+    },
+    {
+      "id": 305,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windverhältnisse erwarten Sie auf der Nordhalbkugel während der unmittelbaren Passage eines markanten Troges?",
+      "answer": "Der Wind dreht recht, meist über 60 bis 90°. Winde bis Orkanstärke besonders auf der Rückseite eines Troges."
+    },
+    {
+      "id": 306,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie entsteht Nebel?",
+      "answer": "Zufuhr von Feuchte, Mischung von Luftmassen mit hoher Feuchtigkeit und verschiedener Temperatur, Abkühlung der Luftmasse."
+    },
+    {
+      "id": 307,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie ist Nebel definiert?",
+      "answer": "Sichtweite unter 1 000 Meter."
+    },
+    {
+      "id": 308,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie entsteht Kaltwassernebel?2. Zu welcher Jahreszeit tritt diese Nebelart in europäischen Gewässern bevorzugt auf?",
+      "answer": "Warme und feuchte Luftmassen werden durch den kalten Untergrund (Meer) unter den Taupunkt abgekühlt.\nÜberwiegend im Frühjahr."
+    },
+    {
+      "id": 309,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie entsteht Warmwassernebel?2. Zu welcher Jahreszeit tritt diese Nebelart in europäischen Gewässern bevorzugt auf?",
+      "answer": "Kalte Luft strömt über warmes Wasser. Durch Verdunstung an der Wasseroberfläche kommt es bei hoher Differenz zwischen der Luft- und Wassertemperatur zur Feuchtesättigung.\nÜberwiegend im Herbst."
+    },
+    {
+      "id": 310,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie entsteht Strahlungsnebel?2. Wo ist diese Nebelart anzutreffen?",
+      "answer": "Nach Sonnenuntergang kann sich bei klarem Himmel die bodennahe Luftschicht über Land unter den Taupunkt abkühlen.\nBesonders auf Flüssen und engen Durchfahrten, außerdem durch seewärtige Windverdriftung in Küstennähe."
+    },
+    {
+      "id": 311,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wodurch kann es im Mittelmeerraum in besonderen Fällen zur Sichtreduktion kommen?",
+      "answer": "Bei bestimmten Wetterlagen kann mit der Luftmasse transportierter Saharastaub die Sicht stark vermindern."
+    },
+    {
+      "id": 312,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Woraus besteht Seegang?",
+      "answer": "Aus Windsee und Dünung."
+    },
+    {
+      "id": 313,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was verstehen Sie unter Windsee?",
+      "answer": "Seegang, der durch den Wind am Ort oder in der näheren Umgebung angefacht wird."
+    },
+    {
+      "id": 314,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wovon hängt die Höhe der Windsee ab?",
+      "answer": "Windgeschwindigkeit, Fetch (Windwirklänge) und Wirkdauer des Windes."
+    },
+    {
+      "id": 315,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Was verstehen Sie unter Dünung?2. Was kann einsetzende hohe Dünung andeuten?",
+      "answer": "Seegang, der dem erzeugenden Windfeld vorausläuft, sowie abklingender (alter) Seegang.\nEinen eventuell aufziehenden Sturm."
+    },
+    {
+      "id": 316,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was verstehen Sie unter der Wellenhöhe?",
+      "answer": "Der senkrechte Abstand zwischen Wellenberg und Wellental."
+    },
+    {
+      "id": 317,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Was verstehen Sie unter der Wellenlänge?",
+      "answer": "Der horizontale Abstand zwischen zwei Wellenbergen."
+    },
+    {
+      "id": 318,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welchen Seegang müssen Sie erwarten, wenn Sie küstennah bei ablandigem Wind fahren?",
+      "answer": "Der Seegang wird nicht so hoch sein wie auf der freien See, da der Fetch (Windwirklänge) nur sehr kurz ist."
+    },
+    {
+      "id": 319,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Welchen Seegang müssen Sie erwarten, wenn Sie küstennah bei auflandigem Wind fahren?2. Welche Gefahr besteht bezüglich der Entwicklung des Seegangs außerdem?",
+      "answer": "Der Seegang wird ähnlich ausgeprägt sein wie auf der freien See, da genügend Fetch (Windwirklänge) vorhanden ist.\nDort, wo das Wasser flacher wird, oder im Bereich von Untiefen muss mit Brechern und Grundseen gerechnet werden."
+    },
+    {
+      "id": 320,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Was verstehen Sie unter einer Grundsee?2. Welche Höhen kann sie erreichen?",
+      "answer": "Meereswellen mit besonders hohen Brechern, die durch Untiefen oder Küstennähe bzw. durch ansteigenden Meeresboden entstehen.\nEtwa das 2,5fache der kennzeichnenden (charakteristischen) Wellenhöhe."
+    },
+    {
+      "id": 321,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie verändert sich Seegang, wenn Wind und Meeresströmungen (z. B. Gezeitenstrom) entgegengesetzte Richtungen haben?",
+      "answer": "Die Wellen werden kürzer und steiler."
+    },
+    {
+      "id": 322,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Wie verändert sich Seegang, wenn Wind und Meeresströmungen (z. B. Gezeitenstrom) die gleiche Richtung haben?",
+      "answer": "Die Wellen werden länger und flacher."
+    },
+    {
+      "id": 323,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Was verstehen Sie unter einer Kreuzsee?2. Geben Sie 3 Beispiele an, wo mit Kreuzsee zu rechnen ist.",
+      "answer": "Windsee und Dünung laufen aus unterschiedlichen Richtungen heran.\nKurz vor und bei dem Durchzug einer Kaltfront oder eines Troges sowie in der Nähe des Tiefkerns."
+    },
+    {
+      "id": 324,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welcher Seegang ist in Lee kleiner Inseln zu erwarten?",
+      "answer": "Kreuzlaufende See, die meist kurz und kabbelig ist."
+    },
+    {
+      "id": 325,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Faktoren können die Länge und Höhe des Seegangs erheblich verändern?",
+      "answer": "Wassertiefe sowie Meeres- und Gezeitenströmungen."
+    },
+    {
+      "id": 326,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Im Internet finden Sie auf einer \"Wetterseite\" eine Vorhersagekarte für die Dünung.Können Sie daraus ungefähr den vorherrschenden Wind über See ableiten?",
+      "answer": "Nein. Dünung kann vorhanden sein, auch wenn kein Windfeld unmittelbar vorhanden ist."
+    },
+    {
+      "id": 327,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welchem Messinstrument wird an Bord die Windgeschwindigkeit gemessen?",
+      "answer": "Mit einem Anemometer."
+    },
+    {
+      "id": 328,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Welche Windgeschwindigkeit zeigt das Anemometer an, wenn das Fahrzeug Fahrt durchs Wasser macht?",
+      "answer": "Die scheinbare Windgeschwindigkeit."
+    },
+    {
+      "id": 329,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Warum sollten Luftdrucktendenzen an Bord beobachtet und aufgezeichnet werden?2. In welchem zeitlichen Abstand sollte man den Luftdruck aufzeichnen?",
+      "answer": "Eventuelle Wetterveränderungen (z. B. Trog, Annäherung eines Tiefdruckgebiets) können registriert werden.\nMindestens alle 4 Stunden."
+    },
+    {
+      "id": 330,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "Mit welchem Messinstrument wird an Bord der Luftdruck gemessen?",
+      "answer": "Mit dem Barometer oder Barographen."
+    },
+    {
+      "id": 331,
+      "topic": "Wetterkunde",
+      "subtopic": "",
+      "question": "1. Wie bestimmen Sie an Bord die Windstärke, wenn keine Windmessanlage vorhanden ist?2. Wie bestimmen Sie an Bord die Windrichtung, wenn keine Windmessanlage vorhanden ist?",
+      "answer": "Die Windstärke wird geschätzt mit Hilfe der Beaufortskala in Anlehnung an das Seegangsbild.\nDie Windrichtung wird anhand der Verlagerung der Wellenkämme geschätzt."
+    },
+    {
+      "id": 332,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was versteht man im Bootsbau unter Gelcoat?",
+      "answer": "Die äußere Schutzschicht eines Bauteils aus glasfaserverstärktem Kunststoff."
+    },
+    {
+      "id": 333,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was versteht man beim GFK-Bootsbau unter Sandwichverfahren (GFK = glasfaserverstärkter Kunststoff)?",
+      "answer": "Zwischen zwei GFK-Schichten wird eine Zwischenlage zur Versteifung einlaminiert, z. B. aus Balsaholz."
+    },
+    {
+      "id": 334,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welchen Vorteil hat die Sandwichbauweise gegenüber der Massivbauweise bei GFK-Yachten (GFK = glasfaserverstärkter Kunststoff)?",
+      "answer": "Große Steifheit, Verwindungsfestigkeit, geringes Gewicht, gute Isolierung."
+    },
+    {
+      "id": 335,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Beschreiben Sie die Vor- und Nachteile von Stahl als Baumaterial für Yachten.",
+      "answer": "Vorteile: zuverlässiges, problemloses Baumaterial mit sehr hoher Festigkeit und langer Lebensdauer. Nachteile: hohes Gewicht, Rostanfälligkeit."
+    },
+    {
+      "id": 336,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was bedeutet der Begriff \"Kategorie\" im Zusammenhang mit demCE-Zeichen für Wassersportfahrzeuge?",
+      "answer": "Mit der Kategorie legt der Hersteller fest, in welchem Fahrgebiet, bis zu welcher Windstärke und bis zu welcher charakteristischen Wellenhöhe das Fahrzeug sicher betrieben werden kann."
+    },
+    {
+      "id": 337,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Kategorien können im Zusammenhang mit dem CE-Zeichen für Wassersportfahrzeuge vergeben werden?",
+      "answer": "A Hochsee, B Außerhalb von Küstengewässern, C Küstennahe Gewässer, D Geschützte Gewässer."
+    },
+    {
+      "id": 338,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was bedeutet die im Zusammenhang mit dem CE-Zeichen für Wassersportfahrzeuge angegebene Kategorie \"B Außerhalb von Küstengewässern\"?",
+      "answer": "Das Fahrzeug ist ausgelegt für Fahrten außerhalb von Küstengewässern, in denen Windstärken bis einschließlich 8 Bft und signifikante Wellenhöhen bis einschließlich 4 m auftreten können."
+    },
+    {
+      "id": 339,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Beschreiben Sie den Aufbau einer Radsteuerung mit Seilzügen.",
+      "answer": "Das Rad dreht ein Zahnrad, über das eine Kette in der Steuersäule nach unten verläuft. Die Kette ist mit den Steuerseilen verbunden, welche über Umlenkrollen zum Ruderquadranten führen."
+    },
+    {
+      "id": 340,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie nennt man die Teile des \"stehenden Gutes\", die den Mast nach vorn, achtern und seitlich verankern?",
+      "answer": "Stagen und Wanten."
+    },
+    {
+      "id": 341,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "1. Wozu dienen Backstagen? 2. Bei welchen Takelungen werden sie vor allem gefahren?",
+      "answer": "Zum zusätzlichen Abstagen des Mastes nach achtern. Bei 7/8-Takelung und anderen nicht toppgetakelten Yachten."
+    },
+    {
+      "id": 342,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was ist das \"laufende Gut\"?",
+      "answer": "Tauwerk, das zum Setzen, Bergen oder Bedienen der Segel oder anderer Teile der Takelage dient."
+    },
+    {
+      "id": 343,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was gehört zur regelmäßigen Pflege der Segel?",
+      "answer": "Nasse Segel trocknen, Segel vor Sonnenlicht schützen, Salzwasserreste abspülen und Beschädigungen umgehend beseitigen."
+    },
+    {
+      "id": 344,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollten Vorsegel für schweres Wetter im Unterliek hoch geschnitten sein?",
+      "answer": "Damit überkommende Seen nicht ins Segel schlagen und so Rigg und Segel belasten."
+    },
+    {
+      "id": 345,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was ist ein Trysegel und wie wird es gefahren?",
+      "answer": "Ein Schwerwettersegel, das anstelle des Großsegels mit losem Unterliek gefahren wird."
+    },
+    {
+      "id": 346,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum soll man das Schlagen eines Segels vermeiden, vor allem bei stärkerem Wind?",
+      "answer": "Um Beschädigungen zu vermeiden."
+    },
+    {
+      "id": 347,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dienen Segellatten?",
+      "answer": "Zur Profilierung des Segels, damit das Achterliek nicht einklappt."
+    },
+    {
+      "id": 348,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient ein \"Cunningham-Stropp\"?",
+      "answer": "Zur Regulierung der Vorliekspannung des Großsegels, um es so zu trimmen."
+    },
+    {
+      "id": 349,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Segel sollte eine Segelyacht in der Küstenfahrt mindestens an Bord haben?",
+      "answer": "Reffbares Großsegel, reffbare Rollfock oder Vorsegel verschiedener Größen, Sturmfock."
+    },
+    {
+      "id": 350,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient eine Vorsegel-Rollreffeinrichtung?",
+      "answer": "Mit ihr wird das Vorsegel um das Vorstag gerollt und kann so stufenlos verkleinert werden."
+    },
+    {
+      "id": 351,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient eine Großsegel-Rollreffeinrichtung?",
+      "answer": "Mit ihr wird das Großsegel entweder im Mast oder im Baum aufgerollt und kann stufenlos verkleinert werden."
+    },
+    {
+      "id": 352,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient der Lenzkorb am Ansaugstutzen einer Lenzpumpe und wie erhalten Sie damit ihre Funktionsfähigkeit?",
+      "answer": "Der Lenzkorb verhindert Verunreinigungen und Verstopfungen der Lenzpumpe. Er muss regelmäßig überprüft und gereinigt werden."
+    },
+    {
+      "id": 353,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Lenzvorrichtungen und -möglichkeiten sollten auf jeder seegehenden Yacht vorhanden sein?",
+      "answer": "Zwei voneinander unabhängige Bilgenpumpen, von denen eine über Deck und eine unter Deck bedienbar ist, sowie 2 Pützen mit Leinen."
+    },
+    {
+      "id": 354,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollten Sie mehr als einen Anker an Bord haben, möglichst unterschiedlicher Art?",
+      "answer": "Als Ersatz bei Verlust, zum Verwarpen oder Verkatten, um unterschiedliche Ankergründe berücksichtigen zu können, um bei schwerem Wetter oder in Tidengewässern vor 2 Ankern liegen zu können."
+    },
+    {
+      "id": 355,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie viele Fender und Festmacherleinen sollten Sie mindestens an Bord haben?",
+      "answer": "4 Festmacherleinen und 4 Fender."
+    },
+    {
+      "id": 356,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was sollte auf jeder Yacht außer Festmacherleinen, Fallen und Schoten an Tauwerk vorhanden sein?",
+      "answer": "Reservetauwerk, Wurfleine, Schlepptrosse und Ankerleine."
+    },
+    {
+      "id": 357,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Für welche unterschiedlichen Reparaturbereiche sollten Sie Ersatzteile und Werkzeug an Bord haben?",
+      "answer": "Segelreparaturen, Reparaturen an Rumpf und Rigg, Motorreparaturen, Elektroreparaturen und Reparaturen an Schlauchleitungen."
+    },
+    {
+      "id": 358,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welches Werkzeug sollten Sie zur Segelreparatur an Bord haben?",
+      "answer": "Segelhandschuh, Segelnadeln, Segelgarn, Wachs, Zange und selbstklebendes Segeltuch."
+    },
+    {
+      "id": 359,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Ihr Mast ist gebrochen, eine Bergung ist nicht möglich.Welche Werkzeuge benötigen Sie, um die Takelage zu kappen?",
+      "answer": "Bolzenschneider, Metallsäge mit Ersatzblättern, Schraubenschlüssel und verschiedene Zangen."
+    },
+    {
+      "id": 360,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welches Kleinmaterial und Kleinwerkzeug muss an Bord jederzeit greifbar sein?",
+      "answer": "Zeisinge, Bändselwerk, Tape, Reserveschäkel, Schäkelöffner, Bordmesser und Kombizange."
+    },
+    {
+      "id": 361,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Womit muss insbesondere eine Yacht mit Radsteuerung zusätzlich ausgerüstet sein, und warum sollten alle Mitsegler mit dieser Einrichtung vertraut sein?",
+      "answer": "Mit einer Notpinne. Sie muss ggf. in kürzester Zeit einsatzbereit sein."
+    },
+    {
+      "id": 362,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wo finden Sie amtliche Informationen über die Ausrüstung und Sicherheit von Sportbooten, die auch bei der Beurteilung von Sportbootunfällen herangezogen werden?",
+      "answer": "\"Sicherheit im See- und Küstenbereich, Sorgfaltsregeln für Wassersportler\", herausgegeben vom BSH , \"Sicherheit auf dem Wasser, Leitfaden für Wassersportler\", herausgegeben vom Bundesministerium für Verkehr, Bau und Stadtentwicklung."
+    },
+    {
+      "id": 363,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum müssen auf Yachten zusätzlich zu elektrisch oder motorgetriebenen Lenzpumpen auch Handlenzpumpen vorhanden sein?",
+      "answer": "Weil sie auch bei Strom- oder Motorausfall betätigt werden können."
+    },
+    {
+      "id": 364,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum ist Flüssiggas (Propan, Butan) an Bord einer Yacht besonders gefährlich?",
+      "answer": "Es ist schwerer als Luft, sinkt nach unten und bildet mit Luft ein explosives Gemisch; es kann sich im Schiffsinneren (z. B. in der Bilge) sammeln."
+    },
+    {
+      "id": 365,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche 4 Bedienelemente besitzt ein mit Handpumpe betriebenes Bord-WCauf einer Yacht?",
+      "answer": "Seeventil und Spülwasserschlauch (Seewasser), Handpumpe für Toilettenspülung, Hebel zur Unterbrechung der Seewasserzufuhr (Handpumpe dient dann nur noch zum Abpumpen), Abwasserschlauch (via Fäkalientank) zum Seeventil."
+    },
+    {
+      "id": 366,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Beschreiben Sie in 5 Schritten die Bedienung eines Bord-WC auf einer Yacht.",
+      "answer": "Seeventil für Seewasserspülung öffnen, Handpumpe betätigen, sodass das Becken gespült wird und gleichzeitig die Fäkalien abfließen - ausgiebig spülen, Seewasserzufuhr unterbrechen (Hebel umlegen), Becken mit Handpumpe leer pumpen, Seeventile für Zu- und Abfluss schließen."
+    },
+    {
+      "id": 367,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was versteht man unter der \"Stabilität\" eines Schiffes?",
+      "answer": "Unter Stabilität eines Schiffes versteht man seine Eigenschaft, in aufrechter Lage zu schwimmen und sich aus einer Krängung wieder aufzurichten."
+    },
+    {
+      "id": 368,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wovon hängt die Stabilität eines Schiffes in ruhigem Wasser ab?Nennen Sie Beispiele für äußere Momente, welche die Stabilität beanspruchen.",
+      "answer": "Die Stabilität eines Schiffes hängt ab von: seiner Geometrie (Form), der Gewichtsverteilung im Schiff (Ausrüstung, Crew, Ballast). Beispiele für eine Beanspruchung der Stabilität sind krängende Momente durch Seitenwind, Trossenzug oder Drehkreisfahrt bei schnellen Motoryachten."
+    },
+    {
+      "id": 369,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wovon hängt eine in ruhigem Wasser vorhandene Stabilität zusätzlich in schwerem Wetter ab?",
+      "answer": "Die Stabilität in schwerem Wetter hängt zusätzlich von Wind und Seegang, besonders von brechenden Wellen ab."
+    },
+    {
+      "id": 370,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was versteht man unter1. Formschwerpunkt (F)?2. Massenschwerpunkt (Gewichtsschwerpunkt, G)?Welche Kräfte wirken in den beiden Punkten?",
+      "answer": "Im Formschwerpunkt F kann man sich die Masse des vom Schiff verdrängten Wassers vereinigt denken. In F wirkt die Auftriebskraft senkrecht zur Wasseroberfläche nach oben. Im Massenschwerpunkt G kann man sich die Masse des Schiffes einschließlich Ausrüstung und Besatzung vereinigt denken. In G wirkt die Gewichtskraft senkrecht zur Wasseroberfläche nach unten."
+    },
+    {
+      "id": 371,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was geschieht bei einer Neigung des Schiffes, z. B. durch seitlichen Winddruck, solange sich die Lage des Massenschwerpunktes (Gewichtsschwerpunktes) nicht verändert? (Begründung!)",
+      "answer": "Der Formschwerpunkt F wandert zur geneigten Seite aus, weil dort ein größerer Teil des Bootskörpers unter Wasser gelangt. Die Wirklinie der Auftriebskraft bekommt dadurch einen seitlichen Abstand zur Wirklinie der Gewichtskraft. Es entsteht ein Kräftepaar, der seitliche Abstand zwischen den Wirklinien ist der Hebelarm. Es entsteht ein aufrichtendes Moment, welches gleich dem Produkt aus Gewichtskraft und Hebelarm ist."
+    },
+    {
+      "id": 372,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Erklären Sie mit Hilfe eines Vektorparallelogramms aus \"wahrem Wind (wW)\", \"Fahrtwind (Fw)\" und \"scheinbarem Wind (sW)\", warum beim Einfallen einer Bö (Windzunahme) der \"scheinbare Wind\" raumt.Welcher Vorteil ergibt sich dadurch beim Kreuzen?(Zeichnung!)",
+      "answer": "Verhältnisse vor Einfall der Bö Verhältnisse bei Einfall der Bö: Der \"scheinbare Wind\" fällt etwas achterlicher ein, er \"raumt\", und das Segelboot kann etwas höher an den \"wahren Wind\" gehen."
+    },
+    {
+      "id": 373,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Auf Amwindkurs mussten Sie reffen.Ein entgegenkommendes Boot gleicher Größe segelt ungerefft.Wie erklären Sie das?",
+      "answer": "Der \"scheinbare Wind\" ist unterschiedlich stark. Er ist auf Amwindkursen stärker und auf Raumschot- oder Vorwindkursen schwächer als der \"wahre Wind\"."
+    },
+    {
+      "id": 374,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum wird die Versetzung einer Yacht durch den Wind mit zunehmender Krängung größer?",
+      "answer": "Der Lateralplan wird kleiner, dadurch verringert sich der seitliche Widerstand des Schiffes im Wasser."
+    },
+    {
+      "id": 375,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welchen Einfluss hat zunehmende Krängung auf den Trimm eines Segelbootes?(Begründung!)",
+      "answer": "Die Luvgierigkeit nimmt zu, weil der Segeldruckpunkt nach Lee auswandert."
+    },
+    {
+      "id": 376,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie segeln am Wind, Krängung und Ruderdruck nehmen stark zu.1. Wie bezeichnet man das Verhalten des Bootes?2. Mit welchen Mitteln können Sie die Krängung und den Ruderdruck vermindern?",
+      "answer": "Luvgierigkeit. Traveller nach Lee setzen und/oder Großschot (etwas) fieren, Großsegel reffen."
+    },
+    {
+      "id": 377,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Funktion hat ein Unterliekstrecker und wie kann mit dem Unterliekstrecker der Trimm des Großsegels beeinflusst werden?",
+      "answer": "Er reguliert die Spannung der Unterlieks. Je nach Zugkraft wird der untere Teil des Großsegels flacher oder bauchiger."
+    },
+    {
+      "id": 378,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Das Vorliek der Fock wirft Falten.Welches ist die häufigste Ursache?",
+      "answer": "Das Fall ist nicht genügend durchgesetzt."
+    },
+    {
+      "id": 379,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Das Unterliek Ihres Vorsegels killt.Was ist die Ursache?",
+      "answer": "Der Holepunkt der Schot liegt zu weit vorne."
+    },
+    {
+      "id": 380,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Das Achterliek Ihres Vorsegels killt.Was ist die Ursache?",
+      "answer": "Der Holepunkt der Schot liegt zu weit achtern."
+    },
+    {
+      "id": 381,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dienen Windfäden am Segel?",
+      "answer": "Sie machen den Strömungsverlauf am Segel sichtbar, um das Segel optimal trimmen zu können."
+    },
+    {
+      "id": 382,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "1. Wann sollte ein Großsegel flach getrimmt sein?2. Wie kann ein Großsegel flach getrimmt werden?",
+      "answer": "Bei Starkwind. Dichtholen von Unterliek- und Vorliekstrecker, Dichtholen der Großschot, Durchsetzen des Großfalls, Spannung des Achterstags erhöhen, Traveller nach Lee."
+    },
+    {
+      "id": 383,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Mit welchen 6 Teilen des laufenden und stehenden Guts können Sie ein Großsegel trimmen?",
+      "answer": "Großschot, Traveller, Unterliekstrecker, Cunninghamstrecker, Großfall, Achterstagspanner."
+    },
+    {
+      "id": 384,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dienen \"Opferanoden\" und wann sollten sie ausgewechselt werden?",
+      "answer": "Sie dienen dem Schutz gegen Schäden durch Elektrolyse. Verbrauchte Anoden müssen nach einer Saison ersetzt werden, nicht erst wenn sie verbraucht sind."
+    },
+    {
+      "id": 385,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie schützt man auf Kunststoffyachten den Propeller gegen Elektrolyse?",
+      "answer": "Durch eine Zinkanode auf der Propellerwelle."
+    },
+    {
+      "id": 386,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Sicherheitsmaßnahmen sind vor und beim Tanken von Diesel zu treffen?",
+      "answer": "Maschine abstellen, offenes Feuer löschen (Rauchen einstellen), Maßnahmen gegen Überlaufen treffen."
+    },
+    {
+      "id": 387,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie können Sie beim Tanken Umweltverschmutzungen vermeiden?",
+      "answer": "Tanköffnung mit Ölbindetüchern umlegen, möglichst an Zapfsäulen mit Zapfhahn tanken, beim Tanken aus Kanistern großen Trichter mit Schlauch benutzen, Nachfüllen aus Kanistern bei Wind und bewegter See möglichst vermeiden."
+    },
+    {
+      "id": 388,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient das Wendegetriebe eines Motors?",
+      "answer": "Zum Ein- und Auskuppeln des Propellers, zum Umsteuern des Propellers auf Rückwärtsfahrt, zur Drehzahluntersetzung."
+    },
+    {
+      "id": 389,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Maßnahmen sind vor dem Anlassen eines eingebauten Motors zu treffen?",
+      "answer": "Hauptstromschalter einschalten, Kraftstoff- und Kühlwasserventile öffnen, Getriebe auf \"neutral\" stellen."
+    },
+    {
+      "id": 390,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was sollte nach dem Anlassen der Maschine kontrolliert werden?",
+      "answer": "Kühlwasserdurchlauf, Öldruck und Ladung, Motorengeräusche und Auspuffgase."
+    },
+    {
+      "id": 391,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was können erste Störungsanzeichen im Motorbetrieb sein?",
+      "answer": "Ungewöhnliche und fremde Motorengeräusche, Vibrationen, Verfärbung der Abgase, Aufleuchten der Ladekontrolle bzw. Öldruckkontrolle und die entsprechenden akustischen Warnungen."
+    },
+    {
+      "id": 392,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie können Sie einen Dieselmotor abstellen, wenn die vorgesehene Abstellvorrichtung defekt ist?",
+      "answer": "Kraftstoffzufuhr unterbrechen. Verschließen des Luftansaugrohres/der Luftansaugrohre."
+    },
+    {
+      "id": 393,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Der Dieselmotor Ihres Bootes startet nicht.Welche Fehler, die Sie selber überprüfen können, könnten die Ursache sein?",
+      "answer": "Anlasserdrehzahl zu gering (Batterie zu schwach), kein Kraftstoff im Tank, Luft in der Kraftstoffleitung, falsche Bedienung der Kaltstarthilfe (eventuell Vorglühen zu kurz), Anlasser defekt."
+    },
+    {
+      "id": 394,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Der Motor Ihres Bootes bleibt beim Einkuppeln stehen.Nennen Sie mögliche Ursachen.",
+      "answer": "Propellerwelle durch Tauwerk o. Ä. blockiert, Schwerlauf des Getriebes wegen defekter Zahnräder, Lagerschaden, dicken Öls oder verbogene Propellerwelle."
+    },
+    {
+      "id": 395,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Während Sie unter Maschine laufen, steigt plötzlich die Kühlwassertemperatur stark an.Ihre Yacht ist mit einem Saildrive-Antrieb ausgestattet.1. Welche typische Ursache hat der Temperaturanstieg, wenn eine technische Störung unwahrscheinlich ist?2. Wie können Sie die Störung einfach beheben?",
+      "answer": "Fremdkörper (Folienstücke, Plastiktüten, Pflanzenteile o. Ä.) haben den Kühlwassereinlass verstopft. Mehrmals abwechselnd vor- und zurückfahren, sodass sich die Fremdkörper vom Kühlwassereinlass lösen."
+    },
+    {
+      "id": 396,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Propeller werden auf Yachten mit Einbaumotor eingesetzt?",
+      "answer": "Festflügelpropeller, Faltpropeller, Drehflügelpropeller und Verstellpropeller."
+    },
+    {
+      "id": 397,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was müssen Sie beim Aufstoppen unter Maschine mit einem Faltpropeller beachten?",
+      "answer": "Der Propeller entfaltet sich eventuell erst bei relativ hoher Drehzahl und der Wirkungsgrad ist geringer als beim Festflügelpropeller."
+    },
+    {
+      "id": 398,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Mit welchen 4 Angaben werden Propeller auf Yachten beschrieben?",
+      "answer": "Anzahl der Flügel, Größe ihrer Fläche, Durchmesser und Steigung."
+    },
+    {
+      "id": 399,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was sollten Sie beachten, wenn Sie den kleinen Außenborder mit eingebautem Tank Ihres Beibootes an Bord verstauen?(Begründung!)",
+      "answer": "Tank und Vergaser müssen leer sein. Lagerung an Deck oder in einer Backskiste mit Außenentlüftung, niemals unter Deck. Restbenzin und entweichende Benzingase bilden mit Luft ein leicht entzündliches Gemisch."
+    },
+    {
+      "id": 400,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient ein Wasserabscheider in der Kraftstoffleitung?",
+      "answer": "In ihm sammelt sich das Kondenswasser aus dem Tank; dadurch werden Startschwierigkeiten vermieden."
+    },
+    {
+      "id": 401,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollten Sie bei seltener Motorbenutzung den eingebauten Tank eines Dieselmotors möglichst voll getankt halten?",
+      "answer": "Um Kondenswasserbildung zu verringern, was zu Startschwierigkeiten führen kann."
+    },
+    {
+      "id": 402,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Motor-Ersatzteile bzw. Schmierstoffe sollten Sie mindestens an Bord haben?",
+      "answer": "Impeller für die Wasserpumpe, Reservekeilriemen, Motorenöl, Dichtungsmaterial."
+    },
+    {
+      "id": 403,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "1. Was bedeutet die Angabe einer Batteriekapazität \"2 x 60Ah\"?(Begründung!)2. Welche Nettokapazität steht in dem Fall zur Verfügung? (Begründung!)",
+      "answer": "Es handelt sich um 2 Batterien (Akkus) mit jeweils 60 Amperestunden, insgesamt also 120 Ah Nennkapazität. Dem entspricht eine Nettokapazität von etwa 72 Ah, da ein Akku kaum über 80 % seiner Nennkapazität geladen werden kann."
+    },
+    {
+      "id": 404,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Geben Sie die benötigte Strommenge (in Amperestunden) an, um bei einer 12-Volt-Anlage zwei Verbraucher mit je 24 Watt 10 Stunden betreiben zu können (mit Angabe der Berechnung)!",
+      "answer": "Benötigte Strommenge je Verbraucher: 24 : 12 = 2 Ampere mal Anzahl der Verbraucher mal Stunden ergibt: 2 x 2 A x 10 h = 40 Ah."
+    },
+    {
+      "id": 405,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie muss Tauwerk beschaffen sein, das für Festmacherleinen, Anker- und Schlepptrossen verwendet wird?",
+      "answer": "Es muss bruchfest und elastisch sein."
+    },
+    {
+      "id": 406,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wodurch können Sie verhindern, dass Festmacherleinen durch Schamfilen in Klüsen oder an Kanten an der Pier beschädigt werden?",
+      "answer": "Durch einen gegen Verrutschen gesicherten Plastikschlauch, der über den Festmacher an der Scheuerstelle gezogen wird, hilfsweise mit Tuchstreifen."
+    },
+    {
+      "id": 407,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was müssen Sie hinsichtlich der Festigkeit bedenken, wenn Sie Leinen zusammenknoten?",
+      "answer": "Beim Knoten können Festigkeitsverluste bis zu 50 % auftreten."
+    },
+    {
+      "id": 408,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wodurch können Sie verhindern, dass bei Tauwerk aus unterschiedlichem Innen- und Außenmaterial die Seele in den Mantel rutscht?",
+      "answer": "Durch einen genähten Takling."
+    },
+    {
+      "id": 409,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie sind längsseits liegende Fahrzeuge festzumachen?Ergänzen Sie die Skizze und benennen Sie die Leinen.",
+      "answer": "Achterleine, Achterspring, Vorspring, Vorleine."
+    },
+    {
+      "id": 410,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie können Sie mit Hilfe von zwei Fendern und einem Fenderbrett Ihr Boot festmachen, wenn die Pier mit vorspringenden Pfählen versehen ist?Ergänzen Sie die Skizze mit Leinen.",
+      "answer": ""
+    },
+    {
+      "id": 411,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was ist an Land beim Reinigen eines mit Antifouling behandelten Unterwasserschiffes zu beachten?",
+      "answer": "Umweltschutzbestimmungen beachten, d. h. , das Schiff nur auf einem entsprechend ausgerüsteten Reinigungsplatz abspritzen und Wasser und Schmutz auffangen, also nicht in die Kanalisation leiten."
+    },
+    {
+      "id": 412,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Ein funktionsfähiges elektrisches Gerät arbeitet an Bord nicht.Nennen Sie häufige Ursachen und was kann zur Behebung getan werden?",
+      "answer": "Schlechte Kontakte und Korrosion. Kontakte fest anziehen, korrodierte Stellen mit feinstem Schleifpapier säubern, Kontaktspray verwenden."
+    },
+    {
+      "id": 413,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum müssen Schäden im Gelcoat unverzüglich beseitigt werden?",
+      "answer": "Das Laminat unter der Gelcoatschicht nimmt sonst Wasser auf und wird dadurch geschädigt."
+    },
+    {
+      "id": 414,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Daten sollten mindestens an Bord im Logbuch dokumentiert werden?",
+      "answer": "Namen und Funktionen der Crewmitglieder, Beginn und Ende einer Fahrt und in angemessenen Zeitabständen: Position, Kurs, Geschwindigkeit, Strömung, Wetter, Luftdruck."
+    },
+    {
+      "id": 415,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Worauf müssen Sie vor dem Setzen des Großsegels achten?Welche Gefahr besteht nach dem Setzen des Großsegels, solange der Wind von vorne kommt?",
+      "answer": "Großschot und Baumniederholer müssen ausreichend Lose haben. Das Großfall muss frei laufen und darf nicht vertörnt sein. Verletzungsgefahr durch schlagenden Großbaum."
+    },
+    {
+      "id": 416,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was tun Sie, wenn Ihr Großsegel unter der untersten Lattentasche einreißt?",
+      "answer": "Untere Latte entfernen. Segel bis über den Riss reffen."
+    },
+    {
+      "id": 417,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Beschreiben Sie die Schritte für den Reffvorgang mit dem Bindereff.",
+      "answer": "Sicherstellen, dass Dirk angeschlagen oder Baum durch stützenden Baumniederholer in der Höhe gehalten wird, Fall fieren und Segel etwas herunterholen, Segelhals in Reffhaken am Lümmelbeschlag einhaken und festsetzen, Fall wieder dichtholen, Segelschothorn (hintere Reffkausch) mit Schmeerreep oder Reffleine nach achtern auf den Baum holen und eventuell loses Segeltuch auftuchen und mit Reffbändseln/Reffleine einbinden."
+    },
+    {
+      "id": 418,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "1. Wozu dient ein \"Bullenstander\"?2. Wie wird er gefahren?",
+      "answer": "Er soll das ungewollte Überkommen des Großbaums bei achterlichen Winden verhindern. Von der Baumnock zum Vorschiff."
+    },
+    {
+      "id": 419,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum muss beim Segeln vor dem Wind oder mit raumem Wind der Baumniederholer entsprechend der Windstärke durchgesetzt werden?",
+      "answer": "Um das Steigen des Baumes zu verhindern."
+    },
+    {
+      "id": 420,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wenn gleich große Boote im Päckchen oder in der Box zusammenliegen, kann es zu Berührungen und Schäden in der Takelage kommen.Wie ist das zu verhindern?",
+      "answer": "Boote versetzt legen, damit Masten nicht auf gleicher Höhe sind oder im Wechsel Heck-Bug zur Pier legen."
+    },
+    {
+      "id": 421,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Worauf ist beim Liegen in einer Box in Bezug auf benachbarte Boote zu achten, wenn Schwell in den Hafen läuft?",
+      "answer": "Dass benachbarte Boote mit ihren Masten versetzt liegen und nicht gegeneinander schlagen."
+    },
+    {
+      "id": 422,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie sind mit Ihrer Segelyacht auf See.Was veranlassen Sie bei einem Gewitteraufzug?",
+      "answer": "Vorsegel rechtzeitig verkleinern, Großsegel klar zum Reffen oder Bergen, Schlechtwetterkleidung, Sicherheitsgurte und Rettungswesten anlegen, Position in Karte eintragen."
+    },
+    {
+      "id": 423,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie übernehmen in einem Hafen eine Ihnen unbekannte Yacht.Wie machen Sie sich zu Reisebeginn mit den Segeleigenschaften vertraut?",
+      "answer": "Ich fahre diverse Manöver - Wende, Halse, Q-Wende, verschiedene Rettungsmanöver - mit unterschiedlicher Geschwindigkeit und Besegelung."
+    },
+    {
+      "id": 424,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie verhalten Sie sich nach einem Mastbruch, was müssen Sie veranlassen?",
+      "answer": "Nach Möglichkeit den Mast an Bord nehmen und sichern. Falls nicht möglich, Mast und Wanten kappen, um Rumpfschäden zu vermeiden."
+    },
+    {
+      "id": 425,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Von welchen Faktoren ist die Länge eines Nahezu-Aufschießers zu einer im Wasser treibenden Person abhängig?",
+      "answer": "Geschwindigkeit, Wind, Seegang, Strömung und Form und Gewicht des Bootes."
+    },
+    {
+      "id": 426,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie wollen in eine Box einlaufen.Wie bereiten Sie die Achterleinen vor und machen sie fest?",
+      "answer": "Achterleinen mit Auge versehen (z. B. Palstek), möglichst früh über die Pfähle legen, bei seitlichem Wind zuerst über den Luvpfahl."
+    },
+    {
+      "id": 427,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Vorbereitung haben Sie für ein Anlegemanöver zu treffen?",
+      "answer": "Crew für Manöver einteilen. Leinen und Fender bereitlegen."
+    },
+    {
+      "id": 428,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welchen Nachteil hat ein \"Saildrive-Antrieb\" insbesondere bei Hafenmanövern?",
+      "answer": "Durch den großen Abstand zwischen Propeller und Ruder wird dieses nicht direkt angeströmt. Das kann die Manövrierfähigkeit beim Anfahren etwas verschlechtern."
+    },
+    {
+      "id": 429,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was ist ein Bugstrahlruder und wozu dient es?",
+      "answer": "Eine im Bug einer Yacht befindliche Röhre mit einem Propeller, mit dem ein Querschub und damit ein Drehen des Buges bei geringen Vorausgeschwindigkeiten erreicht werden kann."
+    },
+    {
+      "id": 430,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Bei welchen Manövern können Sie ein Bugstrahlruder sinnvoll einsetzen?",
+      "answer": "Beim An- und Ablegen. Beim Drehen auf engem Raum."
+    },
+    {
+      "id": 431,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie liegen längsseits mit der Steuerbordseite an einer Pier.Beschreiben Sie ein Ablegemanöver unter gleichzeitigem Einsatz von Bugstrahlruder und Maschine.",
+      "answer": "Hebel für Bugstrahlruder nach Backbord legen, sodass der Bug von der Pier weggedrückt wird (nach Backbord schwenkt) und gleichzeitig Ruderlage deutlich nach Steuerbord und langsame Fahrt voraus, sodass das Heck nach Backbord ausschwenkt. So wird das Schiff fast parallel von der Pier abgedrückt."
+    },
+    {
+      "id": 432,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie können Sie im freien Seeraum auf einer Segelyacht einen Sturm abwettern?",
+      "answer": "Durch Beiliegen; Lenzen vor Topp und Takel, dabei Leinen achteraus schleppen; Liegen vor Treibanker oder unter Sturmbesegelung aktiv segelnd und nach Möglichkeit brechende Seen aussteuernd."
+    },
+    {
+      "id": 433,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum kann das Anlaufen eines Hafens bei auflandigem Starkwind bzw. schwerem Wetter gefährlich werden?",
+      "answer": "Gefahr durch Grundseen bzw. Kreuzseen. Möglichkeit von Querstrom."
+    },
+    {
+      "id": 434,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum kann eine Leeküste bei schwerem Wetter einer Segelyacht gefährlich werden?",
+      "answer": "Wenn die Yacht sich nicht freikreuzen kann, droht Strandung."
+    },
+    {
+      "id": 435,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Mit welchem Manöver können Sie bei Starkwind das Halsen vermeiden (Name)?Vervollständigen Sie die Skizze durch Einzeichnen der Kurslinie und geben Sie die erforderlichen Manöver an.",
+      "answer": ""
+    },
+    {
+      "id": 436,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was erreicht man mit dem Ausbringen eines Treibankers bei schwerer See?",
+      "answer": "Man hält bei richtiger Leinenlänge den Bug im Wind und verringert die Driftgeschwindigkeit."
+    },
+    {
+      "id": 437,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Worauf müssen Sie achten, wenn Sie in Tidengewässern längsseits einer Pier festgemacht haben?",
+      "answer": "Die Wassertiefe muss auch bei Niedrigwasser ausreichen oder sicheres Aufsetzen muss gewährleistet sein. Die Leinen müssen für den Tidenstieg oder -fall ausreichend lang sein. Bei größerem Tidenhub darf das Fahrzeug keinesfalls unbeaufsichtigt bleiben."
+    },
+    {
+      "id": 438,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie kreuzen bei frischem Wind und mitlaufendem Strom (Wind gegen Strom) nach Luv auf.Welche Auswirkungen hat ein gegen den Wind setzender Strom auf den Seegang?",
+      "answer": "Durch den Strom entsteht eine kurze, steile und kabbelige See."
+    },
+    {
+      "id": 439,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie wirkt sich mitlaufender Strom auf die Fahrt eines Fahrzeugs und die Loganzeige aus?",
+      "answer": "Der Strom erhöht die Fahrt über Grund. Das Log zeigt dies nicht an."
+    },
+    {
+      "id": 440,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Hilfsmittel können Sie einsetzen, um einen Überbordgefallenen an Deck zu bekommen?",
+      "answer": "Bewegliche (und gesicherte) Badeleiter, eventuell Großschot, beschwerte Trittschlinge, Rettungstalje, Unterfangen mit kleinem Segel, Bergegurt, Dingi."
+    },
+    {
+      "id": 441,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Sofortmaßnahmen sind einzuleiten, wenn jemand über Bord gefallen ist?",
+      "answer": "Ruf \"Mensch über Bord!\" Rettungsmittel zuwerfen, Ausguck halten, Mensch im Auge behalten, Maschine starten, \"Mensch-über-Bord-Manöver\" einleiten, Notmeldung abgeben, ggf. Markierungsblitzboje werfen, ggf. MOB -Taste eines satellitengestützten Navigationsgerätes drücken, Bergung durchführen."
+    },
+    {
+      "id": 442,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Maßnahmen können gegen das Überbordfallen getroffen werden?",
+      "answer": "Sicherheitsgurte anlegen und einpicken. Anbringen von \"Streck-\" oder Laufleinen vom Bug zum Heck. Crew auf Befestigungspunkte (Einpickpunkte für Karabinerhaken) hinweisen."
+    },
+    {
+      "id": 443,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Nennen Sie die grundsätzlichen Schritte und ihre Ziele zur Rettung einer über Bord gegangenen Person.",
+      "answer": "Maschine starten, Suche, Herstellung eines Sichtkontaktes zur über Bord gegangenen Person, \"Mensch-über-Bord-Manöver\", Annäherung an die im Wasser treibende Person und Herstellung einer ersten Leinenverbindung, Bergung, sicheres und schnelles Anbordnehmen der Person, Erste Hilfe, Betreuung, ggf. Notalarm abgeben."
+    },
+    {
+      "id": 444,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Mit welchen Hilfsmitteln können Sie den Bezugspunkt (internationaler Begriff: Datum) für die Suche nach einem Überbordgefallenen sichern?",
+      "answer": "Markierungsblitzboje, MOB-Taste eines satellitengestützten Navigationsgerätes (z. B. GPS )."
+    },
+    {
+      "id": 445,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was gehörtu. a.zur Sicherheitsausrüstung z. B. einer 10-m-Yacht?Nennen Sie mindestens 6 Ausrüstungsgegenstände.",
+      "answer": "Lenzpumpen und Pützen, Lecksicherungsmaterial, Feuerlöscher, Werkzeuge und Ersatzteile, Seenotsignalmittel, Handlampen, Funkeinrichtung, Anker, Erste-Hilfe-Ausrüstung, Radarreflektor und Rettungsmittel."
+    },
+    {
+      "id": 446,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was gehört zur Sicherheitsausrüstung der Besatzung in der Küstenfahrt?",
+      "answer": "Rettungsweste und Sicherheitsgurt (Lifebelt) für jedes Besatzungsmitglied, Rettungsfloß (Rettungsinsel), Rettungskragen mit Tag- und Nachtsignal und Erste-Hilfe-Ausrüstung mit Anleitung."
+    },
+    {
+      "id": 447,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie erhalten Sie Kenntnis über das nächste Wartungsdatum eines Rettungsfloßes?",
+      "answer": "Die runde, auf der Insel klebende farbige Serviceplakette oder das bei der letzten Wartung mitgelieferte Zertifikat geben Auskunft über den nächsten Wartungstermin."
+    },
+    {
+      "id": 448,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Worauf müssen Sie bei Ihren Automatikrettungswesten hinsichtlich der Funktionssicherheit achten?",
+      "answer": "Auf regelmäßige Wartung. Wartungsfälligkeit erkennbar an der farbigen Serviceplakette."
+    },
+    {
+      "id": 449,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was ist auf Deck einer Yacht ein Strecktau (auch Laufleine genannt) und wozu dient es?",
+      "answer": "Ein neben der Fußreling verlaufender Draht, Gurt oder eine starke Leine zwischen Cockpit und Vorschiff straff gespannt zum Einpicken der Sicherheitsleine (Lifebelt)."
+    },
+    {
+      "id": 450,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Seenotsignalmittel sollten Sie an Bord haben?\nNennen Sie mindestens 6 Beispiele.",
+      "answer": "Handfackeln, rot, Handraketen, rot, Rauchfackeln oder Rauchtopf, orange, Signalpistole mit Munition, Seewasserfärber, Signalflaggen N und C , Signallampe, Seenotfunkboje."
+    },
+    {
+      "id": 451,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Feuerlöscheinrichtungen sollten an Bord vorhanden sein?",
+      "answer": "Feuerlöscher ( ABC -Pulverlöscher und eventuell CO2 2 -Löscher), Pütz zum Löschen von Bränden fester Stoffe, Feuerlöschdecke, Löschdurchlass für geschlossene Motorräume, der das Löschen von Bränden mit CO 2 -Löschern ohne Sauerstoffzutritt ermöglicht."
+    },
+    {
+      "id": 452,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Feuerlöscharten sind für Sportboote geeignet?Wie und wo sind sie an Bord unterzubringen?",
+      "answer": "Der ABC-Pulverlöscher, für geschlossene Motorräume der CO 2 -Löscher, Der Feuerlöscher muss gebrauchsfertig und leicht erreichbar sein, CO 2 -Löscher nicht im Schiffsinneren unterbringen (Erstickungsgefahr bei Leckage). Er soll in der Nähe der Maschinenräume, der Kombüse bzw. der Koch- oder Heizstelle montiert sein."
+    },
+    {
+      "id": 453,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie wird die ständige Funktionssicherheit eines Feuerlöschers sichergestellt?",
+      "answer": "Durch Einhaltung des vorgeschriebenen Prüftermins, ersichtlich aus der Prüfplakette. Der Feuerlöscher muss vor Feuchtigkeit und Korrosion geschützt werden."
+    },
+    {
+      "id": 454,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie wird ein Brand an Bord wirksam bekämpft?",
+      "answer": "Alle Öffnungen schließen, Brennstoffzufuhr (Hauptschalter) unterbrechen, Feuerlöscher erst am Brandherd betätigen, Feuer von unten und von vorn bekämpfen, Löschdecke einsetzen, Flüssigkeitsbrände nicht mit Wasser bekämpfen."
+    },
+    {
+      "id": 455,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was ist vor Reisebeginn beim Seeklarmachen zu überprüfen und zu beachten?Nennen Sie mindestens 6 Beispiele.",
+      "answer": "Seetüchtigkeit der Yacht, Zahl und Zustand der Segel, Treibstoffvorrat, Navigationsunterlagen, Sicherheitseinweisung der Besatzung, Rettungsmittel, Seenotsignale, Trinkwasser- und Proviantvorräte, Funktionsfähigkeit des Motors, Funktionsfähigkeit der elektronischen Navigationsgeräte, Lenzeinrichtungen, Feuerlöscher, Boots- und Personalpapiere, Betriebsfähigkeit der UKW-Seefunkanlage."
+    },
+    {
+      "id": 456,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was gehört zur Sicherheitseinweisung der gesamten Besatzung vor Reisebeginn?\nNennen Sie mindestens 6 Beispiele.",
+      "answer": "Einweisung in Gebrauch und Bedienung der Rettungswesten und Sicherheitsgurte, des Rettungsfloßes, der Signalmittel, der Lenzpumpen, der Seeventile und des Bord-WC, der Kocheinrichtung, der Feuerlöscher, der Motoranlage, der Elektroanlage, des Rundfunkgerätes und der UKW-Seefunkanlage, Verhalten bei \"Mensch-über-Bord\", Erkennen und Verhalten bei Seekrankheit."
+    },
+    {
+      "id": 457,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "In welche technischen Einrichtungen/Ausrüstungen muss der Schiffsführer die Besatzung vor Reiseantritt unbedingt einweisen?Nennen Sie mindestens 6 Beispiele.",
+      "answer": "Ankergeschirr, Lenzeinrichtung, Feuerlöscheinrichtungen, Motoranlage, Seeventile, UKW-Seefunkanlage, MOB-Taste von satellitengestützten Navigationsgerät (z. B. GPS), Seenotsignalmittel, Notrudereinrichtung."
+    },
+    {
+      "id": 458,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Sicherheitsmaßnahmen sind vor jedem Auslaufen durchzuführen?Nennen Sie mindestens 6 Beispiele.",
+      "answer": "Wetterbericht einholen, Kontrolle der Sicherheitseinrichtung, Kontrolle von Motor und Schaltung, Kontrolle der nautischen Geräte, Kontrolle der Bilge, Überprüfen des Wasser- und Kraftstoffvorrats, Kontrolle der Schall- und Lichtsignaleinrichtung, Kontrolle der Navigationslichter, Bereitlegen der aktuellen Seekarten und nautischen Veröffentlichungen."
+    },
+    {
+      "id": 459,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollten alle Crewmitglieder Lage und Funktion sämtlicher Pumpen und Ventile kennen?",
+      "answer": "Damit im Bedarfsfall sie jeder bedienen kann."
+    },
+    {
+      "id": 460,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollte die Crew in die Funktion des Bord-WC eingewiesen werden?",
+      "answer": "Weil durch unsachgemäße Bedienung Wasser ins Bootsinnere gelangen kann."
+    },
+    {
+      "id": 461,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollte die Crew vor Reisebeginn in die Funktion des Ankergeschirrs und die Durchführung eines Ankermanövers eingewiesen werden?",
+      "answer": "Damit jeder den Anker sicher ausbringen und einholen kann."
+    },
+    {
+      "id": 462,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie verhalten Sie sich, wenn Ihr Schiff leckgeschlagen ist?",
+      "answer": "Meldung abgeben. Je nach Erfordernissen Fahrt aus dem Schiff nehmen. Lenzpumpen betätigen, Lecksuche, Leck mit Bordmitteln abdichten. Küste bzw. flaches Wasser ansteuern. Fahrzeug so trimmen, dass Leckstelle aus dem Wasser kommt bzw. möglichst wenig unter Wasser ist."
+    },
+    {
+      "id": 463,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was tun Sie, wenn Ihr Schiff leckgeschlagen ist und das Wasser im Schiff trotz aller Maßnahmen weiter steigt?",
+      "answer": "Notzeichen geben, Funkmeldung abgeben, ggf. Radartransponder einschalten. Verlassen des Bootes vorbereiten, Rettungswesten anlegen, Rettungsfloß klarmachen. Wenn möglich, ruhiges Flachwasser anlaufen und Schiff auf Grund setzen."
+    },
+    {
+      "id": 464,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Folgen können Grundberührungen und harte Stöße, z. B. bei Anlegemanövern oder Kollisionen mit treibenden Gegenständen haben?",
+      "answer": "Eine Beschädigung der Bordwand kann eintreten. Es kann Sinkgefahr entstehen."
+    },
+    {
+      "id": 465,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche grundsätzliche Verhaltensweise sollte beachtet und welche Maßnahmen sollten ergriffen werden, wenn Ihr Schiff in Seenot kommt?",
+      "answer": "Ruhe bewahren und überlegt handeln. Notalarm abgeben, ggf. Radartransponder einschalten. Rettungsfloß klarmachen. Rettungsweste und Sicherheitsgurt anlegen. So lange wie möglich an Bord bleiben. Wärmende Kleidung anziehen."
+    },
+    {
+      "id": 466,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Maßnahmen treffen Sie, bevor Sie von Ihrem Fahrzeug in ein Rettungsfloß übersteigen?",
+      "answer": "Rettungsweste und Sicherheitsgurt anlegen. Wärmende Kleidung anziehen. Nach Möglichkeit vorher reichlich warme Flüssigkeit trinken. Soweit noch nicht geschehen, Proviant, Wasser, Seenotsignalmittel und ggf. Seenotfunkbake, Radartransponder und UKW-Handsprechfunkgeräte in das Rettungsfloß bringen."
+    },
+    {
+      "id": 467,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollte ein sinkendes Schiff im Notfall so spät wie möglich verlassen werden?",
+      "answer": "Die Überlebensmöglichkeiten sind auf dem Schiff größer. Ein Schiff ist besser zu orten. Einstieg in das Rettungsfloß und Aufenthalt können sehr schwierig sein."
+    },
+    {
+      "id": 468,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Erklären Sie die Handhabung der Hubschrauberrettungsschlinge im Einsatz!",
+      "answer": "Bei offener Rettungsschlinge: zuerst den Karabinerhaken einpicken. Mit dem Kopf und beiden Armen in die Rettungsschlinge einsteigen. Die Arme müssen nach unten gedrückt werden und die Hände sind zu schließen. Das Windenseil muss frei hängen, es darf nicht an Bord befestigt werden."
+    },
+    {
+      "id": 469,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wann dürfen Notzeichen gegeben werden?",
+      "answer": "Nach Feststellung des Notfalls auf Anordnung des Schiffsführers; bei unmittelbarer Gefahr für das Schiff oder die Besatzung, die ohne fremde Hilfe nicht überwunden werden kann."
+    },
+    {
+      "id": 470,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wann darf ein UKW-Sprechfunkgerät auch ohne entsprechenden Befähigungsnachweis benutzt werden?",
+      "answer": "In Notfällen."
+    },
+    {
+      "id": 471,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Worauf ist zu achten, wenn Crewmitglieder seekrank sind?",
+      "answer": "Aufenthalt im Cockpit beaufsichtigen und Crewmitglieder gegen Überbordfallen sichern, Flüssigkeitsverlust ausgleichen (Wasser), Crewmitglied anhalten, zur Küste oder zum Horizont zu schauen, mit Arbeiten beschäftigen."
+    },
+    {
+      "id": 472,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient ein Reitgewicht (Gleitgewicht, Ankergewicht) beim Ankern?",
+      "answer": "Es soll die Ankertrosse auf den Grund ziehen, damit der Anker nicht durch einen zu steilen Winkel aus dem Grund gebrochen wird. Es wirkt ruckdämpfend."
+    },
+    {
+      "id": 473,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollte beim Verwenden einer Ankertrosse ein Kettenvorlauf benutzt werden?",
+      "answer": "Damit der Zug auf den Anker nicht zu steil wird."
+    },
+    {
+      "id": 474,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welcher Ankergrund ist für die üblichen Leichtgewichtsanker1. gut geeignet?2. mäßig geeignet?3. ungeeignet?",
+      "answer": "Sand, Schlick, weicher Ton und Lehm, harter Ton und Lehm, steinige, verkrautete und stark schlammige Böden."
+    },
+    {
+      "id": 475,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was müssen Sie bei der Auswahl eines Ankerplatzes beachten?",
+      "answer": "Der Ankerplatz sollte Schutz vor Wind und Wellen bieten. Auf ausreichenden Platz zum Schwojen achten. Mögliche Winddrehungen einplanen."
+    },
+    {
+      "id": 476,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welchen Ankergrund sollten Sie nach Möglichkeit meiden?",
+      "answer": "Steinige, verkrautete und stark schlammige Böden."
+    },
+    {
+      "id": 477,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie können Sie die Haltekraft eines Ankers erhöhen, wenn Sie auf engem Raum (z. B. zwischen zwei Stegen) nicht die erforderliche Kettenlänge stecken können?",
+      "answer": "Mit einem Reitgewicht, um so den Anker besser am Boden zu halten."
+    },
+    {
+      "id": 478,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie ankern in einer Bucht.Wie können Sie bei zunehmendem Wind die Haltekraft Ihres Ankers verbessern?",
+      "answer": "Mehr Trosse oder Kette stecken, Reitgewicht verwenden."
+    },
+    {
+      "id": 479,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie wollen auf verkrautetem Grund ankern.Ihnen steht ein Leichtgewichtsanker und ein Stockanker zur Verfügung.Welchen benutzen Sie und warum?",
+      "answer": "Den Stockanker, weil er sich insbesondere auch aufgrund seines höheren Gewichtes besser eingräbt."
+    },
+    {
+      "id": 480,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wozu dient eine Ankerboje?",
+      "answer": "Sie zeigt die Lage des Ankers an. Mit der Trippleine kann das Bergen eines unklaren Ankers unterstützt werden."
+    },
+    {
+      "id": 481,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie erkennen Sie, ob der Anker hält?",
+      "answer": "Vibration von Kette oder Trosse prüfen, Einrucken des Ankers prüfen, durch wiederholte Peilungen und ggf. Schätzungen des Abstands zu anderen Schiffen oder zu Landmarken, falls GPS vorhanden ist, die Ankeralarmfunktion einschalten."
+    },
+    {
+      "id": 482,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Welche Ankerarten finden überwiegend auf Sportbooten Verwendung?Nennen Sie 3.",
+      "answer": "Patentanker, Stockanker (einklappbarer Stock), Draggen (klappbare Flunken), Pflugscharanker."
+    },
+    {
+      "id": 483,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Nennen Sie 3 Ankertypen, die vom Germanischen Lloyd als Anker mit hoher Haltekraft anerkannt sind.",
+      "answer": "Bruce-Anker, CQR -Anker, Danforth-Anker, D'Hone-Anker."
+    },
+    {
+      "id": 484,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "1. Welches sind die Vorteile einer Ankerkette gegenüber einer Ankerleine?2. Wie kombiniert man auf Yachten häufig die Systeme?",
+      "answer": "Die Kette unterstützt das Eingraben, verkleinert den Schwojeraum, wirkt ruckdämpfend, kann nicht an Steinen durchscheuern und erhöht die Haltekraft des Ankers. Es wird zwischen Anker und Leine ein Kettenvorlauf von 3 bis 5 m gefahren."
+    },
+    {
+      "id": 485,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "1. Warum soll eine Ankerleine nicht an den Anker geknotet werden?2. Warum muss die Ankerkette mit einem Taustropp am Schiff bzw. im Kettenkasten befestigt werden?",
+      "answer": "Knoten reduzieren die Bruchlast einer Leine um bis zu 50 %. Damit die Kette im Notfall schnell gekappt werden kann."
+    },
+    {
+      "id": 486,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Sie wollen in einer Bucht ankern, in der das (ausreichend tiefe) Wasser unterschiedliche Färbungen zeigt.Wo wählen Sie den Akerplatz?(Begründung!)",
+      "answer": "Ich ankere auf hellem Wasser. Begründung: Der Grund ist hier sandig, der Anker hält gut. Dunkler Grund weist auf Bewuchs hin, wo der Anker schlecht hält."
+    },
+    {
+      "id": 487,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum darf der Anker nicht zusammen mit seiner Leine am Ankerplatz über Bord geworfen werden?",
+      "answer": "Die Leine könnte mit dem Anker vertörnen und dadurch das Eingraben des Ankers verhindern. Der Anker würde dann nicht halten."
+    },
+    {
+      "id": 488,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was müssen Sie bedenken, wenn ein großes Schiff auf Ihr Sportboot zukommt?",
+      "answer": "Andere Manövrierfähigkeit (größere Drehkreise, längere Stoppstrecken), u. U. eingeschränkte Sicht des anderen Fahrzeugs, insbesondere nach voraus, Möglichkeit des Übersehenwerdens, weil man sich im Radarschatten befindet, Beeinträchtigung durch Bugwellen des großen Schiffes, mögliche Beeinträchtigung der Manövrierfähigkeit des eigenen Bootes durch Windabdeckung."
+    },
+    {
+      "id": 489,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Warum sollten Sie nicht zu dicht hinter dem Heck eines vorbeifahrenden Schiffes durchfahren?",
+      "answer": "Sog und Hecksee können das eigene Boot erheblich gefährden."
+    },
+    {
+      "id": 490,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Was müssen Sie beim Passieren eines großen Schiffes bei dessen Kursänderungen, z. B. in einem kurvenreichen Fahrwasser, beachten?",
+      "answer": "Bei einer Kursänderung schwenkt das Heck deutlich in die entgegengesetzte Richtung aus, also nach Backbord bei einer Kursänderung nach Steuerbord und umgekehrt."
+    },
+    {
+      "id": 491,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Mit welchen Stoppstrecken und Stoppzeiten müssen Sie bei großen Schiffen in voller Fahrt rechnen und wovon hängen sie ab?",
+      "answer": "Abhängig von Schiffstyp und -größe, Beladungszustand und Ausgangsgeschwindigkeit ist mit der 8- bis 12fachen Schiffslänge und bis zu 8 bis 12 Minuten Dauer (z. B. ein 300 m langes Containerschiff voll abgeladen mit 24 kn : Stoppstrecke ca. 2 sm , Stoppzeit ca. 12 Minuten) zu rechnen."
+    },
+    {
+      "id": 492,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie reagiert ein großes Schiff, wenn bei ca. 20 kn Fahrt ein Ausweichmanöver durch Hartruderlage eingeleitet wird?Nach welcher Distanz verlässt es in etwa die alte Kurslinie?",
+      "answer": "Der Steven bewegt sich in Richtung der Hartruderlage, das Heck schlägt relativ weit zur entgegengesetzten Richtung aus. Das Schiff verlässt mit seinem Heck erst nach mehreren Schiffslängen seine bisherige Kurslinie, bewegt sich also zunächst in der alten Kursrichtung fort. Diese Strecke kann bei 300 m langen Containerschiffen 1,5 bis 2,5 Schiffslängen, d. h. ca. 500 bis 600 m betragen."
+    },
+    {
+      "id": 493,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Auf vielen großen Schiffen ist die Sicht nach vorne eingeschränkt.Welchen Abstand vor einem Schiff müssen Sie als nicht einsehbar mindestens berücksichtigen?",
+      "answer": "Sichtbeschränkung nach voraus maximal 2 Schiffslängen oder 500 m."
+    },
+    {
+      "id": 494,
+      "topic": "Seemannschaft",
+      "subtopic": "",
+      "question": "Wie können Sie die Wahrscheinlichkeit erhöhen, im Radar von anderen Fahrzeugen gesehen zu werden?",
+      "answer": "Durch einen möglichst hoch und fest angebrachten passiven Radarreflektor bzw. besser noch durch einen \"aktiven\" Radarreflektor."
+    }
+  ]
+}
