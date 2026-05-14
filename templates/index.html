@@ -18,6 +18,7 @@
       --text:    #d4c8b0;
       --muted:   #7a8fa0;
       --correct: #4caf82;
+      --partial: #d9a52b;
       --wrong:   #c0523a;
       --warn:    #c8973a;
       --border:  #1e3347;
@@ -153,7 +154,7 @@
     .pdot.none { background: var(--border2); }
     .pdot.ok   { background: var(--correct); }
     .pdot.fail { background: var(--wrong); }
-    .pdot.part { background: var(--warn); }
+    .pdot.part { background: var(--partial); }
 
     /* ═══ MAIN ══════════════════════════════════════════════ */
     main {
@@ -218,6 +219,7 @@
       border-left: 4px solid; animation: fadeSlide 0.22s ease;
     }
     #result-card.correct { background: #0d2b1f; border-color: var(--correct); }
+    #result-card.partial { background: #2a1a0b; border-color: var(--partial); }
     #result-card.wrong   { background: #2b0f0a; border-color: var(--wrong); }
     @keyframes fadeSlide {
       from { opacity: 0; transform: translateY(-6px); }
@@ -230,6 +232,7 @@
     .score-bar-wrap { width: 80px; height: 5px; background: rgba(0,0,0,0.3); border-radius: 3px; overflow: hidden; }
     .score-bar { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
     .score-bar.ok   { background: var(--correct); }
+    .score-bar.partial { background: var(--partial); }
     .score-bar.fail { background: var(--wrong); }
     #result-feedback { font-size: 0.87rem; line-height: 1.6; margin-bottom: 12px; }
     .expected-label {
@@ -357,7 +360,7 @@
     .mini-bar-wrap { height: 3px; background: var(--border2); border-radius: 2px; overflow: hidden; }
     .mini-bar-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
     .mini-bar-fill.good  { background: var(--correct); }
-    .mini-bar-fill.mid   { background: var(--warn); }
+    .mini-bar-fill.mid   { background: var(--partial); }
     .mini-bar-fill.poor  { background: var(--wrong); }
     .mini-bar-fill.zero  { background: var(--border2); width: 0 !important; }
 
@@ -906,19 +909,43 @@ async function submitAnswer() {
 // ═══════════════════════════════════════════════════════════
 function showResult(res) {
   const card = document.getElementById('result-card');
-  card.className     = res.correct ? 'correct' : 'wrong';
+
+  const resultType = getResultType(res)
+  card.className     = resultType;
   card.style.display = 'block';
 
   const verdict = document.getElementById('result-verdict');
-  verdict.textContent = res.correct ? '✓ Richtig' : '✗ Falsch';
-  verdict.className   = 'result-verdict ' + (res.correct ? 'ok' : 'fail');
+  if (resultType === 'correct') {
+    verdict.textContent = '✓ Richtig';
+    verdict.className   = 'result-verdict ok';
+  } else if (resultType === 'partial') {    
+    verdict.textContent = '~ Teilweise';
+    verdict.className   = 'result-verdict';
+  } else if (resultType === 'wrong') {    
+    verdict.textContent = '✗ Falsch';
+    verdict.className   = 'result-verdict fail';
+  }
+
 
   const bar = document.getElementById('score-bar');
   bar.style.width = res.score + '%';
-  bar.className   = 'score-bar ' + (res.correct ? 'ok' : 'fail');
+  bar.className =
+    'score-bar ' +
+    (resultType === 'correct'
+      ? 'ok'
+      : resultType === 'partial'
+      ? 'partial'
+      : 'fail');
 
   document.getElementById('result-feedback').textContent      = res.feedback;
   document.getElementById('expected-answer-text').textContent = res.answer;
+}
+
+function getResultType(res) {
+  if (res.sks_punkte == 2) return 'correct';
+  if (res.sks_punkte == 1) return 'partial';
+  if (res.sks_punkte == 0) return 'wrong';
+  return 'wrong';
 }
 
 function resetResultCard() {
@@ -970,8 +997,19 @@ function esc(s) {
 }
 
 // Strg+Enter to submit
-document.getElementById('answer-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && e.ctrlKey) submitAnswer();
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' || !e.ctrlKey) return;
+
+  const resultCard = document.getElementById('result-card');
+  const visible = getComputedStyle(resultCard).display !== 'none';
+
+  e.preventDefault();
+
+  if (visible) {
+    loadNextQuestion();
+  } else {
+    submitAnswer();
+  }
 });
 
 init();

@@ -140,7 +140,7 @@ def _parse_response(raw: str) -> Assessment:
                 correct = correct.lower() in ("true", "1", "yes", "correct", "richtig")
             return Assessment(
                 correct=bool(correct),
-                sks_punkte=(data.get("sks_punkte"), 0),
+                sks_punkte=int(data.get("sks_punkte", 0)),
                 score=int(data.get("score", 0)),
                 feedback=str(data.get("feedback", "")),
             )

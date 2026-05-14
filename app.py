@@ -64,6 +64,7 @@ def api_assess():
     return jsonify({
         "correct": result.correct,
         "score": result.score,
+        "sks_punkte": result.sks_punkte,
         "feedback": result.feedback,
         "answer": question["answer"],
         "progress": progress,
