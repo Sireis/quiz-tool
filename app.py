@@ -3,8 +3,9 @@ app.py
 Flask entry point. Routes call into question_store and assessor.
 """
 
-from flask import Flask, jsonify, render_template, request, abort
+from flask import Flask, jsonify, render_template, request, abort, send_from_directory
 
+import os
 import assessor
 import question_store
 
@@ -19,6 +20,10 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 # ---------------------------------------------------------------------------
 # API routes
