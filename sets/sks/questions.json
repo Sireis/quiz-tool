@@ -3316,8 +3316,8 @@
       "id": 474,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Welcher Ankergrund ist für die üblichen Leichtgewichtsanker1. gut geeignet?2. mäßig geeignet?3. ungeeignet?",
-      "answer": "Sand, Schlick, weicher Ton und Lehm, harter Ton und Lehm, steinige, verkrautete und stark schlammige Böden."
+      "question": "Welcher Ankergrund ist für die üblichen Leichtgewichtsanker\n1. gut geeignet?\n2. mäßig geeignet?\n3. ungeeignet?",
+      "answer": "1. Sand, Schlick, weicher Ton und Lehm,\n 2. harter Ton und Lehm,\n 3. steinige, verkrautete und stark schlammige Böden."
     },
     {
       "id": 475,
