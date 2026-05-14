@@ -31,7 +31,8 @@ def api_next_question(field: str):
         abort(400, description="missing field parameter")
         
     topic = request.args.get("topic")
-    question = question_store.get_next_question(field, topic)
+    filter = request.args.get("filter")
+    question = question_store.get_next_question(field, filter, topic)
     progress = question_store.load_progress(field)
     if question is None:
         return jsonify({"error": "No questions available"}), 404
@@ -80,13 +81,13 @@ def api_topics(field: str):
         
     return jsonify(question_store.get_topics(field))
 
-@app.get("/api/fields/<field>/pruefungen")
+@app.get("/api/fields/<field>/examens")
 def api_pruefungen(field: str):
     if field == "undefined":
         print("not serving request with undefined field")
         abort(400, description="missing field parameter")
         
-    return jsonify(question_store.get_pruefungen(field))
+    return jsonify(question_store.get_examens(field))
 
 @app.get("/api/fields/<field>/sets")
 def api_sets(field: str):
@@ -120,13 +121,13 @@ def api_topic_stats(field: str, topic: str):
         
     return jsonify(question_store.get_topic_stats(field, topic))
 
-@app.get("/api/fields/<field>/pruefungen/<pruefung>/stats")
-def api_pruefung_stats(field: str, pruefung: str):
+@app.get("/api/fields/<field>/examens/<examen>/stats")
+def api_pruefung_stats(field: str, examen: str):
     if field == "undefined":
         print("not serving request with undefined field")
         abort(400, description="missing field parameter")
 
-    return jsonify(question_store.get_pruefung_stats(field, pruefung))
+    return jsonify(question_store.get_examen_stats(field, examen))
 
 @app.get("/api/fields/<field>/sets/<set_name>/stats")
 def api_set_stats(field: str, set_name: str):

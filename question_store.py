@@ -34,7 +34,20 @@ def load_progress(field: str) -> dict:
         return {}
     with open(path, encoding="utf-8") as f:
         return json.load(f)
-
+    
+def load_sets(field: str) -> dict:
+    path = FIELDS_PATH / field / "sets.json"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+    
+def load_examens(field: str) -> dict:
+    path = FIELDS_PATH / field / "examens.json"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
 def save_progress(field: str, progress: dict) -> None:
     """Save progress data to progress.json."""
@@ -51,19 +64,41 @@ def get_all_questions(field: str) -> list[dict]:
         
     return questions, progress
 
+def get_filtered_questions(field: str, filter: str, topic: str) -> list[dict]:    
+    questions, _ = get_all_questions(field)
+    if filter:
+        sets = load_sets(field)
+        examens = load_examens(field)
+        if filter in sets:
+            ids = sets[filter]
+        if filter in examens:
+            ids = examens[filter]
+        
+        filtered_questions = []
+        for id in ids:
+            filtered_questions.append(next((q for q in questions if q["id"] == id), None))
+        questions = filtered_questions
+
+    if topic:
+        questions = [q for q in questions if q["topic"] == topic]
+        
+    return questions
+
 
 def get_question_by_id(field: str, qid: str) -> Optional[dict]:
     questions, _ = get_all_questions(field)
     return next((q for q in questions if q["id"] == int(qid)), None)
 
 
-def get_next_question(field: str, topic: Optional[str] = None) -> Optional[dict]:
+def get_next_question(field: str, filter: Optional[str] = None, topic: Optional[str] = None) -> Optional[dict]:
     """
     Return the question with the lowest success-rate among those with at
     least one attempt; fall back to any unattempted question, then random.
     Optionally filter by topic.
     """
-    questions, progress = get_all_questions(field)
+    questions = get_filtered_questions(field, filter, topic)
+    progress = load_progress(field)
+
     if topic:
         questions = [q for q in questions if q["topic"] == topic]
     if not questions:
@@ -110,9 +145,50 @@ def get_fields() -> list[str]:
     return sorted(all_fields)
 
 
+def get_sets(field: str) -> list[dict]:
+    sets = load_sets(field)
+
+    return [
+        {
+            "name": name,
+            "questions_count": len(questions),
+        }
+        for name, questions in sets.items()
+    ]
+
+def get_examens(field: str) -> list[dict]:
+    sets = load_examens(field)
+
+    return [
+        {
+            "name": name,
+            "questions_count": len(questions),
+        }
+        for name, questions in sets.items()
+    ]
+
+
 def get_topics(field: str) -> list[str]:
     questions, _ = get_all_questions(field)
     return sorted({q["topic"] for q in questions})
+
+
+def get_set_stats(field: str, set: str) -> dict:
+    questions = get_filtered_questions(field, set, "")
+    ids = [q["id"] for q in questions]
+    return get_stats(field, ids)
+
+
+def get_examen_stats(field: str, examen: str) -> dict:
+    questions = get_filtered_questions(field, examen, "")
+    ids = [q["id"] for q in questions]
+    return get_stats(field, ids)
+
+
+def get_topic_stats(field: str, topic: str) -> dict:
+    questions = get_filtered_questions(field, "", topic)
+    ids = [q["id"] for q in questions]
+    return get_stats(field, ids)
 
 
 def get_stats(field: str, ids: list[int]) -> dict:
