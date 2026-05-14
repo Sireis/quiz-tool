@@ -10,19 +10,68 @@ Backend is selected via the ASSESSOR_BACKEND env variable:
 import json
 import os
 import re
+from openai import OpenAI  # lazy import
 from dataclasses import dataclass
+from dotenv import load_dotenv
+load_dotenv()
 
 BACKEND = os.environ.get("ASSESSOR_BACKEND", "gpt4all").lower()
 GPT4ALL_MODEL = os.environ.get("GPT4ALL_MODEL", "mistral-7b-instruct-v0.1.Q4_0.gguf")
 OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
 
+SKS_SYSTEM_PROMPT = """
+You are an official SKS (Sportküstenschifferschein) examiner.
+
+You evaluate answers in German strictly according to real SKS exam standards used in Germany.
+
+You will receive:
+- Frage (question)
+- Musterlösung (expected correct answer)
+- Schülerantwort (student answer)
+
+Your task:
+Assess the student answer like a real SKS Prüfer: strict, safety-oriented, technically precise.
+
+Evaluation rules:
+1. Compare only with maritime SKS knowledge (COLREG, navigation, seamanship, weather, safety).
+2. Focus on correctness of nautical facts and procedures.
+3. Partial credit is allowed if core seamanship logic is correct.
+4. Wording differences are irrelevant if meaning is correct.
+5. Evaluate by meaning, not by matching answer with expected answer
+
+Scoring:
+- 2 points: fully correct, complete, safe seamanship answer
+- 1 point: partially correct, but missing important detail or minor technical error
+- 0 points: incorrect, unsafe, or missing key knowledge
+
+Additionally provide:
+- A percentage score (0–100)
+- Short examiner-style feedback:
+  - If correct: very brief confirmation + optional improvement hint
+  - If incorrect: what is missing or wrong (focus on technical/naval correctness)
+
+Tone:
+- Neutral, exam-like, no encouragement or politeness excess
+- Concise, technical German
+
+Output must always be in German. Reply in valid JSON only:
+{
+  "correct": <True/False>,
+  "sks_punkte": <0-2>,
+  "score": <0-100>,
+  "feedback": <feedback>
+}
+"""
+
 
 @dataclass
 class Assessment:
     correct: bool
-    score: int          # 0–100
+    sks_punkte: int
+    score: int
     feedback: str
 
+client = OpenAI()
 
 # ---------------------------------------------------------------------------
 # Public API
@@ -31,14 +80,15 @@ class Assessment:
 def assess(question: str, answer: str, student_answer: str) -> Assessment:
     prompt = _build_prompt(question, answer, student_answer)
     raw = _call_backend(prompt)
+    print(f"returned Response:\n{raw}")
     return _parse_response(raw)
-
 
 # ---------------------------------------------------------------------------
 # Backend dispatch
 # ---------------------------------------------------------------------------
 
-def _call_backend(prompt: str) -> str:
+def _call_backend(prompt: str) -> dict:
+    print(f"calling backend {BACKEND}")
     if BACKEND == "openai":
         return _call_openai(prompt)
     return _call_gpt4all(prompt)
@@ -51,16 +101,20 @@ def _call_gpt4all(prompt: str) -> str:
         return model.generate(prompt, max_tokens=256)
 
 
-def _call_openai(prompt: str) -> str:
-    from openai import OpenAI  # lazy import
-    client = OpenAI()
-    response = client.chat.completions.create(
+def _call_openai(prompt: str) -> dict:
+
+    response = client.responses.create(
         model=OPENAI_MODEL,
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=256,
-        temperature=0.2,
+        temperature=0,
+        input=[
+            {"role": "system", "content": SKS_SYSTEM_PROMPT},
+            {"role": "user",
+             "content": f"{prompt}"}
+        ],
+        max_output_tokens=256,
     )
-    return response.choices[0].message.content
+    print(f"API respone:\n{response.output_text}")
+    return response.output_text
 
 
 # ---------------------------------------------------------------------------
@@ -69,14 +123,9 @@ def _call_openai(prompt: str) -> str:
 
 def _build_prompt(question: str, answer: str, student_answer: str) -> str:
     return (
-        "You are a strict but fair maritime exam examiner.\n"
-        "Assess whether the student's answer is correct.\n"
-        "Be lenient with phrasing but strict about factual correctness.\n\n"
-        f"Question: {question}\n"
-        f"Reference answer: {answer}\n"
-        f"Student's answer: {student_answer}\n\n"
-        "Respond ONLY with a JSON object, no extra text:\n"
-        '{"correct": true/false, "score": <0-100>, "feedback": "<one concise sentence>"}'
+        f"Frage: {question}\n"
+        f"Musterlösung: {answer}\n"
+        f"Schülerantwort: {student_answer}\n\n"
     )
 
 
@@ -86,8 +135,12 @@ def _parse_response(raw: str) -> Assessment:
     if match:
         try:
             data = json.loads(match.group())
+            correct = data.get("correct", False)
+            if isinstance(correct, str):
+                correct = correct.lower() in ("true", "1", "yes", "correct", "richtig")
             return Assessment(
-                correct=bool(data.get("correct", False)),
+                correct=bool(correct),
+                sks_punkte=(data.get("sks_punkte"), 0),
                 score=int(data.get("score", 0)),
                 feedback=str(data.get("feedback", "")),
             )
