@@ -859,7 +859,7 @@
       "id": 123,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Die KVR regeln u. a. das Verhalten der Schiffsführungen bei Kollisionsgefahr.Was ist im Rahmen der Verantwortlichkeit bei der Auslegung und Befolgung der KVR zu berücksichtigen?",
+      "question": "Die KVR regeln u. a. das Verhalten der Schiffsführungen bei Kollisionsgefahr.\nWas ist im Rahmen der Verantwortlichkeit bei der Auslegung und Befolgung der KVR zu berücksichtigen?",
       "answer": "Bei der Auslegung und Befolgung der KVR sind stets alle Gefahren der Schifffahrt und des Zusammenstoßes sowie alle besonderen Umstände einschließlich Behinderungen der betroffenen Fahrzeuge gebührend zu berücksichtigen, die zum Abwenden unmittelbarer Gefahr ggf. auch ein Abweichen von diesen Regeln erfordern können (\nz. B.\nAbweichen von der Kurshaltepflicht, wenn der Ausweichpflichtige nicht angemessen handelt)."
     },
     {
@@ -915,7 +915,7 @@
       "id": 131,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie sehen in der Dämmerung in der Nordsee in der Zufahrt zur Jade einen großen Tanker mit der üblichen Lichterführung, auf dem kurze Zeit später die Lichter rot-weiß-rot senkrecht übereinander zusätzlich zu den Fahrtlichtern gesetzt werden.Welche rechtliche Bedeutung hat die geänderte Signalgebung für Sie?",
+      "question": "Sie sehen in der Dämmerung in der Nordsee in der Zufahrt zur Jade einen großen Tanker mit der üblichen Lichterführung, auf dem kurze Zeit später die Lichter rot-weiß-rot senkrecht übereinander zusätzlich zu den Fahrtlichtern gesetzt werden.\nWelche rechtliche Bedeutung hat die geänderte Signalgebung für Sie?",
       "answer": "Beim Erreichen des Geltungsbereiches der\nSeeSchStrO\nkennzeichnet sich der Tanker als Wegerechtschiff, das als manövrierbehindertes Fahrzeug gilt. Diesem so gekennzeichneten Fahrzeug muss im Falle einer Kollisionsgefahr ausgewichen werden."
     },
     {
@@ -957,21 +957,21 @@
       "id": 137,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Man hört bei Nebel folgendes Schallsignal mit der Pfeife(lang-kurz-kurz), unmittelbar gefolgt von(lang-kurz-kurz-kurz) etwa jede Minute.Worum handelt es sich dabei?",
+      "question": "Man hört bei Nebel folgendes Schallsignal mit der Pfeife(lang-kurz-kurz), unmittelbar gefolgt von(lang-kurz-kurz-kurz) etwa jede Minute.\nWorum handelt es sich dabei?",
       "answer": "Es ist das Schallsignal eines Schleppverbandes in Fahrt (schleppendes Fahrzeug lang-kurz-kurz; Anhang lang-kurz-kurz-kurz)."
     },
     {
       "id": 138,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Bei Nebel im Küstenbereich fahrend, hört man etwa jede Minute folgendes Signal: drei Glockenschläge, dannca.5 Sekunden lang rasches Läuten einer Glocke, dann drei Glockenschläge.Wer gibt dieses Signal?",
+      "question": "Bei Nebel im Küstenbereich fahrend, hört man etwa jede Minute folgendes Signal: drei Glockenschläge, dannca.5 Sekunden lang rasches Läuten einer Glocke, dann drei Glockenschläge.\nWer gibt dieses Signal?",
       "answer": "Dieses Signal gibt ein Fahrzeug auf Grund unter 100 m Länge."
     },
     {
       "id": 139,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie sehen ein Fahrzeug mit folgender Lichterführung:1. Worum handelt es sich?2. Welches Schallsignal müsste dieses Fahrzeug bei unsichtigem Wetter geben?",
+      "question": "Sie sehen ein Fahrzeug mit folgender Lichterführung:\n1. Worum handelt es sich?\n2. Welches Schallsignal müsste dieses Fahrzeug bei unsichtigem Wetter geben?",
       "answer": "Treibnetzfischer (Fahrzeug, das nicht trawlt) in Fahrt oder vor Anker mit ausgebrachtem Fanggerät, das waagerecht weiter als 150 m ins Wasser reicht. (Das untere weiße Licht kann auch das Hecklicht sein).\nSchallsignal\n(lang-kurz-kurz) mindestens alle 2 Minuten."
     },
     {
@@ -1055,14 +1055,14 @@
       "id": 151,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie segeln in der Nordsee bei guter Sicht.Ihnen kommt in stehender Peilung ein Maschinenfahrzeug entgegen, das keine Anstalten macht, seiner Ausweichpflicht nachzukommen.Geben Sie in einer sinnvollen Reihenfolge an, was von Ihnen zu unternehmen ist.Welche dieser Maßnahmen sind zwingend vorgeschrieben?",
+      "question": "Sie segeln in der Nordsee bei guter Sicht.\nIhnen kommt in stehender Peilung ein Maschinenfahrzeug entgegen, das keine Anstalten macht, seiner Ausweichpflicht nachzukommen.\nGeben Sie in einer sinnvollen Reihenfolge an, was von Ihnen zu unternehmen ist.\nWelche dieser Maßnahmen sind zwingend vorgeschrieben?",
       "answer": "Über Funk versuchen, das andere Fahrzeug auf seine Ausweichpflicht aufmerksam zu machen.\nSchallsignal: mindestens fünf kurze, rasch aufeinander folgende Pfeifentöne geben.\nGgf. Ergänzung zu 2.: Lichtsignal von mindestens fünf kurzen, rasch aufeinander folgenden Blitzen.\nManöver des sogenannten \"vorletzten Augenblicks\" fahren.\nManöver des sogenannten \"letzten Augenblicks\" fahren.\nZwingend vorgeschrieben sind die Maßnahmen nach 2. und 5."
     },
     {
       "id": 152,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Auf einem Segelfahrzeug unter Motor sieht man nachts fast recht voraus ein näher kommendes Fahrzeug mit folgender Lichterführung: oben ein weißes Licht, seitlich darunter ein grünes Licht, zeitweise rechts von dem grünen Licht auf gleicher Höhe auch ein rotes Licht.Um was für ein Fahrzeug handelt es sich, was ist von Ihnen und was ist auf dem anderen Fahrzeug zu unternehmen?",
+      "question": "Auf einem Segelfahrzeug unter Motor sieht man nachts fast recht voraus ein näher kommendes Fahrzeug mit folgender Lichterführung: oben ein weißes Licht, seitlich darunter ein grünes Licht, zeitweise rechts von dem grünen Licht auf gleicher Höhe auch ein rotes Licht.\nUm was für ein Fahrzeug handelt es sich, was ist von Ihnen und was ist auf dem anderen Fahrzeug zu unternehmen?",
       "answer": "Es handelt sich um ein Maschinenfahrzeug von weniger als 50 m Länge, das im Seegang oder durch schlechtes Steuern giert. Man muss annehmen, dass sich zwei Maschinenfahrzeuge auf entgegengesetzten oder fast entgegengesetzten Kursen nähern und die Möglichkeit der Gefahr eines Zusammenstoßes besteht. Beide Fahrzeuge müssen den Kurs nach Steuerbord ändern und dieses durch einen kurzen Ton anzeigen."
     },
     {
@@ -1118,14 +1118,14 @@
       "id": 160,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie segeln nachts mit raumem Wind und machen gute Fahrt.Sie sehen an Steuerbord voraus ein einzelnes weißes Licht in (nahezu) stehender Peilung.Näher kommend verschwindet das weiße Licht gelegentlich und es erscheint stattdessen in etwa gleicher Höhe und links davon ein rotes Licht.Jeweils kurzfristig sind beide Lichter gleichzeitig zu sehen.1. Worum handelt es sich bei diesen Lichtern?2. Wer muss ausweichen? (Begründung!)",
+      "question": "Sie segeln nachts mit raumem Wind und machen gute Fahrt.\nSie sehen an Steuerbord voraus ein einzelnes weißes Licht in (nahezu) stehender Peilung.\nNäher kommend verschwindet das weiße Licht gelegentlich und es erscheint stattdessen in etwa gleicher Höhe und links davon ein rotes Licht.\nJeweils kurzfristig sind beide Lichter gleichzeitig zu sehen.1. Worum handelt es sich bei diesen Lichtern?2. Wer muss ausweichen? (Begründung!)",
       "answer": "Man sieht Hecklicht und/oder Backbord-Seitenlicht eines Segelfahrzeugs in Fahrt, das im Seegang giert.\nIhr Fahrzeug nähert sich aus dem Hecksektor des anderen Fahrzeugs. Es steht eben auf dessen Sektorengrenze und muss als überholendes Fahrzeug ausweichen. Im Zweifel (hier Sektorengrenze!) muss man sich als Überholer betrachten."
     },
     {
       "id": 161,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie segeln nachts mit raumem Wind und sehen nahezu achteraus ein Fahrzeug mit der Lichterführung rot-weiß-rot senkrecht übereinander, das näher kommt.Zusätzlich sehen Sie neben zwei weißen Topplichtern links ein grünes und rechts ein rotes Licht auf gleicher Höhe.1. Was bedeuten diese Lichter?2. Wer muss ausweichen? (Begründung!)",
+      "question": "Sie segeln nachts mit raumem Wind und sehen nahezu achteraus ein Fahrzeug mit der Lichterführung rot-weiß-rot senkrecht übereinander, das näher kommt.\nZusätzlich sehen Sie neben zwei weißen Topplichtern links ein grünes und rechts ein rotes Licht auf gleicher Höhe.\n1. Was bedeuten diese Lichter?2. Wer muss ausweichen? (Begründung!)",
       "answer": "Man sieht ein manövrierbehindertes Fahrzeug mit FdW (Topplichter, Seitenlichter).\nDieses Fahrzeug nähert sich im Hecklichtsektor und muss deshalb als Überholer ausweichen."
     },
     {
@@ -1139,7 +1139,7 @@
       "id": 163,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Ein anderes Fahrzeug muss Ihnen ausweichen.Welche Verpflichtung nach KVR haben Sie?Was unternehmen Sie, wenn das andere Fahrzeug nicht ausweicht?",
+      "question": "Ein anderes Fahrzeug muss Ihnen ausweichen.\nWelche Verpflichtung nach KVR haben Sie?Was unternehmen Sie, wenn das andere Fahrzeug nicht ausweicht?",
       "answer": "Mein Fahrzeug ist \"Kurshalter\", d. h. es muss Kurs und Geschwindigkeit beibehalten.\nMein Fahrzeug darf zur Abwendung eines Zusammenstoßes manövrieren, sobald erkennbar wird, dass das andere Fahrzeug nicht angemessen (= regelgerecht) manövriert (\"Manöver des vorletzten Augenblicks!\")\nMein Fahrzeug muss zweckdienlich manövrieren, wenn ein Manöver des Ausweichpflichtigen allein einen Zusammenstoß nicht mehr vermeiden kann (\"Manöver des letzten Augenblicks!\")"
     },
     {
@@ -1174,14 +1174,14 @@
       "id": 168,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Auf einer Motoryacht A sieht man nachts etwa recht voraus Topplicht und beide Seitenlichter eines Fahrzeugs B.Die Lichter werden rasch heller.1. Was ist B?2. Wie ist die Situation zu klären?",
+      "question": "Auf einer Motoryacht A sieht man nachts etwa recht voraus Topplicht und beide Seitenlichter eines Fahrzeugs B.\nDie Lichter werden rasch heller.\n1. Was ist B?\n2. Wie ist die Situation zu klären?",
       "answer": "B ist ein Maschinenfahrzeug von weniger als 50 m Länge in Fahrt.\nA und B müssen ihren Kurs so nach Steuerbord ändern, dass sie einander an der Backbord-Seite passieren. Dabei müssen A und B das Signal \"ein kurzer Ton\" geben."
     },
     {
       "id": 169,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Auf einer Motoryacht A erkennt man nachts etwa 2 Strich an Backbord folgende Lichter des Fahrzeugs B, die rasch näher kommen.Die Kompasspeilung zum Fahrzeug B ändert sich dabei nur geringfügig.1. Worum handelt es sich bei Fahrzeug B?2. Wer muss ausweichen?3. Was muss Fahrzeug A tun?",
+      "question": "Auf einer Motoryacht A erkennt man nachts etwa 2 Strich an Backbord folgende Lichter des Fahrzeugs B, die rasch näher kommen.\nDie Kompasspeilung zum Fahrzeug B ändert sich dabei nur geringfügig.\n1. Worum handelt es sich bei Fahrzeug B?2. Wer muss ausweichen?3. Was muss Fahrzeug A tun?",
       "answer": "B ist ein Maschinenfahrzeug von weniger als 50 m Länge in Fahrt, dessen Steuerbord-Seite man sieht.\nB muss ausweichen, weil es die Motoryacht A an seiner Steuerbord-Seite hat.\nDie Motoryacht A muss Kurs und Geschwindigkeit beibehalten."
     },
     {
@@ -1195,14 +1195,14 @@
       "id": 171,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Auf einer Motoryacht A sieht man nachts etwa querab an Steuerbord ein einzelnes weißes Licht in (nahezu) stehender Kompasspeilung.Näher kommend erkennt man unterhalb des weißen Lichtes und etwas rechts davon ein rotes Licht (Fahrzeug B).1. Worum handelt es sich?2. Was müssen jeweils beide Fahrzeuge tun? (Begründung!)",
+      "question": "Auf einer Motoryacht A sieht man nachts etwa querab an Steuerbord ein einzelnes weißes Licht in (nahezu) stehender Kompasspeilung.\nNäher kommend erkennt man unterhalb des weißen Lichtes und etwas rechts davon ein rotes Licht (Fahrzeug B).\n1. Worum handelt es sich?2. Was müssen jeweils beide Fahrzeuge tun? (Begründung!)",
       "answer": "Topplicht und später Backbord-Seitenlicht eines Maschinenfahrzeuges B von weniger als 50 m Länge in Fahrt.\nA muss ausweichen, weil es B an seiner Steuerbord-Seite hat. A muss das Signal \"ein kurzer Ton\" geben.\nB muss Kurs und Geschwindigkeit beibehalten."
     },
     {
       "id": 172,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Eine Motoryacht, Länge 8 m, treibt nachts manövrierunfähig in der Nordsee und sieht ein großes Fahrzeug direkt auf sich zukommen.Welche Maßnahmen hat die Motoryacht zu ergreifen?",
+      "question": "Eine Motoryacht, Länge 8 m, treibt nachts manövrierunfähig in der Nordsee und sieht ein großes Fahrzeug direkt auf sich zukommen.\nWelche Maßnahmen hat die Motoryacht zu ergreifen?",
       "answer": "Ein Fahrzeug von weniger als 12 m Länge, das die zwei roten Rundumlichter senkrecht übereinander nicht führt, muss folgende Maßnahmen ergreifen:\nDurch jedes andere verfügbare Mittel anzeigen, dass es manövrierunfähig ist, z. B. über\nUKW\n-Sprechfunk oder durch ein Schallsignal oder das Lichtsignal lang-kurz-kurz.\nBei weiterer Annäherung das andere Fahrzeug mit einer starken Handlampe anleuchten und so auf sich aufmerksam machen.\nFühren eines weißen Rundumlichtes, das mit keinem anderen Licht verwechselt werden kann.\nAbfeuern eines Signals \"weißer Stern\" oder \"Blitz-Knall\".\nSofort bei Eintritt der Manövrierunfähigkeit Verkehrszentrale informieren (wenn vorhanden)."
     },
     {
@@ -1272,7 +1272,7 @@
       "id": 182,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Auf der Elbe hören Sie nachts vor sich von einem Fahrzeug, das zusätzlich zu seinen Fahrtlichtern ein rotes Rundumlicht führt, fortwährend das Schallsignal kurz-lang.Um welches Schallsignal handelt es sich, wann ist es zu geben und wie verhalten Sie sich?",
+      "question": "Auf der Elbe hören Sie nachts vor sich von einem Fahrzeug, das zusätzlich zu seinen Fahrtlichtern ein rotes Rundumlicht führt, fortwährend das Schallsignal kurz-lang.\nUm welches Schallsignal handelt es sich, wann ist es zu geben und wie verhalten Sie sich?",
       "answer": "Es handelt sich um das Bleib-weg-Signal, das von einem Fahrzeug gegeben wird, bei dem bestimmte gefährliche Güter oder radioaktive Stoffe frei werden oder drohen frei zu werden oder es besteht Explosionsgefahr.\nMan hat sich mit seinem Fahrzeug möglichst weit von dem anderen Fahrzeug zu entfernen (sicherer Abstand) und darf keine elektrischen Schalter bedienen. Kein offenes Feuer."
     },
     {
@@ -1300,14 +1300,14 @@
       "id": 186,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Während der Durchfahrt durch den Nord-Ostsee-Kanal (NOK) wird man auf einem Sportboot von Nebel überrascht.Was ist zu unternehmen?",
+      "question": "Während der Durchfahrt durch den Nord-Ostsee-Kanal (NOK) wird man auf einem Sportboot von Nebel überrascht.\nWas ist zu unternehmen?",
       "answer": "Schnellstmöglich in einem Weichengebiet hinter den Dalben oder an geeigneten Liegestellen festmachen."
     },
     {
       "id": 187,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie sehen vor dem Einlaufen in den NOK in Brunsbüttel folgende Lichtsignale:1. ein unterbrochenes rotes Licht,2. ein unterbrochenes weißes Licht über einem unterbrochenen roten Licht,3. ein unterbrochenes weißes Licht.Geben Sie die Bedeutung dieser Signale an.",
+      "question": "Sie sehen vor dem Einlaufen in den NOK in Brunsbüttel folgende Lichtsignale:1. ein unterbrochenes rotes Licht,2. ein unterbrochenes weißes Licht über einem unterbrochenen roten Licht,3. ein unterbrochenes weißes Licht.\nGeben Sie die Bedeutung dieser Signale an.",
       "answer": "Einfahren verboten.\nFreigabe wird vorbereitet.\nSportfahrzeuge können einfahren."
     },
     {
@@ -1377,21 +1377,21 @@
       "id": 197,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie sehen auf der Elbe bei Nacht ein Fahrzeug mit der nachfolgenden Lichterführung.Um was für ein Fahrzeug handelt es sich?Was bedeuten die beiden roten und die beiden grünen Lichter senkrecht übereinander?",
+      "question": "Sie sehen auf der Elbe bei Nacht ein Fahrzeug mit der nachfolgenden Lichterführung.\nUm was für ein Fahrzeug handelt es sich?\nWas bedeuten die beiden roten und die beiden grünen Lichter senkrecht übereinander?",
       "answer": "Manövrierbehindertes Fahrzeug, Länge wahrscheinlich 50 m oder mehr, von vorn mit Fahrt durchs Wasser, das Unterwasserarbeiten ausführt (z. B. baggert).\nPassierseite an Steuerbord (zwei grüne Rundumlichter übereinander), Passierbehinderung an Backbord-Seite (zwei rote Rundumlichter übereinander)."
     },
     {
       "id": 198,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie sehen auf der Elbe bei Tage ein Fahrzeug mit den nachfolgenden schwarzen Signalkörpern, dessen Bugwelle man klar erkennen kann.Um was für ein Fahrzeug handelt es sich?Was bedeuten die beiden schwarzen Bälle und die beiden schwarzen Rhomben senkrecht übereinander?",
+      "question": "Sie sehen auf der Elbe bei Tage ein Fahrzeug mit den nachfolgenden schwarzen Signalkörpern, dessen Bugwelle man klar erkennen kann.\nUm was für ein Fahrzeug handelt es sich?Was bedeuten die beiden schwarzen Bälle und die beiden schwarzen Rhomben senkrecht übereinander?",
       "answer": "Entgegenkommendes manövrierbehindertes Fahrzeug von vorn, mit Fahrt durchs Wasser, das Unterwasserarbeiten ausführt (z. B. baggert).\nPassierseite an Backbord des Baggers (zwei schwarze Rhomben übereinander), Passierbehinderung an Steuerbord-Seite des Baggers (zwei schwarze Bälle übereinander)."
     },
     {
       "id": 199,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Beim Passieren von Cuxhaven sichten Sie, elbabwärts segelnd, an Ihrer Steuerbord-Seite die Tonne 32a.Um was für eine Tonne handelt es sich, welche Bezeichnung hat die nächste Tonne an der gleichen Seite?",
+      "question": "Beim Passieren von Cuxhaven sichten Sie, elbabwärts segelnd, an Ihrer Steuerbord-Seite die Tonne 32a.\nUm was für eine Tonne handelt es sich, welche Bezeichnung hat die nächste Tonne an der gleichen Seite?",
       "answer": "Es handelt sich um eine Backbordfahrwassertonne; die nächste Tonne hat die Aufschrift 32."
     },
     {
@@ -1524,7 +1524,7 @@
       "id": 218,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Sie sehen von Ihrem Sportfahrzeug aus in der Nordsee nördlich von Helgoland eine noch unbekannte Gefahr, z. B. einen teibenden Container.Was haben Sie zu unternehmen?",
+      "question": "Sie sehen von Ihrem Sportfahrzeug aus in der Nordsee nördlich von Helgoland eine noch unbekannte Gefahr, z. B. einen teibenden Container.\nWas haben Sie zu unternehmen?",
       "answer": "Man muss dies auf dem schnellsten Weg direkt oder über eine Verkehrszentrale bzw. Küstenfunkstelle dem Maritimen Lagezentrum (\nMLZ\n) in Cuxhaven als Meldestelle für Unfälle auf See mitteilen."
     },
     {
@@ -1958,14 +1958,14 @@
       "id": 280,
       "topic": "Wetterkunde",
       "subtopic": "",
-      "question": "Im Internet finden Sie auf einer \"Wetterseite\" eine Vorhersagekarte mit Windpfeilen.In welcher Höhe über dem Erdboden/der Wasseroberfläche gelten die vorhergesagten Windgeschwindigkeiten?",
+      "question": "Im Internet finden Sie auf einer \"Wetterseite\" eine Vorhersagekarte mit Windpfeilen.\nIn welcher Höhe über dem Erdboden/der Wasseroberfläche gelten die vorhergesagten Windgeschwindigkeiten?",
       "answer": "Meistens etwa 10 Meter über dem Erdboden/der Wasseroberfläche."
     },
     {
       "id": 281,
       "topic": "Wetterkunde",
       "subtopic": "",
-      "question": "Sie segeln mit Ihrer Yacht \"raumschots\".Nach der nächsten Tonne müssen Sie anluven.Wie wird sich die wahre Windgeschwindigkeit auf Ihrem Windmesser/Anemometer entwickeln?",
+      "question": "Sie segeln mit Ihrer Yacht \"raumschots\".\nNach der nächsten Tonne müssen Sie anluven.\nWie wird sich die wahre Windgeschwindigkeit auf Ihrem Windmesser/Anemometer entwickeln?",
       "answer": "Sie bleib unverändert."
     },
     {
@@ -2042,7 +2042,7 @@
       "id": 292,
       "topic": "Wetterkunde",
       "subtopic": "",
-      "question": "Sie hören am Ende eines Seewetterberichts die Stationsmeldungen.Was sagen Windrichtung und Windgeschwindigkeit gegenüber den Verhältnissen auf See aus?",
+      "question": "Sie hören am Ende eines Seewetterberichts die Stationsmeldungen.\nWas sagen Windrichtung und Windgeschwindigkeit gegenüber den Verhältnissen auf See aus?",
       "answer": "Durch die Umgebung der Wetterstation kann die Windrichtung verfälscht werden. Die Windgeschwindigkeit ist meist reduziert, in Einzelfällen auch erhöht."
     },
     {
@@ -2056,14 +2056,14 @@
       "id": 294,
       "topic": "Wetterkunde",
       "subtopic": "",
-      "question": "Seegebiete sind international festgelegt.In welchen amtlichen Veröffentlichungen können Sie nachlesen, wo sich das Seegebiet \"Fischer\" befindet?",
+      "question": "Seegebiete sind international festgelegt.\nIn welchen amtlichen Veröffentlichungen können Sie nachlesen, wo sich das Seegebiet \"Fischer\" befindet?",
       "answer": "Im \"Handbuch Nautischer Funkdienst\", im \"Jachtfunkdienst für Nord- und Ostsee\" oder in der \"\nAdmiralty List of Radio Signals\n\"."
     },
     {
       "id": 295,
       "topic": "Wetterkunde",
       "subtopic": "",
-      "question": "Sie wollen einen Törn in einem für Sie fremden Küstenrevier fahren.Wie können Sie sich über mittlere Windverhältnisse für bestimmte Jahreszeiten oder Monate informieren?",
+      "question": "Sie wollen einen Törn in einem für Sie fremden Küstenrevier fahren.\nWie können Sie sich über mittlere Windverhältnisse für bestimmte Jahreszeiten oder Monate informieren?",
       "answer": "In den entsprechenden Hafen-, Revierführern. Außerdem z. B. in Monatskarten."
     },
     {
@@ -2280,7 +2280,7 @@
       "id": 326,
       "topic": "Wetterkunde",
       "subtopic": "",
-      "question": "Im Internet finden Sie auf einer \"Wetterseite\" eine Vorhersagekarte für die Dünung.Können Sie daraus ungefähr den vorherrschenden Wind über See ableiten?",
+      "question": "Im Internet finden Sie auf einer \"Wetterseite\" eine Vorhersagekarte für die Dünung.\nKönnen Sie daraus ungefähr den vorherrschenden Wind über See ableiten?",
       "answer": "Nein. Dünung kann vorhanden sein, auch wenn kein Windfeld unmittelbar vorhanden ist."
     },
     {
@@ -2511,7 +2511,7 @@
       "id": 359,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Ihr Mast ist gebrochen, eine Bergung ist nicht möglich.Welche Werkzeuge benötigen Sie, um die Takelage zu kappen?",
+      "question": "Ihr Mast ist gebrochen, eine Bergung ist nicht möglich.\nWelche Werkzeuge benötigen Sie, um die Takelage zu kappen?",
       "answer": "Bolzenschneider, Metallsäge mit Ersatzblättern, Schraubenschlüssel und verschiedene Zangen."
     },
     {
@@ -2602,14 +2602,14 @@
       "id": 372,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Erklären Sie mit Hilfe eines Vektorparallelogramms aus \"wahrem Wind (wW)\", \"Fahrtwind (Fw)\" und \"scheinbarem Wind (sW)\", warum beim Einfallen einer Bö (Windzunahme) der \"scheinbare Wind\" raumt.Welcher Vorteil ergibt sich dadurch beim Kreuzen?(Zeichnung!)",
+      "question": "Erklären Sie mit Hilfe eines Vektorparallelogramms aus \"wahrem Wind (wW)\", \"Fahrtwind (Fw)\" und \"scheinbarem Wind (sW)\", warum beim Einfallen einer Bö (Windzunahme) der \"scheinbare Wind\" raumt.\nWelcher Vorteil ergibt sich dadurch beim Kreuzen?(Zeichnung!)",
       "answer": "Verhältnisse vor Einfall der Bö Verhältnisse bei Einfall der Bö: Der \"scheinbare Wind\" fällt etwas achterlicher ein, er \"raumt\", und das Segelboot kann etwas höher an den \"wahren Wind\" gehen."
     },
     {
       "id": 373,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Auf Amwindkurs mussten Sie reffen.Ein entgegenkommendes Boot gleicher Größe segelt ungerefft.Wie erklären Sie das?",
+      "question": "Auf Amwindkurs mussten Sie reffen.\nEin entgegenkommendes Boot gleicher Größe segelt ungerefft.\nWie erklären Sie das?",
       "answer": "Der \"scheinbare Wind\" ist unterschiedlich stark. Er ist auf Amwindkursen stärker und auf Raumschot- oder Vorwindkursen schwächer als der \"wahre Wind\"."
     },
     {
@@ -2630,7 +2630,7 @@
       "id": 376,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie segeln am Wind, Krängung und Ruderdruck nehmen stark zu.1. Wie bezeichnet man das Verhalten des Bootes?2. Mit welchen Mitteln können Sie die Krängung und den Ruderdruck vermindern?",
+      "question": "Sie segeln am Wind, Krängung und Ruderdruck nehmen stark zu.\n1. Wie bezeichnet man das Verhalten des Bootes?2. Mit welchen Mitteln können Sie die Krängung und den Ruderdruck vermindern?",
       "answer": "Luvgierigkeit. Traveller nach Lee setzen und/oder Großschot (etwas) fieren, Großsegel reffen."
     },
     {
@@ -2644,21 +2644,21 @@
       "id": 378,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Das Vorliek der Fock wirft Falten.Welches ist die häufigste Ursache?",
+      "question": "Das Vorliek der Fock wirft Falten.\nWelches ist die häufigste Ursache?",
       "answer": "Das Fall ist nicht genügend durchgesetzt."
     },
     {
       "id": 379,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Das Unterliek Ihres Vorsegels killt.Was ist die Ursache?",
+      "question": "Das Unterliek Ihres Vorsegels killt.\nWas ist die Ursache?",
       "answer": "Der Holepunkt der Schot liegt zu weit vorne."
     },
     {
       "id": 380,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Das Achterliek Ihres Vorsegels killt.Was ist die Ursache?",
+      "question": "Das Achterliek Ihres Vorsegels killt.\nWas ist die Ursache?",
       "answer": "Der Holepunkt der Schot liegt zu weit achtern."
     },
     {
@@ -2749,21 +2749,21 @@
       "id": 393,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Der Dieselmotor Ihres Bootes startet nicht.Welche Fehler, die Sie selber überprüfen können, könnten die Ursache sein?",
+      "question": "Der Dieselmotor Ihres Bootes startet nicht.\nWelche Fehler, die Sie selber überprüfen können, könnten die Ursache sein?",
       "answer": "Anlasserdrehzahl zu gering (Batterie zu schwach), kein Kraftstoff im Tank, Luft in der Kraftstoffleitung, falsche Bedienung der Kaltstarthilfe (eventuell Vorglühen zu kurz), Anlasser defekt."
     },
     {
       "id": 394,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Der Motor Ihres Bootes bleibt beim Einkuppeln stehen.Nennen Sie mögliche Ursachen.",
+      "question": "Der Motor Ihres Bootes bleibt beim Einkuppeln stehen.\nNennen Sie mögliche Ursachen.",
       "answer": "Propellerwelle durch Tauwerk o. Ä. blockiert, Schwerlauf des Getriebes wegen defekter Zahnräder, Lagerschaden, dicken Öls oder verbogene Propellerwelle."
     },
     {
       "id": 395,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Während Sie unter Maschine laufen, steigt plötzlich die Kühlwassertemperatur stark an.Ihre Yacht ist mit einem Saildrive-Antrieb ausgestattet.1. Welche typische Ursache hat der Temperaturanstieg, wenn eine technische Störung unwahrscheinlich ist?2. Wie können Sie die Störung einfach beheben?",
+      "question": "Während Sie unter Maschine laufen, steigt plötzlich die Kühlwassertemperatur stark an.\nIhre Yacht ist mit einem Saildrive-Antrieb ausgestattet.\n1. Welche typische Ursache hat der Temperaturanstieg, wenn eine technische Störung unwahrscheinlich ist?2. Wie können Sie die Störung einfach beheben?",
       "answer": "Fremdkörper (Folienstücke, Plastiktüten, Pflanzenteile o. Ä.) haben den Kühlwassereinlass verstopft. Mehrmals abwechselnd vor- und zurückfahren, sodass sich die Fremdkörper vom Kühlwassereinlass lösen."
     },
     {
@@ -2882,7 +2882,7 @@
       "id": 412,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Ein funktionsfähiges elektrisches Gerät arbeitet an Bord nicht.Nennen Sie häufige Ursachen und was kann zur Behebung getan werden?",
+      "question": "Ein funktionsfähiges elektrisches Gerät arbeitet an Bord nicht.\nNennen Sie häufige Ursachen und was kann zur Behebung getan werden?",
       "answer": "Schlechte Kontakte und Korrosion. Kontakte fest anziehen, korrodierte Stellen mit feinstem Schleifpapier säubern, Kontaktspray verwenden."
     },
     {
@@ -2938,7 +2938,7 @@
       "id": 420,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Wenn gleich große Boote im Päckchen oder in der Box zusammenliegen, kann es zu Berührungen und Schäden in der Takelage kommen.Wie ist das zu verhindern?",
+      "question": "Wenn gleich große Boote im Päckchen oder in der Box zusammenliegen, kann es zu Berührungen und Schäden in der Takelage kommen.\nWie ist das zu verhindern?",
       "answer": "Boote versetzt legen, damit Masten nicht auf gleicher Höhe sind oder im Wechsel Heck-Bug zur Pier legen."
     },
     {
@@ -2952,14 +2952,14 @@
       "id": 422,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie sind mit Ihrer Segelyacht auf See.Was veranlassen Sie bei einem Gewitteraufzug?",
+      "question": "Sie sind mit Ihrer Segelyacht auf See.\nWas veranlassen Sie bei einem Gewitteraufzug?",
       "answer": "Vorsegel rechtzeitig verkleinern, Großsegel klar zum Reffen oder Bergen, Schlechtwetterkleidung, Sicherheitsgurte und Rettungswesten anlegen, Position in Karte eintragen."
     },
     {
       "id": 423,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie übernehmen in einem Hafen eine Ihnen unbekannte Yacht.Wie machen Sie sich zu Reisebeginn mit den Segeleigenschaften vertraut?",
+      "question": "Sie übernehmen in einem Hafen eine Ihnen unbekannte Yacht.\nWie machen Sie sich zu Reisebeginn mit den Segeleigenschaften vertraut?",
       "answer": "Ich fahre diverse Manöver - Wende, Halse, Q-Wende, verschiedene Rettungsmanöver - mit unterschiedlicher Geschwindigkeit und Besegelung."
     },
     {
@@ -2980,7 +2980,7 @@
       "id": 426,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie wollen in eine Box einlaufen.Wie bereiten Sie die Achterleinen vor und machen sie fest?",
+      "question": "Sie wollen in eine Box einlaufen.\nWie bereiten Sie die Achterleinen vor und machen sie fest?",
       "answer": "Achterleinen mit Auge versehen (z. B. Palstek), möglichst früh über die Pfähle legen, bei seitlichem Wind zuerst über den Luvpfahl."
     },
     {
@@ -3015,7 +3015,7 @@
       "id": 431,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie liegen längsseits mit der Steuerbordseite an einer Pier.Beschreiben Sie ein Ablegemanöver unter gleichzeitigem Einsatz von Bugstrahlruder und Maschine.",
+      "question": "Sie liegen längsseits mit der Steuerbordseite an einer Pier.\nBeschreiben Sie ein Ablegemanöver unter gleichzeitigem Einsatz von Bugstrahlruder und Maschine.",
       "answer": "Hebel für Bugstrahlruder nach Backbord legen, sodass der Bug von der Pier weggedrückt wird (nach Backbord schwenkt) und gleichzeitig Ruderlage deutlich nach Steuerbord und langsame Fahrt voraus, sodass das Heck nach Backbord ausschwenkt. So wird das Schiff fast parallel von der Pier abgedrückt."
     },
     {
@@ -3064,7 +3064,7 @@
       "id": 438,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie kreuzen bei frischem Wind und mitlaufendem Strom (Wind gegen Strom) nach Luv auf.Welche Auswirkungen hat ein gegen den Wind setzender Strom auf den Seegang?",
+      "question": "Sie kreuzen bei frischem Wind und mitlaufendem Strom (Wind gegen Strom) nach Luv auf.\nWelche Auswirkungen hat ein gegen den Wind setzender Strom auf den Seegang?",
       "answer": "Durch den Strom entsteht eine kurze, steile und kabbelige See."
     },
     {
@@ -3344,14 +3344,14 @@
       "id": 478,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie ankern in einer Bucht.Wie können Sie bei zunehmendem Wind die Haltekraft Ihres Ankers verbessern?",
+      "question": "Sie ankern in einer Bucht.\nWie können Sie bei zunehmendem Wind die Haltekraft Ihres Ankers verbessern?",
       "answer": "Mehr Trosse oder Kette stecken, Reitgewicht verwenden."
     },
     {
       "id": 479,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie wollen auf verkrautetem Grund ankern.Ihnen steht ein Leichtgewichtsanker und ein Stockanker zur Verfügung.Welchen benutzen Sie und warum?",
+      "question": "Sie wollen auf verkrautetem Grund ankern.\nIhnen steht ein Leichtgewichtsanker und ein Stockanker zur Verfügung.\nWelchen benutzen Sie und warum?",
       "answer": "Den Stockanker, weil er sich insbesondere auch aufgrund seines höheren Gewichtes besser eingräbt."
     },
     {
@@ -3400,7 +3400,7 @@
       "id": 486,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Sie wollen in einer Bucht ankern, in der das (ausreichend tiefe) Wasser unterschiedliche Färbungen zeigt.Wo wählen Sie den Akerplatz?(Begründung!)",
+      "question": "Sie wollen in einer Bucht ankern, in der das (ausreichend tiefe) Wasser unterschiedliche Färbungen zeigt.\nWo wählen Sie den Akerplatz?(Begründung!)",
       "answer": "Ich ankere auf hellem Wasser. Begründung: Der Grund ist hier sandig, der Anker hält gut. Dunkler Grund weist auf Bewuchs hin, wo der Anker schlecht hält."
     },
     {
@@ -3449,7 +3449,7 @@
       "id": 493,
       "topic": "Seemannschaft",
       "subtopic": "",
-      "question": "Auf vielen großen Schiffen ist die Sicht nach vorne eingeschränkt.Welchen Abstand vor einem Schiff müssen Sie als nicht einsehbar mindestens berücksichtigen?",
+      "question": "Auf vielen großen Schiffen ist die Sicht nach vorne eingeschränkt.\nWelchen Abstand vor einem Schiff müssen Sie als nicht einsehbar mindestens berücksichtigen?",
       "answer": "Sichtbeschränkung nach voraus maximal 2 Schiffslängen oder 500 m."
     },
     {
