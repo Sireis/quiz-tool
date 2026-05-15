@@ -1,4 +1,5 @@
 flask>=3.0
 gpt4all>=2.8
 # For the OpenAI backend (optional):
-# openai>=1.0
+openai>=1.0
+dotenv
