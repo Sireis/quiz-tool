@@ -113,7 +113,7 @@ def get_next_question(field: str, filter: Optional[str] = None, topic: Optional[
 
     return min(
         questions,
-        key=lambda q: _success_rate(progress[q.id]),
+        key=lambda q: _success_rate(progress[str(q["id"])]),
     )
 
 
