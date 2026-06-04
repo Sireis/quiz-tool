@@ -57,8 +57,11 @@ def api_assess():
     question = question_store.get_question_by_id(field, qid)
     if question is None:
         return jsonify({"error": f"Unknown question id: {qid!r}"}), 404
+    
+    system_prompt = question_store.load_system_prompt(field)
 
     result = assessor.assess(
+        system_prompt=system_prompt,
         question=question["question"],
         answer=question["answer"],
         student_answer=student_answer,
@@ -67,9 +70,11 @@ def api_assess():
     progress = question_store.record_attempt(field, qid, result.correct, result.score)
 
     return jsonify({
-        "correct": result.correct,
-        "score": result.score,
+        "is_sks": result.is_sks,
         "sks_punkte": result.sks_punkte,
+        "correct": result.correct,
+        "result": result.result,
+        "score": result.score,
         "feedback": result.feedback,
         "answer": question["answer"],
         "progress": progress,

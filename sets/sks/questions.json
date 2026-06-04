@@ -1,5 +1,4 @@
 {
-  "context": "Es handelt sich um Fragen aus der theoretischen Prüfung des Sportküstenschifferscheins.",
   "questions": [
     {
       "id": 1,
@@ -999,7 +998,7 @@
       "id": 143,
       "topic": "Schifffahrtsrecht",
       "subtopic": "",
-      "question": "Was schließen Sie daraus?",
+      "question": "Die Lichteranordnung eines Fahrzeugs ändert sich plötzlich. Was schließen Sie daraus?",
       "answer": "Ein manövrierunfähiges Fahrzeug in Fahrt ohne Fahrt durchs Wasser (FdW) hat FdW aufgenommen, da man jetzt auch das Backbord-Seitenlicht sieht."
     },
     {

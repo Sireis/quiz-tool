@@ -48,6 +48,14 @@ def load_examens(field: str) -> dict:
         return {}
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+        
+def load_system_prompt(field: str) -> dict:
+    """Load system prompt."""
+    path = FIELDS_PATH / field / "system-prompt.txt"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return f.read()
 
 def save_progress(field: str, progress: dict) -> None:
     """Save progress data to progress.json."""

@@ -1,0 +1,319 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Lernen",
+      "subtopic": "Grundlagen",
+      "question": "Was ist Lernen aus funktionaler Sicht?",
+      "answer": "Lernen ist eine durch Erfahrung bzw. Umweltbedingungen bewirkte Veränderung von Verhalten oder Verhaltenspotenzial."
+    },
+    {
+      "id": 2,
+      "topic": "Lernen",
+      "subtopic": "Grundlagen",
+      "question": "Warum wird Lernen häufig funktional statt mechanistisch definiert?",
+      "answer": "Weil dadurch der Untersuchungsgegenstand (Verhaltensänderung) von möglichen Erklärungen (z. B. Assoziationen oder Schlussfolgerungen) getrennt wird."
+    },
+    {
+      "id": 3,
+      "topic": "Lernen",
+      "subtopic": "Vorhersage",
+      "question": "Welche zentrale Funktion schreibt Clark dem Gehirn zu?",
+      "answer": "Das Gehirn wird als Vorhersagemaschine betrachtet, die sensorische Eingänge mit Erwartungen vergleicht."
+    },
+    {
+      "id": 4,
+      "topic": "Lernen",
+      "subtopic": "Vorhersage",
+      "question": "Wozu befähigt Lernen Organismen nach moderner Auffassung?",
+      "answer": "Lernen verbessert Vorhersagen über zukünftige Ereignisse und ermöglicht frühzeitige Anpassungen an die Umwelt."
+    },
+    {
+      "id": 5,
+      "topic": "Lernen",
+      "subtopic": "Kontingenz und Kontiguität",
+      "question": "Was bedeutet Kontiguität?",
+      "answer": "Kontiguität bezeichnet das häufige gemeinsame Auftreten zweier Ereignisse."
+    },
+    {
+      "id": 6,
+      "topic": "Lernen",
+      "subtopic": "Kontingenz und Kontiguität",
+      "question": "Was bedeutet Kontingenz?",
+      "answer": "Kontingenz beschreibt eine Vorhersagebeziehung zwischen Ereignissen, bei der das eine Ereignis das andere zuverlässig ankündigt."
+    },
+    {
+      "id": 7,
+      "topic": "Lernen",
+      "subtopic": "Kontingenz und Kontiguität",
+      "question": "Warum gilt Kontingenz als wichtiger für klassisches Konditionieren als Kontiguität?",
+      "answer": "Weil Organismen Vorhersagebeziehungen lernen und nicht bloß das häufige gemeinsame Auftreten von Reizen."
+    },
+    {
+      "id": 8,
+      "topic": "Lernen",
+      "subtopic": "Habituation",
+      "question": "Warum zeigt Habituation, dass Lernen nicht immer auf Assoziationsbildung beruht?",
+      "answer": "Weil sich Verhalten durch Gewöhnung verändern kann, ohne dass neue Verknüpfungen zwischen Reizen gelernt werden müssen."
+    },
+    {
+      "id": 9,
+      "topic": "Lernen",
+      "subtopic": "Kleiner Albert",
+      "question": "Welches Ziel verfolgten Watson und Rayner mit der Studie zum kleinen Albert?",
+      "answer": "Sie wollten zeigen, dass emotionale Reaktionen durch Lernen erworben werden können."
+    },
+    {
+      "id": 10,
+      "topic": "Lernen",
+      "subtopic": "Kleiner Albert",
+      "question": "Welcher unkonditionierte Reiz wurde beim kleinen Albert eingesetzt?",
+      "answer": "Ein lautes Geräusch durch Schlagen auf eine Metallstange."
+    },
+    {
+      "id": 11,
+      "topic": "Lernen",
+      "subtopic": "Kleiner Albert",
+      "question": "Was war der zu konditionierende Reiz beim kleinen Albert?",
+      "answer": "Eine weiße Ratte."
+    },
+    {
+      "id": 12,
+      "topic": "Lernen",
+      "subtopic": "Kleiner Albert",
+      "question": "Was versteht man unter Stimulusgeneralisierung am Beispiel des kleinen Albert?",
+      "answer": "Nach der Konditionierung lösten auch ähnliche Reize wie Kaninchen, Fell oder eine Weihnachtsmannmaske Furcht aus."
+    },
+    {
+      "id": 13,
+      "topic": "Lernen",
+      "subtopic": "Kleiner Albert",
+      "question": "Warum ist die Einordnung der Albert-Studie als klassisches Konditionieren umstritten?",
+      "answer": "Weil das laute Geräusch häufig auftrat, nachdem Albert nach der Ratte griff, sodass auch operante Lernprozesse beteiligt sein könnten."
+    },
+    {
+      "id": 14,
+      "topic": "Lernen",
+      "subtopic": "Kleiner Peter",
+      "question": "Welche Bedeutung hat die Fallstudie des kleinen Peter?",
+      "answer": "Sie gilt als früher Vorläufer der systematischen Desensibilisierung."
+    },
+    {
+      "id": 15,
+      "topic": "Lernen",
+      "subtopic": "Kleiner Peter",
+      "question": "Wie wurde Peters Angst vor Kaninchen reduziert?",
+      "answer": "Durch schrittweise Annäherung an das Kaninchen bei gleichzeitiger Darbietung angenehmer Reize wie seinem Lieblingsessen."
+    },
+    {
+      "id": 16,
+      "topic": "Lernen",
+      "subtopic": "Aplysia",
+      "question": "Warum eignet sich Aplysia besonders für die Lernforschung?",
+      "answer": "Weil ihr Nervensystem mit etwa 20.000 großen und gut identifizierbaren Neuronen vergleichsweise einfach aufgebaut ist."
+    },
+    {
+      "id": 17,
+      "topic": "Lernen",
+      "subtopic": "Aplysia",
+      "question": "Welcher Reflex wird bei Aplysia häufig untersucht?",
+      "answer": "Der Kiemen-Rückzug-Reflex."
+    },
+    {
+      "id": 18,
+      "topic": "Lernen",
+      "subtopic": "Aplysia",
+      "question": "Was zeigt das Aplysia-Experiment über klassisches Konditionieren?",
+      "answer": "Dass eine Berührung als Ankündigungsreiz gelernt werden kann und später allein eine stärkere Reaktion auslöst."
+    },
+    {
+      "id": 19,
+      "topic": "Lernen",
+      "subtopic": "Aplysia",
+      "question": "Wie lautet die Hebb-Regel, die durch Befunde an Aplysia unterstützt wird?",
+      "answer": "Neuronen, die gemeinsam aktiv sind, verstärken ihre Verbindungen ('fire together, wire together')."
+    },
+    {
+      "id": 20,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Wie entdeckte Pavlov das klassische Konditionieren?",
+      "answer": "Er bemerkte, dass Hunde bereits vor der Futtergabe Speichel produzierten, wenn Ankündigungsreize auftraten."
+    },
+    {
+      "id": 21,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist ein unkonditionierter Stimulus (US)?",
+      "answer": "Ein Reiz, der ohne vorheriges Lernen eine Reaktion auslöst."
+    },
+    {
+      "id": 22,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist eine unkonditionierte Reaktion (UR)?",
+      "answer": "Eine Reaktion, die ohne vorheriges Lernen auf einen unkonditionierten Reiz erfolgt."
+    },
+    {
+      "id": 23,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist ein konditionierter Stimulus (CS)?",
+      "answer": "Ein ursprünglich neutraler Reiz, der nach dem Lernen eine Reaktion auslöst."
+    },
+    {
+      "id": 24,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist eine konditionierte Reaktion (CR)?",
+      "answer": "Eine gelernte Reaktion auf einen konditionierten Stimulus."
+    },
+    {
+      "id": 25,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Warum sind konditionierte und unkonditionierte Reaktion nicht immer identisch?",
+      "answer": "Weil die gelernte Reaktion funktional von der ursprünglichen Reflexreaktion abweichen kann."
+    },
+    {
+      "id": 26,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was versteht man unter Löschung (Extinktion)?",
+      "answer": "Das Nachlassen einer konditionierten Reaktion, wenn der konditionierte Reiz wiederholt ohne den unkonditionierten Reiz auftritt."
+    },
+    {
+      "id": 27,
+      "topic": "Lernen",
+      "subtopic": "Generalisierung",
+      "question": "Was bedeutet Generalisierung im klassischen Konditionieren?",
+      "answer": "Ähnliche Reize wie der gelernte Reiz lösen ebenfalls eine konditionierte Reaktion aus."
+    },
+    {
+      "id": 28,
+      "topic": "Lernen",
+      "subtopic": "Generalisierung",
+      "question": "Was beschreibt ein Generalisierungsgradient?",
+      "answer": "Die Stärke der Reaktion in Abhängigkeit von der Ähnlichkeit eines Reizes zum ursprünglich konditionierten Reiz."
+    },
+    {
+      "id": 29,
+      "topic": "Lernen",
+      "subtopic": "Diskriminationslernen",
+      "question": "Was ist Diskriminationslernen?",
+      "answer": "Das Lernen, zwischen ähnlichen Reizen zu unterscheiden, wenn sie unterschiedliche Konsequenzen vorhersagen."
+    },
+    {
+      "id": 30,
+      "topic": "Lernen",
+      "subtopic": "Reiz-Reizlernen",
+      "question": "Was versteht man unter Reiz-Reizlernen?",
+      "answer": "Es werden Beziehungen zwischen Reizen gelernt, unabhängig davon, ob während des Lernens eine Reaktion gezeigt wird."
+    },
+    {
+      "id": 31,
+      "topic": "Lernen",
+      "subtopic": "Sensorisches Vorkonditionieren",
+      "question": "Was zeigt das sensorische Vorkonditionieren?",
+      "answer": "Dass zwei zunächst neutrale Reize miteinander verknüpft werden können und später einer von ihnen eine konditionierte Reaktion auslöst."
+    },
+    {
+      "id": 32,
+      "topic": "Lernen",
+      "subtopic": "Instruktion",
+      "question": "Wie kann Instruktion zu Konditionierung führen?",
+      "answer": "Bereits die verbale Information, dass ein Reiz eine Konsequenz ankündigt, kann konditionierte Reaktionen hervorrufen."
+    },
+    {
+      "id": 33,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Worin besteht der Kern des operanten Konditionierens?",
+      "answer": "Verhalten wird durch seine Konsequenzen beeinflusst und verändert."
+    },
+    {
+      "id": 34,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Welche Beobachtung machte Thorndike mit seinen Katzen im Problemkäfig?",
+      "answer": "Die Zahl der Fehlversuche nahm mit zunehmender Erfahrung ab."
+    },
+    {
+      "id": 35,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Was wird beim operanten Konditionieren nach Colwill und Rescorla gelernt?",
+      "answer": "Zusammenhänge zwischen Situation, Verhalten und Konsequenz."
+    },
+    {
+      "id": 36,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Was zeigte das Meerschweinchen-Experiment von Muenzinger?",
+      "answer": "Tiere lernen nicht zwingend ein spezifisches Bewegungsmuster, sondern wie sie ein gewünschtes Ergebnis erreichen können."
+    },
+    {
+      "id": 37,
+      "topic": "Lernen",
+      "subtopic": "Klassisch vs. Operant",
+      "question": "Welches Argument spricht laut Sheffield gegen eine rein operante Erklärung von Pavlovs Befunden?",
+      "answer": "Hunde lernten weiterhin zu speicheln, obwohl dies zu weniger Futter führte."
+    },
+    {
+      "id": 38,
+      "topic": "Lernen",
+      "subtopic": "Verstärkung",
+      "question": "Was ist positive Verstärkung?",
+      "answer": "Ein Verhalten führt zum Auftreten eines angenehmen Reizes und wird dadurch wahrscheinlicher."
+    },
+    {
+      "id": 39,
+      "topic": "Lernen",
+      "subtopic": "Verstärkung",
+      "question": "Was ist negative Verstärkung?",
+      "answer": "Ein Verhalten führt zum Wegfall eines aversiven Reizes und wird dadurch wahrscheinlicher."
+    },
+    {
+      "id": 40,
+      "topic": "Lernen",
+      "subtopic": "Verstärkerpläne",
+      "question": "Was ist der Unterschied zwischen kontinuierlicher und intermittierender Verstärkung?",
+      "answer": "Bei kontinuierlicher Verstärkung wird jedes Verhalten verstärkt, bei intermittierender nur ein Teil der Verhaltensweisen."
+    },
+    {
+      "id": 41,
+      "topic": "Lernen",
+      "subtopic": "Verstärkerpläne",
+      "question": "Welche Art von Verstärkung führt typischerweise zu größerer Löschungsresistenz?",
+      "answer": "Intermittierende Verstärkung."
+    },
+    {
+      "id": 42,
+      "topic": "Lernen",
+      "subtopic": "Shaping",
+      "question": "Was versteht man unter Shaping?",
+      "answer": "Die schrittweise Verstärkung von Annäherungen an ein gewünschtes Zielverhalten."
+    },
+    {
+      "id": 43,
+      "topic": "Lernen",
+      "subtopic": "Shaping",
+      "question": "Wofür wird Shaping eingesetzt?",
+      "answer": "Zum Aufbau komplexer Verhaltensweisen, die spontan selten oder gar nicht auftreten."
+    },
+    {
+      "id": 44,
+      "topic": "Lernen",
+      "subtopic": "Preparedness",
+      "question": "Was bedeutet Preparedness?",
+      "answer": "Organismen sind biologisch darauf vorbereitet, bestimmte Reiz-Reaktions-Beziehungen leichter zu lernen als andere."
+    },
+    {
+      "id": 45,
+      "topic": "Lernen",
+      "subtopic": "Preparedness",
+      "question": "Welche Annahme der frühen behavioristischen Lerntheorie wird durch Preparedness infrage gestellt?",
+      "answer": "Dass alle Reizkombinationen und Lerninhalte gleich leicht gelernt werden können."
+    }
+  ]
+}
