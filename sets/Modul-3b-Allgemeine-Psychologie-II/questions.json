@@ -314,6 +314,482 @@
       "subtopic": "Preparedness",
       "question": "Welche Annahme der frühen behavioristischen Lerntheorie wird durch Preparedness infrage gestellt?",
       "answer": "Dass alle Reizkombinationen und Lerninhalte gleich leicht gelernt werden können."
+    },
+    {
+      "id": 46,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner-Modell",
+      "question": "Welches zentrale Prinzip des Rescorla-Wagner-Modells bestimmt die Stärke des Lernens?",
+      "answer": "Die Stärke des Lernens hängt von der Diskrepanz zwischen der erwarteten und der tatsächlich eintretenden Konsequenz ab (Vorhersagefehler)."
+    },
+    {
+      "id": 47,
+      "topic": "Lernen",
+      "subtopic": "Blocking",
+      "question": "Was versteht man unter dem Phänomen des Blocking?",
+      "answer": "Ein bereits etablierter konditionierter Reiz verhindert, dass ein später hinzukommender Reiz eine starke Assoziation mit dem unkonditionierten Reiz aufbaut."
+    },
+    {
+      "id": 48,
+      "topic": "Lernen",
+      "subtopic": "Blocking",
+      "question": "Wie verlief die Experimentalbedingung in Kamins Blocking-Experiment?",
+      "answer": "Zunächst wurde Ton mit Schock gepaart. Anschließend wurden Ton und Licht gemeinsam mit dem Schock dargeboten."
+    },
+    {
+      "id": 49,
+      "topic": "Lernen",
+      "subtopic": "Blocking",
+      "question": "Warum lernte die Experimentalgruppe in Kamins Versuch kaum etwas über das Licht?",
+      "answer": "Der Ton sagte den Schock bereits zuverlässig vorher, sodass das Licht keine zusätzliche Information lieferte."
+    },
+    {
+      "id": 50,
+      "topic": "Lernen",
+      "subtopic": "Blocking",
+      "question": "Warum stellt Blocking ein Problem für reine Kontiguitätstheorien dar?",
+      "answer": "Weil Licht und Schock gleich häufig gemeinsam auftraten, aber dennoch unterschiedlich starke Assoziationen entstanden."
+    },
+    {
+      "id": 51,
+      "topic": "Lernen",
+      "subtopic": "Vorhersagefehler",
+      "question": "Welche Rolle spielt Überraschung im Rescorla-Wagner-Modell?",
+      "answer": "Lernen tritt vor allem dann auf, wenn das tatsächliche Ereignis von der Erwartung abweicht."
+    },
+    {
+      "id": 52,
+      "topic": "Lernen",
+      "subtopic": "Blocking",
+      "question": "Warum konnte in Kamins Folgestudie trotz Vortraining eine Assoziation mit dem Licht entstehen?",
+      "answer": "Weil der Schock stärker wurde und dadurch neue Information beziehungsweise ein Vorhersagefehler entstand."
+    },
+    {
+      "id": 53,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner-Modell",
+      "question": "Wofür steht die Variable V im Rescorla-Wagner-Modell?",
+      "answer": "Für die aktuelle Assoziationsstärke zwischen konditioniertem und unkonditioniertem Reiz."
+    },
+    {
+      "id": 54,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner-Modell",
+      "question": "Wofür steht die Variable λ (Lambda) im Rescorla-Wagner-Modell?",
+      "answer": "Für die maximal erreichbare Assoziationsstärke."
+    },
+    {
+      "id": 55,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner-Modell",
+      "question": "Wovon hängt die Größe von λ ab?",
+      "answer": "Von der Stärke beziehungsweise Intensität des unkonditionierten Reizes."
+    },
+    {
+      "id": 56,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner-Modell",
+      "question": "Wofür steht die Lernrate α (Alpha)?",
+      "answer": "Sie bestimmt, wie stark sich die Assoziationsstärke pro Lerndurchgang verändert."
+    },
+    {
+      "id": 57,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner-Modell",
+      "question": "Was beschreibt ΔV im Rescorla-Wagner-Modell?",
+      "answer": "Die Veränderung der Assoziationsstärke in einem Lerndurchgang."
+    },
+    {
+      "id": 58,
+      "topic": "Lernen",
+      "subtopic": "Lernkurven",
+      "question": "Warum verläuft die Lernkurve im Rescorla-Wagner-Modell nicht linear?",
+      "answer": "Weil mit zunehmender Assoziationsstärke immer weniger Potenzial für weiteres Lernen verbleibt."
+    },
+    {
+      "id": 59,
+      "topic": "Lernen",
+      "subtopic": "Lernkurven",
+      "question": "Was versteht man unter einer Asymptote im Rescorla-Wagner-Modell?",
+      "answer": "Den Grenzwert, dem sich die Assoziationsstärke annähert, ohne ihn vollständig zu erreichen."
+    },
+    {
+      "id": 60,
+      "topic": "Lernen",
+      "subtopic": "Lernrate",
+      "question": "Wie beeinflusst eine höhere Lernrate α den Verlauf der Lernkurve?",
+      "answer": "Die Asymptote wird schneller erreicht."
+    },
+    {
+      "id": 61,
+      "topic": "Lernen",
+      "subtopic": "Lernrate",
+      "question": "Verändert eine höhere Lernrate die maximale Assoziationsstärke λ?",
+      "answer": "Nein, sie beeinflusst nur die Geschwindigkeit der Annäherung an die Asymptote."
+    },
+    {
+      "id": 62,
+      "topic": "Lernen",
+      "subtopic": "Mehrere konditionierte Reize",
+      "question": "Wie wird die Gesamtassoziationsstärke bei zwei gleichzeitig dargebotenen konditionierten Reizen bestimmt?",
+      "answer": "Sie ergibt sich aus der Summe der Assoziationsstärken beider Reize."
+    },
+    {
+      "id": 63,
+      "topic": "Lernen",
+      "subtopic": "Mehrere konditionierte Reize",
+      "question": "Warum spricht die Vorlesung von einem 'Kuchen', den sich Reize teilen?",
+      "answer": "Weil die maximale Assoziationsstärke begrenzt ist und von mehreren Reizen gemeinsam ausgeschöpft wird."
+    },
+    {
+      "id": 64,
+      "topic": "Lernen",
+      "subtopic": "Overshadowing",
+      "question": "Was versteht man unter Overshadowing?",
+      "answer": "Ein salienzstärkerer Reiz erwirbt einen größeren Anteil der Assoziationsstärke und überschattet dadurch einen schwächeren Reiz."
+    },
+    {
+      "id": 65,
+      "topic": "Lernen",
+      "subtopic": "Overshadowing",
+      "question": "Welche Eigenschaft eines Reizes führt typischerweise zu Overshadowing?",
+      "answer": "Eine höhere Salienz beziehungsweise Auffälligkeit."
+    },
+    {
+      "id": 66,
+      "topic": "Lernen",
+      "subtopic": "Overshadowing",
+      "question": "Wie unterscheiden sich die Asymptoten zweier Reize beim Overshadowing?",
+      "answer": "Der salientere Reiz erreicht eine höhere Asymptote als der weniger auffällige Reiz."
+    },
+    {
+      "id": 67,
+      "topic": "Lernen",
+      "subtopic": "Blocking vs. Overshadowing",
+      "question": "Worin besteht der zentrale Unterschied zwischen Blocking und Overshadowing?",
+      "answer": "Beim Blocking wird ein Reiz zeitlich später eingeführt, beim Overshadowing treten beide Reize gleichzeitig auf, unterscheiden sich aber in ihrer Salienz."
+    },
+    {
+      "id": 68,
+      "topic": "Lernen",
+      "subtopic": "Blocking",
+      "question": "Wie erklärt das Rescorla-Wagner-Modell Blocking mithilfe der Assoziationsstärke?",
+      "answer": "Der zuerst gelernte Reiz bindet bereits den Großteil der verfügbaren Assoziationsstärke, sodass für den neuen Reiz kaum Lernpotenzial bleibt."
+    },
+    {
+      "id": 69,
+      "topic": "Lernen",
+      "subtopic": "Theoriebildung",
+      "question": "Welchen Vorteil bieten mathematische Modelle wie das Rescorla-Wagner-Modell für die Psychologie?",
+      "answer": "Sie ermöglichen präzise Vorhersagen über den Verlauf von Lernprozessen und die Prüfung theoretischer Annahmen."
+    },
+    {
+      "id": 70,
+      "topic": "Lernen",
+      "subtopic": "Anwendungen",
+      "question": "Warum ist das Rescorla-Wagner-Modell auch für die Neurowissenschaften bedeutsam?",
+      "answer": "Weil seine Grundidee des Lernens über Vorhersagefehler in vielen neuronalen Netzwerkmodellen verwendet wird."
+    },
+    {
+      "id": 71,
+      "topic": "Lernen",
+      "subtopic": "Lernstile",
+      "question": "Was versteht man unter der Lernstil-Hypothese?",
+      "answer": "Die Lernstil-Hypothese besagt, dass Menschen unterschiedlich effektiv lernen und dass Lernen besonders erfolgreich ist, wenn die Darbietungsform den individuellen Präferenzen bzw. dem Lernstil entspricht."
+    },
+    {
+      "id": 72,
+      "topic": "Lernen",
+      "subtopic": "Lernstile",
+      "question": "Welche empirische Evidenz gibt es für Lernstile?",
+      "answer": "Für Lernstile gibt es kaum belastbare empirische Belege. Studien, die geeignete Designs verwenden, finden das erwartete Interaktionsmuster in der Regel nicht."
+    },
+    {
+      "id": 73,
+      "topic": "Lernen",
+      "subtopic": "Lernstile",
+      "question": "Welches Befundmuster müsste vorliegen, um die Existenz von Lernstilen zu belegen?",
+      "answer": "Es müsste eine doppelte Dissoziation vorliegen: Lernende des Stils A profitieren stärker von Methode A als von Methode B, während Lernende des Stils B stärker von Methode B als von Methode A profitieren."
+    },
+    {
+      "id": 74,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Was versteht man unter dem Testing-Effekt?",
+      "answer": "Der Testing-Effekt beschreibt die Verbesserung langfristiger Behaltensleistungen durch aktiven Abruf von Wissen, beispielsweise durch Selbsttests."
+    },
+    {
+      "id": 75,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Welchen Einfluss hatte frühes Testen in der Studie von Spitzer (1939)?",
+      "answer": "Frühes Testen führte dazu, dass die Erinnerungsleistung länger auf einem hohen Niveau blieb und die Vergessenskurve flacher verlief."
+    },
+    {
+      "id": 76,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Warum ist frühes Testen oft wirksamer als spätes Testen?",
+      "answer": "Weil beim frühen Test noch mehr Informationen verfügbar sind, die durch den Abruf zusätzlich gefestigt werden können."
+    },
+    {
+      "id": 77,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Wie wirkt sich ein Zwischentest auf die Vergessenskurve aus?",
+      "answer": "Ein Zwischentest reduziert die Geschwindigkeit des Vergessens und macht die Vergessenskurve flacher."
+    },
+    {
+      "id": 78,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Warum kann wiederholtes Lesen kurzfristig besser erscheinen als Testen?",
+      "answer": "Kurz vor einer Prüfung kann erneutes Lesen kurzfristig höhere Leistungen erzeugen, da die Informationen noch frisch aktiviert sind."
+    },
+    {
+      "id": 79,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Warum ist Testen langfristig oft effektiver als erneutes Lesen?",
+      "answer": "Weil der aktive Abruf die Gedächtnisspur stärker festigt und Informationen länger verfügbar bleiben."
+    },
+    {
+      "id": 80,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Wie schätzen Studierende die Wirksamkeit von Testen häufig ein?",
+      "answer": "Sie unterschätzen häufig die langfristige Wirksamkeit von Testen und glauben oft, erneutes Lesen sei effektiver."
+    },
+    {
+      "id": 81,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Für welche Arten von Lernmaterialien wurde der Testing-Effekt nachgewiesen?",
+      "answer": "Für zahlreiche Materialien, darunter Wortlisten, Texte, Vorträge, Gesichter-Namen-Paare, wissenschaftliche Artikel und pädagogisch relevante Inhalte."
+    },
+    {
+      "id": 82,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Was bedeutet transfer-appropriate processing als Erklärung des Testing-Effekts?",
+      "answer": "Lernen ist effektiver, wenn die Übung den Anforderungen der späteren Prüfung ähnelt. Testen trainiert den später benötigten Gedächtnisabruf."
+    },
+    {
+      "id": 83,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Was versteht man unter desirable difficulties?",
+      "answer": "Erwünschte Erschwernisse sind Lernanforderungen, die den Abruf erschweren, aber dadurch zu einer stärkeren Gedächtnisfestigung führen."
+    },
+    {
+      "id": 84,
+      "topic": "Lernen",
+      "subtopic": "Testing-Effekt",
+      "question": "Wie kann Elaboration durch Abrufversuche zum Testing-Effekt beitragen?",
+      "answer": "Beim Abruf werden verwandte Inhalte aktiviert und integriert, wodurch Wissen stärker vernetzt wird."
+    },
+    {
+      "id": 85,
+      "topic": "Lernen",
+      "subtopic": "Spacing",
+      "question": "Was versteht man unter Spacing?",
+      "answer": "Spacing bezeichnet die zeitliche Verteilung von Lern- oder Übungseinheiten statt deren unmittelbare Aneinanderreihung."
+    },
+    {
+      "id": 86,
+      "topic": "Lernen",
+      "subtopic": "Interleaving",
+      "question": "Was versteht man unter Interleaving?",
+      "answer": "Interleaving bedeutet, verschiedene Themen oder Aufgabentypen abwechselnd statt blockweise zu bearbeiten."
+    },
+    {
+      "id": 87,
+      "topic": "Lernen",
+      "subtopic": "Spacing",
+      "question": "Warum verbessert Spacing häufig die langfristige Behaltensleistung?",
+      "answer": "Weil zeitliche Abstände erneuten Abruf erfordern und dadurch die Gedächtnisspuren stärker gefestigt werden."
+    },
+    {
+      "id": 88,
+      "topic": "Lernen",
+      "subtopic": "Spacing",
+      "question": "Welche grobe Empfehlung ergibt sich für Wiederholungsabstände vor einer Klausur?",
+      "answer": "Zwischen Wiederholungen sollten nach Möglichkeit mehrere Tage liegen, häufig etwa zwei bis fünf Tage oder mehr."
+    },
+    {
+      "id": 89,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Was ist der vorwärtsgerichtete Testeffekt?",
+      "answer": "Der vorwärtsgerichtete Testeffekt beschreibt, dass Tests nicht nur bereits Gelerntes stärken, sondern auch das Lernen nachfolgender Inhalte verbessern."
+    },
+    {
+      "id": 90,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Wie wird der vorwärtsgerichtete Testeffekt typischerweise untersucht?",
+      "answer": "Durch Vergleiche zwischen Gruppen mit Zwischentests und Kontrollgruppen, wobei die Lernleistung für später präsentierte Inhalte gemessen wird."
+    },
+    {
+      "id": 91,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Was bedeutet Aufhebung proaktiver Interferenz als Erklärung des vorwärtsgerichteten Testeffekts?",
+      "answer": "Zwischentests trennen Lernblöcke stärker voneinander und reduzieren Störungen durch zuvor gelerntes Material."
+    },
+    {
+      "id": 92,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Was versteht man unter einem Reset der Enkodierung?",
+      "answer": "Tests schaffen einen neuen Kontext, wodurch die Enkodierung neuer Informationen wieder effizienter erfolgen kann."
+    },
+    {
+      "id": 93,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Welche motivationalen Mechanismen können zum vorwärtsgerichteten Testeffekt beitragen?",
+      "answer": "Testerwartungen, erhöhte Enkodieranstrengung und erhöhte Abrufanstrengung können die Lernleistung verbessern."
+    },
+    {
+      "id": 94,
+      "topic": "Lernen",
+      "subtopic": "Lerntechniken",
+      "question": "Welche beiden Lerntechniken wurden in der Vorlesung als besonders robust wirksam beschrieben?",
+      "answer": "Abrufübungen (Testing) und verteiltes Üben (Spacing)."
+    },
+    {
+      "id": 95,
+      "topic": "Lernen",
+      "subtopic": "Lernen durch Erklären",
+      "question": "Was ist Lernen durch Erklären?",
+      "answer": "Lernende formulieren Erklärungen für sich selbst oder andere und verarbeiten dadurch den Stoff tiefer."
+    },
+    {
+      "id": 96,
+      "topic": "Lernen",
+      "subtopic": "Lernen durch Erklären",
+      "question": "Warum fördert Erklären das Lernen?",
+      "answer": "Weil Zusammenhänge aktiv hergestellt, Wissenslücken erkannt und Inhalte tiefer verarbeitet werden."
+    },
+    {
+      "id": 97,
+      "topic": "Lernen",
+      "subtopic": "Lerntagebuch",
+      "question": "Welches Ziel verfolgt ein Lerntagebuch?",
+      "answer": "Es soll Organisation, Elaboration sowie metakognitive Überwachung und Regulation des Lernens fördern."
+    },
+    {
+      "id": 98,
+      "topic": "Lernen",
+      "subtopic": "Concept Mapping",
+      "question": "Was sind Concept Maps?",
+      "answer": "Grafische Darstellungen von Konzepten und ihren Beziehungen, meist in Form von Knoten und Verbindungen."
+    },
+    {
+      "id": 99,
+      "topic": "Lernen",
+      "subtopic": "Concept Mapping",
+      "question": "Wann sind Concept Maps besonders wirksam?",
+      "answer": "Wenn Lernende sie selbst erstellen, da die aktive Konstruktion tiefere Verarbeitung erfordert."
+    },
+    {
+      "id": 100,
+      "topic": "Lernen",
+      "subtopic": "Lernen durch Zeichnen",
+      "question": "Welche Funktionen erfüllt Lernen durch Zeichnen?",
+      "answer": "Es unterstützt Organisation, Generierung von Wissen, Verständnisüberprüfung und Identifikation von Wissenslücken."
+    },
+    {
+      "id": 101,
+      "topic": "Lernen",
+      "subtopic": "Elaboration",
+      "question": "Was versteht man unter Elaboration?",
+      "answer": "Elaboration bezeichnet die intensive gedankliche Verarbeitung und Verknüpfung von Lerninhalten."
+    },
+    {
+      "id": 102,
+      "topic": "Lernen",
+      "subtopic": "Elaboration",
+      "question": "Warum gilt Elaboration als zentrales Wirkprinzip vieler Lerntechniken?",
+      "answer": "Weil tiefes Nachdenken und Verknüpfen von Informationen die langfristige Speicherung fördert."
+    },
+    {
+      "id": 103,
+      "topic": "Lernen",
+      "subtopic": "Präferenzen und Wirksamkeit",
+      "question": "Welche Lernstrategie wird von Studierenden besonders häufig genutzt, obwohl sie nicht optimal ist?",
+      "answer": "Erneutes Lesen von Texten wird besonders häufig genutzt."
+    },
+    {
+      "id": 104,
+      "topic": "Lernen",
+      "subtopic": "Präferenzen und Wirksamkeit",
+      "question": "Welcher Fehler wird beim erneuten Lesen häufig gemacht?",
+      "answer": "Die erhöhte Verarbeitungsflüssigkeit wird mit tatsächlichem Lernerfolg verwechselt."
+    },
+    {
+      "id": 105,
+      "topic": "Lernen",
+      "subtopic": "Notizen",
+      "question": "Warum ist wortwörtliches Mitschreiben problematisch?",
+      "answer": "Weil es oberflächliche Verarbeitung fördert und die aktive Auseinandersetzung mit dem Inhalt behindern kann."
+    },
+    {
+      "id": 106,
+      "topic": "Lernen",
+      "subtopic": "Lernkarten",
+      "question": "Warum sind Lernkarten häufig effektiv?",
+      "answer": "Weil sie aktiven Abruf fördern und damit den Testing-Effekt nutzen."
+    },
+    {
+      "id": 107,
+      "topic": "Lernen",
+      "subtopic": "Lernkarten",
+      "question": "Wann sollte eine Karte aus einer Lernkartei entfernt werden?",
+      "answer": "Erst nach mehreren erfolgreichen Abrufen, beispielsweise nach mindestens drei richtigen Antworten."
+    },
+    {
+      "id": 108,
+      "topic": "Lernen",
+      "subtopic": "Lernplanung",
+      "question": "Wofür steht das SMART-Prinzip?",
+      "answer": "Für spezifisch, messbar, attraktiv, realistisch und terminiert."
+    },
+    {
+      "id": 109,
+      "topic": "Lernen",
+      "subtopic": "Implizites Lernen",
+      "question": "Was ist implizites Lernen?",
+      "answer": "Implizites Lernen ist unabsichtliches und häufig unbewusstes Lernen von Regelmäßigkeiten in der Umwelt."
+    },
+    {
+      "id": 110,
+      "topic": "Lernen",
+      "subtopic": "Implizites Lernen",
+      "question": "Welche zentrale Erkenntnis ergab sich aus den beschriebenen Experimenten zum impliziten Lernen?",
+      "answer": "Menschen lernen vor allem Zusammenhänge zwischen den Merkmalen, auf die sie ihre Aufmerksamkeit richten."
+    },
+    {
+      "id": 111,
+      "topic": "Lernen",
+      "subtopic": "Implizites Lernen",
+      "question": "Was zeigte das Experiment mit Farb- und Positionsinstruktionen?",
+      "answer": "Die Art der Instruktion beeinflusste, welche Regelmäßigkeiten unabsichtlich gelernt wurden. Aufmerksamkeit steuerte den Lerninhalt."
+    },
+    {
+      "id": 112,
+      "topic": "Lernen",
+      "subtopic": "Implizites Lernen",
+      "question": "Warum führte das reine Vorlesen von Farbwörtern nicht zu implizitem Sequenzlernen?",
+      "answer": "Weil die Aufgabe stark automatisiert und oberflächlich war und dadurch nicht genügend Verarbeitung für das Lernen stattfand."
+    },
+    {
+      "id": 113,
+      "topic": "Lernen",
+      "subtopic": "Implizites Lernen",
+      "question": "Welche allgemeine Schlussfolgerung zog die Vorlesung aus den Befunden zum impliziten Lernen?",
+      "answer": "Lernen ist häufig ein Nebenprodukt intensiver Beschäftigung mit Inhalten im Arbeitsgedächtnis und hängt stark von Aufmerksamkeit und Verarbeitung ab."
     }
   ]
 }
