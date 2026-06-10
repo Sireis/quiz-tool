@@ -928,7 +928,7 @@ function showResult(res) {
 
 
   const bar = document.getElementById('score-bar');
-  bar.style.width = res.score + '%';
+  bar.style.width = (res.score * 100) + '%';
   bar.className =
     'score-bar ' +
     (resultType === 'correct'
@@ -942,10 +942,24 @@ function showResult(res) {
 }
 
 function getResultType(res) {
-  if (res.sks_punkte == 2) return 'correct';
-  if (res.sks_punkte == 1) return 'partial';
-  if (res.sks_punkte == 0) return 'wrong';
-  return 'wrong';
+  if (res.is_sks == true) {
+    if (res.sks_punkte == 2) return 'correct';
+    if (res.sks_punkte == 1) return 'partial';
+    if (res.sks_punkte == 0) return 'wrong';
+    return 'wrong';
+  }
+
+  switch (res.result) {
+    case "correct":
+      return "correct";
+    case "mostly_correct":
+    case "partially_correct":
+    case "minimally_correct":
+      return "partial";
+    case "incorrect":
+    default:
+      return "wrong";
+  }
 }
 
 function resetResultCard() {

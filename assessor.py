@@ -96,10 +96,11 @@ def _parse_response(raw: str) -> Assessment:
     if match:
         try:
             data = json.loads(match.group())
+            result = data.get("result", "incorrect")
             return Assessment(
                 is_sks=False,
                 sks_punkte=0,
-                correct=bool(True if data.get("result") == "correct" else False),
+                correct=bool(True if result == "correct" or result == "mostly_correct" else False),
                 result=str(data.get("result", "incorrect")),
                 score=float(data.get("score", 0.0)),
                 feedback=str(data.get("feedback", "")),
