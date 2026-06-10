@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Trainer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -24,23 +24,28 @@
       --border:  #1e3347;
       --border2: #253d54;
       --radius:  6px;
+      --nav-h:   52px;
+      --header-h: 54px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; overflow: hidden; }
+    html, body { height: 100%; }
 
     body {
       background: var(--navy);
       color: var(--text);
       font-family: 'Source Serif 4', Georgia, serif;
       font-weight: 300;
+      /* Desktop: 3-column grid */
       display: grid;
-      grid-template-rows: 54px 1fr 36px;
+      grid-template-rows: var(--header-h) 1fr 36px;
       grid-template-columns: 240px 1fr 270px;
       grid-template-areas:
         "header  header  header"
         "sidebar main    stats"
         "footer  footer  footer";
+      height: 100svh;
+      overflow: hidden;
     }
 
     /* ═══ HEADER ═══════════════════════════════════════════ */
@@ -48,7 +53,7 @@
       grid-area: header;
       background: var(--deep);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
+      padding: 0 16px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -69,7 +74,6 @@
       flex-shrink: 0;
     }
     .header-sep { color: var(--border2); font-family: monospace; flex-shrink: 0; }
-    /* Context breadcrumb in header */
     #header-ctx {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.68rem;
@@ -108,7 +112,6 @@
     }
     .sb-list { display: flex; flex-direction: column; gap: 2px; }
 
-    /* Generic selectable row */
     .sel-btn {
       display: flex;
       align-items: center;
@@ -120,11 +123,12 @@
       color: var(--text);
       font-family: 'Source Serif 4', serif;
       font-size: 0.8rem;
-      padding: 5px 8px;
+      padding: 8px 8px;
       text-align: left;
       cursor: pointer;
       transition: all 0.13s;
       overflow: hidden;
+      min-height: 36px;
     }
     .sel-btn:hover { border-color: var(--wake); color: var(--foam); }
     .sel-btn.active {
@@ -139,7 +143,6 @@
       color: var(--muted);
       flex-shrink: 0;
     }
-    /* color-coded left edge per type */
     .sel-btn.type-field  { border-left: 2px solid transparent; }
     .sel-btn.type-field.active  { border-left-color: var(--brass); }
     .sel-btn.type-examen { border-left: 2px solid transparent; }
@@ -149,7 +152,6 @@
     .sel-btn.type-topic  { border-left: 2px solid transparent; }
     .sel-btn.type-topic.active  { border-left-color: var(--muted); }
 
-    /* Progress dots */
     .pdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .pdot.none { background: var(--border2); }
     .pdot.ok   { background: var(--correct); }
@@ -160,17 +162,18 @@
     main {
       grid-area: main;
       overflow-y: auto;
-      padding: 32px 42px;
+      padding: 24px 32px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
+      -webkit-overflow-scrolling: touch;
     }
 
     .card {
       background: var(--panel);
       border: 1px solid var(--border2);
       border-radius: 8px;
-      padding: 24px 28px;
+      padding: 20px 24px;
     }
     .card-meta {
       font-family: 'IBM Plex Mono', monospace;
@@ -182,14 +185,15 @@
       display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
     }
     .card-meta .sep { color: var(--border2); }
-    #question-text { font-size: 1.08rem; line-height: 1.7; }
+    #question-text { font-size: 1.05rem; line-height: 1.7; }
 
-    .answer-area { display: flex; flex-direction: column; gap: 12px; }
+    .answer-area { display: flex; flex-direction: column; gap: 10px; }
     textarea {
-      width: 100%; min-height: 100px; resize: vertical;
+      width: 100%; min-height: 90px; resize: vertical;
       background: var(--deep); border: 1px solid var(--border2); border-radius: var(--radius);
       color: var(--text); font-family: 'Source Serif 4', serif; font-size: 0.93rem;
       padding: 12px 15px; outline: none; transition: border-color 0.2s; line-height: 1.6;
+      -webkit-appearance: none;
     }
     textarea:focus { border-color: var(--wake); }
     textarea::placeholder { color: #3a5268; }
@@ -198,9 +202,9 @@
     button.primary {
       background: var(--brass); color: var(--navy); border: none;
       border-radius: var(--radius); font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.77rem; letter-spacing: 0.07em; padding: 9px 20px;
+      font-size: 0.77rem; letter-spacing: 0.07em; padding: 10px 20px;
       cursor: pointer; font-weight: 500; transition: background 0.15s, transform 0.1s;
-      white-space: nowrap;
+      white-space: nowrap; min-height: 40px;
     }
     button.primary:hover { background: var(--brass-l); }
     button.primary:active { transform: scale(0.97); }
@@ -208,14 +212,13 @@
     button.secondary {
       background: none; color: var(--muted); border: 1px solid var(--border2);
       border-radius: var(--radius); font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.74rem; padding: 8px 16px; cursor: pointer;
-      transition: all 0.15s; white-space: nowrap;
+      font-size: 0.74rem; padding: 9px 16px; cursor: pointer;
+      transition: all 0.15s; white-space: nowrap; min-height: 40px;
     }
     button.secondary:hover { border-color: var(--foam); color: var(--foam); }
 
-    /* Result card */
     #result-card {
-      display: none; border-radius: 8px; padding: 20px 26px;
+      display: none; border-radius: 8px; padding: 18px 22px;
       border-left: 4px solid; animation: fadeSlide 0.22s ease;
     }
     #result-card.correct { background: #0d2b1f; border-color: var(--correct); }
@@ -256,7 +259,6 @@
       overflow: hidden;
     }
 
-    /* Context badge strip at top of stats panel */
     #stats-ctx-strip {
       flex-shrink: 0;
       padding: 10px 14px;
@@ -280,15 +282,13 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    /* Colored accent line based on selection type */
     #stats-ctx-strip.ctx-field  { border-top: 2px solid var(--brass); }
     #stats-ctx-strip.ctx-topic  { border-top: 2px solid var(--muted); }
     #stats-ctx-strip.ctx-examen { border-top: 2px solid var(--wake); }
     #stats-ctx-strip.ctx-set    { border-top: 2px solid var(--correct); }
 
-    #stats-scroll { flex: 1; overflow-y: auto; padding: 14px 12px 20px; display: flex; flex-direction: column; gap: 18px; }
+    #stats-scroll { flex: 1; overflow-y: auto; padding: 14px 12px 20px; display: flex; flex-direction: column; gap: 18px; -webkit-overflow-scrolling: touch; }
 
-    /* Metric grid */
     .metric-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -313,7 +313,6 @@
     .metric-box.highlight .m-val { color: var(--correct); }
     .metric-box.warn .m-val { color: var(--wrong); }
 
-    /* Wide progress bar */
     .progress-row { display: flex; flex-direction: column; gap: 5px; }
     .progress-row .pr-label {
       font-family: 'IBM Plex Mono', monospace;
@@ -332,7 +331,6 @@
       background: linear-gradient(90deg, var(--correct), var(--foam));
     }
 
-    /* Section label inside stats */
     .stats-section-label {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.58rem;
@@ -342,7 +340,6 @@
       margin-bottom: 6px;
     }
 
-    /* Topic breakdown rows */
     .breakdown-row {
       display: flex;
       flex-direction: column;
@@ -364,7 +361,6 @@
     .mini-bar-fill.poor  { background: var(--wrong); }
     .mini-bar-fill.zero  { background: var(--border2); width: 0 !important; }
 
-    /* Per-question list in stats */
     .stats-q-item {
       display: flex; align-items: flex-start; gap: 7px;
       padding: 5px 6px; border-radius: 4px;
@@ -376,7 +372,6 @@
     .stats-q-item .sq-text { font-size: 0.71rem; line-height: 1.4; color: var(--text); flex: 1; }
     .stats-q-item .sq-ratio { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--muted); flex-shrink: 0; }
 
-    /* Streak badge */
     .streak-badge {
       display: inline-flex; align-items: center; gap: 5px;
       background: var(--panel); border: 1px solid var(--border2);
@@ -386,7 +381,6 @@
     .streak-badge .sb-val { color: var(--brass-l); font-weight: 500; }
     .streak-badge .sb-lbl { color: var(--muted); }
 
-    /* Stats loading state */
     #stats-loading {
       padding: 20px 14px;
       font-family: 'IBM Plex Mono', monospace;
@@ -409,6 +403,97 @@
     }
     #footer-ctx { color: var(--muted); }
 
+    /* ═══ MOBILE BOTTOM NAV ════════════════════════════════ */
+    #mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      z-index: 100;
+      justify-content: stretch;
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+    .mnav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      padding: 6px 0;
+      transition: color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mnav-btn svg { width: 20px; height: 20px; }
+    .mnav-btn.active { color: var(--brass-l); }
+
+    /* ═══ MOBILE PANELS ════════════════════════════════════ */
+    /* On mobile, sidebar/stats are overlaid sheets */
+    @media (max-width: 700px) {
+      body {
+        grid-template-rows: var(--header-h) 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "main";
+        overflow: hidden;
+        height: 100svh;
+      }
+
+      footer { display: none; }
+
+      #mobile-nav { display: flex; }
+
+      main {
+        padding: 16px 16px calc(var(--nav-h) + 16px + env(safe-area-inset-bottom, 0));
+        overflow-y: auto;
+      }
+
+      aside,
+      #stats-panel {
+        position: fixed;
+        top: var(--header-h);
+        bottom: var(--nav-h);
+        width: 100%;
+        left: 0;
+        z-index: 50;
+        transform: translateX(-100%);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        border-right: none;
+        border-left: none;
+      }
+
+      #stats-panel {
+        transform: translateX(100%);
+      }
+
+      aside.mobile-open,
+      #stats-panel.mobile-open {
+        transform: translateX(0);
+      }
+
+      #question-text { font-size: 1rem; }
+
+      .card { padding: 16px; }
+      textarea { min-height: 80px; font-size: 1rem; }
+
+      button.primary, button.secondary {
+        flex: 1;
+        min-height: 44px;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -427,7 +512,7 @@
 </header>
 
 <!-- ═══════════════ SIDEBAR ══════════════════════════════ -->
-<aside>
+<aside id="sidebar">
   <div class="sb-scroll">
 
     <div>
@@ -495,7 +580,6 @@
   </div>
   <div id="stats-scroll">
     <div id="stats-loading"><div class="spinner"></div> Lade…</div>
-    <!-- populated by renderStats() -->
   </div>
 </div>
 
@@ -506,18 +590,66 @@
   <span id="footer-backend" style="margin-left:auto">backend: gpt4all</span>
 </footer>
 
+<!-- ═══════════════ MOBILE BOTTOM NAV ════════════════════ -->
+<nav id="mobile-nav" role="navigation" aria-label="Navigation">
+  <button class="mnav-btn" id="mnav-sidebar" onclick="mobileToggle('sidebar')" aria-label="Auswahl">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+    Auswahl
+  </button>
+  <button class="mnav-btn active" id="mnav-main" onclick="mobileToggle('main')" aria-label="Frage">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    Frage
+  </button>
+  <button class="mnav-btn" id="mnav-stats" onclick="mobileToggle('stats')" aria-label="Statistik">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+    </svg>
+    Statistik
+  </button>
+</nav>
+
 <script>
 // ═══════════════════════════════════════════════════════════
+//  MOBILE NAV
+// ═══════════════════════════════════════════════════════════
+let mobileView = 'main'; // 'sidebar' | 'main' | 'stats'
+
+function mobileToggle(view) {
+  mobileView = view;
+  const sidebar = document.getElementById('sidebar');
+  const stats   = document.getElementById('stats-panel');
+
+  sidebar.classList.toggle('mobile-open', view === 'sidebar');
+  stats.classList.toggle('mobile-open',   view === 'stats');
+
+  document.getElementById('mnav-sidebar').classList.toggle('active', view === 'sidebar');
+  document.getElementById('mnav-main').classList.toggle('active',    view === 'main');
+  document.getElementById('mnav-stats').classList.toggle('active',   view === 'stats');
+
+  // When going back to main, close panels
+  if (view === 'main') {
+    sidebar.classList.remove('mobile-open');
+    stats.classList.remove('mobile-open');
+  }
+}
+
+// Auto-navigate to main after making a selection on mobile
+function mobileGoMain() {
+  if (window.innerWidth <= 700) mobileToggle('main');
+}
+
+// ═══════════════════════════════════════════════════════════
 //  STATE
-//  Selection is exclusive on the sub-level:
-//    field  always set
-//    topic  XOR examen XOR set (only one active at a time)
 // ═══════════════════════════════════════════════════════════
 const sel = {
-  field:  null,   // string id
-  topic:  null,   // string name | null
-  examen: null,   // { id, name } | null
-  set:    null,   // { id, name } | null
+  field:  null,
+  topic:  null,
+  examen: null,
+  set:    null,
 };
 
 let currentQuestion = null;
@@ -554,10 +686,10 @@ async function selectField(fieldId) {
   ]);
 
   await Promise.all([refreshStats(), loadNextQuestion()]);
+  mobileGoMain();
 }
 
-async function selectTopic(name, btn) {
-  // Toggle: clicking active topic returns to field-level
+async function selectTopic(name) {
   if (sel.topic === name) {
     sel.topic = null;
   } else {
@@ -570,9 +702,10 @@ async function selectTopic(name, btn) {
   highlightSel('examen', null);
   updateHeaderCtx();
   await Promise.all([refreshStats(), loadNextQuestion()]);
+  mobileGoMain();
 }
 
-async function selectExamen(examen, btn) {
+async function selectExamen(examen) {
   if (sel.examen?.name === examen.name) {
     sel.examen = null;
   } else {
@@ -585,9 +718,10 @@ async function selectExamen(examen, btn) {
   highlightSel('topic', null);
   updateHeaderCtx();
   await Promise.all([refreshStats(), loadNextQuestion()]);
+  mobileGoMain();
 }
 
-async function selectSet(set, btn) {
+async function selectSet(set) {
   if (sel.set?.name === set.name) {
     sel.set = null;
   } else {
@@ -600,6 +734,7 @@ async function selectSet(set, btn) {
   highlightSel('topic', null);
   updateHeaderCtx();
   await Promise.all([refreshStats(), loadNextQuestion()]);
+  mobileGoMain();
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -620,14 +755,13 @@ async function loadTopics(field) {
   const list = document.getElementById('topic-list');
   list.innerHTML = '';
   topics.forEach(t => {
-    const btn = mkSelBtn(t, t, 'topic', () => selectTopic(t, btn));
+    const btn = mkSelBtn(t, t, 'topic', () => selectTopic(t));
     btn.dataset.selKey = t;
     list.appendChild(btn);
   });
 }
 
 async function loadExamens(field) {
-  // Endpoint returns array of { id, name, question_count }
   let examens = [];
   try { examens = await fetch(`/api/fields/${field}/examens`).then(r => r.json()); } catch {}
   const list = document.getElementById('examens-list');
@@ -637,7 +771,7 @@ async function loadExamens(field) {
     return;
   }
   examens.forEach(e => {
-    const btn = mkSelBtn(e.name, e.name, 'examen', () => selectExamen(e, btn));
+    const btn = mkSelBtn(e.name, e.name, 'examen', () => selectExamen(e));
     btn.dataset.selKey = e.name;
     if (e.question_count != null)
       btn.querySelector('.sel-badge').textContent = e.question_count + ' Fragen';
@@ -646,7 +780,6 @@ async function loadExamens(field) {
 }
 
 async function loadSets(field) {
-  // Endpoint returns array of { id, name, question_count }
   let sets = [];
   try { sets = await fetch(`/api/fields/${field}/sets`).then(r => r.json()); } catch {}
   const list = document.getElementById('sets-list');
@@ -656,7 +789,7 @@ async function loadSets(field) {
     return;
   }
   sets.forEach(s => {
-    const btn = mkSelBtn(s.name, s.name, 'set', () => selectSet(s, btn));
+    const btn = mkSelBtn(s.name, s.name, 'set', () => selectSet(s));
     btn.dataset.selKey = s.name;
     if (s.question_count != null)
       btn.querySelector('.sel-badge').textContent = s.question_count + ' Fragen';
@@ -673,13 +806,11 @@ async function refreshStats() {
 
   const { ctxType, ctxName, url } = resolveStatsCtx();
 
-  // Update strip
   const strip = document.getElementById('stats-ctx-strip');
   strip.className = 'ctx-' + ctxType;
   document.getElementById('stats-ctx-title').textContent = CTX_LABELS[ctxType];
   document.getElementById('stats-ctx-name').textContent  = ctxName;
 
-  // Update footer
   document.getElementById('footer-ctx').textContent =
     ctxType === 'field' ? ctxName : sel.field + ' › ' + ctxName;
 
@@ -721,32 +852,13 @@ const CTX_LABELS = {
   set:    'Eigenes Set',
 };
 
-/*
-  Expected stats JSON shape (all contexts):
-  {
-    total: 12, attempted: 8, correct: 5,
-    total_attempts: 20, overall_rate: 62.5,
-    best_streak: 3,
-    // Field-level only: per-topic breakdown
-    topics: [
-      { name: "Kollisionsregeln", total: 4, attempted: 3, correct: 2, rate: 66.7 }
-    ],
-    // Topic/Set/Examen level: per-question list
-    questions: [
-      { id: "q001", question: "...", attempts: 3, correct: 2, last_result: "correct" }
-    ]
-  }
-*/
 function renderStats(s, ctxType, container) {
   const rate = s.total_attempts ? Math.round(s.total_correct / s.total_attempts * 100) : null;
   const attemptedPct = s.total ? Math.round(s.attempted / s.total * 100) : 0;
-
-  // Determine score color class
   const rateClass = rate == null ? '' : rate >= 70 ? 'highlight' : rate >= 40 ? '' : 'warn';
 
   let html = '';
 
-  // ── Metric grid ──
   html += `<div class="metric-grid">
     <div class="metric-box"><span class="m-val">${s.total}</span><span class="m-lbl">Fragen</span></div>
     <div class="metric-box"><span class="m-val">${s.attempted}</span><span class="m-lbl">Versucht</span></div>
@@ -754,7 +866,6 @@ function renderStats(s, ctxType, container) {
     <div class="metric-box ${rateClass}"><span class="m-val">${rate != null ? rate + '%' : '–'}</span><span class="m-lbl">Quote</span></div>
   </div>`;
 
-  // ── Progress bars ──
   html += `<div>
     <div class="stats-section-label">Fortschritt</div>
     <div class="progress-row" style="margin-bottom:8px">
@@ -764,12 +875,11 @@ function renderStats(s, ctxType, container) {
   if (rate != null) {
     html += `<div class="progress-row">
       <div class="pr-label"><span>Erfolgsquote</span><span>${rate}%</span></div>
-      <div class="big-bar-wrap"><div class="big-bar-fill" style="width:${rate}%;background:linear-gradient(90deg,var(--wrong),var(--correct))" ></div></div>
+      <div class="big-bar-wrap"><div class="big-bar-fill" style="width:${rate}%;background:linear-gradient(90deg,var(--wrong),var(--correct))"></div></div>
     </div>`;
   }
   html += `</div>`;
 
-  // ── Streak ──
   if (s.best_streak != null && s.best_streak > 0) {
     html += `<div>
       <div class="stats-section-label">Streak</div>
@@ -777,7 +887,6 @@ function renderStats(s, ctxType, container) {
     </div>`;
   }
 
-  // ── Topic breakdown (field level) ──
   if (ctxType === 'field' && s.topics?.length) {
     html += `<div>
       <div class="stats-section-label">Nach Thema</div>`;
@@ -796,7 +905,6 @@ function renderStats(s, ctxType, container) {
     html += `</div>`;
   }
 
-  // ── Per-question list (topic / set / examen level) ──
   if ((ctxType === 'topic' || ctxType === 'set' || ctxType === 'examen') && s.questions?.length) {
     html += `<div>
       <div class="stats-section-label">Fragen</div>`;
@@ -814,21 +922,18 @@ function renderStats(s, ctxType, container) {
   container.innerHTML = html;
 }
 
-// Click a topic row in the breakdown → select that topic
 function clickTopicBreakdown(name) {
-  // find the topic button and simulate click
   const btn = [...document.querySelectorAll('#topic-list .sel-btn')]
     .find(b => b.dataset.selKey === name);
   if (btn) btn.click();
 }
 
-// Jump to a specific question from the stats panel question list
 function jumpToQuestion(qid) {
   fetch(`/api/fields/${sel.field}/questions`)
     .then(r => r.json())
     .then(questions => {
       const q = questions.find(q => q.id === qid);
-      if (q) displayQuestion(q);
+      if (q) { displayQuestion(q); mobileGoMain(); }
     });
 }
 
@@ -849,17 +954,8 @@ async function loadNextQuestion() {
 
 function resolveQuestionUrl() {
   const f = sel.field;
-
-  let filter = "";
-
-  if (sel.examen) {
-    filter = sel.examen.name;
-  } else if (sel.set) {
-    filter = sel.set.name;
-  }
-
-  const topic = sel.topic || "";
-
+  const filter = sel.examen?.name ?? sel.set?.name ?? '';
+  const topic  = sel.topic || '';
   return `/api/fields/${encodeURIComponent(f)}/question` +
          `?filter=${encodeURIComponent(filter)}` +
          `&topic=${encodeURIComponent(topic)}`;
@@ -895,7 +991,6 @@ async function submitAnswer() {
     }).then(r => r.json());
 
     showResult(res);
-    // Refresh stats silently after assessment
     await refreshStats();
   } catch (e) {
     console.error(e);
@@ -909,8 +1004,7 @@ async function submitAnswer() {
 // ═══════════════════════════════════════════════════════════
 function showResult(res) {
   const card = document.getElementById('result-card');
-
-  const resultType = getResultType(res)
+  const resultType = getResultType(res);
   card.className     = resultType;
   card.style.display = 'block';
 
@@ -918,24 +1012,17 @@ function showResult(res) {
   if (resultType === 'correct') {
     verdict.textContent = '✓ Richtig';
     verdict.className   = 'result-verdict ok';
-  } else if (resultType === 'partial') {    
+  } else if (resultType === 'partial') {
     verdict.textContent = '~ Teilweise';
     verdict.className   = 'result-verdict';
-  } else if (resultType === 'wrong') {    
+  } else {
     verdict.textContent = '✗ Falsch';
     verdict.className   = 'result-verdict fail';
   }
 
-
   const bar = document.getElementById('score-bar');
   bar.style.width = (res.score * 100) + '%';
-  bar.className =
-    'score-bar ' +
-    (resultType === 'correct'
-      ? 'ok'
-      : resultType === 'partial'
-      ? 'partial'
-      : 'fail');
+  bar.className = 'score-bar ' + (resultType === 'correct' ? 'ok' : resultType === 'partial' ? 'partial' : 'fail');
 
   document.getElementById('result-feedback').textContent      = res.feedback;
   document.getElementById('expected-answer-text').textContent = res.answer;
@@ -945,20 +1032,14 @@ function getResultType(res) {
   if (res.is_sks == true) {
     if (res.sks_punkte == 2) return 'correct';
     if (res.sks_punkte == 1) return 'partial';
-    if (res.sks_punkte == 0) return 'wrong';
     return 'wrong';
   }
-
   switch (res.result) {
-    case "correct":
-      return "correct";
+    case "correct":            return "correct";
     case "mostly_correct":
     case "partially_correct":
-    case "minimally_correct":
-      return "partial";
-    case "incorrect":
-    default:
-      return "wrong";
+    case "minimally_correct":  return "partial";
+    default:                   return "wrong";
   }
 }
 
@@ -968,7 +1049,6 @@ function resetResultCard() {
   card.className = '';
 }
 
-// Highlight active button within a named group
 function highlightSel(type, activeKey) {
   const listId = { field: 'fields-list', topic: 'topic-list', examen: 'examens-list', set: 'sets-list' }[type];
   document.querySelectorAll(`#${listId} .sel-btn`).forEach(b => {
@@ -977,10 +1057,7 @@ function highlightSel(type, activeKey) {
 }
 
 function updateHeaderCtx() {
-  const hField = document.getElementById('hctx-field');
-  hField.textContent = sel.field || '–';
-
-  // Remove old sub-segments
+  document.getElementById('hctx-field').textContent = sel.field || '–';
   document.querySelectorAll('#header-ctx .ctx-sep, #header-ctx .ctx-sub').forEach(el => el.remove());
 
   const subName = sel.examen?.name ?? sel.set?.name ?? sel.topic ?? null;
@@ -1013,17 +1090,11 @@ function esc(s) {
 // Strg+Enter to submit
 document.addEventListener('keydown', e => {
   if (e.key !== 'Enter' || !e.ctrlKey) return;
-
   const resultCard = document.getElementById('result-card');
   const visible = getComputedStyle(resultCard).display !== 'none';
-
   e.preventDefault();
-
-  if (visible) {
-    loadNextQuestion();
-  } else {
-    submitAnswer();
-  }
+  if (visible) loadNextQuestion();
+  else submitAnswer();
 });
 
 init();
