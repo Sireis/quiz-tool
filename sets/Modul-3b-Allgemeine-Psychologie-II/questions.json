@@ -790,6 +790,377 @@
       "subtopic": "Implizites Lernen",
       "question": "Welche allgemeine Schlussfolgerung zog die Vorlesung aus den Befunden zum impliziten Lernen?",
       "answer": "Lernen ist häufig ein Nebenprodukt intensiver Beschäftigung mit Inhalten im Arbeitsgedächtnis und hängt stark von Aufmerksamkeit und Verarbeitung ab."
+    },
+    {
+      "id": 114,
+      "topic": "Motivation",
+      "subtopic": "Grundlagen",
+      "question": "Was ist der zentrale Gegenstand der Motivationspsychologie?",
+      "answer": "Die Motivationspsychologie beschäftigt sich mit der Erklärung von Richtung, Ausdauer und Intensität von Verhalten."
+    },
+    {
+      "id": 115,
+      "topic": "Motivation",
+      "subtopic": "Grundlagen",
+      "question": "Welche Anforderungen sollte eine gute Motivationstheorie erfüllen?",
+      "answer": "Sie sollte möglichst viel Verhalten mit möglichst wenigen hypothetischen Konstrukten erklären können."
+    },
+    {
+      "id": 116,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenserklärung",
+      "question": "Welche drei Erklärungsebenen motivationalen Verhaltens werden unterschieden?",
+      "answer": "Funktionale Ebene, algorithmische Ebene und neuronale Ebene."
+    },
+    {
+      "id": 117,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenserklärung",
+      "question": "Was untersucht die funktionale Ebene der Verhaltenserklärung?",
+      "answer": "Sie untersucht den Zweck bzw. die Funktion eines motivationalen Prozesses, beispielsweise Annäherung an Belohnungen oder Vermeidung aversiver Ereignisse."
+    },
+    {
+      "id": 118,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenserklärung",
+      "question": "Was untersucht die algorithmische Ebene der Verhaltenserklärung?",
+      "answer": "Sie untersucht mentale Repräsentationen und die Prozesse, mit denen Informationen verarbeitet und verändert werden."
+    },
+    {
+      "id": 119,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenserklärung",
+      "question": "Was untersucht die neuronale Ebene der Verhaltenserklärung?",
+      "answer": "Sie untersucht die physiologische bzw. neuronale Umsetzung psychischer Prozesse im Gehirn."
+    },
+    {
+      "id": 120,
+      "topic": "Motivation",
+      "subtopic": "Bewusstsein",
+      "question": "Welche drei 'Kränkungen der Menschheit' beschreibt Freud?",
+      "answer": "Die kopernikanische Kränkung, die darwinsche Kränkung und die Entdeckung des Unbewussten durch die Psychoanalyse."
+    },
+    {
+      "id": 121,
+      "topic": "Motivation",
+      "subtopic": "Bewusstsein",
+      "question": "Warum war Freuds Betonung des Unbewussten für die Psychologie bedeutsam?",
+      "answer": "Weil sich die Psychologie zuvor vor allem mit bewussten Inhalten beschäftigte und unbewusste Ursachen von Verhalten kaum berücksichtigte."
+    },
+    {
+      "id": 122,
+      "topic": "Motivation",
+      "subtopic": "Normansteckung",
+      "question": "Was versteht man unter Normansteckung?",
+      "answer": "Die Tendenz, dass wahrgenommene Normverletzungen weitere Normverletzungen begünstigen."
+    },
+    {
+      "id": 123,
+      "topic": "Motivation",
+      "subtopic": "Normansteckung",
+      "question": "Was zeigen die Studien von Kaiser et al. zur Normansteckung?",
+      "answer": "Menschen entsorgen Müll häufiger unachtsam, wenn die Umgebung bereits unordentlich wirkt."
+    },
+    {
+      "id": 124,
+      "topic": "Motivation",
+      "subtopic": "Metaphern",
+      "question": "Welche zwei grundlegenden Metaphern der Motivationspsychologie beschreibt Weiner?",
+      "answer": "Die Mensch-als-Maschine-Metapher und die Mensch-als-gottgleiche-Denkerin-Metapher."
+    },
+    {
+      "id": 125,
+      "topic": "Motivation",
+      "subtopic": "Metaphern",
+      "question": "Warum wird die Mensch-als-Maschine-Metapher verwendet?",
+      "answer": "Weil Motivation als Kraft oder Energie verstanden wird, die Verhalten antreibt."
+    },
+    {
+      "id": 126,
+      "topic": "Motivation",
+      "subtopic": "Psychoanalyse",
+      "question": "Wie beschreibt Freud Motivation im Rahmen seiner mechanischen Metapher?",
+      "answer": "Als ein System begrenzter psychischer Energie, die durch Bedürfnisse und Konflikte gebunden werden kann."
+    },
+    {
+      "id": 127,
+      "topic": "Motivation",
+      "subtopic": "Clark Hull",
+      "question": "Was versteht Hull unter einem allgemeinen Trieb?",
+      "answer": "Einen unspezifischen Antrieb, der Verhalten generell energetisiert."
+    },
+    {
+      "id": 128,
+      "topic": "Motivation",
+      "subtopic": "Clark Hull",
+      "question": "Wie interpretiert Hull das Verhältnis von Trieb und Gewohnheit?",
+      "answer": "Der Trieb liefert die Energie für Verhalten, während Gewohnheiten die Richtung des Verhaltens bestimmen."
+    },
+    {
+      "id": 129,
+      "topic": "Motivation",
+      "subtopic": "Clark Hull",
+      "question": "Welcher Befund spricht für Hulls Konzept des allgemeinen Triebs?",
+      "answer": "Wasserdeprivierte Ratten zeigten verstärktes Hebeldrücken auf einen ehemaligen Futterhebel, obwohl dieser weder Futter noch Wasser lieferte."
+    },
+    {
+      "id": 130,
+      "topic": "Motivation",
+      "subtopic": "Feldtheorie",
+      "question": "Was ist ein Aufsuchen-Meiden-Konflikt nach Lewin?",
+      "answer": "Ein Konflikt, bei dem dasselbe Ziel sowohl anziehende als auch abstoßende Eigenschaften besitzt."
+    },
+    {
+      "id": 131,
+      "topic": "Motivation",
+      "subtopic": "Feldtheorie",
+      "question": "Was ist ein Aufsuchen-Aufsuchen-Konflikt?",
+      "answer": "Ein Konflikt zwischen zwei attraktiven Zielen, von denen nur eines gewählt werden kann."
+    },
+    {
+      "id": 132,
+      "topic": "Motivation",
+      "subtopic": "Feldtheorie",
+      "question": "Was ist ein Meiden-Meiden-Konflikt?",
+      "answer": "Ein Konflikt zwischen zwei unangenehmen Alternativen."
+    },
+    {
+      "id": 133,
+      "topic": "Motivation",
+      "subtopic": "Rationale Entscheidung",
+      "question": "Worauf basieren Erwartungs-mal-Wert-Theorien?",
+      "answer": "Auf der Annahme, dass Motivation vom Produkt aus Erfolgserwartung und Wert eines Zieles abhängt."
+    },
+    {
+      "id": 134,
+      "topic": "Motivation",
+      "subtopic": "Rationale Entscheidung",
+      "question": "Welche Konsequenz hat eine Erfolgserwartung oder ein Wert von null in Erwartungs-mal-Wert-Theorien?",
+      "answer": "Das Ziel wird nicht gewählt bzw. verfolgt."
+    },
+    {
+      "id": 135,
+      "topic": "Motivation",
+      "subtopic": "Willensfreiheit",
+      "question": "Was versteht man unter libertarianischer Willensfreiheit?",
+      "answer": "Die Annahme, dass Personen sich unter identischen Bedingungen auch anders hätten entscheiden können."
+    },
+    {
+      "id": 136,
+      "topic": "Motivation",
+      "subtopic": "Willensfreiheit",
+      "question": "Welches Problem hat die libertarianische Auffassung von Willensfreiheit?",
+      "answer": "Handlungen würden von Gründen entkoppelt und damit letztlich zufällig erscheinen."
+    },
+    {
+      "id": 137,
+      "topic": "Motivation",
+      "subtopic": "Willensfreiheit",
+      "question": "Was besagt der Kompatibilismus?",
+      "answer": "Willensfreiheit ist mit der Existenz von Ursachen und Determinismus vereinbar."
+    },
+    {
+      "id": 138,
+      "topic": "Motivation",
+      "subtopic": "Willensfreiheit",
+      "question": "Wie unterscheiden sich Willenshandlungen von Reflexen aus kompatibilistischer Sicht?",
+      "answer": "Aus kompatibilistischer Sicht sind Willenshandlungen Handlungen, die aus den eigenen Motiven, Wünschen und Überzeugungen hervorgehen, während Reflexe automatisch durch Reize ausgelöst werden. Für Willenshandlungen ist keine Unabhängigkeit von Kausalgesetzen erforderlich."
+    },
+    {
+      "id": 139,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenssteuerung",
+      "question": "Welche fünf Ebenen der Verhaltenssteuerung beschreibt Goschke?",
+      "answer": "Reflexe und Instinkte, Gewohnheiten, zielgerichtetes Verhalten, intentionale willentliche Handlungen sowie Volition und Selbstkontrolle."
+    },
+    {
+      "id": 140,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenssteuerung",
+      "question": "Welche Eigenschaften kennzeichnen Gewohnheiten?",
+      "answer": "Sie beruhen auf Reiz-Reaktions-Assoziationen, sind effizient, aber relativ unflexibel."
+    },
+    {
+      "id": 141,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenssteuerung",
+      "question": "Was kennzeichnet zielgerichtetes Verhalten?",
+      "answer": "Es basiert auf inneren Modellen von Handlungen und deren Konsequenzen sowie auf der Verfolgung von Zielen."
+    },
+    {
+      "id": 142,
+      "topic": "Motivation",
+      "subtopic": "Verhaltenssteuerung",
+      "question": "Welche Merkmale kennzeichnen intentionale willentliche Handlungen?",
+      "answer": "Erweiterter Zeithorizont, Reizunabhängigkeit, sprachliche Steuerung, Flexibilität, Zielhierarchien und Handlungsplanung."
+    },
+    {
+      "id": 143,
+      "topic": "Motivation",
+      "subtopic": "Selbstkontrolle",
+      "question": "Was versteht Goschke unter Volition und Selbstkontrolle?",
+      "answer": "Selbstregulatorische und metakognitive Strategien zur Umsetzung von Absichten trotz konkurrierender Motivationstendenzen."
+    },
+    {
+      "id": 144,
+      "topic": "Motivation",
+      "subtopic": "Kontrolldilemmata",
+      "question": "Was ist das Explorations-Exploitations-Dilemma?",
+      "answer": "Der Zielkonflikt zwischen der Nutzung bekannter Optionen und der Suche nach möglicherweise besseren Alternativen."
+    },
+    {
+      "id": 145,
+      "topic": "Motivation",
+      "subtopic": "Kontrolldilemmata",
+      "question": "Was beschreibt das Stabilitäts-Flexibilitäts-Dilemma?",
+      "answer": "Den Konflikt zwischen dem Festhalten an bestehenden Zielen und der Anpassung an neue Informationen."
+    },
+    {
+      "id": 146,
+      "topic": "Motivation",
+      "subtopic": "Kontrolldilemmata",
+      "question": "Was ist das Abschirmungs-Überwachungs-Dilemma?",
+      "answer": "Der Konflikt zwischen konzentrierter Zielverfolgung und der Überwachung potenziell relevanter Umweltreize."
+    },
+    {
+      "id": 147,
+      "topic": "Motivation",
+      "subtopic": "Metakontrolle",
+      "question": "Welche zwei Metakontrollparameter beschreibt Hommel?",
+      "answer": "Die Aktualisierungsschwelle und die Aufmerksamkeitsbreite."
+    },
+    {
+      "id": 148,
+      "topic": "Motivation",
+      "subtopic": "Metakontrolle",
+      "question": "Wie sollte die Aktualisierungsschwelle in stabilen Umwelten eingestellt sein?",
+      "answer": "Eher hoch, damit bekannte Strategien effizient genutzt werden können."
+    },
+    {
+      "id": 149,
+      "topic": "Motivation",
+      "subtopic": "Metakontrolle",
+      "question": "Wie sollte die Aktualisierungsschwelle in volatilen Umwelten eingestellt sein?",
+      "answer": "Eher niedrig, damit neue Informationen leichter berücksichtigt werden."
+    },
+    {
+      "id": 150,
+      "topic": "Motivation",
+      "subtopic": "Metakontrolle",
+      "question": "Welchen Einfluss hat positiver Affekt auf die kognitive Kontrolle?",
+      "answer": "Er erhöht die kognitive Flexibilität, kann aber auch die Ablenkbarkeit steigern."
+    },
+    {
+      "id": 151,
+      "topic": "Motivation",
+      "subtopic": "Belohnung",
+      "question": "Welche Rolle spielt Belohnung nach Fred im Vergleich zu Bestrafung?",
+      "answer": "Belohnung ist der primäre Mechanismus der Verhaltenssteuerung, Bestrafung dient vor allem der Fehlerkorrektur."
+    },
+    {
+      "id": 152,
+      "topic": "Motivation",
+      "subtopic": "Belohnung",
+      "question": "Welches Argument spricht dafür, dass Belohnung wichtiger als Bestrafung ist?",
+      "answer": "Ohne Belohnung würde kaum zielgerichtetes Verhalten aufgebaut werden, während Verhalten auch ohne Bestrafung durch Belohnung gesteuert werden könnte."
+    },
+    {
+      "id": 153,
+      "topic": "Motivation",
+      "subtopic": "Belohnung",
+      "question": "Was zeigen Selbststimulationsversuche bei Ratten?",
+      "answer": "Dass bestimmte Hirnareale so belohnend wirken, dass Tiere aktiv elektrische Stimulation dieser Areale aufsuchen."
+    },
+    {
+      "id": 154,
+      "topic": "Motivation",
+      "subtopic": "Belohnung",
+      "question": "Was ist unmittelbar belohnend am Essen?",
+      "answer": "Vor allem Geschmack und taktile Eigenschaften der Nahrung."
+    },
+    {
+      "id": 155,
+      "topic": "Motivation",
+      "subtopic": "Belohnung",
+      "question": "Was zeigen Fistel-Experimente zum Essverhalten?",
+      "answer": "Dass Tiere weiter fressen, obwohl keine Sättigung eintritt, weil die sensorischen Eigenschaften des Essens belohnend wirken."
+    },
+    {
+      "id": 156,
+      "topic": "Motivation",
+      "subtopic": "Belohnung",
+      "question": "Was ist unmittelbar belohnend am Trinken?",
+      "answer": "Unter anderem die Kühlung des Mundes sowie sensorische Eigenschaften der Flüssigkeit."
+    },
+    {
+      "id": 157,
+      "topic": "Motivation",
+      "subtopic": "Belohnung",
+      "question": "Warum trinken Menschen unter heißen Bedingungen oft mehr von kaltem Wasser?",
+      "answer": "Weil kaltes Wasser als stärker belohnend erlebt wird."
+    },
+    {
+      "id": 158,
+      "topic": "Motivation",
+      "subtopic": "Lernen und Belohnung",
+      "question": "Warum können Aktivitäten wie Rätsel, Musik oder Reisen als belohnend erlebt werden?",
+      "answer": "Weil erfolgreiches Lernen und die Erweiterung der zerebralen Organisation selbst belohnend sein können."
+    },
+    {
+      "id": 159,
+      "topic": "Motivation",
+      "subtopic": "Dopamin",
+      "question": "Welche Bedeutung hat das Dopaminsystem für Motivation?",
+      "answer": "Es spielt eine zentrale Rolle bei der Antizipation von Belohnungen und der Initiierung zielgerichteten Verhaltens."
+    },
+    {
+      "id": 160,
+      "topic": "Motivation",
+      "subtopic": "Dopamin",
+      "question": "Was zeigt die Anhedonie bei Parkinson-Patienten über die Funktion von Dopamin?",
+      "answer": "Dass Dopamin vor allem für die Antizipation von Freude und nicht unbedingt für das Erleben von Freude selbst wichtig ist."
+    },
+    {
+      "id": 161,
+      "topic": "Motivation",
+      "subtopic": "Dopamin",
+      "question": "Was ist der Unterschied zwischen Wanting und Liking?",
+      "answer": "Wanting bezeichnet das motivationale Verlangen nach einer Belohnung, Liking das tatsächliche Gefallen an der erhaltenen Belohnung."
+    },
+    {
+      "id": 162,
+      "topic": "Motivation",
+      "subtopic": "Dopamin",
+      "question": "Welcher Aspekt wird besonders stark durch Dopamin beeinflusst: Wanting oder Liking?",
+      "answer": "Vor allem Wanting."
+    },
+    {
+      "id": 163,
+      "topic": "Motivation",
+      "subtopic": "Dopamin",
+      "question": "Welchen Effekt hat eine Störung der Dopaminfunktion im Nucleus accumbens?",
+      "answer": "Die Bereitschaft, Anstrengung für Belohnungen aufzubringen, sinkt deutlich."
+    },
+    {
+      "id": 164,
+      "topic": "Motivation",
+      "subtopic": "Selbstkontrolle",
+      "question": "Wie lässt sich Selbstkontrolle allgemein definieren?",
+      "answer": "Als Regulation des Verhaltens im Einklang mit langfristigen Zielen, Werten und Normen trotz konkurrierender Bedürfnisse."
+    },
+    {
+      "id": 165,
+      "topic": "Motivation",
+      "subtopic": "Selbstkontrolle",
+      "question": "Warum entstehen Selbstkontrollkonflikte häufig?",
+      "answer": "Weil kurzfristige Bedürfnisse oft mit langfristigen Zielen konkurrieren."
+    },
+    {
+      "id": 166,
+      "topic": "Motivation",
+      "subtopic": "Selbstkontrolle",
+      "question": "Was zeigen Experience-Sampling-Studien zu Bedürfnissen und Selbstkontrolle?",
+      "answer": "Dass alltägliche Bedürfnisse häufig auftreten und ein erheblicher Teil davon mit langfristigen Zielen in Konflikt steht."
     }
   ]
 }
