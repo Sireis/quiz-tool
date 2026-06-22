@@ -1161,6 +1161,538 @@
       "subtopic": "Selbstkontrolle",
       "question": "Was zeigen Experience-Sampling-Studien zu Bedürfnissen und Selbstkontrolle?",
       "answer": "Dass alltägliche Bedürfnisse häufig auftreten und ein erheblicher Teil davon mit langfristigen Zielen in Konflikt steht."
+    },
+    {
+      "id": 167,
+      "topic": "Motivation",
+      "subtopic": "Grundbegriffe",
+      "question": "Was versteht man unter einem 'Motivationsproblem' im Sinne der Vorlesung, und wie kann man es grundlegend aufteilen?",
+      "answer": "Ein Motivationsproblem liegt vor, wenn ein Verhalten nicht so auftritt, wie es erwünscht oder erwartet wird. Grundlegend unterscheidet man zwei Typen: (1) Nicht-Wollen-Probleme – das Ziel wird gar nicht erst gesetzt, weil die Person es nicht will oder für nicht erreichbar hält. (2) Nicht-Hinkriegen-Probleme – das Ziel existiert, wird aber nicht umgesetzt, weil z. B. konkrete Gelegenheiten verpasst werden."
+    },
+    {
+      "id": 168,
+      "topic": "Motivation",
+      "subtopic": "Grundbegriffe",
+      "question": "Seit wann und aus welcher Idee heraus unterscheidet die Motivationspsychologie zwischen Ziel-Fassen und Ziel-Umsetzen?",
+      "answer": "Die Unterscheidung existiert mindestens seit Ende der 1980er Jahre. Die Kernidee ist, dass Motivationsprobleme besser verstanden und gezielter behandelt werden können, wenn man trennt, ob jemand ein Ziel überhaupt nicht annimmt (Nicht-Wollen) oder ob jemand ein Ziel zwar hat, es aber nicht in Handlung umsetzt (Nicht-Hinkriegen)."
+    },
+    {
+      "id": 169,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz",
+      "question": "Was besagt der Erwartungs-mal-Wert-Ansatz (Expectancy × Value)?",
+      "answer": "Der Ansatz besagt, dass Verhaltenstendenzen (Zielwahl, Anstrengung) durch eine multiplikative Verknüpfung von Erwartung und Wert bestimmt werden. Erwartung = subjektive Wahrscheinlichkeit, das Ziel zu erreichen. Wert = subjektive Attraktivität des Ziels. Da beide Faktoren multipliziert werden, führt ein sehr niedriger Wert eines Faktors – egal wie hoch der andere ist – dazu, dass das Ziel nicht gewählt wird."
+    },
+    {
+      "id": 170,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz",
+      "question": "Warum ist die Verknüpfung von Erwartung und Wert multiplikativ und nicht additiv?",
+      "answer": "Weil ein Ziel nur dann angenommen wird, wenn BEIDE Komponenten hinreichend hoch sind. Ein sehr attraktives Ziel, das für unerreichbar gehalten wird, wird ebenso wenig verfolgt wie ein erreichbares, aber unattraktives Ziel. Eine additive Verknüpfung würde erlauben, dass ein sehr hoher Wert eines Faktors einen sehr niedrigen des anderen vollständig kompensiert – das entspricht nicht der empirischen Befundlage (vgl. Nagengast et al.)."
+    },
+    {
+      "id": 171,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz",
+      "question": "Welche Forscherin hat den Erwartungs-mal-Wert-Ansatz auf Bildungsverläufe und STEM-Fächer angewendet, und was war ihre zentrale Fragestellung?",
+      "answer": "Jacquelynne Eccles. Sie untersuchte, warum Schülerinnen in STEM-Fächern (Science, Technology, Engineering, Mathematics) unterrepräsentiert sind, indem sie analysierte, wie Erwartungen (z. B. 'Schaffe ich ein Ingenieurstudium?') und Werte (z. B. 'Ist ein Ingenieurberuf attraktiv für mich?') die Kurswahl im College beeinflussen."
+    },
+    {
+      "id": 172,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz",
+      "question": "Welche zwei Arten von Problemen im Erwartungs-mal-Wert-Modell wurden bei Schülerinnen in STEM-Fächern identifiziert?",
+      "answer": "(1) Erwartungsproblem: Schülerinnen schätzen ihre eigene Wahrscheinlichkeit, STEM-Unterricht zu bestehen, vergleichsweise gering ein – obwohl Mädchen im Schnitt in Mathefächern besser abschneiden als Jungen (Fehlwahrnehmung). (2) Wertproblem: Manche junge Frauen bewerten STEM-Berufe als wenig attraktiv, da sie glauben, diese bieten wenig Menschenkontakt und tragen wenig zur Lösung gesellschaftlicher Probleme bei – ebenfalls oft eine Fehlwahrnehmung."
+    },
+    {
+      "id": 173,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz – Klimastudie",
+      "question": "Welche zentrale empirische Studie zur globalen Motivation für Klimaschutz wird in der Vorlesung besprochen, und woher stammt sie?",
+      "answer": "Eine repräsentative Umfrage in 125 Ländern zur tatsächlichen und wahrgenommenen Unterstützung für Klimaschutzmaßnahmen. Die Studie stammt aus der Ökonomie (nicht der Psychologie) und deckt 96 % der globalen Treibhausgasemissionen ab."
+    },
+    {
+      "id": 174,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz – Klimastudie",
+      "question": "Welche drei Kernfragen wurden in der globalen Klimastudie gestellt, und welchem Konstrukt des Erwartungs-mal-Wert-Modells entsprechen sie jeweils?",
+      "answer": "(1) 'Sollen Menschen/Regierungen die globale Erwärmung bekämpfen?' → Indikator für Wert (Attraktivität des Ziels). (2) 'Sind Sie bereit, dauerhaft 1 % des Haushaltseinkommens beizusteuern?' → Indikator für Verhaltensabsicht/-tendenz. (3) 'Wie viele von 100 Personen in Ihrem Land sind dazu bereit?' → Indikator für kollektive Erwartung (gemeinsam etwas erreichen zu können)."
+    },
+    {
+      "id": 175,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz – Klimastudie",
+      "question": "Was ergab die globale Klimastudie hinsichtlich des 'Werts' (Attraktivität des Klimaschutzes)?",
+      "answer": "86 % der Befragten gaben an, dass Menschen in ihren Ländern die globale Erwärmung bekämpfen sollten; 98 % forderten mehr staatliche Maßnahmen. In 119 von 125 Ländern befürworteten mehr als zwei Drittel Maßnahmen. Klimaschutz ist damit eine breit akzeptierte soziale Norm – der Wert ist hoch."
+    },
+    {
+      "id": 176,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz – Klimastudie",
+      "question": "Was ist 'pluralistische Ignoranz' und welche Rolle spielt sie in der globalen Klimastudie?",
+      "answer": "Pluralistische Ignoranz bezeichnet das Phänomen, dass Menschen die Einstellungen oder Bereitschaft ihrer Mitbürger systematisch unterschätzen, obwohl die eigene Haltung eigentlich verbreitet ist. In der Klimastudie zeigte sich dies in allen 125 Ländern: Der tatsächliche Anteil der Spendbereiten war stets höher als der geschätzte Anteil. Dies ist motivational relevant, weil Kooperation konditionaler Natur ist – wer glaubt, andere machen nicht mit, engagiert sich selbst weniger."
+    },
+    {
+      "id": 177,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz – Klimastudie",
+      "question": "Welchen Befund gab es zur Spendenbereitschaft in Abhängigkeit vom Wohlstand eines Landes?",
+      "answer": "In den ärmsten 20 % der Länder waren durchschnittlich 78 % der Bevölkerung bereit, 1 % beizusteuern; in den reichsten 20 % nur 62 %. Da reichere Länder tendenziell mehr Treibhausgase ausstoßen, ist es paradox, dass gerade deren Bevölkerungen eine geringere Bereitschaft zeigen, zum Klimaschutz beizutragen."
+    },
+    {
+      "id": 178,
+      "topic": "Motivation",
+      "subtopic": "Erwartungs-mal-Wert-Ansatz",
+      "question": "Wie kann der Ansatz der sozialen Identität die kollektive Erwartung im Kontext von Klimaschutz erhöhen?",
+      "answer": "Wenn Menschen über ihre Gruppenidentitäten nachdenken (z. B. als Bürger einer Stadt, Nation oder der Menschheit), schätzen sie die kollektive Handlungsfähigkeit höher ein als bei Fokus auf das individuelle Selbst. Experimentelle Studien zeigen, dass das Betonen kollektiver Identität ('Wir als Plastikkampagnen-Teilnehmende können etwas bewirken') das Engagement für Nachhaltigkeitsziele erhöht. Die BRIGA-Studie (>30.000 Personen, 38 Länder) bestätigte dies korrelativ."
+    },
+    {
+      "id": 179,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell",
+      "question": "Woher stammt der Name 'Rubikon-Modell der Handlungsphasen' und welche historische Analogie steckt dahinter?",
+      "answer": "Der Name leitet sich vom Fluss Rubikon ab, den Julius Cäsar 49 v. Chr. mit seinem Heer überschritt – obwohl er es nicht durfte, da es einen Bürgerkrieg auslöste. Die Analogie: Vor der Entscheidung befindet man sich in einer Abwägephase; sobald die Entscheidung getroffen ist (Rubikon überschritten), wechselt man in eine Planungs- und Handlungsphase, die sich nicht mehr einfach umkehren lässt."
+    },
+    {
+      "id": 180,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell",
+      "question": "Beschreibe die vier Phasen des Rubikon-Modells der Handlungsphasen.",
+      "answer": "(1) Prädezisionale Phase (Abwägen): Verschiedene Wünsche und Ziele werden nach Erreichbarkeit (Erwartung) und Attraktivität (Wert) abgewogen. (2) Präaktionale Phase (Planen): Nach der Zieladoption wird geplant, wann, wie und wie lange gehandelt wird. (3) Aktionale Phase (Handeln): Zielgerichtete Handlungen finden statt. (4) Postaktionale Phase (Bewerten): Ergebnisse werden bewertet; es wird entschieden, ob das Ziel erreicht wurde, ein neuer Handlungszyklus beginnt oder das Ziel aufgegeben wird."
+    },
+    {
+      "id": 181,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell",
+      "question": "Was unterscheidet die 'abwägende Bewusstseinslage' von der 'planenden Bewusstseinslage'?",
+      "answer": "Abwägende Bewusstseinslage (prädezisional): Große Offenheit für alle verfügbaren Informationen; positive und negative Aspekte werden ausgewogen und realistisch verarbeitet; Erreichbarkeit wird realistisch eingeschätzt. Planende Bewusstseinslage (postdezisional): Reduzierte Offenheit ('Scheuklappen'); Fokus auf Durchführbarkeit, nicht Wünschbarkeit; Erreichbarkeit wird illusionär-optimistisch eingeschätzt, um das Handeln aufrechtzuerhalten."
+    },
+    {
+      "id": 182,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Bewusstseinslagen",
+      "question": "Warum ist es funktional sinnvoll, dass die planende Bewusstseinslage mit einem illusionären Optimismus einhergeht?",
+      "answer": "Würde man sich in der Handlungsphase ständig fragen, ob das Ziel wirklich das richtige ist, käme man nie ins Handeln. Die Tendenz, die Erfolgswahrscheinlichkeit etwas zu überschätzen, wirkt als motivationaler Puffer und hält die Handlung aufrecht. Dieser 'konstruktive Optimismus' ist adaptiv, solange er nicht zu gravierenden Fehlentscheidungen führt."
+    },
+    {
+      "id": 183,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Bewusstseinslagen (Studien)",
+      "question": "Wie wurde in der Studie von Fujita et al. die abwägende bzw. planende Bewusstseinslage experimentell induziert?",
+      "answer": "Abwägende Bewusstseinslage: Teilnehmende nannten ein ungelöstes persönliches Problem (noch keine Entscheidung) und listeten kurz- und langfristige Vor- und Nachteile möglicher Entscheidungen auf. Planende Bewusstseinslage: Teilnehmende nannten ein lösbares Problem (Entscheidung bereits getroffen) und listeten fünf konkrete Umsetzungsschritte mit Angaben zu Wann, Wo und Wie auf."
+    },
+    {
+      "id": 184,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Bewusstseinslagen (Studien)",
+      "question": "Welche Messmethode nutzten Fujita et al. um die 'Scheuklappen' der planenden Bewusstseinslage zu testen, und was war das Ergebnis?",
+      "answer": "Methode: Eine modifizierte D2-Konzentrationsaufgabe (Apostrophe unter Buchstaben zählen), bei der vor 50 % der Stimuli für 300 ms Ablenkwörter präsentiert wurden. Später gab es einen unangekündigten Rekognitionstest (28 gezeigte vs. 28 neue Wörter). Ergebnis: Personen mit abwägender Bewusstseinslage erkannten mehr Ablenkwörter (höhere Rekognitionsleistung) als Personen mit planender Bewusstseinslage – repliziert in Experiment 2 und 3. Dies belegt, dass die planende Bewusstseinslage die Offenheit für irrelevante Umgebungsreize reduziert."
+    },
+    {
+      "id": 185,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Bewusstseinslagen (Studien)",
+      "question": "Was untersuchten Gollwitzer & Kinney in ihrer Adaptation des Alloy-&-Abramson-Experiments und was ist der Befund?",
+      "answer": "Aufgabe: Teilnehmende sollten durch Drücken/Nichtdrücken eines Schalters eine Lampe zum Leuchten bringen (tatsächlich zufällig). Manipulation: abwägende vs. planende Bewusstseinslage. Befund: In der planenden Bewusstseinslage wurde die eigene Kontrolle über das Licht stärker überschätzt – besonders wenn das Licht häufig leuchtete. Dies zeigt, dass das 'Implementierungsmindset' den bekannten Illusionskontroll-Effekt verstärkt: Man glaubt in der Handlungsphase, mehr Kontrolle zu haben als tatsächlich vorhanden ist."
+    },
+    {
+      "id": 186,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Bewusstseinslagen (Studien)",
+      "question": "Was zeigte die Studie von Gagné & Lydon zu Partnerschaften und Bewusstseinslagen?",
+      "answer": "Teilnehmende (überwiegend Frauen in einer Partnerschaft) wurden entweder aufgefordert abzuwägen (Pros & Contras für erhöhtes Commitment nach dem Studienabschluss) oder zu planen (konkrete Umsetzungsschritte). Befund: Bei Personen mit niedrigem Commitment führte die planende Bedingung zu einer positiveren Einschätzung der Attraktivität der Partnerin/des Partners im Vergleich zu anderen Personen. Dies zeigt eine Rückwirkung: Die planende Bewusstseinslage beeinflusst sogar rückwärts Bewertungen, die eigentlich zur Abwägephase gehören – also Wert-Wahrnehmungen."
+    },
+    {
+      "id": 187,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Anwendung Gesundheit",
+      "question": "Was ist der Health Action Process Approach (HAPA) und wer hat ihn entwickelt?",
+      "answer": "Der HAPA (Ralf Schwarzer) ist ein Gesundheitsverhaltensmodell, das stark auf dem Rubikon-Modell basiert. Es unterscheidet eine motivationale Phase (vor der Intention: Risikowahrnehmung, Ergebnis- und Selbstwirksamkeitserwartungen) von einer volitionalen Phase (nach der Intention: Handlungsplanung, Coping-Planung, Handlungs- und Aufrechterhaltungs-Selbstwirksamkeit). Ziel ist es, Personen phasengenau zu klassifizieren und zielgerichtete Interventionen anzubieten."
+    },
+    {
+      "id": 188,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Anwendung Gesundheit",
+      "question": "Wie kann das HAPA-Modell in einer Rehabilitationsklinik praktisch eingesetzt werden?",
+      "answer": "Mithilfe von Selbstberichtsinstrumenten (z. B. von Schwarzer online bereitgestellt) werden Patientinnen und Patienten zunächst klassifiziert: Haben sie noch kein Ziel (z. B. regelmäßige körperliche Aktivität), haben sie ein Ziel aber keinen Plan, oder haben sie bereits gehandelt und brauchen Unterstützung bei der Aufrechterhaltung? Je nach Klassifikation wird die knappe Gesprächszeit gezielt genutzt, um z. B. Selbstwirksamkeit zu stärken, konkrete Pläne zu erarbeiten oder Rückfallprävention zu thematisieren."
+    },
+    {
+      "id": 189,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Anwendung Gesundheit",
+      "question": "Welche Arten von Selbstwirksamkeitserwartungen werden im HAPA unterschieden?",
+      "answer": "Mindestens drei Typen: (1) Handlungs-Selbstwirksamkeit: 'Ich kann die Verhaltensänderung initiieren.' (2) Aufrechterhaltungs-Selbstwirksamkeit: 'Ich kann das Verhalten auch langfristig aufrechterhalten, selbst wenn ich keine sofortigen Erfolge sehe.' (3) Coping-Selbstwirksamkeit (Erholungs-/Wiederherstellungs-SE): 'Ich kann nach Rückschlägen wieder ins Handeln kommen.'"
+    },
+    {
+      "id": 190,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Anwendung Mobilität",
+      "question": "Welches Ziel verfolgte die Studie von Bamberg zum Mobilitätsverhalten in Berlin?",
+      "answer": "Die Studie prüfte, ob phasenspezifische Mobilitätsberatung ('Dialogmarketing', maßgeschneidert auf die jeweilige Phase im Rubikon-Modell) wirksamer ist als eine allgemeine Informationsbroschüre oder keine Intervention, gemessen an der Reduktion der Autonutzung und erhöhter ÖPNV-Nutzung."
+    },
+    {
+      "id": 191,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Anwendung Mobilität",
+      "question": "Wie lief das 'Dialogmarketing' in der Bamberg-Studie ab?",
+      "answer": "Aus 12.000 zufällig ausgewählten Berliner Haushalten meldeten sich 877 zurück. Diese wurden mehrfach angerufen, um ihre aktuelle Phase im Rubikon-Modell zu erfassen (z. B. 'kein Ziel', 'Ziel, aber kein Plan', 'Plan, aber Schwierigkeiten'). Anschließend erhielten sie phasenspezifische Beratung: Prädezisionale Personen bekamen Wissensvermittlung und Norminformation; präaktionale Personen bekamen ein kostenloses Wochenticket zum Ausprobieren; aktionale Personen bekamen Hilfe im Umgang mit Hindernissen; postaktionale Personen bekamen Feedback und weitere Informationen."
+    },
+    {
+      "id": 192,
+      "topic": "Motivation",
+      "subtopic": "Rubikon-Modell – Anwendung Mobilität",
+      "question": "Was waren die zentralen Ergebnisse der Bamberg-Studie zum Mobilitätsverhalten?",
+      "answer": "Personen in der Dialogmarketing-Gruppe zeigten in der Nachbefragung eine geringere Autonutzung und mehr ÖPNV-Nutzung als Personen in der Broschüren- oder Kontrollgruppe. Außerdem gab es mehr Stufenübergänge im Rubikon-Modell (d. h. mehr Personen wechselten in die nächste Phase), was die Wirksamkeit des phasenspezifischen Ansatzes stützt."
+    },
+    {
+      "id": 193,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten",
+      "question": "Was sind Umsetzungsabsichten (Implementation Intentions) und worin unterscheiden sie sich von Zielintentionen?",
+      "answer": "Umsetzungsabsichten sind konkrete Wenn-Dann-Verknüpfungen: 'Wenn Situation X eintritt, dann werde ich Handlung Y ausführen.' Sie spezifizieren Ort, Zeitpunkt und Art der Handlung. Zielintentionen hingegen legen nur das Ziel fest ('Ich will X erreichen'), ohne konkret zu bestimmen, wann und wie. Umsetzungsabsichten setzen voraus, dass ein Ziel bereits vorhanden ist – sie adressieren das Nicht-Hinkriegen-Problem, nicht das Nicht-Wollen-Problem."
+    },
+    {
+      "id": 194,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten",
+      "question": "Welcher kognitionspsychologische Mechanismus wird als Erklärung für die Wirksamkeit von Umsetzungsabsichten angenommen?",
+      "answer": "Durch das mentale Vorstellen der Wenn-Bedingung wird die kritische Situation im Gedächtnis 'vorprogrammiert'. Tritt der Auslöser (z. B. eine gelbe Farbe als Briefkasten) in der Umwelt auf, wird automatisch – auch unter Ablenkung – ein Langzeitgedächtnisabruf ausgelöst: 'Da war doch was.' Dadurch werden Gelegenheiten zur Zielverfolgung nicht verpasst, ohne dass bewusste Kontrollprozesse notwendig sind."
+    },
+    {
+      "id": 195,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten – Studien",
+      "question": "Beschreibe das Gutschein-Experiment zu Umsetzungsabsichten (Regional- und Bioladen) und seinen zentralen Befund.",
+      "answer": "320 Studierende erhielten einen Gutschein (2,50 € oder 7,50 €) für einen Regional- und Bioladen. Zusätzlich wurde variiert, ob sie eine konkrete Umsetzungsabsicht formulierten (Wochentag + Uhrzeit) oder nicht. Befund: Eine konkrete Absicht mit 2,50-€-Gutschein führte zu nahezu gleich hoher Einlösequote wie ein 7,50-€-Gutschein ohne konkrete Absicht. Der 5-€-Unterschied im Gutscheinwert wurde also durch bloßes Aufschreiben eines konkreten Plans kompensiert – ein Beleg für die hohe Kosteneffizienz von Umsetzungsabsichten."
+    },
+    {
+      "id": 196,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten – Studien",
+      "question": "Was zeigt der Vergleich von Experimentalgruppe (mit Umsetzungsabsicht) und Kontrollgruppe (ohne) im Gutschein-Experiment bezüglich der Spontanität?",
+      "answer": "Da es einen signifikanten Unterschied zwischen der Gruppe mit und der Gruppe ohne Umsetzungsabsicht gibt, zeigt sich, dass Menschen Umsetzungsabsichten nicht spontan von selbst bilden – obwohl sie ein Ziel haben (den Gutschein nicht verfallen lassen). Wären Implementation Intentions selbstverständlich, hätte man keinen Unterschied zwischen den Gruppen gefunden."
+    },
+    {
+      "id": 197,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten – Studien",
+      "question": "Was untersuchte die Online-Studie von Bell et al. (2016) und was war das Ergebnis?",
+      "answer": "Untersucht wurden 13-15-jährige Jugendliche in Nordostengland zum Energiesparverhalten. Hintergrund: Haushalte mit Jugendlichen haben ca. 20 % höheren Stromverbrauch. Manipulation: Formulierung konkreter Wenn-Dann-Absichten (z. B. 'Wenn ich das Zimmer verlasse, schalte ich das Licht aus') vs. keine Absicht. Ergebnis: Nur bei Jugendlichen, die das Ziel hatten Strom zu sparen, bewirkten konkrete Absichten eine messbare Verhaltensänderung (mehr Energiesparen über die Tagebuchphase hinweg). Bei Jugendlichen ohne Sparziel hatte die Intervention keinen Effekt – Umsetzungsabsichten helfen nur jenseits des Rubikons."
+    },
+    {
+      "id": 198,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten – Studien",
+      "question": "Beschreibe das Mensa-Experiment zu vegetarischem Essen und den Einsatz von Umsetzungsabsichten.",
+      "answer": "270 Fleischessende (keine aktuelle Reduktionsabsicht) wurden in einem Online-Experiment gefragt, ob sie für eine Woche weniger Fleisch essen wollen. Wer ein Ziel formulierte, wurde ggf. auch dazu angeleitet, eine konkrete Umsetzungsabsicht zu bilden (z. B. 'Wenn ich morgen in die Mensa gehe, wähle ich ein vegetarisches Gericht'). Eine Woche später wurde der Fleischkonsum (in Gramm, letzte 3 Tage) erhoben. Ergebnis: Personen mit konkreter Umsetzungsabsicht berichteten signifikant weniger Fleischkonsum als Personen ohne, obwohl beide das gleiche Ziel hatten."
+    },
+    {
+      "id": 199,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten",
+      "question": "Für welche Personengruppe sind Umsetzungsabsichten wirksam – und für welche nicht? Warum?",
+      "answer": "Umsetzungsabsichten sind nur wirksam für Personen, die bereits eine Zielintention haben (jenseits des Rubikons). Bei ihnen adressieren sie das Nicht-Hinkriegen-Problem. Für Personen ohne Zielintention (diesseits des Rubikons) sind Umsetzungsabsichten wirkungslos, weil das Problem dort ein Nicht-Wollen-Problem ist – es fehlt die motivationale Basis, auf der eine Umsetzungsabsicht aufbauen könnte."
+    },
+    {
+      "id": 200,
+      "topic": "Motivation",
+      "subtopic": "Umsetzungsabsichten",
+      "question": "Inwiefern können Umsetzungsabsichten als 'Wortapotheke' verstanden werden?",
+      "answer": "Umsetzungsabsichten bestehen lediglich aus sprachlich formulierten Wenn-Dann-Sätzen – sie kosten kaum Ressourcen und sind leicht zu vermitteln. Dennoch zeigen sie empirisch starke Effekte auf das tatsächliche Verhalten. Der Begriff 'Wortapotheke' (angelehnt an das Kunstprojekt von Morten Søndergaard) verdeutlicht, dass verbale Mittel als kostengünstige psychologische Interventionen wirksam sein können."
+    },
+    {
+      "id": 201,
+      "topic": "Motivation",
+      "subtopic": "Günstige Gelegenheiten & Gewohnheitsänderung",
+      "question": "Lohnt es sich, auf 'günstige Gelegenheiten' (z. B. Umzug, neuer Job) zu warten, um Gewohnheiten zu ändern?",
+      "answer": "Die Forschung zeigt, dass die Wahrscheinlichkeit einer Gewohnheitsänderung in solchen 'Zeitfenstern' (wenn der Alltag sowieso durcheinandergewirbelt wird) etwas erhöht ist, weil routinebasierte Verhaltensweisen destabilisiert werden. Allerdings sind die Unterschiede nicht groß genug, um aktiv auf solche Gelegenheiten zu warten – wenn jemand ein Ziel hat, kann man sofort beginnen, es durch phasengerechte Interventionen und Umsetzungsabsichten zu unterstützen."
+    },
+    {
+      "id": 202,
+      "topic": "Motivation",
+      "subtopic": "Überblick & Integration",
+      "question": "Wie hängen Erwartungs-mal-Wert-Ansatz, Rubikon-Modell und Umsetzungsabsichten konzeptuell zusammen?",
+      "answer": "Der Erwartungs-mal-Wert-Ansatz erklärt, ob ein Ziel überhaupt gesetzt wird (prädezisionale Phase im Rubikon-Modell) → Nicht-Wollen-Problem. Das Rubikon-Modell strukturiert den gesamten Handlungszyklus (Abwägen → Planen → Handeln → Bewerten) und macht deutlich, dass nach der Zieladoption andere Prozesse wirksam sind. Umsetzungsabsichten setzen postdezisional an und helfen, konkrete Handlungsgelegenheiten nicht zu verpassen → Nicht-Hinkriegen-Problem. Alle drei Konzepte sind komplementär und entsprechen unterschiedlichen 'Zerlege-Ebenen' von Motivationsproblemen."
+    },
+    {
+      "id": 203,
+      "topic": "Motivation",
+      "subtopic": "Überblick & Integration",
+      "question": "Ein Schüler sagt: 'Ich will eigentlich mehr Sport machen, aber es klappt irgendwie nie.' Welche psychologische Analyse und welche Intervention empfehlen sich laut Vorlesungsinhalt?",
+      "answer": "Analyse: Da ein Ziel vorhanden ist ('ich will mehr Sport'), liegt kein Nicht-Wollen-Problem vor. Der Schüler ist bereits jenseits des Rubikons (postdezisionale Phase). Das Problem ist ein Nicht-Hinkriegen-Problem – er verpasst Gelegenheiten zur Umsetzung. Intervention: Formulierung einer konkreten Umsetzungsabsicht, z. B. 'Wenn ich montags nach der Schule nach Hause komme, ziehe ich sofort meine Sportschuhe an und gehe laufen.' Ggf. zusätzlich HAPA-basierte Überprüfung der Selbstwirksamkeit und der Handlungsplanung."
+    },
+    {
+      "id": 204,
+      "topic": "Motivation",
+      "subtopic": "Überblick & Integration",
+      "question": "Was ist der Unterschied zwischen dem Konzept der 'sozialen Norm' und der 'pluralistischen Ignoranz', und wie hängen beide mit dem Erwartungs-mal-Wert-Modell zusammen?",
+      "answer": "Soziale Norm: Eine weit verbreitete, geteilte Überzeugung, was in einer Gruppe als erwünschtes Verhalten gilt (z. B. 'Klimaschutz ist wichtig'). In der Klimastudie ist Klimaschutz eine global akzeptierte Norm → hoher Wert. Pluralistische Ignoranz: Menschen unterschätzen systematisch, wie weit diese Norm geteilt wird, d. h. wie viele andere ebenfalls bereit wären, etwas zu tun. Im E×V-Modell senkt dies die kollektive Erwartung ('Werden wir gemeinsam etwas erreichen?'). Da E×V multiplikativ ist, kann eine niedrige Erwartung trotz hohem Wert das Setzen oder Verfolgen eines Ziels verhindern."
+    },
+    {
+      "id": 205,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Erwartungs-mal-Wert-Modell",
+      "question": "Welche beiden Komponenten bestimmen nach dem Erwartungs-mal-Wert-Modell die Zielwahl?",
+      "answer": "Die Attraktivität des Ziels (Wert) und die wahrgenommene Schaffbarkeit des Ziels (Erwartung)."
+    },
+    {
+      "id": 206,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Erwartungs-mal-Wert-Modell",
+      "question": "Warum reicht nach dem Erwartungs-mal-Wert-Modell ein hoher Zielwert allein nicht aus, damit ein Ziel gewählt wird?",
+      "answer": "Weil zusätzlich die Erwartung bestehen muss, dass das Ziel erreichbar ist."
+    },
+    {
+      "id": 207,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Affective Forecasting",
+      "question": "Was versteht man unter Affective Forecasting?",
+      "answer": "Die Vorhersage darüber, wie stark und wie lange man sich nach zukünftigen Ereignissen fühlen wird."
+    },
+    {
+      "id": 208,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Affective Forecasting",
+      "question": "Welcher grundlegende Vorhersagefehler tritt beim Affective Forecasting häufig auf?",
+      "answer": "Menschen überschätzen meist die Intensität und Dauer zukünftiger positiver und negativer Gefühle."
+    },
+    {
+      "id": 209,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Affective Forecasting",
+      "question": "Warum können Menschen Ziele verfolgen, die ihr tatsächliches Glück nicht maximieren?",
+      "answer": "Weil sie die zukünftigen emotionalen Folgen von Ereignissen systematisch falsch vorhersagen."
+    },
+    {
+      "id": 210,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Affective Forecasting",
+      "question": "Was besagt der Fokussierungseffekt als Erklärung für Fehlvorhersagen zukünftiger Gefühle?",
+      "answer": "Menschen überschätzen, wie häufig sie später über ein Ereignis nachdenken werden, weil es bei der Vorhersage gerade im Mittelpunkt ihrer Aufmerksamkeit steht."
+    },
+    {
+      "id": 211,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Affective Forecasting",
+      "question": "Wie trägt der Fokussierungseffekt dazu bei, dass zukünftiges Glück überschätzt wird?",
+      "answer": "Man berücksichtigt nicht ausreichend, dass später viele andere Ereignisse Aufmerksamkeit beanspruchen werden."
+    },
+    {
+      "id": 212,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Sensemaking",
+      "question": "Was ist mit Sensemaking im Kontext emotionaler Ereignisse gemeint?",
+      "answer": "Das Einordnen, Erklären und Verarbeiten eines Ereignisses, wodurch dessen emotionale Wirkung meist abnimmt."
+    },
+    {
+      "id": 213,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Sensemaking",
+      "question": "Warum nimmt die emotionale Wirkung vieler Ereignisse mit der Zeit ab?",
+      "answer": "Weil Menschen Erklärungen finden, das Ereignis in einen Kontext einordnen und ihre Aufmerksamkeit anderen Dingen zuwenden."
+    },
+    {
+      "id": 214,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Sensemaking",
+      "question": "Welche Wirkung hatte das Fehlen einer Erklärung für eine geschenkte Kopierkarte in dem beschriebenen Experiment?",
+      "answer": "Die Personen waren später glücklicher, weil sie weiter über den Grund des Geschenks nachdachten."
+    },
+    {
+      "id": 215,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Psychologisches Immunsystem",
+      "question": "Was beschreibt die Metapher des psychologischen Immunsystems?",
+      "answer": "Die Fähigkeit, belastende oder erfreuliche Ereignisse kognitiv zu verarbeiten und sich an sie anzupassen."
+    },
+    {
+      "id": 216,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Empfundenes und erinnertes Glück",
+      "question": "Worin unterscheiden sich empfundenes und erinnertes Glück beziehungsweise Unglück?",
+      "answer": "Empfundenes Glück bezieht sich auf das unmittelbare Erleben, erinnertes Glück auf die spätere Bewertung der Erfahrung."
+    },
+    {
+      "id": 217,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Peak-End-Regel",
+      "question": "Welche zwei Aspekte bestimmen nach den beschriebenen Befunden besonders stark die Erinnerung an schmerzhafte Erfahrungen?",
+      "answer": "Die stärkste Schmerzintensität (Peak) und das Ende der Erfahrung."
+    },
+    {
+      "id": 218,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Peak-End-Regel",
+      "question": "Warum wählten viele Versuchspersonen die Wiederholung des längeren Kaltwasserexperiments?",
+      "answer": "Weil das Ende weniger unangenehm war und die Erinnerung dadurch günstiger ausfiel."
+    },
+    {
+      "id": 219,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Peak-End-Regel",
+      "question": "Welche Rolle spielt die Dauer einer Erfahrung für ihre retrospektive Bewertung?",
+      "answer": "Sie hat meist einen deutlich geringeren Einfluss als Peak und Ende der Erfahrung."
+    },
+    {
+      "id": 220,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Medizinische Entscheidungspsychologie",
+      "question": "Welche praktische Konsequenz ergibt sich aus der Peak-End-Regel für medizinische Eingriffe?",
+      "answer": "Die Erinnerung an den Eingriff kann verbessert werden, wenn die letzten Momente weniger unangenehm gestaltet werden."
+    },
+    {
+      "id": 221,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Medizinische Entscheidungspsychologie",
+      "question": "Warum führte die künstliche Verlängerung von Darmspiegelungen zu positiveren Bewertungen?",
+      "answer": "Weil das zusätzliche, weniger schmerzhafte Ende die Erinnerung an den gesamten Eingriff verbesserte."
+    },
+    {
+      "id": 222,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Prospect Theory",
+      "question": "Welches zentrale Problem der klassischen ökonomischen Theorie greift die Prospect Theory auf?",
+      "answer": "Dass Menschen Entscheidungen häufig nicht nach dem objektiven Erwartungswert treffen."
+    },
+    {
+      "id": 223,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Prospect Theory",
+      "question": "Was bedeutet Verlustaversion?",
+      "answer": "Verluste werden psychologisch stärker gewichtet als gleich große Gewinne."
+    },
+    {
+      "id": 224,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Prospect Theory",
+      "question": "Wie verhalten sich Menschen typischerweise bei sicheren Gewinnen?",
+      "answer": "Sie bevorzugen häufig einen sicheren Gewinn gegenüber einer riskanteren Alternative mit höherem Erwartungswert."
+    },
+    {
+      "id": 225,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Prospect Theory",
+      "question": "Wie verhalten sich Menschen typischerweise bei sicheren Verlusten?",
+      "answer": "Sie gehen oft Risiken ein, um einen sicheren Verlust zu vermeiden."
+    },
+    {
+      "id": 226,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Prospect Theory",
+      "question": "Warum widersprechen die beschriebenen Wahlmuster der Annahme rein rationaler Erwartungswertmaximierung?",
+      "answer": "Weil identische oder günstigere Erwartungswerte unterschiedlich bewertet werden, abhängig davon, ob Gewinne oder Verluste im Vordergrund stehen."
+    },
+    {
+      "id": 227,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Verlustaversion",
+      "question": "Welche Wirkung hatte die Verlustrahmung bei leistungsabhängiger Bezahlung von Lehrkräften?",
+      "answer": "Sie führte zu besseren Schülerleistungen als die Aussicht auf einen gleich hohen Bonusgewinn."
+    },
+    {
+      "id": 228,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Verlustaversion",
+      "question": "Warum war die Verlustbedingung psychologisch anders als die Gewinnbedingung, obwohl die finanzielle Auszahlung identisch war?",
+      "answer": "Weil ein bereits erhaltener Bonus als Besitz wahrgenommen wurde und mögliche Abzüge daher als Verluste erschienen."
+    },
+    {
+      "id": 229,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Psychophysik des Geldes",
+      "question": "Warum wird der Unterschied zwischen 100 und 200 Dollar stärker wahrgenommen als der zwischen 1100 und 1200 Dollar?",
+      "answer": "Weil die subjektive Bewertung von Geld vom Ausgangsniveau abhängt und nicht linear verläuft."
+    },
+    {
+      "id": 230,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Psychophysik des Geldes",
+      "question": "Welche Aussage macht die Prospect Theory über gleich große Gewinne und Verluste?",
+      "answer": "Ein Verlust verändert den subjektiven Wert stärker als ein gleich großer Gewinn."
+    },
+    {
+      "id": 231,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Wahrscheinlichkeitsgewichtung",
+      "question": "Warum kaufen Menschen trotz extrem geringer Gewinnwahrscheinlichkeit Lottoscheine?",
+      "answer": "Weil bereits eine sehr kleine Gewinnchance subjektiv deutlich stärker repräsentiert wird als ihre objektive Wahrscheinlichkeit vermuten lässt."
+    },
+    {
+      "id": 232,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Zeitliche Diskontierung",
+      "question": "Was versteht man unter zeitlicher Diskontierung?",
+      "answer": "Die Abwertung zukünftiger Belohnungen gegenüber sofort verfügbaren Belohnungen."
+    },
+    {
+      "id": 233,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Zeitliche Diskontierung",
+      "question": "Wie verändert sich der subjektive Wert einer Belohnung mit zunehmender zeitlicher Verzögerung?",
+      "answer": "Er nimmt ab, je weiter die Belohnung in der Zukunft liegt."
+    },
+    {
+      "id": 234,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Zeitliche Diskontierung",
+      "question": "Was zeigen individuelle Unterschiede in Diskontierungsfunktionen?",
+      "answer": "Dass Personen unterschiedlich viel zusätzliche Belohnung benötigen, um auf eine spätere Auszahlung zu warten."
+    },
+    {
+      "id": 235,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Was ist Flow nach Csikszentmihalyi?",
+      "answer": "Ein Zustand intensiver Vertiefung in eine Tätigkeit, bei dem Handeln und Erleben stark miteinander verschmelzen."
+    },
+    {
+      "id": 236,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Welche subjektiven Merkmale kennzeichnen Flow-Erleben?",
+      "answer": "Starke Konzentration, Kontrollgefühl, reduzierte Selbstreflexion und veränderte Zeitwahrnehmung."
+    },
+    {
+      "id": 237,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Welche zentrale Bedingung muss für Flow erfüllt sein?",
+      "answer": "Eine hohe Passung zwischen den Anforderungen der Aufgabe und den eigenen Fähigkeiten."
+    },
+    {
+      "id": 238,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Warum fördern Computerspiele häufig Flow-Erleben?",
+      "answer": "Weil sie die Schwierigkeit flexibel an die Fähigkeiten der Spielenden anpassen können."
+    },
+    {
+      "id": 239,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Welche weiteren Bedingungen fördern Flow neben der Passung von Anforderungen und Fähigkeiten?",
+      "answer": "Klare Ziele und unmittelbares Feedback über die eigene Leistung."
+    },
+    {
+      "id": 240,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Welche Faktoren stören Flow-Erleben besonders häufig?",
+      "answer": "Unterbrechungen, Ablenkungen und starker Zeitdruck."
+    },
+    {
+      "id": 241,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Was versteht Csikszentmihalyi unter einer autotelischen Persönlichkeit?",
+      "answer": "Die Tendenz, Tätigkeiten so auszuwählen und zu gestalten, dass sie aus sich heraus als lohnend erlebt werden."
+    },
+    {
+      "id": 242,
+      "topic": "Wert, Entscheidungsfindung und Flow",
+      "subtopic": "Flow",
+      "question": "Welche physiologischen Hinweise sprechen dafür, dass Flow mit messbaren Veränderungen im Organismus verbunden ist?",
+      "answer": "Flow korreliert unter anderem mit Veränderungen von Herzrate, Atemtiefe und Gesichtsmuskelaktivität."
     }
   ]
 }
