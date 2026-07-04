@@ -29,7 +29,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+    html, body { height: 100dvh; overflow: hidden; }
 
     body {
       background: var(--navy);
@@ -44,7 +44,8 @@
         "header  header  header"
         "sidebar main    stats"
         "footer  footer  footer";
-      height: 100svh;
+      min-height: 100dvh;
+      height: 100dvh;
       overflow: hidden;
     }
 
@@ -166,6 +167,8 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      min-width: 0;
+      min-height: 0;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -185,9 +188,15 @@
       display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
     }
     .card-meta .sep { color: var(--border2); }
+    #question-text,
+    #result-feedback,
+    #expected-answer-text {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
     #question-text { font-size: 1.05rem; line-height: 1.7; }
 
-    .answer-area { display: flex; flex-direction: column; gap: 10px; }
+    .answer-area { display: flex; flex-direction: column; gap: 10px; width: 100%; min-width: 0; }
     textarea {
       width: 100%; min-height: 90px; resize: vertical;
       background: var(--deep); border: 1px solid var(--border2); border-radius: var(--radius);
@@ -446,7 +455,8 @@
           "header"
           "main";
         overflow: hidden;
-        height: 100svh;
+        min-height: 100dvh;
+        height: 100dvh;
       }
 
       footer { display: none; }
@@ -454,7 +464,7 @@
       #mobile-nav { display: flex; }
 
       main {
-        padding: 16px 16px calc(var(--nav-h) + 16px + env(safe-area-inset-bottom, 0));
+        padding: 16px 14px calc(var(--nav-h) + 16px + env(safe-area-inset-bottom, 0));
         overflow-y: auto;
       }
 
@@ -481,16 +491,37 @@
         transform: translateX(0);
       }
 
-      #question-text { font-size: 1rem; }
+      #question-text { font-size: 1rem; line-height: 1.6; }
 
       .card { padding: 16px; }
+      .card-meta { gap: 6px; }
       textarea { min-height: 80px; font-size: 1rem; }
 
+      .btn-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
       button.primary, button.secondary {
-        flex: 1;
+        width: 100%;
+        flex: 1 1 auto;
         min-height: 44px;
         justify-content: center;
         text-align: center;
+      }
+
+      #result-card {
+        padding: 16px;
+      }
+
+      .result-header {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .score-bar-wrap {
+        width: 100%;
+        max-width: 120px;
       }
     }
 
@@ -591,6 +622,8 @@
 </footer>
 
 <!-- ═══════════════ MOBILE BOTTOM NAV ════════════════════ -->
+<div id="debug-overlay" style="position:fixed;top:56px;left:4px;z-index:9999;background:rgba(0,0,0,0.75);color:#0f0;font-family:monospace;font-size:10px;padding:4px 6px;border-radius:4px;pointer-events:none;white-space:pre;"></div>
+
 <nav id="mobile-nav" role="navigation" aria-label="Navigation">
   <button class="mnav-btn" id="mnav-sidebar" onclick="mobileToggle('sidebar')" aria-label="Auswahl">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -613,6 +646,7 @@
 </nav>
 
 <script>
+
 // ═══════════════════════════════════════════════════════════
 //  MOBILE NAV
 // ═══════════════════════════════════════════════════════════
@@ -634,6 +668,9 @@ function mobileToggle(view) {
   if (view === 'main') {
     sidebar.classList.remove('mobile-open');
     stats.classList.remove('mobile-open');
+    // Reset scroll so the question + buttons are visible instead of
+    // wherever the previous panel/question happened to be scrolled to.
+    document.querySelector('main').scrollTop = 0;
   }
 }
 
@@ -944,12 +981,16 @@ async function loadNextQuestion() {
   resetResultCard();
   document.getElementById('answer-input').value    = '';
   document.getElementById('answer-input').disabled = false;
+  document.getElementById('answer-input').style.height = '';
   document.getElementById('submit-btn').disabled   = false;
 
   const url = resolveQuestionUrl();
   const q = await fetch(url).then(r => r.json()).catch(() => ({ error: 'Netzwerkfehler' }));
   if (q.error) { document.getElementById('question-text').textContent = q.error; return; }
   displayQuestion(q);
+  // New content can change main's scroll height; always start at the top
+  // so the question card and the buttons below it are both in view.
+  document.querySelector('main').scrollTop = 0;
 }
 
 function resolveQuestionUrl() {
