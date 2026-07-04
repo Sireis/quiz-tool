@@ -625,8 +625,6 @@
 </footer>
 
 <!-- ═══════════════ MOBILE BOTTOM NAV ════════════════════ -->
-<div id="debug-overlay" style="position:fixed;top:56px;left:4px;z-index:9999;background:rgba(0,0,0,0.75);color:#0f0;font-family:monospace;font-size:10px;padding:4px 6px;border-radius:4px;pointer-events:none;white-space:pre;"></div>
-
 <nav id="mobile-nav" role="navigation" aria-label="Navigation">
   <button class="mnav-btn" id="mnav-sidebar" onclick="mobileToggle('sidebar')" aria-label="Auswahl">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -649,39 +647,6 @@
 </nav>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-//  TEMP DEBUG OVERLAY — remove once the layout issue is found
-// ═══════════════════════════════════════════════════════════
-function updateDebugOverlay() {
-  const el = document.getElementById('debug-overlay');
-  if (!el) return;
-  const vv = window.visualViewport;
-
-  // Find the widest offender: any element whose right edge exceeds the viewport width
-  let worst = null, worstRight = window.innerWidth;
-  document.querySelectorAll('main *').forEach(node => {
-    const r = node.getBoundingClientRect();
-    if (r.right > worstRight + 1) {
-      worstRight = r.right;
-      worst = node;
-    }
-  });
-  const worstDesc = worst
-    ? `${worst.tagName.toLowerCase()}${worst.id ? '#' + worst.id : ''}${worst.className ? '.' + String(worst.className).replace(/\s+/g,'.') : ''} right=${Math.round(worstRight)}`
-    : 'none';
-
-  el.textContent =
-    `innerW/H: ${window.innerWidth} / ${window.innerHeight}\n` +
-    `DPR: ${window.devicePixelRatio}\n` +
-    `vv W/H:   ${vv ? Math.round(vv.width) : '-'} / ${vv ? Math.round(vv.height) : '-'}\n` +
-    `body.scrollW/H: ${document.body.scrollWidth} / ${document.body.scrollHeight}\n` +
-    `docEl.scrollW/H: ${document.documentElement.scrollWidth} / ${document.documentElement.scrollHeight}\n` +
-    `main.scrollW/H: ${document.querySelector('main')?.scrollWidth} / ${document.querySelector('main')?.scrollHeight}\n` +
-    `mediaQuery<=700: ${window.matchMedia('(max-width:700px)').matches}\n` +
-    `overflow elem: ${worstDesc}`;
-}
-setInterval(updateDebugOverlay, 500);
-updateDebugOverlay();
 
 // ═══════════════════════════════════════════════════════════
 //  MOBILE NAV
