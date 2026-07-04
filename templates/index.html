@@ -29,7 +29,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100dvh; overflow: hidden; }
+    html, body { height: 100dvh; overflow: hidden; overflow-x: hidden; }
 
     body {
       background: var(--navy);
@@ -39,7 +39,7 @@
       /* Desktop: 3-column grid */
       display: grid;
       grid-template-rows: var(--header-h) 1fr 36px;
-      grid-template-columns: 240px 1fr 270px;
+      grid-template-columns: 240px minmax(0, 1fr) 270px;
       grid-template-areas:
         "header  header  header"
         "sidebar main    stats"
@@ -163,6 +163,8 @@
     main {
       grid-area: main;
       overflow-y: auto;
+      overflow-x: hidden;
+      min-width: 0;
       padding: 24px 32px;
       display: flex;
       flex-direction: column;
@@ -188,6 +190,7 @@
       display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
     }
     .card-meta .sep { color: var(--border2); }
+    .card-meta > span { overflow-wrap: anywhere; word-break: break-word; min-width: 0; }
     #question-text,
     #result-feedback,
     #expected-answer-text {
@@ -450,7 +453,7 @@
     @media (max-width: 700px) {
       body {
         grid-template-rows: var(--header-h) 1fr;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         grid-template-areas:
           "header"
           "main";
@@ -646,6 +649,39 @@
 </nav>
 
 <script>
+// ═══════════════════════════════════════════════════════════
+//  TEMP DEBUG OVERLAY — remove once the layout issue is found
+// ═══════════════════════════════════════════════════════════
+function updateDebugOverlay() {
+  const el = document.getElementById('debug-overlay');
+  if (!el) return;
+  const vv = window.visualViewport;
+
+  // Find the widest offender: any element whose right edge exceeds the viewport width
+  let worst = null, worstRight = window.innerWidth;
+  document.querySelectorAll('main *').forEach(node => {
+    const r = node.getBoundingClientRect();
+    if (r.right > worstRight + 1) {
+      worstRight = r.right;
+      worst = node;
+    }
+  });
+  const worstDesc = worst
+    ? `${worst.tagName.toLowerCase()}${worst.id ? '#' + worst.id : ''}${worst.className ? '.' + String(worst.className).replace(/\s+/g,'.') : ''} right=${Math.round(worstRight)}`
+    : 'none';
+
+  el.textContent =
+    `innerW/H: ${window.innerWidth} / ${window.innerHeight}\n` +
+    `DPR: ${window.devicePixelRatio}\n` +
+    `vv W/H:   ${vv ? Math.round(vv.width) : '-'} / ${vv ? Math.round(vv.height) : '-'}\n` +
+    `body.scrollW/H: ${document.body.scrollWidth} / ${document.body.scrollHeight}\n` +
+    `docEl.scrollW/H: ${document.documentElement.scrollWidth} / ${document.documentElement.scrollHeight}\n` +
+    `main.scrollW/H: ${document.querySelector('main')?.scrollWidth} / ${document.querySelector('main')?.scrollHeight}\n` +
+    `mediaQuery<=700: ${window.matchMedia('(max-width:700px)').matches}\n` +
+    `overflow elem: ${worstDesc}`;
+}
+setInterval(updateDebugOverlay, 500);
+updateDebugOverlay();
 
 // ═══════════════════════════════════════════════════════════
 //  MOBILE NAV
