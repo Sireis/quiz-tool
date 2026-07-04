@@ -589,6 +589,7 @@
     <textarea id="answer-input" placeholder="Antwort eingeben… (Strg+Enter zum Prüfen)"></textarea>
     <div class="btn-row">
       <button class="primary" id="submit-btn" onclick="submitAnswer()">Antwort prüfen</button>
+      <button class="secondary" id="reveal-btn" onclick="revealAnswer()">Antwort zeigen</button>
       <button class="secondary" onclick="loadNextQuestion()">Überspringen →</button>
       <div id="loading"><div class="spinner"></div> Bewertung läuft…</div>
     </div>
@@ -1042,6 +1043,32 @@ async function submitAnswer() {
 }
 
 // ═══════════════════════════════════════════════════════════
+//  REVEAL ANSWER
+// ═══════════════════════════════════════════════════════════
+async function revealAnswer() {
+  if (!currentQuestion) return;
+
+  document.getElementById('submit-btn').disabled   = true;
+  document.getElementById('answer-input').disabled = true;
+  document.getElementById('loading').classList.add('visible');
+  resetResultCard();
+
+  try {
+    const res = await fetch('/api/reveal-answer', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ field: sel.field, id: currentQuestion.id }),
+    }).then(r => r.json());
+
+    showResult(res);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    document.getElementById('loading').classList.remove('visible');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
 //  UI HELPERS
 // ═══════════════════════════════════════════════════════════
 function showResult(res) {
@@ -1057,20 +1084,29 @@ function showResult(res) {
   } else if (resultType === 'partial') {
     verdict.textContent = '~ Teilweise';
     verdict.className   = 'result-verdict';
+  } else if (resultType === 'revealed') {
+    verdict.textContent = '👁 Lösung gezeigt';
+    verdict.className   = 'result-verdict';
   } else {
     verdict.textContent = '✗ Falsch';
     verdict.className   = 'result-verdict fail';
   }
 
   const bar = document.getElementById('score-bar');
-  bar.style.width = (res.score * 100) + '%';
-  bar.className = 'score-bar ' + (resultType === 'correct' ? 'ok' : resultType === 'partial' ? 'partial' : 'fail');
+  if (resultType === 'revealed') {
+    bar.style.width = '0%';
+    bar.className = 'score-bar';
+  } else {
+    bar.style.width = (res.score * 100) + '%';
+    bar.className = 'score-bar ' + (resultType === 'correct' ? 'ok' : resultType === 'partial' ? 'partial' : 'fail');
+  }
 
   document.getElementById('result-feedback').textContent      = res.feedback;
   document.getElementById('expected-answer-text').textContent = res.answer;
 }
 
 function getResultType(res) {
+  if (res.result === 'revealed') return 'revealed';
   if (res.is_sks == true) {
     if (res.sks_punkte == 2) return 'correct';
     if (res.sks_punkte == 1) return 'partial';

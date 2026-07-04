@@ -80,6 +80,28 @@ def api_assess():
         "progress": progress,
     })
 
+
+@app.post("/api/reveal-answer")
+def api_reveal_answer():
+    body = request.get_json(force=True)
+    field = body.get("field")
+    qid = body.get("id")
+
+    if not qid:
+        return jsonify({"error": "Missing 'id'"}), 400
+
+    question = question_store.get_question_by_id(field, qid)
+    if question is None:
+        return jsonify({"error": f"Unknown question id: {qid!r}"}), 404
+
+    return jsonify({
+        "result": "revealed",
+        "score": 0.0,
+        "correct": False,
+        "feedback": "Die Musterlösung wurde direkt angezeigt.",
+        "answer": question["answer"],
+    })
+
 @app.get("/api/fields")
 def api_fields():
     return jsonify(question_store.get_fields())
