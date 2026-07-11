@@ -1693,6 +1693,356 @@
       "subtopic": "Flow",
       "question": "Welche physiologischen Hinweise sprechen dafür, dass Flow mit messbaren Veränderungen im Organismus verbunden ist?",
       "answer": "Flow korreliert unter anderem mit Veränderungen von Herzrate, Atemtiefe und Gesichtsmuskelaktivität."
+    },
+    {
+      "id": 243,
+      "topic": "Attribution",
+      "subtopic": "Grundlagen der Attribution",
+      "question": "Was versteht man unter Attribution?",
+      "answer": "Attribution bezeichnet die Zuschreibung von Ursachen für Ereignisse sowie für Erfolg und Misserfolg."
+    },
+    {
+      "id": 244,
+      "topic": "Attribution",
+      "subtopic": "Attributionstheorien",
+      "question": "Was untersuchen Attributionstheorien?",
+      "answer": "Sie untersuchen, wie Menschen Ursachen für beobachtete Ereignisse und Verhalten erschließen."
+    },
+    {
+      "id": 245,
+      "topic": "Attribution",
+      "subtopic": "Attributionale Theorien",
+      "question": "Worin unterscheiden sich Attributionstheorien von attributionalen Theorien?",
+      "answer": "Attributionstheorien erklären, wie Ursachenzuschreibungen entstehen; attributionale Theorien untersuchen deren Auswirkungen auf Erleben und Verhalten."
+    },
+    {
+      "id": 246,
+      "topic": "Attribution",
+      "subtopic": "Erwartungs-mal-Wert-Modell",
+      "question": "Warum stehen Attributionen in engem Zusammenhang mit dem Erwartungs-mal-Wert-Modell?",
+      "answer": "Weil Ursachenzuschreibungen die Erfolgserwartung und damit einen zentralen Bestandteil der Motivation beeinflussen."
+    },
+    {
+      "id": 247,
+      "topic": "Attribution",
+      "subtopic": "Mensch als Wissenschaftler",
+      "question": "Welche Grundannahme steckt hinter der Metapher 'Mensch als Wissenschaftlerin'?",
+      "answer": "Menschen streben danach, Ursachen zu verstehen, um ihre Umwelt vorherzusagen und kontrollieren zu können."
+    },
+    {
+      "id": 248,
+      "topic": "Attribution",
+      "subtopic": "Fritz Heider",
+      "question": "Warum suchen Menschen nach Heider ständig nach Ursachen für Ereignisse?",
+      "answer": "Um ihre Umwelt besser verstehen, vorhersagen und beeinflussen zu können."
+    },
+    {
+      "id": 249,
+      "topic": "Attribution",
+      "subtopic": "Bedeutung für Motivation",
+      "question": "Warum sind Attributionen für Motivation bedeutsam?",
+      "answer": "Sie beeinflussen Erwartungen, Emotionen und die Bereitschaft, künftig Anstrengung zu investieren."
+    },
+    {
+      "id": 250,
+      "topic": "Attribution",
+      "subtopic": "Animismus",
+      "question": "Was zeigt das Experiment mit den geometrischen Figuren von Heider und Simmel?",
+      "answer": "Menschen schreiben selbst einfachen bewegten Objekten spontan Absichten und Ziele zu."
+    },
+    {
+      "id": 251,
+      "topic": "Attribution",
+      "subtopic": "Skinner",
+      "question": "Warum kritisiert Skinner gewöhnliche Zuschreibungen von Leistung?",
+      "answer": "Weil Erfolge häufig internen Eigenschaften zugeschrieben werden, obwohl Verhalten wesentlich durch Umweltbedingungen geformt wird."
+    },
+    {
+      "id": 252,
+      "topic": "Attribution",
+      "subtopic": "Skinner",
+      "question": "Unter welcher Bedingung wird einer Person nach Skinner besonders viel Anerkennung zugesprochen?",
+      "answer": "Wenn die Ursachen ihres Verhaltens nicht offensichtlich auf Anleitung oder Umwelt zurückgeführt werden können."
+    },
+    {
+      "id": 253,
+      "topic": "Attribution",
+      "subtopic": "Tolman",
+      "question": "Warum beschreibt Tolman Ratten als 'Wissenschaftler'?",
+      "answer": "Weil sie systematisch Hypothesen über ihre Umwelt testen und zielgerichtet Informationen sammeln."
+    },
+    {
+      "id": 254,
+      "topic": "Attribution",
+      "subtopic": "Hudson",
+      "question": "Welchen Befund nutzte Hudson als Hinweis darauf, dass Ratten nach Ursachen suchen?",
+      "answer": "Ratten blickten sich nach einem Schock um und lernten schwächer, wenn mögliche Ursachen aus ihrem Blickfeld entfernt wurden."
+    },
+    {
+      "id": 255,
+      "topic": "Attribution",
+      "subtopic": "Attributionsdimensionen",
+      "question": "Welche drei Dimensionen unterscheidet Weiners Attributionsmodell?",
+      "answer": "Lokus, Stabilität und Kontrollierbarkeit."
+    },
+    {
+      "id": 256,
+      "topic": "Attribution",
+      "subtopic": "Lokus",
+      "question": "Was beschreibt der Attributionslokus?",
+      "answer": "Ob die Ursache einer Person selbst (intern) oder der Umwelt (extern) zugeschrieben wird."
+    },
+    {
+      "id": 257,
+      "topic": "Attribution",
+      "subtopic": "Stabilität",
+      "question": "Was bedeutet die Attributionsdimension Stabilität?",
+      "answer": "Sie beschreibt, ob eine Ursache als dauerhaft oder veränderbar angesehen wird."
+    },
+    {
+      "id": 258,
+      "topic": "Attribution",
+      "subtopic": "Kontrollierbarkeit",
+      "question": "Was beschreibt die Dimension Kontrollierbarkeit?",
+      "answer": "Ob eine Ursache durch eigenes oder fremdes Handeln beeinflusst werden kann."
+    },
+    {
+      "id": 259,
+      "topic": "Attribution",
+      "subtopic": "Anstrengung",
+      "question": "Wie wird Anstrengung im Attributionsmodell eingeordnet?",
+      "answer": "Intern, variabel und kontrollierbar."
+    },
+    {
+      "id": 260,
+      "topic": "Attribution",
+      "subtopic": "Talent",
+      "question": "Wie wird Talent im Attributionsmodell eingeordnet?",
+      "answer": "Intern, stabil und überwiegend unkontrollierbar."
+    },
+    {
+      "id": 261,
+      "topic": "Attribution",
+      "subtopic": "Glück",
+      "question": "Wie wird Glück im Attributionsmodell eingeordnet?",
+      "answer": "Extern, variabel und unkontrollierbar."
+    },
+    {
+      "id": 262,
+      "topic": "Attribution",
+      "subtopic": "Pech",
+      "question": "Welche Attributionsdimensionen kennzeichnen Pech?",
+      "answer": "Extern, variabel und unkontrollierbar."
+    },
+    {
+      "id": 263,
+      "topic": "Attribution",
+      "subtopic": "Folgen von Stabilität",
+      "question": "Wie beeinflusst die wahrgenommene Stabilität einer Ursache zukünftige Erwartungen?",
+      "answer": "Stabile Ursachen führen zu ähnlichen Erwartungen für zukünftige Erfolge oder Misserfolge; variable Ursachen lassen Veränderungen erwarten."
+    },
+    {
+      "id": 264,
+      "topic": "Attribution",
+      "subtopic": "Juroren",
+      "question": "Wie beeinflusst die wahrgenommene Stabilität der Ursache eines Verbrechens gerichtliche Entscheidungen?",
+      "answer": "Stabil eingeschätzte Ursachen führen zu strengeren bzw. längeren Bewährungsauflagen."
+    },
+    {
+      "id": 265,
+      "topic": "Attribution",
+      "subtopic": "Manuskriptablehnung",
+      "question": "Warum reichen Wissenschaftler abgelehnte Manuskripte häufiger erneut ein, wenn sie variable Ursachen annehmen?",
+      "answer": "Weil sie erwarten, dass sich das Ergebnis beim nächsten Versuch ändern kann."
+    },
+    {
+      "id": 266,
+      "topic": "Attribution",
+      "subtopic": "Leistung",
+      "question": "Warum erhöht die Attribution auf variable Ursachen die Anstrengungsbereitschaft?",
+      "answer": "Weil variable Ursachen als veränderbar gelten und dadurch Hoffnung auf Erfolg entsteht."
+    },
+    {
+      "id": 267,
+      "topic": "Attribution",
+      "subtopic": "Lehreremotionen",
+      "question": "Welche Ursache vermuten Lernende hinter dem Ärger einer Lehrkraft?",
+      "answer": "Mangelnde Anstrengung."
+    },
+    {
+      "id": 268,
+      "topic": "Attribution",
+      "subtopic": "Lehreremotionen",
+      "question": "Welche Ursache vermuten Lernende hinter dem Mitleid einer Lehrkraft?",
+      "answer": "Mangelnde Fähigkeit bzw. fehlendes Talent."
+    },
+    {
+      "id": 269,
+      "topic": "Attribution",
+      "subtopic": "Pädagogische Konsequenzen",
+      "question": "Warum sollte eine Lehrkraft nach Misserfolg eher Ärger als Mitleid ausdrücken?",
+      "answer": "Weil Ärger auf mangelnde Anstrengung statt auf mangelnde Fähigkeit schließen lässt und dadurch motivierender wirkt."
+    },
+    {
+      "id": 270,
+      "topic": "Attribution",
+      "subtopic": "Talentattribution",
+      "question": "Warum kann die Attribution von Misserfolg auf fehlendes Talent problematisch sein?",
+      "answer": "Weil Talent als stabil und kaum veränderbar angesehen wird und dadurch Motivation sinkt."
+    },
+    {
+      "id": 271,
+      "topic": "Attribution",
+      "subtopic": "Gender",
+      "question": "Welchen geschlechtsspezifischen Unterschied zeigte die PISA-Studie bei Misserfolgen?",
+      "answer": "Schülerinnen schreiben Misserfolge häufiger mangelndem Talent zu als Schüler gleicher Leistung."
+    },
+    {
+      "id": 272,
+      "topic": "Attribution",
+      "subtopic": "Attributionstraining",
+      "question": "Welches Ziel verfolgt ein Attributionstraining?",
+      "answer": "Ungünstige Ursachenzuschreibungen zu verändern und motivierende Attributionen zu fördern."
+    },
+    {
+      "id": 273,
+      "topic": "Attribution",
+      "subtopic": "Attributionstraining",
+      "question": "Wie beeinflusste das Attributionstraining die Ursachenzuschreibungen von Schülerinnen im Physikunterricht?",
+      "answer": "Erfolge wurden häufiger auf Anstrengung und Misserfolge häufiger auf mangelnde Anstrengung statt auf stabile oder externe Ursachen zurückgeführt."
+    },
+    {
+      "id": 274,
+      "topic": "Attribution",
+      "subtopic": "Attributionstraining",
+      "question": "Welchen Einfluss hatte das Attributionstraining auf die Physikleistungen?",
+      "answer": "Bis zum Ende des Schuljahres erzielten Schülerinnen der Trainingsgruppe bessere Leistungen als die Kontrollgruppe."
+    },
+    {
+      "id": 275,
+      "topic": "Attribution",
+      "subtopic": "Lob",
+      "question": "Warum ist Lob für Anstrengung häufig motivierender als Lob für Talent?",
+      "answer": "Weil Anstrengung als kontrollierbar und veränderbar wahrgenommen wird und dadurch Lernbereitschaft fördert."
+    },
+    {
+      "id": 276,
+      "topic": "Attribution",
+      "subtopic": "Lob",
+      "question": "Wie beeinflusst Lob für Anstrengung die Zielwahl nach einem Erfolg?",
+      "answer": "Es erhöht die Wahrscheinlichkeit, ein Lernziel statt eines reinen Leistungsziels zu wählen."
+    },
+    {
+      "id": 277,
+      "topic": "Attribution",
+      "subtopic": "Lob",
+      "question": "Wie wirkt sich Lob für Talent nach einem späteren Misserfolg auf die Motivation aus?",
+      "answer": "Die Motivation sinkt stärker als nach Lob für Anstrengung."
+    },
+    {
+      "id": 278,
+      "topic": "Attribution",
+      "subtopic": "Kontrollierbarkeit",
+      "question": "Welche Funktion erfüllten die Kontrollierbarkeitsgeschichten in Weiners Experiment zu Schicksalsschlägen?",
+      "answer": "Sie dienten als Anker, um spontane Zuschreibungen der Teilnehmenden zur Kontrollierbarkeit verschiedener Schicksalsschläge zu bestimmen."
+    },
+    {
+      "id": 279,
+      "topic": "Attribution",
+      "subtopic": "Kontrollierbarkeit",
+      "question": "Wie beeinflusst die wahrgenommene Kontrollierbarkeit eines Schicksalsschlags das Mitleid?",
+      "answer": "Je unkontrollierbarer die Ursache erscheint, desto größer ist das Mitleid."
+    },
+    {
+      "id": 280,
+      "topic": "Attribution",
+      "subtopic": "Kontrollierbarkeit",
+      "question": "Wie beeinflusst die wahrgenommene Kontrollierbarkeit eines Schicksalsschlags den Ärger gegenüber der betroffenen Person?",
+      "answer": "Je kontrollierbarer die Ursache erscheint, desto stärker wird Ärger empfunden."
+    },
+    {
+      "id": 281,
+      "topic": "Attribution",
+      "subtopic": "Hilfsbereitschaft",
+      "question": "Welchen Zusammenhang zeigte Weiners Forschung zwischen Kontrollierbarkeit und Hilfsbereitschaft?",
+      "answer": "Menschen helfen und spenden eher, wenn sie den Schicksalsschlag als unkontrollierbar ansehen."
+    },
+    {
+      "id": 282,
+      "topic": "Attribution",
+      "subtopic": "Fehlattribution",
+      "question": "Was versteht man unter einer Fehlattribution von Erregung?",
+      "answer": "Die körperliche Erregung wird einer falschen Ursache zugeschrieben."
+    },
+    {
+      "id": 283,
+      "topic": "Attribution",
+      "subtopic": "Hängebrückenexperiment",
+      "question": "Welches Ergebnis zeigte das Hängebrückenexperiment von Dutton und Aron?",
+      "answer": "Männer kontaktierten die Interviewerin häufiger nach dem Überqueren der Hängebrücke als nach der stabilen Brücke, vermutlich aufgrund einer Fehlattribution ihrer Erregung."
+    },
+    {
+      "id": 284,
+      "topic": "Attribution",
+      "subtopic": "Stimmung",
+      "question": "Was zeigte das Wetterexperiment von Schwarz und Clore?",
+      "answer": "Ohne Hinweis auf das Wetter floss die aktuelle Wetterlage in die Bewertung der Lebenszufriedenheit ein."
+    },
+    {
+      "id": 285,
+      "topic": "Attribution",
+      "subtopic": "Selbstbestimmungstheorie",
+      "question": "Warum wird die Selbstbestimmungstheorie im Zusammenhang mit Attribution behandelt?",
+      "answer": "Weil sie untersucht, ob Menschen die Ursachen ihres Handelns eher intern oder extern verorten."
+    },
+    {
+      "id": 286,
+      "topic": "Attribution",
+      "subtopic": "Selbstbestimmungstheorie",
+      "question": "Welche drei psychologischen Grundbedürfnisse postuliert die Selbstbestimmungstheorie?",
+      "answer": "Autonomie, Kompetenz und soziale Eingebundenheit."
+    },
+    {
+      "id": 287,
+      "topic": "Attribution",
+      "subtopic": "Autonomie",
+      "question": "Was bedeutet das Grundbedürfnis nach Autonomie?",
+      "answer": "Menschen möchten sich als Urheber ihres eigenen Handelns erleben."
+    },
+    {
+      "id": 288,
+      "topic": "Attribution",
+      "subtopic": "Kompetenz",
+      "question": "Was beschreibt das Grundbedürfnis nach Kompetenz?",
+      "answer": "Menschen möchten sich als wirksam und fähig bei der Verfolgung ihrer Ziele erleben."
+    },
+    {
+      "id": 289,
+      "topic": "Attribution",
+      "subtopic": "Soziale Eingebundenheit",
+      "question": "Was versteht die Selbstbestimmungstheorie unter sozialer Eingebundenheit?",
+      "answer": "Das Bedürfnis, sich anderen Menschen oder Gruppen zugehörig und verbunden zu fühlen."
+    },
+    {
+      "id": 290,
+      "topic": "Attribution",
+      "subtopic": "Korrumpierungseffekt",
+      "question": "Was beschreibt der Korrumpierungseffekt nach Deci?",
+      "answer": "Externe Belohnungen können intrinsische Motivation verringern, wenn sie als kontrollierend erlebt werden."
+    },
+    {
+      "id": 291,
+      "topic": "Attribution",
+      "subtopic": "Internalisierung",
+      "question": "Was versteht die Selbstbestimmungstheorie unter Internalisierung?",
+      "answer": "Den Prozess, bei dem ursprünglich äußere Gründe für Verhalten schrittweise als eigene Motive übernommen werden."
+    },
+    {
+      "id": 292,
+      "topic": "Attribution",
+      "subtopic": "Selbstbestimmungstheorie",
+      "question": "Welche Vorhersage trifft die Selbstbestimmungstheorie für Situationen, in denen Autonomie, Kompetenz und soziale Eingebundenheit gleichzeitig gefördert werden?",
+      "answer": "Es sind höhere intrinsische Motivation, größeres Wohlbefinden und eine stärkere Internalisierung des Verhaltens zu erwarten."
     }
   ]
 }
