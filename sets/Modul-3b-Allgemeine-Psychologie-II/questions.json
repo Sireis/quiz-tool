@@ -2393,6 +2393,244 @@
       "subtopic": "Fehlkonzept",
       "question": "Warum wäre es nach Appraisal-Theorien falsch anzunehmen, dass derselbe Reiz immer dieselbe Emotion hervorruft?",
       "answer": "Weil Emotionen von der individuellen Bewertung der Situation abhängen und diese variieren kann."
+    },
+    {
+      "id": 342,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Theorie des Emotionsausdrucks",
+      "question": "Welche zentrale These vertrat Darwin zur Entstehung von Emotionsausdruck?",
+      "answer": "Emotionsausdruck und Emotionserkennung sind angeboren, stammesgeschichtlich entstanden und nicht primär erlernt."
+    },
+    {
+      "id": 343,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Theorie des Emotionsausdrucks",
+      "question": "Warum musste Emotionsausdruck nach Darwin in jeder Entwicklungsstufe einen Vorteil bieten?",
+      "answer": "Weil sich Merkmale nach der natürlichen Selektion nur erhalten konnten, wenn sie die individuelle Überlebens- oder Fortpflanzungschance erhöhten."
+    },
+    {
+      "id": 344,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Theorie des Emotionsausdrucks",
+      "question": "Wie erklärt Darwin das Aufreißen der Augen bei Überraschung?",
+      "answer": "Es verbessert die Informationsaufnahme nach einer Umweltveränderung und verschaffte dadurch einen Selektionsvorteil."
+    },
+    {
+      "id": 345,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Funktionen des Emotionsausdrucks",
+      "question": "Welche kommunikative Funktion schreibt Darwin dem Emotionsausdruck zu?",
+      "answer": "Er dient der Kommunikation von Gefühlen, Gedanken, Handlungsabsichten und Wünschen, insbesondere zwischen Mutter und Kind."
+    },
+    {
+      "id": 346,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Evidenz",
+      "question": "Welches Ziel verfolgte Darwin mit seinen sechs Untersuchungsansätzen?",
+      "answer": "Er wollte belegen, dass Emotionsausdruck universell und angeboren ist."
+    },
+    {
+      "id": 347,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Evidenz",
+      "question": "Was untersuchte Darwin mit der intrakulturellen Beurteilung von Gesichtsausdrücken?",
+      "answer": "Ob verschiedene Personen dieselben Gesichtsausdrücke übereinstimmend denselben Emotionen zuordnen."
+    },
+    {
+      "id": 348,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Evidenz",
+      "question": "Warum war der interkulturelle Vergleich des Emotionsausdrucks für Darwin besonders wichtig?",
+      "answer": "Eine kulturübergreifende Übereinstimmung spricht gegen rein kulturelles Lernen und für eine angeborene Grundlage."
+    },
+    {
+      "id": 349,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Evidenz",
+      "question": "Warum beobachtete Darwin den Emotionsausdruck bei Tieren?",
+      "answer": "Ähnliche Ausdrucksformen bei Mensch und Tier sollten auf einen gemeinsamen stammesgeschichtlichen Ursprung hinweisen."
+    },
+    {
+      "id": 350,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Evidenz",
+      "question": "Warum betrachtete Darwin den Emotionsausdruck blind geborener Menschen als wichtiges Argument?",
+      "answer": "Da sie Gesichtsausdrücke nicht durch Beobachtung erlernen konnten, spricht ein ähnlicher Ausdruck für angeborene Mechanismen."
+    },
+    {
+      "id": 351,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Darwins Evidenz",
+      "question": "Welches Argument leitete Darwin aus Beobachtungen psychisch erkrankter Menschen ab?",
+      "answer": "Starke Emotionen werden häufig wenig kontrolliert ausgedrückt und zeigen dabei dieselben Ausdrucksmuster wie bei anderen Menschen."
+    },
+    {
+      "id": 352,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Kritik an Darwin",
+      "question": "Welches Problem ergibt sich für Darwins Theorie am Beispiel der Warnrufe von Präriehunden?",
+      "answer": "Der Warnruf senkt die individuelle Überlebenschance des sendenden Tieres und widerspricht damit einer rein individuellen Selektion."
+    },
+    {
+      "id": 353,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Inklusive Fitness",
+      "question": "Wie löste Hamilton das Problem altruistischen Verhaltens in der Evolution?",
+      "answer": "Durch das Konzept der inklusiven Fitness, nach dem Gene selektiert werden und Hilfe für Verwandte deren Weitergabe fördern kann."
+    },
+    {
+      "id": 354,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Inklusive Fitness",
+      "question": "Worin besteht der Unterschied zwischen individueller und inklusiver Fitness?",
+      "answer": "Individuelle Fitness beschreibt den eigenen Fortpflanzungserfolg, inklusive Fitness zusätzlich den genetischen Erfolg über verwandte Individuen."
+    },
+    {
+      "id": 355,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Inklusive Fitness",
+      "question": "Warum kann sich nach Hamilton ein Gen durchsetzen, obwohl es seinem Träger schadet?",
+      "answer": "Wenn es die Überlebens- oder Fortpflanzungschancen genügend nah verwandter Individuen erhöht und dadurch insgesamt häufiger weitergegeben wird."
+    },
+    {
+      "id": 356,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Basisemotionen",
+      "question": "Welche sechs Basisemotionen unterscheidet Ekman?",
+      "answer": "Ärger, Ekel, Furcht, Traurigkeit, Überraschung und Freude."
+    },
+    {
+      "id": 357,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Neurokulturelle Theorie",
+      "question": "Welche Annahme trifft Ekmans neurokulturelle Theorie über Basisemotionen?",
+      "answer": "Basisemotionen sind evolutionär entstanden und mit spezifischen Gefühlen, physiologischen Veränderungen und charakteristischen Gesichtsausdrücken verbunden."
+    },
+    {
+      "id": 358,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Neurokulturelle Theorie",
+      "question": "Warum widerspricht die Möglichkeit, Emotionen willentlich zu unterdrücken, Ekmans Theorie nicht?",
+      "answer": "Weil angeborene Ausdrucksprogramme durch kulturelle Darstellungsregeln überlagert oder maskiert werden können."
+    },
+    {
+      "id": 359,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Neurokulturelle Theorie",
+      "question": "Was versteht Ekman unter einem angeborenen Mimikprogramm?",
+      "answer": "Jede Basisemotion aktiviert automatisch eine charakteristische Kombination mimischer Muskeln."
+    },
+    {
+      "id": 360,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Neurokulturelle Theorie",
+      "question": "Welche organismische Funktion wird dem mimischen Ausdruck von Ekel zugeschrieben?",
+      "answer": "Er unterstützt das Ausstoßen unverträglicher oder schädlicher Substanzen aus dem Rachen."
+    },
+    {
+      "id": 361,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Neurokulturelle Theorie",
+      "question": "Warum bezeichnet Ekman seine Theorie als neurokulturell?",
+      "answer": "Weil sie angeborene Ausdrucksprogramme mit kulturell erlernten Darstellungsregeln verbindet."
+    },
+    {
+      "id": 362,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Universelle Emotionserkennung",
+      "question": "Welches Ziel verfolgte Ekmans Studie mit den Fore in Papua-Neuguinea?",
+      "answer": "Zu prüfen, ob Menschen mit geringem Kontakt zu anderen Kulturen Basisemotionen kulturübergreifend erkennen."
+    },
+    {
+      "id": 363,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Universelle Emotionserkennung",
+      "question": "Welches Ergebnis erzielte Ekmans Untersuchung bei den Fore?",
+      "answer": "Die Teilnehmer ordneten Gesichtsausdrücke den passenden Basisemotionen mit hoher Trefferquote zu."
+    },
+    {
+      "id": 364,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Universelle Emotionserkennung",
+      "question": "Warum gelten die Fore als besonders geeignete Untersuchungsgruppe für die Universalität von Emotionsausdruck?",
+      "answer": "Sie hatten vor der Studie nur sehr wenig Kontakt zu westlichen Kulturen und konnten Gesichtsausdrücke daher kaum kulturell übernommen haben."
+    },
+    {
+      "id": 365,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Kulturvergleich",
+      "question": "Welches Ergebnis zeigte Ekmans kulturvergleichende Studie mit Studierenden aus zehn Ländern?",
+      "answer": "Die Basisemotionen wurden auch kulturübergreifend mit hoher Genauigkeit erkannt."
+    },
+    {
+      "id": 366,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Meta-Analyse",
+      "question": "Zu welchem allgemeinen Ergebnis kamen Elfenbein und Ambady bezüglich der Emotionserkennung?",
+      "answer": "Emotionen werden kulturübergreifend deutlich besser als zufällig erkannt."
+    },
+    {
+      "id": 367,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Meta-Analyse",
+      "question": "Was versteht man unter dem gruppeninternen Vorteil bei der Emotionserkennung?",
+      "answer": "Emotionen werden genauer erkannt, wenn Sender und Empfänger derselben kulturellen oder ethnischen Gruppe angehören."
+    },
+    {
+      "id": 368,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Meta-Analyse",
+      "question": "Warum spricht der gruppeninterne Vorteil gegen eine vollständig angeborene Emotionserkennung?",
+      "answer": "Er zeigt, dass Lernen und kulturelle Erfahrung die Erkennung zusätzlich verbessern."
+    },
+    {
+      "id": 369,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Meta-Analyse",
+      "question": "Warum konnten Angehörige von Minderheiten Emotionen der Mehrheitsgruppe häufig besser erkennen als umgekehrt?",
+      "answer": "Sie haben meist mehr Erfahrung im Umgang mit der Mehrheitsgruppe und lernen deren Ausdrucksweisen besser kennen."
+    },
+    {
+      "id": 370,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Universalität und Kultur",
+      "question": "Warum schließen sich Universalität und kulturelle Unterschiede im Emotionsausdruck nicht aus?",
+      "answer": "Weil angeborene Ausdrucksprogramme durch kulturelle Lernprozesse ergänzt und modifiziert werden können."
+    },
+    {
+      "id": 371,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Emotionserkennung",
+      "question": "Warum war die Erkennungsleistung in der Studie von Wagner, MacDonald und Manstead nur geringfügig besser als Zufall?",
+      "answer": "Die Gesichtsausdrücke entstanden in einer nicht sozialen Situation und waren deshalb weniger deutlich ausgeprägt."
+    },
+    {
+      "id": 372,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Sozialer Kontext",
+      "question": "Welche unabhängigen Variablen wurden in der Studie von Hess, Banse und Kappas experimentell variiert?",
+      "answer": "Die Lustigkeit des Films und der soziale Kontext, in dem der Film angesehen wurde."
+    },
+    {
+      "id": 373,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Sozialer Kontext",
+      "question": "Welchen Einfluss hatte der soziale Kontext auf den mimischen Emotionsausdruck?",
+      "answer": "Je sozialer die Situation war, desto stärker fiel die Aktivierung der Gesichtsmuskulatur aus."
+    },
+    {
+      "id": 374,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Sozialer Kontext",
+      "question": "Welche Schlussfolgerung lässt sich aus der Studie von Hess, Banse und Kappas ziehen?",
+      "answer": "Der Emotionsausdruck hängt nicht nur von der empfundenen Emotion, sondern auch stark von der sozialen Situation ab."
+    },
+    {
+      "id": 375,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Sozialer Kontext",
+      "question": "Warum unterstützt die Studie von Hess, Banse und Kappas die Annahme einer kommunikativen Funktion des Emotionsausdrucks?",
+      "answer": "Weil Menschen in Anwesenheit anderer deutlich mehr mimischen Ausdruck zeigen als allein, selbst bei gleicher emotionaler Situation."
     }
   ]
 }
