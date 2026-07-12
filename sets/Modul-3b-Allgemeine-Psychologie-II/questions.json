@@ -2043,6 +2043,356 @@
       "subtopic": "Selbstbestimmungstheorie",
       "question": "Welche Vorhersage trifft die Selbstbestimmungstheorie für Situationen, in denen Autonomie, Kompetenz und soziale Eingebundenheit gleichzeitig gefördert werden?",
       "answer": "Es sind höhere intrinsische Motivation, größeres Wohlbefinden und eine stärkere Internalisierung des Verhaltens zu erwarten."
+    },
+    {
+      "id": 292,
+      "topic": "Emotion",
+      "subtopic": "Definition von Emotion",
+      "question": "Wie definiert Klaus Scherer eine Emotion?",
+      "answer": "Eine Emotion ist ein synchronisierter Zustand, bei dem kognitive, physiologische, motivationale, Ausdrucks- und Gefühlskomponenten zeitlich überlappend zusammenwirken."
+    },
+    {
+      "id": 293,
+      "topic": "Emotion",
+      "subtopic": "Komponenten von Emotionen",
+      "question": "Welche fünf Komponenten einer Emotion unterscheidet Klaus Scherer?",
+      "answer": "Kognitive, physiologische, motivationale, Ausdrucks- und Gefühlskomponente."
+    },
+    {
+      "id": 294,
+      "topic": "Emotion",
+      "subtopic": "Komponenten von Emotionen",
+      "question": "Welche Aufgabe erfüllt die kognitive Komponente einer Emotion nach Scherer?",
+      "answer": "Sie bewertet Ereignisse hinsichtlich ihrer Relevanz für das Wohlergehen des Individuums."
+    },
+    {
+      "id": 295,
+      "topic": "Emotion",
+      "subtopic": "Komponenten von Emotionen",
+      "question": "Welche Funktion hat die physiologische Komponente einer Emotion?",
+      "answer": "Sie reguliert innere Zustände und bereitet den Organismus auf Handlungen vor."
+    },
+    {
+      "id": 296,
+      "topic": "Emotion",
+      "subtopic": "Komponenten von Emotionen",
+      "question": "Welche Funktion erfüllt die motivationale Komponente einer Emotion?",
+      "answer": "Sie aktiviert spezifische Motive und Handlungstendenzen."
+    },
+    {
+      "id": 297,
+      "topic": "Emotion",
+      "subtopic": "Komponenten von Emotionen",
+      "question": "Welche Aufgabe übernimmt die Ausdruckskomponente einer Emotion?",
+      "answer": "Sie dient dem Ausdruck und der Kommunikation von Reaktionen und Intentionen."
+    },
+    {
+      "id": 298,
+      "topic": "Emotion",
+      "subtopic": "Komponenten von Emotionen",
+      "question": "Was beschreibt die Gefühlskomponente einer Emotion nach Scherer?",
+      "answer": "Sie umfasst die Überwachung und Fokussierung auf Veränderungen des Zustands des Organismus."
+    },
+    {
+      "id": 299,
+      "topic": "Emotion",
+      "subtopic": "Synchronisation",
+      "question": "Warum reicht das Auftreten einzelner Emotionskomponenten nicht aus, um von einer Emotion zu sprechen?",
+      "answer": "Erst das zeitlich überlappende bzw. synchronisierte Auftreten der Komponenten macht einen Zustand zu einer Emotion."
+    },
+    {
+      "id": 300,
+      "topic": "Emotion",
+      "subtopic": "Objektgerichtetheit",
+      "question": "Was bedeutet es, dass Emotionen objektgerichtet sind?",
+      "answer": "Emotionen beziehen sich auf ein bestimmtes Objekt, Ereignis oder einen Sachverhalt."
+    },
+    {
+      "id": 301,
+      "topic": "Emotion",
+      "subtopic": "Objektgerichtetheit",
+      "question": "Worin unterscheiden sich Emotionen und Stimmungen hinsichtlich ihrer Objektgerichtetheit?",
+      "answer": "Emotionen sind auf ein bestimmtes Objekt gerichtet, Stimmungen sind meist diffuser und nicht an ein konkretes Objekt gebunden."
+    },
+    {
+      "id": 302,
+      "topic": "Emotion",
+      "subtopic": "Intentionalität",
+      "question": "Was versteht Franz Brentano unter Intentionalität?",
+      "answer": "Die Eigenschaft psychischer Phänomene, sich auf ein Objekt oder einen Gegenstand zu beziehen."
+    },
+    {
+      "id": 303,
+      "topic": "Emotion",
+      "subtopic": "Emotion und Stimmung",
+      "question": "Welches zeitliche Merkmal unterscheidet Emotionen von Stimmungen?",
+      "answer": "Emotionen sind typischerweise von kurzer Dauer, während Stimmungen länger anhalten können."
+    },
+    {
+      "id": 304,
+      "topic": "Emotion",
+      "subtopic": "Emotion und Stimmung",
+      "question": "Welche empirische Evidenz spricht für die kurze Dauer von Emotionen?",
+      "answer": "Tagebuchstudien zeigen, dass etwa die Hälfte der berichteten Emotionen bereits nach ungefähr zehn Minuten beendet ist."
+    },
+    {
+      "id": 305,
+      "topic": "Emotion",
+      "subtopic": "Funktion von Emotionen",
+      "question": "Warum sind Emotionen aus evolutionärer Sicht nützlich?",
+      "answer": "Sie bereiten den Organismus physiologisch auf Handlungen vor, priorisieren wichtige Ereignisse und fördern soziale Bindungen."
+    },
+    {
+      "id": 306,
+      "topic": "Emotion",
+      "subtopic": "James-Lange-Theorie",
+      "question": "Welche zentrale Annahme vertritt die James-Lange-Theorie?",
+      "answer": "Emotionen entstehen durch das Erleben körperlicher Veränderungen, die auf einen Reiz folgen."
+    },
+    {
+      "id": 307,
+      "topic": "Emotion",
+      "subtopic": "James-Lange-Theorie",
+      "question": "Wie beantwortet die James-Lange-Theorie die Frage 'Sind wir traurig, weil wir weinen, oder weinen wir, weil wir traurig sind'?",
+      "answer": "Wir sind traurig, weil wir weinen bzw. weil wir die körperlichen Veränderungen wahrnehmen."
+    },
+    {
+      "id": 308,
+      "topic": "Emotion",
+      "subtopic": "James-Lange-Theorie",
+      "question": "Warum fühlen sich unterschiedliche Emotionen nach der James-Lange-Theorie unterschiedlich an?",
+      "answer": "Weil sie auf unterschiedlichen Mustern körperlicher Veränderungen beruhen."
+    },
+    {
+      "id": 309,
+      "topic": "Emotion",
+      "subtopic": "James-Lange-Theorie",
+      "question": "Welche wichtige Stärke besitzt die James-Lange-Theorie?",
+      "answer": "Sie erklärt, warum unterschiedliche Emotionen subjektiv unterschiedlich erlebt werden."
+    },
+    {
+      "id": 310,
+      "topic": "Emotion",
+      "subtopic": "James-Lange-Theorie",
+      "question": "Nenne zwei zentrale Kritikpunkte an der James-Lange-Theorie.",
+      "answer": "Autonome Veränderungen treten oft zu langsam auf und unterscheiden sich zwischen vielen Emotionen nur wenig."
+    },
+    {
+      "id": 311,
+      "topic": "Emotion",
+      "subtopic": "Facial-Feedback-Hypothese",
+      "question": "Welche Annahme macht die Facial-Feedback-Hypothese?",
+      "answer": "Gesichtsausdrücke beeinflussen das emotionale Erleben."
+    },
+    {
+      "id": 312,
+      "topic": "Emotion",
+      "subtopic": "Facial-Feedback-Hypothese",
+      "question": "Welchen Effekt hatte induziertes Lächeln in der vorgestellten Stressstudie?",
+      "answer": "Es beschleunigte die physiologische Erholung nach Stress und ging mit einer niedrigeren Herzfrequenz einher."
+    },
+    {
+      "id": 313,
+      "topic": "Emotion",
+      "subtopic": "Facial-Feedback-Hypothese",
+      "question": "Worin unterscheiden sich Duchenne-Lächeln und Standardlächeln?",
+      "answer": "Beim Duchenne-Lächeln werden zusätzlich die Muskeln um die Augen aktiviert und es gilt als Ausdruck echter Freude."
+    },
+    {
+      "id": 314,
+      "topic": "Emotion",
+      "subtopic": "Facial-Feedback-Hypothese",
+      "question": "Warum gilt die ursprüngliche Pen-Smiling-Studie von Strack et al. heute als problematisch?",
+      "answer": "Der ursprüngliche Befund konnte in großen Replikationsstudien nicht bestätigt werden."
+    },
+    {
+      "id": 315,
+      "topic": "Emotion",
+      "subtopic": "Facial-Feedback-Hypothese",
+      "question": "Welches Gesamtfazit ergibt sich aus Meta-Analysen zur Facial-Feedback-Hypothese?",
+      "answer": "Gesichtsfeedback beeinflusst Emotionen im Durchschnitt leicht, die Effekte sind jedoch klein und heterogen."
+    },
+    {
+      "id": 316,
+      "topic": "Emotion",
+      "subtopic": "Schachter-Singer-Theorie",
+      "question": "Welche zwei Faktoren bestimmen nach der Schachter-Singer-Theorie Emotionen?",
+      "answer": "Physiologische Erregung und die kognitive Interpretation der Situation."
+    },
+    {
+      "id": 317,
+      "topic": "Emotion",
+      "subtopic": "Schachter-Singer-Theorie",
+      "question": "Welche Funktion übernimmt die physiologische Erregung in der Schachter-Singer-Theorie?",
+      "answer": "Sie bestimmt die Intensität der Emotion."
+    },
+    {
+      "id": 318,
+      "topic": "Emotion",
+      "subtopic": "Schachter-Singer-Theorie",
+      "question": "Welche Funktion übernimmt die Interpretation der Situation in der Schachter-Singer-Theorie?",
+      "answer": "Sie bestimmt die Art bzw. Qualität der Emotion."
+    },
+    {
+      "id": 319,
+      "topic": "Emotion",
+      "subtopic": "Schachter-Singer-Experiment",
+      "question": "Warum berichteten informierte Versuchspersonen geringere Emotionen als uninformierte?",
+      "answer": "Sie führten ihre körperliche Erregung auf die Adrenalininjektion zurück und nicht auf die Situation."
+    },
+    {
+      "id": 320,
+      "topic": "Emotion",
+      "subtopic": "Schachter-Singer-Experiment",
+      "question": "Nenne zwei Kritikpunkte am Schachter-Singer-Experiment.",
+      "answer": "Ethisch problematische Täuschung sowie fehlgeschlagene Replikationen und teilweise unvollständige empirische Unterstützung."
+    },
+    {
+      "id": 321,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Was versteht man unter einem Appraisal?",
+      "answer": "Eine schnelle, intuitive Bewertung der Bedeutung einer Situation für das eigene Wohlbefinden."
+    },
+    {
+      "id": 322,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Warum gelten Appraisals nicht als bewusstes Grübeln?",
+      "answer": "Sie erfolgen unmittelbar und spontan, ohne längeres Nachdenken."
+    },
+    {
+      "id": 323,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Welche fünf zentralen Bewertungsdimensionen nennt Scherer in Appraisal-Theorien?",
+      "answer": "Neuheit, Angenehmheit, Zielrelevanz, Bewältigungspotenzial und Kompatibilität mit Standards."
+    },
+    {
+      "id": 324,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Wie erklären Appraisal-Theorien, dass verschiedene Personen auf dieselbe Situation unterschiedlich emotional reagieren?",
+      "answer": "Sie bewerten dieselbe Situation unterschiedlich und erleben deshalb unterschiedliche Emotionen."
+    },
+    {
+      "id": 325,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Wie erklären Appraisal-Theorien, dass dieselbe Person zu verschiedenen Zeitpunkten unterschiedlich reagiert?",
+      "answer": "Die Bewertungen der Situation können sich im Laufe der Zeit verändern."
+    },
+    {
+      "id": 326,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Welcher Unterschied im Bewältigungspotenzial unterscheidet Ärger und Traurigkeit nach Scherer?",
+      "answer": "Ärger geht mit hohem Bewältigungspotenzial einher, Traurigkeit mit geringem."
+    },
+    {
+      "id": 327,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Welche Evidenz liefert die Meta-Analyse von Yih und Ong für Appraisal-Theorien?",
+      "answer": "Die meisten vorhergesagten Zusammenhänge zwischen Appraisals und Emotionen werden bestätigt, allerdings bestehen Forschungslücken."
+    },
+    {
+      "id": 328,
+      "topic": "Emotion",
+      "subtopic": "Appraisal-Theorien",
+      "question": "Warum reichen Appraisals allein möglicherweise nicht aus, um Emotionen bei Musik vollständig zu erklären?",
+      "answer": "Zusätzlich spielen emotionale Ansteckung und physiologische Synchronisation eine Rolle."
+    },
+    {
+      "id": 329,
+      "topic": "Emotion",
+      "subtopic": "Sozialkonstruktivistische Theorie",
+      "question": "Welche Grundannahme vertritt Lisa Feldman Barrett über Emotionen?",
+      "answer": "Emotionen werden durch die Interpretation körperlicher Empfindungen im jeweiligen Kontext konstruiert."
+    },
+    {
+      "id": 330,
+      "topic": "Emotion",
+      "subtopic": "Sozialkonstruktivistische Theorie",
+      "question": "Warum lehnt Barrett die Vorstellung fester Emotionszentren im Gehirn ab?",
+      "answer": "Weil einzelne Emotionen keiner spezifischen neuronalen Struktur eindeutig zugeordnet werden können."
+    },
+    {
+      "id": 331,
+      "topic": "Emotion",
+      "subtopic": "Sozialkonstruktivistische Theorie",
+      "question": "Welche Rolle spielt Sprache nach Barrett für Emotionen?",
+      "answer": "Sprache ermöglicht die Kategorisierung und Benennung emotionaler Erfahrungen."
+    },
+    {
+      "id": 332,
+      "topic": "Emotion",
+      "subtopic": "Sozialkonstruktivistische Theorie",
+      "question": "Welche Evidenz spricht nach Barrett gegen eine feste biologische Essenz einzelner Emotionen?",
+      "answer": "Es gibt keine eindeutige Zuordnung einzelner Emotionen zu bestimmten Hirnarealen oder physiologischen Mustern."
+    },
+    {
+      "id": 333,
+      "topic": "Emotion",
+      "subtopic": "Sozialkonstruktivistische Theorie",
+      "question": "Welche Schwierigkeit stellt die Existenz von Emotionen bei Tieren für sozialkonstruktivistische Theorien dar?",
+      "answer": "Sie ist schwer mit der Annahme vereinbar, dass Emotionen wesentlich auf sprachlicher Konstruktion beruhen."
+    },
+    {
+      "id": 334,
+      "topic": "Emotion",
+      "subtopic": "Vergleich von Emotionstheorien",
+      "question": "Worin unterscheiden sich James-Lange- und Schachter-Singer-Theorie hinsichtlich der Rolle kognitiver Prozesse?",
+      "answer": "James-Lange betrachtet körperliche Veränderungen als Ursprung der Emotion, Schachter-Singer ergänzt deren Interpretation als entscheidenden Faktor."
+    },
+    {
+      "id": 335,
+      "topic": "Emotion",
+      "subtopic": "Vergleich von Emotionstheorien",
+      "question": "Welchen zentralen Unterschied gibt es zwischen Appraisal-Theorien und sozialkonstruktivistischen Theorien?",
+      "answer": "Appraisal-Theorien erklären Emotionen durch Bewertungen von Situationen, sozialkonstruktivistische Theorien zusätzlich durch die konzeptuelle Konstruktion und Kategorisierung emotionaler Erfahrungen."
+    },
+    {
+      "id": 336,
+      "topic": "Emotion",
+      "subtopic": "Transfer",
+      "question": "Eine Person bewertet dieselbe Prüfung zunächst als bedrohlich und später als bewältigbare Herausforderung. Welche Theorie erklärt diesen Wechsel besonders gut?",
+      "answer": "Die Appraisal-Theorien, da sich die Bewertungen der Situation verändert haben."
+    },
+    {
+      "id": 337,
+      "topic": "Emotion",
+      "subtopic": "Transfer",
+      "question": "Welche Theorie sagt vorher, dass dieselbe physiologische Erregung je nach Interpretation zu unterschiedlichen Emotionen führen kann?",
+      "answer": "Die Schachter-Singer-Theorie."
+    },
+    {
+      "id": 338,
+      "topic": "Emotion",
+      "subtopic": "Transfer",
+      "question": "Welche Theorie würde am ehesten vorhersagen, dass bewusstes Lächeln die emotionale Erholung nach Stress leicht verbessern kann?",
+      "answer": "Die Facial-Feedback-Hypothese als Weiterentwicklung der James-Lange-Perspektive."
+    },
+    {
+      "id": 339,
+      "topic": "Emotion",
+      "subtopic": "Klausurvergleich",
+      "question": "Ordne die vier behandelten Emotionstheorien nach ihrem Schwerpunkt.",
+      "answer": "James-Lange: körperliche Veränderungen; Schachter-Singer: Erregung und Interpretation; Appraisal-Theorien: Bewertungen; sozialkonstruktivistische Theorien: Konstruktion emotionaler Kategorien aus Körperempfindungen und Kontext."
+    },
+    {
+      "id": 340,
+      "topic": "Emotion",
+      "subtopic": "Fehlkonzept",
+      "question": "Warum ist die Aussage falsch, Emotionen seien lediglich körperliche Erregungszustände?",
+      "answer": "Moderne Emotionstheorien betonen zusätzlich Bewertungen, Interpretationen oder konstruktive Prozesse, sodass körperliche Erregung allein Emotionen nicht vollständig erklärt."
+    },
+    {
+      "id": 341,
+      "topic": "Emotion",
+      "subtopic": "Fehlkonzept",
+      "question": "Warum wäre es nach Appraisal-Theorien falsch anzunehmen, dass derselbe Reiz immer dieselbe Emotion hervorruft?",
+      "answer": "Weil Emotionen von der individuellen Bewertung der Situation abhängen und diese variieren kann."
     }
   ]
 }
