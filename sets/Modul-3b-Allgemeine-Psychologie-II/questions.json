@@ -2631,6 +2631,118 @@
       "subtopic": "Sozialer Kontext",
       "question": "Warum unterstützt die Studie von Hess, Banse und Kappas die Annahme einer kommunikativen Funktion des Emotionsausdrucks?",
       "answer": "Weil Menschen in Anwesenheit anderer deutlich mehr mimischen Ausdruck zeigen als allein, selbst bei gleicher emotionaler Situation."
+    },
+    {
+      "id": 376,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Facial Action Coding System",
+      "question": "Welchem Zweck dient das Facial Action Coding System (FACS)?",
+      "answer": "Es dient der objektiven Beschreibung und Codierung sichtbarer Bewegungen der mimischen Muskulatur."
+    },
+    {
+      "id": 377,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Facial Action Coding System",
+      "question": "Was sind Action Units im Facial Action Coding System?",
+      "answer": "Action Units sind definierte Aktivierungen einzelner oder mehrerer Gesichtsmuskeln, aus deren Kombination sich Gesichtsausdrücke beschreiben lassen."
+    },
+    {
+      "id": 378,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Facial Action Coding System",
+      "question": "Warum werden im FACS häufig zwei unabhängige zertifizierte Codierer eingesetzt?",
+      "answer": "Um eine möglichst objektive und zuverlässige Codierung der Gesichtsausdrücke sicherzustellen."
+    },
+    {
+      "id": 379,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Duchenne-Lächeln",
+      "question": "Wodurch unterscheidet sich das Duchenne-Lächeln vom willentlichen Lächeln?",
+      "answer": "Beim Duchenne-Lächeln werden sowohl der Musculus zygomaticus major als auch der Musculus orbicularis oculi aktiviert, beim willentlichen Lächeln meist nur der Musculus zygomaticus major."
+    },
+    {
+      "id": 380,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Duchenne-Lächeln",
+      "question": "Welche Erkenntnis lieferte die Eye-Tracking-Studie zum Duchenne-Lächeln?",
+      "answer": "Beobachter richten ihren Blick besonders auf die Augenregion, um zwischen einem Duchenne- und einem willentlichen Lächeln zu unterscheiden."
+    },
+    {
+      "id": 381,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Triune Brain",
+      "question": "Welche drei Bestandteile umfasst MacLeans Triune-Brain-Modell?",
+      "answer": "Reptiliengehirn, limbisches System und Neokortex."
+    },
+    {
+      "id": 382,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Triune Brain",
+      "question": "Warum gilt das Triune-Brain-Modell heute als überholt?",
+      "answer": "Weil evolutionär alte und junge Hirnstrukturen eng zusammenarbeiten und Emotionen nicht auf ein einzelnes Hirnsystem beschränkt sind."
+    },
+    {
+      "id": 383,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Limbisches System",
+      "question": "Warum wird das Konzept eines einheitlichen limbischen Systems kritisch gesehen?",
+      "answer": "Weil seine Bestandteile unterschiedliche Funktionen erfüllen und keine klar abgegrenzte gemeinsame Funktion als Emotionssystem nachweisbar ist."
+    },
+    {
+      "id": 384,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Amygdala",
+      "question": "Welche Schlussfolgerung ergab die Meta-Analyse von Wager und Kolleginnen bzw. Barrett zur Amygdala?",
+      "answer": "Die Amygdala ist an vielen verschiedenen Emotionen beteiligt und nicht ausschließlich für Furcht zuständig."
+    },
+    {
+      "id": 385,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Amygdala und Hippocampus",
+      "question": "Welche doppelte Dissoziation zeigte die Studie von Bechara und Kollegen?",
+      "answer": "Bei Amygdala-Schädigungen war emotionales Konditionieren gestört, explizites Wissen aber erhalten; bei Hippocampus-Schädigungen war emotionales Konditionieren erhalten, explizites Wissen jedoch gestört."
+    },
+    {
+      "id": 386,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Amygdala und Hippocampus",
+      "question": "Welche Funktion wird der Amygdala auf Grundlage der Konditionierungsstudie zugeschrieben?",
+      "answer": "Sie verknüpft sensorische Reize mit emotionalen bzw. körperlichen Reaktionen und ermöglicht emotionales Konditionieren."
+    },
+    {
+      "id": 387,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Amygdala und Hippocampus",
+      "question": "Welche Funktion erfüllt der Hippocampus in der Konditionierungsstudie?",
+      "answer": "Er unterstützt das bewusste, deklarative Wissen über die Zusammenhänge zwischen den Reizen."
+    },
+    {
+      "id": 388,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Zwei Routen der Furcht",
+      "question": "Welche zwei Routen der Furchtauslösung unterscheidet LeDoux?",
+      "answer": "Eine schnelle direkte Route vom Thalamus zur Amygdala und eine langsamere Route über den sensorischen Kortex zur Amygdala."
+    },
+    {
+      "id": 389,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Zwei Routen der Furcht",
+      "question": "Worin unterscheiden sich die beiden Furchtrouten nach LeDoux funktionell?",
+      "answer": "Die schnelle Route arbeitet unbewusst und grob, die langsame Route ermöglicht eine bewusste, genauere Reizanalyse."
+    },
+    {
+      "id": 390,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Zwei Routen der Furcht",
+      "question": "Welche Befunde sprechen für LeDouxs Modell der zwei Furchtrouten?",
+      "answer": "Lesionsstudien, bildgebende Verfahren und Untersuchungen zum emotionalen Konditionieren zeigen, dass schnelle emotionale Reaktionen auch ohne kortikale Verarbeitung möglich sind."
+    },
+    {
+      "id": 391,
+      "topic": "Emotionsausdruck",
+      "subtopic": "Neuronale Grundlagen",
+      "question": "Warum gibt es nach heutigem Forschungsstand kein eindeutiges Emotionszentrum im Gehirn?",
+      "answer": "Weil Emotionen durch das Zusammenwirken mehrerer Hirnregionen entstehen, die außerdem auch an nicht-emotionalen Prozessen beteiligt sind."
     }
   ]
 }
