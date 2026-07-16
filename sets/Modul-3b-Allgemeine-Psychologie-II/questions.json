@@ -2743,6 +2743,349 @@
       "subtopic": "Neuronale Grundlagen",
       "question": "Warum gibt es nach heutigem Forschungsstand kein eindeutiges Emotionszentrum im Gehirn?",
       "answer": "Weil Emotionen durch das Zusammenwirken mehrerer Hirnregionen entstehen, die außerdem auch an nicht-emotionalen Prozessen beteiligt sind."
+    },
+    {
+      "id": 392,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Was versteht Panksepp unter Affektprogrammen?",
+      "answer": "Affektprogramme sind evolutionär entstandene Emotionssysteme, die den Organismus umfassend an wiederkehrende adaptive Anforderungen anpassen."
+    },
+    {
+      "id": 393,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Welche Funktion erfüllt Furcht nach Panksepps Affektprogramm-Theorie?",
+      "answer": "Sie dient dem Vermeiden gefährlicher Situationen, etwa durch Erstarren oder Flucht."
+    },
+    {
+      "id": 394,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Welche Funktion erfüllt Ärger nach Panksepps Affektprogramm-Theorie?",
+      "answer": "Er dient der Verteidigung sowie der Lösung von Territorial- und Konfliktsituationen durch Angriffsverhalten."
+    },
+    {
+      "id": 395,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Welche Funktion erfüllt Traurigkeit bzw. Panic nach Panksepp?",
+      "answer": "Sie signalisiert soziale Isolation und unterstützt die Wiederherstellung sozialer Bindungen."
+    },
+    {
+      "id": 396,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Welche Funktion erfüllt das Emotionssystem Seeking?",
+      "answer": "Es fördert Exploration, Neugier und das Entdecken neuer Umwelten oder sozialer Gruppen."
+    },
+    {
+      "id": 397,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Welche Funktion haben Lust, Spielfreude und Care nach Panksepp?",
+      "answer": "Lust unterstützt Fortpflanzung, Spielfreude fördert soziale und motorische Fertigkeiten, Care sichert das Überleben von Kindern und Gruppen."
+    },
+    {
+      "id": 398,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Mit welchen Methoden identifizierte Panksepp seine Basisemotionen?",
+      "answer": "Vor allem durch tierexperimentelle Hirnstimulation, Läsionsstudien und neuropharmakologische Untersuchungen."
+    },
+    {
+      "id": 399,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Welche Befunde sprechen für Panksepps Affektprogramm-Theorie?",
+      "answer": "Emotionsausdruck passt häufig zum Verhalten und Emotionssysteme korrelieren im Selbstbericht mit Persönlichkeitseigenschaften."
+    },
+    {
+      "id": 400,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Affektprogramme",
+      "question": "Welcher zentrale Kritikpunkt wird an Panksepps Affektprogramm-Theorie geäußert?",
+      "answer": "Für einzelne Emotionssysteme konnten keine jeweils spezifischen Hirnstrukturen oder vegetativen Muster eindeutig nachgewiesen werden."
+    },
+    {
+      "id": 401,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Primäremotionen",
+      "question": "Welche Grundannahme verfolgen funktionale Listen von Primäremotionen wie die von Plutchik?",
+      "answer": "Jede Primäremotion dient der Lösung eines wiederkehrenden evolutionären Problems."
+    },
+    {
+      "id": 402,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Primäremotionen",
+      "question": "Warum wird die Zuordnung fester Verhaltensweisen zu einzelnen Primäremotionen kritisiert?",
+      "answer": "Weil tatsächliches emotionales Verhalten deutlich variabler ist als die Theorie annimmt."
+    },
+    {
+      "id": 403,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Primäremotionen",
+      "question": "Warum verwenden neuere Motivationstheorien häufig die Kategorien Approach und Avoidance anstelle vieler spezifischer Handlungstendenzen?",
+      "answer": "Weil sie die Vielfalt emotional motivierten Verhaltens besser abbilden."
+    },
+    {
+      "id": 404,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Antizipierte Emotionen",
+      "question": "Wie beeinflussen antizipierte Emotionen Entscheidungen zwischen Handlungsoptionen?",
+      "answer": "Menschen wählen bevorzugt die Option, von der sie das größte erwartete emotionale Vergnügen erwarten."
+    },
+    {
+      "id": 405,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Antizipierte Emotionen",
+      "question": "Was beschreibt der Ergebniseffekt bei antizipierten Emotionen?",
+      "answer": "Je günstiger das erwartete Ergebnis, desto positiver wird die zukünftige Emotion eingeschätzt."
+    },
+    {
+      "id": 406,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Antizipierte Emotionen",
+      "question": "Was versteht man unter dem Vergleichseffekt bei antizipierten Emotionen?",
+      "answer": "Die erwartete Emotion hängt davon ab, wie das Ergebnis im Vergleich zu den ursprünglichen Erwartungen ausfällt."
+    },
+    {
+      "id": 407,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Antizipierte Emotionen",
+      "question": "Welchen Einfluss hat Überraschung auf antizipierte positive Emotionen?",
+      "answer": "Je überraschender ein positives Ereignis erwartet wird, desto stärker wird die positive Emotion antizipiert."
+    },
+    {
+      "id": 408,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Handlungstendenzen",
+      "question": "Welche Emotionskomponente nach Klaus Scherer verdeutlicht besonders die motivationale Funktion von Emotionen?",
+      "answer": "Die Aktivierung spezifischer Motive und Handlungstendenzen."
+    },
+    {
+      "id": 409,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Aufmerksamkeit",
+      "question": "Warum werden Emotionen als Relevanzdetektoren bezeichnet?",
+      "answer": "Sie lenken Aufmerksamkeit automatisch auf bedeutsame Chancen und Risiken in der Umwelt."
+    },
+    {
+      "id": 410,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Aufmerksamkeit",
+      "question": "Welche drei allgemeinen Informationsfunktionen von Emotionen beschreiben Eder und Brosch?",
+      "answer": "Emotionen fungieren als Relevanzdetektor, Überwachungssystem und Feedbacksystem."
+    },
+    {
+      "id": 411,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Stimmungskongruenz",
+      "question": "Was versteht man unter stimmungskongruentem Gedächtnis?",
+      "answer": "Menschen erinnern bevorzugt Ereignisse, deren emotionale Färbung ihrer aktuellen Stimmung entspricht."
+    },
+    {
+      "id": 412,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Stimmungskongruenz",
+      "question": "Warum kann Stimmungskongruenz bei Depressionen problematisch sein?",
+      "answer": "Negative Stimmung erschwert den Abruf positiver Erinnerungen und begünstigt das Erinnern negativer Ereignisse."
+    },
+    {
+      "id": 413,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Gedächtnis",
+      "question": "Welche drei Gedächtnisphasen werden im Zusammenhang mit Emotionen unterschieden?",
+      "answer": "Enkodierung, Konsolidierung und Retrieval."
+    },
+    {
+      "id": 414,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Gedächtnis",
+      "question": "Wie beeinflussen Emotionen bereits die Enkodierung neuer Informationen?",
+      "answer": "Emotionale Inhalte erhalten mehr Aufmerksamkeit und werden deshalb bevorzugt gespeichert."
+    },
+    {
+      "id": 415,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Gedächtnis",
+      "question": "Welche Rolle kann die Stimmung während der Konsolidierung spielen?",
+      "answer": "Sie kann Erinnerungen verstärken oder polarisieren und ihre emotionale Bewertung verändern."
+    },
+    {
+      "id": 416,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Broaden-and-Build-Theorie",
+      "question": "Welche zentrale Annahme vertritt die Broaden-and-Build-Theorie?",
+      "answer": "Positive Emotionen erweitern Aufmerksamkeit sowie Denk- und Handlungsmöglichkeiten und fördern langfristig den Aufbau persönlicher Ressourcen."
+    },
+    {
+      "id": 417,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Broaden-and-Build-Theorie",
+      "question": "Warum sollen positive Emotionen langfristig adaptiv sein?",
+      "answer": "Sie fördern Exploration, wodurch neue Fertigkeiten und psychologische Ressourcen aufgebaut werden."
+    },
+    {
+      "id": 418,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Broaden-and-Build-Theorie",
+      "question": "Welcher experimentelle Befund unterstützt die Annahme einer erweiterten Aufmerksamkeit durch positive Emotionen?",
+      "answer": "Nach positiven Filmausschnitten nannten Personen mehr mögliche Handlungen in einer Situation."
+    },
+    {
+      "id": 419,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Broaden-and-Build-Theorie",
+      "question": "Wie beeinflussen positive Emotionen die Verarbeitung globaler und lokaler Reize?",
+      "answer": "Sie erhöhen die Wahrscheinlichkeit, globale statt lokaler Merkmale zu beachten."
+    },
+    {
+      "id": 420,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Broaden-and-Build-Theorie",
+      "question": "Welcher physiologische Befund spricht für eine Ressourcenfunktion positiver Emotionen?",
+      "answer": "Nach Stress normalisieren sich kardiovaskuläre Reaktionen unter positiven Emotionen schneller."
+    },
+    {
+      "id": 421,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Broaden-and-Build-Theorie",
+      "question": "Welcher Kritikpunkt wird häufig an der Broaden-and-Build-Theorie geäußert?",
+      "answer": "Viele Studien berücksichtigen nur die Valenz, nicht aber die Stärke der Annäherungs- oder Vermeidungsmotivation."
+    },
+    {
+      "id": 422,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Broaden-and-Build-Theorie",
+      "question": "Warum widersprechen Befunde mit appetitiven Reizen wie Schokolade einer einfachen Version der Broaden-and-Build-Theorie?",
+      "answer": "Positive Emotionen mit hoher Annäherungsmotivation verengen den Aufmerksamkeitsfokus statt ihn zu erweitern."
+    },
+    {
+      "id": 423,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Kommunikation",
+      "question": "Welche drei Arten sozialer Informationen kann ein Emotionsausdruck vermitteln?",
+      "answer": "Emotionale Befindlichkeit, Verhaltensabsicht und Verhaltensaufforderung."
+    },
+    {
+      "id": 424,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Kommunikation",
+      "question": "Welche Beobachtung aus Feldstudien spricht für die kommunikative Funktion des Lächelns?",
+      "answer": "Menschen lächeln deutlich häufiger während sozialer Interaktionen als allein."
+    },
+    {
+      "id": 425,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Attribution von Emotionsausdruck",
+      "question": "Welche Informationen leiten Beobachter aus dem Emotionsausdruck anderer Personen ab?",
+      "answer": "Sie schließen auf Bewertungen, Motivation, Ressourcen und Persönlichkeitseigenschaften."
+    },
+    {
+      "id": 426,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Attribution von Emotionsausdruck",
+      "question": "Welchen Unterschied zeigte die Studie von Barrett und Bliss-Moreau hinsichtlich weiblicher und männlicher Zielpersonen?",
+      "answer": "Emotionale Reaktionen von Frauen wurden häufiger ihrer Persönlichkeit zugeschrieben, bei Männern eher der Situation."
+    },
+    {
+      "id": 427,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Attribution von Emotionsausdruck",
+      "question": "Warum ist der Befund 'She's emotional, he's having a bad day' klausurrelevant?",
+      "answer": "Er zeigt einen systematischen Attributionsbias bei der Interpretation emotionaler Gesichtsausdrücke."
+    },
+    {
+      "id": 428,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Gesichtsausdruck",
+      "question": "Welche Persönlichkeitseigenschaften werden ärgerlichen bzw. fröhlichen Gesichtern typischerweise zugeschrieben?",
+      "answer": "Ärgerliche Gesichter wirken dominanter, fröhliche Gesichter affiliativer."
+    },
+    {
+      "id": 429,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Emotionale Tränen",
+      "question": "Welche Hypothese zur Funktion emotionaler Tränen wird empirisch am besten unterstützt?",
+      "answer": "Emotionale Tränen fördern soziale Unterstützung, indem sie Mitgefühl und Hilfsbereitschaft auslösen."
+    },
+    {
+      "id": 430,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Emotionale Tränen",
+      "question": "Warum gelten die Stresshormon- und Entspannungshypothese emotionaler Tränen als wenig überzeugend?",
+      "answer": "Tränen enthalten nur geringe Mengen an Stresshormonen und führen nicht zuverlässig zu stärkerer Entspannung."
+    },
+    {
+      "id": 431,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Emotionale Mimikry",
+      "question": "Was versteht man unter emotionaler Mimikry?",
+      "answer": "Die automatische und meist unbewusste Nachahmung des emotionalen Ausdrucks anderer Menschen."
+    },
+    {
+      "id": 432,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Emotionale Mimikry",
+      "question": "Unter welchen Bedingungen tritt emotionale Mimikry besonders häufig auf?",
+      "answer": "Wenn soziale Nähe hergestellt werden soll oder die andere Person gemocht wird."
+    },
+    {
+      "id": 433,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Emotionale Mimikry",
+      "question": "Welche drei sozialen Funktionen erfüllt emotionale Mimikry?",
+      "answer": "Sie unterstützt Zugehörigkeit, emotionales Verständnis und soziale Regulierung."
+    },
+    {
+      "id": 434,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Emotionale Mimikry",
+      "question": "Welches Ergebnis zeigte die Warteraumstudie von Chartrand und Bargh?",
+      "answer": "Personen bewerteten einen Interaktionspartner als sympathischer, wenn dieser ihre Bewegungen unauffällig nachahmte."
+    },
+    {
+      "id": 435,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Transfer",
+      "question": "Warum wäre es aus Sicht der Broaden-and-Build-Theorie sinnvoll, regelmäßig positive Emotionen zu erleben?",
+      "answer": "Weil sie Exploration fördern und dadurch langfristig Fähigkeiten sowie psychologische Ressourcen aufbauen."
+    },
+    {
+      "id": 436,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Transfer",
+      "question": "Warum spricht das Auftreten unterschiedlicher Reaktionen auf Bedrohung gegen starre Emotionsprogramme?",
+      "answer": "Weil dieselbe Emotion je nach Situation unterschiedliche Verhaltensweisen wie Flucht oder Gegenangriff auslösen kann."
+    },
+    {
+      "id": 437,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Transfer",
+      "question": "Warum kann die Antizipation zukünftiger Emotionen trotz Affect-Forecasting-Fehlern adaptiv sein?",
+      "answer": "Weil erwartete Gefühle Entscheidungen systematisch steuern und häufig zu langfristig günstigeren Handlungen beitragen."
+    },
+    {
+      "id": 438,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Transfer",
+      "question": "Warum erleichtert die Funktion von Emotionen als Relevanzdetektoren das Lernen?",
+      "answer": "Emotionale Ereignisse erhalten mehr Aufmerksamkeit und werden dadurch bevorzugt enkodiert und erinnert."
+    },
+    {
+      "id": 439,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Transfer",
+      "question": "Warum kann ein ärgerlicher Gesichtsausdruck mehr bewirken als die Mitteilung 'Ich bin wütend'?",
+      "answer": "Er vermittelt gleichzeitig emotionale Befindlichkeit, Verhaltensabsicht und soziale Handlungsaufforderungen."
+    },
+    {
+      "id": 440,
+      "topic": "Funktionen von Emotionen",
+      "subtopic": "Gesamtüberblick",
+      "question": "Welche fünf zentralen Funktionsbereiche von Emotionen wurden in der Vorlesung behandelt?",
+      "answer": "Handlungstendenzen, antizipierte Emotionen bei Entscheidungen, Aufmerksamkeits- und Gedächtnissteuerung, Ressourcenaufbau durch positive Emotionen sowie soziale Kommunikation."
     }
   ]
 }
