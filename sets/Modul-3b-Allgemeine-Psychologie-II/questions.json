@@ -3436,6 +3436,356 @@
       "subtopic": "Transfer",
       "question": "Welche Vorhersage ergibt sich aus den Studien zu Emotionszielen, wenn lediglich das Ziel 'Ich möchte ruhiger werden' aktiviert wird?",
       "answer": "Viele Personen finden eigenständig geeignete Strategien zur Emotionsregulation, auch ohne konkrete Anleitung."
+    },
+    {
+      "id": 491,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Grundbausteine des Nervensystems",
+      "question": "Aus welchen grundlegenden Bestandteilen setzt sich das Nervensystem zusammen?",
+      "answer": "Es besteht aus Neuronen, Gliazellen, Blutgefäßen, Interstitium (Liquor) sowie den daraus gebildeten Nervenfasern und Nerven."
+    },
+    {
+      "id": 492,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Aufbau von Neuronen",
+      "question": "Welche Hauptbestandteile besitzt ein typisches Neuron?",
+      "answer": "Ein Neuron besitzt Soma (Zellkörper), Zellkern, Zellmembran, Zytoplasma, Dendriten und ein Axon."
+    },
+    {
+      "id": 493,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Dendriten",
+      "question": "Welche Funktion erfüllen Dendriten bei Nervenzellen?",
+      "answer": "Dendriten sind verzweigte Zellfortsätze, die der Aufnahme und Weiterleitung eingehender Signale zum Zellkörper dienen."
+    },
+    {
+      "id": 494,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Neuronentypen",
+      "question": "Worin unterscheiden sich multipolare und unipolare Nervenzellen?",
+      "answer": "Multipolare Nervenzellen besitzen mehrere Dendriten und ein Axon, unipolare Nervenzellen besitzen nur einen Zellfortsatz."
+    },
+    {
+      "id": 495,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Neuronentypen",
+      "question": "Was kennzeichnet pseudo-unipolare Nervenzellen?",
+      "answer": "Ihr Axon teilt sich unmittelbar nach dem Austritt aus dem Zellkörper in zwei Äste auf; Dendriten fehlen."
+    },
+    {
+      "id": 496,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Neuronen",
+      "question": "Wie groß ist der typische Durchmesser des Soma einer Nervenzelle?",
+      "answer": "Etwa 5 bis 100 µm."
+    },
+    {
+      "id": 497,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Neuronen",
+      "question": "Wie viele Neuronen enthält das menschliche Gehirn ungefähr?",
+      "answer": "Etwa 86 Milliarden (± 8 Milliarden)."
+    },
+    {
+      "id": 498,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Synapsen",
+      "question": "Welche drei grundlegenden Typen neuronaler Synapsen werden unterschieden?",
+      "answer": "Axodendritische, axosomatische und axoaxonische Synapsen."
+    },
+    {
+      "id": 499,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Synapsen",
+      "question": "Was versteht man unter einer axodendritischen Synapse?",
+      "answer": "Eine Synapse zwischen dem Axon einer Nervenzelle und dem Dendriten einer anderen Nervenzelle."
+    },
+    {
+      "id": 500,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Synapsen",
+      "question": "Was versteht man unter einer axosomatischen Synapse?",
+      "answer": "Eine Synapse zwischen dem Axon einer Nervenzelle und dem Soma einer anderen Nervenzelle."
+    },
+    {
+      "id": 501,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Synapsen",
+      "question": "Was versteht man unter einer axoaxonischen Synapse?",
+      "answer": "Eine Synapse, bei der ein Axon Kontakt zu einem anderen Axon aufnimmt."
+    },
+    {
+      "id": 502,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Neuromuskuläre Übertragung",
+      "question": "Wie heißt die spezialisierte Synapse zwischen Nerv und Skelettmuskel?",
+      "answer": "Neuromuskuläre Endplatte."
+    },
+    {
+      "id": 503,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Axonaler Transport",
+      "question": "Warum ist axonaler Transport für Nervenzellen notwendig?",
+      "answer": "Weil Axone sehr lang sein können und Stoffe wie Neurotransmitter, Lipide und Zucker aktiv vom Soma zu den Endigungen transportiert werden müssen."
+    },
+    {
+      "id": 504,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Axonaler Transport",
+      "question": "Welche Funktion erfüllen Mikrotubuli im Axon?",
+      "answer": "Sie dienen als Transportschienen für den aktiven intrazellulären Stofftransport."
+    },
+    {
+      "id": 505,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Axonaler Transport",
+      "question": "Welche Aufgabe übernimmt das Protein Kinesin?",
+      "answer": "Es transportiert unter Energieverbrauch Vesikel entlang der Mikrotubuli zum Axonende."
+    },
+    {
+      "id": 506,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Gliazellen",
+      "question": "Welche grundlegenden Funktionen erfüllen Gliazellen?",
+      "answer": "Sie stützen und ernähren Neuronen, können sich lebenslang teilen und ersetzen abgestorbene Nervenzellen durch Glianarben."
+    },
+    {
+      "id": 507,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Astrozyten",
+      "question": "Welche zwei wichtigen Aufgaben übernehmen Astrozyten?",
+      "answer": "Sie speichern Kaliumionen und bilden mit ihren Endfüßen die Blut-Hirn-Schranke."
+    },
+    {
+      "id": 508,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Blut-Hirn-Schranke",
+      "question": "Welche Funktion erfüllt die Blut-Hirn-Schranke?",
+      "answer": "Sie reguliert den Stoffaustausch zwischen Blut und Gehirngewebe und verhindert das unkontrollierte Eindringen vieler Stoffe."
+    },
+    {
+      "id": 509,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Blutversorgung",
+      "question": "Warum liegen die meisten Neuronen weniger als 50 µm von einer Kapillare entfernt?",
+      "answer": "Dadurch sind Nährstoffversorgung und Abtransport von Stoffwechselprodukten über kurze Wege möglich."
+    },
+    {
+      "id": 510,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Bildgebende Verfahren",
+      "question": "Warum misst die funktionelle MRT neuronale Aktivität nur indirekt?",
+      "answer": "Sie erfasst Veränderungen des lokalen Blutflusses, die durch neuronale Aktivität verursacht werden."
+    },
+    {
+      "id": 511,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Interstitium",
+      "question": "Was versteht man unter dem Interstitium des Nervensystems?",
+      "answer": "Den flüssigkeitsgefüllten Raum zwischen Nerven- und Gliazellen sowie die Liquorräume der Ventrikel."
+    },
+    {
+      "id": 512,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Liquor",
+      "question": "Welche Funktion erfüllt die Cerebrospinalflüssigkeit für Neuronen?",
+      "answer": "Sie vermittelt den Stoffaustausch zwischen Blut und Nervenzellen."
+    },
+    {
+      "id": 513,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Myelinisierung",
+      "question": "Welche Aufgabe erfüllen Myelinscheiden?",
+      "answer": "Sie isolieren Axone elektrisch und erhöhen die Geschwindigkeit der Erregungsleitung."
+    },
+    {
+      "id": 514,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Oligodendrozyten",
+      "question": "Welche Funktion übernehmen Oligodendrozyten im zentralen Nervensystem?",
+      "answer": "Sie bilden Myelinscheiden um Axone und können mehrere Axone gleichzeitig myelinisieren."
+    },
+    {
+      "id": 515,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Schwannzellen",
+      "question": "Welche Funktion übernehmen Schwannzellen im peripheren Nervensystem?",
+      "answer": "Sie myelinisieren einzelne Axone und unterstützen deren Regeneration nach Verletzungen."
+    },
+    {
+      "id": 516,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Myelinisierung",
+      "question": "Welche Gemeinsamkeit besitzen Oligodendrozyten und Schwannzellen?",
+      "answer": "Beide bilden Myelinscheiden zur elektrischen Isolation von Axonen."
+    },
+    {
+      "id": 517,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Myelinisierung",
+      "question": "Worin unterscheiden sich Oligodendrozyten und Schwannzellen?",
+      "answer": "Oligodendrozyten myelinisieren mehrere Axone im ZNS, Schwannzellen jeweils nur ein Axon im PNS und fördern dessen Regeneration."
+    },
+    {
+      "id": 518,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Ranvier-Schnürringe",
+      "question": "Welche Bedeutung haben die Ranvier-Schnürringe?",
+      "answer": "Sie ermöglichen die schnelle saltatorische Erregungsleitung entlang myelinisierter Axone."
+    },
+    {
+      "id": 519,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Nervenfasern",
+      "question": "Wovon hängt die Leitungsgeschwindigkeit eines Aktionspotenzials maßgeblich ab?",
+      "answer": "Vom Durchmesser der Nervenfaser und vom Grad der Myelinisierung."
+    },
+    {
+      "id": 520,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Nervenfasern",
+      "question": "Warum leiten A-Alpha-Fasern deutlich schneller als C-Fasern?",
+      "answer": "Sie besitzen einen größeren Durchmesser und sind stark myelinisiert."
+    },
+    {
+      "id": 521,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Nervenfasern",
+      "question": "Welche Eigenschaften kennzeichnen A-Alpha-Fasern?",
+      "answer": "Großer Durchmesser (bis 15 µm), starke Myelinisierung und Leitungsgeschwindigkeiten von etwa 70–120 m/s."
+    },
+    {
+      "id": 522,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Nervenfasern",
+      "question": "Welche Eigenschaften kennzeichnen C-Fasern?",
+      "answer": "Kleiner Durchmesser (ca. 1 µm), keine Myelinisierung und langsame Leitung von etwa 1 m/s."
+    },
+    {
+      "id": 523,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Nervenfasern",
+      "question": "Welche funktionelle Folge hätte eine fehlende Myelinisierung einer normalerweise markhaltigen Faser?",
+      "answer": "Die Erregungsleitung würde deutlich langsamer erfolgen."
+    },
+    {
+      "id": 524,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Afferenzen und Efferenzen",
+      "question": "Was sind Afferenzen?",
+      "answer": "Nervenfasern, die Informationen aus Körper und Umwelt zum zentralen Nervensystem leiten."
+    },
+    {
+      "id": 525,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Afferenzen und Efferenzen",
+      "question": "Was sind Efferenzen?",
+      "answer": "Nervenfasern, die Befehle vom zentralen Nervensystem in die Peripherie leiten."
+    },
+    {
+      "id": 526,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Afferenzen und Efferenzen",
+      "question": "Welche drei Arten afferenter Informationen werden unterschieden?",
+      "answer": "Sensorische, somatische und viszerale Afferenzen."
+    },
+    {
+      "id": 527,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Afferenzen und Efferenzen",
+      "question": "Welche Aufgaben erfüllen motorische Efferenzen?",
+      "answer": "Sie steuern oder hemmen Bewegungen der Skelettmuskulatur."
+    },
+    {
+      "id": 528,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Afferenzen und Efferenzen",
+      "question": "Warum ist die Aussage falsch, dass alle Nerven ausschließlich Signale zum Gehirn leiten?",
+      "answer": "Viele Nerven enthalten sowohl afferente Fasern zum Gehirn als auch efferente Fasern vom Gehirn."
+    },
+    {
+      "id": 529,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Hirnnerven",
+      "question": "Warum werden funktionell häufig nur zehn statt zwölf Hirnnerven gezählt?",
+      "answer": "Weil Nervus opticus und Nervus olfactorius zum zentralen Nervensystem gerechnet werden."
+    },
+    {
+      "id": 530,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Hirnnerven",
+      "question": "Welche Besonderheit kennzeichnet den Nervus vagus hinsichtlich seiner Leitungsrichtungen?",
+      "answer": "Er enthält sowohl Afferenzen aus den Organen als auch Efferenzen zu ihnen."
+    },
+    {
+      "id": 531,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Hirnnerven",
+      "question": "Welche Funktionen übernimmt der Nervus trigeminus?",
+      "answer": "Er leitet sensible Informationen aus dem Gesicht zum ZNS und steuert die Kaumuskulatur."
+    },
+    {
+      "id": 532,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Synapsen",
+      "question": "Warum werden axodendritische, axosomatische und axoaxonische Synapsen unterschiedlich benannt?",
+      "answer": "Weil sie verschiedene Kontaktstellen zwischen Nervenzellen und damit unterschiedliche funktionelle Eigenschaften besitzen."
+    },
+    {
+      "id": 533,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Axonaler Transport",
+      "question": "Welche Stoffe werden typischerweise vom Soma in Richtung Axonende transportiert?",
+      "answer": "Unter anderem Neurotransmitter, Lipide und Zucker."
+    },
+    {
+      "id": 534,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Gliazellen",
+      "question": "Welche Folge hat das Absterben von Neuronen für Gliazellen?",
+      "answer": "Gliazellen teilen sich und füllen den entstandenen Raum als Glianarbe."
+    },
+    {
+      "id": 535,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Blut-Hirn-Schranke",
+      "question": "Welche Rolle spielen Astrozyten für den Schutz des Gehirns?",
+      "answer": "Ihre Endfüße umhüllen Kapillaren und bilden die Blut-Hirn-Schranke."
+    },
+    {
+      "id": 536,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Interstitium",
+      "question": "Warum erfolgt der Stoffaustausch mit Neuronen nicht direkt aus den Blutgefäßen?",
+      "answer": "Er erfolgt über die Cerebrospinalflüssigkeit des Interstitiums."
+    },
+    {
+      "id": 537,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Myelinisierung",
+      "question": "Warum besitzen marklose Fasern eine geringere Leitungsgeschwindigkeit als markhaltige Fasern?",
+      "answer": "Ihnen fehlt die elektrische Isolation durch Myelin, wodurch die Erregung kontinuierlich statt saltatorisch geleitet wird."
+    },
+    {
+      "id": 538,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Axonaler Transport",
+      "question": "Warum wäre Diffusion allein für den Stofftransport in langen Axonen unzureichend?",
+      "answer": "Die Transportwege sind zu lang, sodass Stoffe ohne aktiven Transport nicht schnell genug die Axonendigungen erreichen würden."
+    },
+    {
+      "id": 539,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Nervenfasern",
+      "question": "Welche funktionellen Vorteile bietet die Kombination vieler unterschiedlich leitender Nervenfasern innerhalb eines peripheren Nervs?",
+      "answer": "Sie ermöglicht die gleichzeitige Übertragung schneller motorischer sowie langsamer sensorischer Informationen."
+    },
+    {
+      "id": 540,
+      "topic": "Bausteine des Nervensystems",
+      "subtopic": "Gliazellen und Neuronen",
+      "question": "Warum sind Gliazellen trotz fehlender Erregungsleitung unverzichtbar für die Funktion des Nervensystems?",
+      "answer": "Sie versorgen, schützen und isolieren Neuronen, bilden die Blut-Hirn-Schranke und ermöglichen durch Myelinisierung eine schnelle Signalübertragung."
     }
   ]
 }
