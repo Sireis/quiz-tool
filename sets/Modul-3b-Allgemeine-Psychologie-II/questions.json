@@ -3086,6 +3086,356 @@
       "subtopic": "Gesamtüberblick",
       "question": "Welche fünf zentralen Funktionsbereiche von Emotionen wurden in der Vorlesung behandelt?",
       "answer": "Handlungstendenzen, antizipierte Emotionen bei Entscheidungen, Aufmerksamkeits- und Gedächtnissteuerung, Ressourcenaufbau durch positive Emotionen sowie soziale Kommunikation."
+    },
+    {
+      "id": 441,
+      "topic": "Emotionsregulation",
+      "subtopic": "Grundlagen der Emotionsregulation",
+      "question": "Was versteht man unter Emotionsregulation?",
+      "answer": "Emotionsregulation bezeichnet die bewusste oder automatische Beeinflussung von Entstehung, Intensität, Dauer oder Ausdruck von Emotionen."
+    },
+    {
+      "id": 442,
+      "topic": "Emotionsregulation",
+      "subtopic": "Funktionen der Emotionsregulation",
+      "question": "Welche hedonische Funktion erfüllt Emotionsregulation?",
+      "answer": "Sie dient dazu, angenehme Emotionen zu verstärken oder zu verlängern sowie unangenehme Emotionen zu verringern."
+    },
+    {
+      "id": 443,
+      "topic": "Emotionsregulation",
+      "subtopic": "Funktionen der Emotionsregulation",
+      "question": "Warum spielt Emotionsregulation eine wichtige Rolle beim Einhalten sozialer Normen?",
+      "answer": "Sie ermöglicht es, Emotionen und deren Ausdruck an soziale Erwartungen und situative Anforderungen anzupassen."
+    },
+    {
+      "id": 444,
+      "topic": "Emotionsregulation",
+      "subtopic": "Funktionen der Emotionsregulation",
+      "question": "Wie unterstützt Emotionsregulation die Zielverfolgung?",
+      "answer": "Sie verstärkt emotionsförderliche Zustände und reduziert Emotionen, die das Erreichen eines Ziels behindern."
+    },
+    {
+      "id": 445,
+      "topic": "Emotionsregulation",
+      "subtopic": "Funktionen der Emotionsregulation",
+      "question": "Warum werden nicht immer nur positive Emotionen angestrebt?",
+      "answer": "Je nach Ziel können auch negative Emotionen wie Traurigkeit oder Ärger funktional und daher bewusst verstärkt werden."
+    },
+    {
+      "id": 446,
+      "topic": "Emotionsregulation",
+      "subtopic": "Stress und Coping",
+      "question": "Welche Einschätzung steht nach Lazarus am Beginn von Stress?",
+      "answer": "Stress entsteht, wenn das Bewältigungspotenzial einer als bedeutsam bewerteten Situation als unzureichend eingeschätzt wird."
+    },
+    {
+      "id": 447,
+      "topic": "Emotionsregulation",
+      "subtopic": "Stress und Coping",
+      "question": "Welche drei Coping-Strategien unterscheidet Lazarus?",
+      "answer": "Problemorientiertes Coping, emotionsorientiertes Coping und bewertungsorientiertes Coping."
+    },
+    {
+      "id": 448,
+      "topic": "Emotionsregulation",
+      "subtopic": "Stress und Coping",
+      "question": "Wodurch zeichnet sich problemorientiertes Coping aus?",
+      "answer": "Es zielt darauf ab, die Problemsituation direkt zu verändern oder sich ihr anzupassen."
+    },
+    {
+      "id": 449,
+      "topic": "Emotionsregulation",
+      "subtopic": "Stress und Coping",
+      "question": "Welches Ziel verfolgt emotionsorientiertes Coping?",
+      "answer": "Es soll die durch eine belastende Situation ausgelöste emotionale Erregung reduzieren."
+    },
+    {
+      "id": 450,
+      "topic": "Emotionsregulation",
+      "subtopic": "Stress und Coping",
+      "question": "Was ist das zentrale Merkmal bewertungsorientierten Copings?",
+      "answer": "Die belastende Situation wird durch eine veränderte Bewertung eher als Herausforderung denn als Bedrohung interpretiert."
+    },
+    {
+      "id": 451,
+      "topic": "Emotionsregulation",
+      "subtopic": "Strategien der Emotionsregulation",
+      "question": "Welche fünf grundlegenden Strategien der Emotionsregulation wurden in der Vorlesung vorgestellt?",
+      "answer": "Emotionsauswahl, Situationsmodifikation, Aufmerksamkeitskontrolle, kognitive Umbewertung und Reaktionskontrolle."
+    },
+    {
+      "id": 452,
+      "topic": "Emotionsregulation",
+      "subtopic": "Strategien der Emotionsregulation",
+      "question": "Was versteht man unter Emotionsauswahl?",
+      "answer": "Das gezielte Aufsuchen oder Vermeiden emotionsauslösender Situationen, um bestimmte Emotionen hervorzurufen oder zu verhindern."
+    },
+    {
+      "id": 453,
+      "topic": "Emotionsregulation",
+      "subtopic": "Strategien der Emotionsregulation",
+      "question": "Wie funktioniert Situationsmodifikation als Emotionsregulationsstrategie?",
+      "answer": "Die emotionsauslösende Situation wird aktiv verändert, damit sie besser den eigenen Bedürfnissen entspricht."
+    },
+    {
+      "id": 454,
+      "topic": "Emotionsregulation",
+      "subtopic": "Strategien der Emotionsregulation",
+      "question": "Wie kann Aufmerksamkeitskontrolle Emotionen beeinflussen?",
+      "answer": "Durch Fokussierung auf emotionale Aspekte werden Emotionen verstärkt, durch Ablenkung oder Umlenkung der Aufmerksamkeit abgeschwächt."
+    },
+    {
+      "id": 455,
+      "topic": "Emotionsregulation",
+      "subtopic": "Kognitive Umbewertung",
+      "question": "Was versteht man unter kognitiver Umbewertung (Reappraisal)?",
+      "answer": "Die emotionale Wirkung einer Situation wird durch eine veränderte Interpretation oder Neubewertung reduziert oder verändert."
+    },
+    {
+      "id": 456,
+      "topic": "Emotionsregulation",
+      "subtopic": "Kognitive Umbewertung",
+      "question": "Welche Strategien zählen laut Vorlesung zur kognitiven Umbewertung?",
+      "answer": "Beispielsweise günstige Attributionen, Leugnung und Intellektualisierung."
+    },
+    {
+      "id": 457,
+      "topic": "Emotionsregulation",
+      "subtopic": "Kognitive Umbewertung",
+      "question": "Welche Wirkung hatte Intellektualisierung in der Studie von Lazarus mit einem Unfallfilm?",
+      "answer": "Sie verringerte die Hautleitfähigkeit und damit die emotionale Reaktion."
+    },
+    {
+      "id": 458,
+      "topic": "Emotionsregulation",
+      "subtopic": "Kognitive Umbewertung",
+      "question": "Warum ist kognitive Umbewertung insbesondere in Berufen wie dem Rettungsdienst wichtig?",
+      "answer": "Sie ermöglicht es, trotz emotional belastender Situationen handlungsfähig und analytisch zu bleiben."
+    },
+    {
+      "id": 459,
+      "topic": "Emotionsregulation",
+      "subtopic": "Neurofeedback",
+      "question": "Welches Ziel verfolgt Amygdala-Neurofeedback bei der Emotionsregulation?",
+      "answer": "Die Aktivität der Amygdala soll durch direktes Feedback bewusst reduziert werden."
+    },
+    {
+      "id": 460,
+      "topic": "Emotionsregulation",
+      "subtopic": "Neurofeedback",
+      "question": "Welche zusätzlichen Veränderungen wurden nach Amygdala-Neurofeedback beobachtet?",
+      "answer": "Eine stärkere funktionelle Konnektivität der Amygdala mit präfrontalen Bereichen, dem anterioren cingulären Cortex und dem Hippocampus."
+    },
+    {
+      "id": 461,
+      "topic": "Emotionsregulation",
+      "subtopic": "Reaktionsunterdrückung",
+      "question": "Was versteht man unter Reaktionsunterdrückung?",
+      "answer": "Die willentliche Unterdrückung des emotionalen Ausdrucks, beispielsweise des Gesichtsausdrucks."
+    },
+    {
+      "id": 462,
+      "topic": "Emotionsregulation",
+      "subtopic": "Reaktionsunterdrückung",
+      "question": "Welche physiologische Folge hat Reaktionsunterdrückung im Vergleich zur kognitiven Umbewertung?",
+      "answer": "Sie erhöht die kardiovaskuläre Aktivität beziehungsweise den Puls."
+    },
+    {
+      "id": 463,
+      "topic": "Emotionsregulation",
+      "subtopic": "Reaktionsunterdrückung",
+      "question": "Wie beeinflusst Reaktionsunterdrückung soziale Interaktionen?",
+      "answer": "Sie verringert Responsivität und erhöht Ablenkung, wodurch soziale Interaktionen erschwert werden."
+    },
+    {
+      "id": 464,
+      "topic": "Emotionsregulation",
+      "subtopic": "Reaktionsunterdrückung",
+      "question": "Warum gilt Reaktionsunterdrückung langfristig als ungünstige Strategie?",
+      "answer": "Sie beansprucht kognitive Ressourcen, erhöht physiologische Belastung und beeinträchtigt soziale Interaktionen."
+    },
+    {
+      "id": 465,
+      "topic": "Emotionsregulation",
+      "subtopic": "Reaktionsunterdrückung",
+      "question": "Warum lässt sich aus dem Zusammenhang zwischen Emotionsunterdrückung und Krebs kein kausaler Effekt ableiten?",
+      "answer": "Die Korrelation erlaubt keine Aussage über die Ursache; gemeinsame Einflussfaktoren oder umgekehrte Kausalität sind möglich."
+    },
+    {
+      "id": 466,
+      "topic": "Emotionsregulation",
+      "subtopic": "Venting",
+      "question": "Was versteht man unter Venting beziehungsweise Dampf ablassen?",
+      "answer": "Das bewusste freie Ausleben emotionaler Impulse anstatt ihrer Unterdrückung."
+    },
+    {
+      "id": 467,
+      "topic": "Emotionsregulation",
+      "subtopic": "Venting",
+      "question": "Warum widerspricht die Forschung der Katharsis-Hypothese?",
+      "answer": "Weil Dampf ablassen Ärger und Aggression häufig verstärkt statt abbaut."
+    },
+    {
+      "id": 468,
+      "topic": "Emotionsregulation",
+      "subtopic": "Meditation",
+      "question": "Warum kann Meditation als Form der Emotionsregulation betrachtet werden?",
+      "answer": "Sie kombiniert unter anderem Aufmerksamkeitssteuerung, Umbewertung und Atemregulation zur Beeinflussung emotionaler Zustände."
+    },
+    {
+      "id": 469,
+      "topic": "Emotionsregulation",
+      "subtopic": "Meditation",
+      "question": "Welche Wirkung zeigte regelmäßige Meditation auf neuronale Reaktionen?",
+      "answer": "Sie verringerte die neuronale Reaktion auf unerwartete und ablenkende Reize."
+    },
+    {
+      "id": 470,
+      "topic": "Emotionsregulation",
+      "subtopic": "Meditation",
+      "question": "Welche Veränderungen zeigte die Loving-Kindness-Meditation von Fredrickson?",
+      "answer": "Sie führte über mehrere Wochen zu einer Zunahme positiver Emotionen."
+    },
+    {
+      "id": 471,
+      "topic": "Emotionsregulation",
+      "subtopic": "Atmung",
+      "question": "Welche Beziehung besteht zwischen Atmung und Emotionen?",
+      "answer": "Emotionen gehen mit charakteristischen Atemmustern einher, und umgekehrt können Atemmuster Emotionen beeinflussen."
+    },
+    {
+      "id": 472,
+      "topic": "Emotionsregulation",
+      "subtopic": "Konsum",
+      "question": "Warum kann Konsum als Form der Emotionsregulation verstanden werden?",
+      "answer": "Er kann dazu dienen, Stress oder negative Emotionen durch belohnende Reize kurzfristig zu reduzieren."
+    },
+    {
+      "id": 473,
+      "topic": "Emotionsregulation",
+      "subtopic": "Konsum",
+      "question": "Welche Rolle spielen Opioide beim stressinduzierten Essen?",
+      "answer": "Schmackhafte Nahrung fördert die Opioidausschüttung, wodurch Stress reduziert werden kann."
+    },
+    {
+      "id": 474,
+      "topic": "Emotionsregulation",
+      "subtopic": "Konsum",
+      "question": "Welcher Befund aus Tierstudien stützt die Opioid-Hypothese des stressinduzierten Essens?",
+      "answer": "Opioid-Antagonisten verringern bei Ratten stressinduziertes Essverhalten."
+    },
+    {
+      "id": 475,
+      "topic": "Emotionsregulation",
+      "subtopic": "Situationsauswahl",
+      "question": "Welche Aktivitäten wurden in der Vorlesung als günstige Formen der Emotionsregulation genannt?",
+      "answer": "Aufenthalte in der Natur, Bewegung, Tanzen und Singen."
+    },
+    {
+      "id": 476,
+      "topic": "Emotionsregulation",
+      "subtopic": "Situationsauswahl",
+      "question": "Warum kann Tanzen besonders effektiv zur Emotionsregulation sein?",
+      "answer": "Seine Wirkung auf das Wohlbefinden ist besonders stark, wenn gezielt das Ziel verfolgt wird, die Stimmung zu verbessern."
+    },
+    {
+      "id": 477,
+      "topic": "Emotionsregulation",
+      "subtopic": "Situationsauswahl",
+      "question": "Warum wählen Menschen manchmal traurige Musik aus, obwohl sie negative Emotionen hervorruft?",
+      "answer": "Weil Emotionsregulation nicht immer auf positive Gefühle abzielt, sondern auch emotionskongruente Ziele verfolgen kann."
+    },
+    {
+      "id": 478,
+      "topic": "Emotionsregulation",
+      "subtopic": "Emotionsziele",
+      "question": "Welche Bedeutung haben Emotionsziele für erfolgreiche Emotionsregulation?",
+      "answer": "Die Aktivierung eines Emotionsziels kann bereits ausreichen, damit Personen passende Regulationsstrategien einsetzen."
+    },
+    {
+      "id": 479,
+      "topic": "Emotionsregulation",
+      "subtopic": "Emotionsziele",
+      "question": "Welches Ergebnis zeigten die Studien von Tamir zur Rolle von Emotionszielen?",
+      "answer": "Die Aktivierung eines prohedonischen Ziels war ähnlich wirksam wie konkrete Reappraisal-Anweisungen."
+    },
+    {
+      "id": 480,
+      "topic": "Emotionsregulation",
+      "subtopic": "Emotionsziele",
+      "question": "Warum ist es problematisch, Emotionsziele und Regulationsstrategien experimentell nicht zu trennen?",
+      "answer": "Weil beobachtete Effekte möglicherweise auf das aktivierte Ziel und nicht auf die konkrete Strategie zurückgehen."
+    },
+    {
+      "id": 481,
+      "topic": "Emotionsregulation",
+      "subtopic": "Collapse of Compassion",
+      "question": "Was beschreibt der Begriff 'Collapse of Compassion'?",
+      "answer": "Die Tendenz, bei mehreren Betroffenen weniger Mitleid zu empfinden als bei einer einzelnen betroffenen Person."
+    },
+    {
+      "id": 482,
+      "topic": "Emotionsregulation",
+      "subtopic": "Collapse of Compassion",
+      "question": "Wie beeinflusst die Ankündigung einer späteren Spendenanfrage das Mitleid?",
+      "answer": "Sie führt zu geringerem Mitleid, vermutlich weil Personen ihre Emotionen vorweg regulieren."
+    },
+    {
+      "id": 483,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Warum ist kognitive Umbewertung einer reinen Reaktionsunterdrückung meist überlegen?",
+      "answer": "Sie reduziert emotionale Belastung wirksam, ohne die physiologischen und sozialen Nachteile der Reaktionsunterdrückung zu verursachen."
+    },
+    {
+      "id": 484,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Warum ist Dampf ablassen nach einem Streit meist keine sinnvolle Emotionsregulationsstrategie?",
+      "answer": "Weil das Ausleben von Ärger die entsprechenden Gedanken und Handlungstendenzen weiter aktiviert und dadurch Ärger verstärken kann."
+    },
+    {
+      "id": 485,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Welche Emotionsregulationsstrategie liegt vor, wenn sich eine Person vor einer Prüfung bewusst sagt: 'Das ist nur eine Herausforderung, keine Katastrophe'?",
+      "answer": "Kognitive Umbewertung beziehungsweise Reappraisal."
+    },
+    {
+      "id": 486,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Welche Strategie der Emotionsregulation wird eingesetzt, wenn jemand einen Waldspaziergang macht, um seine Stimmung zu verbessern?",
+      "answer": "Situationsauswahl."
+    },
+    {
+      "id": 487,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Welche Strategie liegt vor, wenn jemand während einer belastenden Situation seine Aufmerksamkeit bewusst auf neutrale Aspekte richtet?",
+      "answer": "Aufmerksamkeitskontrolle."
+    },
+    {
+      "id": 488,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Welche Strategie nutzt eine Person, die vor einer belastenden Aufgabe gezielt langsam und ruhig atmet?",
+      "answer": "Eine Form der Emotionsregulation über Atemregulation beziehungsweise Meditation."
+    },
+    {
+      "id": 489,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Warum kann eine Person trotz negativer Stimmung bewusst traurige Musik auswählen?",
+      "answer": "Weil das aktuelle Emotionsziel darin besteht, die bestehende Emotion aufrechtzuerhalten oder zu intensivieren."
+    },
+    {
+      "id": 490,
+      "topic": "Emotionsregulation",
+      "subtopic": "Transfer",
+      "question": "Welche Vorhersage ergibt sich aus den Studien zu Emotionszielen, wenn lediglich das Ziel 'Ich möchte ruhiger werden' aktiviert wird?",
+      "answer": "Viele Personen finden eigenständig geeignete Strategien zur Emotionsregulation, auch ohne konkrete Anleitung."
     }
   ]
 }
