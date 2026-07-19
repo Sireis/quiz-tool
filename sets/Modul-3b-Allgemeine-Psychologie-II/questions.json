@@ -3786,6 +3786,286 @@
       "subtopic": "Gliazellen und Neuronen",
       "question": "Warum sind Gliazellen trotz fehlender Erregungsleitung unverzichtbar für die Funktion des Nervensystems?",
       "answer": "Sie versorgen, schützen und isolieren Neuronen, bilden die Blut-Hirn-Schranke und ermöglichen durch Myelinisierung eine schnelle Signalübertragung."
+    },
+    {
+      "id": 541,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ruhepotenzial",
+      "question": "Wann spricht man vom Ruhepotenzial?",
+      "answer": "Wenn das Membranpotenzial weitgehend konstant bleibt und keine Erregung stattfindet."
+    },
+    {
+      "id": 542,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ruhepotenzial",
+      "question": "In welchem Spannungsbereich liegt das Ruhepotenzial von Säugetierneuronen typischerweise?",
+      "answer": "Je nach Zelltyp zwischen etwa −55 mV und −100 mV."
+    },
+    {
+      "id": 543,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Membranpotenzial",
+      "question": "Welche zwei Eigenschaften der Zellmembran ermöglichen das Membranpotenzial?",
+      "answer": "Die Lipid-Doppelschicht wirkt als elektrischer Isolator und die Membran ist nur selektiv für Ionen durchlässig."
+    },
+    {
+      "id": 544,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ruhepotenzial",
+      "question": "Warum ist das Zellinnere im Ruhezustand negativ geladen?",
+      "answer": "Kalium diffundiert aufgrund seines Konzentrationsgefälles nach außen, während große negativ geladene Anionen im Zellinneren verbleiben."
+    },
+    {
+      "id": 545,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ruhepotenzial",
+      "question": "Zwischen welchen beiden Kräften stellt das Ruhepotenzial ein Gleichgewicht dar?",
+      "answer": "Zwischen der osmotischen Kraft aufgrund von Konzentrationsunterschieden und der elektrischen Kraft aufgrund der Spannungsdifferenz."
+    },
+    {
+      "id": 546,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ionenverteilung",
+      "question": "Wie unterscheiden sich die Konzentrationen von Kalium- und Natriumionen innerhalb und außerhalb der Nervenzelle?",
+      "answer": "Kalium liegt überwiegend intrazellulär vor, Natrium überwiegend extrazellulär."
+    },
+    {
+      "id": 547,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Natrium-Kalium-Pumpe",
+      "question": "Welche Aufgabe erfüllt die Natrium-Kalium-Pumpe?",
+      "answer": "Sie pumpt unter Energieverbrauch Natrium aus der Zelle und Kalium in die Zelle und erhält so die Konzentrationsunterschiede aufrecht."
+    },
+    {
+      "id": 548,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Natrium-Kalium-Pumpe",
+      "question": "Warum ist die Natrium-Kalium-Pumpe für die Erregungsleitung unverzichtbar?",
+      "answer": "Sie stellt die Ionengradienten wieder her, die für Ruhepotenzial und Aktionspotenziale notwendig sind."
+    },
+    {
+      "id": 549,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Aktionspotenzial",
+      "question": "Was ist ein Aktionspotenzial?",
+      "answer": "Eine kurze, schnelle und vorübergehende positive Veränderung des Membranpotenzials."
+    },
+    {
+      "id": 550,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Aktionspotenzial",
+      "question": "Welche Spannungsänderung tritt während eines Aktionspotenzials typischerweise auf?",
+      "answer": "Das Membranpotenzial steigt vom Ruhepotenzial bis in den positiven Bereich von etwa +30 mV."
+    },
+    {
+      "id": 551,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Aktionspotenzial",
+      "question": "Welche Bedeutung besitzt die Schwelle von etwa −60 mV?",
+      "answer": "Beim Erreichen dieser Schwelle wird ein Aktionspotenzial ausgelöst."
+    },
+    {
+      "id": 552,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Aktionspotenzial",
+      "question": "Was beschreibt das Alles-oder-Nichts-Prinzip des Aktionspotenzials?",
+      "answer": "Ein Aktionspotenzial wird entweder vollständig ausgelöst oder gar nicht."
+    },
+    {
+      "id": 553,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Informationskodierung",
+      "question": "Warum wird Information im Nervensystem nicht über die Form einzelner Aktionspotenziale codiert?",
+      "answer": "Weil Größe und Verlauf von Aktionspotenzialen weitgehend konstant sind; Information wird über Frequenz und Anzahl der Aktionspotenziale übertragen."
+    },
+    {
+      "id": 554,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Depolarisation",
+      "question": "Welcher Ioneneinstrom verursacht die Depolarisation?",
+      "answer": "Der schnelle Einstrom von Natriumionen in die Zelle."
+    },
+    {
+      "id": 555,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Repolarisation",
+      "question": "Welcher Ionenstrom ist hauptsächlich für die Repolarisation verantwortlich?",
+      "answer": "Der Ausstrom von Kaliumionen aus der Zelle."
+    },
+    {
+      "id": 556,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ionenkanäle",
+      "question": "Wie verändert sich die Membrandurchlässigkeit für Natrium während der Depolarisation?",
+      "answer": "Sie steigt kurzfristig auf etwa das Hundertfache des Ruhewertes an."
+    },
+    {
+      "id": 557,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ionenkanäle",
+      "question": "Warum folgt die Kaliumleitfähigkeit zeitlich der Natriumleitfähigkeit?",
+      "answer": "Kaliumkanäle öffnen sich verzögert gegenüber Natriumkanälen und bewirken dadurch die Repolarisation."
+    },
+    {
+      "id": 558,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Natriumkanäle",
+      "question": "Warum lassen Natriumkanäle bevorzugt Natriumionen passieren und nicht Kaliumionen?",
+      "answer": "Weil ihre Kanalstruktur spezifisch mit Natriumionen interagiert und dadurch Selektivität erzeugt."
+    },
+    {
+      "id": 559,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Refraktärzeit",
+      "question": "Was versteht man unter der Refraktärzeit eines Natriumkanals?",
+      "answer": "Die Zeit nach einer Öffnung, in der der Kanal vorübergehend nicht erneut aktiviert werden kann."
+    },
+    {
+      "id": 560,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Refraktärzeit",
+      "question": "Welche Funktion erfüllt die Refraktärzeit für die Erregungsleitung?",
+      "answer": "Sie verhindert eine sofortige erneute Erregung und trägt zur gerichteten Ausbreitung des Aktionspotenzials bei."
+    },
+    {
+      "id": 561,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Erregungsleitung",
+      "question": "Wie breitet sich ein Aktionspotenzial entlang eines Axons aus?",
+      "answer": "Lokale Spannungsänderungen depolarisieren benachbarte Membranabschnitte bis zur Schwelle und lösen dort neue Aktionspotenziale aus."
+    },
+    {
+      "id": 562,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Saltatorische Erregungsleitung",
+      "question": "Was versteht man unter saltatorischer Erregungsleitung?",
+      "answer": "Die Erregung springt bei markhaltigen Axonen von einem Ranvier-Schnürring zum nächsten."
+    },
+    {
+      "id": 563,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Saltatorische Erregungsleitung",
+      "question": "Warum ist die saltatorische Erregungsleitung schneller als die kontinuierliche Erregungsleitung?",
+      "answer": "Weil die Erregung nur an den Schnürringen regeneriert werden muss und die Myelinscheide die elektrische Ausbreitung zwischen ihnen beschleunigt."
+    },
+    {
+      "id": 564,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Myelinisierung",
+      "question": "Warum sind Ranvier-Schnürringe trotz der isolierenden Myelinscheide notwendig?",
+      "answer": "Nur an ihnen können Aktionspotenziale regeneriert werden; ohne Unterbrechungen wäre die Erregungsweiterleitung nicht möglich."
+    },
+    {
+      "id": 565,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Aktionspotenzial",
+      "question": "Warum führt der Natriumeinstrom zu einer Depolarisation?",
+      "answer": "Weil positiv geladene Natriumionen in die Zelle gelangen und das Zellinnere dadurch weniger negativ wird."
+    },
+    {
+      "id": 566,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Aktionspotenzial",
+      "question": "Warum führt der Kaliumausstrom zur Repolarisation?",
+      "answer": "Weil positive Ladung die Zelle verlässt und das Zellinnere wieder negativer wird."
+    },
+    {
+      "id": 567,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Hyperpolarisation",
+      "question": "Was versteht man unter der hyperpolarisierenden Nachphase eines Aktionspotenzials?",
+      "answer": "Eine kurze Phase, in der das Membranpotenzial negativer als das Ruhepotenzial wird."
+    },
+    {
+      "id": 568,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Membranpotenzial",
+      "question": "Warum kann es außerhalb der Nervenzelle kaum zu Spannungsunterschieden kommen?",
+      "answer": "Weil Ionen in der extrazellulären Flüssigkeit frei diffundieren können und sich Spannungen dadurch ausgleichen."
+    },
+    {
+      "id": 569,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Ionenkanäle",
+      "question": "Welche Auswirkung hätte eine Blockade spannungsabhängiger Natriumkanäle auf die Erregungsleitung?",
+      "answer": "Aktionspotenziale könnten nicht oder nur unzureichend ausgelöst und weitergeleitet werden."
+    },
+    {
+      "id": 570,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Pharmakologie",
+      "question": "Warum wirkt Tetrodotoxin lebensbedrohlich?",
+      "answer": "Es blockiert spannungsabhängige Natriumkanäle und verhindert dadurch die Erregungsleitung."
+    },
+    {
+      "id": 571,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Pharmakologie",
+      "question": "Warum können Lokalanästhetika wie Kokain die Schmerzleitung unterbrechen?",
+      "answer": "Sie blockieren Natriumkanäle und verhindern dadurch die Entstehung und Weiterleitung von Aktionspotenzialen."
+    },
+    {
+      "id": 572,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Vergleich",
+      "question": "Worin unterscheiden sich Ruhepotenzial und Aktionspotenzial?",
+      "answer": "Das Ruhepotenzial ist ein stabiler Spannungszustand der Membran, während das Aktionspotenzial eine kurzzeitige starke Spannungsänderung darstellt."
+    },
+    {
+      "id": 573,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Transfer",
+      "question": "Welche Folge hätte ein Ausfall der Natrium-Kalium-Pumpe über längere Zeit für die Erregbarkeit einer Nervenzelle?",
+      "answer": "Die Ionengradienten würden zusammenbrechen, sodass Ruhepotenzial und Aktionspotenziale langfristig nicht mehr aufrechterhalten werden könnten."
+    },
+    {
+      "id": 574,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Fehlkonzepte",
+      "question": "Warum ist die Aussage falsch, das Aktionspotenzial werde ausschließlich durch Kaliumionen verursacht?",
+      "answer": "Die Depolarisation entsteht hauptsächlich durch Natriumeinstrom; Kalium ist vor allem für Repolarisation und Hyperpolarisation verantwortlich."
+    },
+    {
+      "id": 575,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Transfer",
+      "question": "Welche Konsequenz hätte es, wenn Kaliumkanäle genauso schnell öffnen würden wie Natriumkanäle?",
+      "answer": "Der Natriumeinstrom würde früh kompensiert, sodass die Depolarisation deutlich abgeschwächt und der typische Verlauf des Aktionspotenzials gestört wäre."
+    },
+    {
+      "id": 576,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Transfer",
+      "question": "Warum ermöglicht die zeitlich verzögerte Öffnung der Kaliumkanäle überhaupt den charakteristischen Verlauf des Aktionspotenzials?",
+      "answer": "Sie erlaubt zunächst eine starke Depolarisation durch Natrium, bevor der Kaliumausstrom die Membran wieder repolarisiert."
+    },
+    {
+      "id": 577,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Informationskodierung",
+      "question": "Wie kann ein Neuron unterschiedlich starke Reize codieren, obwohl alle Aktionspotenziale gleich groß sind?",
+      "answer": "Durch die Frequenz und Anzahl der ausgelösten Aktionspotenziale."
+    },
+    {
+      "id": 578,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Anwendung",
+      "question": "Warum wird ein unterschwelliger Reiz trotz leichter Depolarisation nicht entlang des Axons weitergeleitet?",
+      "answer": "Weil die Schwelle für das Alles-oder-Nichts-Aktionspotenzial nicht erreicht wird."
+    },
+    {
+      "id": 579,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Erregungsleitung",
+      "question": "Warum beginnt die Erregungsleitung typischerweise am Axonhügel?",
+      "answer": "Dort wird bei Überschreiten der Schwelle das Aktionspotenzial ausgelöst und breitet sich anschließend entlang des Axons aus."
+    },    
+    {
+      "id": 580,
+      "topic": "Erregungsbildung und Erregungsleitung",
+      "subtopic": "Membranpotenzial",
+      "question": "Was versteht man unter dem Membranpotenzial?",
+      "answer": "Das Membranpotenzial ist der elektrische Spannungsunterschied zwischen Zellinnerem und Zelläußerem."
     }
   ]
 }
