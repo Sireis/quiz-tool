@@ -4059,13 +4059,223 @@
       "subtopic": "Erregungsleitung",
       "question": "Warum beginnt die Erregungsleitung typischerweise am Axonhügel?",
       "answer": "Dort wird bei Überschreiten der Schwelle das Aktionspotenzial ausgelöst und breitet sich anschließend entlang des Axons aus."
-    },    
+    },
     {
       "id": 580,
       "topic": "Erregungsbildung und Erregungsleitung",
       "subtopic": "Membranpotenzial",
       "question": "Was versteht man unter dem Membranpotenzial?",
       "answer": "Das Membranpotenzial ist der elektrische Spannungsunterschied zwischen Zellinnerem und Zelläußerem."
+    },
+    {
+      "id": 581,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Chemische und elektrische Synapsen",
+      "question": "Welche zwei grundlegenden Formen der Signalübertragung zwischen Neuronen gibt es?",
+      "answer": "Die Signalübertragung erfolgt entweder über chemische Synapsen mittels Neurotransmittern oder über elektrische Synapsen (Gap Junctions) durch direkten Ionenfluss."
+    },
+    {
+      "id": 582,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Chemische Synapse",
+      "question": "Welche Aufgabe haben Neurotransmitter an chemischen Synapsen?",
+      "answer": "Sie werden aus der präsynaptischen Endigung freigesetzt, diffundieren durch den synaptischen Spalt und binden an Rezeptoren der postsynaptischen Membran."
+    },
+    {
+      "id": 583,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Synaptischer Aufbau",
+      "question": "Welche Bestandteile gehören zu einer chemischen Synapse?",
+      "answer": "Präsynaptische Endigung mit Vesikeln, synaptischer Spalt und postsynaptische Membran mit Rezeptoren."
+    },
+    {
+      "id": 584,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Synaptischer Aufbau",
+      "question": "Welche Funktion erfüllen synaptische Vesikel?",
+      "answer": "Sie speichern Neurotransmitter und setzen diese nach Ankunft eines Aktionspotenzials durch Exozytose frei."
+    },
+    {
+      "id": 585,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "EPSP",
+      "question": "Wann spricht man von einem exzitatorischen postsynaptischen Potenzial (EPSP)?",
+      "answer": "Wenn die Aktivierung einer Synapse die postsynaptische Membran depolarisiert und damit die Wahrscheinlichkeit eines Aktionspotenzials erhöht."
+    },
+    {
+      "id": 586,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "EPSP",
+      "question": "Warum löst ein einzelnes präsynaptisches Aktionspotenzial häufig kein postsynaptisches Aktionspotenzial aus?",
+      "answer": "Ein einzelnes EPSP reicht meist nicht aus, die Schwelle zu erreichen; mehrere EPSPs müssen sich räumlich oder zeitlich summieren."
+    },
+    {
+      "id": 587,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "EPSP",
+      "question": "Welcher Ioneneinstrom in der präsynaptischen Endigung löst die Transmitterfreisetzung aus?",
+      "answer": "Der Einstrom von Calcium-Ionen durch spannungsabhängige Calciumkanäle."
+    },
+    {
+      "id": 588,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Glutamaterge Synapse",
+      "question": "Welcher Neurotransmitter wird im Vorlesungsbeispiel für ein EPSP freigesetzt?",
+      "answer": "Glutamat."
+    },
+    {
+      "id": 589,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Glutamaterge Synapse",
+      "question": "Welche Ionenkanäle öffnen sich nach Bindung von Glutamat an postsynaptische Rezeptoren?",
+      "answer": "Kanäle für Natrium-, Kalium- und Calcium-Ionen."
+    },
+    {
+      "id": 590,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "EPSP",
+      "question": "Warum führt die Öffnung der postsynaptischen Kationenkanäle zu einer Depolarisation?",
+      "answer": "Weil positive Ionen in die Zelle einströmen und das Membranpotenzial weniger negativ wird."
+    },
+    {
+      "id": 591,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Transmitterentfernung",
+      "question": "Wie endet die Wirkung von Glutamat im synaptischen Spalt?",
+      "answer": "Glutamat diffundiert weg, wird von Gliazellen aufgenommen oder durch Transporter in die präsynaptische Endigung zurückgepumpt."
+    },
+    {
+      "id": 592,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "IPSP",
+      "question": "Wann entsteht ein inhibitorisches postsynaptisches Potenzial (IPSP)?",
+      "answer": "Wenn die Aktivierung einer Synapse das Membranpotenzial negativer macht und dadurch die Wahrscheinlichkeit eines Aktionspotenzials senkt."
+    },
+    {
+      "id": 593,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "IPSP",
+      "question": "Welcher Ioneneinstrom wird im Vorlesungsbeispiel für ein IPSP beschrieben?",
+      "answer": "Der Einstrom von Chlorid-Ionen."
+    },
+    {
+      "id": 594,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "IPSP",
+      "question": "Warum erschwert ein Chlorideinstrom die Auslösung eines Aktionspotenzials?",
+      "answer": "Er macht das Zellinnere negativer (Hyperpolarisation), sodass eine stärkere Depolarisation nötig ist, um die Schwelle zu erreichen."
+    },
+    {
+      "id": 595,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Hemmung",
+      "question": "Wodurch unterscheidet sich eine synaptische Hemmung von der Refraktärphase?",
+      "answer": "Synaptische Hemmung wird aktiv durch inhibitorische Synapsen vermittelt und ist keine Folge eines zuvor ausgelösten Aktionspotenzials."
+    },
+    {
+      "id": 596,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Präsynaptische Hemmung",
+      "question": "Wie wirkt eine präsynaptische Hemmung?",
+      "answer": "Sie reduziert oder verhindert die Freisetzung von Neurotransmittern an der präsynaptischen Endigung."
+    },
+    {
+      "id": 597,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Postsynaptische Hemmung",
+      "question": "Wie wirkt eine postsynaptische Hemmung?",
+      "answer": "Sie verringert die Erregbarkeit der postsynaptischen Membran und senkt dadurch die Wahrscheinlichkeit eines Aktionspotenzials."
+    },
+    {
+      "id": 598,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Präsynaptische Hemmung",
+      "question": "Warum führt eine präsynaptische Hemmung zu kleineren postsynaptischen Potenzialen?",
+      "answer": "Weil weniger Neurotransmitter freigesetzt werden und dadurch weniger postsynaptische Rezeptoren aktiviert werden."
+    },
+    {
+      "id": 599,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Präsynaptische Hemmung",
+      "question": "Welche funktionelle Bedeutung hat die präsynaptische Hemmung sensorischer Afferenzen?",
+      "answer": "Sie dämpft unerwünschte sensorische Signale und verbessert dadurch die Kontrastbildung."
+    },
+    {
+      "id": 600,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Motorneurone",
+      "question": "Welche Wirkung haben Muskelspindelafferenzen auf Motorneurone des Antagonisten?",
+      "answer": "Sie hemmen die Motorneurone des antagonistischen Muskels."
+    },
+    {
+      "id": 601,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Motorneurone",
+      "question": "Warum eignen sich Motorneurone besonders gut zur Untersuchung inhibitorischer postsynaptischer Potenziale?",
+      "answer": "Weil sich hemmende Wirkungen von Muskelspindelafferenzen auf Antagonisten experimentell gezielt auslösen und messen lassen."
+    },
+    {
+      "id": 602,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Summation",
+      "question": "Welche zwei Möglichkeiten nennt die Vorlesung, damit mehrere EPSPs die Schwelle erreichen?",
+      "answer": "Gleichzeitige Aktivität mehrerer Synapsen oder schnelle wiederholte Aktivität derselben Synapse."
+    },
+    {
+      "id": 603,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "EPSP und IPSP",
+      "question": "Worin unterscheiden sich EPSP und IPSP hinsichtlich ihres Einflusses auf das Membranpotenzial?",
+      "answer": "Ein EPSP depolarisiert die Membran und erhöht die Erregbarkeit, ein IPSP hyperpolarisiert sie und verringert die Erregbarkeit."
+    },
+    {
+      "id": 604,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Elektrische Synapse",
+      "question": "Welche Struktur verbindet die Zellen elektrischer Synapsen direkt miteinander?",
+      "answer": "Gap Junctions beziehungsweise Nexus mit Connexonen."
+    },
+    {
+      "id": 605,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Elektrische Synapse",
+      "question": "Warum erfolgt die Signalübertragung an elektrischen Synapsen besonders schnell?",
+      "answer": "Weil Ionen direkt zwischen den Zellen fließen und keine Transmitterfreisetzung erforderlich ist."
+    },
+    {
+      "id": 606,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Elektrische Synapse",
+      "question": "Wie unterscheidet sich die Breite des synaptischen Spalts elektrischer und chemischer Synapsen?",
+      "answer": "Elektrische Synapsen besitzen einen etwa 2 nm breiten Spalt, chemische Synapsen etwa 20 nm."
+    },
+    {
+      "id": 607,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Elektrische Synapse",
+      "question": "In welchen Geweben kommen elektrische Synapsen laut Vorlesung besonders häufig vor?",
+      "answer": "In der glatten Muskulatur und im Herzmuskel."
+    },
+    {
+      "id": 608,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Elektrische Synapse",
+      "question": "Warum werden Gap Junctions bei Gewebeverletzungen geschlossen?",
+      "answer": "Um die Ausbreitung von Zellschäden auf benachbarte Zellen zu verhindern."
+    },
+    {
+      "id": 609,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Vergleich Synapsentypen",
+      "question": "Worin unterscheiden sich chemische und elektrische Synapsen hinsichtlich des Übertragungsmechanismus?",
+      "answer": "Chemische Synapsen übertragen Signale über Neurotransmitter, elektrische Synapsen über direkten Ionenfluss durch Gap Junctions."
+    },
+    {
+      "id": 610,
+      "topic": "Synaptische Erregung und Hemmung",
+      "subtopic": "Transfer",
+      "question": "Warum würde ein Blocker spannungsabhängiger Calciumkanäle die synaptische Erregungsübertragung stark beeinträchtigen?",
+      "answer": "Weil ohne Calcium-Einstrom kaum Neurotransmitter aus den Vesikeln freigesetzt werden und dadurch keine wirksamen postsynaptischen Potenziale entstehen."
     }
   ]
 }
