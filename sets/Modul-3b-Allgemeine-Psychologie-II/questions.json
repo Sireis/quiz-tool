@@ -4276,6 +4276,279 @@
       "subtopic": "Transfer",
       "question": "Warum würde ein Blocker spannungsabhängiger Calciumkanäle die synaptische Erregungsübertragung stark beeinträchtigen?",
       "answer": "Weil ohne Calcium-Einstrom kaum Neurotransmitter aus den Vesikeln freigesetzt werden und dadurch keine wirksamen postsynaptischen Potenziale entstehen."
+    },
+    {
+      "id": 611,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Grundprinzipien der Transmittersysteme",
+      "question": "Warum spricht man bei Neurotransmittern oft von Transmittersystemen und nicht nur von einzelnen Stoffen?",
+      "answer": "Weil zur Transmitterwirkung nicht nur der Stoff selbst gehört, sondern auch die Maschinerie für Synthese, Speicherung, Freisetzung, Wiederaufnahme/Abbau und postsynaptische Wirkung."
+    },
+    {
+      "id": 612,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Kriterien für Neurotransmitter",
+      "question": "Welche drei Kriterien nennt die Vorlesung dafür, dass ein Stoff als Neurotransmitter gelten kann?",
+      "answer": "Er muss präsynaptisch gebildet und gespeichert werden, nach Stimulation präsynaptisch freigesetzt werden und in der postsynaptischen Zelle eine Reaktion auslösen."
+    },
+    {
+      "id": 613,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Grundprinzipien der Transmittersysteme",
+      "question": "Welche Prozesse beenden die Wirkung eines Neurotransmitters im synaptischen Spalt?",
+      "answer": "Spaltung, Wiederaufnahme in die präsynaptische Endigung, Wiederaufnahme in postsynaptische Zellen oder Glia sowie Diffusion aus dem synaptischen Spalt."
+    },
+    {
+      "id": 614,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Agonisten und Antagonisten",
+      "question": "Worin unterscheidet sich ein Agonist von einem Antagonisten?",
+      "answer": "Ein Agonist bindet an den Rezeptor und erzeugt die gleiche Wirkung wie der körpereigene Transmitter; ein Antagonist blockiert den Rezeptor und verhindert dessen Wirkung."
+    },
+    {
+      "id": 615,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Agonisten und Antagonisten",
+      "question": "Warum sind Agonisten und Antagonisten für die Transmitterforschung so wichtig?",
+      "answer": "Weil man damit indirekt auf Transmittersysteme und Rezeptoren schließen kann, oft noch bevor der eigentliche Neurotransmitter selbst isoliert ist."
+    },
+    {
+      "id": 616,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Opiatrezeptoren und Endorphine",
+      "question": "Wie lassen sich die Wirkungen von Opiaten wie Heroin oder Morphin mit der Verteilung von Rezeptoren erklären?",
+      "answer": "Die Hauptwirkungen ergeben sich daraus, dass Rezeptoren für Opiate in bestimmten Hirnregionen verteilt sind, etwa für Euphorie, Schmerzlinderung, Atmungsdämpfung und Pupillenerweiterung."
+    },
+    {
+      "id": 617,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Opiatrezeptoren und Endorphine",
+      "question": "Welche natürliche Folgefrage ergab sich aus der Entdeckung der Opiatrezeptoren?",
+      "answer": "Welche körpereigenen Stoffe normalerweise an diese Rezeptoren binden; daraus wurde die Existenz von Endorphinen und Enkephalinen abgeleitet."
+    },
+    {
+      "id": 618,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Klassifikation von Transmittern",
+      "question": "Nach welchen drei Grundgruppen werden Neurotransmitter in der Vorlesung eingeteilt?",
+      "answer": "In Aminosäuren, Amine und Peptide."
+    },
+    {
+      "id": 619,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Katecholamine",
+      "question": "Warum werden Dopamin, Noradrenalin und Adrenalin als Katecholamine bezeichnet?",
+      "answer": "Weil sie alle einen Katecholring besitzen und zu den Aminen gehören."
+    },
+    {
+      "id": 620,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Katecholamine",
+      "question": "Welcher enzymatische Schritt führt im Syntheseweg von L-Dopa zu Dopamin?",
+      "answer": "Die D-Decarboxylierung durch eine D-Carboxylase, also die Abspaltung von CO2."
+    },
+    {
+      "id": 621,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Katecholamine",
+      "question": "Wo werden Adrenalin und Noradrenalin im Körper besonders wichtig freigesetzt?",
+      "answer": "Im Nebennierenmark; Noradrenalin ist außerdem der Transmitter der meisten postganglionären sympathischen Endigungen."
+    },
+    {
+      "id": 622,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Glutamat und erregende Transmission",
+      "question": "Welche Rolle spielt Glutamat im zentralen Nervensystem?",
+      "answer": "Es ist ein weit verbreiteter erregender Transmitter im zentralen Nervensystem."
+    },
+    {
+      "id": 623,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "GABA und Glycin",
+      "question": "Welche Funktion hat GABA im Nervensystem?",
+      "answer": "GABA ist ein weit verbreiteter hemmender Transmitter."
+    },
+    {
+      "id": 624,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "GABA und Glycin",
+      "question": "Wofür ist Glycin besonders im Rückenmark und Hirnstamm wichtig?",
+      "answer": "Für postsynaptische Hemmung."
+    },
+    {
+      "id": 625,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Glutamatrezeptoren",
+      "question": "Worin besteht der zentrale Unterschied zwischen AMPA- und NMDA-Rezeptoren?",
+      "answer": "Beide benötigen Glutamat zur Öffnung, aber der NMDA-Rezeptor braucht zusätzlich Glycin und eine starke Depolarisation, damit der Magnesiumblock entfernt wird."
+    },
+    {
+      "id": 626,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Glutamatrezeptoren",
+      "question": "Warum öffnet sich der NMDA-Rezeptorkanal nicht allein durch Glutamatbindung?",
+      "answer": "Weil zusätzlich eine Depolarisation nötig ist, die den Magnesiumblock entfernt, und außerdem Glycin als Kotransmitter gebunden sein muss."
+    },
+    {
+      "id": 627,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Langzeitpotenzierung",
+      "question": "Welche Bedeutung hat der NMDA-Rezeptor für die Langzeitpotenzierung?",
+      "answer": "Er gilt als wichtiger Mechanismus der Langzeitpotenzierung, weil er bei starker Depolarisation Calcium-Einstrom und nachfolgende dauerhafte Verstärkungsprozesse ermöglicht."
+    },
+    {
+      "id": 628,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Langzeitpotenzierung",
+      "question": "Welche längerfristigen Folgen kann die Aktivierung von NMDA-Rezeptoren haben?",
+      "answer": "Erhöhter Calcium-Einstrom, Bildung und Einbau neuer Glutamatrezeptoren und möglicherweise auch rückwirkende Verstärkung der präsynaptischen Glutamatfreisetzung."
+    },
+    {
+      "id": 629,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Acetylcholin",
+      "question": "Welche historische Bedeutung hat Acetylcholin in der Transmitterforschung?",
+      "answer": "Es war der erste entdeckte Neurotransmitter; Otto Loewi zeigte 1920 seine Wirkung als Transmitter, Henry Dale identifizierte den Stoff."
+    },
+    {
+      "id": 630,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Acetylcholin",
+      "question": "Was zeigte Loewis Froschherz-Experiment?",
+      "answer": "Dass die Nervenwirkung auf das Herz chemisch vermittelt wird: Die Flüssigkeit eines gereizten Herzens konnte auf ein zweites Herz übertragen werden und dort dieselbe Wirkung auslösen."
+    },
+    {
+      "id": 631,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Acetylcholin",
+      "question": "Wie wird Acetylcholin nach seiner Wirkung inaktiviert?",
+      "answer": "Durch Cholinesterase, die Acetylcholin in Cholin und Essigsäure spaltet."
+    },
+    {
+      "id": 632,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Nikotinerge und muskarinerge Rezeptoren",
+      "question": "Was zeigt der Unterschied zwischen Nikotin und Muskarin über Acetylcholinrezeptoren?",
+      "answer": "Dass es unterschiedliche cholinerge Rezeptorsysteme gibt: Nikotin wirkt vor allem an nikotinergen, Muskarin an muskarinergen Rezeptoren."
+    },
+    {
+      "id": 633,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Nikotinerge Rezeptoren",
+      "question": "Welche Ionen lassen nikotinerge Acetylcholinrezeptoren durch?",
+      "answer": "Vor allem Natrium, Kalium und Kalzium."
+    },
+    {
+      "id": 634,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Serotonin",
+      "question": "Wie wird die Wirkung von Serotonin im synaptischen Spalt beendet?",
+      "answer": "Vor allem durch Wiederaufnahme in die präsynaptische Endigung und anschließenden Abbau durch Monoaminoxidase."
+    },
+    {
+      "id": 635,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Serotonin und Antidepressiva",
+      "question": "Warum setzt die antidepressive Wirkung von Fluoxetin erst nach Wochen ein?",
+      "answer": "Weil nicht nur die Wiederaufnahme blockiert wird, sondern langsame Umbauprozesse folgen, etwa Veränderungen von Rezeptorzahl, Autorezeptoren und neuronaler Aktivität."
+    },
+    {
+      "id": 636,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "GABA-Rezeptoren",
+      "question": "Welche Wirkung hat die Öffnung von GABA-Rezeptorkanälen auf die postsynaptische Zelle?",
+      "answer": "Chlorid strömt ein, die Zelle wird hyperpolarisiert und damit weiter von der Schwelle für ein Aktionspotenzial entfernt."
+    },
+    {
+      "id": 637,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "GABA-Rezeptoren",
+      "question": "Welche Stoffklassen wirken an GABA-Rezeptoren als Modulatoren?",
+      "answer": "Benzodiazepine wirken außen am Rezeptor, Barbiturate innerhalb des Kanals; beide verstärken die hemmende Wirkung."
+    },
+    {
+      "id": 638,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Glycinrezeptoren",
+      "question": "Warum führt Strichnin als Glycinrezeptor-Antagonist zu Muskelkrämpfen?",
+      "answer": "Weil es die glycinvermittelte Chloridleitung und damit die hemmende Hyperpolarisation blockiert; die Zellen werden dadurch leichter erregbar."
+    },
+    {
+      "id": 639,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Ionotrope und metabotrope Rezeptoren",
+      "question": "Worin unterscheiden sich ionotrope und metabotrope Rezeptoren grundlegend?",
+      "answer": "Ionotrope Rezeptoren öffnen direkt einen Ionenkanal; metabotrope Rezeptoren wirken indirekt über eine intrazelluläre Signalkette und G-Proteine."
+    },
+    {
+      "id": 640,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Metabotrope Rezeptoren",
+      "question": "Warum haben metabotrope Rezeptoren eine längere Latenz als ionotrope Rezeptoren?",
+      "answer": "Weil erst eine Signalkaskade mit G-Protein-Aktivierung und weiteren intrazellulären Schritten ablaufen muss."
+    },
+    {
+      "id": 641,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Second-Messenger-Kaskaden",
+      "question": "Was versteht man unter einer Second-Messenger-Kaskade?",
+      "answer": "Eine Signalkette innerhalb der Zelle, die nach Ligandenbindung an einen metabotropen Rezeptor ausgelöst wird und die Wirkung verstärkt und weiterleitet."
+    },
+    {
+      "id": 642,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Second-Messenger-Kaskaden",
+      "question": "Welche Rolle spielen Proteinkinasen in metabotropen Signalkaskaden?",
+      "answer": "Sie phosphorylieren Proteine, indem sie Phosphatgruppen von ATP übertragen, und verändern so deren Funktion, zum Beispiel die Öffnungswahrscheinlichkeit von Ionenkanälen."
+    },
+    {
+      "id": 643,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Second-Messenger-Kaskaden",
+      "question": "Wie werden Phosphorylierungsprozesse wieder rückgängig gemacht?",
+      "answer": "Durch Proteinphosphatasen, die Phosphatgruppen von Proteinen abspalten."
+    },
+    {
+      "id": 644,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Regulation der Transmitterwirkung",
+      "question": "Welche Rolle spielen Autorezeptoren bei der Begrenzung der Transmitterwirkung?",
+      "answer": "Sie hemmen präsynaptisch die Transmitterfreisetzung oder die Synthese und begrenzen so die weitere Wirkung."
+    },
+    {
+      "id": 645,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Desensitisierung",
+      "question": "Was bedeutet Desensitisierung an postsynaptischen Rezeptoren?",
+      "answer": "Dass bei rasch wiederholtem Kontakt mit Transmittern oder Agonisten trotz Anwesenheit des Liganden keine weitere Rezeptoraktivierung mehr stattfindet."
+    },
+    {
+      "id": 646,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Cotransmitter",
+      "question": "Was sind Co-Transmitter und welche Funktion haben sie meist?",
+      "answer": "Zusätzlich freigesetzte Transmitter, oft Peptide, die vor allem modulierend wirken und die Erregbarkeit verändern."
+    },
+    {
+      "id": 647,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "Cotransmitter",
+      "question": "Warum werden Co-Transmitter meist erst nach mehrfacher Aktivierung freigesetzt?",
+      "answer": "Weil sie in größeren Vesikeln gespeichert sind und erst bei starker oder wiederholter Aktivierung calciumabhängig freigesetzt werden."
+    },
+    {
+      "id": 648,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "ATP und Adenosin",
+      "question": "Welche Rolle kann ATP als Co-Transmitter spielen?",
+      "answer": "Peripher wirkt es an cholinergen und adrenergen Synapsen, zentral fördert es die präsynaptische Glutamatfreisetzung beziehungsweise deren postsynaptische Wirkung."
+    },
+    {
+      "id": 649,
+      "topic": "Synaptische Transmitter und Modulatoren",
+      "subtopic": "ATP und Adenosin",
+      "question": "Warum kann Adenosin als ATP-Abbauprodukt die Wirkung von Kaffee und Tee erklären?",
+      "answer": "Weil Adenosin überwiegend hemmend wirkt und Koffein beziehungsweise Theophyllin diese hemmende Adenosinwirkung blockieren."
     }
   ]
 }
