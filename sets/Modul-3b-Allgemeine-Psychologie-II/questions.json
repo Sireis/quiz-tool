@@ -4549,6 +4549,258 @@
       "subtopic": "ATP und Adenosin",
       "question": "Warum kann Adenosin als ATP-Abbauprodukt die Wirkung von Kaffee und Tee erklären?",
       "answer": "Weil Adenosin überwiegend hemmend wirkt und Koffein beziehungsweise Theophyllin diese hemmende Adenosinwirkung blockieren."
+    },
+    {
+      "id": 650,
+      "topic": "Neurobiologie",
+      "subtopic": "Neuroanatomie und Funktion",
+      "question": "Worin liegt der zentrale Nutzen neuroanatomischer Vergleiche zwischen Säugern?",
+      "answer": "Sie zeigen, welche strukturellen Unterschiede mit funktionellen Unterschieden zusammenhängen."
+    },
+    {
+      "id": 651,
+      "topic": "Neurobiologie",
+      "subtopic": "Neokortex-Faltung",
+      "question": "Wie heißen die nach außen gewölbten und die nach innen verlaufenden Faltungen des Neokortex?",
+      "answer": "Nach außen gewölbt sind Gyri, nach innen verlaufend sind Sulci."
+    },
+    {
+      "id": 652,
+      "topic": "Neurobiologie",
+      "subtopic": "Neokortexoberfläche",
+      "question": "Wie unterscheiden sich Neokortexoberfläche und Neokortexdicke zwischen Maus, Schimpanse und Mensch?",
+      "answer": "Die Oberfläche nimmt stark zu, ungefähr 1:100:1000, die Dicke unterscheidet sich nur etwa um den Faktor 2."
+    },
+    {
+      "id": 653,
+      "topic": "Neurobiologie",
+      "subtopic": "Flächenzuwachs des Neokortex",
+      "question": "Wodurch entsteht der größere Neokortex beim Menschen vor allem?",
+      "answer": "Vor allem durch mehr Fläche, nicht durch wesentlich größere Dicke."
+    },
+    {
+      "id": 654,
+      "topic": "Neurobiologie",
+      "subtopic": "Primäre und sekundäre Areale",
+      "question": "Welche Art von Arealen nimmt mit größerer Neokortexfläche besonders zu?",
+      "answer": "Vor allem sekundärsensorische und integrative Areale."
+    },
+    {
+      "id": 655,
+      "topic": "Neurobiologie",
+      "subtopic": "Sensorimotorische Areale",
+      "question": "Warum bleibt der Anteil primär sensorischer und primär motorischer Areale trotz unterschiedlicher Gehirngröße relativ ähnlich?",
+      "answer": "Weil diese Areale für grundlegende sensorische und motorische Grundfunktionen in ähnlichem Ausmaß benötigt werden."
+    },
+    {
+      "id": 656,
+      "topic": "Neurobiologie",
+      "subtopic": "Riechkolben",
+      "question": "Welche artspezifische Besonderheit wird beim Riechkolben von Ratte und Mensch hervorgehoben?",
+      "answer": "Der Riechkolben ist bei der Ratte deutlich größer und beim Menschen vergleichsweise klein."
+    },
+    {
+      "id": 657,
+      "topic": "Neurobiologie",
+      "subtopic": "Kleinhirn",
+      "question": "Welche Funktion wird dem Cerebellum im Material besonders zugeschrieben?",
+      "answer": "Die konkrete und zeitliche Programmierung von Bewegungen."
+    },
+    {
+      "id": 658,
+      "topic": "Neurobiologie",
+      "subtopic": "Schnittebenen",
+      "question": "Welche drei Schnittebenen des Gehirns werden unterschieden?",
+      "answer": "Frontalebene, Sagittalebene und Horizontalebene."
+    },
+    {
+      "id": 659,
+      "topic": "Neurobiologie",
+      "subtopic": "Frontalebene",
+      "question": "Wie verläuft ein Frontal- oder Koronalschnitt durch das Gehirn?",
+      "answer": "Er schneidet das Gehirn in eine vordere und eine hintere Richtung, also quer zur Längsachse."
+    },
+    {
+      "id": 660,
+      "topic": "Neurobiologie",
+      "subtopic": "Sagittalebene",
+      "question": "Woran erkennt man die Sagittalebene, und warum ist die Mediansagittalebene besonders wichtig?",
+      "answer": "Sie verläuft längs von vorn nach hinten; die Mediansagittalebene teilt die beiden Hemisphären."
+    },
+    {
+      "id": 661,
+      "topic": "Neurobiologie",
+      "subtopic": "Horizontalebene",
+      "question": "Wie liegt ein Horizontal- oder Axialschnitt im Vergleich zu den anderen Schnittebenen?",
+      "answer": "Er verläuft waagrecht durch das Gehirn."
+    },
+    {
+      "id": 662,
+      "topic": "Neurobiologie",
+      "subtopic": "Richtungsbezeichnungen",
+      "question": "Welche Begriffe werden im Material als Paare für vorn und hinten verwendet?",
+      "answer": "Anterior und rostral bedeuten vorn, posterior und kaudal bedeuten hinten."
+    },
+    {
+      "id": 663,
+      "topic": "Neurobiologie",
+      "subtopic": "Richtungsbezeichnungen",
+      "question": "Welche Begriffe werden im Material für oben und unten im Gehirn genannt?",
+      "answer": "Superior und dorsal bedeuten oben, inferior und ventral bedeuten unten."
+    },
+    {
+      "id": 664,
+      "topic": "Neurobiologie",
+      "subtopic": "Neurachse beim Menschen und bei anderen Säugern",
+      "question": "Warum müssen im Vergleich zwischen Mensch und anderen Säugern zusätzliche Richtungsbegriffe benutzt werden?",
+      "answer": "Weil die Neurachse beim Menschen abgeknickt ist, bei vielen anderen Säugern aber geradlinig verläuft."
+    },
+    {
+      "id": 665,
+      "topic": "Neurobiologie",
+      "subtopic": "Ontogenese und Hirnorganisation",
+      "question": "Welcher Zusammenhang zwischen Ontogenese, Größe und Lage von Hirnstrukturen wird im Material betont?",
+      "answer": "Später entstehende Strukturen sind meist größer und liegen weiter vorn."
+    },
+    {
+      "id": 666,
+      "topic": "Neurobiologie",
+      "subtopic": "Vorderhirn und Hemisphären",
+      "question": "Aus welchem ontogenetischen Abschnitt entsteht die Hemisphäre mit dem Neokortex?",
+      "answer": "Aus dem Vorderhirn."
+    },
+    {
+      "id": 667,
+      "topic": "Neurobiologie",
+      "subtopic": "Thalamus und Hypothalamus",
+      "question": "Worin unterscheiden sich Thalamus und Hypothalamus funktionell?",
+      "answer": "Der Thalamus leitet und verteilt sensorische Informationen, der Hypothalamus ist stärker an Emotion und Stress beteiligt."
+    },
+    {
+      "id": 668,
+      "topic": "Neurobiologie",
+      "subtopic": "Hierarchie der Hirnstrukturen",
+      "question": "Warum sind Begriffe wie Telencephalon oder Diencephalon als Hierarchie hilfreich?",
+      "answer": "Sie ordnen Hirnstrukturen als Ober- und Unterbegriffe und machen ihre ontogenetische Verwandtschaft sichtbar."
+    },
+    {
+      "id": 669,
+      "topic": "Neurobiologie",
+      "subtopic": "Telencephalon",
+      "question": "Welche Strukturen gehören zum Telencephalon?",
+      "answer": "Der Neokortex, die Basalganglien und Teile des limbischen Systems."
+    },
+    {
+      "id": 670,
+      "topic": "Neurobiologie",
+      "subtopic": "Evolution und Komplexität",
+      "question": "Welche Fehlannahme über evolutionär neuere Hirnstrukturen wird im Material kritisiert?",
+      "answer": "Dass sie allein komplexes, vernünftiges Verhalten steuern und ältere Strukturen nur primitive Funktionen hätten."
+    },
+    {
+      "id": 671,
+      "topic": "Neurobiologie",
+      "subtopic": "Verteilte Netzwerke",
+      "question": "Wie beschreibt das Material den Zusammenhang zwischen Verhaltenskomplexität und Hirnnetzwerken?",
+      "answer": "Je komplexer und evolutionär neuer ein Verhalten ist, desto stärker verteilt ist das beteiligte Netzwerk."
+    },
+    {
+      "id": 672,
+      "topic": "Neurobiologie",
+      "subtopic": "Hirnlappen",
+      "question": "Welche vier Hirnlappen werden im Material genannt?",
+      "answer": "Frontallappen, Parietallappen, Temporallappen und Occipitallappen."
+    },
+    {
+      "id": 673,
+      "topic": "Neurobiologie",
+      "subtopic": "Frontallappen",
+      "question": "Welche zentralen Funktionen werden dem Frontallappen zugeschrieben?",
+      "answer": "Planung und Steuerung von Handlungen sowie willkürliche Bewegung."
+    },
+    {
+      "id": 674,
+      "topic": "Neurobiologie",
+      "subtopic": "Parietallappen",
+      "question": "Welche Funktion wird dem Parietallappen im Material besonders zugeschrieben?",
+      "answer": "Die Integration verschiedener sensorischer Informationen."
+    },
+    {
+      "id": 675,
+      "topic": "Neurobiologie",
+      "subtopic": "Temporallappen",
+      "question": "Welche zwei Funktionen werden dem Temporallappen im Material hervorgehoben?",
+      "answer": "Auditorische Verarbeitung und das Wernicke-Sprachzentrum."
+    },
+    {
+      "id": 676,
+      "topic": "Neurobiologie",
+      "subtopic": "Lateralisierung",
+      "question": "Wo liegt das Wernicke-Sprachzentrum bei Rechtshänderinnen laut Material typischerweise?",
+      "answer": "In der linken Hemisphäre."
+    },
+    {
+      "id": 677,
+      "topic": "Neurobiologie",
+      "subtopic": "Insula",
+      "question": "Warum ist die Insula im Gehirn nicht sofort von außen sichtbar?",
+      "answer": "Weil sie durch die starke Faltung des Neokortex verdeckt wird."
+    },
+    {
+      "id": 678,
+      "topic": "Neurobiologie",
+      "subtopic": "Wisconsin Card Sorting Test",
+      "question": "Woran zeigt sich eine Frontallappendysfunktion im Wisconsin Card Sorting Test?",
+      "answer": "Daran, dass ein Sortierkriterium nicht flexibel gewechselt wird und man daran festhält."
+    },
+    {
+      "id": 679,
+      "topic": "Neurobiologie",
+      "subtopic": "Aufgabenrepräsentation im Frontalkortex",
+      "question": "Was zeigt die Studie mit Farb- und Positionshinweisen über den medialen präfrontalen Kortex?",
+      "answer": "Dass dort aufgabenspezifische Informationen flexibel repräsentiert und durch Lernen verändert werden."
+    },
+    {
+      "id": 680,
+      "topic": "Neurobiologie",
+      "subtopic": "Brodmann-Areale",
+      "question": "Worauf beruhen die Brodmann-Areale ursprünglich?",
+      "answer": "Auf zellarchitektonischen Unterschieden im Neokortex, die mikroskopisch sichtbar sind."
+    },
+    {
+      "id": 681,
+      "topic": "Neurobiologie",
+      "subtopic": "Brodmann-Areale",
+      "question": "Welche Funktionen werden den Brodmann-Arealen 17, 9 und 44/45 zugeordnet?",
+      "answer": "17: primärer visueller Cortex, 9: dorsolateraler präfrontaler Cortex, 44/45: Broca-Areal."
+    },
+    {
+      "id": 682,
+      "topic": "Neurobiologie",
+      "subtopic": "Kortikale Schichten",
+      "question": "Wie viele Schichten hat der Neokortex normalerweise, und welche Ausnahme wird genannt?",
+      "answer": "Normalerweise sechs Schichten, im motorischen Cortex und in Teilen des Frontalkortex fünf."
+    },
+    {
+      "id": 683,
+      "topic": "Neurobiologie",
+      "subtopic": "Graue und weiße Substanz",
+      "question": "Worin unterscheiden sich graue und weiße Substanz strukturell?",
+      "answer": "Graue Substanz enthält mehr Zellkörper und Dendriten, weiße Substanz mehr myelinisierte Axone."
+    },
+    {
+      "id": 684,
+      "topic": "Neurobiologie",
+      "subtopic": "Säulen im primären visuellen Cortex",
+      "question": "Was ist mit Säulen oder Kolumnen im primären visuellen Cortex gemeint?",
+      "answer": "Vertikal organisierte Zellverbände mit ähnlicher Orientierungsspezialisierung und geordnetem Eingang der beiden Augen."
+    },
+    {
+      "id": 685,
+      "topic": "Neurobiologie",
+      "subtopic": "Retinotope Organisation",
+      "question": "Was bedeutet retinotope Organisation im primären visuellen Cortex?",
+      "answer": "Dass räumliche Nachbarschaften auf der Netzhaut im Cortex in geordneter Form abgebildet werden."
     }
   ]
 }
