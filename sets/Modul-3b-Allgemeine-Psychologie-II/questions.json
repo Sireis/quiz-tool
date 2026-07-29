@@ -4801,6 +4801,1280 @@
       "subtopic": "Retinotope Organisation",
       "question": "Was bedeutet retinotope Organisation im primären visuellen Cortex?",
       "answer": "Dass räumliche Nachbarschaften auf der Netzhaut im Cortex in geordneter Form abgebildet werden."
+    },
+    {
+      "id": 10001,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Aufbau",
+      "question": "Welche Hauptfunktion haben Dendriten?",
+      "answer": "Sie empfangen eingehende Signale anderer Zellen."
+    },
+    {
+      "id": 10002,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Aufbau",
+      "question": "Welche Hauptfunktion hat das Axon?",
+      "answer": "Es leitet Signale vom Zellkörper zu den Empfängerzellen."
+    },
+    {
+      "id": 10003,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Aufbau",
+      "question": "Was ist das Soma einer Nervenzelle?",
+      "answer": "Der Zellkörper mit Zellkern, Zytoplasma und Membran."
+    },
+    {
+      "id": 10004,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Aufbau",
+      "question": "Welche Funktion hat der Axonhügel?",
+      "answer": "Dort werden postsynaptische Potenziale integriert und bei Überschreiten der Schwelle ein Aktionspotenzial ausgelöst."
+    },
+    {
+      "id": 10005,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Aufbau",
+      "question": "Was ist eine Axonkollaterale?",
+      "answer": "Eine seitliche Abzweigung des Axons."
+    },
+    {
+      "id": 10006,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Zelltypen",
+      "question": "Was zeichnet multipolare Nervenzellen aus?",
+      "answer": "Sie besitzen mehrere Dendriten und ein Axon."
+    },
+    {
+      "id": 10007,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Zelltypen",
+      "question": "Nenne drei Beispiele für multipolare Nervenzellen.",
+      "answer": "Schaltneurone, Pyramidenzellen und Purkinje-Zellen."
+    },
+    {
+      "id": 10008,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuron – Zelltypen",
+      "question": "Wodurch unterscheiden sich unipolare Nervenzellen von Pyramidenzellen?",
+      "answer": "Unipolare Nervenzellen besitzen keine Dendriten; Pyramidenzellen besitzen Dendriten."
+    },
+    {
+      "id": 10009,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Gliazellen",
+      "question": "Welche Aufgabe haben Astrozyten an Blutgefäßen?",
+      "answer": "Sie sind an der Bildung der Blut-Hirn-Schranke beteiligt."
+    },
+    {
+      "id": 10010,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Gliazellen",
+      "question": "Welche Zellen bilden Myelinscheiden im zentralen Nervensystem?",
+      "answer": "Oligodendrozyten."
+    },
+    {
+      "id": 10011,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Gliazellen",
+      "question": "Welche Zellen bilden Myelinscheiden im peripheren Nervensystem?",
+      "answer": "Schwann-Zellen."
+    },
+    {
+      "id": 10012,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Gliazellen",
+      "question": "Warum können Gliazellen Räume abgestorbener Neurone ausfüllen?",
+      "answer": "Weil sie lebenslang zur Zellteilung fähig sind."
+    },
+    {
+      "id": 10013,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Gliazellen",
+      "question": "Welche regenerative Funktion können Schwann-Zellen nach einer Verletzung haben?",
+      "answer": "Sie können das Nachwachsen eines Axons unterstützen."
+    },
+    {
+      "id": 10014,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Ruhepotenzial",
+      "question": "Wie groß ist das Ruhepotenzial einer Nervenzelle ungefähr?",
+      "answer": "Etwa −80 mV; je nach Darstellung ungefähr zwischen −55 und −100 mV."
+    },
+    {
+      "id": 10015,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Ruhepotenzial",
+      "question": "Welches positive Ion kommt außerhalb der Nervenzelle häufiger vor als innerhalb?",
+      "answer": "Natrium, Na+; auch Calcium ist außen höher konzentriert."
+    },
+    {
+      "id": 10016,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Ruhepotenzial",
+      "question": "Welches positive Ion kommt innerhalb der Nervenzelle häufiger vor als außerhalb?",
+      "answer": "Kalium, K+."
+    },
+    {
+      "id": 10017,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Ruhepotenzial",
+      "question": "Welche negativen Ionen kommen innerhalb der Nervenzelle häufiger vor?",
+      "answer": "Große, schlecht permeable Anionen beziehungsweise Eiweißionen A−."
+    },
+    {
+      "id": 10018,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Ruhepotenzial",
+      "question": "Warum ist das Zellinnere beim Ruhepotenzial negativ?",
+      "answer": "Unter anderem weil große negative Anionen die Membran schlecht passieren."
+    },
+    {
+      "id": 10019,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Wodurch wird Information in einer Folge von Aktionspotenzialen codiert?",
+      "answer": "Durch die Frequenz beziehungsweise Häufigkeit der Aktionspotenziale."
+    },
+    {
+      "id": 10020,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Welche Eigenschaft bleibt bei Aktionspotenzialen weitgehend gleich?",
+      "answer": "Ihre Amplitude."
+    },
+    {
+      "id": 10021,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Welche Kanäle öffnen sich zu Beginn des Aktionspotenzials zuerst?",
+      "answer": "Spannungsabhängige Natriumkanäle."
+    },
+    {
+      "id": 10022,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Welche Kanäle öffnen sich nach den Natriumkanälen?",
+      "answer": "Spannungsabhängige Kaliumkanäle."
+    },
+    {
+      "id": 10023,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Was geschieht bei der Depolarisation?",
+      "answer": "Das Membranpotenzial wird weniger negativ, vor allem durch Na+-Einstrom."
+    },
+    {
+      "id": 10024,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Was geschieht bei der Repolarisation?",
+      "answer": "Das Membranpotenzial wird wieder negativer, vor allem durch K+-Ausstrom."
+    },
+    {
+      "id": 10025,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Welche Axone leiten Aktionspotenziale am schnellsten?",
+      "answer": "Dicke, myelinisierte Axone."
+    },
+    {
+      "id": 10026,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Was bedeutet saltatorische Erregungsleitung?",
+      "answer": "Das Aktionspotenzial wird an den Ranvier-Schnürringen erneuert und springt scheinbar von Schnürring zu Schnürring."
+    },
+    {
+      "id": 10027,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Von welchen drei strukturellen Eigenschaften hängt die Ankunftszeit eines Aktionspotenzials am Endknopf ab?",
+      "answer": "Von Myelinisierung, Axondicke und Axonlänge."
+    },
+    {
+      "id": 10028,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Aktionspotenzial",
+      "question": "Welche Wirkung haben Ranvier-Schnürringe auf die Leitungsgeschwindigkeit?",
+      "answer": "Sie ermöglichen die saltatorische Leitung und erhöhen dadurch die Geschwindigkeit."
+    },
+    {
+      "id": 10029,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Welche Ionenkanäle öffnen sich im präsynaptischen Endknopf beim Eintreffen eines Aktionspotenzials?",
+      "answer": "Spannungsabhängige Calciumkanäle."
+    },
+    {
+      "id": 10030,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Welche unmittelbare Folge hat der Calcium-Einstrom in den Endknopf?",
+      "answer": "Vesikel verschmelzen mit der Membran und setzen Neurotransmitter frei."
+    },
+    {
+      "id": 10031,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Wo werden Neurotransmitter gespeichert?",
+      "answer": "In synaptischen Vesikeln."
+    },
+    {
+      "id": 10032,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Wohin werden Neurotransmitter freigesetzt?",
+      "answer": "In den synaptischen Spalt."
+    },
+    {
+      "id": 10033,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Woran binden Neurotransmitter postsynaptisch?",
+      "answer": "An spezifische Rezeptoren der postsynaptischen Membran."
+    },
+    {
+      "id": 10034,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Was ist ein EPSP?",
+      "answer": "Ein exzitatorisches postsynaptisches Potenzial, das die Membran depolarisiert und die Wahrscheinlichkeit eines Aktionspotenzials erhöht."
+    },
+    {
+      "id": 10035,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Was ist ein IPSP?",
+      "answer": "Ein inhibitorisches postsynaptisches Potenzial, das die Wahrscheinlichkeit eines Aktionspotenzials senkt."
+    },
+    {
+      "id": 10036,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Was bedeutet zeitliche Summation?",
+      "answer": "Mehrere kurz nacheinander eintreffende postsynaptische Potenziale derselben Synapse summieren sich."
+    },
+    {
+      "id": 10037,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Chemische Synapse",
+      "question": "Was bedeutet räumliche Summation?",
+      "answer": "Gleichzeitig eintreffende postsynaptische Potenziale verschiedener Synapsen summieren sich."
+    },
+    {
+      "id": 10038,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Wo werden Neurotransmitter synthetisiert?",
+      "answer": "Im präsynaptischen Neuron."
+    },
+    {
+      "id": 10039,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Wie werden Neurotransmitter nach ihrer Freisetzung inaktiviert?",
+      "answer": "Durch enzymatische Spaltung oder Wiederaufnahme."
+    },
+    {
+      "id": 10040,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Was ist ein Agonist?",
+      "answer": "Eine Substanz, die die Wirkung eines körpereigenen Transmitters nachahmt oder verstärkt."
+    },
+    {
+      "id": 10041,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Was ist ein Antagonist?",
+      "answer": "Eine Substanz, die die Wirkung eines Transmitters am Rezeptor hemmt oder blockiert."
+    },
+    {
+      "id": 10042,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Wie wirkt Fluoxetin?",
+      "answer": "Es blockiert die Wiederaufnahme von Serotonin."
+    },
+    {
+      "id": 10043,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "An welchem Transmittersystem wirkt Fluoxetin?",
+      "answer": "Am serotonergen System."
+    },
+    {
+      "id": 10044,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Welcher Transmitter wirkt an der motorischen Endplatte der Skelettmuskulatur?",
+      "answer": "Acetylcholin."
+    },
+    {
+      "id": 10045,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Welche beiden wichtigen hemmenden Transmitter werden in den Klausuren genannt?",
+      "answer": "GABA und Glycin."
+    },
+    {
+      "id": 10046,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Welcher wichtige erregende Transmitter des ZNS wird neben Acetylcholin genannt?",
+      "answer": "Glutamat."
+    },
+    {
+      "id": 10047,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neurotransmitter",
+      "question": "Was zeigt die unterschiedliche Wirkung von Nikotin und Muscarin?",
+      "answer": "Dass es unterschiedliche Typen cholinerger Rezeptoren gibt."
+    },
+    {
+      "id": 10048,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuroanatomie",
+      "question": "Was trennt ein Sagittalschnitt?",
+      "answer": "Eine rechte und eine linke Hälfte beziehungsweise Hemisphäre."
+    },
+    {
+      "id": 10049,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuroanatomie",
+      "question": "Was trennt ein Frontalschnitt?",
+      "answer": "Eine vordere und eine hintere Hälfte."
+    },
+    {
+      "id": 10050,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuroanatomie",
+      "question": "Was trennt ein Horizontalschnitt?",
+      "answer": "Eine obere und eine untere Hälfte."
+    },
+    {
+      "id": 10051,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuroanatomie",
+      "question": "Was bedeutet rostral?",
+      "answer": "Zum vorderen beziehungsweise nasenwärts gelegenen Ende."
+    },
+    {
+      "id": 10052,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuroanatomie",
+      "question": "Was bedeutet kaudal?",
+      "answer": "Zum hinteren beziehungsweise steißwärts gelegenen Ende."
+    },
+    {
+      "id": 10053,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuroanatomie",
+      "question": "Was bedeutet dorsal?",
+      "answer": "Zum Rücken beziehungsweise nach oben gelegen."
+    },
+    {
+      "id": 10054,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Neuroanatomie",
+      "question": "Was bedeutet ventral?",
+      "answer": "Zum Bauch beziehungsweise nach unten gelegen."
+    },
+    {
+      "id": 10055,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnlappen",
+      "question": "Welcher Hirnlappen verarbeitet vor allem visuelle Information?",
+      "answer": "Der Okzipitallappen."
+    },
+    {
+      "id": 10056,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnlappen",
+      "question": "Welcher Hirnlappen verarbeitet vor allem auditive Information?",
+      "answer": "Der Temporallappen."
+    },
+    {
+      "id": 10057,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnlappen",
+      "question": "Welcher Hirnlappen ist besonders an Planung und Handlungssteuerung beteiligt?",
+      "answer": "Der Frontallappen."
+    },
+    {
+      "id": 10058,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnlappen",
+      "question": "Welcher Hirnlappen integriert Informationen verschiedener Sinnesmodalitäten?",
+      "answer": "Der Parietallappen."
+    },
+    {
+      "id": 10059,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnstrukturen",
+      "question": "Welche Struktur steuert Hormonhaushalt und vegetatives Nervensystem?",
+      "answer": "Der Hypothalamus."
+    },
+    {
+      "id": 10060,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnstrukturen",
+      "question": "Welche Struktur steht unter Kontrolle des Hypothalamus und gibt Hormone an die Peripherie ab?",
+      "answer": "Die Hypophyse."
+    },
+    {
+      "id": 10061,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnstrukturen",
+      "question": "Welche Struktur enthält für EEG-Rhythmen wichtige Zellen?",
+      "answer": "Der Thalamus."
+    },
+    {
+      "id": 10062,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hirnstrukturen",
+      "question": "Welche Struktur ist ein wichtiges Ziel der Tiefenhirnstimulation bei Parkinson?",
+      "answer": "Die Basalganglien."
+    },
+    {
+      "id": 10063,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Nervenfasern",
+      "question": "Was sind Afferenzen?",
+      "answer": "Nervenfasern, die Information zum zentralen Nervensystem leiten."
+    },
+    {
+      "id": 10064,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Nervenfasern",
+      "question": "Was sind Efferenzen?",
+      "answer": "Nervenfasern, die Information vom zentralen Nervensystem in die Peripherie leiten."
+    },
+    {
+      "id": 10065,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Nervenfasern",
+      "question": "Nenne einen ausschließlich afferenten Hirnnerv.",
+      "answer": "Zum Beispiel Nervus opticus, olfactorius oder statoacusticus."
+    },
+    {
+      "id": 10066,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Nervenfasern",
+      "question": "Nenne einen Hirnnerv, der in beide Richtungen leitet.",
+      "answer": "Der Nervus vagus."
+    },
+    {
+      "id": 10067,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Welche zentrale Stärke hat das EEG?",
+      "answer": "Eine hohe zeitliche Auflösung."
+    },
+    {
+      "id": 10068,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Welche zentrale Schwäche hat das EEG?",
+      "answer": "Eine vergleichsweise geringe räumliche Auflösung."
+    },
+    {
+      "id": 10069,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Was erfasst fMRT indirekt?",
+      "answer": "Aktivitätsabhängige Änderungen der Blutoxygenierung beziehungsweise das BOLD-Signal."
+    },
+    {
+      "id": 10070,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Welcher wichtige physikalische Faktor ist bei MRT und fMRT zu beachten?",
+      "answer": "Das starke Magnetfeld."
+    },
+    {
+      "id": 10071,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Nenne eine mögliche Belastung einer fMRT-Untersuchung.",
+      "answer": "Enge, laute Geräusche oder die Notwendigkeit, still zu liegen."
+    },
+    {
+      "id": 10072,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Wer kann typischerweise nicht oder nur eingeschränkt an einer fMRT-Studie teilnehmen?",
+      "answer": "Personen mit bestimmten metallischen Implantaten oder anderen nicht MRT-tauglichen Gegenständen im Körper."
+    },
+    {
+      "id": 10073,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Welchen physikalischen Parameter erfassen fNIRS-Sensoren?",
+      "answer": "Nah-infrarotes Licht beziehungsweise dessen Absorption."
+    },
+    {
+      "id": 10074,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Welche physiologischen Größen werden bei fNIRS erschlossen?",
+      "answer": "Konzentrationsänderungen von oxygeniertem und deoxygeniertem Hämoglobin."
+    },
+    {
+      "id": 10075,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Welche wesentliche räumliche Einschränkung hat fNIRS?",
+      "answer": "Es erfasst hauptsächlich oberflächennahe Cortexbereiche, nicht tiefe Strukturen wie die Amygdala."
+    },
+    {
+      "id": 10076,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Nenne zwei Vorteile von fNIRS gegenüber fMRT bei Bewegung zu Musik.",
+      "answer": "Mehr Bewegungsfreiheit und kein lautes Scannergeräusch, das die Musik überlagert."
+    },
+    {
+      "id": 10077,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Messmethoden",
+      "question": "Welche Methoden können Hirnaktivität experimentell beeinflussen statt nur messen?",
+      "answer": "Zum Beispiel TMS oder tDCS."
+    },
+    {
+      "id": 10078,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hormone",
+      "question": "Wo wird Melatonin gebildet?",
+      "answer": "In der Zirbeldrüse."
+    },
+    {
+      "id": 10079,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hormone",
+      "question": "Wie wirkt Licht auf die Melatoninbildung?",
+      "answer": "Es hemmt die Melatoninbildung."
+    },
+    {
+      "id": 10080,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hormone",
+      "question": "Welche Wirkrichtung gilt im Hypothalamus-Hypophysen-System?",
+      "answer": "Der Hypothalamus steuert die Hypophyse."
+    },
+    {
+      "id": 10081,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hormone",
+      "question": "Nenne zwei Hormone der Neurohypophyse.",
+      "answer": "Oxytocin und Vasopressin."
+    },
+    {
+      "id": 10082,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Hormone",
+      "question": "Was bedeutet negative Rückkopplung im Hormonsystem?",
+      "answer": "Eine hohe Hormonkonzentration im Blut hemmt über Hypothalamus und Hypophyse die weitere Ausschüttung."
+    },
+    {
+      "id": 10083,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Schlaf",
+      "question": "Welches Hormon wird besonders in frühen Schlafzyklen ausgeschüttet?",
+      "answer": "Growth Hormone beziehungsweise Wachstumshormon."
+    },
+    {
+      "id": 10084,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Schlaf",
+      "question": "Welches Hormon wird besonders in späteren Schlafzyklen ausgeschüttet?",
+      "answer": "Cortisol."
+    },
+    {
+      "id": 10085,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Schlaf",
+      "question": "Wie verändern sich REM- und Tiefschlaf über die Nacht?",
+      "answer": "REM-Phasen werden länger, Tiefschlafphasen beziehungsweise SWS werden kürzer."
+    },
+    {
+      "id": 10086,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Immunsystem",
+      "question": "Was unterscheidet angeborenes und erworbenes Immunsystem hinsichtlich Geschwindigkeit und Spezifität?",
+      "answer": "Das angeborene reagiert schneller und weniger spezifisch; das erworbene langsamer und spezifischer."
+    },
+    {
+      "id": 10087,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Immunsystem",
+      "question": "Welche Zellen beeinflussen besonders den Zytokinspiegel im Blut?",
+      "answer": "Leukozyten."
+    },
+    {
+      "id": 10088,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Immunsystem",
+      "question": "Auf welche Hirnstruktur wirken Zytokine besonders ein?",
+      "answer": "Auf den Hypothalamus."
+    },
+    {
+      "id": 10089,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Stress und Immunität",
+      "question": "Wie wirken Glucocorticoide auf Entzündungsreaktionen?",
+      "answer": "Sie hemmen Entzündungsreaktionen."
+    },
+    {
+      "id": 10090,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Stress und Immunität",
+      "question": "Wie beeinflusst länger anhaltender Stress die Infektionsanfälligkeit?",
+      "answer": "Er erhöht die Infektionsanfälligkeit."
+    },
+    {
+      "id": 10091,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Stressmessung",
+      "question": "Nenne zwei mit Elektroden erfassbare Stressparameter.",
+      "answer": "Herzrate und Hautleitfähigkeit beziehungsweise SCR."
+    },
+    {
+      "id": 10092,
+      "topic": "Biologische Psychologie",
+      "subtopic": "Stressmessung",
+      "question": "Nenne drei aus Speichel oder Blut erfassbare Stressparameter.",
+      "answer": "Zum Beispiel Cortisol, Testosteron und Adrenalin."
+    },
+    {
+      "id": 10093,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist ein unkonditionierter Stimulus, US?",
+      "answer": "Ein Reiz, der ohne vorheriges Lernen eine Reaktion auslöst."
+    },
+    {
+      "id": 10094,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist ein konditionierter Stimulus, CS?",
+      "answer": "Ein zunächst neutraler Reiz, der nach Kopplung mit dem US eine konditionierte Reaktion auslöst."
+    },
+    {
+      "id": 10095,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist Extinktion?",
+      "answer": "Die Abnahme der konditionierten Reaktion, wenn der CS wiederholt ohne US dargeboten wird."
+    },
+    {
+      "id": 10096,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist Reizgeneralisierung?",
+      "answer": "Ähnliche Reize wie der gelernte CS lösen ebenfalls die konditionierte Reaktion aus."
+    },
+    {
+      "id": 10097,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was ist Reizdiskrimination?",
+      "answer": "Die gelernte Unterscheidung zwischen einem verstärkten und ähnlichen nicht verstärkten Reizen."
+    },
+    {
+      "id": 10098,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was bedeutet Preparedness?",
+      "answer": "Biologisch vorbereitete Reiz-Reaktions-Verbindungen werden besonders leicht gelernt."
+    },
+    {
+      "id": 10099,
+      "topic": "Lernen",
+      "subtopic": "Klassisches Konditionieren",
+      "question": "Was zeigt der Garcia-Effekt?",
+      "answer": "Geschmacksaversionen können trotz langer Verzögerung und oft nach nur einer Kopplung gelernt werden."
+    },
+    {
+      "id": 10100,
+      "topic": "Lernen",
+      "subtopic": "Nichtassoziatives Lernen",
+      "question": "Was ist Habituation?",
+      "answer": "Die Abnahme einer Reaktion bei wiederholter folgenloser Reizdarbietung."
+    },
+    {
+      "id": 10101,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Was ist positive Verstärkung?",
+      "answer": "Ein angenehmer Reiz wird hinzugefügt und erhöht die Auftretenswahrscheinlichkeit eines Verhaltens."
+    },
+    {
+      "id": 10102,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Was ist negative Verstärkung?",
+      "answer": "Ein aversiver Reiz wird entfernt und erhöht die Auftretenswahrscheinlichkeit eines Verhaltens."
+    },
+    {
+      "id": 10103,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Was ist Bestrafung?",
+      "answer": "Eine Konsequenz senkt die Auftretenswahrscheinlichkeit eines Verhaltens."
+    },
+    {
+      "id": 10104,
+      "topic": "Lernen",
+      "subtopic": "Operantes Konditionieren",
+      "question": "Was ist Shaping?",
+      "answer": "Schrittweise Verstärkung von Annäherungen an das gewünschte Zielverhalten."
+    },
+    {
+      "id": 10105,
+      "topic": "Lernen",
+      "subtopic": "Verstärkerpläne",
+      "question": "Was kennzeichnet einen festen Quotenplan?",
+      "answer": "Verstärkung erfolgt nach einer festen Anzahl von Reaktionen."
+    },
+    {
+      "id": 10106,
+      "topic": "Lernen",
+      "subtopic": "Verstärkerpläne",
+      "question": "Was kennzeichnet einen variablen Quotenplan?",
+      "answer": "Verstärkung erfolgt nach einer wechselnden Anzahl von Reaktionen."
+    },
+    {
+      "id": 10107,
+      "topic": "Lernen",
+      "subtopic": "Verstärkerpläne",
+      "question": "Was kennzeichnet einen festen Intervallplan?",
+      "answer": "Die erste Reaktion nach einem festen Zeitintervall wird verstärkt."
+    },
+    {
+      "id": 10108,
+      "topic": "Lernen",
+      "subtopic": "Verstärkerpläne",
+      "question": "Was kennzeichnet einen variablen Intervallplan?",
+      "answer": "Die erste Reaktion nach wechselnden Zeitintervallen wird verstärkt."
+    },
+    {
+      "id": 10109,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Welche Grundidee beschreibt das Rescorla-Wagner-Modell?",
+      "answer": "Gelernt wird in Abhängigkeit vom Vorhersagefehler zwischen erwarteter und tatsächlich eintretender Verstärkung."
+    },
+    {
+      "id": 10110,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Wie lautet die zentrale Lernregel des Rescorla-Wagner-Modells?",
+      "answer": "ΔV = αβ(λ − ΣV)."
+    },
+    {
+      "id": 10111,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Was bedeutet λ im Rescorla-Wagner-Modell?",
+      "answer": "Die maximal durch den US unterstützte Assoziationsstärke."
+    },
+    {
+      "id": 10112,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Was bedeutet ΣV im Rescorla-Wagner-Modell?",
+      "answer": "Die gesamte bereits durch alle anwesenden Reize vorhergesagte Assoziationsstärke."
+    },
+    {
+      "id": 10113,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Wann ist der Lernzuwachs besonders groß?",
+      "answer": "Wenn der Vorhersagefehler λ − ΣV groß ist."
+    },
+    {
+      "id": 10114,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Warum nimmt der Lernzuwachs über Lerndurchgänge ab?",
+      "answer": "Weil die Vorhersage besser wird und der Vorhersagefehler kleiner wird."
+    },
+    {
+      "id": 10115,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Was ist Blocking?",
+      "answer": "Ein bereits gelernter Reiz sagt den US vollständig vorher, sodass zu einem neu hinzugefügten Reiz kaum Assoziation gelernt wird."
+    },
+    {
+      "id": 10116,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Was ist Overshadowing?",
+      "answer": "Bei gemeinsamer Konditionierung konkurrieren Reize um Assoziationsstärke; der salientere Reiz wird stärker gelernt."
+    },
+    {
+      "id": 10117,
+      "topic": "Lernen",
+      "subtopic": "Rescorla-Wagner",
+      "question": "Was ist Übererwartung?",
+      "answer": "Zwei einzeln stark konditionierte Reize werden gemeinsam präsentiert; die gemeinsame Erwartung übersteigt den US und beide Assoziationen werden abgeschwächt."
+    },
+    {
+      "id": 10118,
+      "topic": "Lernen",
+      "subtopic": "Testeffekt",
+      "question": "Was ist der klassische Testeffekt?",
+      "answer": "Aktiver Abruf durch Testen verbessert die spätere Erinnerung stärker als bloßes erneutes Lernen."
+    },
+    {
+      "id": 10119,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Was ist der vorwärtsgerichtete Testeffekt?",
+      "answer": "Zwischentests verbessern das Lernen und Erinnern von Inhalten, die erst nach dem Test präsentiert werden."
+    },
+    {
+      "id": 10120,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Nenne einen motivationalen Mechanismus des vorwärtsgerichteten Testeffekts.",
+      "answer": "Zwischentests erzeugen Testerwartung und erhöhen die Anstrengung beim folgenden Enkodieren."
+    },
+    {
+      "id": 10121,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Nenne einen Enkodierungsmechanismus des vorwärtsgerichteten Testeffekts.",
+      "answer": "Zwischentests verändern den Kontext und verringern proaktive Interferenz beim Enkodieren."
+    },
+    {
+      "id": 10122,
+      "topic": "Lernen",
+      "subtopic": "Vorwärtsgerichteter Testeffekt",
+      "question": "Nenne einen Abrufmechanismus des vorwärtsgerichteten Testeffekts.",
+      "answer": "Zwischentests trainieren wirksame Abrufstrategien."
+    },
+    {
+      "id": 10123,
+      "topic": "Lernen",
+      "subtopic": "Beobachtungslernen",
+      "question": "Welche zentrale Aussage verbindet man mit Banduras Beobachtungslernen?",
+      "answer": "Verhalten kann durch Beobachtung eines Modells und seiner Konsequenzen gelernt werden."
+    },
+    {
+      "id": 10124,
+      "topic": "Lernen",
+      "subtopic": "Latentes Lernen",
+      "question": "Was ist latentes Lernen?",
+      "answer": "Lernen, das zunächst ohne sichtbare Verhaltensänderung stattfindet und erst bei passender Motivation gezeigt wird."
+    },
+    {
+      "id": 10125,
+      "topic": "Lernen",
+      "subtopic": "Instinktive Drift",
+      "question": "Was zeigten Breland und Breland mit der instinktiven Drift?",
+      "answer": "Erlerntes Verhalten kann durch artspezifische angeborene Verhaltensweisen verdrängt werden."
+    },
+    {
+      "id": 10126,
+      "topic": "Lernen",
+      "subtopic": "Lidschlagkonditionierung",
+      "question": "Was wird bei der Lidschlagkonditionierung typischerweise gelernt?",
+      "answer": "Ein zunächst neutraler Reiz kündigt einen Luftstoß oder ähnlichen US an und löst einen vorbereitenden Lidschlag aus."
+    },
+    {
+      "id": 10127,
+      "topic": "Lernen",
+      "subtopic": "Iowa Gambling Task",
+      "question": "Was erfasst die Iowa Gambling Task?",
+      "answer": "Entscheidungsverhalten unter Unsicherheit anhand langfristig günstiger und ungünstiger Kartenstapel."
+    },
+    {
+      "id": 10128,
+      "topic": "Motivation",
+      "subtopic": "Grundbegriffe",
+      "question": "Wie unterscheiden sich Motivation und Volition?",
+      "answer": "Motivation betrifft Zielwahl und Zielbindung; Volition betrifft die Umsetzung und Aufrechterhaltung zielgerichteten Handelns."
+    },
+    {
+      "id": 10129,
+      "topic": "Motivation",
+      "subtopic": "Rubikonmodell",
+      "question": "Welche vier Phasen unterscheidet das Rubikonmodell?",
+      "answer": "Prädezisionale, präaktionale, aktionale und postaktionale Phase."
+    },
+    {
+      "id": 10130,
+      "topic": "Motivation",
+      "subtopic": "Rubikonmodell",
+      "question": "Was geschieht in der prädezisionalen Phase?",
+      "answer": "Handlungsalternativen und Wünsche werden abgewogen."
+    },
+    {
+      "id": 10131,
+      "topic": "Motivation",
+      "subtopic": "Rubikonmodell",
+      "question": "Was bedeutet das Überschreiten des Rubikons?",
+      "answer": "Aus einem Wunsch wird eine verbindliche Zielintention."
+    },
+    {
+      "id": 10132,
+      "topic": "Motivation",
+      "subtopic": "Rubikonmodell",
+      "question": "Was geschieht in der präaktionalen Phase?",
+      "answer": "Die Umsetzung des gewählten Ziels wird geplant."
+    },
+    {
+      "id": 10133,
+      "topic": "Motivation",
+      "subtopic": "Rubikonmodell",
+      "question": "Was geschieht in der aktionalen Phase?",
+      "answer": "Die Handlung wird ausgeführt und gegen Ablenkungen abgeschirmt."
+    },
+    {
+      "id": 10134,
+      "topic": "Motivation",
+      "subtopic": "Rubikonmodell",
+      "question": "Was geschieht in der postaktionalen Phase?",
+      "answer": "Das Ergebnis wird bewertet und mit dem Ziel verglichen."
+    },
+    {
+      "id": 10135,
+      "topic": "Motivation",
+      "subtopic": "Implementation Intentions",
+      "question": "Was ist eine Implementation Intention?",
+      "answer": "Eine Wenn-dann-Absicht, die eine konkrete Situation mit einem konkreten Verhalten verknüpft."
+    },
+    {
+      "id": 10136,
+      "topic": "Motivation",
+      "subtopic": "Implementation Intentions",
+      "question": "Welche zwei Bestandteile hat eine Wenn-dann-Absicht?",
+      "answer": "Eine eindeutig erkennbare Auslösesituation und das dann auszuführende Verhalten."
+    },
+    {
+      "id": 10137,
+      "topic": "Motivation",
+      "subtopic": "Attribution",
+      "question": "Welche drei Dimensionen sind für Ursachenattributionen besonders wichtig?",
+      "answer": "Lokus internal oder external, Stabilität und Kontrollierbarkeit."
+    },
+    {
+      "id": 10138,
+      "topic": "Motivation",
+      "subtopic": "Attribution",
+      "question": "Wie wird Fähigkeit typischerweise attribuiert?",
+      "answer": "Internal und relativ stabil."
+    },
+    {
+      "id": 10139,
+      "topic": "Motivation",
+      "subtopic": "Attribution",
+      "question": "Wie wird Anstrengung typischerweise attribuiert?",
+      "answer": "Internal, variabel und eher kontrollierbar."
+    },
+    {
+      "id": 10140,
+      "topic": "Motivation",
+      "subtopic": "Attribution",
+      "question": "Wie wird Aufgabenschwierigkeit typischerweise attribuiert?",
+      "answer": "External und relativ stabil."
+    },
+    {
+      "id": 10141,
+      "topic": "Motivation",
+      "subtopic": "Attribution",
+      "question": "Wie wird Zufall typischerweise attribuiert?",
+      "answer": "External, variabel und unkontrollierbar."
+    },
+    {
+      "id": 10142,
+      "topic": "Motivation",
+      "subtopic": "Leistungsmotivation",
+      "question": "Welche Aufgabenschwierigkeit wählen erfolgsmotivierte Personen besonders häufig?",
+      "answer": "Aufgaben mittlerer Schwierigkeit."
+    },
+    {
+      "id": 10143,
+      "topic": "Motivation",
+      "subtopic": "Leistungsmotivation",
+      "question": "Warum sind Aufgaben mittlerer Schwierigkeit motivational attraktiv?",
+      "answer": "Sie verbinden realistische Erfolgschancen mit hohem diagnostischem Wert für die eigene Fähigkeit."
+    },
+    {
+      "id": 10144,
+      "topic": "Motivation",
+      "subtopic": "Leistungsmotivation",
+      "question": "Welche Variable wurde bei Atkinson und Litwin als zentrales Verhalten untersucht?",
+      "answer": "Die selbst gewählte Aufgabenschwierigkeit."
+    },
+    {
+      "id": 10145,
+      "topic": "Motivation",
+      "subtopic": "Leistungsmotivation",
+      "question": "Welche Emotionen spielen bei der Wahl von Aufgabenschwierigkeit eine Rolle?",
+      "answer": "Antizipierte selbstbewertende Emotionen wie Stolz oder Scham."
+    },
+    {
+      "id": 10146,
+      "topic": "Motivation",
+      "subtopic": "Selbstbestimmungstheorie",
+      "question": "Welche drei psychologischen Grundbedürfnisse nennt die Selbstbestimmungstheorie?",
+      "answer": "Autonomie, Kompetenz und soziale Eingebundenheit."
+    },
+    {
+      "id": 10147,
+      "topic": "Motivation",
+      "subtopic": "Intrinsische Motivation",
+      "question": "Was ist intrinsische Motivation?",
+      "answer": "Eine Tätigkeit wird um ihrer selbst willen ausgeführt."
+    },
+    {
+      "id": 10148,
+      "topic": "Motivation",
+      "subtopic": "Extrinsische Motivation",
+      "question": "Was ist extrinsische Motivation?",
+      "answer": "Eine Tätigkeit wird wegen ihrer Folgen, Belohnungen oder zur Vermeidung von Nachteilen ausgeführt."
+    },
+    {
+      "id": 10149,
+      "topic": "Motivation",
+      "subtopic": "Zielsysteme",
+      "question": "Welche Funktion haben Unterziele?",
+      "answer": "Sie strukturieren den Weg zu einem übergeordneten Ziel und liefern nähere Handlungsanreize."
+    },
+    {
+      "id": 10150,
+      "topic": "Motivation",
+      "subtopic": "Selbstkontrolle",
+      "question": "Was ist Selbstkontrolle?",
+      "answer": "Die Regulation von Impulsen und Verhalten zugunsten eines übergeordneten oder langfristigen Ziels."
+    },
+    {
+      "id": 10151,
+      "topic": "Motivation",
+      "subtopic": "Intertemporale Entscheidung",
+      "question": "Was ist zeitliche Diskontierung?",
+      "answer": "Spätere Belohnungen werden subjektiv geringer bewertet als gleich große sofortige Belohnungen."
+    },
+    {
+      "id": 10152,
+      "topic": "Motivation",
+      "subtopic": "Willensstärke",
+      "question": "Wie wurde Willensstärke im klassischen Ansatz von Ach untersucht?",
+      "answer": "Eine neue Aufgabe musste gegen unterschiedlich starke zuvor gelernte Assoziationen durchgesetzt werden."
+    },
+    {
+      "id": 10153,
+      "topic": "Motivation",
+      "subtopic": "Willensstärke",
+      "question": "Woran zeigt sich in Achs Aufgabe hohe kognitive Kontrolle?",
+      "answer": "An schneller und korrekter Ausführung der neuen Aufgabe trotz starker konkurrierender Assoziation."
+    },
+    {
+      "id": 10154,
+      "topic": "Motivation",
+      "subtopic": "Belohnungsaufschub",
+      "question": "Was misst das Marshmallow-Paradigma von Mischel?",
+      "answer": "Die Fähigkeit, auf eine sofortige kleine Belohnung zugunsten einer späteren größeren zu warten."
+    },
+    {
+      "id": 10155,
+      "topic": "Motivation",
+      "subtopic": "Gewinn und Verlust",
+      "question": "Welche zentrale Asymmetrie wird bei Gain-Loss-Manipulationen untersucht?",
+      "answer": "Ob gleich große Gewinne und Verluste unterschiedlich stark auf Verhalten wirken."
+    },
+    {
+      "id": 10156,
+      "topic": "Emotion",
+      "subtopic": "James-Lange-Theorie",
+      "question": "Was ist die Kernaussage der James-Lange-Theorie?",
+      "answer": "Die Wahrnehmung körperlicher Veränderungen trägt ursächlich zum Erleben der Emotion bei."
+    },
+    {
+      "id": 10157,
+      "topic": "Emotion",
+      "subtopic": "Cannon-Bard-Theorie",
+      "question": "Was ist die Kernaussage der Cannon-Bard-Theorie?",
+      "answer": "Emotionserleben und körperliche Reaktion entstehen parallel."
+    },
+    {
+      "id": 10158,
+      "topic": "Emotion",
+      "subtopic": "Schachter-Singer-Theorie",
+      "question": "Was ist die Kernaussage der Zwei-Faktoren-Theorie von Schachter und Singer?",
+      "answer": "Emotion entsteht aus physiologischer Erregung und deren kognitiver Interpretation."
+    },
+    {
+      "id": 10159,
+      "topic": "Emotion",
+      "subtopic": "Schachter-Singer-Experiment",
+      "question": "Welche Substanzen erhielten Versuchspersonen im Schachter-Singer-Experiment?",
+      "answer": "Adrenalin oder Kochsalzlösung."
+    },
+    {
+      "id": 10160,
+      "topic": "Emotion",
+      "subtopic": "Appraisal",
+      "question": "Welche Rolle spielt kognitive Bewertung in Appraisal-Theorien?",
+      "answer": "Die Bewertung der Bedeutung einer Situation bestimmt, ob und welche Emotion entsteht."
+    },
+    {
+      "id": 10161,
+      "topic": "Emotion",
+      "subtopic": "Somatische Marker",
+      "question": "Was besagt die Hypothese der somatischen Marker?",
+      "answer": "Körperbezogene Signale markieren Handlungsoptionen emotional und unterstützen Entscheidungen."
+    },
+    {
+      "id": 10162,
+      "topic": "Emotion",
+      "subtopic": "Facial Feedback",
+      "question": "Was besagt die Facial-Feedback-Hypothese?",
+      "answer": "Die Aktivierung bestimmter Gesichtsmuskeln kann das emotionale Erleben beeinflussen."
+    },
+    {
+      "id": 10163,
+      "topic": "Emotion",
+      "subtopic": "Emotionsausdruck",
+      "question": "Was sind Basisemotionen?",
+      "answer": "Grundlegende Emotionen mit charakteristischen, weitgehend kulturübergreifend erkennbaren Ausdrucksmustern."
+    },
+    {
+      "id": 10164,
+      "topic": "Emotion",
+      "subtopic": "Emotionsausdruck",
+      "question": "Welche Annahme verbindet man mit Ekman?",
+      "answer": "Bestimmte mimische Emotionsausdrücke sind universell, werden aber kulturell reguliert."
+    },
+    {
+      "id": 10165,
+      "topic": "Emotion",
+      "subtopic": "Emotionsausdruck",
+      "question": "Was sind Display Rules?",
+      "answer": "Kulturell gelernte Regeln dafür, wann und wie Emotionen sichtbar ausgedrückt werden."
+    },
+    {
+      "id": 10166,
+      "topic": "Emotion",
+      "subtopic": "Emotionsausdruck",
+      "question": "Was kennzeichnet ein Duchenne-Lächeln?",
+      "answer": "Neben dem Mundmuskel ist auch die Augenringmuskulatur beteiligt."
+    },
+    {
+      "id": 10167,
+      "topic": "Emotion",
+      "subtopic": "Emotionsausdruck",
+      "question": "Was ergänzt die neurokulturelle Theorie zum universellen Emotionsausdruck?",
+      "answer": "Universelle Ausdrucksprogramme werden durch kulturelle Darstellungsregeln modifiziert."
+    },
+    {
+      "id": 10168,
+      "topic": "Emotion",
+      "subtopic": "Stress",
+      "question": "Was ist eine Skin Conductance Response, SCR?",
+      "answer": "Eine durch sympathische Aktivierung verursachte Veränderung der Hautleitfähigkeit."
+    },
+    {
+      "id": 10169,
+      "topic": "Emotion",
+      "subtopic": "Stress",
+      "question": "Welche körperlichen Systeme sind an einer Stressreaktion zentral beteiligt?",
+      "answer": "Das sympathische Nervensystem und die Hypothalamus-Hypophysen-Nebennierenrinden-Achse."
+    },
+    {
+      "id": 10170,
+      "topic": "Emotion",
+      "subtopic": "Neuronale Grundlagen",
+      "question": "Welche Struktur ist besonders wichtig für emotionales Konditionieren?",
+      "answer": "Die Amygdala."
+    },
+    {
+      "id": 10171,
+      "topic": "Emotion",
+      "subtopic": "Neuronale Grundlagen",
+      "question": "Welche Struktur ist besonders wichtig für bewusstes Kontextwissen über Reizpaarungen?",
+      "answer": "Der Hippocampus."
+    },
+    {
+      "id": 10172,
+      "topic": "Emotion",
+      "subtopic": "Neuronale Grundlagen",
+      "question": "Welche Struktur wird besonders mit Belohnung und Anreiz in Verbindung gebracht?",
+      "answer": "Der Nucleus accumbens."
+    },
+    {
+      "id": 10173,
+      "topic": "Emotion",
+      "subtopic": "Neuronale Grundlagen",
+      "question": "Welche Struktur verbindet exterozeptive Reize mit emotionalen beziehungsweise somatischen Zuständen?",
+      "answer": "Die Amygdala."
+    },
+    {
+      "id": 10174,
+      "topic": "Emotion",
+      "subtopic": "Broaden-and-Build",
+      "question": "Was ist die Kernaussage der Broaden-and-Build-Theorie?",
+      "answer": "Positive Emotionen erweitern kurzfristig Aufmerksamkeit und Handlungsoptionen und bauen langfristig Ressourcen auf."
+    },
+    {
+      "id": 10175,
+      "topic": "Emotion",
+      "subtopic": "Broaden-and-Build",
+      "question": "Wie wirken positive Emotionen kurzfristig auf die Aufmerksamkeit?",
+      "answer": "Sie erweitern die Aufmerksamkeit."
+    },
+    {
+      "id": 10176,
+      "topic": "Emotion",
+      "subtopic": "Broaden-and-Build",
+      "question": "Welches Verhalten fördern positive Emotionen nach der Theorie?",
+      "answer": "Exploration."
+    },
+    {
+      "id": 10177,
+      "topic": "Emotion",
+      "subtopic": "Broaden-and-Build",
+      "question": "Welche langfristige Folge haben positive Emotionen nach der Theorie?",
+      "answer": "Der Aufbau neuer Fertigkeiten und psychologischer Ressourcen."
+    },
+    {
+      "id": 10178,
+      "topic": "Emotion",
+      "subtopic": "Emotionsregulation",
+      "question": "Was ist Situationsauswahl?",
+      "answer": "Eine Situation wird gezielt aufgesucht oder vermieden, um die spätere Emotion zu beeinflussen."
+    },
+    {
+      "id": 10179,
+      "topic": "Emotion",
+      "subtopic": "Emotionsregulation",
+      "question": "Was ist Situationsmodifikation?",
+      "answer": "Eine bereits bestehende Situation wird verändert, um ihre emotionale Wirkung zu beeinflussen."
+    },
+    {
+      "id": 10180,
+      "topic": "Emotion",
+      "subtopic": "Emotionsregulation",
+      "question": "Was ist Aufmerksamkeitslenkung?",
+      "answer": "Die Aufmerksamkeit wird innerhalb einer Situation auf bestimmte Aspekte gerichtet oder von ihnen weg gelenkt."
+    },
+    {
+      "id": 10181,
+      "topic": "Emotion",
+      "subtopic": "Emotionsregulation",
+      "question": "Was ist kognitive Neubewertung?",
+      "answer": "Die Bedeutung einer Situation wird anders interpretiert, um die emotionale Reaktion zu verändern."
+    },
+    {
+      "id": 10182,
+      "topic": "Emotion",
+      "subtopic": "Emotionsregulation",
+      "question": "Was ist Reaktionsmodulation?",
+      "answer": "Eine bereits entstandene emotionale Reaktion wird direkt beeinflusst, etwa durch Unterdrückung des Ausdrucks."
     }
   ]
 }
