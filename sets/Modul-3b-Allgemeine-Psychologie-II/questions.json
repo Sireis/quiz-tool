@@ -4804,644 +4804,644 @@
     },
     {
       "id": 10001,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Aufbau",
       "question": "Welche Hauptfunktion haben Dendriten?",
       "answer": "Sie empfangen eingehende Signale anderer Zellen."
     },
     {
       "id": 10002,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Aufbau",
       "question": "Welche Hauptfunktion hat das Axon?",
       "answer": "Es leitet Signale vom Zellkörper zu den Empfängerzellen."
     },
     {
       "id": 10003,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Aufbau",
       "question": "Was ist das Soma einer Nervenzelle?",
       "answer": "Der Zellkörper mit Zellkern, Zytoplasma und Membran."
     },
     {
       "id": 10004,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Aufbau",
       "question": "Welche Funktion hat der Axonhügel?",
       "answer": "Dort werden postsynaptische Potenziale integriert und bei Überschreiten der Schwelle ein Aktionspotenzial ausgelöst."
     },
     {
       "id": 10005,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Aufbau",
       "question": "Was ist eine Axonkollaterale?",
       "answer": "Eine seitliche Abzweigung des Axons."
     },
     {
       "id": 10006,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Zelltypen",
       "question": "Was zeichnet multipolare Nervenzellen aus?",
       "answer": "Sie besitzen mehrere Dendriten und ein Axon."
     },
     {
       "id": 10007,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Zelltypen",
       "question": "Nenne drei Beispiele für multipolare Nervenzellen.",
       "answer": "Schaltneurone, Pyramidenzellen und Purkinje-Zellen."
     },
     {
       "id": 10008,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuron – Zelltypen",
       "question": "Wodurch unterscheiden sich unipolare Nervenzellen von Pyramidenzellen?",
       "answer": "Unipolare Nervenzellen besitzen keine Dendriten; Pyramidenzellen besitzen Dendriten."
     },
     {
       "id": 10009,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Gliazellen",
       "question": "Welche Aufgabe haben Astrozyten an Blutgefäßen?",
       "answer": "Sie sind an der Bildung der Blut-Hirn-Schranke beteiligt."
     },
     {
       "id": 10010,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Gliazellen",
       "question": "Welche Zellen bilden Myelinscheiden im zentralen Nervensystem?",
       "answer": "Oligodendrozyten."
     },
     {
       "id": 10011,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Gliazellen",
       "question": "Welche Zellen bilden Myelinscheiden im peripheren Nervensystem?",
       "answer": "Schwann-Zellen."
     },
     {
       "id": 10012,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Gliazellen",
       "question": "Warum können Gliazellen Räume abgestorbener Neurone ausfüllen?",
       "answer": "Weil sie lebenslang zur Zellteilung fähig sind."
     },
     {
       "id": 10013,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Gliazellen",
       "question": "Welche regenerative Funktion können Schwann-Zellen nach einer Verletzung haben?",
       "answer": "Sie können das Nachwachsen eines Axons unterstützen."
     },
     {
       "id": 10014,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Ruhepotenzial",
       "question": "Wie groß ist das Ruhepotenzial einer Nervenzelle ungefähr?",
       "answer": "Etwa −80 mV; je nach Darstellung ungefähr zwischen −55 und −100 mV."
     },
     {
       "id": 10015,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Ruhepotenzial",
       "question": "Welches positive Ion kommt außerhalb der Nervenzelle häufiger vor als innerhalb?",
       "answer": "Natrium, Na+; auch Calcium ist außen höher konzentriert."
     },
     {
       "id": 10016,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Ruhepotenzial",
       "question": "Welches positive Ion kommt innerhalb der Nervenzelle häufiger vor als außerhalb?",
       "answer": "Kalium, K+."
     },
     {
       "id": 10017,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Ruhepotenzial",
       "question": "Welche negativen Ionen kommen innerhalb der Nervenzelle häufiger vor?",
       "answer": "Große, schlecht permeable Anionen beziehungsweise Eiweißionen A−."
     },
     {
       "id": 10018,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Ruhepotenzial",
       "question": "Warum ist das Zellinnere beim Ruhepotenzial negativ?",
       "answer": "Unter anderem weil große negative Anionen die Membran schlecht passieren."
     },
     {
       "id": 10019,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Wodurch wird Information in einer Folge von Aktionspotenzialen codiert?",
       "answer": "Durch die Frequenz beziehungsweise Häufigkeit der Aktionspotenziale."
     },
     {
       "id": 10020,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Welche Eigenschaft bleibt bei Aktionspotenzialen weitgehend gleich?",
       "answer": "Ihre Amplitude."
     },
     {
       "id": 10021,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Welche Kanäle öffnen sich zu Beginn des Aktionspotenzials zuerst?",
       "answer": "Spannungsabhängige Natriumkanäle."
     },
     {
       "id": 10022,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Welche Kanäle öffnen sich nach den Natriumkanälen?",
       "answer": "Spannungsabhängige Kaliumkanäle."
     },
     {
       "id": 10023,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Was geschieht bei der Depolarisation?",
       "answer": "Das Membranpotenzial wird weniger negativ, vor allem durch Na+-Einstrom."
     },
     {
       "id": 10024,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Was geschieht bei der Repolarisation?",
       "answer": "Das Membranpotenzial wird wieder negativer, vor allem durch K+-Ausstrom."
     },
     {
       "id": 10025,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Welche Axone leiten Aktionspotenziale am schnellsten?",
       "answer": "Dicke, myelinisierte Axone."
     },
     {
       "id": 10026,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Was bedeutet saltatorische Erregungsleitung?",
       "answer": "Das Aktionspotenzial wird an den Ranvier-Schnürringen erneuert und springt scheinbar von Schnürring zu Schnürring."
     },
     {
       "id": 10027,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Von welchen drei strukturellen Eigenschaften hängt die Ankunftszeit eines Aktionspotenzials am Endknopf ab?",
       "answer": "Von Myelinisierung, Axondicke und Axonlänge."
     },
     {
       "id": 10028,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Aktionspotenzial",
       "question": "Welche Wirkung haben Ranvier-Schnürringe auf die Leitungsgeschwindigkeit?",
       "answer": "Sie ermöglichen die saltatorische Leitung und erhöhen dadurch die Geschwindigkeit."
     },
     {
       "id": 10029,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Welche Ionenkanäle öffnen sich im präsynaptischen Endknopf beim Eintreffen eines Aktionspotenzials?",
       "answer": "Spannungsabhängige Calciumkanäle."
     },
     {
       "id": 10030,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Welche unmittelbare Folge hat der Calcium-Einstrom in den Endknopf?",
       "answer": "Vesikel verschmelzen mit der Membran und setzen Neurotransmitter frei."
     },
     {
       "id": 10031,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Wo werden Neurotransmitter gespeichert?",
       "answer": "In synaptischen Vesikeln."
     },
     {
       "id": 10032,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Wohin werden Neurotransmitter freigesetzt?",
       "answer": "In den synaptischen Spalt."
     },
     {
       "id": 10033,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Woran binden Neurotransmitter postsynaptisch?",
       "answer": "An spezifische Rezeptoren der postsynaptischen Membran."
     },
     {
       "id": 10034,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Was ist ein EPSP?",
       "answer": "Ein exzitatorisches postsynaptisches Potenzial, das die Membran depolarisiert und die Wahrscheinlichkeit eines Aktionspotenzials erhöht."
     },
     {
       "id": 10035,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Was ist ein IPSP?",
       "answer": "Ein inhibitorisches postsynaptisches Potenzial, das die Wahrscheinlichkeit eines Aktionspotenzials senkt."
     },
     {
       "id": 10036,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Was bedeutet zeitliche Summation?",
       "answer": "Mehrere kurz nacheinander eintreffende postsynaptische Potenziale derselben Synapse summieren sich."
     },
     {
       "id": 10037,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Chemische Synapse",
       "question": "Was bedeutet räumliche Summation?",
       "answer": "Gleichzeitig eintreffende postsynaptische Potenziale verschiedener Synapsen summieren sich."
     },
     {
       "id": 10038,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Wo werden Neurotransmitter synthetisiert?",
       "answer": "Im präsynaptischen Neuron."
     },
     {
       "id": 10039,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Wie werden Neurotransmitter nach ihrer Freisetzung inaktiviert?",
       "answer": "Durch enzymatische Spaltung oder Wiederaufnahme."
     },
     {
       "id": 10040,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Was ist ein Agonist?",
       "answer": "Eine Substanz, die die Wirkung eines körpereigenen Transmitters nachahmt oder verstärkt."
     },
     {
       "id": 10041,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Was ist ein Antagonist?",
       "answer": "Eine Substanz, die die Wirkung eines Transmitters am Rezeptor hemmt oder blockiert."
     },
     {
       "id": 10042,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Wie wirkt Fluoxetin?",
       "answer": "Es blockiert die Wiederaufnahme von Serotonin."
     },
     {
       "id": 10043,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "An welchem Transmittersystem wirkt Fluoxetin?",
       "answer": "Am serotonergen System."
     },
     {
       "id": 10044,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Welcher Transmitter wirkt an der motorischen Endplatte der Skelettmuskulatur?",
       "answer": "Acetylcholin."
     },
     {
       "id": 10045,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Welche beiden wichtigen hemmenden Transmitter werden in den Klausuren genannt?",
       "answer": "GABA und Glycin."
     },
     {
       "id": 10046,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Welcher wichtige erregende Transmitter des ZNS wird neben Acetylcholin genannt?",
       "answer": "Glutamat."
     },
     {
       "id": 10047,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neurotransmitter",
       "question": "Was zeigt die unterschiedliche Wirkung von Nikotin und Muscarin?",
       "answer": "Dass es unterschiedliche Typen cholinerger Rezeptoren gibt."
     },
     {
       "id": 10048,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuroanatomie",
       "question": "Was trennt ein Sagittalschnitt?",
       "answer": "Eine rechte und eine linke Hälfte beziehungsweise Hemisphäre."
     },
     {
       "id": 10049,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuroanatomie",
       "question": "Was trennt ein Frontalschnitt?",
       "answer": "Eine vordere und eine hintere Hälfte."
     },
     {
       "id": 10050,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuroanatomie",
       "question": "Was trennt ein Horizontalschnitt?",
       "answer": "Eine obere und eine untere Hälfte."
     },
     {
       "id": 10051,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuroanatomie",
       "question": "Was bedeutet rostral?",
       "answer": "Zum vorderen beziehungsweise nasenwärts gelegenen Ende."
     },
     {
       "id": 10052,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuroanatomie",
       "question": "Was bedeutet kaudal?",
       "answer": "Zum hinteren beziehungsweise steißwärts gelegenen Ende."
     },
     {
       "id": 10053,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuroanatomie",
       "question": "Was bedeutet dorsal?",
       "answer": "Zum Rücken beziehungsweise nach oben gelegen."
     },
     {
       "id": 10054,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Neuroanatomie",
       "question": "Was bedeutet ventral?",
       "answer": "Zum Bauch beziehungsweise nach unten gelegen."
     },
     {
       "id": 10055,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnlappen",
       "question": "Welcher Hirnlappen verarbeitet vor allem visuelle Information?",
       "answer": "Der Okzipitallappen."
     },
     {
       "id": 10056,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnlappen",
       "question": "Welcher Hirnlappen verarbeitet vor allem auditive Information?",
       "answer": "Der Temporallappen."
     },
     {
       "id": 10057,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnlappen",
       "question": "Welcher Hirnlappen ist besonders an Planung und Handlungssteuerung beteiligt?",
       "answer": "Der Frontallappen."
     },
     {
       "id": 10058,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnlappen",
       "question": "Welcher Hirnlappen integriert Informationen verschiedener Sinnesmodalitäten?",
       "answer": "Der Parietallappen."
     },
     {
       "id": 10059,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnstrukturen",
       "question": "Welche Struktur steuert Hormonhaushalt und vegetatives Nervensystem?",
       "answer": "Der Hypothalamus."
     },
     {
       "id": 10060,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnstrukturen",
       "question": "Welche Struktur steht unter Kontrolle des Hypothalamus und gibt Hormone an die Peripherie ab?",
       "answer": "Die Hypophyse."
     },
     {
       "id": 10061,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnstrukturen",
       "question": "Welche Struktur enthält für EEG-Rhythmen wichtige Zellen?",
       "answer": "Der Thalamus."
     },
     {
       "id": 10062,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hirnstrukturen",
       "question": "Welche Struktur ist ein wichtiges Ziel der Tiefenhirnstimulation bei Parkinson?",
       "answer": "Die Basalganglien."
     },
     {
       "id": 10063,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Nervenfasern",
       "question": "Was sind Afferenzen?",
       "answer": "Nervenfasern, die Information zum zentralen Nervensystem leiten."
     },
     {
       "id": 10064,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Nervenfasern",
       "question": "Was sind Efferenzen?",
       "answer": "Nervenfasern, die Information vom zentralen Nervensystem in die Peripherie leiten."
     },
     {
       "id": 10065,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Nervenfasern",
       "question": "Nenne einen ausschließlich afferenten Hirnnerv.",
       "answer": "Zum Beispiel Nervus opticus, olfactorius oder statoacusticus."
     },
     {
       "id": 10066,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Nervenfasern",
       "question": "Nenne einen Hirnnerv, der in beide Richtungen leitet.",
       "answer": "Der Nervus vagus."
     },
     {
       "id": 10067,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Welche zentrale Stärke hat das EEG?",
       "answer": "Eine hohe zeitliche Auflösung."
     },
     {
       "id": 10068,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Welche zentrale Schwäche hat das EEG?",
       "answer": "Eine vergleichsweise geringe räumliche Auflösung."
     },
     {
       "id": 10069,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Was erfasst fMRT indirekt?",
       "answer": "Aktivitätsabhängige Änderungen der Blutoxygenierung beziehungsweise das BOLD-Signal."
     },
     {
       "id": 10070,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Welcher wichtige physikalische Faktor ist bei MRT und fMRT zu beachten?",
       "answer": "Das starke Magnetfeld."
     },
     {
       "id": 10071,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Nenne eine mögliche Belastung einer fMRT-Untersuchung.",
       "answer": "Enge, laute Geräusche oder die Notwendigkeit, still zu liegen."
     },
     {
       "id": 10072,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Wer kann typischerweise nicht oder nur eingeschränkt an einer fMRT-Studie teilnehmen?",
       "answer": "Personen mit bestimmten metallischen Implantaten oder anderen nicht MRT-tauglichen Gegenständen im Körper."
     },
     {
       "id": 10073,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Welchen physikalischen Parameter erfassen fNIRS-Sensoren?",
       "answer": "Nah-infrarotes Licht beziehungsweise dessen Absorption."
     },
     {
       "id": 10074,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Welche physiologischen Größen werden bei fNIRS erschlossen?",
       "answer": "Konzentrationsänderungen von oxygeniertem und deoxygeniertem Hämoglobin."
     },
     {
       "id": 10075,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Welche wesentliche räumliche Einschränkung hat fNIRS?",
       "answer": "Es erfasst hauptsächlich oberflächennahe Cortexbereiche, nicht tiefe Strukturen wie die Amygdala."
     },
     {
       "id": 10076,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Nenne zwei Vorteile von fNIRS gegenüber fMRT bei Bewegung zu Musik.",
       "answer": "Mehr Bewegungsfreiheit und kein lautes Scannergeräusch, das die Musik überlagert."
     },
     {
       "id": 10077,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Messmethoden",
       "question": "Welche Methoden können Hirnaktivität experimentell beeinflussen statt nur messen?",
       "answer": "Zum Beispiel TMS oder tDCS."
     },
     {
       "id": 10078,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hormone",
       "question": "Wo wird Melatonin gebildet?",
       "answer": "In der Zirbeldrüse."
     },
     {
       "id": 10079,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hormone",
       "question": "Wie wirkt Licht auf die Melatoninbildung?",
       "answer": "Es hemmt die Melatoninbildung."
     },
     {
       "id": 10080,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hormone",
       "question": "Welche Wirkrichtung gilt im Hypothalamus-Hypophysen-System?",
       "answer": "Der Hypothalamus steuert die Hypophyse."
     },
     {
       "id": 10081,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hormone",
       "question": "Nenne zwei Hormone der Neurohypophyse.",
       "answer": "Oxytocin und Vasopressin."
     },
     {
       "id": 10082,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Hormone",
       "question": "Was bedeutet negative Rückkopplung im Hormonsystem?",
       "answer": "Eine hohe Hormonkonzentration im Blut hemmt über Hypothalamus und Hypophyse die weitere Ausschüttung."
     },
     {
       "id": 10083,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Schlaf",
       "question": "Welches Hormon wird besonders in frühen Schlafzyklen ausgeschüttet?",
       "answer": "Growth Hormone beziehungsweise Wachstumshormon."
     },
     {
       "id": 10084,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Schlaf",
       "question": "Welches Hormon wird besonders in späteren Schlafzyklen ausgeschüttet?",
       "answer": "Cortisol."
     },
     {
       "id": 10085,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Schlaf",
       "question": "Wie verändern sich REM- und Tiefschlaf über die Nacht?",
       "answer": "REM-Phasen werden länger, Tiefschlafphasen beziehungsweise SWS werden kürzer."
     },
     {
       "id": 10086,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Immunsystem",
       "question": "Was unterscheidet angeborenes und erworbenes Immunsystem hinsichtlich Geschwindigkeit und Spezifität?",
       "answer": "Das angeborene reagiert schneller und weniger spezifisch; das erworbene langsamer und spezifischer."
     },
     {
       "id": 10087,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Immunsystem",
       "question": "Welche Zellen beeinflussen besonders den Zytokinspiegel im Blut?",
       "answer": "Leukozyten."
     },
     {
       "id": 10088,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Immunsystem",
       "question": "Auf welche Hirnstruktur wirken Zytokine besonders ein?",
       "answer": "Auf den Hypothalamus."
     },
     {
       "id": 10089,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Stress und Immunität",
       "question": "Wie wirken Glucocorticoide auf Entzündungsreaktionen?",
       "answer": "Sie hemmen Entzündungsreaktionen."
     },
     {
       "id": 10090,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Stress und Immunität",
       "question": "Wie beeinflusst länger anhaltender Stress die Infektionsanfälligkeit?",
       "answer": "Er erhöht die Infektionsanfälligkeit."
     },
     {
       "id": 10091,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Stressmessung",
       "question": "Nenne zwei mit Elektroden erfassbare Stressparameter.",
       "answer": "Herzrate und Hautleitfähigkeit beziehungsweise SCR."
     },
     {
       "id": 10092,
-      "topic": "Biologische Psychologie",
+      "topic": "Neurobiologie",
       "subtopic": "Stressmessung",
       "question": "Nenne drei aus Speichel oder Blut erfassbare Stressparameter.",
       "answer": "Zum Beispiel Cortisol, Testosteron und Adrenalin."
