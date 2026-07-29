@@ -1113,6 +1113,7 @@ function getResultType(res) {
     return 'wrong';
   }
   switch (res.result) {
+    case "fully_correct":      return "correct";
     case "correct":            return "correct";
     case "mostly_correct":
     case "partially_correct":
