@@ -93,6 +93,34 @@ class QuizTests(unittest.TestCase):
         response = self.client.get("/api/fields/test/sets/Exam%20%2F%20special/stats")
         self.assertEqual(response.json["total"], 1)
 
+    def test_selection_prioritizes_unattempted_then_lowest_streak(self):
+        question_store.record_attempt("test", 1, False, 0)
+        self.assertEqual(question_store.get_next_question("test")["id"], 2)
+        question_store.record_attempt("test", 1, True, 1)
+        question_store.record_attempt("test", 1, True, 1)
+        question_store.record_attempt("test", 2, True, 1)
+        self.assertEqual(question_store.get_next_question("test")["id"], 2)
+        question_store.record_attempt("test", 1, False, 0)
+        self.assertEqual(question_store.get_next_question("test")["id"], 1)
+
+    def test_selection_caps_streak_and_randomizes_ties(self):
+        for question_id, attempts in ((1, 2), (2, 5)):
+            for _ in range(attempts):
+                question_store.record_attempt("test", question_id, True, 1)
+        with patch.object(question_store.random, "choice", side_effect=lambda pool: pool[-1]) as choice:
+            self.assertEqual(question_store.get_next_question("test")["id"], 2)
+        self.assertEqual([q["id"] for q in choice.call_args.args[0]], [1, 2])
+        self.assertEqual(question_store.load_progress("test")["2"]["streak"], 5)
+
+    def test_selection_respects_filter_and_missing_legacy_streak(self):
+        question_store.save_progress("test", {
+            "1": {"attempts": 3, "correct": 2},
+            "2": {"attempts": 1, "correct": 1, "streak": 1},
+        })
+        self.assertEqual(question_store.get_next_question("test")["id"], 1)
+        self.assertEqual(question_store.get_next_question("test", "Exam / special")["id"], 1)
+        self.assertIsNone(question_store.get_next_question("test", topic="Missing"))
+
     def test_failure_and_reveal_do_not_record_progress(self):
         failure = assessor.AssessmentError("Invalid grade")
         with patch.object(assessor, "assess", side_effect=failure):
