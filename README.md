@@ -1,21 +1,36 @@
 # Quiz Trainer
 
-A Flask exam practice app for SKS, SRC, psychology, and custom subjects. Answer in your own words and receive semantic AI grading, feedback, and a reference answer.
+**Practice in your own words. Get feedback. Build confidence.**
 
-## Setup
+A browser-based exam trainer for SKS, SRC, psychology, and custom subjects. Choose a topic or question set, write your answer, and compare it with AI feedback and a reference solution.
+
+## What you can do
+
+- Practice by subject, topic, or exam set.
+- Get feedback on the meaning of your answer.
+- Track your progress and revisit questions that need more practice.
+- Explore an answer further with a prepared ChatGPT follow-up prompt.
+
+## Quick start
+
+From the repository directory, create a Python environment and install the dependencies:
 
 ```bash
 python3 -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 python app.py
 ```
 
-Open http://localhost:5000. The development server listens on all interfaces on port 5000. Use a production WSGI server for hosted deployments.
+On Windows, activate the environment with `.venv\Scripts\activate` instead.
 
-The default backend is GPT4All, which loads a local model on the first assessment and may download the model if needed. An OpenAI API key is not required for local grading.
+Open **[localhost:5000](http://localhost:5000)** in your browser.
 
-To use OpenAI, configure the environment or a `.env` file:
+### Choose your AI backend
+
+By default, grading runs locally with **GPT4All**. No API key is needed. The model loads when you first submit an answer and may need to download, so the first assessment can take longer.
+
+To use **OpenAI** instead, create a `.env` file in the repository root:
 
 ```dotenv
 ASSESSOR_BACKEND=openai
@@ -23,26 +38,15 @@ OPENAI_API_KEY=your-key
 OPENAI_MODEL=gpt-4o-mini
 ```
 
-| Variable | Default | Purpose |
-|---|---|---|
-| `ASSESSOR_BACKEND` | `gpt4all` | `gpt4all` or `openai` |
-| `GPT4ALL_MODEL` | `mistral-7b-instruct-v0.1.Q4_0.gguf` | Local model filename |
-| `OPENAI_MODEL` | `gpt-4o-mini` | OpenAI model |
+Restart the app after changing the configuration. To choose a different local model, set `GPT4ALL_MODEL` in the same file.
 
-## Architecture and storage
+## Add your own questions
 
-After grading, “Mit ChatGPT vertiefen” provides an editable follow-up prompt containing the question, submitted answer, reference answer, grade, and feedback. “In ChatGPT öffnen” opens a new tab with the edited prompt in a best-effort `https://chatgpt.com/?q=…` link. This web query behavior is not guaranteed by the official documentation; “Prompt kopieren” provides a fallback for pasting into ChatGPT, including when signing in or using long prompts. If clipboard access is unavailable, the text is selected for manual copying. The follow-up is cleared when moving to another question and is hidden for reveals or failed grading.
+### Create a subject
 
-`templates/index.html` contains the browser markup; `static/trainer.css` and `static/trainer.js` contain its styles and behavior. `app.py` exposes JSON endpoints; `question_store.py` handles storage, selection, and statistics; `assessor.py` handles grading. Grading is synchronous. Local inference is serialized because the cached model has shared chat state.
+Create a folder under `sets/`, for example `sets/my-subject/`, and add these two files:
 
-Each subject lives under `sets/<subject>/`:
-
-- `questions.json`: an object containing a `questions` array.
-- `system-prompt.txt`: grading instructions, including the JSON response format.
-- `sets.json` and optional `examens.json`: objects mapping group names to arrays of question IDs.
-- `progress.json`: generated progress keyed by question ID.
-
-Example question bank:
+**`questions.json`** — your questions and reference answers:
 
 ```json
 {
@@ -51,33 +55,41 @@ Example question bank:
       "id": 1,
       "topic": "Navigation",
       "subtopic": "GPS",
-      "question": "Your question",
-      "answer": "Reference answer"
+      "question": "What does GPS stand for?",
+      "answer": "Global Positioning System."
     }
   ]
 }
 ```
 
-IDs must be unique positive integers. Existing IDs should remain stable because sets and progress reference them. Only valid subjects with grading instructions appear in the subject list.
+Each question needs a unique positive integer `id`, a `topic`, a `question`, and an `answer`. The `subtopic` is optional. To add questions to an existing subject, append entries to its `questions` array. Keep existing IDs unchanged so saved progress and question sets still refer to the right questions.
 
-Grading instructions must request JSON with `score` from 0 to 1 and `feedback`, plus either `result` (`correct`, `fully_correct`, `mostly_correct`, `partially_correct`, `minimally_correct`, `incorrect`) or SKS fields `correct` and `sks_punkte` (0–2). Invalid model output returns an error without recording an attempt.
+**`system-prompt.txt`** — instructions for grading answers. Start with:
 
-Question selection chooses an unanswered question at random, then randomly chooses among questions with the lowest consecutive-correct streak, capped at two for selection. A wrong answer resets the streak to zero; once every eligible question has at least two consecutive correct answers, all are equally eligible. Older progress without a streak is treated as zero. There is no time-based spaced repetition or exclusion of the previous question. Revealing or skipping an answer does not record an attempt.
-
-Statistics distinguish questions whose latest result was correct (`total_correct`) from all successful attempts (`correct_attempts`). `success_rate` is successful attempts divided by total attempts. The best streak is the longest recorded consecutive correct streak on an individual question. Older progress cannot recover streak records that were already lost.
-
-Preparation indicators appear in the selection lists, current question, and statistics. A question is red when unanswered or never answered correctly, yellow after one correct answer or when its latest answer was wrong, and green after at least two lifetime correct answers when its latest answer was correct. A correct answer after a setback restores green if two correct answers have already been recorded. Fields, topics, exam sets, and custom sets take the color of their least-prepared question; empty groups are red. Statistics include counts of red, yellow, and green questions. Ratings are derived from existing progress without a migration; older records without a latest result use their correct-answer count.
-
-Progress updates use atomic replacement and thread/process locking on Unix. Progress is shared by everyone using the server; there are no accounts or separate learner histories. Subject paths are restricted to direct directories under `sets/`.
-
-`main.py` is a separate desktop Tkinter trainer with independent logic and an older progress schema. Avoid using it and the web app to write the same progress file concurrently.
-
-## Import utilities and checks
-
-`support/` provides HTML parsing, ID assignment, fuzzy matching of question lists to banks, and coverage analysis. The requirements include Beautiful Soup and RapidFuzz for these utilities.
-
-Run regression tests without calling external AI services:
-
-```bash
-.venv/bin/python -m unittest discover -s tests -v
+```text
+Evaluate the student answer semantically against the reference answer.
+Accept equivalent correct explanations.
+Return valid JSON only with:
+- score: a number from 0 to 1
+- result: correct, mostly_correct, partially_correct, minimally_correct, or incorrect
+- feedback: a short explanation
 ```
+
+Adjust the instructions to suit your subject. Save both files as UTF-8, then reload the browser to see the subject and its topics.
+
+### Organize questions into sets
+
+Optionally add `sets.json` for custom practice groups or `examens.json` for exam groups. Both use group names and lists of question IDs:
+
+```json
+{
+  "Practice set 1": [1, 2, 3],
+  "Practice set 2": [2, 4]
+}
+```
+
+Use only IDs that exist in that subject’s question bank. Groups can overlap. Saved progress is created automatically as you answer questions and is shared by everyone using the same server.
+
+---
+
+The quick-start command runs Flask’s development server. Use a production WSGI server when hosting the app.
