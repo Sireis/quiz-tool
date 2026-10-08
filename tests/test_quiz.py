@@ -176,6 +176,50 @@ class QuizTests(unittest.TestCase):
         question_store.save_progress("test", legacy)
         self.assertEqual(question_store.get_set_stats("test", "Exam / special")["preparation"]["rating"], "green")
 
+    def test_constellation_hierarchy_and_existing_preparation(self):
+        questions = [
+            {"id": 1, "topic": "Topic", "subtopic": "Shared", "question": "Q1", "answer": "A"},
+            {"id": 2, "topic": "Topic", "subtopic": "", "question": "Q2", "answer": "A"},
+            {"id": 3, "topic": "Other", "subtopic": "Shared", "question": "Q3", "answer": "A"},
+        ]
+        self._write_json(self.storage_root / "test" / "questions.json", {"questions": questions})
+        for _ in range(2):
+            question_store.record_attempt("test", 1, True, 1)
+        nodes = self.client.get("/api/fields/test/constellation").json
+        other, topic = nodes
+        self.assertEqual((other["name"], other["attempted"]), ("Other", 0))
+        self.assertEqual((topic["total"], topic["attempted"]), (2, 1))
+        self.assertEqual(topic["preparation"], question_store.get_topic_stats("test", "Topic")["preparation"])
+        self.assertEqual(topic["preparation"]["rating"], "red")
+        self.assertEqual(len(topic["children"]), 1)
+        self.assertEqual(topic["children"][0]["name"], "Shared")
+        self.assertEqual(topic["children"][0]["preparation"]["rating"], "green")
+        self.assertEqual(other["children"][0]["attempted"], 0)
+        question_store.record_attempt("test", 1, False, 0)
+        self.assertEqual(self.client.get("/api/fields/test/constellation").json[1]["children"][0]["preparation"]["rating"], "yellow")
+
+    def test_subtopic_quiz_and_stats_respect_parent_and_set(self):
+        questions = [
+            {"id": 1, "topic": "Topic", "subtopic": "Shared / special", "question": "Q1", "answer": "A"},
+            {"id": 2, "topic": "Other", "subtopic": "Shared / special", "question": "Q2", "answer": "A"},
+            {"id": 3, "topic": "Topic", "subtopic": "Different", "question": "Q3", "answer": "A"},
+        ]
+        self._write_json(self.storage_root / "test" / "questions.json", {"questions": questions})
+        query = {"topic": "Topic", "subtopic": "Shared / special"}
+        response = self.client.get("/api/fields/test/question", query_string=query)
+        self.assertEqual(response.json["id"], 1)
+        self.assertNotIn("answer", response.json)
+        stats = self.client.get("/api/fields/test/topics/Topic/stats", query_string=query).json
+        self.assertEqual(stats["total"], 1)
+        self.assertEqual(stats["questions"][0]["id"], 1)
+        self.assertEqual(question_store.get_next_question("test", "Exam / special", "Other", "Shared / special"), None)
+        self.assertEqual(self.client.get("/api/fields/test/question", query_string={**query, "subtopic": "Missing"}).status_code, 404)
+
+    def test_constellation_empty_and_unknown_field(self):
+        self._write_json(self.storage_root / "test" / "questions.json", {"questions": []})
+        self.assertEqual(self.client.get("/api/fields/test/constellation").json, [])
+        self.assertEqual(self.client.get("/api/fields/missing/constellation").status_code, 400)
+
     def test_concurrent_updates(self):
         def record_correct_answer(_):
             return question_store.record_attempt("test", 1, True, 1)

@@ -59,7 +59,7 @@ def favicon():
 def api_next_question(field: str):
     topic = request.args.get("topic")
     group_name = request.args.get("filter")
-    question = question_store.get_next_question(field, group_name, topic)
+    question = question_store.get_next_question(field, group_name, topic, request.args.get("subtopic"))
     progress = question_store.load_progress(field)
     if question is None:
         return jsonify({"error": "No questions available"}), 404
@@ -132,6 +132,11 @@ def api_topics(field: str):
     return jsonify(question_store.get_topics(field))
 
 
+@app.get("/api/fields/<field>/constellation")
+def api_constellation(field: str):
+    return jsonify(question_store.get_constellation(field))
+
+
 @app.get("/api/fields/<field>/examens")
 def api_examens(field: str):
     return jsonify(question_store.get_examens(field))
@@ -149,7 +154,7 @@ def api_field_stats(field: str):
 
 @app.get("/api/fields/<field>/topics/<path:topic>/stats")
 def api_topic_stats(field: str, topic: str):
-    return jsonify(question_store.get_topic_stats(field, topic))
+    return jsonify(question_store.get_topic_stats(field, topic, request.args.get("subtopic")))
 
 
 @app.get("/api/fields/<field>/examens/<path:examen>/stats")
