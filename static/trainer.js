@@ -36,6 +36,7 @@ function mobileGoMain() {
 const sel = {
   field:  null,
   topic:  null,
+  subtopic: null,
   examen: null,
   set:    null,
 };
@@ -67,6 +68,7 @@ async function init() {
 async function selectField(fieldId) {
   sel.field  = fieldId;
   sel.topic  = null;
+  sel.subtopic = null;
   sel.examen = null;
   sel.set    = null;
   localStorage.setItem('trainer_field', fieldId);
@@ -85,7 +87,9 @@ async function selectField(fieldId) {
 }
 
 async function selectTopic(name) {
-  if (sel.topic === name) {
+  const deselect = sel.topic === name && !sel.subtopic;
+  sel.subtopic = null;
+  if (deselect) {
     sel.topic = null;
   } else {
     sel.topic  = name;
@@ -101,6 +105,7 @@ async function selectTopic(name) {
 }
 
 async function selectExamen(examen) {
+  sel.subtopic = null;
   if (sel.examen?.name === examen.name) {
     sel.examen = null;
   } else {
@@ -117,6 +122,7 @@ async function selectExamen(examen) {
 }
 
 async function selectSet(set) {
+  sel.subtopic = null;
   if (sel.set?.name === set.name) {
     sel.set = null;
   } else {
@@ -249,8 +255,8 @@ function resolveStatsCtx() {
   };
   if (sel.topic) return {
     ctxType: 'topic',
-    ctxName: sel.topic,
-    url: `/api/fields/${f}/topics/${encodeURIComponent(sel.topic)}/stats`,
+    ctxName: sel.topic + (sel.subtopic ? ' › ' + sel.subtopic : ''),
+    url: `/api/fields/${f}/topics/${encodeURIComponent(sel.topic)}/stats?subtopic=${encodeURIComponent(sel.subtopic || '')}`,
   };
   return {
     ctxType: 'field',
@@ -389,7 +395,8 @@ function resolveQuestionUrl() {
   const topic  = sel.topic || '';
   return `/api/fields/${encodeURIComponent(f)}/question` +
          `?filter=${encodeURIComponent(filter)}` +
-         `&topic=${encodeURIComponent(topic)}`;
+         `&topic=${encodeURIComponent(topic)}` +
+         `&subtopic=${encodeURIComponent(sel.subtopic || '')}`;
 }
 
 function displayQuestion(q) {
@@ -596,7 +603,7 @@ function updateHeaderCtx() {
   document.getElementById('hctx-field').textContent = sel.field || '–';
   document.querySelectorAll('#header-ctx .ctx-sep, #header-ctx .ctx-sub').forEach(el => el.remove());
 
-  const subName = sel.examen?.name ?? sel.set?.name ?? sel.topic ?? null;
+  const subName = sel.examen?.name ?? sel.set?.name ?? (sel.topic ? sel.topic + (sel.subtopic ? ' › ' + sel.subtopic : '') : null);
   if (subName) {
     const ctx = document.getElementById('header-ctx');
     const sep = document.createElement('span');

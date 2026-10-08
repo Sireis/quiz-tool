@@ -18,6 +18,7 @@
   <div id="header-ctx">
     <span class="ctx-seg" id="hctx-field">–</span>
   </div>
+  <button class="secondary" id="constellation-open" type="button">✦ Wissensnetz</button>
 </header>
 
 <!-- ═══════════════ SIDEBAR ══════════════════════════════ -->
@@ -140,7 +141,22 @@
   </button>
 </nav>
 
+<dialog id="constellation-dialog" aria-labelledby="constellation-title">
+  <div class="constellation-heading">
+    <div><div class="sb-section-label">Knowledge Constellation</div><h2 id="constellation-title">Dein Wissen nimmt Form an.</h2><p id="constellation-field"></p></div>
+    <button class="secondary" id="constellation-close" aria-label="Wissensnetz schließen">Schließen ×</button>
+  </div>
+  <div class="constellation-legend"><span style="--node-color:#8798b2">Unversucht</span><span style="--node-color:#e47c70">Noch nicht vorbereitet</span><span style="--node-color:#e0b860">In Vorbereitung</span><span style="--node-color:#6cdbb1">Gut vorbereitet</span></div>
+  <div id="constellation-stage">
+    <svg id="constellation-svg" viewBox="0 0 1000 640" aria-label="Themen und Unterthemen. Knoten auswählen, um zu üben."></svg>
+    <div id="constellation-tooltip" role="status" hidden></div>
+    <p id="constellation-status" role="status"></p>
+    <div class="constellation-controls"><button class="secondary" id="constellation-minus" aria-label="Verkleinern">−</button><button class="secondary" id="constellation-plus" aria-label="Vergrößern">+</button><button class="secondary" id="constellation-fit">Einpassen</button></div>
+  </div>
+  <p class="constellation-help">Größe = Fragenanzahl · Farbe = bestehende Vorbereitung · Ziehen zum Verschieben · Scrollen zum Zoomen · Knoten anklicken oder mit Enter üben</p>
+</dialog>
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>
+<script src="{{ url_for('static', filename='constellation.js') }}" defer></script>
 <script src="{{ url_for('static', filename='trainer.js') }}" defer></script>
 </body>
 </html>

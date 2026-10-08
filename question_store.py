@@ -113,7 +113,8 @@ def get_all_questions(field: str) -> tuple[list[dict], dict]:
 
 
 def get_filtered_questions(
-    field: str, group_name: str | None = None, topic: str | None = None
+    field: str, group_name: str | None = None, topic: str | None = None,
+    subtopic: str | None = None,
 ) -> list[dict]:
     questions = load_questions(field)["questions"]
     if group_name:
@@ -127,6 +128,8 @@ def get_filtered_questions(
         questions = [questions_by_id[question_id] for question_id in question_ids]
     if topic:
         questions = [question for question in questions if question["topic"] == topic]
+    if subtopic:
+        questions = [question for question in questions if question.get("subtopic") == subtopic]
     return questions
 
 
@@ -142,10 +145,11 @@ def get_question_by_id(field: str, question_id: str | int) -> dict | None:
 
 
 def get_next_question(
-    field: str, group_name: str | None = None, topic: str | None = None
+    field: str, group_name: str | None = None, topic: str | None = None,
+    subtopic: str | None = None,
 ) -> dict | None:
     """Prioritize unanswered questions, then the lowest streak capped at two."""
-    questions = get_filtered_questions(field, group_name, topic)
+    questions = get_filtered_questions(field, group_name, topic, subtopic)
     if not questions:
         return None
     progress = load_progress(field)
@@ -243,14 +247,15 @@ def get_examen_stats(field: str, exam_name: str) -> dict:
     return _filtered_stats(field, group_name=exam_name)
 
 
-def get_topic_stats(field: str, topic: str) -> dict:
-    return _filtered_stats(field, topic=topic)
+def get_topic_stats(field: str, topic: str, subtopic: str | None = None) -> dict:
+    return _filtered_stats(field, topic=topic, subtopic=subtopic)
 
 
 def _filtered_stats(
-    field: str, group_name: str | None = None, topic: str | None = None
+    field: str, group_name: str | None = None, topic: str | None = None,
+    subtopic: str | None = None,
 ) -> dict:
-    questions = get_filtered_questions(field, group_name, topic)
+    questions = get_filtered_questions(field, group_name, topic, subtopic)
     progress = load_progress(field)
     question_ids = [question["id"] for question in questions]
     stats = _calculate_stats(question_ids, progress)
@@ -262,6 +267,30 @@ def get_stats(field: str, ids: list[int] | None = None) -> dict:
     questions, progress = get_all_questions(field)
     question_ids = ids if ids is not None else [question["id"] for question in questions]
     return _calculate_stats(question_ids, progress)
+
+
+def get_constellation(field: str) -> list[dict]:
+    """Group the real metadata, using the same preparation ratings as the UI."""
+    questions, progress = get_all_questions(field)
+    topics = {}
+    for question in questions:
+        topic = topics.setdefault(question["topic"], {"ids": [], "children": {}})
+        topic["ids"].append(question["id"])
+        subtopic = question.get("subtopic")
+        if subtopic:
+            topic["children"].setdefault(subtopic, []).append(question["id"])
+
+    def summary(name, ids):
+        stats = _calculate_stats(ids, progress)
+        return {"name": name, "total": stats["total"],
+                "attempted": stats["attempted"], "preparation": stats["preparation"]}
+
+    return [
+        {**summary(name, topic["ids"]), "children": [
+            summary(child, ids) for child, ids in sorted(topic["children"].items())
+        ]}
+        for name, topic in sorted(topics.items())
+    ]
 
 
 def _average(total: float, count: int) -> float:
