@@ -272,21 +272,44 @@ def get_stats(field: str, ids: list[int] | None = None) -> dict:
 def get_constellation(field: str) -> list[dict]:
     """Group the real metadata, using the same preparation ratings as the UI."""
     questions, progress = get_all_questions(field)
+    concepts_by_id = {}
+    concept_names = {}
+    for question in questions:
+        concepts = question.get("concepts", [])
+        if isinstance(concepts, str):
+            concepts = [concepts]
+        if not isinstance(concepts, list):
+            concepts = []
+        keys = set()
+        for concept in concepts:
+            if isinstance(concept, str) and concept.strip():
+                name = " ".join(concept.split())
+                key = name.casefold()
+                concept_names.setdefault(key, name)
+                keys.add(key)
+        concepts_by_id[question["id"]] = keys
     topics = {}
     for question in questions:
-        topic = topics.setdefault(question["topic"], {"ids": [], "children": {}})
+        topic = topics.setdefault(question["topic"], {"ids": [], "direct_ids": [], "children": {}})
         topic["ids"].append(question["id"])
         subtopic = question.get("subtopic")
         if subtopic:
             topic["children"].setdefault(subtopic, []).append(question["id"])
+        else:
+            topic["direct_ids"].append(question["id"])
+
+    def concepts_for(ids):
+        concepts = set().union(*(concepts_by_id[question_id] for question_id in ids))
+        return [concept_names[key] for key in sorted(concepts)]
 
     def summary(name, ids):
         stats = _calculate_stats(ids, progress)
         return {"name": name, "total": stats["total"],
-                "attempted": stats["attempted"], "preparation": stats["preparation"]}
+                "attempted": stats["attempted"], "preparation": stats["preparation"],
+                "concepts": concepts_for(ids)}
 
     return [
-        {**summary(name, topic["ids"]), "children": [
+        {**summary(name, topic["ids"]), "direct_concepts": concepts_for(topic["direct_ids"]), "children": [
             summary(child, ids) for child, ids in sorted(topic["children"].items())
         ]}
         for name, topic in sorted(topics.items())

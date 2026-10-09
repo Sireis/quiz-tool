@@ -45,6 +45,12 @@
     const hint = document.createElement('small');
     hint.textContent = `${topic ? topic + ' · ' : ''}Klicken / Enter: Quiz starten`;
     tooltip.append(title, detail, hint);
+    if (node.concepts?.length) {
+      const concepts = document.createElement('div');
+      concepts.className = 'tooltip-concepts';
+      concepts.textContent = `Konzepte: ${node.concepts.slice(0, 6).join(' · ')}${node.concepts.length > 6 ? ` · +${node.concepts.length - 6} weitere` : ''}`;
+      tooltip.append(concepts);
+    }
     tooltip.hidden = false;
     const box = group.getBoundingClientRect();
     const stage = svg.parentElement.getBoundingClientRect();
@@ -68,8 +74,21 @@
     world = element('g');
     svg.append(world);
     const links = element('g', { class: 'constellation-links' });
+    const conceptLinks = element('g', { class: 'constellation-concept-links' });
     const nodes = element('g');
-    world.append(links, nodes);
+    world.append(links, conceptLinks, nodes);
+    const placements = [], conceptEdges = [];
+    function highlightConcepts(data, topic, subtopic) {
+      const related = new Set();
+      conceptEdges.forEach(edge => {
+        const active = data && (subtopic
+          ? edge.a.data === data || edge.b.data === data
+          : edge.a.topic === topic || edge.b.topic === topic);
+        edge.path.classList.toggle('concept-link-active', Boolean(active));
+        if (active) { related.add(edge.a); related.add(edge.b); }
+      });
+      placements.forEach(item => item.group.classList.toggle('concept-related', related.has(item)));
+    }
     // Each topic owns a spacious cluster; sorted metadata keeps positions stable.
     function childPosition(index) {
       let ring = 1;
@@ -90,26 +109,61 @@
       group.append(element('circle', { r: r + 9, class: 'node-halo' }), element('circle', { r, class: 'node-core', 'stroke-dasharray': data.attempted ? 'none' : '3 4' }));
       const text = element('text', { y: r + 22, 'text-anchor': 'middle', class: subtopic ? 'node-label subtopic-label' : 'node-label' }, data.name.length > 30 ? data.name.slice(0, 28) + '…' : data.name);
       group.append(text);
-      group.addEventListener('pointerenter', () => { if (!drag) showTooltip(data, subtopic ? topic : null, group); });
-      group.addEventListener('pointerleave', () => { tooltip.hidden = true; });
-      group.addEventListener('focus', () => showTooltip(data, subtopic ? topic : null, group));
-      group.addEventListener('blur', () => { tooltip.hidden = true; });
+      const inspect = () => {
+        highlightConcepts(data, topic, subtopic);
+        showTooltip(data, subtopic ? topic : null, group);
+      };
+      const clear = () => { tooltip.hidden = true; highlightConcepts(null); };
+      group.addEventListener('pointerenter', () => { if (!drag) inspect(); });
+      group.addEventListener('pointerleave', clear);
+      group.addEventListener('focus', inspect);
+      group.addEventListener('blur', clear);
       group.addEventListener('click', () => { if (!moved) startQuiz(topic, subtopic); });
       group.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); startQuiz(topic, subtopic); }
       });
       nodes.append(group);
+      return { data, cx, cy, topic, group, concepts: data.concepts || [] };
     }
     topics.forEach((topic, index) => {
       const cx = (index % columns + 0.5) * cell;
       const cy = (Math.floor(index / columns) + 0.5) * cell;
-      node(topic, cx, cy, topic.name);
+      const parent = node(topic, cx, cy, topic.name);
+      // Parent aggregates are not independent evidence for a concept connection.
+      parent.concepts = topic.children.length ? topic.direct_concepts || [] : parent.concepts;
+      placements.push(parent);
       topic.children.forEach((child, i) => {
         const position = childPosition(i);
         const px = cx + position.x, py = cy + position.y;
         links.append(element('line', { x1: cx, y1: cy, x2: px, y2: py }));
-        node(child, px, py, topic.name, child.name);
+        placements.push(node(child, px, py, topic.name, child.name));
       });
+    });
+    const conceptNodes = new Map(), pairs = new Map();
+    placements.forEach((item, index) => {
+      new Set(item.concepts).forEach(concept => {
+        if (!conceptNodes.has(concept)) conceptNodes.set(concept, []);
+        conceptNodes.get(concept).push(index);
+      });
+    });
+    conceptNodes.forEach((indices, concept) => {
+      indices.forEach((a, i) => indices.slice(i + 1).forEach(b => {
+        const key = `${a}:${b}`;
+        if (!pairs.has(key)) pairs.set(key, { a: placements[a], b: placements[b], concepts: [] });
+        pairs.get(key).concepts.push(concept);
+      }));
+    });
+    pairs.forEach(edge => {
+      const { a, b } = edge;
+      const mx = (a.cx + b.cx) / 2, my = (a.cy + b.cy) / 2;
+      const path = element('path', {
+        d: `M ${a.cx} ${a.cy} Q ${mx + (b.cy - a.cy) * 0.12} ${my - (b.cx - a.cx) * 0.12} ${b.cx} ${b.cy}`,
+        'stroke-width': Math.min(3, 0.8 + Math.sqrt(edge.concepts.length) * 0.5),
+      });
+      path.append(element('title', {}, `${a.data.name} ↔ ${b.data.name}: ${edge.concepts.join(', ')}`));
+      edge.path = path;
+      conceptEdges.push(edge);
+      conceptLinks.append(path);
     });
     fit();
   }

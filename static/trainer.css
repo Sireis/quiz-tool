@@ -588,6 +588,10 @@ footer {
 #constellation-svg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; user-select: none; }
 #constellation-svg:active { cursor: grabbing; }
 .constellation-links line { stroke: #6485ac; stroke-opacity: .32; stroke-width: 1; }
+.constellation-concept-links path { fill: none; stroke: #b29be9; stroke-opacity: .2; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
+.constellation-concept-links .concept-link-active { stroke: #ccb5ff; stroke-opacity: .9; stroke-dasharray: none; }
+.concept-related .node-halo { stroke-opacity: .85; fill-opacity: .15; }
+.tooltip-concepts { margin-top: 8px; color: #c4b3e4; font-size: .75rem; line-height: 1.5; overflow-wrap: anywhere; }
 .constellation-node { cursor: pointer; outline: none; }
 .node-core { fill: var(--node-color); fill-opacity: .5; stroke: var(--node-color); stroke-width: 1.5; filter: drop-shadow(0 0 7px var(--node-color)); }
 .node-halo { fill: var(--node-color); fill-opacity: .06; stroke: var(--node-color); stroke-opacity: .18; }
