@@ -1,0 +1,32 @@
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, production]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: deployment
+          persist-credentials: false
+
+      - name: Copy to live path
+        run: |
+          cp -a "$GITHUB_WORKSPACE/deployment/quiz-tool/."  "$HOME/quiz-tool/"
+
+      - name: Restart service
+        run: sudo systemctl restart quiz.service
