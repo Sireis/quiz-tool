@@ -4,8 +4,24 @@
   const svg = document.getElementById('constellation-svg');
   const tooltip = document.getElementById('constellation-tooltip');
   const status = document.getElementById('constellation-status');
-  const colors = { neutral: '#8798b2', red: '#e47c70', yellow: '#e0b860', green: '#6cdbb1' };
+  const legend = document.getElementById('constellation-legend');
+  const preparationLegend = document.getElementById('constellation-preparation-legend');
+  const topicHues = [195, 275, 35, 155, 330, 225, 80, 15];
+  const islandStates = {
+    unattempted: { label: 'Unversucht', saturation: 0, lightness: 38 },
+    red: { label: 'Übungsbedarf', saturation: 8, lightness: 42 },
+    yellow: { label: 'Im Aufbau', saturation: 55, lightness: 55 },
+    green: { label: 'Gut vorbereitet', saturation: 90, lightness: 65 },
+  };
+  Object.entries(islandStates).forEach(([key, state]) => {
+    const sample = document.createElement('span');
+    sample.className = `preparation-island-sample island-${key}`;
+    sample.style.setProperty('--island-color', `hsl(195 ${state.saturation}% ${state.lightness}%)`);
+    sample.textContent = state.label;
+    preparationLegend.append(sample);
+  });
   let world, bounds, scale = 1, x = 0, y = 0, drag, moved = false, requestId = 0;
+  let viewportWidth = 1000, viewportHeight = 640;
   const element = (tag, attrs = {}, text) => {
     const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
     Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
@@ -23,12 +39,15 @@
   }
   function fit() {
     if (!bounds) return;
-    scale = Math.min(1.5, 920 / bounds.width, 560 / bounds.height);
-    x = (1000 - bounds.width * scale) / 2;
-    y = (640 - bounds.height * scale) / 2;
+    viewportWidth = svg.clientWidth || 1000;
+    viewportHeight = svg.clientHeight || 640;
+    svg.setAttribute('viewBox', `0 0 ${viewportWidth} ${viewportHeight}`);
+    scale = Math.min(1.5, (viewportWidth - 80) / bounds.width, (viewportHeight - 80) / bounds.height);
+    x = (viewportWidth - bounds.width * scale) / 2;
+    y = (viewportHeight - bounds.height * scale) / 2;
     transform();
   }
-  function zoom(factor, center = { x: 500, y: 320 }) {
+  function zoom(factor, center = { x: viewportWidth / 2, y: viewportHeight / 2 }) {
     const next = Math.min(5, Math.max(0.08, scale * factor));
     x = center.x - (center.x - x) * next / scale;
     y = center.y - (center.y - y) * next / scale;
@@ -45,6 +64,12 @@
     const hint = document.createElement('small');
     hint.textContent = `${topic ? topic + ' · ' : ''}Klicken / Enter: Quiz starten`;
     tooltip.append(title, detail, hint);
+    if (node.concepts?.length) {
+      const concepts = document.createElement('div');
+      concepts.className = 'tooltip-concepts';
+      concepts.textContent = `Konzepte: ${node.concepts.slice(0, 6).join(' · ')}${node.concepts.length > 6 ? ` · +${node.concepts.length - 6} weitere` : ''}`;
+      tooltip.append(concepts);
+    }
     tooltip.hidden = false;
     const box = group.getBoundingClientRect();
     const stage = svg.parentElement.getBoundingClientRect();
@@ -67,49 +92,131 @@
     svg.replaceChildren();
     world = element('g');
     svg.append(world);
+    const islands = element('g', { class: 'constellation-islands' });
     const links = element('g', { class: 'constellation-links' });
+    const conceptLinks = element('g', { class: 'constellation-concept-links' });
     const nodes = element('g');
-    world.append(links, nodes);
-    // Each topic owns a spacious cluster; sorted metadata keeps positions stable.
-    function childPosition(index) {
-      let ring = 1;
-      while (index >= ring * 6) { index -= ring * 6; ring++; }
-      const angle = -Math.PI / 2 + (index + (ring % 2) * 0.5) * Math.PI * 2 / (ring * 6);
-      return { x: ring * 150 * Math.cos(angle), y: ring * 150 * Math.sin(angle), radius: ring * 150 };
+    world.append(islands, links, conceptLinks, nodes);
+    const placements = [], conceptEdges = [], hierarchyEdges = [];
+    legend.replaceChildren();
+    function highlightConcepts(data, topic, subtopic) {
+      const related = new Set();
+      conceptEdges.forEach(edge => {
+        const active = data && (subtopic
+          ? edge.a.data === data || edge.b.data === data
+          : edge.a.topic === topic || edge.b.topic === topic);
+        edge.path.classList.toggle('concept-link-active', Boolean(active));
+        if (active) { related.add(edge.a); related.add(edge.b); }
+      });
+      placements.forEach(item => item.group.classList.toggle('concept-related', related.has(item)));
     }
-    const largest = Math.max(1, ...topics.map(t => t.children.length));
-    const radius = childPosition(largest - 1).radius;
-    const cell = radius * 2 + 160;
-    const columns = Math.max(1, Math.ceil(Math.sqrt(topics.length)));
-    bounds = { width: columns * cell, height: Math.ceil(topics.length / columns) * cell };
-    function node(data, cx, cy, topic, subtopic = null) {
-      const color = colors[data.attempted ? data.preparation.rating : 'neutral'];
+    function node(data, topicIndex, subtopic = null) {
+      const topic = topics[topicIndex].name;
+      const hue = topicHues[topicIndex % topicHues.length] + Math.floor(topicIndex / topicHues.length) * 17;
+      const color = `hsl(${hue % 360} 65% 68%)`;
+      const stateKey = data.attempted ? data.preparation.rating : 'unattempted';
+      const state = islandStates[stateKey];
+      const nodeColor = `hsl(${hue % 360} ${state.saturation}% ${state.lightness}%)`;
       const r = 8 + Math.sqrt(data.total) * 2.2;
       const label = `${data.name}: ${data.attempted ? PREPARATION_LABELS[data.preparation.rating] : 'Noch nicht versucht'}, ${data.total} Fragen. Quiz starten.`;
-      const group = element('g', { transform: `translate(${cx} ${cy})`, class: 'constellation-node', tabindex: '0', role: 'button', 'aria-label': label, style: `--node-color:${color}` });
+      const group = element('g', { class: `constellation-node island-${stateKey}`, tabindex: '0', role: 'button', 'aria-label': label, style: `--topic-color:${color};--node-color:${nodeColor}` });
       group.append(element('circle', { r: r + 9, class: 'node-halo' }), element('circle', { r, class: 'node-core', 'stroke-dasharray': data.attempted ? 'none' : '3 4' }));
       const text = element('text', { y: r + 22, 'text-anchor': 'middle', class: subtopic ? 'node-label subtopic-label' : 'node-label' }, data.name.length > 30 ? data.name.slice(0, 28) + '…' : data.name);
       group.append(text);
-      group.addEventListener('pointerenter', () => { if (!drag) showTooltip(data, subtopic ? topic : null, group); });
-      group.addEventListener('pointerleave', () => { tooltip.hidden = true; });
-      group.addEventListener('focus', () => showTooltip(data, subtopic ? topic : null, group));
-      group.addEventListener('blur', () => { tooltip.hidden = true; });
+      const inspect = () => {
+        highlightConcepts(data, topic, subtopic);
+        showTooltip(data, subtopic ? topic : null, group);
+      };
+      const clear = () => { tooltip.hidden = true; highlightConcepts(null); };
+      group.addEventListener('pointerenter', () => { if (!drag) inspect(); });
+      group.addEventListener('pointerleave', clear);
+      group.addEventListener('focus', inspect);
+      group.addEventListener('blur', clear);
       group.addEventListener('click', () => { if (!moved) startQuiz(topic, subtopic); });
       group.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); startQuiz(topic, subtopic); }
       });
       nodes.append(group);
+      return { data, cx: 0, cy: 0, r, topic, topicIndex, color, group, concepts: data.concepts || [] };
     }
     topics.forEach((topic, index) => {
-      const cx = (index % columns + 0.5) * cell;
-      const cy = (Math.floor(index / columns) + 0.5) * cell;
-      node(topic, cx, cy, topic.name);
-      topic.children.forEach((child, i) => {
-        const position = childPosition(i);
-        const px = cx + position.x, py = cy + position.y;
-        links.append(element('line', { x1: cx, y1: cy, x2: px, y2: py }));
-        node(child, px, py, topic.name, child.name);
+      const parent = node(topic, index);
+      // Parent aggregates are not independent evidence for a concept connection.
+      parent.concepts = topic.children.length ? topic.direct_concepts || [] : parent.concepts;
+      placements.push(parent);
+      topic.children.forEach(child => {
+        const placement = node(child, index, child.name);
+        const line = element('path', { style: `--link-color:${parent.color}` });
+        links.append(line);
+        hierarchyEdges.push({ a: parent, b: placement, line });
+        placements.push(placement);
       });
+      const swatch = document.createElement('span');
+      swatch.textContent = topic.name;
+      swatch.style.setProperty('--node-color', parent.color);
+      legend.append(swatch);
+    });
+    const conceptNodes = new Map(), pairs = new Map();
+    placements.forEach((item, index) => {
+      new Set(item.concepts).forEach(concept => {
+        if (!conceptNodes.has(concept)) conceptNodes.set(concept, []);
+        conceptNodes.get(concept).push(index);
+      });
+    });
+    conceptNodes.forEach((indices, concept) => {
+      indices.forEach((a, i) => indices.slice(i + 1).forEach(b => {
+        const key = `${a}:${b}`;
+        if (!pairs.has(key)) pairs.set(key, { a: placements[a], b: placements[b], concepts: [] });
+        pairs.get(key).concepts.push(concept);
+      }));
+    });
+    const layout = layoutConstellation(topics, placements, [...pairs.values()]);
+    bounds = layout.bounds;
+    placements.forEach(item => item.group.setAttribute('transform', `translate(${item.cx} ${item.cy})`));
+    hierarchyEdges.forEach(({ a, b, line }) => {
+      line.setAttribute('d', `M ${a.cx} ${a.cy + a.r} C ${a.cx} ${b.cy - 60} ${b.cx} ${b.cy - 60} ${b.cx} ${b.cy}`);
+    });
+    layout.groups.forEach(cluster => {
+      const topic = topics[cluster.index];
+      cluster.parent.group.style.setProperty('--topic-label-cap', `${(cluster.width - 60) / (Math.min(topic.name.length, 29) * 0.65)}px`);
+      const hue = topicHues[cluster.index % topicHues.length] + Math.floor(cluster.index / topicHues.length) * 17;
+      const stateKey = topic.attempted ? topic.preparation.rating : 'unattempted';
+      const state = islandStates[stateKey];
+      const island = element('g', { class: `topic-island island-${stateKey}`, style: `--island-color:hsl(${hue % 360} ${state.saturation}% ${state.lightness}%)` });
+      const rect = element('rect', { class: 'island-background', x: cluster.x, y: cluster.y, width: cluster.width, height: cluster.height, rx: 30,
+        'stroke-dasharray': topic.attempted ? 'none' : '5 7' });
+      island.append(rect, element('title', {}, `${topic.name}: ${state.label} (schwächste Frage)`));
+      // Keep the status and breakdown above the links, with dedicated footer space.
+      const annotation = element('g', { class: 'island-annotation',
+        role: 'img', 'aria-label': `${topic.name}: ${state.label}. ${topic.attempted}/${topic.total} Fragen bearbeitet.` });
+      const counts = topic.preparation.counts || { red: 0, yellow: 0, green: 0 };
+      const description = `Übungsbedarf: ${counts.red}, im Aufbau: ${counts.yellow}, gut vorbereitet: ${counts.green}. Unversuchte Fragen zählen zum Übungsbedarf.`;
+      const strip = element('g', { class: 'island-preparation-strip', role: 'img', 'aria-label': description });
+      const stripWidth = Math.min(120, cluster.width - 48), stripY = cluster.y + cluster.height - 24;
+      const stripX = cluster.x + (cluster.width - stripWidth) / 2;
+      strip.append(element('rect', { x: stripX, y: stripY, width: stripWidth, height: 3, rx: 1.5, class: 'island-strip-track' }));
+      let offset = 0;
+      ['red', 'yellow', 'green'].forEach(color => {
+        const width = topic.total ? counts[color] / topic.total * stripWidth : 0;
+        if (width > 0) strip.append(element('rect', { x: stripX + offset, y: stripY, width, height: 3, class: `island-strip-segment preparation-${color}` }));
+        offset += width;
+      });
+      strip.append(element('title', {}, description));
+      annotation.append(strip);
+      nodes.append(annotation);
+      islands.append(island);
+    });
+    pairs.forEach(edge => {
+      const { a, b } = edge;
+      const mx = (a.cx + b.cx) / 2, my = (a.cy + b.cy) / 2;
+      const path = element('path', {
+        d: `M ${a.cx} ${a.cy} Q ${mx + (b.cy - a.cy) * 0.12} ${my - (b.cx - a.cx) * 0.12} ${b.cx} ${b.cy}`,
+        'stroke-width': Math.min(3, 0.8 + Math.sqrt(edge.concepts.length) * 0.5),
+      });
+      path.append(element('title', {}, `${a.data.name} ↔ ${b.data.name}: ${edge.concepts.join(', ')}`));
+      edge.path = path;
+      conceptEdges.push(edge);
+      conceptLinks.append(path);
     });
     fit();
   }
@@ -119,6 +226,7 @@
     dialog.showModal();
     svg.replaceChildren();
     world = bounds = null;
+    legend.replaceChildren();
     status.textContent = 'Dein Wissensnetz wird geladen…';
     try {
       const response = await fetch(`/api/fields/${encodeURIComponent(field)}/constellation`);
@@ -134,6 +242,9 @@
   document.getElementById('constellation-plus').onclick = () => zoom(1.25);
   document.getElementById('constellation-minus').onclick = () => zoom(0.8);
   document.getElementById('constellation-fit').onclick = fit;
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(() => { if (dialog.open) fit(); }).observe(svg);
+  }
   svg.addEventListener('wheel', event => { event.preventDefault(); zoom(Math.exp(-event.deltaY * 0.0015), point(event)); }, { passive: false });
   svg.addEventListener('pointerdown', event => {
     if (event.button !== 0) return;

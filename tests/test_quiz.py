@@ -220,6 +220,31 @@ class QuizTests(unittest.TestCase):
         self.assertEqual(self.client.get("/api/fields/test/constellation").json, [])
         self.assertEqual(self.client.get("/api/fields/missing/constellation").status_code, 400)
 
+    def test_constellation_aggregates_and_normalizes_concepts(self):
+        questions = [
+            {"id": 1, "topic": "Topic", "subtopic": "Child", "concepts": [" Theory ", "theory", "Shared  concept", "", None, 42], "question": "Q1", "answer": "A"},
+            {"id": 2, "topic": "Topic", "concepts": ["Direct", "Shared concept"], "question": "Q2", "answer": "A"},
+            {"id": 3, "topic": "Other", "subtopic": "Child", "concepts": ["THEORY", "Other"], "question": "Q3", "answer": "A"},
+        ]
+        self._write_json(self.storage_root / "test" / "questions.json", {"questions": questions})
+        other, topic = self.client.get("/api/fields/test/constellation").json
+        self.assertEqual(topic["concepts"], ["Direct", "Shared concept", "Theory"])
+        self.assertEqual(topic["children"][0]["concepts"], ["Shared concept", "Theory"])
+        self.assertEqual(other["children"][0]["concepts"], ["Other", "Theory"])
+        self.assertEqual(topic["direct_concepts"], ["Direct", "Shared concept"])
+        self.assertEqual(other["direct_concepts"], [])
+        self.assertEqual(topic["total"], 2)
+        self.assertEqual(topic["preparation"], question_store.get_topic_stats("test", "Topic")["preparation"])
+
+    def test_constellation_optional_concept_metadata(self):
+        questions = [
+            {"id": i, "topic": str(i), "question": "Q", "answer": "A", **metadata}
+            for i, metadata in enumerate(({}, {"concepts": None}, {"concepts": {"bad": "shape"}}, {"concepts": " One concept "}), 1)
+        ]
+        self._write_json(self.storage_root / "test" / "questions.json", {"questions": questions})
+        nodes = self.client.get("/api/fields/test/constellation").json
+        self.assertEqual([node["concepts"] for node in nodes], [[], [], [], ["One concept"]])
+
     def test_concurrent_updates(self):
         def record_correct_answer(_):
             return question_store.record_attempt("test", 1, True, 1)
