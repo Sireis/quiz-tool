@@ -178,7 +178,10 @@
 </dialog>
 <dialog id="journey-dialog" aria-labelledby="journey-title">
   <div class="journey-heading"><div><h2 id="journey-title">Deine Lernreise</h2><p id="journey-field"></p></div><button class="secondary" id="journey-close" type="button" aria-label="Lernreise schließen">×</button></div>
-  <div id="journey-content" aria-live="polite"></div>
+  <div class="journey-body">
+    <div class="journey-filter"><span id="journey-topic-label">Themen</span><div id="journey-topic" role="group" aria-labelledby="journey-topic-label"></div></div>
+    <div id="journey-content" role="region" aria-label="Statistiken deiner Lernreise" tabindex="0" aria-live="polite"></div>
+  </div>
 </dialog>
 <script src="{{ url_for('static', filename='journey.js') }}" defer></script>
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>

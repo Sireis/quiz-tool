@@ -50,3 +50,42 @@ test('calendar includes leap days and crosses local daylight saving boundaries',
   assert.equal(new Set(fall.map(d => journeyDay(d.date))).size, 365);
   assert.equal(journeyDay(fall.at(-1).date), '2026-11-02');
 });
+
+test('topic highlighting retains full totals and counts selected activity within mixed days', () => {
+  const { journeyTopicCount } = require('../static/journey.js');
+  const questions = [
+    { topic: 'A', progress: { attempts: 2, history: [{ at: '2026-10-10T12:00:00Z', score: .9 }] } },
+    { topic: 'A' },
+    { topic: 'B', progress: { attempts: 5, last_seen: '2025-01-01', history: [{ at: '2026-10-10T13:00:00Z', score: .4 }] } },
+  ];
+  const data = journeyData(questions);
+  assert.equal(data.total, 3);
+  assert.equal(data.explored, 2);
+  assert.equal(data.attempts, 7);
+  assert.equal(data.events.length, 2);
+  assert.equal(journeyTopicCount(data.events), 2);
+  assert.equal(journeyTopicCount(data.events, 'A'), 1);
+  assert.equal(journeyTopicCount(data.events, 'B'), 1);
+  assert.equal(journeyTopicCount(data.events, 'missing'), 0);
+  assert.equal(data.events.length, 2);
+});
+
+test('selected topic statistics use its question pool including legacy totals and untouched questions', () => {
+  const { journeyScope } = require('../static/journey.js');
+  const questions = [
+    { topic: 'A', progress: { attempts: 3, historical_last_attempt: '2025-01-01', history: [{at: '2026-10-10T12:00:00Z', score: .8}] } },
+    { topic: 'A' },
+    { topic: 'B', progress: { attempts: 7, history: [{at: '2026-10-09T12:00:00Z', score: .5}] } },
+  ];
+  const selected = journeyScope(questions, 'A');
+  assert.equal(selected.total, 2);
+  assert.equal(selected.explored, 1);
+  assert.equal(selected.attempts, 3);
+  assert.equal(selected.undated, 2);
+  assert.equal(selected.events.length, 1);
+  assert.equal(selected.legacy.length, 1);
+  assert.equal(selected.explored / selected.total, .5);
+  assert.equal(journeyScope(questions).attempts, 10);
+  assert.equal(journeyScope(questions, 'missing').total, 0);
+  assert.equal(journeyData(questions).events.length, 2);
+});
