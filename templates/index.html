@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Trainer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='trainer.css') }}">
 
 </head>
@@ -13,7 +13,7 @@
 
 <!-- ═══════════════ HEADER ════════════════════════════════ -->
 <header>
-  <span class="app-wordmark">⚓ Trainer</span>
+  <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg>Trainer</span>
   <span class="header-sep">/</span>
   <div id="header-ctx">
     <span class="ctx-seg" id="hctx-field">–</span>
@@ -66,6 +66,7 @@
   </div>
 
   <div class="answer-area">
+    <label id="answer-label" for="answer-input">Deine Antwort</label>
     <textarea id="answer-input" placeholder="Antwort eingeben… (Strg+Enter zum Prüfen)"></textarea>
     <div class="btn-row">
       <button class="primary" id="submit-btn" onclick="submitAnswer()">Antwort prüfen</button>
@@ -114,7 +115,7 @@
 
 <!-- ═══════════════ FOOTER ════════════════════════════════ -->
 <footer>
-  <span>Trainer v2</span>
+  <span>Trainer · Wissen verbinden</span>
   <span id="footer-ctx">–</span>
 
 </footer>
