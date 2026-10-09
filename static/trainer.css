@@ -756,20 +756,26 @@ button.secondary:hover { background: #333c55; }
 .journey-milestone span { color: var(--muted); font-size: .7rem; }
 .journey-milestone.reached { background: #b3a0de14; border-style: solid; border-color: #756795; box-shadow: 0 0 20px #b3a0de10; }
 .journey-milestone.reached strong { color: var(--accent-light); }
-.journey-calendar { display: grid; grid-template-columns: repeat(28, minmax(0, 1fr)); gap: 4px; margin-top: 12px; }
+.journey-calendar-scroll { overflow-x: auto; padding-bottom: 8px; }
+.journey-calendar { --calendar-cell: 14px; width: max-content; display: grid; grid-template-columns: 32px repeat(var(--calendar-weeks, 53), var(--calendar-cell)); grid-template-rows: 20px repeat(7, var(--calendar-cell)) auto; gap: 3px; margin-top: 12px; }
+.journey-weekday, .journey-month { color: var(--muted); font-size: .65rem; align-self: center; }
+.journey-month { white-space: nowrap; align-self: start; }
 .journey-day { aspect-ratio: 1; background: #2b3247; border: 1px solid #ffffff08; border-radius: 4px; cursor: pointer; min-width: 0; }
-.journey-day.level-1 { background: #514869; }
-.journey-day.level-2 { background: #786399; }
-.journey-day.level-3 { background: #a088c7; }
-.journey-day.level-4 { background: #d5b7fc; box-shadow: 0 0 8px #b3a0de30; }
+.journey-day.level-1 { background: #285247; }
+.journey-day.level-2 { background: #35836a; }
+.journey-day.level-3 { background: #4eb88b; }
+.journey-day.level-4 { background: #77dda6; box-shadow: 0 0 8px #66dda020; }
 #journey-day-detail { grid-column: 1 / -1; font-size: .75rem; color: var(--muted); margin-top: 8px; }
-.journey-key { margin-top: 8px; }
+.journey-key { display: flex; align-items: center; gap: 4px; margin-top: 12px; color: var(--muted); font-size: .7rem; }
+.journey-key .journey-day { width: 14px; height: 14px; cursor: default; }
+.journey-key span:first-child { margin-right: 4px; }
+.journey-key span:last-child { margin-left: 4px; }
 #journey-trend svg text { fill: var(--muted); font: 12px 'IBM Plex Mono', monospace; }
 .journey-note { border-top: 1px solid var(--border2); padding-top: 18px; }
 @media (max-width: 700px) {
   #journey-dialog { padding: 18px; width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
   .journey-metrics, .journey-milestones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .journey-calendar { grid-template-columns: repeat(14, minmax(0, 1fr)); }
+  .journey-calendar { --calendar-cell: 14px; gap: 3px; }
   .journey-galaxy { padding: 12px; }
   .journey-galaxy svg { min-height: 180px; }
 }

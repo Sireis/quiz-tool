@@ -29,3 +29,24 @@ test('calendar keys use the browser local day', () => {
   const date = new Date(2026, 9, 10, 23, 30);
   assert.equal(journeyDay(date), '2026-10-10');
 });
+
+test('calendar aligns 365 local dates into weekday rows and chronological weeks', () => {
+  const { journeyCalendarDates } = require('../static/journey.js');
+  const dates = journeyCalendarDates(new Date(2026, 9, 10, 23, 30));
+  assert.equal(dates.length, 365);
+  assert.equal(journeyDay(dates[0].date), '2025-10-11');
+  assert.equal(journeyDay(dates.at(-1).date), '2026-10-10');
+  assert.equal(new Set(dates.map(d => journeyDay(d.date))).size, 365);
+  dates.forEach((d, i) => {
+    assert.equal(d.row, (d.date.getDay() + 6) % 7 + 2);
+    if (i && d.date.getDay() === 1) assert.equal(d.column, dates[i-1].column + 1);
+  });
+});
+test('calendar includes leap days and crosses local daylight saving boundaries', () => {
+  const { journeyCalendarDates } = require('../static/journey.js');
+  const leap = journeyCalendarDates(new Date(2024, 2, 10));
+  assert.ok(leap.some(d => journeyDay(d.date) === '2024-02-29'));
+  const fall = journeyCalendarDates(new Date(2026, 10, 2));
+  assert.equal(new Set(fall.map(d => journeyDay(d.date))).size, 365);
+  assert.equal(journeyDay(fall.at(-1).date), '2026-11-02');
+});

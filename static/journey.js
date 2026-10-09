@@ -22,7 +22,16 @@ function journeyDay(at) {
   const d = new Date(at);
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
-if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay };
+function journeyCalendarDates(now = new Date()) {
+  const today = new Date(now); today.setHours(12, 0, 0, 0);
+  const start = new Date(today); start.setDate(start.getDate() - 364);
+  const offset = (start.getDay() + 6) % 7;
+  return Array.from({ length: 365 }, (_, i) => {
+    const date = new Date(start); date.setDate(start.getDate() + i);
+    return { date, row: (date.getDay() + 6) % 7 + 2, column: Math.floor((offset + i) / 7) + 2 };
+  });
+}
+if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay, journeyCalendarDates };
 if (typeof document !== 'undefined') {
   const dialog = document.getElementById('journey-dialog');
   const content = document.getElementById('journey-content');
@@ -76,7 +85,7 @@ if (typeof document !== 'undefined') {
       <div class="journey-axis"><span>${latest.length ? dateLabel(start) : 'Noch keine Versuche'}</span><span>${latest.length ? dateLabel(end) : ''}</span></div>
       <p id="journey-star-detail">${latest.length ? 'Dein Wissen hinterlässt Spuren.' : 'Dein erster beantworteter Versuch lässt hier einen Stern entstehen.'}</p></section>
       <section><h3>Jeder Schritt zählt</h3><div class="journey-milestones">${[25,50,75,100].map(pct => `<div class="journey-milestone ${coverage >= pct ? 'reached' : ''}"><strong>${pct}%</strong><span>${coverage >= pct ? 'Erreicht ✦' : `Noch ${Math.max(0, Math.ceil(total * pct / 100) - explored)} Fragen`}</span></div>`).join('')}</div></section>
-      <section><h3>Deine letzten 12 Wochen</h3><p>Abgegebene Antworten pro Tag · ${escape(Intl.DateTimeFormat().resolvedOptions().timeZone)}</p><div class="journey-calendar" id="journey-calendar"></div><p class="journey-key">Dunkel: keine dokumentierten Antworten · heller: mehr Aktivität</p></section>
+      <section><h3>Dein letztes Jahr</h3><p>Abgegebene Antworten pro Tag · ${escape(Intl.DateTimeFormat().resolvedOptions().timeZone)}</p><div class="journey-calendar-scroll" tabindex="0" role="region" aria-label="Aktivität im letzten Jahr, horizontal scrollbar"><div class="journey-calendar" id="journey-calendar"></div></div><div class="journey-key" aria-label="Aktivität von weniger bis mehr"><span>Weniger</span>${[0,1,2,3,4].map(level => `<span class="journey-day level-${level}" aria-hidden="true"></span>`).join('')}<span>Mehr</span></div></section>
       <section><h3>Bewertungen im Verlauf</h3><p>Tagesdurchschnitt der dokumentierten Bewertungen. Die Fragen und ihre Schwierigkeit können sich unterscheiden.</p><div id="journey-trend"></div></section>
       <p class="journey-note">${undated ? `${number(undated)} ältere Antworten sind in den Gesamtzahlen enthalten, haben aber keine vollständige Versuchshistorie. Umrandete Sterne zeigen ihren letzten bekannten Zeitpunkt; sie zählen nicht zur täglichen Aktivität oder Bewertungskurve. ` : ''}Neue Versuche werden ab jetzt einzeln aufgezeichnet. Die Lernreise umfasst das gesamte Feld; Fortschritt ist auf diesem Server gemeinsam gespeichert.</p>`;
     content.querySelectorAll('.journey-star').forEach(star => {
@@ -86,17 +95,32 @@ if (typeof document !== 'undefined') {
       star.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); show(); } });
     });
     const calendar = document.getElementById('journey-calendar');
-    const peak = Math.max(1, ...[...days.values()].map(day => day.length));
+    const dates = journeyCalendarDates();
+    const peak = Math.max(1, ...dates.map(({date}) => days.get(journeyDay(date))?.length || 0));
     const cells = [];
-    for (let i = 83; i >= 0; i--) {
-      const d = new Date(); d.setHours(12,0,0,0); d.setDate(d.getDate() - i);
+    const columns = dates.at(-1).column - 1;
+    calendar.style.setProperty('--calendar-weeks', columns);
+    ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].forEach((label, i) => {
+      cells.push(`<span class="journey-weekday" style="grid-column:1;grid-row:${i + 2}">${label}</span>`);
+    });
+    let month = null;
+    for (const {date: d, row, column} of dates) {
+      const monthKey = `${d.getFullYear()}-${d.getMonth()}`;
+      if (monthKey !== month) {
+        cells.push(`<span class="journey-month" style="grid-column:${column};grid-row:1">${escape(d.toLocaleDateString('de-DE', {month:'short'}))}</span>`);
+        month = monthKey;
+      }
       const count = days.get(journeyDay(d))?.length || 0;
       const level = count ? Math.max(1, Math.ceil(count / peak * 4)) : 0;
       const label = `${dateLabel(d)}: ${count} Antworten`;
-      cells.push(`<button type="button" class="journey-day level-${level}" aria-label="${escape(label)}" title="${escape(label)}" data-detail="${escape(label)}"></button>`);
+      cells.push(`<button type="button" class="journey-day level-${level}" style="grid-column:${column};grid-row:${row}" aria-label="${escape(label)}" title="${escape(label)}" data-detail="${escape(label)}"></button>`);
     }
     calendar.innerHTML = cells.join('') + '<div id="journey-day-detail" role="status">Wähle einen Tag für Details.</div>';
-    calendar.querySelectorAll('button').forEach(button => button.onclick = () => { document.getElementById('journey-day-detail').textContent = button.dataset.detail; });
+    calendar.querySelectorAll('button').forEach(button => {
+      const show = () => { document.getElementById('journey-day-detail').textContent = button.dataset.detail; };
+      button.onclick = show;
+      button.onfocus = show;
+    });
     const daily = [...days].sort(([a], [b]) => a.localeCompare(b));
     const trend = document.getElementById('journey-trend');
     if (!daily.length) { trend.textContent = 'Mit deinem nächsten Versuch beginnt deine Bewertungskurve.'; return; }
