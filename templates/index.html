@@ -143,18 +143,36 @@
 
 <dialog id="constellation-dialog" aria-labelledby="constellation-title">
   <div class="constellation-heading">
-    <div><div class="sb-section-label">Knowledge Constellation</div><h2 id="constellation-title">Dein Wissen nimmt Form an.</h2><p id="constellation-field"></p></div>
-    <button class="secondary" id="constellation-close" aria-label="Wissensnetz schließen">Schließen ×</button>
+    <div><h2 id="constellation-title">Wissensnetz</h2><p id="constellation-field"></p></div>
+    <div class="constellation-heading-actions">
+      <button class="secondary" id="constellation-info-open" type="button" aria-label="Wissensnetz erklären" aria-controls="constellation-info" aria-expanded="false">ⓘ</button>
+      <button class="secondary" id="constellation-close" type="button" aria-label="Wissensnetz schließen">×</button>
+    </div>
   </div>
-  <div class="constellation-legend" id="constellation-legend" aria-label="Themenfarben"></div>
-  <div id="constellation-preparation-legend" aria-label="Vorbereitung der Themeninseln"></div>
   <div id="constellation-stage">
-    <svg id="constellation-svg" viewBox="0 0 1000 640" aria-label="Themen und Unterthemen. Knoten auswählen, um zu üben."></svg>
-    <div id="constellation-tooltip" role="status" hidden></div>
+    <svg id="constellation-svg" role="group" viewBox="0 0 1000 640" aria-label="Wissensnetz. Knoten oder Konzeptverbindungen auswählen, um Details zu öffnen."></svg>
     <p id="constellation-status" role="status"></p>
-    <div class="constellation-controls"><button class="secondary" id="constellation-minus" aria-label="Verkleinern">−</button><button class="secondary" id="constellation-plus" aria-label="Vergrößern">+</button><button class="secondary" id="constellation-fit">Einpassen</button></div>
+    <span class="constellation-hint">Tippe auf einen Stern</span>
+    <div class="constellation-controls">
+      <button class="secondary" id="constellation-minus" type="button" aria-label="Verkleinern">−</button>
+      <button class="secondary" id="constellation-plus" type="button" aria-label="Vergrößern">+</button>
+      <button class="secondary" id="constellation-fit" type="button" aria-label="Ganzes Wissensnetz einpassen">Einpassen</button>
+    </div>
   </div>
-  <p class="constellation-help">Farbton = Thema · Sättigung &amp; Glanz der Knoten und Inseln = Vorbereitung (schwächste Frage) · Gestrichelt = unversucht · Feine Linie = Anteil der Fragen mit Übungsbedarf (rot, inkl. unversucht), im Aufbau (gelb), gut vorbereitet (grün) · Größe = Fragenanzahl · Linien = Hierarchie · Bögen = gemeinsame Konzepte · Ziehen / Scrollen: Verschieben / Zoom · Klicken / Enter: Quiz starten</p>
+  <section id="constellation-details" class="constellation-sheet" aria-labelledby="constellation-detail-title" hidden>
+    <button class="secondary sheet-close" id="constellation-detail-close" type="button" aria-label="Details schließen">×</button>
+    <div id="constellation-detail-content"></div>
+  </section>
+  <section id="constellation-info" class="constellation-sheet" aria-labelledby="constellation-info-title" hidden>
+    <button class="secondary sheet-close" id="constellation-info-close" type="button" aria-label="Erklärung schließen">×</button>
+    <h3 id="constellation-info-title">Deine Wissensgalaxie</h3>
+    <p>Große Sterne sind Themen, die kleineren ihre Unterthemen. Ihre Größe zeigt die Anzahl der Fragen. Der Farbton verbindet ein Thema mit seinen Unterthemen.</p>
+    <p>Sättigung und Glanz zeigen die bestehende Vorbereitung. Die schwächste Frage bestimmt den Zustand des Knotens. Unversuchte Knoten haben einen neutralen, gestrichelten Rand.</p>
+    <div id="constellation-preparation-legend" aria-label="Vorbereitung"></div>
+    <p>Feine Linien zeigen die Themenhierarchie. Violette, gestrichelte Bögen verbinden gemeinsame Konzepte. Tippe auf einen Bogen, um die Konzepte zu sehen.</p>
+    <p>Ziehen zum Verschieben. Mit zwei Fingern, dem Mausrad oder + / − zoomen. Tippe auf einen Stern für Details und den Quizstart.</p>
+    <div class="constellation-legend" id="constellation-legend" aria-label="Themenfarben"></div>
+  </section>
 </dialog>
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation-layout.js') }}" defer></script>

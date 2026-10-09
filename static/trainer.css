@@ -566,69 +566,84 @@ footer {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
-/* Knowledge constellation */
+/* Knowledge constellation: graph first, details on demand. */
 #constellation-open { margin-left: auto; white-space: nowrap; }
 #constellation-dialog {
-  margin: auto; width: 98vw; height: 98dvh;
-  max-width: 98vw; max-height: 98dvh; padding: 20px; color: var(--text);
-  background: #0b1424; border: 1px solid #35455e; border-radius: 16px;
-  box-shadow: 0 24px 100px #0008;
+  inset: 0; margin: 0; width: 100vw; height: 100dvh; max-width: 100vw; max-height: 100dvh;
+  padding: 0; border: 0; border-radius: 0; color: var(--text); background: #060c19; overflow: hidden;
 }
-#constellation-dialog[open] { display: flex; flex-direction: column; gap: 16px; }
-#constellation-dialog::backdrop { background: #030914cc; backdrop-filter: blur(6px); }
-.constellation-heading { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
-.constellation-heading h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 400; }
-#constellation-field { color: var(--muted); font-size: .8rem; margin-top: 6px; overflow-wrap: anywhere; }
-.constellation-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; max-height: 72px; overflow-y: auto; flex-shrink: 0; font: .65rem 'IBM Plex Mono', monospace; color: #aebbd0; }
-.constellation-legend span::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--node-color); box-shadow: 0 0 9px var(--node-color); }
+#constellation-dialog::backdrop { background: #030914e8; }
+.constellation-heading {
+  position: absolute; z-index: 2; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 24px;
+  background: linear-gradient(#060c19e8 65%, transparent); pointer-events: none; gap: 16px;
+}
+.constellation-heading > div:first-child { min-width: 0; }
+.constellation-heading h2 { font: 1.15rem 'Playfair Display', serif; color: #e2e9f5; }
+#constellation-field { max-width: 65vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #8d9fb8; font: .65rem 'IBM Plex Mono', monospace; margin-top: 4px; }
+.constellation-heading-actions { display: flex; gap: 8px; pointer-events: auto; }
+#constellation-dialog button { width: auto; min-width: 44px; min-height: 44px; padding: 8px 12px; margin: 0; flex: none; }
+.constellation-heading-actions button { font-size: 1.3rem; }
 #constellation-stage {
-  position: relative; flex: 1; min-height: 180px; overflow: hidden; border: 1px solid #233149; border-radius: 12px;
-  background: radial-gradient(ellipse at 50% 45%, #15274388, transparent 70%), radial-gradient(#8098be40 0.7px, transparent 1px) 0 0 / 37px 37px, #080f1e;
+  position: absolute; inset: 0; overflow: hidden;
+  background: radial-gradient(ellipse at 20% 25%, #18394d38, transparent 48%), radial-gradient(ellipse at 80% 65%, #34254b38, transparent 48%), #060c19;
 }
-#constellation-svg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; user-select: none; }
+#constellation-stage::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .7;
+  background: radial-gradient(circle at 21px 53px, #9cb4d966 .7px, transparent 1.4px) 0 0 / 227px 193px,
+    radial-gradient(circle at 139px 93px, #dfd6fc66 .8px, transparent 1.6px) 0 0 / 313px 269px,
+    radial-gradient(circle at 83px 147px, #6c89ae55 .6px, transparent 1.3px) 0 0 / 167px 241px;
+}
+#constellation-svg { position: relative; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; user-select: none; }
 #constellation-svg:active { cursor: grabbing; }
-.topic-island { pointer-events: none; }
-.island-unattempted { --island-fill: .02; --island-border: .3; --island-stroke: 1; --island-glow: 0px; }
-.island-red { --island-fill: .06; --island-border: .5; --island-stroke: 1; --island-glow: 0px; }
-.island-yellow { --island-fill: .18; --island-border: .8; --island-stroke: 1.5; --island-glow: 8px; }
-.island-green { --island-fill: .32; --island-border: 1; --island-stroke: 2.5; --island-glow: 20px; }
-.island-background { fill: var(--island-color); fill-opacity: var(--island-fill); stroke: var(--island-color); stroke-opacity: var(--island-border); stroke-width: var(--island-stroke); vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 var(--island-glow) var(--island-color)); }
-#constellation-preparation-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; flex-shrink: 0; color: #d4ddeb; font: .65rem 'IBM Plex Mono', monospace; }
-.preparation-island-sample { display: inline-flex; align-items: center; gap: 8px; }
-.preparation-island-sample::before { content: ''; width: 24px; height: 18px; border-radius: 5px; background: color-mix(in srgb, var(--island-color) calc(var(--island-fill) * 100%), #080f1e); border: calc(var(--island-stroke) * 1px) solid color-mix(in srgb, var(--island-color) calc(var(--island-border) * 100%), #080f1e); box-shadow: 0 0 var(--island-glow) var(--island-color); }
-.preparation-island-sample.island-unattempted::before { border-style: dashed; }
-.island-annotation { pointer-events: none; }
-.island-strip-track { fill: #273348; }
-.island-preparation-strip { opacity: .25; pointer-events: auto; }
-.island-preparation-strip:hover { opacity: .65; }
-.island-strip-segment.preparation-red { fill: #e47c70; }
-.island-strip-segment.preparation-yellow { fill: #e0b860; }
-.island-strip-segment.preparation-green { fill: #6cdbb1; }
-.constellation-links path { fill: none; stroke: var(--link-color); stroke-opacity: .16; stroke-width: .8; vector-effect: non-scaling-stroke; }
-.constellation-concept-links path { fill: none; stroke: #a6b1c4; stroke-opacity: .25; vector-effect: non-scaling-stroke; }
-.constellation-concept-links .concept-link-active { stroke: #ccb5ff; stroke-opacity: .9; stroke-dasharray: none; }
-.concept-related .node-halo { stroke-opacity: .85; fill-opacity: .15; }
-.tooltip-concepts { margin-top: 8px; color: #c4b3e4; font-size: .75rem; line-height: 1.5; overflow-wrap: anywhere; }
+.topic-cloud { pointer-events: none; }
+.topic-cloud ellipse { opacity: .7; }
+.island-unattempted { --island-fill: .05; --island-border: .55; --island-stroke: 1; --island-glow: 0px; }
+.island-red { --island-fill: .1; --island-border: .7; --island-stroke: 1; --island-glow: 2px; }
+.island-yellow { --island-fill: .28; --island-border: .9; --island-stroke: 1.2; --island-glow: 6px; }
+.island-green { --island-fill: .55; --island-border: 1; --island-stroke: 1.7; --island-glow: 10px; }
+.constellation-links path { fill: none; stroke: var(--link-color); stroke-opacity: .17; stroke-width: .7; vector-effect: non-scaling-stroke; pointer-events: none; }
+.concept-line { fill: none; stroke: #ad9bc7; stroke-opacity: .3; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; pointer-events: none; }
+.concept-line.concept-link-active { stroke: #d3bcff; stroke-opacity: .9; stroke-dasharray: none; }
+.concept-hit { fill: none; stroke: transparent; stroke-width: 16; vector-effect: non-scaling-stroke; pointer-events: stroke; cursor: pointer; }
+.concept-connection:focus { outline: none; }
+.concept-connection:focus .concept-line { stroke-opacity: 1; stroke: #e2d2ff; }
 .constellation-node { cursor: pointer; outline: none; }
-.node-core { fill: var(--node-color); fill-opacity: var(--island-fill); stroke: var(--node-color); stroke-opacity: var(--island-border); stroke-width: var(--island-stroke); filter: drop-shadow(0 0 var(--island-glow) var(--node-color)); }
-.node-halo { fill: var(--node-color); fill-opacity: var(--island-fill); stroke: var(--node-color); stroke-opacity: var(--island-border); }
-.constellation-node:hover .node-halo, .constellation-node:focus .node-halo { fill-opacity: max(.2, var(--island-fill)); stroke-opacity: 1; stroke-width: 2; }
-.node-label { fill: #dae2ee; font: 13px 'IBM Plex Mono', monospace; paint-order: stroke; stroke: #080f1e; stroke-width: 4px; stroke-linejoin: round; }
-.subtopic-label { fill: #aab9cf; font-size: 11px; }
-.node-label:not(.subtopic-label) { font-size: min(var(--topic-label-size, 13px), var(--topic-label-cap, 48px)); }
-.overview .subtopic-label { visibility: hidden; }
-.overview .constellation-node:hover .subtopic-label, .overview .constellation-node:focus .subtopic-label { visibility: visible; }
-#constellation-tooltip { position: absolute; max-width: min(340px, calc(100% - 16px)); pointer-events: none; padding: 12px 16px; background: #142238f5; border: 1px solid #49617c; border-radius: 8px; font-size: .85rem; box-shadow: 0 8px 24px #0006; }
-#constellation-tooltip strong { display: block; margin-bottom: 5px; overflow-wrap: anywhere; }
-#constellation-tooltip small { display: block; margin-top: 6px; color: #aab9cf; }
-#constellation-status { position: absolute; top: 45%; width: 100%; text-align: center; color: var(--muted); pointer-events: none; }
-.constellation-controls { position: absolute; bottom: 12px; right: 12px; display: flex; gap: 6px; }
-.constellation-controls button { background: #142238; min-width: 36px; }
-.constellation-help { color: #aab9cf; font: .65rem/1.7 'IBM Plex Mono', monospace; }
+.node-core { fill: var(--node-color); fill-opacity: var(--island-fill); stroke: var(--node-color); stroke-opacity: var(--island-border); stroke-width: var(--island-stroke); vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 var(--island-glow) var(--node-color)); }
+.node-halo { fill: var(--topic-color); fill-opacity: .025; stroke: var(--topic-color); stroke-opacity: .15; stroke-width: .7; vector-effect: non-scaling-stroke; }
+.node-hit { fill: transparent; stroke: none; pointer-events: all; }
+.node-selected .node-halo, .concept-related .node-halo, .constellation-node:focus .node-halo { fill-opacity: .08; stroke-opacity: .85; stroke-width: 1.3; }
+.node-label { fill: #bccadd; font: var(--label-size, 12px) 'IBM Plex Mono', monospace; paint-order: stroke; stroke: #060c19; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
+.subtopic-label, .node-label.label-collides { visibility: hidden; }
+.node-selected .node-label, .constellation-node:focus .node-label { visibility: visible; fill: #eff3ff; }
+#constellation-status { position: absolute; top: 45%; left: 20px; right: 20px; text-align: center; color: #aebbd0; pointer-events: none; }
+.constellation-hint { position: absolute; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); left: 16px; color: #8d9fb8; font: .65rem 'IBM Plex Mono', monospace; pointer-events: none; }
+.details-open .constellation-hint { visibility: hidden; }
+.constellation-controls { position: absolute; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); right: 16px; display: flex; gap: 6px; }
+#constellation-dialog .secondary { background: #0d1b2bd9; border-color: #34465f; color: #c9d6e8; backdrop-filter: blur(8px); }
+.constellation-sheet {
+  position: absolute; z-index: 3; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); left: 12px; right: 12px;
+  max-height: min(48dvh, 460px); overflow-y: auto; overscroll-behavior: contain; padding: 24px;
+  background: #101c2ef5; border: 1px solid #3b4d67; border-radius: 20px; box-shadow: 0 16px 50px #0008; backdrop-filter: blur(14px);
+}
+.constellation-sheet h3 { font: 1.15rem/1.4 'Playfair Display', serif; color: #e4eaf5; margin: 0 40px 12px 0; overflow-wrap: anywhere; outline: none; }
+.constellation-sheet p { font-size: .85rem; line-height: 1.6; margin-bottom: 12px; overflow-wrap: anywhere; }
+.constellation-sheet .detail-eyebrow { color: #93a7c3; font: .65rem/1.5 'IBM Plex Mono', monospace; margin-right: 40px; }
+#constellation-dialog .sheet-close { position: absolute; right: 10px; top: 10px; font-size: 1.2rem; }
+#constellation-detail-content > button { display: inline-flex; align-items: center; justify-content: center; margin: 4px 8px 0 0; }
+.constellation-legend { display: flex; flex-wrap: wrap; gap: 10px 16px; font: .65rem/1.5 'IBM Plex Mono', monospace; color: #aebbd0; margin-top: 20px; }
+.constellation-legend span::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--node-color); }
+#constellation-preparation-legend { display: flex; flex-wrap: wrap; gap: 12px 16px; color: #d4ddeb; font: .65rem 'IBM Plex Mono', monospace; margin: 18px 0; }
+.preparation-island-sample { display: inline-flex; align-items: center; gap: 8px; }
+.preparation-island-sample::before { content: ''; width: 18px; height: 18px; border-radius: 50%; background: color-mix(in srgb, var(--island-color) calc(var(--island-fill) * 100%), #060c19); border: calc(var(--island-stroke) * 1px) solid var(--island-color); box-shadow: 0 0 var(--island-glow) var(--island-color); }
+.preparation-island-sample.island-unattempted::before { border-style: dashed; }
+@media (min-width: 701px) {
+  .constellation-heading { padding: 18px 24px 32px; }
+  .constellation-sheet { left: auto; right: 24px; width: 380px; bottom: 80px; max-height: 65dvh; }
+}
 @media (max-width: 700px) {
-  #constellation-dialog { padding: 16px; }
   #constellation-open { font-size: .65rem; padding: 8px; width: auto; }
-  .constellation-heading button, .constellation-controls button { width: auto; }
+  #constellation-dialog .primary { width: 100%; }
   header { gap: 8px; }
   #header-ctx { min-width: 0; overflow: hidden; }
 }
