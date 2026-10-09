@@ -718,3 +718,58 @@ button.secondary:hover { background: #333c55; }
 }
 
 #constellation-dialog .primary { color: var(--background); }
+
+/* Learning journey: a wide, scrollable observatory over the existing field. */
+#journey-open { margin-top: 8px; font-size: .72rem; }
+#journey-dialog {
+  width: min(1080px, calc(100vw - 32px)); max-width: none;
+  max-height: calc(100dvh - 32px); margin: auto; padding: 28px;
+  color: var(--text); border: 1px solid #756795; border-radius: 22px;
+  background: radial-gradient(ellipse at 85% 15%, #8561b52a, transparent 55%), var(--surface);
+  box-shadow: 0 24px 100px #0008; overflow-y: auto;
+}
+#journey-dialog::backdrop { background: #080c19c9; backdrop-filter: blur(6px); }
+.journey-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+.journey-heading h2 { font-size: 1.5rem; font-weight: 500; }
+#journey-field { color: var(--muted); font-size: .85rem; overflow-wrap: anywhere; margin-top: 6px; }
+#journey-close { width: 44px; flex: none; font-size: 1.2rem; }
+#journey-content { display: flex; flex-direction: column; gap: 26px; }
+.journey-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.journey-metrics .m-val { font-size: 1.8rem; }
+#journey-content h3 { font-size: 1rem; font-weight: 500; margin-bottom: 8px; }
+#journey-content p { font-size: .8rem; line-height: 1.6; color: var(--muted); }
+.journey-galaxy {
+  padding: 20px; border: 1px solid var(--border2); border-radius: 18px;
+  background: radial-gradient(circle at 21px 53px, #c7dafa50 .7px, transparent 1.4px) 0 0 / 227px 193px,
+    radial-gradient(circle at 139px 93px, #e0ceff40 .8px, transparent 1.6px) 0 0 / 313px 269px,
+    radial-gradient(ellipse at 50% 55%, #8960c53a, transparent 65%), #151c2c;
+}
+.journey-galaxy svg, #journey-trend svg { width: 100%; display: block; }
+.journey-star { fill: var(--star-color); stroke: var(--star-color); filter: drop-shadow(0 0 4px var(--star-color)); cursor: pointer; }
+.journey-star.journey-legacy { fill: #151c2c; filter: none; }
+.journey-star:focus, .journey-star:hover { stroke: #fff; stroke-width: 2; outline: none; }
+.journey-axis { display: flex; justify-content: space-between; gap: 12px; font: .65rem 'IBM Plex Mono', monospace; color: var(--muted); margin: 6px 0 12px; }
+#journey-star-detail { min-height: 2.6em; overflow-wrap: anywhere; }
+.journey-milestones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.journey-milestone { padding: 16px; background: #ffffff04; border: 1px dashed var(--border2); border-radius: 12px; }
+.journey-milestone strong { display: block; margin-bottom: 8px; color: var(--muted); font-size: 1.2rem; }
+.journey-milestone span { color: var(--muted); font-size: .7rem; }
+.journey-milestone.reached { background: #b3a0de14; border-style: solid; border-color: #756795; box-shadow: 0 0 20px #b3a0de10; }
+.journey-milestone.reached strong { color: var(--accent-light); }
+.journey-calendar { display: grid; grid-template-columns: repeat(28, minmax(0, 1fr)); gap: 4px; margin-top: 12px; }
+.journey-day { aspect-ratio: 1; background: #2b3247; border: 1px solid #ffffff08; border-radius: 4px; cursor: pointer; min-width: 0; }
+.journey-day.level-1 { background: #514869; }
+.journey-day.level-2 { background: #786399; }
+.journey-day.level-3 { background: #a088c7; }
+.journey-day.level-4 { background: #d5b7fc; box-shadow: 0 0 8px #b3a0de30; }
+#journey-day-detail { grid-column: 1 / -1; font-size: .75rem; color: var(--muted); margin-top: 8px; }
+.journey-key { margin-top: 8px; }
+#journey-trend svg text { fill: var(--muted); font: 12px 'IBM Plex Mono', monospace; }
+.journey-note { border-top: 1px solid var(--border2); padding-top: 18px; }
+@media (max-width: 700px) {
+  #journey-dialog { padding: 18px; width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
+  .journey-metrics, .journey-milestones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .journey-calendar { grid-template-columns: repeat(14, minmax(0, 1fr)); }
+  .journey-galaxy { padding: 12px; }
+  .journey-galaxy svg { min-height: 180px; }
+}

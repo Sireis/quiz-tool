@@ -9,6 +9,7 @@ A browser-based exam trainer for SKS, SRC, psychology, and custom subjects. Choo
 - Practice by subject, topic, or exam set.
 - Get feedback on the meaning of your answer.
 - Track your progress and revisit questions that need more practice.
+- Open **Deine Lernreise** in the statistics panel for a timeline galaxy, coverage milestones, daily activity, and daily average grading scores.
 - Explore an answer further with a prepared ChatGPT follow-up prompt.
 
 ## Quick start
