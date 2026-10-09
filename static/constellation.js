@@ -114,10 +114,13 @@
       const topic = topics[topicIndex].name;
       const hue = topicHues[topicIndex % topicHues.length] + Math.floor(topicIndex / topicHues.length) * 17;
       const color = `hsl(${hue % 360} 65% 68%)`;
+      const stateKey = data.attempted ? data.preparation.rating : 'unattempted';
+      const state = islandStates[stateKey];
+      const nodeColor = `hsl(${hue % 360} ${state.saturation}% ${state.lightness}%)`;
       const r = 8 + Math.sqrt(data.total) * 2.2;
       const label = `${data.name}: ${data.attempted ? PREPARATION_LABELS[data.preparation.rating] : 'Noch nicht versucht'}, ${data.total} Fragen. Quiz starten.`;
-      const group = element('g', { class: 'constellation-node', tabindex: '0', role: 'button', 'aria-label': label, style: `--node-color:${color}` });
-      group.append(element('circle', { r: r + 9, class: 'node-halo' }), element('circle', { r, class: 'node-core' }));
+      const group = element('g', { class: `constellation-node island-${stateKey}`, tabindex: '0', role: 'button', 'aria-label': label, style: `--topic-color:${color};--node-color:${nodeColor}` });
+      group.append(element('circle', { r: r + 9, class: 'node-halo' }), element('circle', { r, class: 'node-core', 'stroke-dasharray': data.attempted ? 'none' : '3 4' }));
       const text = element('text', { y: r + 22, 'text-anchor': 'middle', class: subtopic ? 'node-label subtopic-label' : 'node-label' }, data.name.length > 30 ? data.name.slice(0, 28) + '…' : data.name);
       group.append(text);
       const inspect = () => {

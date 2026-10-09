@@ -610,9 +610,9 @@ footer {
 .concept-related .node-halo { stroke-opacity: .85; fill-opacity: .15; }
 .tooltip-concepts { margin-top: 8px; color: #c4b3e4; font-size: .75rem; line-height: 1.5; overflow-wrap: anywhere; }
 .constellation-node { cursor: pointer; outline: none; }
-.node-core { fill: var(--node-color); fill-opacity: .65; stroke: var(--node-color); stroke-width: 1.5; filter: drop-shadow(0 0 5px var(--node-color)); }
-.node-halo { fill: var(--node-color); fill-opacity: .06; stroke: var(--node-color); stroke-opacity: .18; }
-.constellation-node:hover .node-halo, .constellation-node:focus .node-halo { fill-opacity: .2; stroke-opacity: 1; stroke-width: 2; }
+.node-core { fill: var(--node-color); fill-opacity: var(--island-fill); stroke: var(--node-color); stroke-opacity: var(--island-border); stroke-width: var(--island-stroke); filter: drop-shadow(0 0 var(--island-glow) var(--node-color)); }
+.node-halo { fill: var(--node-color); fill-opacity: var(--island-fill); stroke: var(--node-color); stroke-opacity: var(--island-border); }
+.constellation-node:hover .node-halo, .constellation-node:focus .node-halo { fill-opacity: max(.2, var(--island-fill)); stroke-opacity: 1; stroke-width: 2; }
 .node-label { fill: #dae2ee; font: 13px 'IBM Plex Mono', monospace; paint-order: stroke; stroke: #080f1e; stroke-width: 4px; stroke-linejoin: round; }
 .subtopic-label { fill: #aab9cf; font-size: 11px; }
 .node-label:not(.subtopic-label) { font-size: min(var(--topic-label-size, 13px), var(--topic-label-cap, 48px)); }
