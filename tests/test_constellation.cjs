@@ -117,7 +117,7 @@ test('organic clouds replace rectangles; preparation changes keep topic identity
   assert.ok(after.clouds.every(cloud => cloud.children[0].tag === 'ellipse'));
   assert.match(after.clouds[0].attrs.class, /island-unattempted/);
   assert.match(after.nodes[0].attrs.class, /island-unattempted/);
-  assert.equal(after.nodes[0].children[1].attrs['stroke-dasharray'], '3 4');
+  assert.equal(after.nodes[0].children[0].attrs['stroke-dasharray'], '3 4');
   assert.match(after.nodes[1].attrs.style, /195 90% 72%/);
   assert.equal(after.ids['constellation-legend'].children.length, 3);
 });
@@ -143,7 +143,7 @@ test('dense banks retain all nodes with collision avoidance and deterministic po
   assert.deepEqual(view.nodes.map(position), repeated.nodes.map(position));
   view.nodes.forEach((a, i) => view.nodes.slice(i + 1).forEach(b => {
     const [ax, ay] = position(a), [bx, by] = position(b);
-    const radiusA = Number(a.children[1].attrs.r), radiusB = Number(b.children[1].attrs.r);
+    const radiusA = Number(a.children[0].attrs.r), radiusB = Number(b.children[0].attrs.r);
     assert.ok(Math.hypot(ax-bx, ay-by) >= radiusA + radiusB + 10, `${i}: ${Math.hypot(ax-bx, ay-by)} < ${radiusA+radiusB+10}`);
   }));
 });
@@ -182,7 +182,7 @@ test('mobile fit, pinch zoom, and pan work without opening a node during a drag'
   activate(view.ids['constellation-fit']);
   assert.equal(view.world.attrs.transform, initial);
   const scale = Number(initial.match(/scale\(([^)]+)/)[1]);
-  assert.ok(view.nodes.every(item => Number(item.children[2].attrs.r)*scale >= 16 - 0.001));
+  assert.ok(view.nodes.every(item => Number(item.children[1].attrs.r)*scale >= 16 - 0.001));
 });
 
 test('topic detail can focus its cluster and still start a parent-topic quiz', async () => {

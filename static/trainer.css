@@ -610,9 +610,8 @@ footer {
 .concept-connection:focus .concept-line { stroke-opacity: 1; stroke: #e2d2ff; }
 .constellation-node { cursor: pointer; outline: none; }
 .node-core { fill: var(--node-color); fill-opacity: var(--island-fill); stroke: var(--node-color); stroke-opacity: var(--island-border); stroke-width: var(--island-stroke); vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 var(--island-glow) var(--node-color)); }
-.node-halo { fill: var(--topic-color); fill-opacity: .025; stroke: var(--topic-color); stroke-opacity: .15; stroke-width: .7; vector-effect: non-scaling-stroke; }
 .node-hit { fill: transparent; stroke: none; pointer-events: all; }
-.node-selected .node-halo, .concept-related .node-halo, .constellation-node:focus .node-halo { fill-opacity: .08; stroke-opacity: .85; stroke-width: 1.3; }
+.node-selected .node-core, .concept-related .node-core, .constellation-node:focus .node-core { stroke-opacity: 1; stroke-width: 2; }
 .node-label { fill: #bccadd; font: var(--label-size, 12px) 'IBM Plex Mono', monospace; paint-order: stroke; stroke: #060c19; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
 .subtopic-label, .node-label.label-collides { visibility: hidden; }
 .node-selected .node-label, .constellation-node:focus .node-label { visibility: visible; fill: #eff3ff; }

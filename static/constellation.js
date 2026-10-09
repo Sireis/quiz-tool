@@ -163,8 +163,7 @@
       const r = 12 + Math.sqrt(data.total) * 2.2;
       const group = element('g', { class: `constellation-node island-${key}${subtopic ? '' : ' topic-node'}`, tabindex: '0', role: 'button',
         'aria-label': `${data.name}: ${state.label}, ${data.total} Fragen. Details öffnen.`, style: `--topic-color:${color};--node-color:${nodeColor}` });
-      group.append(element('circle', { r: r + 9, class: 'node-halo' }),
-        element('circle', { r, class: 'node-core', 'stroke-dasharray': data.attempted ? 'none' : '3 4' }));
+      group.append(element('circle', { r, class: 'node-core', 'stroke-dasharray': data.attempted ? 'none' : '3 4' }));
       const hit = element('circle', { r: r + 8, class: 'node-hit' });
       const label = element('text', { 'text-anchor': 'middle', class: `node-label${subtopic ? ' subtopic-label' : ''}` });
       // Full names stay in the detail sheet, where they can wrap naturally.
