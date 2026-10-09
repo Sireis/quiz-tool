@@ -623,7 +623,6 @@ button.secondary:hover { background: #333c55; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
 /* Knowledge constellation: graph first, details on demand. */
-#constellation-open { margin-left: auto; white-space: nowrap; }
 #constellation-dialog {
   --background: #060c19;
   --surface: #0c1526;
@@ -711,7 +710,6 @@ button.secondary:hover { background: #333c55; }
   .constellation-sheet { left: auto; right: 24px; width: 380px; bottom: 80px; max-height: 65dvh; }
 }
 @media (max-width: 700px) {
-  #constellation-open { font-size: .65rem; padding: 8px; width: auto; }
   #constellation-dialog .primary { width: 100%; }
   header { gap: 8px; }
   #header-ctx { min-width: 0; overflow: hidden; }
@@ -720,20 +718,26 @@ button.secondary:hover { background: #333c55; }
 #constellation-dialog .primary { color: var(--background); }
 
 /* Learning journey: a wide, scrollable observatory over the existing field. */
-#journey-open { margin-top: 8px; font-size: .72rem; }
+.stats-explore-label { margin-top: 10px; color: var(--muted); font: .6rem 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+.stats-explore-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 4px; }
+.stats-explore-actions button.secondary { width: 100%; min-width: 0; padding: 9px 5px; font-size: .65rem; white-space: normal; overflow-wrap: anywhere; min-height: 44px; }
 #journey-dialog {
-  width: min(1080px, calc(100vw - 32px)); max-width: none;
+  width: min(1280px, calc(100vw - 32px)); max-width: none;
+  height: min(900px, calc(100dvh - 32px));
   max-height: calc(100dvh - 32px); margin: auto; padding: 28px;
   color: var(--text); border: 1px solid #756795; border-radius: 22px;
   background: radial-gradient(ellipse at 85% 15%, #8561b52a, transparent 55%), var(--surface);
-  box-shadow: 0 24px 100px #0008; overflow-y: auto;
+  box-shadow: 0 24px 100px #0008; overflow: hidden;
 }
+#journey-dialog[open] { display: flex; flex-direction: column; }
 #journey-dialog::backdrop { background: #080c19c9; backdrop-filter: blur(6px); }
-.journey-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+.journey-heading { flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
 .journey-heading h2 { font-size: 1.5rem; font-weight: 500; }
 #journey-field { color: var(--muted); font-size: .85rem; overflow-wrap: anywhere; margin-top: 6px; }
 #journey-close { width: 44px; flex: none; font-size: 1.2rem; }
-#journey-content { display: flex; flex-direction: column; gap: 26px; }
+.journey-body { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; flex: 1; min-height: 0; }
+#journey-content { display: flex; flex-direction: column; gap: 26px; min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 3px 10px 12px 3px; }
+#journey-content > * { flex-shrink: 0; min-width: 0; }
 .journey-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .journey-metrics .m-val { font-size: 1.8rem; }
 #journey-content h3 { font-size: 1rem; font-weight: 500; margin-bottom: 8px; }
@@ -756,20 +760,50 @@ button.secondary:hover { background: #333c55; }
 .journey-milestone span { color: var(--muted); font-size: .7rem; }
 .journey-milestone.reached { background: #b3a0de14; border-style: solid; border-color: #756795; box-shadow: 0 0 20px #b3a0de10; }
 .journey-milestone.reached strong { color: var(--accent-light); }
-.journey-calendar { display: grid; grid-template-columns: repeat(28, minmax(0, 1fr)); gap: 4px; margin-top: 12px; }
+.journey-calendar-scroll { overflow-x: auto; padding-bottom: 8px; }
+.journey-calendar { --calendar-cell: 14px; width: max-content; display: grid; grid-template-columns: 32px repeat(var(--calendar-weeks, 53), var(--calendar-cell)); grid-template-rows: 20px repeat(7, var(--calendar-cell)) auto; gap: 3px; margin-top: 12px; }
+.journey-weekday, .journey-month { color: var(--muted); font-size: .65rem; align-self: center; }
+.journey-month { white-space: nowrap; align-self: start; }
 .journey-day { aspect-ratio: 1; background: #2b3247; border: 1px solid #ffffff08; border-radius: 4px; cursor: pointer; min-width: 0; }
-.journey-day.level-1 { background: #514869; }
-.journey-day.level-2 { background: #786399; }
-.journey-day.level-3 { background: #a088c7; }
-.journey-day.level-4 { background: #d5b7fc; box-shadow: 0 0 8px #b3a0de30; }
+.journey-day.level-1 { --activity-color: #285247; background: var(--activity-color); }
+.journey-day.level-2 { --activity-color: #35836a; background: var(--activity-color); }
+.journey-day.level-3 { --activity-color: #4eb88b; background: var(--activity-color); }
+.journey-day.level-4 { --activity-color: #77dda6; background: var(--activity-color); box-shadow: 0 0 8px #66dda020; }
 #journey-day-detail { grid-column: 1 / -1; font-size: .75rem; color: var(--muted); margin-top: 8px; }
-.journey-key { margin-top: 8px; }
+.journey-key { display: flex; align-items: center; gap: 4px; margin-top: 12px; color: var(--muted); font-size: .7rem; }
+.journey-key .journey-day { width: 14px; height: 14px; cursor: default; }
+.journey-key span:first-child { margin-right: 4px; }
+.journey-key span:last-child { margin-left: 4px; }
 #journey-trend svg text { fill: var(--muted); font: 12px 'IBM Plex Mono', monospace; }
 .journey-note { border-top: 1px solid var(--border2); padding-top: 18px; }
 @media (max-width: 700px) {
   #journey-dialog { padding: 18px; width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
   .journey-metrics, .journey-milestones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .journey-calendar { grid-template-columns: repeat(14, minmax(0, 1fr)); }
+  .journey-calendar { --calendar-cell: 14px; gap: 3px; }
   .journey-galaxy { padding: 12px; }
   .journey-galaxy svg { min-height: 180px; }
+}
+/* Topic chips stay visible while the journey charts update. */
+.journey-filter { display: flex; flex-direction: column; gap: 10px; margin-bottom: 0; min-height: 0; overflow-y: auto; padding: 3px 10px 12px 3px; color: var(--muted); font-size: .8rem; }
+#journey-topic { display: flex; flex-direction: column; gap: 8px; }
+.journey-topic-chip { padding: 9px 14px; min-height: 40px; max-width: 100%; border: 1px solid var(--border2); border-radius: 12px; background: #262c4080; color: #c3c5ce; font: inherit; text-align: left; overflow-wrap: anywhere; cursor: pointer; transition: background .15s, border-color .15s, box-shadow .15s; }
+.journey-topic-chip:hover { background: #333c55; border-color: #756795; }
+.journey-topic-chip[aria-pressed="true"] { color: var(--accent-light); border-color: #a18bc6; background: linear-gradient(110deg, #b3a0de28, #8abfce12); box-shadow: 0 0 14px #b3a0de20; }
+.journey-topic-chip:disabled { opacity: .5; cursor: default; }
+
+/* Topic selection changes emphasis while retaining the complete journey. */
+.journey-star.journey-muted { --star-color: #747e92 !important; filter: none; opacity: .45; }
+.journey-star.journey-muted:focus, .journey-star.journey-muted:hover { opacity: 1; }
+.journey-day.journey-topic-day {
+  background: linear-gradient(to top, var(--activity-color) var(--topic-share), #454b5b var(--topic-share));
+  box-shadow: none;
+}
+.journey-empty-metric .m-val { color: var(--muted); }
+
+@media (max-width: 700px) {
+  #journey-dialog { height: calc(100dvh - 16px); }
+  .journey-body { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 14px; }
+  .journey-filter { overflow: visible; padding: 0; }
+  #journey-topic { flex-direction: row; overflow-x: auto; padding: 3px 3px 10px; }
+  .journey-topic-chip { flex: 0 0 auto; max-width: none; white-space: nowrap; border-radius: 999px; }
 }
