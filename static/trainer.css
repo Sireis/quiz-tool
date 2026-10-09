@@ -623,7 +623,6 @@ button.secondary:hover { background: #333c55; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
 /* Knowledge constellation: graph first, details on demand. */
-#constellation-open { margin-left: auto; white-space: nowrap; }
 #constellation-dialog {
   --background: #060c19;
   --surface: #0c1526;
@@ -711,7 +710,6 @@ button.secondary:hover { background: #333c55; }
   .constellation-sheet { left: auto; right: 24px; width: 380px; bottom: 80px; max-height: 65dvh; }
 }
 @media (max-width: 700px) {
-  #constellation-open { font-size: .65rem; padding: 8px; width: auto; }
   #constellation-dialog .primary { width: 100%; }
   header { gap: 8px; }
   #header-ctx { min-width: 0; overflow: hidden; }
@@ -720,7 +718,9 @@ button.secondary:hover { background: #333c55; }
 #constellation-dialog .primary { color: var(--background); }
 
 /* Learning journey: a wide, scrollable observatory over the existing field. */
-#journey-open { margin-top: 8px; font-size: .72rem; }
+.stats-explore-label { margin-top: 10px; color: var(--muted); font: .6rem 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+.stats-explore-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 4px; }
+.stats-explore-actions button.secondary { width: 100%; min-width: 0; padding: 9px 5px; font-size: .65rem; white-space: normal; overflow-wrap: anywhere; min-height: 44px; }
 #journey-dialog {
   width: min(1280px, calc(100vw - 32px)); max-width: none;
   height: min(900px, calc(100dvh - 32px));
