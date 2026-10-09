@@ -181,6 +181,12 @@ def record_attempt(field: str, question_id: str | int, correct: bool, score: flo
 
 
 def _update_attempt(entry: dict, correct: bool, score: float) -> None:
+    timestamp = datetime.now(timezone.utc).isoformat()
+    if "history" not in entry:
+        entry["history"] = []
+        entry["historical_attempts"] = entry.get("attempts", 0)
+        entry["historical_last_attempt"] = entry.get("last_attempt") or entry.get("last_seen")
+    entry["history"].append({"at": timestamp, "correct": correct, "score": score})
     previous_streak = entry.get("streak", 0)
     entry["attempts"] += 1
     entry["correct"] += int(correct)
@@ -190,7 +196,7 @@ def _update_attempt(entry: dict, correct: bool, score: float) -> None:
     )
     entry["last_result"] = "correct" if correct else "incorrect"
     entry["last_score"] = score
-    entry["last_attempt"] = datetime.now(timezone.utc).isoformat()
+    entry["last_attempt"] = timestamp
 
 
 def _default_progress() -> dict:

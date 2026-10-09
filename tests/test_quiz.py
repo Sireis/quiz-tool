@@ -252,6 +252,29 @@ class QuizTests(unittest.TestCase):
         with ThreadPoolExecutor(max_workers=8) as workers:
             list(workers.map(record_correct_answer, range(40)))
         self.assertEqual(question_store.load_progress("test")["1"]["attempts"], 40)
+        self.assertEqual(len(question_store.load_progress("test")["1"]["history"]), 40)
+
+    def test_attempt_history_preserves_legacy_progress(self):
+        legacy = {"attempts": 6, "correct": 3, "last_seen": "2025-01-01T12:00:00+00:00"}
+        self._write_json(self.storage_root / "test" / "progress.json", {"1": legacy})
+        first = question_store.record_attempt("test", 1, True, 0.9)
+        second = question_store.record_attempt("test", 1, False, 0.2)
+        self.assertEqual(second["attempts"], 8)
+        self.assertEqual(second["correct"], 4)
+        self.assertEqual(second["historical_attempts"], 6)
+        self.assertEqual(second["historical_last_attempt"], legacy["last_seen"])
+        self.assertEqual(second["last_seen"], legacy["last_seen"])
+        self.assertEqual(len(second["history"]), 2)
+        self.assertEqual(second["history"][0], {"at": first["last_attempt"], "correct": True, "score": 0.9})
+        self.assertEqual(second["history"][1], {"at": second["last_attempt"], "correct": False, "score": 0.2})
+        public = self.client.get("/api/fields/test/questions").json
+        self.assertEqual(public[0]["progress"]["history"], second["history"])
+
+    def test_attempt_history_starts_without_invented_events(self):
+        entry = question_store.record_attempt("test", 1, True, 1)
+        self.assertEqual(entry["historical_attempts"], 0)
+        self.assertIsNone(entry["historical_last_attempt"])
+        self.assertEqual(len(entry["history"]), 1)
 
     def test_process_updates(self):
         command = [sys.executable, "-c", PROCESS_UPDATE_SCRIPT, str(self.storage_root)]
@@ -261,6 +284,7 @@ class QuizTests(unittest.TestCase):
         for worker in workers:
             self.assertEqual(worker.wait(timeout=10), 0)
         self.assertEqual(question_store.load_progress("test")["1"]["attempts"], 30)
+        self.assertEqual(len(question_store.load_progress("test")["1"]["history"]), 30)
 
     @staticmethod
     def _stop_process(process):

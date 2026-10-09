@@ -107,6 +107,7 @@
   <div id="stats-ctx-strip" class="ctx-field">
     <div id="stats-ctx-title">Feld</div>
     <div id="stats-ctx-name">–</div>
+    <button class="secondary" id="journey-open" type="button">✧ Deine Lernreise</button>
   </div>
   <div id="stats-scroll">
     <div id="stats-loading"><div class="spinner"></div> Lade…</div>
@@ -175,6 +176,11 @@
     <div class="constellation-legend" id="constellation-legend" aria-label="Themenfarben"></div>
   </section>
 </dialog>
+<dialog id="journey-dialog" aria-labelledby="journey-title">
+  <div class="journey-heading"><div><h2 id="journey-title">Deine Lernreise</h2><p id="journey-field"></p></div><button class="secondary" id="journey-close" type="button" aria-label="Lernreise schließen">×</button></div>
+  <div id="journey-content" aria-live="polite"></div>
+</dialog>
+<script src="{{ url_for('static', filename='journey.js') }}" defer></script>
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation-layout.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation.js') }}" defer></script>
