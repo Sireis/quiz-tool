@@ -569,8 +569,8 @@ footer {
 /* Knowledge constellation */
 #constellation-open { margin-left: auto; white-space: nowrap; }
 #constellation-dialog {
-  margin: auto; width: min(1200px, 96vw); height: min(850px, 94dvh);
-  max-width: 96vw; max-height: 94dvh; padding: 24px; color: var(--text);
+  margin: auto; width: 98vw; height: 98dvh;
+  max-width: 98vw; max-height: 98dvh; padding: 20px; color: var(--text);
   background: #0b1424; border: 1px solid #35455e; border-radius: 16px;
   box-shadow: 0 24px 100px #0008;
 }
@@ -579,7 +579,7 @@ footer {
 .constellation-heading { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
 .constellation-heading h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 400; }
 #constellation-field { color: var(--muted); font-size: .8rem; margin-top: 6px; overflow-wrap: anywhere; }
-.constellation-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; font: .65rem 'IBM Plex Mono', monospace; color: #aebbd0; }
+.constellation-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; max-height: 72px; overflow-y: auto; flex-shrink: 0; font: .65rem 'IBM Plex Mono', monospace; color: #aebbd0; }
 .constellation-legend span::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--node-color); box-shadow: 0 0 9px var(--node-color); }
 #constellation-stage {
   position: relative; flex: 1; min-height: 180px; overflow: hidden; border: 1px solid #233149; border-radius: 12px;
@@ -587,18 +587,35 @@ footer {
 }
 #constellation-svg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; user-select: none; }
 #constellation-svg:active { cursor: grabbing; }
-.constellation-links line { stroke: #6485ac; stroke-opacity: .32; stroke-width: 1; }
-.constellation-concept-links path { fill: none; stroke: #b29be9; stroke-opacity: .2; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
+.topic-island { pointer-events: none; }
+.island-unattempted { --island-fill: .02; --island-border: .3; --island-stroke: 1; --island-glow: 0px; }
+.island-red { --island-fill: .06; --island-border: .5; --island-stroke: 1; --island-glow: 0px; }
+.island-yellow { --island-fill: .18; --island-border: .8; --island-stroke: 1.5; --island-glow: 8px; }
+.island-green { --island-fill: .32; --island-border: 1; --island-stroke: 2.5; --island-glow: 20px; }
+.island-background { fill: var(--island-color); fill-opacity: var(--island-fill); stroke: var(--island-color); stroke-opacity: var(--island-border); stroke-width: var(--island-stroke); vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 var(--island-glow) var(--island-color)); }
+#constellation-preparation-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; flex-shrink: 0; color: #d4ddeb; font: .65rem 'IBM Plex Mono', monospace; }
+.preparation-island-sample { display: inline-flex; align-items: center; gap: 8px; }
+.preparation-island-sample::before { content: ''; width: 24px; height: 18px; border-radius: 5px; background: color-mix(in srgb, var(--island-color) calc(var(--island-fill) * 100%), #080f1e); border: calc(var(--island-stroke) * 1px) solid color-mix(in srgb, var(--island-color) calc(var(--island-border) * 100%), #080f1e); box-shadow: 0 0 var(--island-glow) var(--island-color); }
+.preparation-island-sample.island-unattempted::before { border-style: dashed; }
+.island-annotation { pointer-events: none; }
+.island-strip-track { fill: #273348; }
+.island-preparation-strip { opacity: .25; pointer-events: auto; }
+.island-preparation-strip:hover { opacity: .65; }
+.island-strip-segment.preparation-red { fill: #e47c70; }
+.island-strip-segment.preparation-yellow { fill: #e0b860; }
+.island-strip-segment.preparation-green { fill: #6cdbb1; }
+.constellation-links path { fill: none; stroke: var(--link-color); stroke-opacity: .16; stroke-width: .8; vector-effect: non-scaling-stroke; }
+.constellation-concept-links path { fill: none; stroke: #a6b1c4; stroke-opacity: .25; vector-effect: non-scaling-stroke; }
 .constellation-concept-links .concept-link-active { stroke: #ccb5ff; stroke-opacity: .9; stroke-dasharray: none; }
 .concept-related .node-halo { stroke-opacity: .85; fill-opacity: .15; }
 .tooltip-concepts { margin-top: 8px; color: #c4b3e4; font-size: .75rem; line-height: 1.5; overflow-wrap: anywhere; }
 .constellation-node { cursor: pointer; outline: none; }
-.node-core { fill: var(--node-color); fill-opacity: .5; stroke: var(--node-color); stroke-width: 1.5; filter: drop-shadow(0 0 7px var(--node-color)); }
+.node-core { fill: var(--node-color); fill-opacity: .65; stroke: var(--node-color); stroke-width: 1.5; filter: drop-shadow(0 0 5px var(--node-color)); }
 .node-halo { fill: var(--node-color); fill-opacity: .06; stroke: var(--node-color); stroke-opacity: .18; }
 .constellation-node:hover .node-halo, .constellation-node:focus .node-halo { fill-opacity: .2; stroke-opacity: 1; stroke-width: 2; }
 .node-label { fill: #dae2ee; font: 13px 'IBM Plex Mono', monospace; paint-order: stroke; stroke: #080f1e; stroke-width: 4px; stroke-linejoin: round; }
 .subtopic-label { fill: #aab9cf; font-size: 11px; }
-.node-label:not(.subtopic-label) { font-size: var(--topic-label-size, 13px); }
+.node-label:not(.subtopic-label) { font-size: min(var(--topic-label-size, 13px), var(--topic-label-cap, 48px)); }
 .overview .subtopic-label { visibility: hidden; }
 .overview .constellation-node:hover .subtopic-label, .overview .constellation-node:focus .subtopic-label { visibility: visible; }
 #constellation-tooltip { position: absolute; max-width: min(340px, calc(100% - 16px)); pointer-events: none; padding: 12px 16px; background: #142238f5; border: 1px solid #49617c; border-radius: 8px; font-size: .85rem; box-shadow: 0 8px 24px #0006; }
