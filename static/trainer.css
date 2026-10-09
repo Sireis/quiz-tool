@@ -570,6 +570,8 @@ main {
     radial-gradient(circle at 83px 147px, #a1c9e550 .6px, transparent 1.3px) 0 0 / 167px 241px,
     radial-gradient(ellipse at 85% 35%, #8d60c522, transparent 60%),
     radial-gradient(ellipse at 10% 80%, #478aa522, transparent 55%);
+  /* Anchor every layer to the viewport as the surrounding panels resize. */
+  background-attachment: fixed;
 }
 header, aside, #stats-panel { background: linear-gradient(160deg, #242b3af5, #1d2232ed); }
 header::after { opacity: .45; }
