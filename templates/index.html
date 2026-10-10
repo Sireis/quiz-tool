@@ -98,6 +98,22 @@
   </div>
 </main>
 
+<section id="selection-chatgpt" aria-label="Markierten Text mit ChatGPT vertiefen" hidden>
+  <p id="selection-chatgpt-preview"></p>
+  <div class="btn-row">
+    <a id="selection-chatgpt-link" class="chatgpt-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">In ChatGPT öffnen ↗</a>
+    <button id="selection-chatgpt-copy" class="secondary" type="button">Prompt kopieren</button>
+    <button id="selection-chatgpt-close" class="secondary" type="button" aria-label="Textauswahl schließen">×</button>
+  </div>
+  <details>
+    <summary>ChatGPT-Projekt verwenden</summary>
+    <label for="selection-chatgpt-project">Projekt-URL (z. B. Bachelor Psychology)</label>
+    <input id="selection-chatgpt-project" type="url" placeholder="https://chatgpt.com/g/…/project">
+    <p>Wird in diesem Browser gespeichert. Mit Projekt-URL wird der Prompt kopiert: im Projekt einen neuen Chat starten und einfügen.</p>
+  </details>
+  <p id="selection-chatgpt-status" role="status" aria-live="polite"></p>
+</section>
+
 <div id="stats-resizer" class="sidebar-resizer" role="separator" tabindex="0"
      aria-label="Breite der Statistik ändern" aria-orientation="vertical"
      aria-controls="stats-panel" title="Ziehen oder Pfeiltasten zum Ändern der Breite"></div>
@@ -192,5 +208,6 @@
 <script src="{{ url_for('static', filename='constellation-layout.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation.js') }}" defer></script>
 <script src="{{ url_for('static', filename='trainer.js') }}" defer></script>
+<script src="{{ url_for('static', filename='selection-chatgpt.js') }}" defer></script>
 </body>
 </html>

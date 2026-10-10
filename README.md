@@ -11,6 +11,7 @@ A browser-based exam trainer for SKS, SRC, psychology, and custom subjects. Choo
 - Track your progress and revisit questions that need more practice.
 - Open **Deine Lernreise** in the statistics panel for a timeline galaxy, coverage milestones, daily activity, and daily average grading scores.
 - Explore an answer further with a prepared ChatGPT follow-up prompt.
+- Highlight text in a question, your answer, the reference solution, or grading feedback to open ChatGPT with only “Tell me more regarding the following:” and the selected text. The selection toolbar also offers copying and an optional ChatGPT project URL, saved in your browser. When using a project (such as Bachelor Psychology), the shortcut opens the project and copies the prompt for pasting into a new chat. Regular ChatGPT prompt prefilling is best-effort; copying is available if ChatGPT does not adopt the URL prompt.
 
 ## Quick start
 
