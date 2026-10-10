@@ -1239,6 +1239,115 @@
                 "Psychische Funktionen",
                 "Bedeutungs- und Sinnkonstruktion"
             ]
+        },
+        {
+            "id": 95,
+            "topic": "Soziokulturelle Entwicklungstheorien",
+            "subtopic": "Zone der nächsten Entwicklung",
+            "question": "Wie hängen Vygotskys Zone der nächsten Entwicklung, Guided Participation und Scaffolding zusammen?",
+            "answer": "Die Zone der nächsten Entwicklung beschreibt den Abstand zwischen selbstständiger Leistung und der mit Unterstützung erreichbaren Leistung. Guided Participation bezeichnet die angeleitete Teilnahme an gemeinsamen Aktivitäten. Scaffolding bezeichnet eine an den Entwicklungsstand angepasste Unterstützung, die mit zunehmender Selbstständigkeit reduziert wird. Beide Prozesse können Lernen innerhalb der Zone der nächsten Entwicklung ermöglichen.",
+            "concepts": [
+                "Zone der nächsten Entwicklung",
+                "Guided Participation",
+                "Scaffolding",
+                "Soziale Unterstützung",
+                "Vygotsky"
+            ]
+        },
+        {
+            "id": 96,
+            "topic": "Kognitive Entwicklung",
+            "subtopic": "Piagets Entwicklungstheorie",
+            "question": "Was kennzeichnet das konkret-operationale Stadium nach Piaget?",
+            "answer": "Kinder können logische Operationen auf konkrete Sachverhalte anwenden. Sie verstehen unter anderem Invarianz, Reversibilität und Klassifikation, sind beim logischen Denken jedoch noch weitgehend an konkrete Inhalte gebunden.",
+            "concepts": [
+                "Konkret-operationales Stadium",
+                "Invarianz",
+                "Reversibilität",
+                "Klassifikation",
+                "Logisches Denken"
+            ]
+        },
+        {
+            "id": 97,
+            "topic": "Kognitive Entwicklung",
+            "subtopic": "Piagets Entwicklungstheorie",
+            "question": "Was kennzeichnet das formal-operationale Stadium nach Piaget?",
+            "answer": "Jugendliche entwickeln die Fähigkeit zum abstrakten und hypothetisch-deduktiven Denken. Sie können systematisch mögliche Erklärungen und deren logische Konsequenzen prüfen, ohne auf unmittelbar konkrete Gegenstände angewiesen zu sein.",
+            "concepts": [
+                "Formal-operationales Stadium",
+                "Abstraktes Denken",
+                "Hypothetisch-deduktives Denken",
+                "Systematisches Problemlösen"
+            ]
+        },
+        {
+            "id": 98,
+            "topic": "Grundlagen und Modelle der Entwicklung über die Lebensspanne",
+            "subtopic": "Entwicklungspsychologie der Lebensspanne",
+            "question": "Was bedeutet Multidimensionalität nach Baltes?",
+            "answer": "Psychologische Entwicklung umfasst mehrere Dimensionen beziehungsweise Funktionsbereiche, beispielsweise kognitive, emotionale und soziale Entwicklung, die unterschiedliche Entwicklungsverläufe aufweisen können.",
+            "concepts": [
+                "Multidimensionalität",
+                "Lebensspannenperspektive",
+                "Psychische Funktionsbereiche",
+                "Baltes"
+            ]
+        },
+        {
+            "id": 99,
+            "topic": "Psychosoziale Entwicklung und Identität",
+            "subtopic": "Eriksons psychosoziale Entwicklung",
+            "question": "Worin unterscheidet sich Eriksons psychosoziale Entwicklungstheorie von Freuds psychosexueller Entwicklungstheorie?",
+            "answer": "Freud betont die Entwicklung psychosexueller Triebkonflikte insbesondere in der Kindheit. Erikson erweitert die Perspektive auf psychosoziale Konflikte zwischen Individuum und sozialer Umwelt und betrachtet Entwicklung als lebenslangen Prozess.",
+            "concepts": [
+                "Eriksons psychosoziale Entwicklung",
+                "Freuds psychosexuelle Entwicklung",
+                "Psychosoziale Krise",
+                "Lebenslange Entwicklung"
+            ]
+        },
+        {
+            "id": 100,
+            "topic": "Psychosoziale Entwicklung und Identität",
+            "subtopic": "Eriksons psychosoziale Entwicklung",
+            "question": "Was besagt das epigenetische Prinzip in Eriksons Entwicklungstheorie?",
+            "answer": "Die psychosoziale Entwicklung folgt einer geordneten Abfolge von Entwicklungsphasen, in denen jeweils bestimmte Krisen besonders bedeutsam werden. Frühere Entwicklungsprozesse bilden dabei die Grundlage für spätere, ohne dass frühere Konflikte endgültig abgeschlossen sein müssen.",
+            "concepts": [
+                "Epigenetisches Prinzip",
+                "Eriksons psychosoziale Entwicklung",
+                "Entwicklungsphasen",
+                "Psychosoziale Krise"
+            ]
+        },
+        {
+            "id": 101,
+            "topic": "Emotionale Ausdrucksregulation",
+            "subtopic": "Display Rules",
+            "question": "Welche Haupteffekte zeigten sich in Josephs' Untersuchung zum enttäuschenden Geschenk hinsichtlich positiver Ausdrucksindikatoren?",
+            "answer": "Jüngere Kinder zeigten insgesamt mehr positive Ausdrucksindikatoren als ältere. In sozialen Situationen traten mehr positive Indikatoren auf als in nicht-sozialen Situationen. Attraktive Geschenke führten zu mehr positiven Indikatoren als unattraktive Geschenke.",
+            "concepts": [
+                "Paradigma des enttäuschenden Geschenks",
+                "Haupteffekt",
+                "Alter",
+                "Geschenkqualität",
+                "Soziale Situation"
+            ]
+        },
+        {
+            "id": 102,
+            "topic": "Emotionale Ausdrucksregulation",
+            "subtopic": "Display Rules",
+            "question": "Welche Interaktion zwischen Geschlecht, Geschenkqualität und Situationstyp zeigte sich in Josephs' Untersuchung?",
+            "answer": "Mädchen zeigten unabhängig von der Geschenkqualität in sozialen Situationen mehr positive Ausdrucksindikatoren. Bei Jungen hing der positive Ausdruck sowohl von der Geschenkqualität als auch vom Situationstyp ab: Bei unattraktiven Geschenken zeigten sie in sozialen Situationen mehr positive Indikatoren als in nicht-sozialen Situationen.",
+            "concepts": [
+                "Paradigma des enttäuschenden Geschenks",
+                "Interaktionseffekt",
+                "Geschlecht",
+                "Geschenkqualität",
+                "Soziale Situation",
+                "Display Rules"
+            ]
         }
     ]
 }
