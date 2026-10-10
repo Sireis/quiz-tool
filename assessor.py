@@ -11,7 +11,9 @@ from dotenv import load_dotenv
 load_dotenv()
 BACKEND = os.environ.get("ASSESSOR_BACKEND", "gpt4all").lower()
 GPT4ALL_MODEL = os.environ.get("GPT4ALL_MODEL", "mistral-7b-instruct-v0.1.Q4_0.gguf")
-OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-6-luna")
+OPENAI_REASONING_EFFORT = os.environ.get("OPENAI_REASONING_EFFORT", "medium").lower()
+OPENAI_MAX_OUTPUT_TOKENS = int(os.environ.get("OPENAI_MAX_OUTPUT_TOKENS", "4096"))
 CORRECT_RESULTS = {"fully_correct", "correct", "mostly_correct"}
 PARTIAL_RESULTS = {"partially_correct", "minimally_correct"}
 VALID_RESULTS = CORRECT_RESULTS | PARTIAL_RESULTS | {"incorrect"}
@@ -67,15 +69,26 @@ def _call_openai(system_prompt: str, prompt: str) -> str:
     if client is None:
         from openai import OpenAI
         client = OpenAI(timeout=60, max_retries=1)
+    options = {}
+    if OPENAI_MODEL.startswith("gpt-6"):
+        if OPENAI_REASONING_EFFORT not in {"none", "low", "medium", "high", "xhigh", "max"}:
+            raise AssessmentError("Invalid OpenAI reasoning effort")
+        options["reasoning"] = {"effort": OPENAI_REASONING_EFFORT}
+    else:
+        options["temperature"] = 0
+    if OPENAI_MAX_OUTPUT_TOKENS <= 0:
+        raise AssessmentError("OpenAI output token limit must be positive")
     response = client.responses.create(
         model=OPENAI_MODEL,
-        temperature=0,
         input=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": prompt},
         ],
-        max_output_tokens=MAX_OUTPUT_TOKENS,
+        max_output_tokens=OPENAI_MAX_OUTPUT_TOKENS,
+        **options,
     )
+    if response.status != "completed":
+        raise AssessmentError("Grading service returned an incomplete assessment")
     return response.output_text
 
 

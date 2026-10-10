@@ -36,7 +36,9 @@ To use **OpenAI** instead, create a `.env` file in the repository root:
 ```dotenv
 ASSESSOR_BACKEND=openai
 OPENAI_API_KEY=your-key
-OPENAI_MODEL=gpt-4o-mini
+OPENAI_MODEL=gpt-6-luna
+OPENAI_REASONING_EFFORT=medium
+OPENAI_MAX_OUTPUT_TOKENS=4096
 ```
 
 Restart the app after changing the configuration. To choose a different local model, set `GPT4ALL_MODEL` in the same file.

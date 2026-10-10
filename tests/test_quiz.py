@@ -319,6 +319,41 @@ class QuizTests(unittest.TestCase):
             assessor._call_gpt4all("Grade fairly", "Question")
         model.chat_session.assert_called_once_with(system_prompt="Grade fairly")
 
+    def test_luna_grading_request(self):
+        client = Mock()
+        client.responses.create.return_value = Mock(status="completed", output_text="grade")
+        with patch.object(assessor, "client", client), \
+                patch.object(assessor, "OPENAI_MODEL", "gpt-6-luna"), \
+                patch.object(assessor, "OPENAI_REASONING_EFFORT", "low"), \
+                patch.object(assessor, "OPENAI_MAX_OUTPUT_TOKENS", 8192):
+            self.assertEqual(assessor._call_openai("Grade fairly", "Question"), "grade")
+        client.responses.create.assert_called_once_with(
+            model="gpt-6-luna", reasoning={"effort": "low"}, max_output_tokens=8192,
+            input=[{"role": "system", "content": "Grade fairly"},
+                   {"role": "user", "content": "Question"}],
+        )
+
+    def test_legacy_openai_model_omits_reasoning(self):
+        client = Mock()
+        client.responses.create.return_value = Mock(status="completed", output_text="grade")
+        with patch.object(assessor, "client", client), \
+                patch.object(assessor, "OPENAI_MODEL", "gpt-4o-mini"):
+            assessor._call_openai("Grade fairly", "Question")
+        options = client.responses.create.call_args.kwargs
+        self.assertEqual(options["temperature"], 0)
+        self.assertNotIn("reasoning", options)
+
+    def test_incomplete_openai_grade_does_not_update_progress(self):
+        client = Mock()
+        client.responses.create.return_value = Mock(
+            status="incomplete",
+            output_text=json.dumps({"score": 1, "result": "correct", "feedback": "Good"}),
+        )
+        with patch.object(assessor, "client", client), \
+                patch.object(assessor, "BACKEND", "openai"):
+            self.assertEqual(self._submit_answer().status_code, 502)
+        self.assertEqual(question_store.load_progress("test"), {})
+
     def test_invalid_banks_not_advertised(self):
         invalid_field = self.storage_root / "bad"
         invalid_field.mkdir()
