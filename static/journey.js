@@ -18,6 +18,10 @@ function journeyData(questions) {
   return { events, legacy, attempts, explored, total: questions.length,
     undated: Math.max(0, attempts - events.length) };
 }
+function journeyAnswerColor(score) {
+  if (!Number.isFinite(score) || score < 0 || score > 1) return 'var(--muted)';
+  return score >= .7 ? 'var(--correct)' : score >= .4 ? 'var(--partial)' : 'var(--wrong)';
+}
 function journeyScope(questions, topic = null) {
   return journeyData(topic === null ? questions : questions.filter(q => q.topic === topic));
 }
@@ -37,7 +41,7 @@ function journeyCalendarDates(now = new Date()) {
     return { date, row: (date.getDay() + 6) % 7 + 2, column: Math.floor((offset + i) / 7) + 2 };
   });
 }
-if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay, journeyCalendarDates, journeyTopicCount, journeyScope };
+if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay, journeyCalendarDates, journeyTopicCount, journeyScope, journeyAnswerColor };
 if (typeof document !== 'undefined') {
   const dialog = document.getElementById('journey-dialog');
   const content = document.getElementById('journey-content');
@@ -105,16 +109,15 @@ if (typeof document !== 'undefined') {
     const end = latest.length ? Date.parse(latest.at(-1).at) : start;
     // Same-day sessions still span the chart; a single star sits at the center.
     const x = at => end === start ? 500 : 55 + (Date.parse(at) - start) / (end - start) * 890;
-    const color = q => ({ red: 'var(--wrong)', yellow: 'var(--partial)', green: 'var(--correct)' }[q.preparation] || 'var(--muted)');
     const stars = latest.map((event, i) => {
       const historical = !Object.hasOwn(event, 'score');
       const y = 140 + Math.sin(i * 2.39996) * (22 + (i % 13) * 5);
       const label = `${dateLabel(event.at)} · ${event.question.topic} · ${event.question.question}${historical ? ' · Älterer letzter Versuch' : ` · Bewertung: ${Math.round(event.score * 100)}%`}`;
-      return `<circle class="journey-star ${historical ? 'journey-legacy' : ''} ${topic !== null && event.question.topic !== topic ? 'journey-muted' : ''}" cx="${x(event.at)}" cy="${y}" r="${historical ? 3 : 4}" style="--star-color:${color(event.question)}" tabindex="0" role="img" aria-label="${escape(label)}" data-detail="${escape(label)}"><title>${escape(label)}</title></circle>`;
+      return `<circle class="journey-star ${historical ? 'journey-legacy' : ''} ${topic !== null && event.question.topic !== topic ? 'journey-muted' : ''}" cx="${x(event.at)}" cy="${y}" r="${historical ? 3 : 4}" style="--star-color:${journeyAnswerColor(event.score)}" tabindex="0" role="img" aria-label="${escape(label)}" data-detail="${escape(label)}"><title>${escape(label)}</title></circle>`;
     }).join('');
     const metrics = [[`${Math.round(coverage)}%`, topic === null ? 'des Feldes erkundet' : 'des Themas erkundet'], [number(explored), `von ${number(total)} Fragen`], [number(attempts), 'Antworten abgegeben'], [number(activeDays), 'dokumentierte Lerntage']];
     content.innerHTML = `<p class="journey-scope">${topic === null ? 'Statistik für alle Themen' : `Statistik für „${escape(topic || 'Ohne Thema')}“ · Andere Themen bleiben in den Diagrammen grau sichtbar.`}</p><div class="journey-metrics">${metrics.map(([value,label]) => `<div class="metric-box ${value === '0' || value === '0%' ? 'journey-empty-metric' : ''}"><span class="m-val">${value}</span><span class="m-lbl">${label}</span></div>`).join('')}</div>
-      <section class="journey-galaxy"><h3>Deine Spuren im Wissensraum</h3><p>Jeder Stern ist ein Versuch. Seine Farbe zeigt den heutigen Vorbereitungsstand der Frage. Wähle einen Stern für Details. ${topic === null ? '' : `„${escape(topic || 'Ohne Thema')}“ ist hervorgehoben; andere Themen bleiben grau sichtbar.`}</p>
+      <section class="journey-galaxy"><h3>Deine Spuren im Wissensraum</h3><p>Jeder Stern ist ein Versuch. Seine Farbe zeigt die Bewertung dieses Versuchs: Rot unter 40%, Gelb ab 40%, Grün ab 70%. Ältere Versuche ohne gespeicherte Bewertung bleiben neutral. Wähle einen Stern für Details. ${topic === null ? '' : `„${escape(topic || 'Ohne Thema')}“ ist hervorgehoben; andere Themen bleiben grau sichtbar.`}</p>
       <svg viewBox="0 0 1000 280" role="group" aria-label="Zeitachse deiner Versuche"><path d="M55 140 Q280 70 500 140 T945 140" fill="none" stroke="#b3a0de" stroke-opacity=".2"/>${stars}</svg>
       <div class="journey-axis"><span>${latest.length ? dateLabel(start) : 'Noch keine Versuche'}</span><span>${latest.length ? dateLabel(end) : ''}</span></div>
       <p id="journey-star-detail">${latest.length ? 'Dein Wissen hinterlässt Spuren.' : 'Dein erster beantworteter Versuch lässt hier einen Stern entstehen.'}</p></section>
