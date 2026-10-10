@@ -89,3 +89,20 @@ test('selected topic statistics use its question pool including legacy totals an
   assert.equal(journeyScope(questions, 'missing').total, 0);
   assert.equal(journeyData(questions).events.length, 2);
 });
+
+test('journey indicators reflect individual answer scores, not current preparation', () => {
+  const { journeyAnswerColor } = require('../static/journey.js');
+  assert.equal(journeyAnswerColor(0), 'var(--wrong)');
+  assert.equal(journeyAnswerColor(.39), 'var(--wrong)');
+  assert.equal(journeyAnswerColor(.4), 'var(--partial)');
+  assert.equal(journeyAnswerColor(.69), 'var(--partial)');
+  assert.equal(journeyAnswerColor(.7), 'var(--correct)');
+  assert.equal(journeyAnswerColor(1), 'var(--correct)');
+  for (const score of [undefined, null, '1', NaN, -1, 2]) {
+    assert.equal(journeyAnswerColor(score), 'var(--muted)');
+  }
+  const data = journeyData([{preparation:'green', progress:{attempts:2, history:[
+    {at:'2026-10-09T12:00:00Z', score:.2}, {at:'2026-10-10T12:00:00Z', score:1},
+  ]}}]);
+  assert.deepEqual(data.events.map(e => journeyAnswerColor(e.score)), ['var(--wrong)', 'var(--correct)']);
+});
