@@ -731,12 +731,16 @@ button.secondary:hover { background: #333c55; }
 .stats-explore-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 4px; }
 .stats-explore-actions button.secondary { width: 100%; min-width: 0; padding: 9px 5px; font-size: .65rem; white-space: normal; overflow-wrap: anywhere; min-height: 44px; }
 #journey-dialog {
-  width: min(1280px, calc(100vw - 32px)); max-width: none;
-  height: min(900px, calc(100dvh - 32px));
-  max-height: calc(100dvh - 32px); margin: auto; padding: 28px;
-  color: var(--text); border: 1px solid #756795; border-radius: 22px;
-  background: radial-gradient(ellipse at 85% 15%, #8561b52a, transparent 55%), var(--surface);
-  box-shadow: 0 24px 100px #0008; overflow: hidden;
+  inset: 0; margin: 0; width: 100vw; height: 100dvh; max-width: 100vw; max-height: 100dvh;
+  padding: calc(28px + env(safe-area-inset-top, 0px)) calc(28px + env(safe-area-inset-right, 0px)) calc(28px + env(safe-area-inset-bottom, 0px)) calc(28px + env(safe-area-inset-left, 0px));
+  color: var(--text); border: 0; border-radius: 0;
+  background:
+    radial-gradient(circle at 21px 53px, #c7dafa50 .7px, transparent 1.4px) 0 0 / 227px 193px,
+    radial-gradient(circle at 139px 93px, #e0ceff40 .8px, transparent 1.6px) 0 0 / 313px 269px,
+    radial-gradient(circle at 73px 171px, #b6d9ec30 .6px, transparent 1.3px) 0 0 / 419px 367px,
+    radial-gradient(ellipse at 65% 45%, #8960c533, transparent 65%),
+    radial-gradient(ellipse at 10% 85%, #4777a526, transparent 55%), #060c19;
+  overflow: hidden;
 }
 #journey-dialog[open] { display: flex; flex-direction: column; }
 #journey-dialog::backdrop { background: #080c19c9; backdrop-filter: blur(6px); }
@@ -749,17 +753,15 @@ button.secondary:hover { background: #333c55; }
 #journey-content > * { flex-shrink: 0; min-width: 0; }
 .journey-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .journey-metrics .m-val { font-size: 1.8rem; }
+.journey-metrics .metric-box { background: #101c2e66; border-color: #9aacc51c; box-shadow: 0 8px 28px #0002; }
 #journey-content h3 { font-size: 1rem; font-weight: 500; margin-bottom: 8px; }
 #journey-content p { font-size: .8rem; line-height: 1.6; color: var(--muted); }
 .journey-galaxy {
-  padding: 20px; border: 1px solid var(--border2); border-radius: 18px;
-  background: radial-gradient(circle at 21px 53px, #c7dafa50 .7px, transparent 1.4px) 0 0 / 227px 193px,
-    radial-gradient(circle at 139px 93px, #e0ceff40 .8px, transparent 1.6px) 0 0 / 313px 269px,
-    radial-gradient(ellipse at 50% 55%, #8960c53a, transparent 65%), #151c2c;
+  padding: 20px 0; border: 0; background: transparent;
 }
 .journey-galaxy svg, #journey-trend svg { width: 100%; display: block; }
 .journey-star { fill: var(--star-color); stroke: var(--star-color); filter: drop-shadow(0 0 4px var(--star-color)); cursor: pointer; }
-.journey-star.journey-legacy { fill: #151c2c; filter: none; }
+.journey-star.journey-legacy { fill: #060c19; filter: none; }
 .journey-star:focus, .journey-star:hover { stroke: #fff; stroke-width: 2; outline: none; }
 .journey-axis { display: flex; justify-content: space-between; gap: 12px; font: .65rem 'IBM Plex Mono', monospace; color: var(--muted); margin: 6px 0 12px; }
 #journey-star-detail { min-height: 2.6em; overflow-wrap: anywhere; }
@@ -786,10 +788,10 @@ button.secondary:hover { background: #333c55; }
 #journey-trend svg text { fill: var(--muted); font: 12px 'IBM Plex Mono', monospace; }
 .journey-note { border-top: 1px solid var(--border2); padding-top: 18px; }
 @media (max-width: 700px) {
-  #journey-dialog { padding: 18px; width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
+  #journey-dialog { padding: calc(18px + env(safe-area-inset-top, 0px)) calc(18px + env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) calc(18px + env(safe-area-inset-left, 0px)); }
   .journey-metrics, .journey-milestones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .journey-calendar { --calendar-cell: 14px; gap: 3px; }
-  .journey-galaxy { padding: 12px; }
+  .journey-galaxy { padding: 12px 0; }
   .journey-galaxy svg { min-height: 180px; }
 }
 /* Topic chips stay visible while the journey charts update. */
@@ -810,7 +812,6 @@ button.secondary:hover { background: #333c55; }
 .journey-empty-metric .m-val { color: var(--muted); }
 
 @media (max-width: 700px) {
-  #journey-dialog { height: calc(100dvh - 16px); }
   .journey-body { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 14px; }
   .journey-filter { overflow: visible; padding: 0; }
   #journey-topic { flex-direction: row; overflow-x: auto; padding: 3px 3px 10px; }
