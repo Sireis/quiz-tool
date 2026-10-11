@@ -63,6 +63,15 @@ def load_progress(field: str) -> dict:
     return _load_json(field, "progress.json")
 
 
+def load_goal(field: str) -> dict:
+    return _load_json(field, "goal.json")
+
+
+def save_goal(field: str, goal: dict) -> None:
+    with progress_transaction(field, ".goal.lock"):
+        _save_json(field, "goal.json", goal)
+
+
 def load_sets(field: str) -> dict:
     return _load_json(field, "sets.json")
 
@@ -220,6 +229,7 @@ def _update_attempt(entry: dict, correct: bool, score: float) -> None:
     if "history" not in entry:
         entry["history"] = []
         entry["historical_attempts"] = entry.get("attempts", 0)
+        entry["historical_last_result"] = entry.get("last_result")
         entry["historical_last_attempt"] = entry.get("last_attempt") or entry.get("last_seen")
     entry["history"].append({"at": timestamp, "correct": correct, "score": score})
     previous_streak = entry.get("streak", 0)

@@ -81,6 +81,7 @@ async function selectField(fieldId) {
     loadExamens(fieldId),
     loadSets(fieldId),
     loadBookmarks(fieldId),
+    refreshGoal(fieldId),
   ]);
 
   await Promise.all([refreshStats(), loadNextQuestion()]);
@@ -512,6 +513,7 @@ async function requestAnswerResult(endpoint, extraFields = {}, updateStats = fal
       question.progress = result.progress;
       document.getElementById('q-preparation').innerHTML = preparationIndicator(result.preparation);
       await refreshStats();
+      await refreshGoal(field);
     }
   } catch (error) {
     if (!isCurrentQuestion()) return;

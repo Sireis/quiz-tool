@@ -14,11 +14,50 @@
 
 <!-- ═══════════════ HEADER ════════════════════════════════ -->
 <header>
-  <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg>Trainer</span>
+  <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg><span class="brand-name">Trainer</span></span>
   <span class="header-sep">/</span>
   <div id="header-ctx">
     <span class="ctx-seg" id="hctx-field">–</span>
   </div>
+  <div class="goal-surface" id="header-goal" hidden>
+    <div id="header-goal-summary" aria-live="polite"></div>
+    <span id="goal-disabled-label" hidden>Lernziel ausgeblendet</span>
+    <button id="goal-toggle" type="button" aria-label="Lernziel-Tracker ausblenden" title="Lernziel-Tracker ausblenden" aria-pressed="true" aria-controls="header-goal-summary goal-card">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v9M6 5.5a8 8 0 1 0 12 0"/></svg>
+    </button>
+    <button id="goal-expand" type="button" aria-label="Lernziel aufklappen" title="Lernziel aufklappen" aria-expanded="false" aria-controls="goal-card">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 5 6 5 6-5M6 11l6 5 6-5M6 17l6 5 6-5"/></svg>
+    </button>
+  </div>
+  <section class="card goal-surface" id="goal-card" tabindex="-1" aria-labelledby="goal-heading" hidden>
+    <div class="goal-heading-row">
+      <div><h2 id="goal-heading">Lernziel</h2><p id="goal-field"></p></div>
+      <div class="goal-panel-actions">
+        <button class="secondary" id="goal-edit" type="button">Lernziel setzen</button>
+        <button class="secondary" id="goal-close" type="button" aria-label="Lernziel schließen">×</button>
+      </div>
+    </div>
+    <div id="goal-summary" aria-live="polite">Lade Lernziel…</div>
+    <form id="goal-form" hidden>
+      <div class="goal-inputs">
+        <label for="goal-date">Zieldatum<input id="goal-date" type="date" required></label>
+        <label for="goal-strategy">Lernrhythmus<select id="goal-strategy">
+          <option value="steady">Gleichmäßig</option>
+          <option value="increasing">Langsam steigern</option>
+          <option value="frontloaded">Mehr am Anfang</option>
+        </select></label>
+      </div>
+      <p class="goal-help" id="goal-strategy-help"></p>
+      <p id="goal-preview" role="status" aria-live="polite"></p>
+      <p class="goal-help">Das tägliche Pensum wird aus der nötigen Vorbereitung bis zum Zieldatum berechnet. Rot benötigt zwei richtige Antworten, Gelb eine, Grün keine. Fehler können zusätzlichen Aufwand bedeuten. Jede bewertete Antwort zählt, auch Wiederholungen; Antwort zeigen und Überspringen zählen nicht.</p>
+      <div class="btn-row">
+        <button class="primary" type="submit">Speichern</button>
+        <button class="secondary" id="goal-cancel" type="button">Abbrechen</button>
+        <button class="secondary" id="goal-delete" type="button" hidden>Lernziel entfernen</button>
+      </div>
+    </form>
+    <p id="goal-status" role="status" aria-live="polite"></p>
+  </section>
 </header>
 
 <!-- ═══════════════ SIDEBAR ══════════════════════════════ -->
@@ -137,6 +176,7 @@
       <button class="secondary" id="constellation-open" type="button">✦ Wissensnetz</button>
       <button class="secondary" id="journey-open" type="button">✧ Lernreise</button>
     </div>
+    <button class="secondary" id="goal-setup" type="button" aria-controls="goal-card" aria-expanded="false" disabled>Lernziel setzen</button>
   </div>
   <div id="stats-scroll">
     <div id="stats-loading"><div class="spinner"></div> Lade…</div>
@@ -216,6 +256,7 @@
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation-layout.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation.js') }}" defer></script>
+<script src="{{ url_for('static', filename='goals.js') }}" defer></script>
 <script src="{{ url_for('static', filename='trainer.js') }}" defer></script>
 <script src="{{ url_for('static', filename='selection-chatgpt.js') }}" defer></script>
 </body>
