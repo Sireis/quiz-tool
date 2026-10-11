@@ -10,6 +10,7 @@ from flask import Flask, abort, jsonify, render_template, request, send_from_dir
 from werkzeug.exceptions import HTTPException
 
 import assessor
+import learning_goals
 import question_store
 
 app = Flask(__name__)
@@ -53,6 +54,33 @@ def favicon():
 # ---------------------------------------------------------------------------
 # API routes
 # ---------------------------------------------------------------------------
+
+
+@app.get("/api/fields/<field>/goal")
+def api_goal(field: str):
+    return jsonify(learning_goals.get_goal(field, request.args.get("timezone", "UTC")))
+
+
+@app.get("/api/fields/<field>/goal/preview")
+def api_goal_preview(field: str):
+    return jsonify(learning_goals.preview_goal(
+        field, request.args.get("target_date"), request.args.get("strategy", "steady"),
+        request.args.get("timezone", "UTC")
+    ))
+
+
+@app.put("/api/fields/<field>/goal")
+def api_save_goal(field: str):
+    body = _request_body()
+    return jsonify(learning_goals.save_goal(
+        field, body.get("target_date"), body.get("strategy", "steady"), body.get("timezone", "UTC")
+    ))
+
+
+@app.delete("/api/fields/<field>/goal")
+def api_delete_goal(field: str):
+    learning_goals.delete_goal(field)
+    return jsonify({"goal": None})
 
 
 @app.get("/api/fields/<field>/question")
