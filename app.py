@@ -59,11 +59,22 @@ def favicon():
 def api_next_question(field: str):
     topic = request.args.get("topic")
     group_name = request.args.get("filter")
-    question = question_store.get_next_question(field, group_name, topic, request.args.get("subtopic"))
+    question = question_store.get_next_question(field, group_name, topic, request.args.get("subtopic"), request.args.get("filter_type"))
     progress = question_store.load_progress(field)
     if question is None:
         return jsonify({"error": "No questions available"}), 404
-    return jsonify(_question_view(question, progress.get(str(question["id"]), {})))
+    return jsonify(_question_view(question, progress.get(str(question["id"]), {}), question_store.load_bookmarks(field)))
+
+
+@app.post("/api/bookmark")
+def api_bookmark():
+    body = _request_body()
+    bookmarked = body.get("bookmarked")
+    if type(bookmarked) is not bool:
+        raise ValueError("Bookmarked must be a boolean")
+    question = _require_question(body.get("field"), body.get("id"))
+    question_store.set_bookmark(body["field"], question["id"], bookmarked)
+    return jsonify({"bookmarked": bookmarked})
 
 
 @app.post("/api/assess")
@@ -147,6 +158,16 @@ def api_sets(field: str):
     return jsonify(question_store.get_sets(field))
 
 
+@app.get("/api/fields/<field>/bookmarks")
+def api_bookmarks(field: str):
+    return jsonify(question_store.get_bookmarks(field))
+
+
+@app.get("/api/fields/<field>/bookmarks/<path:topic>/stats")
+def api_bookmark_stats(field: str, topic: str):
+    return jsonify(question_store.get_bookmark_stats(field, topic))
+
+
 @app.get("/api/fields/<field>/stats")
 def api_field_stats(field: str):
     return jsonify(question_store.get_field_stats(field))
@@ -171,8 +192,9 @@ def api_set_stats(field: str, set_name: str):
 def api_all_questions(field: str):
     """Return all questions with progress (for the progress overview)."""
     questions, progress = question_store.get_all_questions(field)
+    bookmarks = question_store.load_bookmarks(field)
     return jsonify([
-        _question_view(question, progress.get(str(question["id"]), {}))
+        _question_view(question, progress.get(str(question["id"]), {}), bookmarks)
         for question in questions
     ])
 
@@ -194,13 +216,14 @@ def _require_question(field: str, question_id: str | int) -> dict:
     return question
 
 
-def _question_view(question: dict, progress: dict) -> dict:
+def _question_view(question: dict, progress: dict, bookmarks: dict) -> dict:
     """Strip answer from the public question representation."""
     return {
         "id": question["id"],
         "topic": question["topic"],
         "subtopic": question.get("subtopic", ""),
         "question": question["question"],
+        "bookmarked": any(question["id"] in ids for ids in bookmarks.values()),
         "progress": progress,
         "preparation": question_store.get_question_preparation(progress),
     }

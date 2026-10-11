@@ -45,6 +45,11 @@
       <div class="sb-list" id="sets-list"></div>
     </div>
 
+    <div id="sb-bookmarks-section">
+      <div class="sb-section-label">Merkliste</div>
+      <div class="sb-list" id="bookmarks-list"></div>
+    </div>
+
   </div>
 </aside>
 <div id="sidebar-resizer" class="sidebar-resizer" role="separator" tabindex="0"
@@ -54,6 +59,9 @@
 <!-- ═══════════════ MAIN ══════════════════════════════════ -->
 <main>
   <div class="card" id="question-card">
+    <button class="secondary" id="bookmark-btn" type="button" aria-label="Für später merken" title="Für später merken" aria-pressed="false" onclick="toggleBookmark()" disabled>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z" /></svg>
+    </button>
     <div class="card-meta">
       <span id="q-topic">–</span>
       <span class="sep">·</span>
@@ -63,6 +71,7 @@
       <span id="q-preparation"></span>
     </div>
     <div id="question-text">Lade Frage…</div>
+    <span id="bookmark-status" role="status" aria-live="polite"></span>
   </div>
 
   <div class="answer-area">

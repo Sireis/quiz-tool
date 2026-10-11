@@ -232,6 +232,15 @@ main {
   word-break: break-word;
 }
 #question-text { font-size: 1.05rem; line-height: 1.7; }
+#question-card { position: relative; }
+#question-card .card-meta { padding-left: 30px; }
+#bookmark-btn { position: absolute; top: 10px; left: 10px; width: 32px; height: 32px; min-height: 32px; padding: 6px; display: grid; place-items: center; border: 0; background: transparent; color: #e9a05b; }
+#bookmark-btn:hover { color: #ffbb78; }
+#bookmark-btn svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+#bookmark-btn[aria-pressed="true"] svg { fill: currentColor; }
+#bookmark-btn[aria-pressed="true"] { color: #e9a05b; }
+#bookmark-status { font-size: .75rem; color: var(--muted); }
+#bookmark-status:empty { display: none; }
 
 .answer-area { display: flex; flex-direction: column; gap: 10px; width: 100%; min-width: 0; }
 textarea {
@@ -817,3 +826,6 @@ button.secondary:hover { background: #333c55; }
   #journey-topic { flex-direction: row; overflow-x: auto; padding: 3px 3px 10px; }
   .journey-topic-chip { flex: 0 0 auto; max-width: none; white-space: nowrap; border-radius: 999px; }
 }
+
+.sel-btn.type-bookmark.active { border-left: 2px solid #e9a05b; color: #e9a05b; }
+#stats-ctx-strip.ctx-bookmark { border-top: 2px solid #e9a05b; }
