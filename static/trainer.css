@@ -288,7 +288,7 @@ button.secondary:hover { border-color: var(--secondary-light); color: var(--seco
   font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px;
 }
-#expected-answer-text { font-size: 0.87rem; line-height: 1.6; color: var(--secondary-light); margin-bottom: 16px; }
+#expected-answer-text { font-size: 0.87rem; line-height: 1.6; color: var(--secondary-light); margin-bottom: 16px; white-space: pre-wrap; }
 
 #chatgpt-followup { margin-bottom: 18px; padding-top: 14px; border-top: 1px solid var(--border2); }
 #chatgpt-followup label { display: block; }
