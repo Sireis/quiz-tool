@@ -52,6 +52,70 @@ class QuizTests(unittest.TestCase):
             "/api/assess", json={"field": "test", "id": 1, "answer": "A"}
         )
 
+    def test_bookmarks_create_topic_sets_without_changing_progress(self):
+        bank = question_store.load_questions("test")
+        bank["questions"][1]["topic"] = "Other topic"
+        self._write_json(self.storage_root / "test" / "questions.json", bank)
+        original_progress = question_store.record_attempt("test", 1, True, 1)
+        for question_id in (1, 2, 1):
+            response = self.client.post("/api/bookmark", json={
+                "field": "test", "id": question_id, "bookmarked": True,
+            })
+            self.assertEqual(response.status_code, 200)
+        self.assertEqual(question_store.load_progress("test"), {"1": original_progress})
+        self.assertEqual(question_store.load_sets("test"), {"Exam / special": [1]})
+        self.assertEqual(question_store.load_bookmarks("test"), {"Topic": [1], "Other topic": [2]})
+        question = self.client.get("/api/fields/test/question", query_string={
+            "filter": "Topic", "filter_type": "bookmark",
+        }).get_json()
+        self.assertEqual(question["id"], 1)
+        self.assertTrue(question["bookmarked"])
+        self.assertTrue(all(q["bookmarked"] for q in
+                            self.client.get("/api/fields/test/questions").get_json()))
+        stats = question_store.get_bookmark_stats("test", "Topic")
+        self.assertEqual(stats["total"], 1)
+        self.client.post("/api/reveal-answer", json={"field": "test", "id": 1})
+        self.assertEqual(question_store.load_bookmarks("test")["Topic"], [1])
+        response = self.client.post("/api/bookmark", json={
+            "field": "test", "id": 1, "bookmarked": False,
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn("Topic", question_store.load_bookmarks("test"))
+        self.assertEqual(question_store.load_progress("test"), {"1": original_progress})
+        self.assertEqual(question_store._load_json("test", "sets.json"), {"Exam / special": [1]})
+
+    def test_bookmark_validation_and_name_collisions(self):
+        for value in (None, "true", 1):
+            response = self.client.post("/api/bookmark", json={
+                "field": "test", "id": 1, "bookmarked": value,
+            })
+            self.assertEqual(response.status_code, 400)
+        self.assertEqual(self.client.post("/api/bookmark", json={
+            "field": "test", "id": 999, "bookmarked": True,
+        }).status_code, 404)
+        self._write_json(self.storage_root / "test" / "sets.json", {"Für später · Topic": [2]})
+        question_store.set_bookmark("test", 1, True)
+        self.assertEqual(question_store.load_sets("test"), {"Für später · Topic": [2]})
+        self.assertEqual(question_store.load_bookmarks("test"), {"Topic": [1]})
+
+    def test_bookmark_migration_and_independent_groups(self):
+        path = self.storage_root / "test" / "bookmarks.json"
+        self._write_json(path, {"1": True, "2": False, "999": True})
+        self.assertEqual(question_store.load_bookmarks("test"), {"Topic": [1]})
+        self.assertEqual(json.loads(path.read_text()), {"Topic": [1]})
+        self._write_json(self.storage_root / "test" / "sets.json", {"Topic": [2]})
+        self.assertEqual(self.client.get("/api/fields/test/bookmarks").get_json(),
+                         [{"name": "Topic", "questions_count": 1}])
+        self.assertEqual(self.client.get("/api/fields/test/sets").get_json(),
+                         [{"name": "Topic", "questions_count": 1}])
+        for kind, expected in (("bookmark", 1), ("", 2)):
+            response = self.client.get("/api/fields/test/question", query_string={
+                "filter": "Topic", "filter_type": kind,
+            })
+            self.assertEqual(response.get_json()["id"], expected)
+        self.assertEqual(self.client.get("/api/fields/test/bookmarks/Topic/stats")
+                         .get_json()["total"], 1)
+
     def test_invalid_requests(self):
         invalid_bodies = [
             [],

@@ -80,6 +80,7 @@ async function selectField(fieldId) {
     loadTopics(fieldId),
     loadExamens(fieldId),
     loadSets(fieldId),
+    loadBookmarks(fieldId),
   ]);
 
   await Promise.all([refreshStats(), loadNextQuestion()]);
@@ -98,6 +99,7 @@ async function selectTopic(name) {
   }
   highlightSel('topic', sel.topic);
   highlightSel('set', null);
+  highlightSel('bookmark', null);
   highlightSel('examen', null);
   updateHeaderCtx();
   await Promise.all([refreshStats(), loadNextQuestion()]);
@@ -115,6 +117,7 @@ async function selectExamen(examen) {
   }
   highlightSel('examen', sel.examen?.name ?? null);
   highlightSel('set', null);
+  highlightSel('bookmark', null);
   highlightSel('topic', null);
   updateHeaderCtx();
   await Promise.all([refreshStats(), loadNextQuestion()]);
@@ -123,14 +126,15 @@ async function selectExamen(examen) {
 
 async function selectSet(set) {
   sel.subtopic = null;
-  if (sel.set?.name === set.name) {
+  if (sel.set?.name === set.name && !!sel.set.bookmark === !!set.bookmark) {
     sel.set = null;
   } else {
     sel.set    = set;
     sel.topic  = null;
     sel.examen = null;
   }
-  highlightSel('set', sel.set?.name ?? null);
+  highlightSel('set', sel.set?.bookmark ? null : sel.set?.name ?? null);
+  highlightSel('bookmark', sel.set?.bookmark ? sel.set.name : null);
   highlightSel('examen', null);
   highlightSel('topic', null);
   updateHeaderCtx();
@@ -184,6 +188,11 @@ async function loadSets(field) {
   let sets = [];
   try { sets = await fetch(`/api/fields/${field}/sets`).then(r => r.json()); } catch {}
   const list = document.getElementById('sets-list');
+  if (field !== sel.field) return;
+  if (sel.set && !sel.set.bookmark && !sets.some(s => s.name === sel.set.name)) {
+    sel.set = null;
+    updateHeaderCtx();
+  }
   list.innerHTML = '';
   if (!sets.length) {
     list.innerHTML = '<div style="font-size:0.72rem;color:var(--muted);padding:4px 8px;font-style:italic">Keine eigenen Sets</div>';
@@ -196,6 +205,31 @@ async function loadSets(field) {
       btn.querySelector('.sel-badge').textContent = s.questions_count + ' Fragen';
     list.appendChild(btn);
   });
+  highlightSel('set', sel.set?.bookmark ? null : sel.set?.name ?? null);
+  highlightSel('bookmark', sel.set?.bookmark ? sel.set.name : null);
+}
+
+async function loadBookmarks(field) {
+  const response = await fetch(`/api/fields/${encodeURIComponent(field)}/bookmarks`);
+  if (!response.ok) throw new Error('Merkliste konnte nicht geladen werden.');
+  const bookmarks = await response.json();
+  if (field !== sel.field) return;
+  if (sel.set?.bookmark && !bookmarks.some(s => s.name === sel.set.name)) {
+    sel.set = null;
+    updateHeaderCtx();
+  }
+  const list = document.getElementById('bookmarks-list');
+  list.innerHTML = '';
+  if (!bookmarks.length) {
+    list.innerHTML = '<div style="font-size:0.72rem;color:var(--muted);padding:4px 8px;font-style:italic">Keine gemerkten Fragen</div>';
+  }
+  bookmarks.forEach(s => {
+    const btn = mkSelBtn(s.name, s.name, 'bookmark', () => selectSet({ ...s, bookmark: true }));
+    btn.dataset.selKey = s.name;
+    btn.querySelector('.sel-badge').textContent = s.questions_count + ' Fragen';
+    list.appendChild(btn);
+  });
+  highlightSel('bookmark', sel.set?.bookmark ? sel.set.name : null);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -224,7 +258,7 @@ async function refreshStats() {
   const fieldStats = ctxType === 'field' ? stats : await fetch(`/api/fields/${encodeURIComponent(field)}/stats`).then(r => r.json());
   if (sel.field !== field) return;
   setSelectionPreparation('field', field, fieldStats.preparation.rating);
-  for (const [type, items] of [['topic', fieldStats.topics], ['set', fieldStats.sets], ['examen', fieldStats.examens]]) {
+  for (const [type, items] of [['topic', fieldStats.topics], ['set', fieldStats.sets], ['examen', fieldStats.examens], ['bookmark', fieldStats.bookmarks]]) {
     items.forEach(item => setSelectionPreparation(type, item.name, item.preparation.rating));
   }
 }
@@ -249,9 +283,9 @@ function resolveStatsCtx() {
     url: `/api/fields/${f}/examens/${encodeURIComponent(sel.examen.name)}/stats`,
   };
   if (sel.set) return {
-    ctxType: 'set',
+    ctxType: sel.set.bookmark ? 'bookmark' : 'set',
     ctxName: sel.set.name,
-    url: `/api/fields/${f}/sets/${encodeURIComponent(sel.set.name)}/stats`,
+    url: `/api/fields/${f}/${sel.set.bookmark ? 'bookmarks' : 'sets'}/${encodeURIComponent(sel.set.name)}/stats`,
   };
   if (sel.topic) return {
     ctxType: 'topic',
@@ -270,6 +304,7 @@ const CTX_LABELS = {
   topic:  'Thema',
   examen: 'Prüfungssatz',
   set:    'Eigenes Set',
+  bookmark: 'Merkliste',
 };
 
 function renderStats(s, ctxType, container) {
@@ -334,7 +369,7 @@ function renderStats(s, ctxType, container) {
     html += `</div>`;
   }
 
-  if ((ctxType === 'topic' || ctxType === 'set' || ctxType === 'examen') && s.questions?.length) {
+  if (['topic', 'set', 'examen', 'bookmark'].includes(ctxType) && s.questions?.length) {
     html += `<div>
       <div class="stats-section-label">Fragen</div>`;
     s.questions.forEach(q => {
@@ -371,6 +406,7 @@ function jumpToQuestion(qid) {
 async function loadNextQuestion() {
   const requestId = ++questionRequest;
   currentQuestion = null;
+  renderBookmark();
   document.getElementById('reveal-btn').disabled = true;
   setAnswerPending(false);
   resetResultCard();
@@ -395,12 +431,14 @@ function resolveQuestionUrl() {
   const topic  = sel.topic || '';
   return `/api/fields/${encodeURIComponent(f)}/question` +
          `?filter=${encodeURIComponent(filter)}` +
+         `&filter_type=${sel.set?.bookmark ? 'bookmark' : ''}` +
          `&topic=${encodeURIComponent(topic)}` +
          `&subtopic=${encodeURIComponent(sel.subtopic || '')}`;
 }
 
 function displayQuestion(q) {
   currentQuestion = q;
+  renderBookmark();
   document.getElementById('q-preparation').innerHTML = preparationIndicator(q.preparation);
   document.getElementById('reveal-btn').disabled = false;
   document.getElementById('q-topic').textContent    = q.topic;
@@ -408,6 +446,39 @@ function displayQuestion(q) {
   document.getElementById('q-id').textContent       = q.id;
   document.getElementById('question-text').textContent = q.question;
   document.getElementById('answer-input').focus();
+}
+
+function renderBookmark() {
+  const button = document.getElementById('bookmark-btn');
+  const bookmarked = currentQuestion?.bookmarked === true;
+  button.disabled = !currentQuestion;
+  button.setAttribute('aria-pressed', String(bookmarked));
+  const label = bookmarked ? 'Merkliste: Frage entfernen' : 'Für später merken';
+  button.setAttribute('aria-label', label);
+  button.title = label;
+  document.getElementById('bookmark-status').textContent = '';
+}
+
+async function toggleBookmark() {
+  if (!currentQuestion) return;
+  const question = currentQuestion;
+  const field = sel.field;
+  document.getElementById('bookmark-btn').disabled = true;
+  try {
+    const result = await postJson('/api/bookmark', {
+      field, id: question.id, bookmarked: !question.bookmarked,
+    });
+    question.bookmarked = result.bookmarked;
+    if (field !== sel.field) return;
+    if (currentQuestion === question) renderBookmark();
+    await loadBookmarks(field);
+    await refreshStats();
+  } catch (error) {
+    if (currentQuestion === question && field === sel.field) {
+      renderBookmark();
+      document.getElementById('bookmark-status').textContent = error.message;
+    }
+  }
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -593,7 +664,7 @@ async function copyChatGptPrompt() {
 }
 
 function highlightSel(type, activeKey) {
-  const listId = { field: 'fields-list', topic: 'topic-list', examen: 'examens-list', set: 'sets-list' }[type];
+  const listId = { field: 'fields-list', topic: 'topic-list', examen: 'examens-list', set: 'sets-list', bookmark: 'bookmarks-list' }[type];
   document.querySelectorAll(`#${listId} .sel-btn`).forEach(b => {
     b.classList.toggle('active', activeKey != null && b.dataset.selKey === activeKey);
   });

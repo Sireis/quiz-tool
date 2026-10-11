@@ -67,6 +67,37 @@ def load_sets(field: str) -> dict:
     return _load_json(field, "sets.json")
 
 
+def load_bookmarks(field: str) -> dict:
+    with progress_transaction(field, ".bookmarks.lock"):
+        groups = _load_json(field, "bookmarks.json")
+        # Convert the original ID-to-boolean format once, preserving saved questions.
+        if groups and all(type(value) is bool for value in groups.values()):
+            saved_ids = {int(key) for key, value in groups.items() if value}
+            groups = {}
+            for question in load_questions(field)["questions"]:
+                if question["id"] in saved_ids:
+                    groups.setdefault(question["topic"], []).append(question["id"])
+            _save_json(field, "bookmarks.json", groups)
+        return groups
+
+
+def set_bookmark(field: str, question_id: int, bookmarked: bool) -> None:
+    question = get_question_by_id(field, question_id)
+    if question is None:
+        raise ValueError("Unknown question ID")
+    # Migrate before taking the write lock (flock locks must not be nested).
+    load_bookmarks(field)
+    with progress_transaction(field, ".bookmarks.lock"):
+        groups = _load_json(field, "bookmarks.json")
+        for name in list(groups):
+            groups[name] = [qid for qid in groups[name] if qid != question_id]
+            if not groups[name]:
+                del groups[name]
+        if bookmarked:
+            groups.setdefault(question["topic"], []).append(question_id)
+        _save_json(field, "bookmarks.json", groups)
+
+
 def load_examens(field: str) -> dict:
     return _load_json(field, "examens.json")
 
@@ -79,10 +110,10 @@ def load_system_prompt(field: str) -> str:
 
 
 @contextmanager
-def progress_transaction(field: str):
+def progress_transaction(field: str, lock_filename: str = ".progress.lock"):
     """Lock the entire read-modify-write operation across threads and processes."""
     with _progress_lock:
-        with (field_path(field) / ".progress.lock").open("a") as lock:
+        with (field_path(field) / lock_filename).open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
             try:
                 yield
@@ -92,14 +123,18 @@ def progress_transaction(field: str):
 
 def save_progress(field: str, progress: dict) -> None:
     """Replace progress atomically; callers must lock read-modify-write operations."""
-    destination = field_path(field) / "progress.json"
+    _save_json(field, "progress.json", progress)
+
+
+def _save_json(field: str, filename: str, data: dict) -> None:
+    destination = field_path(field) / filename
     temporary_path = None
     try:
         with tempfile.NamedTemporaryFile(
             mode="w", encoding="utf-8", dir=destination.parent, delete=False
         ) as temporary_file:
             temporary_path = Path(temporary_file.name)
-            json.dump(progress, temporary_file, ensure_ascii=False, indent=2)
+            json.dump(data, temporary_file, ensure_ascii=False, indent=2)
             temporary_file.flush()
             os.fsync(temporary_file.fileno())
         os.replace(temporary_path, destination)
@@ -114,11 +149,11 @@ def get_all_questions(field: str) -> tuple[list[dict], dict]:
 
 def get_filtered_questions(
     field: str, group_name: str | None = None, topic: str | None = None,
-    subtopic: str | None = None,
+    subtopic: str | None = None, group_type: str | None = None,
 ) -> list[dict]:
     questions = load_questions(field)["questions"]
     if group_name:
-        groups = {**load_sets(field), **load_examens(field)}
+        groups = load_bookmarks(field) if group_type == "bookmark" else {**load_sets(field), **load_examens(field)}
         if group_name not in groups:
             raise ValueError("Unknown question set")
         questions_by_id = {question["id"]: question for question in questions}
@@ -146,10 +181,10 @@ def get_question_by_id(field: str, question_id: str | int) -> dict | None:
 
 def get_next_question(
     field: str, group_name: str | None = None, topic: str | None = None,
-    subtopic: str | None = None,
+    subtopic: str | None = None, group_type: str | None = None,
 ) -> dict | None:
     """Prioritize unanswered questions, then the lowest streak capped at two."""
-    questions = get_filtered_questions(field, group_name, topic, subtopic)
+    questions = get_filtered_questions(field, group_name, topic, subtopic, group_type)
     if not questions:
         return None
     progress = load_progress(field)
@@ -236,6 +271,14 @@ def get_sets(field: str) -> list[dict]:
     return _group_summaries(load_sets(field))
 
 
+def get_bookmarks(field: str) -> list[dict]:
+    return _group_summaries(load_bookmarks(field))
+
+
+def get_bookmark_stats(field: str, topic: str) -> dict:
+    return _filtered_stats(field, group_name=topic, group_type="bookmark")
+
+
 def get_examens(field: str) -> list[dict]:
     return _group_summaries(load_examens(field))
 
@@ -259,9 +302,9 @@ def get_topic_stats(field: str, topic: str, subtopic: str | None = None) -> dict
 
 def _filtered_stats(
     field: str, group_name: str | None = None, topic: str | None = None,
-    subtopic: str | None = None,
+    subtopic: str | None = None, group_type: str | None = None,
 ) -> dict:
-    questions = get_filtered_questions(field, group_name, topic, subtopic)
+    questions = get_filtered_questions(field, group_name, topic, subtopic, group_type)
     progress = load_progress(field)
     question_ids = [question["id"] for question in questions]
     stats = _calculate_stats(question_ids, progress)
@@ -405,7 +448,7 @@ def get_field_stats(field: str) -> dict:
             "preparation": topic_stats["preparation"],
         })
     stats["topics"] = topics
-    for key, groups in (("sets", load_sets(field)), ("examens", load_examens(field))):
+    for key, groups in (("sets", load_sets(field)), ("examens", load_examens(field)), ("bookmarks", load_bookmarks(field))):
         valid_ids = {question["id"] for question in questions}
         stats[key] = [
             {"name": name, "preparation": _preparation_summary([
