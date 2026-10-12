@@ -1348,6 +1348,307 @@
                 "Soziale Situation",
                 "Display Rules"
             ]
+        },
+        {
+            "id": 103,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Anlage und Umwelt",
+            "question": "Was bedeuten die Begriffe Anlage und Umwelt in der Entwicklungspsychologie?",
+            "answer": "Anlage bezeichnet biologisch bzw. genetisch bedingte Voraussetzungen eines Menschen; Umwelt umfasst die äußeren physischen und sozialen Bedingungen und Erfahrungen, die auf seine Entwicklung einwirken.",
+            "concepts": [
+                "Anlage",
+                "Umwelt"
+            ]
+        },
+        {
+            "id": 104,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Anlage und Umwelt",
+            "question": "Warum ist es irreführend, Anlage und Umwelt als voneinander unabhängige Ursachen der Entwicklung zu betrachten?",
+            "answer": "Entwicklung entsteht durch das Zusammenspiel biologischer Voraussetzungen und von Umwelteinflüssen; beide wirken nicht unabhängig voneinander.",
+            "concepts": [
+                "Anlage",
+                "Umwelt",
+                "Anlage-Umwelt-Interaktion"
+            ]
+        },
+        {
+            "id": 105,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Genom und Epigenetik",
+            "question": "Was bezeichnet der Begriff Genom?",
+            "answer": "Das Genom bezeichnet die Gesamtheit der genetischen Information eines Organismus.",
+            "concepts": [
+                "Genom"
+            ]
+        },
+        {
+            "id": 106,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Genom und Epigenetik",
+            "question": "Was bezeichnet Epigenetik im Zusammenhang mit Entwicklung?",
+            "answer": "Epigenetik beschreibt Veränderungen der Genaktivität, die beeinflussen, wie genetische Information wirksam wird, ohne die DNA-Sequenz selbst zu verändern.",
+            "concepts": [
+                "Epigenetik",
+                "Genaktivität",
+                "Genom"
+            ]
+        },
+        {
+            "id": 107,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Genom und Epigenetik",
+            "question": "Warum ist Epigenetik für die Frage nach dem Zusammenspiel von Anlage und Umwelt relevant?",
+            "answer": "Epigenetische Prozesse verdeutlichen, dass Umwelteinflüsse beeinflussen können, wie genetische Voraussetzungen wirksam werden, und damit Anlage und Umwelt miteinander verflochten sind.",
+            "concepts": [
+                "Epigenetik",
+                "Anlage",
+                "Umwelt",
+                "Anlage-Umwelt-Interaktion"
+            ]
+        },
+        {
+            "id": 108,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Anlage und Umwelt",
+            "question": "Welche entwicklungspsychologische Leitfrage veranschaulichen Befunde zur Schizophrenieentwicklung in Abhängigkeit vom Verwandtschaftsgrad?",
+            "answer": "Sie veranschaulichen die Frage nach dem Zusammenspiel genetischer Voraussetzungen und nichtgenetischer Einflüsse bei der Entwicklung.",
+            "concepts": [
+                "Schizophrenie",
+                "Verwandtschaftsgrad",
+                "Anlage",
+                "Umwelt",
+                "Anlage-Umwelt-Interaktion"
+            ]
+        },
+        {
+            "id": 109,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Anlage und Umwelt",
+            "question": "Warum widerlegen genetische Einflüsse auf die Schizophrenieentwicklung nicht die Bedeutung der Umwelt?",
+            "answer": "Ein genetischer Einfluss bedeutet keine vollständige genetische Festlegung; Entwicklung kann trotz genetischer Voraussetzungen zusätzlich von Umweltbedingungen beeinflusst werden.",
+            "concepts": [
+                "Schizophrenie",
+                "genetischer Einfluss",
+                "Umwelt",
+                "Anlage-Umwelt-Interaktion"
+            ]
+        },
+        {
+            "id": 110,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Das aktive Kind",
+            "question": "Was bedeutet die Vorstellung vom Kind als aktivem Mitgestalter seiner eigenen Entwicklung?",
+            "answer": "Kinder unterliegen Entwicklung nicht nur passiv, sondern beeinflussen durch ihr eigenes Verhalten, ihre Aufmerksamkeit und ihre Aktivitäten, welchen Erfahrungen sie ausgesetzt sind.",
+            "concepts": [
+                "aktives Kind",
+                "aktive Entwicklungsmitgestaltung"
+            ]
+        },
+        {
+            "id": 111,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Das aktive Kind",
+            "question": "Welche Beispiele verdeutlichen, dass Kinder ihre eigene Entwicklung aktiv mitgestalten können?",
+            "answer": "Beispiele sind das Aufmerksamkeits- und Blickverhalten von Säuglingen sowie Spiel, Fantasie und Symbolspiel von Kindern.",
+            "concepts": [
+                "aktives Kind",
+                "Aufmerksamkeit",
+                "Blickverhalten",
+                "Spiel",
+                "Fantasie",
+                "Symbolspiel"
+            ]
+        },
+        {
+            "id": 112,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Kontinuierliche und diskontinuierliche Entwicklung",
+            "question": "Was ist der Unterschied zwischen kontinuierlicher und diskontinuierlicher Entwicklung?",
+            "answer": "Kontinuierliche Entwicklung beschreibt allmähliche, quantitative Veränderungen, während diskontinuierliche Entwicklung qualitativ unterschiedliche Zustände oder Entwicklungsstufen annimmt.",
+            "concepts": [
+                "kontinuierliche Entwicklung",
+                "diskontinuierliche Entwicklung"
+            ]
+        },
+        {
+            "id": 113,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Kontinuierliche und diskontinuierliche Entwicklung",
+            "question": "Warum lässt sich die Frage, ob Entwicklung kontinuierlich oder diskontinuierlich verläuft, nicht allgemein mit nur einer der beiden Möglichkeiten beantworten?",
+            "answer": "Welche Form sichtbar wird, hängt vom betrachteten Entwicklungsbereich und von der theoretischen Perspektive ab; manche Veränderungen erscheinen kontinuierlich, andere lassen sich als qualitative Stufen beschreiben.",
+            "concepts": [
+                "kontinuierliche Entwicklung",
+                "diskontinuierliche Entwicklung",
+                "theoretische Perspektive"
+            ]
+        },
+        {
+            "id": 114,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Kontinuierliche und diskontinuierliche Entwicklung",
+            "question": "Warum sind Stufen- und Stadientheorien typische Beispiele für eine diskontinuierliche Sichtweise auf Entwicklung?",
+            "answer": "Sie nehmen qualitativ unterschiedliche Entwicklungsstufen an, zwischen denen nicht nur eine graduelle Zunahme derselben Fähigkeit stattfindet.",
+            "concepts": [
+                "diskontinuierliche Entwicklung",
+                "Stufentheorien",
+                "Stadientheorien"
+            ]
+        },
+        {
+            "id": 115,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Mengenkonstanz",
+            "question": "Was bedeutet Mengenkonstanz?",
+            "answer": "Mengenkonstanz bezeichnet das Verständnis, dass eine Menge trotz einer Veränderung ihres äußeren Erscheinungsbildes gleich bleibt.",
+            "concepts": [
+                "Mengenkonstanz",
+                "Invarianz"
+            ]
+        },
+        {
+            "id": 116,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Mengenkonstanz",
+            "question": "Wie funktioniert die Umschüttaufgabe zur Untersuchung der Mengenkonstanz?",
+            "answer": "Eine zunächst als gleich erkennbare Menge wird in ein anders geformtes Gefäß umgeschüttet. Geprüft wird, ob das Kind versteht, dass sich die Menge durch das Umschütten nicht verändert hat.",
+            "concepts": [
+                "Umschüttaufgabe",
+                "Mengenkonstanz",
+                "Invarianz"
+            ]
+        },
+        {
+            "id": 117,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Mengenkonstanz",
+            "question": "Ein Kind behauptet nach dem Umschütten derselben Flüssigkeitsmenge in ein höheres, schmaleres Gefäß, dass nun mehr Flüssigkeit vorhanden sei. Welches Konzept beherrscht es noch nicht zuverlässig?",
+            "answer": "Das Kind beherrscht die Mengenkonstanz noch nicht zuverlässig.",
+            "concepts": [
+                "Mengenkonstanz",
+                "Umschüttaufgabe"
+            ]
+        },
+        {
+            "id": 118,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Mengenkonstanz",
+            "question": "Warum eignet sich die Umschüttaufgabe zur Untersuchung qualitativer Veränderungen des kindlichen Denkens?",
+            "answer": "Sie prüft, ob ein Kind über das unmittelbar sichtbare Erscheinungsbild hinaus versteht, dass eine grundlegende Eigenschaft wie die Menge trotz äußerer Veränderung konstant bleibt.",
+            "concepts": [
+                "Umschüttaufgabe",
+                "Mengenkonstanz",
+                "qualitative Entwicklung",
+                "diskontinuierliche Entwicklung"
+            ]
+        },
+        {
+            "id": 119,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Soziokultureller Kontext",
+            "question": "Was versteht man unter dem soziokulturellen Kontext der Entwicklung?",
+            "answer": "Der soziokulturelle Kontext umfasst die sozialen und kulturellen Bedingungen, Werte, Normen und Praktiken, innerhalb derer Entwicklung stattfindet.",
+            "concepts": [
+                "soziokultureller Kontext",
+                "Werte",
+                "Normen",
+                "kulturelle Praktiken"
+            ]
+        },
+        {
+            "id": 120,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Sozioökonomischer Status",
+            "question": "Was bezeichnet der sozioökonomische Status?",
+            "answer": "Der sozioökonomische Status beschreibt die soziale und wirtschaftliche Position einer Person oder Familie und wird typischerweise anhand von Merkmalen wie Bildung, Beruf und Einkommen eingeordnet.",
+            "concepts": [
+                "sozioökonomischer Status"
+            ]
+        },
+        {
+            "id": 121,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Soziokultureller Kontext",
+            "question": "Wie verhält sich der soziokulturelle Kontext zur entwicklungspsychologischen Kategorie Umwelt?",
+            "answer": "Der soziokulturelle Kontext ist ein Bestandteil der Umwelt und umfasst insbesondere soziale und kulturelle Bedingungen, die auf Entwicklung einwirken.",
+            "concepts": [
+                "soziokultureller Kontext",
+                "Umwelt"
+            ]
+        },
+        {
+            "id": 122,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Soziokultureller Kontext",
+            "question": "Worin unterscheiden sich soziokultureller Kontext und sozioökonomischer Status?",
+            "answer": "Der soziokulturelle Kontext umfasst breit soziale und kulturelle Werte, Normen und Praktiken; der sozioökonomische Status bezeichnet spezifischer die soziale und wirtschaftliche Position einer Person oder Familie.",
+            "concepts": [
+                "soziokultureller Kontext",
+                "sozioökonomischer Status"
+            ]
+        },
+        {
+            "id": 123,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Soziokultureller Kontext",
+            "question": "Was verdeutlichen kulturelle Unterschiede bei Schlafarrangements von Kindern?",
+            "answer": "Sie verdeutlichen, dass kulturelle Werte und Normen beeinflussen, welche Verhaltensweisen und Entwicklungsbedingungen für Kinder üblich sind.",
+            "concepts": [
+                "Schlafarrangements",
+                "soziokultureller Kontext",
+                "kulturelle Variation"
+            ]
+        },
+        {
+            "id": 124,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Soziokultureller Kontext",
+            "question": "Warum wäre es problematisch, unterschiedliche Schlafarrangements verschiedener Kulturen allein als Ausdruck individueller Vorlieben der Eltern zu interpretieren?",
+            "answer": "Schlafarrangements stehen auch im Zusammenhang mit kulturellen Werten, Normen und Vorstellungen und müssen daher im jeweiligen soziokulturellen Kontext betrachtet werden.",
+            "concepts": [
+                "Schlafarrangements",
+                "soziokultureller Kontext",
+                "kulturelle Variation",
+                "Werte",
+                "Normen"
+            ]
+        },
+        {
+            "id": 125,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Deprivation und Entwicklung",
+            "question": "Welche entwicklungspsychologische Fragestellung wird am Beispiel von Kindern aus rumänischen Waisenhäusern untersucht?",
+            "answer": "Das Beispiel behandelt die Auswirkungen ausgeprägter Deprivation auf die Entwicklung und die Frage, in welchem Ausmaß solche Entwicklungsbeeinträchtigungen durch spätere günstigere Bedingungen überwunden werden können.",
+            "concepts": [
+                "Deprivation",
+                "rumänische Waisenhäuser",
+                "Umwelteinflüsse",
+                "Entwicklungsveränderung"
+            ]
+        },
+        {
+            "id": 126,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Anwendungsbezug entwicklungspsychologischer Forschung",
+            "question": "Warum sind Untersuchungen zu Zeugenaussagen von Kindern entwicklungspsychologisch relevant?",
+            "answer": "Sie zeigen, dass Kenntnisse über die Entwicklung kindlicher Fähigkeiten für praktische und gesellschaftlich bedeutsame Fragen genutzt werden können, etwa für die Beurteilung kindlicher Aussagen.",
+            "concepts": [
+                "Zeugenaussagen von Kindern",
+                "Anwendungsbezug",
+                "entwicklungspsychologische Forschung"
+            ]
+        },
+        {
+            "id": 127,
+            "topic": "Entwicklung von Kindern",
+            "subtopic": "Anlage und Umwelt",
+            "question": "Warum ist die Aussage „Ein Entwicklungsmerkmal ist entweder durch Anlage oder durch Umwelt verursacht“ eine problematische Vereinfachung?",
+            "answer": "Weil Entwicklung typischerweise aus dem Zusammenspiel genetischer Voraussetzungen und von Umweltbedingungen hervorgeht und diese Einflüsse nicht als strikt getrennte Alternativen verstanden werden sollten.",
+            "concepts": [
+                "Anlage",
+                "Umwelt",
+                "Anlage-Umwelt-Interaktion"
+            ]
         }
     ]
 }
