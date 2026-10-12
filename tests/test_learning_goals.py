@@ -41,6 +41,43 @@ class LearningGoalTests(unittest.TestCase):
     def progress(self, data):
         (self.root / "first" / "progress.json").write_text(json.dumps(data))
 
+    def test_answers_before_goal_setup_count_from_legacy_progress(self):
+        self.progress({
+            "1": {"attempts": 1, "correct": 1, "last_result": "correct",
+                  "last_attempt": "2026-10-12T09:00:00+00:00"},
+            "2": {"attempts": 1, "correct": 0, "last_seen": "2026-10-12T10:00:00+00:00"},
+            "3": {"attempts": 1, "correct": 1, "last_result": "correct",
+                  "last_attempt": "2026-10-11T09:00:00+00:00"},
+        })
+        goal = self.save().json["goal"]
+        self.assertEqual(goal["today_count"], 2)
+        self.assertEqual(goal["daily_target"], 2)
+        self.assertEqual(goal["daily_remaining"], 0)
+        self.assertTrue(goal["daily_complete"])
+
+    def test_legacy_answer_stays_counted_after_history_begins(self):
+        self.progress({"1": {"attempts": 1, "correct": 1, "streak": 1,
+                            "last_result": "correct",
+                            "last_attempt": "2026-10-12T09:00:00+00:00"}})
+        self.save()
+        with patch.object(question_store, "datetime") as clock:
+            clock.now.return_value = self.now
+            question_store.record_attempt("first", 1, True, 1)
+        goal = learning_goals.get_goal("first")["goal"]
+        self.assertEqual(goal["today_count"], 2)
+        self.assertEqual(goal["daily_target"], 2)
+        self.assertEqual(goal["daily_remaining"], 0)
+
+    def test_legacy_timestamp_is_not_counted_twice_and_respects_timezone(self):
+        entry = {"last_attempt": "2026-10-11T22:30:00+00:00", "last_result": "correct"}
+        local_now = self.now.astimezone(learning_goals.ZoneInfo("Europe/Berlin"))
+        events = learning_goals._dated_events(entry, local_now)
+        self.assertEqual(events[0][0].date(), local_now.date())
+        entry.update(history=[{"at": entry["last_attempt"], "correct": True}],
+                     historical_last_attempt=entry["last_attempt"],
+                     historical_last_result="correct")
+        self.assertEqual(len(learning_goals._dated_events(entry, local_now)), 1)
+
     def test_save_edit_delete_and_subject_isolation(self):
         self.assertIsNone(self.client.get("/api/fields/first/goal").json["goal"])
         self.assertEqual(self.save().status_code, 200)

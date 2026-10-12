@@ -61,6 +61,21 @@ def _dated_events(entry: dict, now: datetime) -> list[tuple[datetime, dict]]:
                 events.append((at.astimezone(now.tzinfo), event))
         except (KeyError, TypeError, ValueError):
             continue
+    # Legacy progress retains only its most recent answer. After migration,
+    # that timestamp is preserved separately from the new detailed history.
+    legacy_at = (entry.get("historical_last_attempt") if "history" in entry
+                 else entry.get("last_attempt") or entry.get("last_seen"))
+    legacy_result = (entry.get("historical_last_result") if "history" in entry
+                     else entry.get("last_result"))
+    if legacy_at:
+        try:
+            at = datetime.fromisoformat(legacy_at)
+            if at.tzinfo is not None:
+                at = at.astimezone(now.tzinfo)
+                if not any(existing_at == at for existing_at, _ in events):
+                    events.append((at, {"correct": legacy_result == "correct"}))
+        except (TypeError, ValueError):
+            pass
     return events
 
 

@@ -4,7 +4,7 @@ let goalField = null;
 let goalRequest = 0;
 let goalPreviewRequest = 0;
 let goalExpanded = false;
-let goalTrackerEnabled = true;
+let goalTrackerEnabled = false;
 const goalTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
 const GOAL_STRATEGIES = {
   steady: { label: 'Gleichmäßig', help: 'Verteile die nötige Übung möglichst gleichmäßig auf die verbleibenden Tage.' },
@@ -28,17 +28,20 @@ async function refreshGoal(field) {
   const id = ++goalRequest;
   if (goalField !== field) {
     goalField = field;
-    try { goalTrackerEnabled = localStorage.getItem(`trainer_goal_visible:${field}`) !== 'off'; }
-    catch { goalTrackerEnabled = true; }
+    try { goalTrackerEnabled = localStorage.getItem(`trainer_goal_visible:${field}`) === 'on'; }
+    catch { goalTrackerEnabled = false; }
     goalState = null;
     goalExpanded = false;
-    document.getElementById('header-goal').hidden = true;
+    document.getElementById('header-goal').hidden = false;
+    document.getElementById('header-goal-summary').hidden = true;
+    document.getElementById('goal-disabled-label').hidden = false;
+    document.getElementById('goal-disabled-label').textContent = 'Lernziel · Aus';
+    document.getElementById('goal-expand').hidden = true;
+    document.getElementById('goal-toggle').disabled = true;
+    document.getElementById('goal-toggle').setAttribute('aria-checked', 'false');
     document.getElementById('goal-expand').setAttribute('aria-expanded', 'false');
     document.getElementById('goal-card').hidden = true;
     document.getElementById('goal-form').hidden = true;
-    document.getElementById('goal-setup').hidden = false;
-    document.getElementById('goal-setup').disabled = true;
-    document.getElementById('goal-setup').setAttribute('aria-expanded', 'false');
     document.getElementById('goal-field').textContent = field;
     document.getElementById('goal-summary').textContent = 'Lade Lernziel…';
     document.getElementById('goal-edit').disabled = true;
@@ -48,12 +51,42 @@ async function refreshGoal(field) {
     const data = await goalJson(field);
     if (id !== goalRequest || sel.field !== field) return;
     goalState = data;
+    renderFieldGoalPreview(field, data);
     renderGoal();
   } catch (error) {
     if (id !== goalRequest || sel.field !== field) return;
     document.getElementById('goal-summary').textContent = 'Lernziel nicht verfügbar.';
     document.getElementById('goal-status').textContent = error.message;
   }
+}
+
+// Sidebar previews do not change the selected field or header preference.
+async function refreshFieldGoalPreview(field) {
+  try { renderFieldGoalPreview(field, await goalJson(field)); }
+  catch { /* Keep field selection available if a preview cannot be loaded. */ }
+}
+
+function fieldGoalPreview(goal) {
+  const celebration = goalCelebration(goal);
+  const percent = Math.min(100, celebration.percent);
+  const count = goal.daily_target > 0 ? `${goal.today_count}/${goal.daily_target}` : `+${goal.today_count}`;
+  const label = `Heute ${goal.today_count} Antworten, Tagesziel ${goal.daily_target}; ${goal.preparation_percent}% vorbereitet`;
+  return { tier: celebration.tier, label,
+    html: `<span class="field-goal-count">${count}<span class="field-goal-percent">${Math.round(celebration.percent)}%</span></span><span class="field-goal-bar" aria-hidden="true"><span style="width:${percent}%"></span></span>` };
+}
+
+function renderFieldGoalPreview(field, data) {
+  const button = [...document.querySelectorAll('#fields-list .sel-btn')]
+    .find(item => item.dataset.selKey === field);
+  const preview = button?.querySelector('.field-goal-preview');
+  if (!preview) return;
+  preview.hidden = !data.goal;
+  if (!data.goal) { preview.innerHTML = ''; return; }
+  const view = fieldGoalPreview(data.goal);
+  preview.dataset.tier = view.tier;
+  preview.title = view.label;
+  preview.setAttribute('aria-label', view.label);
+  preview.innerHTML = view.html;
 }
 
 function goalCelebration(goal) {
@@ -73,21 +106,20 @@ function renderGoal() {
   const card = document.getElementById('goal-card');
   const edit = document.getElementById('goal-edit');
   const form = document.getElementById('goal-form');
-  const setup = document.getElementById('goal-setup');
   card.hidden = !goalExpanded;
-  document.getElementById('header-goal').hidden = !goal;
-  document.getElementById('header-goal-summary').hidden = !goalTrackerEnabled;
-  document.getElementById('goal-disabled-label').hidden = goalTrackerEnabled;
-  document.getElementById('goal-expand').hidden = !goalTrackerEnabled;
+  document.getElementById('header-goal').hidden = false;
+  document.getElementById('header-goal').dataset.tier = 'off';
+  document.getElementById('header-goal-summary').hidden = !goalTrackerEnabled || !goal;
+  document.getElementById('goal-disabled-label').hidden = goalTrackerEnabled && !!goal;
+  document.getElementById('goal-disabled-label').textContent = goalTrackerEnabled ? 'Lernziel einrichten' : 'Lernziel · Aus';
+  document.getElementById('goal-expand').hidden = !goalTrackerEnabled || !goal;
   const toggle = document.getElementById('goal-toggle');
-  toggle.setAttribute('aria-pressed', String(goalTrackerEnabled));
-  const toggleLabel = goalTrackerEnabled ? 'Lernziel-Tracker ausblenden' : 'Lernziel-Tracker einblenden';
+  toggle.disabled = total === 0;
+  toggle.setAttribute('aria-checked', String(goalTrackerEnabled));
+  const toggleLabel = goalTrackerEnabled ? 'Lernziel-Tracker ausschalten' : 'Lernziel-Tracker einschalten';
   toggle.setAttribute('aria-label', toggleLabel);
   toggle.title = toggleLabel;
   document.getElementById('goal-expand').setAttribute('aria-expanded', String(goalExpanded));
-  setup.hidden = !!goal || goalExpanded;
-  setup.disabled = total === 0;
-  setup.setAttribute('aria-expanded', String(!card.hidden));
   edit.hidden = !goal;
   edit.disabled = total === 0;
   edit.textContent = goal ? 'Bearbeiten' : 'Lernziel setzen';
@@ -154,8 +186,6 @@ function openGoalForm() {
   goalExpanded = true;
   renderGoal();
   document.getElementById('goal-card').hidden = false;
-  document.getElementById('goal-setup').hidden = true;
-  document.getElementById('goal-setup').setAttribute('aria-expanded', 'true');
   form.dataset.field = sel.field;
   const dateInput = document.getElementById('goal-date');
   dateInput.min = today;
@@ -184,21 +214,31 @@ function toggleGoalDetails() {
   document.getElementById('goal-card').focus();
 }
 
+function setGoalTrackerEnabled(enabled) {
+  goalTrackerEnabled = enabled;
+  try { localStorage.setItem(`trainer_goal_visible:${sel.field}`, enabled ? 'on' : 'off'); }
+  catch { /* Storage is optional. */ }
+}
+
 function toggleGoalTracker() {
-  if (!goalState?.goal) return;
-  goalTrackerEnabled = !goalTrackerEnabled;
-  if (!goalTrackerEnabled) goalExpanded = false;
-  try { localStorage.setItem(`trainer_goal_visible:${sel.field}`, goalTrackerEnabled ? 'on' : 'off'); }
-  catch { /* The toggle still works when browser storage is unavailable. */ }
+  if (!goalState || goalState.total === 0) return;
+  setGoalTrackerEnabled(!goalTrackerEnabled);
+  if (!goalTrackerEnabled) {
+    goalExpanded = false;
+    document.getElementById('goal-form').hidden = true;
+  } else if (!goalState.goal) return openGoalForm();
   renderGoal();
 }
 
 function closeGoalDetails(restoreFocus = true) {
   if (!goalExpanded) return;
   goalExpanded = false;
-  if (!goalState?.goal) document.getElementById('goal-form').hidden = true;
+  if (!goalState?.goal) {
+    document.getElementById('goal-form').hidden = true;
+    setGoalTrackerEnabled(false);
+  }
   renderGoal();
-  if (restoreFocus) document.getElementById(goalState?.goal ? 'goal-expand' : 'goal-setup').focus();
+  if (restoreFocus) document.getElementById(goalState?.goal ? 'goal-expand' : 'goal-toggle').focus();
 }
 
 async function refreshGoalPreview() {
@@ -248,10 +288,7 @@ async function mutateGoal(remove = false) {
     if (sel.field !== field) return;
     form.hidden = true;
     goalExpanded = false;
-    if (!remove) {
-      goalTrackerEnabled = true;
-      try { localStorage.setItem(`trainer_goal_visible:${field}`, 'on'); } catch {}
-    }
+    setGoalTrackerEnabled(!remove);
     await refreshGoal(field);
     status.textContent = remove ? 'Lernziel entfernt.' : 'Lernziel gespeichert.';
     if (sel.field === field && !remove) document.getElementById('goal-expand').focus();
@@ -266,7 +303,6 @@ document.getElementById('goal-expand').onclick = toggleGoalDetails;
 document.getElementById('goal-toggle').onclick = toggleGoalTracker;
 document.getElementById('goal-close').onclick = () => closeGoalDetails();
 document.getElementById('goal-edit').onclick = openGoalForm;
-document.getElementById('goal-setup').onclick = openGoalForm;
 document.getElementById('goal-cancel').onclick = closeGoalForm;
 document.getElementById('goal-delete').onclick = () => mutateGoal(true);
 document.getElementById('goal-form').onsubmit = event => { event.preventDefault(); return mutateGoal(); };
@@ -283,5 +319,5 @@ document.addEventListener('keydown', event => {
   }
 });
 document.addEventListener('click', event => {
-  if (goalExpanded && !event.target.closest('#goal-card, #header-goal, #goal-setup')) closeGoalDetails(false);
+  if (goalExpanded && !event.target.closest('#goal-card, #header-goal')) closeGoalDetails(false);
 });
