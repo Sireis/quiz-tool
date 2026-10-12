@@ -58,6 +58,7 @@ async function init() {
     try {
       const stats = await fetch(`/api/fields/${encodeURIComponent(field)}/stats`).then(r => r.json());
       setSelectionPreparation('field', field, stats.preparation.rating);
+      await refreshFieldGoalPreview(field);
     } catch {}
   }));
 }
@@ -152,6 +153,10 @@ function renderFieldList(fields) {
   fields.forEach(f => {
     const btn = mkSelBtn(f, f, 'field', () => selectField(f));
     btn.dataset.selKey = f;
+    const preview = document.createElement('span');
+    preview.className = 'field-goal-preview';
+    preview.hidden = true;
+    btn.appendChild(preview);
     list.appendChild(btn);
   });
 }

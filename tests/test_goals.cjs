@@ -4,7 +4,7 @@ const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 const vm = require('node:vm');
 
-function setup(storage = new Map()) {
+function setup(storage = new Map([['trainer_goal_visible:first', 'on'], ['trainer_goal_visible:second', 'on']])) {
   const elements = new Map();
   const events = {};
   const element = id => {
@@ -43,7 +43,7 @@ const status = (overrides = {}) => ({
 test('creating and editing a goal uses the whole subject and preserves a draft on failure', async () => {
   const app = setup();
   await app.context.refreshGoal('first');
-  await app.element('goal-setup').onclick();
+  await app.context.openGoalForm();
   assert.equal(app.element('goal-form').hidden, false);
   assert.equal(app.element('goal-date').value, '2026-11-11');
   assert.equal(app.element('goal-strategy').value, 'steady');
@@ -67,26 +67,23 @@ test('creating and editing a goal uses the whole subject and preserves a draft o
   assert.equal(app.element('save').disabled, false);
 });
 
-test('without a goal the tracker is hidden and canceling setup keeps it inactive', async () => {
+test('without a goal the header remains visible and canceling setup keeps it inactive', async () => {
   const app = setup();
   await app.context.refreshGoal('first');
   assert.equal(app.element('goal-card').hidden, true);
-  assert.equal(app.element('header-goal').hidden, true);
-  assert.equal(app.element('goal-setup').hidden, false);
-  assert.equal(app.element('goal-setup').disabled, false);
-  await app.element('goal-setup').onclick();
+  assert.equal(app.element('header-goal').hidden, false);
+  await app.context.openGoalForm();
   assert.equal(app.element('goal-card').hidden, false);
   assert.equal(app.element('goal-form').hidden, false);
   app.element('goal-cancel').onclick();
   assert.equal(app.element('goal-card').hidden, true);
-  assert.equal(app.element('goal-setup').hidden, false);
   assert.equal(app.calls.some(call => call.options?.method === 'PUT'), false);
 });
 
 test('saving an optional goal shows the tracker automatically without another activation step', async () => {
   const app = setup();
   await app.context.refreshGoal('first');
-  await app.element('goal-setup').onclick();
+  await app.context.openGoalForm();
   let saved = false;
   app.context.fetch = async (url, options) => {
     if (options?.method === 'PUT') saved = true;
@@ -97,7 +94,6 @@ test('saving an optional goal shows the tracker automatically without another ac
   assert.equal(app.element('goal-card').hidden, true);
   assert.equal(app.element('header-goal').hidden, false);
   assert.equal(app.element('goal-form').hidden, true);
-  assert.equal(app.element('goal-setup').hidden, true);
   assert.equal(app.element('goal-edit').hidden, false);
   assert.doesNotMatch(app.element('goal-summary').innerHTML, /goal-start/);
 });
@@ -147,7 +143,7 @@ test('a delayed response from another subject cannot replace the current goal', 
   assert.equal(app.run('goalField'), 'second');
 });
 
-test('deleting a goal removes the tracker and leaves normal selection available', async () => {
+test('deleting a goal switches off the tracker and leaves normal selection available', async () => {
   const app = setup();
   app.context.fetch = async () => ({ ok: true, json: async () => status() });
   await app.context.refreshGoal('first');
@@ -164,7 +160,6 @@ test('deleting a goal removes the tracker and leaves normal selection available'
   assert.equal(app.element('goal-card').dataset.tier, 'empty');
   assert.equal(app.element('goal-form').hidden, true);
   assert.equal(app.element('goal-card').hidden, true);
-  assert.equal(app.element('goal-setup').hidden, false);
 });
 
 test('changing the rhythm updates the preview without saving a goal', async () => {
@@ -282,8 +277,7 @@ test('Escape, outside clicks and changing fields close details without stopping 
   app.context.fetch = async () => ({ ok: true, json: async () => ({ goal: null, total: 20, today: '2026-10-12' }) });
   await app.context.refreshGoal('second');
   assert.equal(app.element('goal-card').hidden, true);
-  assert.equal(app.element('header-goal').hidden, true);
-  assert.equal(app.element('goal-setup').hidden, false);
+  assert.equal(app.element('header-goal').hidden, false);
 });
 
 test('the header toggle hides the tracker and panel while preserving the saved goal', async () => {
@@ -296,14 +290,14 @@ test('the header toggle hides the tracker and panel while preserving the saved g
   assert.equal(app.element('header-goal-summary').hidden, true);
   assert.equal(app.element('goal-card').hidden, true);
   assert.equal(app.element('goal-expand').hidden, true);
-  assert.equal(app.element('goal-toggle').attrs['aria-pressed'], 'false');
+  assert.equal(app.element('goal-toggle').attrs['aria-checked'], 'false');
   assert.equal(app.run('goalState.goal.strategy'), 'steady');
   await app.context.refreshGoal('first');
   assert.equal(app.element('header-goal-summary').hidden, true);
   app.element('goal-toggle').onclick();
   assert.equal(app.element('header-goal-summary').hidden, false);
   assert.equal(app.element('goal-expand').hidden, false);
-  assert.equal(app.element('goal-toggle').attrs['aria-pressed'], 'true');
+  assert.equal(app.element('goal-toggle').attrs['aria-checked'], 'true');
 });
 
 test('tracker visibility is remembered independently for each field and after reload', async () => {
@@ -323,4 +317,44 @@ test('tracker visibility is remembered independently for each field and after re
   assert.equal(reloaded.element('header-goal-summary').hidden, true);
   reloaded.element('goal-toggle').onclick();
   assert.equal(reloaded.storage.get('trainer_goal_visible:first'), 'on');
+});
+
+
+test('fresh preferences default off, and the switch opens setup or shows a saved goal', async () => {
+  const app = setup(new Map());
+  await app.context.refreshGoal('first');
+  assert.equal(app.element('header-goal').hidden, false);
+  assert.equal(app.element('goal-toggle').attrs['aria-checked'], 'false');
+  await app.element('goal-toggle').onclick();
+  assert.equal(app.element('goal-form').hidden, false);
+  assert.equal(app.element('goal-toggle').attrs['aria-checked'], 'true');
+  app.element('goal-cancel').onclick();
+  assert.equal(app.element('goal-toggle').attrs['aria-checked'], 'false');
+  assert.equal(app.element('goal-toggle').focused, true);
+  app.context.fetch = async () => ({ ok: true, json: async () => status() });
+  await app.context.refreshGoal('first');
+  assert.equal(app.element('header-goal-summary').hidden, true);
+  app.element('goal-toggle').onclick();
+  assert.equal(app.element('header-goal-summary').hidden, false);
+  assert.equal(app.element('goal-card').hidden, true);
+});
+
+test('the template provides an accessible sliding switch and no sidebar setup button', () => {
+  const html = readFileSync(join(__dirname, '../templates/index.html'), 'utf8');
+  assert.match(html, /id="goal-toggle"[^>]*role="switch"[^>]*aria-checked="false"/);
+  assert.match(html, /goal-switch-thumb/);
+  assert.doesNotMatch(html, /id="goal-setup"/);
+});
+
+test('field quick views show daily counts, bonus tiers and capped progress', () => {
+  const app = setup();
+  const view = app.context.fieldGoalPreview(status({today_count: 20}).goal);
+  assert.equal(view.tier, 'rainbow');
+  assert.match(view.html, /20\/10/);
+  assert.match(view.html, /200%/);
+  assert.match(view.html, /width:100%/);
+  assert.match(view.label, /40% vorbereitet/);
+  const bonus = app.context.fieldGoalPreview(status({daily_target: 0, today_count: 5}).goal);
+  assert.match(bonus.html, /\+5/);
+  assert.doesNotMatch(bonus.html, /NaN|Infinity/);
 });
