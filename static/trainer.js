@@ -359,10 +359,10 @@ function renderStats(s, ctxType, container) {
 
   html += `<div class="preparation-summary">
     <div class="stats-section-label">Vorbereitung</div>
-    <div>${ctxType === 'field' ? fieldPreparationChart(s.topics) : ctxType === 'topic' ? preparationBar(s.preparation.counts) : topicPreparationChart(s.preparation.counts)}</div>
+    ${ctxType === 'topic' ? preparationBar(s.preparation.counts) : ''}
     <div class="preparation-counts">${['red', 'yellow', 'green'].map(color =>
       `<span>${preparationIndicator(color)} ${s.preparation.counts[color]}</span>`).join('')}</div>
-    <div class="preparation-help">Rot: noch keine richtige Antwort. Gelb: einmal richtig oder zuletzt falsch. Grün: mindestens zweimal richtig und zuletzt richtig. ${ctxType === 'field' ? 'Der Ring zeigt die Farbverteilung der Themen. Unterthemen werden nicht separat gezählt. Die schwächste Frage bestimmt die Farbe eines Themas.' : ctxType === 'topic' ? 'Der Balken zeigt die Farbverteilung der Fragen.' : 'Der Ring zeigt die Farbverteilung der Fragen.'}</div>
+    <div class="preparation-help">Rot: noch keine richtige Antwort. Gelb: einmal richtig oder zuletzt falsch. Grün: mindestens zweimal richtig und zuletzt richtig. ${ctxType === 'topic' ? 'Der Balken zeigt die Farbverteilung der Fragen.' : ''}</div>
   </div>`;
 
   html += `<div class="metric-grid">
