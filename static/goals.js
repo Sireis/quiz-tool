@@ -175,7 +175,7 @@ function renderGoal() {
       <div class="goal-preparation-bar" role="progressbar" aria-label="Gut vorbereitete Fragen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${goal.preparation_percent}">${segments}</div>
       <div class="goal-preparation-legend"><span><i class="goal-dot-red"></i>${counts.red} offen</span><span><i class="goal-dot-yellow"></i>${counts.yellow} in Übung</span><span><i class="goal-dot-green"></i>${counts.green} sicher</span></div>
     </div>
-    <p class="goal-help">${goal.complete ? 'Alle Fragen sind gut vorbereitet. Wiederholen festigt dein Wissen.' : goal.days_remaining <= 0 ? 'Noch offene Fragen: Passe dein Zieldatum an oder übe weiter.' : 'Grün: mindestens zweimal richtig und zuletzt richtig.'} Dein Tagesziel bleibt heute fest; dein Fortschritt fließt in das Pensum der nächsten Tage ein.</p>`;
+    <p class="goal-help">${goal.complete ? 'Alle Fragen sind gut vorbereitet. Wiederholen festigt dein Wissen.' : goal.days_remaining <= 0 ? 'Noch offene Fragen: Passe dein Zieldatum an oder übe weiter.' : 'Grün: mindestens zweimal richtig und zuletzt richtig.'} Dein Lerntag beginnt um 06:00 Uhr. Dein Tagesziel bleibt heute fest; dein Fortschritt fließt in das Pensum der nächsten Tage ein.</p>`;
 }
 
 function openGoalForm() {

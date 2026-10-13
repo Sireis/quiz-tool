@@ -1,7 +1,7 @@
 """One subject-wide learning goal, independent of grading and bookmarks."""
 
 import math
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import question_store
@@ -79,14 +79,19 @@ def _dated_events(entry: dict, now: datetime) -> list[tuple[datetime, dict]]:
     return events
 
 
+def _study_day(at: datetime) -> date:
+    """Group local timestamps into study days without changing stored dates."""
+    return at.date() - timedelta(days=at.hour < 6)
+
+
 def _entry_at_day_start(entry: dict, now: datetime) -> dict:
     events = _dated_events(entry, now)
-    today = [event for at, event in events if at.date() == now.date()]
+    today = [event for at, event in events if _study_day(at) == _study_day(now)]
     if not today:
         return entry
     attempts = max(0, entry.get("attempts", 0) - len(today))
     correct = max(0, entry.get("correct", 0) - sum(event.get("correct") is True for event in today))
-    before = [(at, event) for at, event in events if at.date() < now.date()]
+    before = [(at, event) for at, event in events if _study_day(at) < _study_day(now)]
     if before:
         last_result = "correct" if max(before, key=lambda item: item[0])[1].get("correct") else "incorrect"
     else:
@@ -103,15 +108,16 @@ def _remaining_work(entry: dict) -> int:
 
 
 def _goal_view(goal: dict, questions: list[dict], progress: dict, now: datetime) -> dict:
+    today = _study_day(now)
     entries = [progress.get(str(question["id"]), {}) for question in questions]
     remaining_work = sum(_remaining_work(entry) for entry in entries)
     prepared = sum(question_store.get_question_preparation(entry) == "green" for entry in entries)
-    today_count = sum(at.date() == now.date() for entry in entries for at, _ in _dated_events(entry, now))
+    today_count = sum(_study_day(at) == _study_day(now) for entry in entries for at, _ in _dated_events(entry, now))
     day_start_work = sum(_remaining_work(_entry_at_day_start(entry, now)) for entry in entries)
-    days_remaining = (date.fromisoformat(goal["target_date"]) - now.date()).days
+    days_remaining = (date.fromisoformat(goal["target_date"]) - today).days
     days = max(1, days_remaining + 1)  # Today and the target date are study days.
     strategy = goal.get("strategy", "steady")  # Original manually configured goals still work.
-    age = max(1, (now.date() - date.fromisoformat(goal.get("start_date", now.date().isoformat()))).days + 1)
+    age = max(1, (today - date.fromisoformat(goal.get("start_date", today.isoformat()))).days + 1)
     if strategy == "increasing":
         weight, total_weight = age, days * (2 * age + days - 1) // 2
     elif strategy == "frontloaded":

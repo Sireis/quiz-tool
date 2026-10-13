@@ -118,14 +118,14 @@ class LearningGoalTests(unittest.TestCase):
         self.assertEqual(goal["today_count"], 2)
         self.assertTrue(goal["daily_complete"])
         self.assertEqual(goal["days_remaining"], 0)
-        with patch.object(learning_goals, "_now", return_value=datetime(2026, 10, 14, tzinfo=timezone.utc)):
+        with patch.object(learning_goals, "_now", return_value=datetime(2026, 10, 14, 12, tzinfo=timezone.utc)):
             goal = learning_goals.get_goal("first")["goal"]
             self.assertEqual(goal["days_remaining"], -2)
             self.assertEqual(goal["today_count"], 0)
 
     def test_local_day_boundary_and_timezone_validation(self):
-        # 22:30 UTC on the 11th is 00:30 on the 12th in Berlin.
-        self.progress({"1": {"history": [{"at": "2026-10-11T22:30:00+00:00"}]}})
+        # 04:30 UTC is 06:30 in Berlin: the new study day has begun there.
+        self.progress({"1": {"history": [{"at": "2026-10-12T04:30:00+00:00"}]}})
         self.save()
         with patch.object(learning_goals, "_now", wraps=lambda name: self.now.astimezone(
                 learning_goals.ZoneInfo(name))):
@@ -136,6 +136,39 @@ class LearningGoalTests(unittest.TestCase):
             self.assertEqual(self.client.get("/api/fields/first/goal?timezone=Unknown/Zone").status_code, 400)
 
     _real_now = staticmethod(learning_goals._now)
+
+    def test_goal_rolls_over_at_six_without_changing_stored_dates(self):
+        self.save()
+        self.progress({"1": {"attempts": 2, "correct": 2, "last_result": "correct", "history": [
+            {"at": "2026-10-12T21:00:00+00:00", "correct": True},
+            {"at": "2026-10-13T03:59:59+00:00", "correct": True},
+        ]}})
+        progress_path = self.root / "first" / "progress.json"
+        goal_path = self.root / "first" / "goal.json"
+        originals = [path.read_bytes() for path in (progress_path, goal_path)]
+        zone = learning_goals.ZoneInfo("Europe/Berlin")
+        with patch.object(learning_goals, "_now", return_value=datetime(2026, 10, 13, 5, 59, 59, tzinfo=zone)):
+            before = learning_goals.get_goal("first", "Europe/Berlin")["goal"]
+        with patch.object(learning_goals, "_now", return_value=datetime(2026, 10, 13, 6, tzinfo=zone)):
+            after = learning_goals.get_goal("first", "Europe/Berlin")["goal"]
+        self.assertEqual(before["today_count"], 2)
+        self.assertEqual(before["daily_target"], 2)
+        self.assertEqual(before["days_remaining"], 3)
+        self.assertEqual(after["today_count"], 0)
+        self.assertEqual(after["days_remaining"], 2)
+        self.assertEqual(after["daily_target"], 2)
+        self.assertEqual([path.read_bytes() for path in (progress_path, goal_path)], originals)
+
+    def test_study_day_handles_dst_and_year_boundaries(self):
+        zone = learning_goals.ZoneInfo("Europe/Berlin")
+        for year, month, day, previous in (
+            (2026, 1, 1, "2025-12-31"),
+            (2026, 3, 29, "2026-03-28"),
+            (2026, 10, 25, "2026-10-24"),
+        ):
+            self.assertEqual(learning_goals._study_day(datetime(year, month, day, 5, 59, tzinfo=zone)).isoformat(), previous)
+            at_six = datetime(year, month, day, 6, tzinfo=zone)
+            self.assertEqual(learning_goals._study_day(at_six), at_six.date())
 
     def test_normal_practice_remains_available_after_goal_completion(self):
         self.save(target_date="2026-10-19")
@@ -208,7 +241,7 @@ class LearningGoalTests(unittest.TestCase):
         self.assertEqual(goal["daily_target"], 2)
         self.assertEqual(goal["remaining_work"], 8)
         self.assertEqual(goal["daily_remaining"], 1)
-        with patch.object(learning_goals, "_now", return_value=datetime(2026, 10, 14, tzinfo=timezone.utc)):
+        with patch.object(learning_goals, "_now", return_value=datetime(2026, 10, 14, 12, tzinfo=timezone.utc)):
             self.assertEqual(learning_goals.get_goal("first")["goal"]["daily_target"], 4)
 
     def test_preview_is_read_only_and_original_goal_dates_are_preserved(self):
