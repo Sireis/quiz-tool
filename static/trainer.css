@@ -629,7 +629,7 @@ button.secondary:hover { background: #333c55; }
 .preparation-dot, .pdot:not(.none) {
   background: color-mix(in srgb, var(--signal-color) 92%, var(--panel));
   border: 1px solid var(--signal-color);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--signal-color) 45%, transparent);
+  box-shadow: 0 0 3px color-mix(in srgb, var(--signal-color) 75%, transparent), 0 0 10px color-mix(in srgb, var(--signal-color) 55%, transparent);
 }
 .preparation-segment { background: color-mix(in srgb, var(--signal-color) 85%, var(--panel)); }
 .preparation-bar, .big-bar-wrap { background: #ffffff0a; }
@@ -686,9 +686,9 @@ button.secondary:hover { background: #333c55; }
 .topic-cloud { pointer-events: none; }
 .topic-cloud ellipse { opacity: .7; }
 .island-unattempted { --island-fill: .05; --island-border: .55; --island-stroke: 1; --island-glow: 0px; }
-.island-red { --island-fill: .1; --island-border: .7; --island-stroke: 1; --island-glow: 2px; }
-.island-yellow { --island-fill: .28; --island-border: .9; --island-stroke: 1.2; --island-glow: 6px; }
-.island-green { --island-fill: .55; --island-border: 1; --island-stroke: 1.7; --island-glow: 10px; }
+.island-red { --island-fill: .1; --island-border: .7; --island-stroke: 1; --island-glow: 3px; }
+.island-yellow { --island-fill: .28; --island-border: .9; --island-stroke: 1.2; --island-glow: 8px; }
+.island-green { --island-fill: .55; --island-border: 1; --island-stroke: 1.7; --island-glow: 12px; }
 .constellation-links path { fill: none; stroke: var(--link-color); stroke-opacity: .17; stroke-width: .7; vector-effect: non-scaling-stroke; pointer-events: none; }
 .concept-line { fill: none; stroke: #ad9bc7; stroke-opacity: .3; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; pointer-events: none; }
 .concept-line.concept-link-active { stroke: #d3bcff; stroke-opacity: .9; stroke-dasharray: none; }
@@ -971,3 +971,28 @@ header:has(#header-goal[hidden]) #header-ctx { grid-column: 3 / 6; }
 .field-goal-preview:is([data-tier="rainbow"], [data-tier="aurora"]) { --preview-color: #ffb4de; }
 .field-goal-preview:is([data-tier="rainbow"], [data-tier="aurora"]) .field-goal-bar > span { background: linear-gradient(90deg, #ffb4de, #dac0ff, #7ad5ff, #78f0c7); }
 .field-goal-preview[data-tier="aurora"] { filter: drop-shadow(0 0 5px #cfa3ff90); }
+
+/* Compact topic distribution rings keep field names aligned. */
+.field-preparation-chart { display: inline-flex; width: 20px; height: 20px; vertical-align: middle; flex-shrink: 0; }
+.field-preparation-chart svg { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+.field-preparation-chart circle { fill: none; stroke-width: 3; }
+/* A dark outline separates the solid ring from its soft halo. */
+.field-preparation-chart .field-ring-track { stroke: #101522; stroke-width: 4.5; }
+.field-ring-green { stroke: var(--correct); --signal-color: var(--correct); }
+.field-ring-yellow { stroke: var(--partial); --signal-color: var(--partial); }
+.field-ring-red { stroke: var(--wrong); --signal-color: var(--wrong); }
+.sel-btn .sel-preparation { display: flex; align-items: center; flex: 0 0 20px; width: 20px; }
+
+.field-preparation-chart circle:not(.field-ring-track) {
+  stroke: color-mix(in srgb, var(--signal-color) 88%, white);
+  filter: drop-shadow(0 0 2.5px color-mix(in srgb, var(--signal-color) 50%, transparent));
+}
+.preparation-segment { box-shadow: 0 0 7px color-mix(in srgb, var(--signal-color) 55%, transparent); }
+.goal-dot-red { --signal-color: #d99cbd; }
+.goal-dot-yellow { --signal-color: #f5d394; }
+.goal-dot-green { --signal-color: #8cedc8; }
+.goal-preparation-legend i { box-shadow: 0 0 3px var(--signal-color), 0 0 8px color-mix(in srgb, var(--signal-color) 55%, transparent); }
+
+.field-preparation-chart .field-ring-red {
+  filter: drop-shadow(0 0 2.75px color-mix(in srgb, var(--signal-color) 55%, transparent));
+}

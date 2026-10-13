@@ -57,7 +57,7 @@ async function init() {
   await Promise.all(fields.filter(f => f !== initial).map(async field => {
     try {
       const stats = await fetch(`/api/fields/${encodeURIComponent(field)}/stats`).then(r => r.json());
-      setSelectionPreparation('field', field, stats.preparation.rating);
+      setSelectionPreparation('field', field, stats.topics);
       await refreshFieldGoalPreview(field);
     } catch {}
   }));
@@ -263,9 +263,9 @@ async function refreshStats() {
   renderStats(stats, ctxType, scroll);
   const fieldStats = ctxType === 'field' ? stats : await fetch(`/api/fields/${encodeURIComponent(field)}/stats`).then(r => r.json());
   if (sel.field !== field) return;
-  setSelectionPreparation('field', field, fieldStats.preparation.rating);
+  setSelectionPreparation('field', field, fieldStats.topics);
   for (const [type, items] of [['topic', fieldStats.topics], ['set', fieldStats.sets], ['examen', fieldStats.examens], ['bookmark', fieldStats.bookmarks]]) {
-    items.forEach(item => setSelectionPreparation(type, item.name, item.preparation.rating));
+    items.forEach(item => setSelectionPreparation(type, item.name, item.preparation.counts));
   }
 }
 
@@ -276,9 +276,46 @@ function preparationIndicator(rating) {
   return `<span class="preparation-dot preparation-${color}" role="img" aria-label="${PREPARATION_LABELS[color]}" title="${PREPARATION_LABELS[color]}"></span>`;
 }
 
+function fieldPreparationChart(topics) {
+  const colors = ['green', 'yellow', 'red'];
+  const counts = colors.map(color => topics.filter(topic =>
+    (Object.hasOwn(PREPARATION_LABELS, topic.preparation.rating) ? topic.preparation.rating : 'red') === color
+  ).length);
+  return preparationChart(counts, 'Themen');
+}
+
+function topicPreparationChart(counts) {
+  return preparationChart(['green', 'yellow', 'red'].map(color => counts[color]), 'Fragen');
+}
+
+function preparationChart(counts, unit) {
+  const colors = ['green', 'yellow', 'red'];
+  const total = counts.reduce((sum, count) => sum + count, 0);
+  const description = total
+    ? `Vorbereitung: Grün ${counts[0]}, Gelb ${counts[1]}, Rot ${counts[2]} (${total} ${unit})`
+    : `Keine ${unit}`;
+  let offset = 0;
+  const segments = colors.map((color, i) => {
+    const share = total ? counts[i] / total * 100 : 0;
+    const segment = share ? `<circle class="field-ring-${color}" cx="12" cy="12" r="9" pathLength="100" stroke-dasharray="${share} ${100 - share}" stroke-dashoffset="${-offset}" />` : '';
+    offset += share;
+    return segment;
+  }).join('');
+  return `<span class="field-preparation-chart" role="img" aria-label="${description}" title="${description}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle class="field-ring-track" cx="12" cy="12" r="9" />${segments}</svg></span>`;
+}
+
+function preparationBar(counts) {
+  const colors = ['green', 'yellow', 'red'];
+  const total = colors.reduce((sum, color) => sum + counts[color], 0);
+  const description = `Grün: ${counts.green}, Gelb: ${counts.yellow}, Rot: ${counts.red} (${total} Fragen)`;
+  return `<div class="preparation-bar" role="img" aria-label="${description}" title="${description}">${colors.map(color =>
+    `<div class="preparation-segment preparation-${color}" style="width:${total ? counts[color] / total * 100 : 0}%"></div>`).join('')}</div>`;
+}
+
 function setSelectionPreparation(type, key, rating) {
   const btn = [...document.querySelectorAll(`.sel-btn.type-${type}`)].find(b => b.dataset.selKey === key);
-  if (btn) btn.querySelector('.sel-preparation').innerHTML = preparationIndicator(rating);
+  if (btn) btn.querySelector('.sel-preparation').innerHTML = type === 'field'
+    ? fieldPreparationChart(rating) : topicPreparationChart(rating);
 }
 
 function resolveStatsCtx() {
@@ -322,10 +359,10 @@ function renderStats(s, ctxType, container) {
 
   html += `<div class="preparation-summary">
     <div class="stats-section-label">Vorbereitung</div>
-    <div>${preparationIndicator(s.preparation.rating)} ${PREPARATION_LABELS[s.preparation.rating]}</div>
+    <div>${ctxType === 'field' ? fieldPreparationChart(s.topics) : ctxType === 'topic' ? preparationBar(s.preparation.counts) : topicPreparationChart(s.preparation.counts)}</div>
     <div class="preparation-counts">${['red', 'yellow', 'green'].map(color =>
       `<span>${preparationIndicator(color)} ${s.preparation.counts[color]}</span>`).join('')}</div>
-    <div class="preparation-help">Rot: noch keine richtige Antwort. Gelb: einmal richtig oder zuletzt falsch. Grün: mindestens zweimal richtig und zuletzt richtig. Die schwächste Frage bestimmt die Gruppe.</div>
+    <div class="preparation-help">Rot: noch keine richtige Antwort. Gelb: einmal richtig oder zuletzt falsch. Grün: mindestens zweimal richtig und zuletzt richtig. ${ctxType === 'field' ? 'Der Ring zeigt die Farbverteilung der Themen. Unterthemen werden nicht separat gezählt. Die schwächste Frage bestimmt die Farbe eines Themas.' : ctxType === 'topic' ? 'Der Balken zeigt die Farbverteilung der Fragen.' : 'Der Ring zeigt die Farbverteilung der Fragen.'}</div>
   </div>`;
 
   html += `<div class="metric-grid">
@@ -364,7 +401,7 @@ function renderStats(s, ctxType, container) {
       const description = `Grün: ${counts.green}, Gelb: ${counts.yellow}, Rot: ${counts.red} (${t.total} Fragen)`;
       html += `<div class="breakdown-row" onclick="clickTopicBreakdown(${esc(JSON.stringify(t.name))})">
         <div class="br-top">
-          <span class="br-name">${preparationIndicator(t.preparation.rating)} ${esc(t.name)}</span>
+          <span class="br-name">${esc(t.name)}</span>
           <span class="br-ratio" title="${description}">${['green', 'yellow', 'red'].map(color =>
             `<span>${preparationIndicator(color)} ${counts[color]}</span>`).join(' ')}</span>
         </div>
