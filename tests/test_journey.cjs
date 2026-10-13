@@ -30,6 +30,24 @@ test('calendar keys use the browser local day', () => {
   assert.equal(journeyDay(date), '2026-10-10');
 });
 
+test('tracking days start at 06:00 local time, including month and year boundaries', () => {
+  for (const [year, month, day, previous] of [
+    [2026, 9, 10, '2026-10-09'],
+    [2026, 0, 1, '2025-12-31'],
+    [2024, 2, 1, '2024-02-29'],
+    [2026, 2, 29, '2026-03-28'],
+    [2026, 9, 25, '2026-10-24'],
+  ]) {
+    assert.equal(journeyDay(new Date(year, month, day, 5, 59, 59, 999)), previous);
+    const atSix = new Date(year, month, day, 6);
+    const expected = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    assert.equal(journeyDay(atSix), expected);
+    const { journeyCalendarDates } = require('../static/journey.js');
+    assert.equal(journeyDay(journeyCalendarDates(new Date(year, month, day, 5, 59)).at(-1).date), previous);
+    assert.equal(journeyDay(journeyCalendarDates(atSix).at(-1).date), expected);
+  }
+});
+
 test('calendar aligns 365 local dates into weekday rows and chronological weeks', () => {
   const { journeyCalendarDates } = require('../static/journey.js');
   const dates = journeyCalendarDates(new Date(2026, 9, 10, 23, 30));
@@ -44,9 +62,9 @@ test('calendar aligns 365 local dates into weekday rows and chronological weeks'
 });
 test('calendar includes leap days and crosses local daylight saving boundaries', () => {
   const { journeyCalendarDates } = require('../static/journey.js');
-  const leap = journeyCalendarDates(new Date(2024, 2, 10));
+  const leap = journeyCalendarDates(new Date(2024, 2, 10, 12));
   assert.ok(leap.some(d => journeyDay(d.date) === '2024-02-29'));
-  const fall = journeyCalendarDates(new Date(2026, 10, 2));
+  const fall = journeyCalendarDates(new Date(2026, 10, 2, 12));
   assert.equal(new Set(fall.map(d => journeyDay(d.date))).size, 365);
   assert.equal(journeyDay(fall.at(-1).date), '2026-11-02');
 });
