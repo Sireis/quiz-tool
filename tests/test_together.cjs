@@ -23,7 +23,7 @@ async function setup(saved = null, search = '', pathname = '/') {
     if (id && elements.has(id)) return elements.get(id);
     const classes = new Set();
     const item = {
-      value: '', textContent: '', disabled: false, hidden: false, innerHTML: '', style: {},
+      value: '', textContent: '', disabled: false, hidden: false, innerHTML: '', style: {setProperty() {}},
       children: [], events: {}, dataset: {}, attrs: {},
       classList: {toggle(name, on) { on ? classes.add(name) : classes.delete(name); }, remove(name) { classes.delete(name); }, contains: name => classes.has(name)},
       get options() { return this.children; },
@@ -42,7 +42,8 @@ async function setup(saved = null, search = '', pathname = '/') {
   const storage = new Map(saved ? [['trainer_shared_room', JSON.stringify(saved)]] : []);
   const calls = [];
   let current = state();
-  let poll;
+  const sockets = [];
+  const editors = [];
   let discover;
   let available = [];
   const fetch = async (path, options) => {
@@ -65,7 +66,24 @@ async function setup(saved = null, search = '', pathname = '/') {
     document: {getElementById: element, createElement: () => element(),
       querySelector: () => element('main'), querySelectorAll: () => [], addEventListener() {}, hidden: false},
     navigator: {clipboard: {writeText: async () => {}}}, confirm: () => true,
-    setInterval(callback, delay) { if (delay === 2000) discover = callback; else poll = callback; },
+    setTimeout, clearTimeout, queueMicrotask,
+    SharedEditor: class {
+      constructor() { this.view = {}; this.round = null; this.text = ''; this.version = 0; editors.push(this); }
+      sync(doc) { if (this.round !== doc.round_id) { this.text = doc.doc; this.round = doc.round_id; this.version = doc.version; } }
+      setConnected() {} setWritable() {} receive() {} cursor() {} freeze(doc) { this.text = doc.doc; }
+      async flush() { return {answer: this.text, editor_version: this.version}; }
+      destroy() { this.view = null; }
+    },
+    WebSocket: class {
+      constructor() { sockets.push(this); this.readyState = 1; queueMicrotask(() => this.onopen?.()); }
+      send(raw) {
+        const message = JSON.parse(raw);
+        if (message.type === 'hello') queueMicrotask(() => this.onmessage?.({data: JSON.stringify({type: 'sync', state: current,
+          editor: current.mode === 'coop' ? {round_id: current.round_id, doc: current.draft || '', version: 0} : null})}));
+      }
+      close() { this.readyState = 3; this.onclose?.(); }
+    },
+    setInterval(callback, delay) { if (delay === 2000) discover = callback; },
   };
   vm.createContext(context);
   vm.runInContext(readFileSync(join(__dirname, '../static/trainer.js'), 'utf8').replace(/init\(\);\s*$/, ''), context);
@@ -80,7 +98,7 @@ async function setup(saved = null, search = '', pathname = '/') {
   await context.sharedPractice.init(['test']);
   await settle();
   return {
-    context, element, calls, storage, discover: () => discover(), setAvailable(value) { available = value; }, setState(value) { current = value; }, poll: () => poll(),
+    context, element, calls, storage, editors, discover: () => discover(), setAvailable(value) { available = value; }, setState(value) { current = value; }, async pushState() { sockets.at(-1).onmessage({data: JSON.stringify({type: 'state', state: current, editor: current.mode === 'coop' ? {round_id: current.round_id, doc: current.draft || '', version: 0} : null})}); await settle(); },
     async event(id, type) { await element(id).events[type]({preventDefault() {}}); await settle(); },
     async open() { await element('shared-open').events.click(); await settle(); },
     async start(mode = 'compete') {
@@ -108,7 +126,7 @@ test('shared practice uses the normal question and answer frame without losing d
   assert.equal(app.element('reveal-btn').hidden, true);
   assert.equal(app.element('skip-btn').hidden, true);
   app.element('answer-input').value = 'An unfinished draft';
-  await app.poll();
+  await app.pushState();
   assert.equal(app.element('answer-input').value, 'An unfinished draft');
   await app.context.submitAnswer();
   const submission = app.calls.find(call => call.path.endsWith('/submit'));
@@ -131,7 +149,7 @@ test('own feedback reuses the standard result card, partner feedback and scores 
       points: i ? 50 : 100, correct: i ? 0 : 1,
     })),
   }));
-  await app.poll();
+  await app.pushState();
   assert.equal(app.element('result-card').style.display, 'block');
   assert.equal(app.element('result-feedback').textContent, 'Feedback 0');
   assert.equal(app.element('score-bar').style.width, '100%');
@@ -146,12 +164,12 @@ test('own feedback reuses the standard result card, partner feedback and scores 
   assert.equal(app.element('solo-result').hidden, true);
   assert.match(app.element('shared-summary').textContent, /alice: 100 Punkte · bob: 50 Punkte/);
   app.element('chatgpt-prompt').value = 'My edited follow-up';
-  await app.poll();
+  await app.pushState();
   assert.equal(app.element('chatgpt-prompt').value, 'My edited follow-up');
   await app.context.loadNextQuestion();
   assert.equal(app.calls.some(call => call.path.endsWith('/ready')), true);
   app.setState(state({round_id: 'round-2', number: 2}));
-  await app.poll();
+  await app.pushState();
   assert.equal(app.element('answer-input').value, '');
   assert.equal(app.element('result-card').style.display, 'none');
   assert.equal(app.element('shared-comparison').hidden, true);
@@ -166,7 +184,7 @@ test('room selection is locked and returning to solo restores normal controls', 
   assert.equal(vm.runInContext('sel.field', app.context), 'test');
   assert.equal(vm.runInContext('sel.topic', app.context), null);
   app.setState(state({closed: true}));
-  await app.poll();
+  await app.pushState();
   assert.equal(app.element('shared-solo').hidden, false);
   assert.equal(app.storage.has('trainer_shared_room'), false);
   await app.event('shared-solo', 'click');
@@ -206,28 +224,27 @@ test('Join Room appears on discovery and joins only on click with the selected p
   assert.equal(app.element('shared-quick-join').hidden, true);
 });
 
-test('cooperative typing polls a shared draft and shows one shared assessment', async () => {
+test('cooperative submission flushes the socket editor revision and shows one shared assessment', async () => {
   const app = await setup();
   app.setState(state({mode: 'coop', draft: 'Partner started this', draft_revision: 1}));
   await app.start('coop');
-  assert.equal(app.element('answer-input').value, 'Partner started this');
+  assert.equal(app.editors[0].text, 'Partner started this');
+  assert.equal(app.element('answer-input').hidden, true);
+  assert.equal(app.element('shared-editor').hidden, false);
   assert.equal(app.element('answer-label').textContent, 'Eure gemeinsame Antwort');
-  app.element('answer-input').value = 'Our combined answer';
-  await app.event('answer-input', 'input');
-  await app.poll();
-  const save = app.calls.find(call => call.path.endsWith('/draft'));
-  assert.equal(JSON.parse(save.options.body).answer, 'Our combined answer');
-  assert.equal(app.element('answer-input').value, 'Our combined answer');
-  app.setState(state({mode: 'coop', draft: 'Partner added another point', draft_revision: 3}));
-  await app.poll();
-  assert.equal(app.element('answer-input').value, 'Partner added another point');
+  app.editors[0].text = 'Our combined answer';
+  app.editors[0].version = 4;
+  await app.context.submitAnswer();
+  const submission = app.calls.find(call => call.path.endsWith('/submit'));
+  assert.deepEqual(JSON.parse(submission.options.body), {round_id: 'round-1', answer: 'Our combined answer', editor_version: 4});
+  assert.equal(app.calls.some(call => call.path.endsWith('/draft')), false);
   app.setState(state({
     mode: 'coop', revealed: true, draft: 'Final answer', own_answer: 'Final answer',
     reference_answer: 'Reference', team_preparation: {prepared: 2, total: 10},
     participants: ['alice', 'bob'].map(id => ({id, name: id, online: true, status: 'graded', ready: false,
       answer: 'Final answer', result: {score: 1, result: 'correct', correct: true, feedback: 'Shared feedback'}})),
   }));
-  await app.poll();
+  await app.pushState();
   assert.equal(app.element('shared-answer-cards').children.length, 1);
   assert.equal(app.element('shared-answer-cards').children[0].children[2].textContent, 'Final answer');
   assert.equal(app.element('answer-area').hidden, true);

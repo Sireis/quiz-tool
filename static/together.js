@@ -4,7 +4,6 @@
   let room = null;
   let profile = null;
   let busy = false;
-  let polling = false;
   let requestNumber = 0;
   let appliedNumber = 0;
   let fieldRequest = 0;
@@ -12,8 +11,13 @@
   let fields = [];
   let joinableCode = null;
   let discovering = false;
-  let draftDirty = false;
-  let editVersion = 0;
+  let socket = null;
+  let editor = null;
+  let connected = false;
+  let reconnectTimer = null;
+  let reconnectAttempt = 0;
+  let socketGeneration = 0;
+  const client = globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2);
   const statusNames = {answering: 'Antwortet …', grading: 'Bewertung läuft …', graded: 'Antwort bereit', error: 'Bewertung wiederholen'};
 
   async function api(path, body) {
@@ -98,7 +102,68 @@
     }
   }
 
-  function render(next, sequence) {
+  function send(message) {
+    if (socket?.readyState !== 1) return false;
+    socket.send(JSON.stringify(message));
+    return true;
+  }
+
+  function hello() {
+    send({type: 'hello', round_id: editor?.round, version: editor?.version});
+  }
+
+  function connect() {
+    if (!room || room.closed) return;
+    const generation = ++socketGeneration;
+    clearTimeout(reconnectTimer);
+    connected = false;
+    editor?.setConnected(false);
+    $('shared-connection').textContent = reconnectAttempt ? 'Verbindung wird wiederhergestellt …' : 'Verbinden …';
+    const url = new URL(`/ws/rooms/${room.code}`, location.origin);
+    url.protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
+    url.searchParams.set('profile', profile);
+    url.searchParams.set('client', client);
+    socket = new WebSocket(url);
+    socket.onopen = hello;
+    socket.onmessage = event => {
+      if (generation !== socketGeneration || !room) return;
+      try {
+        const message = JSON.parse(event.data);
+        if (message.type === 'updates') {
+          editor?.receive(message);
+        } else if (message.type === 'cursor') {
+          editor?.cursor(message);
+        } else if (message.type === 'state' || message.type === 'sync') {
+          if (message.type === 'sync') {
+            connected = true;
+            reconnectAttempt = 0;
+            editor?.setConnected(true);
+            const own = message.state.participants.find(p => p.id === profile);
+            if (message.editor) editor?.sync(message.editor, own.color || '#c4abff');
+          }
+          $('shared-connection').textContent = connected ? 'Live verbunden' : 'Synchronisieren …';
+          render(message.state, ++requestNumber, message.editor);
+        } else if (message.type === 'error') {
+          messageError(message.message);
+          hello();
+        }
+      } catch (error) { messageError(error.message || 'Synchronisierung fehlgeschlagen.'); }
+    };
+    socket.onclose = () => {
+      if (generation !== socketGeneration || !room || room.closed) return;
+      connected = false;
+      editor?.setConnected(false);
+      $('shared-connection').textContent = 'Verbindung unterbrochen · Verbinde erneut …';
+      // Preserve unconfirmed local edits in the editor until the socket resynchronizes.
+      render(room, appliedNumber);
+      reconnectTimer = setTimeout(connect, Math.min(5000, 300 * 2 ** reconnectAttempt++));
+    };
+    socket.onerror = () => socket.close();
+  }
+
+  function messageError(text) { message(text); }
+
+  function render(next, sequence, editorDocument = null) {
     if (sequence < appliedNumber) return;
     appliedNumber = sequence;
     const changed = !room || next.round_id !== room.round_id;
@@ -110,6 +175,7 @@
     $('shared-participants').replaceChildren(...room.participants.map(person => {
       const chip = document.createElement('span');
       chip.className = 'shared-person';
+      if (person.color) chip.style.setProperty('--participant-color', person.color);
       chip.textContent = `${person.name}${person.id === profile ? ' · Du' : ''}: ${person.online ? '' : 'Offline · '}${person.ready ? 'Bereit' : statusNames[person.status]}`;
       return chip;
     }));
@@ -118,8 +184,6 @@
     if (changed) {
       ++questionRequest; // Discard any pending solo question response.
       shownResult = null;
-      draftDirty = false;
-      ++editVersion;
       resetResultCard();
       $('answer-input').value = '';
       $('answer-input').style.height = '';
@@ -129,26 +193,29 @@
       Object.assign(currentQuestion, room.question);
       $('q-preparation').innerHTML = preparationIndicator(room.question.preparation);
     }
-    if (room.mode === 'coop' && !draftDirty && $('answer-input').value !== (room.draft || '')) {
-      const input = $('answer-input');
-      const start = input.selectionStart;
-      const end = input.selectionEnd;
-      input.value = room.draft || '';
-      input.setSelectionRange(Math.min(start, input.value.length), Math.min(end, input.value.length));
+    if (room.mode === 'coop' && editorDocument && editor && editor.round !== editorDocument.round_id) {
+      editor.sync(editorDocument, own.color || '#c4abff');
     }
+    if (room.mode === 'coop' && room.own_answer != null && editorDocument) {
+      editor?.freeze({...editorDocument, doc: room.own_answer}, own.color || '#c4abff');
+    }
+    $('shared-editor').hidden = room.mode !== 'coop';
+    $('answer-input').hidden = room.mode === 'coop';
     if (room.own_answer !== null && room.own_answer !== undefined) $('answer-input').value = room.own_answer;
     const waiting = room.participants.length < 2;
     $('answer-input').disabled = room.closed || busy || waiting || own.status !== 'answering';
-    $('submit-btn').disabled = room.closed || busy || waiting || !['answering', 'error'].includes(own.status);
+    editor?.setWritable(connected && !room.closed && !busy && !waiting && own.status === 'answering');
+    $('submit-btn').disabled = room.closed || busy || !connected || waiting || !['answering', 'error'].includes(own.status);
     $('submit-btn').textContent = own.status === 'error' ? 'Bewertung erneut versuchen' : room.mode === 'coop' ? 'Gemeinsame Antwort prüfen' : 'Antwort abgeben';
     $('answer-label').textContent = room.mode === 'coop' ? 'Eure gemeinsame Antwort' : 'Deine Antwort';
+    $('answer-label').htmlFor = room.mode === 'coop' ? 'shared-answer-text' : 'answer-input';
     $('answer-area').hidden = room.revealed;
     $('reveal-btn').hidden = true;
     $('loading').classList.toggle('visible', own.status === 'grading' && !room.closed);
     $('shared-status').textContent = room.closed ? 'Die Sitzung ist beendet.'
       : room.error || (waiting ? 'Teile den Einladungslink und warte auf ein zweites Profil.'
       : room.revealed ? 'Geht weiter, sobald ihr beide bereit seid.'
-      : room.mode === 'coop' && own.status === 'answering' ? (draftDirty ? 'Gemeinsame Antwort wird gespeichert …' : 'Ihr schreibt gemeinsam an derselben Antwort.')
+      : room.mode === 'coop' && own.status === 'answering' ? 'Ihr schreibt gemeinsam an derselben Antwort.'
       : own.status === 'answering' ? 'Deine Antwort bleibt bis zur gemeinsamen Auflösung privat.'
       : 'Deine Antwort ist abgegeben. Warte auf beide Bewertungen.');
     $('shared-comparison').hidden = !room.revealed;
@@ -189,8 +256,10 @@
     $('profile-select').value = profile;
     Object.assign(sel, {field: next.field, topic: next.topic, subtopic: null, examen: null, set: null});
     setRoomControls(true);
+    if (next.mode === 'coop') editor = new SharedEditor($('shared-editor'), client, send, hello);
     $('shared-dialog').close();
     render(next, sequence);
+    connect();
     const invite = new URL('/together', location.origin);
     invite.searchParams.set('room', next.code);
     history.replaceState({}, '', invite);
@@ -262,6 +331,13 @@
   async function stop() {
     ++requestNumber;
     appliedNumber = requestNumber;
+    ++socketGeneration;
+    clearTimeout(reconnectTimer);
+    socket?.close();
+    socket = null;
+    connected = false;
+    editor?.destroy();
+    editor = null;
     room = null;
     shownResult = null;
     sessionStorage.removeItem('trainer_shared_room');
@@ -271,8 +347,9 @@
     $('solo-result').hidden = false;
     $('answer-area').hidden = false;
     $('answer-label').textContent = 'Deine Antwort';
-    draftDirty = false;
-    ++editVersion;
+    $('answer-label').htmlFor = 'answer-input';
+    $('shared-editor').hidden = true;
+    $('answer-input').hidden = false;
     $('next-btn').disabled = false;
     $('next-btn').textContent = 'Nächste Frage →';
     $('submit-btn').textContent = 'Antwort prüfen';
@@ -285,9 +362,17 @@
     get active() { return room !== null; },
     async submit() {
       if (!room || room.closed || busy || room.revealed) return;
+      if (!connected) { message('Warte auf die Verbindung zum Raum.'); return; }
+      if (!['answering', 'error'].includes(room.participants.find(person => person.id === profile).status)) return;
+      if (room.mode === 'coop') {
+        return perform(async () => {
+          const submission = await editor.flush();
+          if (!submission.answer) throw new Error('Bitte zuerst eine Antwort eingeben.');
+          return api(`/api/rooms/${room.code}/submit`, {round_id: room.round_id, ...submission});
+        });
+      }
       const answer = $('answer-input').value.trim();
       if (!answer) return;
-      if (!['answering', 'error'].includes(room.participants.find(person => person.id === profile).status)) return;
       return perform(() => api(`/api/rooms/${room.code}/submit`, {round_id: room.round_id, answer}));
     },
     async next() {
@@ -301,11 +386,6 @@
         profile = pageProfile;
         const code = joinableCode;
         perform(() => api(`/api/rooms/${code}/join`, {}), true);
-      });
-      $('answer-input').addEventListener('input', () => {
-        if (room?.mode !== 'coop' || room.revealed || room.closed || room.own_answer != null) return;
-        draftDirty = true;
-        ++editVersion;
       });
       await discover();
       setInterval(discover, 2000);
@@ -333,31 +413,9 @@
         try { await navigator.clipboard.writeText(invite.href); message('Einladungslink kopiert.'); }
         catch { message(`Einladungslink: ${invite.href}`); }
       });
-      setInterval(async () => {
-        if (!room || room.closed || busy || polling || document.hidden) return;
-        polling = true;
-        const sequence = ++requestNumber;
-        try {
-          if (room.mode === 'coop' && draftDirty && room.own_answer == null) {
-            const version = editVersion;
-            const roundId = room.round_id;
-            let next;
-            try {
-              next = await api(`/api/rooms/${room.code}/draft`, {round_id: roundId, answer: $('answer-input').value});
-            } catch {
-              // The partner may have submitted while this draft was on its way.
-              next = await api(`/api/rooms/${room.code}`);
-            }
-            if (next.closed || next.own_answer != null || next.round_id !== roundId) draftDirty = false;
-            if (version === editVersion && room?.round_id === roundId) draftDirty = false;
-            render(next, sequence);
-          } else {
-            render(await api(`/api/rooms/${room.code}`), sequence);
-          }
-        }
-        catch { message('Verbindung unterbrochen. Erneuter Versuch läuft …'); }
-        finally { polling = false; }
-      }, 500);
+      setInterval(() => {
+        if (room && !room.closed && connected) send({type: 'ping'});
+      }, 10000);
       if (location.pathname === '/together') {
         await openLobby();
         const inviteCode = new URLSearchParams(location.search).get('room')?.toUpperCase();

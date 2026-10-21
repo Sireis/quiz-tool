@@ -14,9 +14,11 @@ import learning_goals
 import question_store
 import profiles
 import rooms
+import realtime
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024
+sock = realtime.init_app(app)
 
 
 @app.before_request
@@ -77,7 +79,7 @@ def api_room(code):
 def api_room_action(code, operation):
     body = _request_body()
     rooms.action(code, question_store.active_profile.get(), operation,
-                 body.get("round_id"), body.get("answer"))
+                 body.get("round_id"), body.get("answer"), body.get("editor_version"))
     return jsonify(rooms.view(code, question_store.active_profile.get()))
 
 

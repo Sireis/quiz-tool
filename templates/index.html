@@ -109,6 +109,7 @@
 <main>
   <section class="card" id="shared-room" aria-label="Gemeinsame Sitzung" hidden>
     <div class="shared-heading"><strong id="shared-title"></strong><span id="shared-round"></span></div>
+    <p id="shared-connection" role="status" aria-live="polite"></p>
     <div id="shared-participants" aria-live="polite"></div>
     <p id="shared-summary"></p>
     <p id="shared-status" role="status" aria-live="polite"></p>
@@ -137,6 +138,7 @@
   <div class="answer-area" id="answer-area">
     <label id="answer-label" for="answer-input">Deine Antwort</label>
     <textarea id="answer-input" placeholder="Antwort eingeben… (Strg+Enter zum Prüfen)"></textarea>
+    <div id="shared-editor" hidden></div>
     <div class="btn-row">
       <button class="primary" id="submit-btn" onclick="submitAnswer()">Antwort prüfen</button>
       <button class="secondary" id="reveal-btn" onclick="revealAnswer()">Antwort zeigen</button>
@@ -292,6 +294,7 @@
 </dialog>
 {% include '_together.html' %}
 <script src="{{ url_for('static', filename='profiles.js') }}" defer></script>
+<script src="{{ url_for('static', filename='shared-editor.js') }}" defer></script>
 <script src="{{ url_for('static', filename='together.js') }}" defer></script>
 <script src="{{ url_for('static', filename='journey.js') }}" defer></script>
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>

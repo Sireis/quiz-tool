@@ -49,6 +49,12 @@
 #shared-lobby-status { margin-top: 12px; color: var(--warn); font-size: .8rem; }
 #shared-room { display: grid; gap: 10px; padding: 14px 18px; border-color: var(--accent); }
 #shared-room[hidden], #shared-comparison[hidden], #shared-solo[hidden], #shared-quick-join[hidden], #answer-area[hidden], #solo-result[hidden], #reveal-btn[hidden], #skip-btn[hidden] { display: none; }
+#shared-editor[hidden], #answer-input[hidden] { display: none; }
+#shared-connection { color: var(--secondary-accent); font-size: .7rem; }
+.shared-person { border-left: 3px solid var(--participant-color, var(--accent)); }
+#shared-editor { width: 100%; min-width: 0; }
+.collab-cursor { position: relative; border-left: 2px solid var(--cursor-color); margin-left: -1px; margin-right: -1px; pointer-events: none; }
+.collab-cursor-label { position: absolute; bottom: 100%; left: -2px; padding: 2px 5px; border-radius: 4px 4px 4px 0; background: var(--cursor-color); color: #151823; font: 600 .65rem Inter, system-ui, sans-serif; white-space: nowrap; opacity: .95; }
 #shared-title { font-size: .85rem; color: var(--accent-light); }
 #shared-round, #shared-summary, #shared-status { font-size: .75rem; color: var(--muted); line-height: 1.5; overflow-wrap: anywhere; }
 #shared-participants { display: flex; gap: 6px; flex-wrap: wrap; }

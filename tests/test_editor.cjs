@@ -1,0 +1,71 @@
+const {test} = require('node:test');
+const assert = require('node:assert/strict');
+
+async function fixture() {
+  const {EditorState, ChangeSet, Text} = await import('@codemirror/state');
+  const {collab} = await import('@codemirror/collab');
+  await import('../frontend/shared-editor.js');
+  const outgoing = [];
+  function peer(client) {
+    const editor = new globalThis.SharedEditor(null, client, message => { outgoing.push({editor, message}); return true; }, () => { throw new Error('Unexpected resync'); });
+    editor.round = 'round';
+    editor.view = {
+      state: EditorState.create({doc: 'abc', extensions: [collab({clientID: client})]}),
+      hasFocus: false,
+      dispatch(transaction) { this.state = transaction.state || this.state.update(transaction).state; },
+      destroy() {},
+    };
+    editor.setConnected(true);
+    return editor;
+  }
+  const a = peer('a'), b = peer('b');
+  let doc = Text.of(['abc']);
+  const history = [];
+  function deliver() {
+    let count = 0;
+    while (outgoing.length) {
+      assert.ok(++count < 100, 'Editing must converge without a resend loop');
+      const {editor, message} = outgoing.shift();
+      if (message.type !== 'edits') continue;
+      if (message.version !== history.length) {
+        editor.receive({round_id: 'round', from: message.version, updates: history.slice(message.version)});
+      } else {
+        for (const update of message.updates) doc = ChangeSet.fromJSON(update.changes).apply(doc);
+        history.push(...message.updates);
+        const event = {round_id: 'round', from: message.version, updates: message.updates};
+        for (const peer of [a, b]) if (peer.connected) peer.receive(event);
+      }
+    }
+  }
+  return {a, b, outgoing, deliver, history, document: () => doc.toString()};
+}
+
+test('simultaneous edits at the same position rebase and converge', async () => {
+  const f = await fixture();
+  try {
+    f.a.view.dispatch({changes: {from: 1, insert: 'A'}});
+    f.b.view.dispatch({changes: {from: 1, insert: 'B'}});
+    f.a.push(); f.b.push(); f.deliver();
+    assert.equal(f.a.text, f.b.text);
+    assert.equal(f.a.text, f.document());
+    assert.match(f.a.text, /A/); assert.match(f.a.text, /B/);
+    assert.equal(f.a.pending, 0); assert.equal(f.b.pending, 0);
+    assert.equal((await f.a.flush()).editor_version, 2);
+  } finally { f.a.destroy(); f.b.destroy(); }
+});
+
+test('reconnecting keeps local pending edits and merges missed remote changes', async () => {
+  const f = await fixture();
+  try {
+    f.b.setConnected(false);
+    f.b.view.dispatch({changes: {from: 3, insert: ' offline'}});
+    f.a.view.dispatch({changes: {from: 0, to: 1, insert: '😀'}});
+    f.a.push(); f.deliver();
+    f.b.setConnected(true);
+    f.b.sync({round_id: 'round', doc: f.document(), version: 1, from: 0, updates: f.history}, '#65dccc');
+    f.deliver();
+    assert.equal(f.a.text, f.b.text);
+    assert.equal(f.a.text, '😀bc offline');
+    assert.equal((await f.b.flush()).answer, '😀bc offline');
+  } finally { f.a.destroy(); f.b.destroy(); }
+});

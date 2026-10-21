@@ -21,6 +21,7 @@ import question_store as store
 ROOMS_PATH = Path(__file__).resolve().parent / 'data' / 'rooms'
 _executor = ThreadPoolExecutor(max_workers=2)
 LEASE_SECONDS = 300
+on_change = None
 
 
 def available(profile):
@@ -51,7 +52,7 @@ def _save(path, room):
 
 
 @contextmanager
-def transaction(code):
+def transaction(code, *, write=True):
     if not isinstance(code, str) or not re.fullmatch(r'[A-F0-9]{8}', code):
         raise ValueError('Invalid room code')
     ROOMS_PATH.mkdir(parents=True, exist_ok=True)
@@ -63,9 +64,19 @@ def transaction(code):
                 raise ValueError('Room not found')
             room = json.loads(path.read_text(encoding='utf-8'))
             yield room
-            _save(path, room)
+            if write:
+                _save(path, room)
         finally:
             fcntl.flock(lock, fcntl.LOCK_UN)
+
+
+@contextmanager
+def changed(code):
+    """Publish after the write lock is released, including early action returns."""
+    with transaction(code) as room:
+        yield room
+    if on_change:
+        on_change(code)
 
 
 def _participant(profile):
@@ -105,6 +116,7 @@ def _new_round(room):
     alternatives = [q for q in candidates if q['id'] != previous]
     room['round'] = {'id': str(uuid4()), 'question': random.choice(alternatives or candidates),
                      'submissions': {}, 'ready': [], 'draft': '', 'draft_revision': 0,
+                     'editor_updates': [],
                      'standings': {pid: p['points'] for pid, p in room['participants'].items()}}
     if room['mode'] == 'compete':
         room.setdefault('question_sequence', []).append(room['round']['question']['id'])
@@ -137,7 +149,7 @@ def create(profile, field, mode='coop', topic=None):
 
 
 def join(code, profile):
-    with transaction(code) as room:
+    with changed(code) as room:
         if room['closed']:
             raise ValueError('This room has ended')
         if profile not in room['participants']:
@@ -203,7 +215,7 @@ def _grade(code, round_id, profile, job, field, question, answer):
         logging.getLogger(__name__).exception('Room grading failed')
         result, error = None, 'Bewertung fehlgeschlagen. Bitte erneut versuchen.'
     try:
-        with transaction(code) as room:
+        with changed(code) as room:
             if room['round']['id'] != round_id:
                 return
             submission = room['round']['submissions'].get(profile)
@@ -216,15 +228,15 @@ def _grade(code, round_id, profile, job, field, question, answer):
                 else:
                     target['error'] = error
         # Persist the grade before recording progress; retries deduplicate the attempt.
-        with transaction(code) as room:
+        with changed(code) as room:
             if room['round']['id'] == round_id:
                 _record_results(room)
     except Exception:
         logging.getLogger(__name__).exception('Could not finalize room grading')
 
 
-def action(code, profile, operation, round_id=None, answer=None):
-    with transaction(code) as room:
+def action(code, profile, operation, round_id=None, answer=None, editor_version=None):
+    with changed(code) as room:
         _member(room, profile)['seen'] = time.time()
         if room['closed']:
             raise ValueError('This room has ended')
@@ -239,6 +251,8 @@ def action(code, profile, operation, round_id=None, answer=None):
         if operation == 'draft':
             if room['mode'] != 'coop' or current['submissions']:
                 raise ValueError('This answer cannot be edited')
+            if current.get('editor_updates'):
+                raise ValueError('Use the collaborative editor')
             if not isinstance(answer, str) or len(answer) > 16000:
                 raise ValueError('Answer must contain at most 16000 characters')
             current['draft'] = answer
@@ -248,6 +262,12 @@ def action(code, profile, operation, round_id=None, answer=None):
             if not isinstance(answer, str) or not answer.strip() or len(answer) > 16000:
                 raise ValueError('Answer must contain 1–16000 characters')
             if room['mode'] == 'coop':
+                if editor_version is not None:
+                    if (type(editor_version) is not int or editor_version != len(current.get('editor_updates', []))
+                            or answer.strip() != current.get('draft', '').strip()):
+                        raise ValueError('Die gemeinsame Antwort hat sich geändert. Bitte erneut prüfen.')
+                elif current.get('editor_updates'):
+                    raise ValueError('Wait for the shared answer to synchronize')
                 existing = next(iter(current['submissions'].values()), None)
                 if existing and existing['answer'] != answer.strip():
                     raise ValueError('Your answer is already submitted')
