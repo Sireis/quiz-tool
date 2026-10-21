@@ -50,6 +50,7 @@ class SharedEditor {
     this.inflight = false;
     this.waiters = [];
     this.remote = new Map();
+    this.accepted = new Map();
     this.lock = new Compartment();
     this.cursorTimer = null;
   }
@@ -61,6 +62,7 @@ class SharedEditor {
     this.round = doc.round_id;
     this.inflight = false;
     this.remote.clear();
+    this.accepted.clear();
     this.view = new EditorView({parent: this.parent, state: EditorState.create({
       doc: doc.doc,
       extensions: [
@@ -98,14 +100,15 @@ class SharedEditor {
     if (message.from > version) { this.resync(); return; }
     const updates = message.updates.slice(Math.max(0, version - message.from));
     if (updates.length) {
-      this.view.dispatch(receiveUpdates(this.view.state, updates.map(update => ({...update, changes: ChangeSet.fromJSON(update.changes)}))));
+      const decoded = updates.map(update => ({...update, changes: ChangeSet.fromJSON(update.changes)}));
+      decoded.forEach((update, index) => this.accepted.set(version + index, update.changes));
+      while (this.accepted.size > 512) this.accepted.delete(this.accepted.keys().next().value);
+      this.view.dispatch(receiveUpdates(this.view.state, decoded));
     }
     this.inflight = false;
-    for (const [id, person] of this.remote) {
-      if (person.version === this.version && !this.pending) {
-        this.view.dispatch({effects: presence.of(person)});
-        this.remote.delete(id);
-      } else if (person.version < this.version) this.remote.delete(id);
+    for (const [id, person] of [...this.remote]) {
+      this.remote.delete(id);
+      this.cursor(person);
     }
     this.push();
     if (!this.pending) {
@@ -139,8 +142,21 @@ class SharedEditor {
       this.remote.delete(person.client);
       this.view.dispatch({effects: presence.of(person)});
     } else if (person.round_id === this.round) {
-      if (person.version === this.version && !this.pending) this.view.dispatch({effects: presence.of(person)});
-      else this.remote.set(person.client, person);
+      if (person.version > this.version) { this.remote.set(person.client, person); return; }
+      let {anchor, head} = person;
+      // Presence is expressed in the server document; account for acknowledged
+      // changes and then the local edits that haven't been acknowledged yet.
+      for (let version = person.version; version < this.version; version++) {
+        const changes = this.accepted.get(version);
+        if (!changes) return;
+        anchor = changes.mapPos(anchor, 1);
+        head = changes.mapPos(head, 1);
+      }
+      for (const update of sendableUpdates(this.view.state)) {
+        anchor = update.changes.mapPos(anchor, 1);
+        head = update.changes.mapPos(head, 1);
+      }
+      this.view.dispatch({effects: presence.of({...person, anchor, head, version: this.version})});
     }
   }
   sendCursorSoon() {
@@ -170,6 +186,7 @@ class SharedEditor {
     this.view = null;
     this.round = null;
     this.remote.clear();
+    this.accepted.clear();
     this.waiters.splice(0).forEach(resolve => resolve());
   }
 }

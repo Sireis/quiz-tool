@@ -119,3 +119,13 @@ class CollaborationTests(unittest.TestCase):
         self.assertEqual(sync['editor']['updates'][0]['clientID'], 'a')
         with self.assertRaises(ValueError):
             hub.receive(a, {'type': 'cursor', 'round_id': self.rid, 'version': 1, 'anchor': 999, 'head': 999})
+
+    def test_delayed_cursor_is_mapped_to_current_document_instead_of_dropped(self):
+        self.update(self.a, 0, [[0, 'a😀bc']])
+        self.update(self.a, 1, [1, [2, 'XY'], 2])
+        self.update(self.a, 2, [[0, 'start '], 5])
+        cursor = collaboration.cursor(self.code, self.b, self.rid, 1, 3, 5)
+        self.assertEqual(cursor['version'], 3)
+        self.assertEqual(cursor['anchor'], 9)
+        self.assertEqual(cursor['head'], 11)
+        self.assertIsNone(collaboration.cursor(self.code, self.b, self.rid, 1, None, None)['anchor'])

@@ -84,21 +84,12 @@ class Hub:
                 else:
                     peer.send(result)
             elif kind == 'cursor':
-                doc = collaboration.document(peer.code, peer.profile)
-                if not doc or message.get('round_id') != doc['round_id']:
-                    raise ValueError('Cursor is not in a cooperative round')
-                if message.get('version') != doc['version']:
-                    return
-                anchor, head = message.get('anchor'), message.get('head')
-                length = len(doc['doc'].encode('utf-16-le')) // 2
-                if anchor is not None and not (type(anchor) is int and type(head) is int
-                                               and 0 <= anchor <= length and 0 <= head <= length):
-                    raise ValueError('Invalid cursor')
+                position = collaboration.cursor(peer.code, peer.profile, message.get('round_id'),
+                                                message.get('version'), message.get('anchor'), message.get('head'))
                 person = peer.identity
                 peer.cursor = {'type': 'cursor', 'client': peer.client, 'profile': peer.profile,
                                'name': person['name'], 'color': person['color'],
-                               'round_id': doc['round_id'], 'version': doc['version'],
-                               'anchor': anchor, 'head': head}
+                               **position}
                 for other in self.members(peer.code):
                     if other != peer:
                         other.send(peer.cursor)

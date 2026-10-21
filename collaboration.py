@@ -3,6 +3,24 @@ import time
 import rooms
 
 
+def map_position(position, changes):
+    """Map a UTF-16 cursor through an accepted CodeMirror edit (right affinity)."""
+    old, new = 0, 0
+    for part in changes:
+        if type(part) is int:
+            if position < old + part:
+                return new + position - old
+            old += part
+            new += part
+        else:
+            inserted = len('\n'.join(part[1:]).encode('utf-16-le')) // 2
+            if position < old + part[0]:
+                return new + inserted
+            old += part[0]
+            new += inserted
+    return new + position - old
+
+
 def apply_changes(document, changes):
     """Apply CodeMirror ChangeSet JSON using JavaScript's UTF-16 coordinates."""
     if not isinstance(changes, list):
@@ -46,6 +64,29 @@ def document(code, profile, round_id=None, version=None):
             response['from'] = version
             response['updates'] = updates[version:]
         return response
+
+
+def cursor(code, profile, round_id, version, anchor, head):
+    """Bring delayed presence up to date rather than silently dropping it."""
+    with rooms.transaction(code, write=False) as room:
+        rooms._member(room, profile)
+        current = room['round']
+        if room['mode'] != 'coop' or round_id != current['id']:
+            raise ValueError('Cursor is not in a cooperative round')
+        history = current.get('editor_updates', [])
+        if type(version) is not int or not 0 <= version <= len(history):
+            raise ValueError('Invalid cursor version')
+        if anchor is None:
+            return {'round_id': round_id, 'version': len(history), 'anchor': None, 'head': None}
+        if type(anchor) is not int or type(head) is not int or min(anchor, head) < 0:
+            raise ValueError('Invalid cursor')
+        for update in history[version:]:
+            anchor = map_position(anchor, update['changes'])
+            head = map_position(head, update['changes'])
+        length = len(current.get('draft', '').encode('utf-16-le')) // 2
+        if max(anchor, head) > length:
+            raise ValueError('Invalid cursor')
+        return {'round_id': round_id, 'version': len(history), 'anchor': anchor, 'head': head}
 
 
 def update(code, profile, round_id, version, updates, client_id):

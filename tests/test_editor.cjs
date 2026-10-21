@@ -12,7 +12,11 @@ async function fixture() {
     editor.view = {
       state: EditorState.create({doc: 'abc', extensions: [collab({clientID: client})]}),
       hasFocus: false,
-      dispatch(transaction) { this.state = transaction.state || this.state.update(transaction).state; },
+      dispatch(transaction) {
+        const effects = transaction.effects;
+        if (effects && !Array.isArray(effects) && effects.value?.client) this.lastPresence = effects.value;
+        this.state = transaction.state || this.state.update(transaction).state;
+      },
       destroy() {},
     };
     editor.setConnected(true);
@@ -67,5 +71,28 @@ test('reconnecting keeps local pending edits and merges missed remote changes', 
     assert.equal(f.a.text, f.b.text);
     assert.equal(f.a.text, '😀bc offline');
     assert.equal((await f.b.flush()).answer, '😀bc offline');
+  } finally { f.a.destroy(); f.b.destroy(); }
+});
+
+test('a remote cursor remains visible when it arrives while a local edit is unconfirmed', async () => {
+  const f = await fixture();
+  try {
+    f.a.view.dispatch({changes: {from: 0, insert: 'X'}});
+    f.a.cursor({client: 'b', round_id: 'round', version: 0, anchor: 1, head: 2, name: 'Bob', color: '#65dccc'});
+    f.a.push(); f.deliver();
+    assert.ok(f.a.view.lastPresence, 'A delayed cursor must be drawn rather than discarded after the local acknowledgement');
+    assert.equal(f.a.view.lastPresence.anchor, 2);
+    assert.equal(f.a.view.lastPresence.head, 3);
+  } finally { f.a.destroy(); f.b.destroy(); }
+});
+
+test('a late cursor maps through already acknowledged edits', async () => {
+  const f = await fixture();
+  try {
+    f.a.view.dispatch({changes: {from: 0, insert: '😀'}});
+    f.a.push(); f.deliver();
+    f.a.cursor({client: 'b', round_id: 'round', version: 0, anchor: 1, head: 3, name: 'Bob', color: '#65dccc'});
+    assert.equal(f.a.view.lastPresence.anchor, 3);
+    assert.equal(f.a.view.lastPresence.head, 5);
   } finally { f.a.destroy(); f.b.destroy(); }
 });
