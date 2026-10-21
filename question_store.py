@@ -230,11 +230,16 @@ def get_next_question(
     return random.choice(weakest_questions)
 
 
-def record_attempt(field: str, question_id: str | int, correct: bool, score: float) -> dict:
+def record_attempt(field: str, question_id: str | int, correct: bool, score: float,
+                   attempt_id: str | None = None) -> dict:
     with progress_transaction(field):
         progress = load_progress(field)
         entry = progress.setdefault(str(question_id), _default_progress())
+        if attempt_id and any(item.get("attempt_id") == attempt_id for item in entry.get("history", [])):
+            return entry
         _update_attempt(entry, correct, score)
+        if attempt_id:
+            entry["history"][-1]["attempt_id"] = attempt_id
         save_progress(field, progress)
         return entry
 

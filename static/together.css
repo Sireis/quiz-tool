@@ -1,0 +1,37 @@
+:root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; color: #eeece7; background: #151823; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+header { display: flex; align-items: center; gap: 24px; padding: 20px 24px; border-bottom: 1px solid #414d69; }
+header a { color: #ded0fa; text-decoration: none; font-size: 1.15rem; font-weight: 600; }
+header span, .hint { color: #aab3c9; }
+header .solo { margin-left: auto; font-size: .85rem; }
+main { max-width: 1060px; padding: 20px; margin: auto; }
+.panel { background: #1d2232; border: 1px solid #30384e; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+h1 { font-size: 1.4rem; margin: 0 0 12px; }
+h2 { font-size: 1.15rem; margin-top: 0; line-height: 1.5; }
+p { line-height: 1.6; }
+label { display: block; margin: 18px 0 8px; font-size: .85rem; }
+input, select, textarea { width: 100%; padding: 12px; background: #151823; color: inherit; border: 1px solid #414d69; border-radius: 8px; font: inherit; }
+textarea { resize: vertical; }
+button { padding: 11px 16px; margin-top: 14px; border: 1px solid transparent; border-radius: 8px; background: #b3a0de; color: #151823; font: inherit; font-weight: 600; cursor: pointer; }
+button.secondary { color: #eeece7; background: #262c40; border-color: #414d69; }
+button:disabled { opacity: .55; cursor: default; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px solid #b3a0de; outline-offset: 3px; }
+.lobby-columns, .participants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.lobby-columns { margin-top: 24px; }
+.lobby-columns form { padding: 20px; border: 1px solid #414d69; border-radius: 8px; }
+.participants { margin-bottom: 20px; }
+.person { padding: 16px; background: #262c40; border-radius: 8px; min-width: 0; }
+.person p { margin-bottom: 0; }
+.person h3 { margin: 0 0 8px; }
+.room-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.room-heading > div:first-child { flex: 1; }
+.room-heading button { margin-top: 0; }
+.room-heading > label, .room-heading > .hint { width: 100%; margin: 0; }
+.invite { width: 100%; display: flex; gap: 8px; }
+.invite input { min-width: 0; }
+.answer-text, #question { white-space: pre-wrap; overflow-wrap: anywhere; }
+#status { color: #f3cf62; }
+.hint { font-size: .85rem; }
+[hidden] { display: none !important; }
+@media (max-width: 650px) { .lobby-columns, .participants { grid-template-columns: 1fr; } header { gap: 12px; padding: 16px; } main { padding: 12px; } .panel { padding: 18px; } }

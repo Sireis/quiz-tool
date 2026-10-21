@@ -34,6 +34,8 @@
 #profile-form label { font-size: .8rem; }
 #profile-form .btn-row { flex-wrap: wrap; }
 #profile-status { font-size: .75rem; color: var(--muted); overflow-wrap: anywhere; }
+.together-link { display: block; padding: 10px 12px; border: 1px solid var(--border2); border-radius: 6px; color: var(--accent-light); text-decoration: none; font-size: .8rem; }
+.together-link:hover { background: var(--panel); }
 
 #selection-chatgpt { position: fixed; z-index: 100; bottom: calc(var(--nav-h) + 16px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: min(560px, calc(100vw - 24px)); max-height: 55dvh; overflow: auto; padding: 16px; border: 1px solid var(--secondary-accent); border-radius: var(--radius); background: var(--surface); box-shadow: 0 8px 32px #0008; }
 #selection-chatgpt[hidden] { display: none; }

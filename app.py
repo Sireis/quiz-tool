@@ -13,6 +13,7 @@ import assessor
 import learning_goals
 import question_store
 import profiles
+import rooms
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024
@@ -41,6 +42,38 @@ def api_profiles():
 @app.post("/api/profiles")
 def api_create_profile():
     return jsonify(profiles.create_profile(_request_body().get("name"))), 201
+
+
+@app.get("/together")
+def together():
+    return render_template("together.html")
+
+
+@app.post("/api/rooms")
+def api_create_room():
+    body = _request_body()
+    code = rooms.create(question_store.active_profile.get(), body.get("field"),
+                        body.get("mode", "coop"), body.get("topic"))
+    return jsonify(rooms.view(code, question_store.active_profile.get())), 201
+
+
+@app.post("/api/rooms/<code>/join")
+def api_join_room(code):
+    rooms.join(code, question_store.active_profile.get())
+    return jsonify(rooms.view(code, question_store.active_profile.get()))
+
+
+@app.get("/api/rooms/<code>")
+def api_room(code):
+    return jsonify(rooms.view(code, question_store.active_profile.get()))
+
+
+@app.post("/api/rooms/<code>/<operation>")
+def api_room_action(code, operation):
+    body = _request_body()
+    rooms.action(code, question_store.active_profile.get(), operation,
+                 body.get("round_id"), body.get("answer"))
+    return jsonify(rooms.view(code, question_store.active_profile.get()))
 
 
 @app.errorhandler(ValueError)
