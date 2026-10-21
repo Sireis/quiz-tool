@@ -23,6 +23,19 @@ _executor = ThreadPoolExecutor(max_workers=2)
 LEASE_SECONDS = 300
 
 
+def available(profile):
+    """Discover waiting rooms with an active creator; listing never joins them."""
+    found = []
+    if ROOMS_PATH.exists():
+        for path in ROOMS_PATH.glob('*.json'):
+            room = json.loads(path.read_text(encoding='utf-8'))
+            people = room['participants']
+            seen = max((p['seen'] for p in people.values()), default=0)
+            if not room['closed'] and len(people) == 1 and profile not in people and time.time() - seen < 60:
+                found.append({'code': room['code'], 'field': room['field'], 'mode': room['mode'], 'seen': seen})
+    return sorted(found, key=lambda item: item['seen'], reverse=True)
+
+
 def _save(path, room):
     temporary = None
     try:
@@ -79,12 +92,22 @@ def _new_round(room):
             store.active_profile.reset(token)
     def rank(question):
         return min(min(p.get(str(question['id']), {}).get('streak', 0), 2) for p in progress)
-    weakest = min(map(rank, questions))
-    candidates = [q for q in questions if rank(q) == weakest]
+    if room['mode'] == 'compete':
+        used = set(room.get('question_sequence', []))
+        candidates = [q for q in questions if q['id'] not in used]
+        if not candidates:
+            room['question_sequence'] = []
+            candidates = questions
+    else:
+        weakest = min(map(rank, questions))
+        candidates = [q for q in questions if rank(q) == weakest]
     previous = room.get('round', {}).get('question', {}).get('id')
     alternatives = [q for q in candidates if q['id'] != previous]
     room['round'] = {'id': str(uuid4()), 'question': random.choice(alternatives or candidates),
-                     'submissions': {}, 'ready': []}
+                     'submissions': {}, 'ready': [], 'draft': '', 'draft_revision': 0,
+                     'standings': {pid: p['points'] for pid, p in room['participants'].items()}}
+    if room['mode'] == 'compete':
+        room.setdefault('question_sequence', []).append(room['round']['question']['id'])
     room['number'] += 1
 
 
@@ -122,6 +145,7 @@ def join(code, profile):
                 raise ValueError('This room already has two profiles')
             room['participants'][profile] = _participant(profile)
             room['number'] = 0
+            room['question_sequence'] = []
             _new_round(room)
 
 
@@ -140,7 +164,8 @@ def _record_results(room):
         try:
             result = submission['result']
             store.record_attempt(room['field'], current['question']['id'], result['correct'],
-                                 result['score'], attempt_id=f"room:{room['code']}:{current['id']}:{profile}")
+                                 result['score'], attempt_id=f"room:{room['code']}:{current['id']}:{profile}",
+                                 source={'type': 'shared', 'mode': room['mode'], 'room': room['code']})
         finally:
             store.active_profile.reset(token)
         submission['recorded'] = True
@@ -155,7 +180,8 @@ def _schedule(room):
     if room['closed']:
         return
     now = time.time()
-    for profile, submission in room['round']['submissions'].items():
+    items = list(room['round']['submissions'].items())
+    for profile, submission in (items[:1] if room['mode'] == 'coop' else items):
         if 'result' in submission or submission.get('error'):
             continue
         if submission.get('lease_until', 0) > now:
@@ -164,6 +190,8 @@ def _schedule(room):
         submission.update(job=job, lease_until=now + LEASE_SECONDS)
         _executor.submit(_grade, room['code'], room['round']['id'], profile, job,
                          room['field'], dict(room['round']['question']), submission['answer'])
+        if room['mode'] == 'coop':
+            break
 
 
 def _grade(code, round_id, profile, job, field, question, answer):
@@ -181,10 +209,12 @@ def _grade(code, round_id, profile, job, field, question, answer):
             submission = room['round']['submissions'].get(profile)
             if not submission or submission.get('job') != job or 'result' in submission:
                 return
-            if result is not None:
-                submission['result'] = result
-            else:
-                submission['error'] = error
+            targets = room['round']['submissions'].values() if room['mode'] == 'coop' else [submission]
+            for target in targets:
+                if result is not None:
+                    target['result'] = result
+                else:
+                    target['error'] = error
         # Persist the grade before recording progress; retries deduplicate the attempt.
         with transaction(code) as room:
             if room['round']['id'] == round_id:
@@ -195,7 +225,7 @@ def _grade(code, round_id, profile, job, field, question, answer):
 
 def action(code, profile, operation, round_id=None, answer=None):
     with transaction(code) as room:
-        _member(room, profile)
+        _member(room, profile)['seen'] = time.time()
         if room['closed']:
             raise ValueError('This room has ended')
         if operation == 'leave':
@@ -206,9 +236,26 @@ def action(code, profile, operation, round_id=None, answer=None):
         if len(room['participants']) != 2:
             raise ValueError('Wait for a second profile')
         current = room['round']
-        if operation == 'submit':
+        if operation == 'draft':
+            if room['mode'] != 'coop' or current['submissions']:
+                raise ValueError('This answer cannot be edited')
+            if not isinstance(answer, str) or len(answer) > 16000:
+                raise ValueError('Answer must contain at most 16000 characters')
+            current['draft'] = answer
+            current['draft_revision'] = current.get('draft_revision', 0) + 1
+            current['edited_by'] = profile
+        elif operation == 'submit':
             if not isinstance(answer, str) or not answer.strip() or len(answer) > 16000:
                 raise ValueError('Answer must contain 1–16000 characters')
+            if room['mode'] == 'coop':
+                existing = next(iter(current['submissions'].values()), None)
+                if existing and existing['answer'] != answer.strip():
+                    raise ValueError('Your answer is already submitted')
+                if not existing or existing.get('error'):
+                    current['draft'] = answer.strip()
+                    current['submissions'] = {pid: {'answer': answer.strip()} for pid in room['participants']}
+                _schedule(room)
+                return
             existing = current['submissions'].get(profile)
             if existing:
                 if existing['answer'] != answer.strip():
@@ -244,7 +291,7 @@ def view(code, profile):
             item = {'id': pid, 'name': person['name'], 'online': time.time() - person['seen'] < 15,
                     'status': ('error' if submission.get('error') else 'graded' if submission.get('recorded')
                                else 'grading' if submission else 'answering'),
-                    'ready': pid in current['ready']}
+                    'ready': pid in current['ready'], 'points': current.get('standings', {}).get(pid, 0)}
             if reveal:
                 item.update(answer=submission['answer'], result=submission['result'],
                             points=person['points'], correct=person['correct'])
@@ -262,6 +309,22 @@ def view(code, profile):
                     'closed': room['closed'], 'round_id': current['id'], 'number': room['number'],
                     'completed': room['completed'], 'question': question, 'participants': participants,
                     'revealed': reveal, 'own_answer': own.get('answer'), 'error': own.get('error')}
+        if room['mode'] == 'coop':
+            response.update(draft=current.get('draft', ''), draft_revision=current.get('draft_revision', 0),
+                            edited_by=current.get('edited_by'))
+            progress = []
+            for pid in room['participants']:
+                token = store.active_profile.set(pid)
+                try:
+                    progress.append(store.load_progress(room['field']))
+                finally:
+                    store.active_profile.reset(token)
+            questions = store.get_filtered_questions(room['field'], topic=room['topic'])
+            response['team_preparation'] = {
+                'prepared': sum(len(progress) == 2 and all(store.get_question_preparation(
+                    p.get(str(q['id']), {})) == 'green' for p in progress) for q in questions),
+                'total': len(questions),
+            }
         if reveal:
             response['reference_answer'] = current['question']['answer']
         return response

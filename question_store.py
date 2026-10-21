@@ -231,7 +231,7 @@ def get_next_question(
 
 
 def record_attempt(field: str, question_id: str | int, correct: bool, score: float,
-                   attempt_id: str | None = None) -> dict:
+                   attempt_id: str | None = None, source: dict | None = None) -> dict:
     with progress_transaction(field):
         progress = load_progress(field)
         entry = progress.setdefault(str(question_id), _default_progress())
@@ -240,6 +240,8 @@ def record_attempt(field: str, question_id: str | int, correct: bool, score: flo
         _update_attempt(entry, correct, score)
         if attempt_id:
             entry["history"][-1]["attempt_id"] = attempt_id
+        if source:
+            entry["history"][-1]["source"] = source
         save_progress(field, progress)
         return entry
 

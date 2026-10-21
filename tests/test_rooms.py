@@ -113,7 +113,7 @@ class RoomTests(unittest.TestCase):
         self.assertEqual(self.assess.call_count, 2)
 
     def test_duplicate_submission_retry_and_ready_are_idempotent(self):
-        code, rid = self.start()
+        code, rid = self.start('compete')
         for _ in range(4):
             self.submit(code, rid, self.a)
         self.assertEqual(len(self.queue.jobs), 1)
@@ -161,7 +161,7 @@ class RoomTests(unittest.TestCase):
         self.assertEqual(self.post(f'/api/rooms/{code}/join', self.a).status_code, 400)
 
     def test_recovery_after_grade_persisted_before_progress_saved(self):
-        code, rid = self.start()
+        code, rid = self.start('compete')
         self.submit(code, rid, self.a)
         # Simulate a persisted result and a crash just after writing profile progress.
         with rooms.transaction(code) as room:
@@ -184,7 +184,7 @@ class RoomTests(unittest.TestCase):
         self.assertEqual(len(self.queue.jobs), count + 1)
 
     def test_concurrent_submissions(self):
-        code, rid = self.start()
+        code, rid = self.start('compete')
         with ThreadPoolExecutor(max_workers=2) as pool:
             list(pool.map(lambda pid: rooms.action(code, pid, 'submit', rid, 'Answer'), (self.a, self.b)))
         self.assertEqual(len(self.queue.jobs), 2)
@@ -243,6 +243,63 @@ class RoomTests(unittest.TestCase):
         self.assertEqual(together.data, self.client.get('/').data)
         for element_id in ('question-card', 'answer-input', 'result-card', 'shared-dialog'):
             self.assertIn(f'id="{element_id}"'.encode(), together.data)
+
+    def test_room_discovery_is_optional_and_excludes_own_full_stale_and_closed(self):
+        code = self.post('/api/rooms', self.a, {'field': 'test'}).get_json()['code']
+        def available(profile):
+            return self.client.get('/api/rooms', headers={'X-Trainer-Profile': profile}).get_json()
+        self.assertEqual(available(self.a), [])
+        self.assertEqual(available(self.b)[0]['code'], code)
+        with rooms.transaction(code) as room:
+            self.assertEqual(list(room['participants']), [self.a])
+            room['participants'][self.a]['seen'] = time.time() - 90
+        self.assertEqual(available(self.b), [])
+        self.get(code, self.a)
+        self.assertEqual(len(available(self.b)), 1)
+        self.post(f'/api/rooms/{code}/join', self.b)
+        self.assertEqual(available(self.c), [])
+        self.post(f'/api/rooms/{code}/leave', self.a)
+        self.assertEqual(available(self.c), [])
+
+    def test_cooperative_draft_is_shared_then_graded_once_for_both_profiles(self):
+        code, rid = self.start('coop')
+        def edit(profile, answer):
+            return self.post(f'/api/rooms/{code}/draft', profile, {'round_id': rid, 'answer': answer})
+        self.assertEqual(edit(self.a, 'Our first draft').status_code, 200)
+        self.assertEqual(self.get(code, self.b).get_json()['draft'], 'Our first draft')
+        state = edit(self.b, 'Our complete answer').get_json()
+        self.assertEqual(state['draft_revision'], 2)
+        self.assertEqual(state['edited_by'], self.b)
+        self.assertEqual(self.get(code, self.a).get_json()['draft'], 'Our complete answer')
+        self.submit(code, rid, self.b, 'Our complete answer')
+        for _ in range(3):
+            self.get(code, self.a)
+            self.submit(code, rid, self.a, 'Our complete answer')
+        self.assertEqual(len(self.queue.jobs), 1)
+        self.assertEqual(edit(self.a, 'Too late').status_code, 400)
+        self.queue.run_one()
+        state = self.get(code, self.a).get_json()
+        self.assertTrue(state['revealed'])
+        self.assertEqual(self.assess.call_count, 1)
+        self.assertEqual([p['answer'] for p in state['participants']], ['Our complete answer'] * 2)
+        for pid in (self.a, self.b):
+            entry = next(iter(self.progress(pid).values()))
+            self.assertEqual(entry['attempts'], 1)
+            self.assertEqual(entry['history'][-1]['source']['mode'], 'coop')
+        self.assertEqual(state['team_preparation'], {'prepared': 0, 'total': 2})
+
+    def test_competition_rejects_shared_drafts_and_cycles_the_question_pool(self):
+        code, rid = self.start('compete')
+        response = self.post(f'/api/rooms/{code}/draft', self.a, {'round_id': rid, 'answer': 'Private'})
+        self.assertEqual(response.status_code, 400)
+        self.assertNotIn('draft', self.get(code, self.b).get_json())
+        with rooms.transaction(code) as room:
+            first = room['round']['question']['id']
+            rooms._new_round(room)
+            second = room['round']['question']['id']
+            self.assertNotEqual(first, second)
+            rooms._new_round(room)
+            self.assertEqual(room['round']['question']['id'], first)
 
 
 if __name__ == '__main__':

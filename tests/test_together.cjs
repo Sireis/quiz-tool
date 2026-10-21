@@ -7,7 +7,7 @@ const settle = () => new Promise(resolve => setImmediate(resolve));
 
 function state(overrides = {}) {
   return {
-    code: 'ABCDEF12', field: 'test', topic: null, mode: 'coop', closed: false,
+    code: 'ABCDEF12', field: 'test', topic: null, mode: 'compete', closed: false,
     round_id: 'round-1', number: 1, completed: 0,
     question: {id: 1, question: 'Shared question', topic: 'Topic', preparation: 'red', progress: {}, bookmarked: false},
     participants: [
@@ -33,6 +33,7 @@ async function setup(saved = null, search = '', pathname = '/') {
       replaceChildren(...children) { this.children = children; if (children[0]?.value !== undefined) this.value = children[0].value; },
       setAttribute(name, value) { this.attrs[name] = value; },
       removeAttribute(name) { delete this.attrs[name]; },
+      setSelectionRange(start, end) { this.selectionStart = start; this.selectionEnd = end; },
       focus() {}, scrollIntoView() {}, showModal() { this.open = true; }, close() { this.open = false; },
     };
     if (id) elements.set(id, item);
@@ -42,9 +43,13 @@ async function setup(saved = null, search = '', pathname = '/') {
   const calls = [];
   let current = state();
   let poll;
+  let discover;
+  let available = [];
   const fetch = async (path, options) => {
     calls.push({path, options});
-    const body = path === '/api/profiles' ? [{id: 'alice', name: 'Alice'}, {id: 'bob', name: 'Bob'}]
+    if (path.endsWith('/draft')) current.draft = JSON.parse(options.body).answer;
+    const body = path === '/api/rooms' && options?.method !== 'POST' ? structuredClone(available)
+      : path === '/api/profiles' ? [{id: 'alice', name: 'Alice'}, {id: 'bob', name: 'Bob'}]
       : path.endsWith('/topics') ? ['Topic']
       : path.includes('/api/rooms') ? structuredClone(current)
       : path.includes('/question') ? current.question : [];
@@ -60,7 +65,7 @@ async function setup(saved = null, search = '', pathname = '/') {
     document: {getElementById: element, createElement: () => element(),
       querySelector: () => element('main'), querySelectorAll: () => [], addEventListener() {}, hidden: false},
     navigator: {clipboard: {writeText: async () => {}}}, confirm: () => true,
-    setInterval(callback) { poll = callback; },
+    setInterval(callback, delay) { if (delay === 2000) discover = callback; else poll = callback; },
   };
   vm.createContext(context);
   vm.runInContext(readFileSync(join(__dirname, '../static/trainer.js'), 'utf8').replace(/init\(\);\s*$/, ''), context);
@@ -75,12 +80,12 @@ async function setup(saved = null, search = '', pathname = '/') {
   await context.sharedPractice.init(['test']);
   await settle();
   return {
-    context, element, calls, storage, setState(value) { current = value; }, poll: () => poll(),
+    context, element, calls, storage, discover: () => discover(), setAvailable(value) { available = value; }, setState(value) { current = value; }, poll: () => poll(),
     async event(id, type) { await element(id).events[type]({preventDefault() {}}); await settle(); },
     async open() { await element('shared-open').events.click(); await settle(); },
-    async start() {
+    async start(mode = 'compete') {
       await this.open();
-      element('shared-mode').value = 'coop';
+      element('shared-mode').value = mode;
       element('shared-topic').value = '';
       await this.event('shared-create-form', 'submit');
     },
@@ -91,9 +96,9 @@ test('shared practice uses the normal question and answer frame without losing d
   const app = await setup();
   await app.open();
   app.element('shared-profile').value = 'bob';
-  app.element('shared-mode').value = 'coop';
+  app.element('shared-mode').value = 'compete';
   await app.event('shared-create-form', 'submit');
-  const creation = app.calls.find(call => call.path === '/api/rooms');
+  const creation = app.calls.find(call => call.path === '/api/rooms' && call.options?.method === 'POST');
   assert.equal(creation.options.headers['X-Trainer-Profile'], 'bob');
   assert.equal(app.context.pageProfile, 'bob');
   assert.equal(app.element('profile-select').value, 'bob');
@@ -132,8 +137,13 @@ test('own feedback reuses the standard result card, partner feedback and scores 
   assert.equal(app.element('score-bar').style.width, '100%');
   assert.equal(app.element('expected-answer-text').textContent, 'Reference solution');
   assert.equal(app.element('shared-comparison').hidden, false);
-  assert.equal(app.element('shared-partner-answer').textContent, 'Answer 1');
-  assert.equal(app.element('shared-partner-feedback').textContent, 'Feedback 1');
+  assert.equal(app.element('shared-answer-cards').children.length, 2);
+  assert.equal(app.element('shared-answer-cards').children[0].children[2].textContent, 'Answer 0');
+  assert.equal(app.element('shared-answer-cards').children[1].children[2].textContent, 'Answer 1');
+  assert.equal(app.element('shared-answer-cards').children[1].children[3].textContent, 'Feedback 1');
+  assert.equal(app.element('shared-outcome').textContent, 'alice gewinnt diese Runde');
+  assert.equal(app.element('answer-area').hidden, true);
+  assert.equal(app.element('solo-result').hidden, true);
   assert.match(app.element('shared-summary').textContent, /alice: 100 Punkte · bob: 50 Punkte/);
   app.element('chatgpt-prompt').value = 'My edited follow-up';
   await app.poll();
@@ -179,4 +189,47 @@ test('invites open the room dialog and existing tabs reconnect with their own pr
   assert.equal(call.options.headers['X-Trainer-Profile'], 'bob');
   assert.equal(reconnect.element('shared-dialog').open, false);
   assert.equal(reconnect.context.pageProfile, 'bob');
+});
+
+test('Join Room appears on discovery and joins only on click with the selected profile', async () => {
+  const app = await setup();
+  app.context.pageProfile = 'bob';
+  app.setAvailable([{code: 'ABCDEF12', field: 'test', mode: 'coop'}]);
+  await app.discover();
+  assert.equal(app.element('shared-quick-join').hidden, false);
+  assert.equal(app.calls.some(call => call.path.endsWith('/join')), false);
+  assert.equal(app.context.sharedPractice.active, false);
+  await app.event('shared-quick-join', 'click');
+  const call = app.calls.find(call => call.path.endsWith('/join'));
+  assert.equal(call.options.headers['X-Trainer-Profile'], 'bob');
+  assert.equal(app.context.pageProfile, 'bob');
+  assert.equal(app.element('shared-quick-join').hidden, true);
+});
+
+test('cooperative typing polls a shared draft and shows one shared assessment', async () => {
+  const app = await setup();
+  app.setState(state({mode: 'coop', draft: 'Partner started this', draft_revision: 1}));
+  await app.start('coop');
+  assert.equal(app.element('answer-input').value, 'Partner started this');
+  assert.equal(app.element('answer-label').textContent, 'Eure gemeinsame Antwort');
+  app.element('answer-input').value = 'Our combined answer';
+  await app.event('answer-input', 'input');
+  await app.poll();
+  const save = app.calls.find(call => call.path.endsWith('/draft'));
+  assert.equal(JSON.parse(save.options.body).answer, 'Our combined answer');
+  assert.equal(app.element('answer-input').value, 'Our combined answer');
+  app.setState(state({mode: 'coop', draft: 'Partner added another point', draft_revision: 3}));
+  await app.poll();
+  assert.equal(app.element('answer-input').value, 'Partner added another point');
+  app.setState(state({
+    mode: 'coop', revealed: true, draft: 'Final answer', own_answer: 'Final answer',
+    reference_answer: 'Reference', team_preparation: {prepared: 2, total: 10},
+    participants: ['alice', 'bob'].map(id => ({id, name: id, online: true, status: 'graded', ready: false,
+      answer: 'Final answer', result: {score: 1, result: 'correct', correct: true, feedback: 'Shared feedback'}})),
+  }));
+  await app.poll();
+  assert.equal(app.element('shared-answer-cards').children.length, 1);
+  assert.equal(app.element('shared-answer-cards').children[0].children[2].textContent, 'Final answer');
+  assert.equal(app.element('answer-area').hidden, true);
+  assert.match(app.element('shared-summary').textContent, /2\/10/);
 });

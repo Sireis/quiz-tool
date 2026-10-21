@@ -660,6 +660,7 @@ function getResultType(res) {
 }
 
 function resetResultCard() {
+  document.getElementById('solo-result').hidden = false;
   const card = document.getElementById('result-card');
   card.style.display = 'none';
   card.className = '';

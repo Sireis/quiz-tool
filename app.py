@@ -57,6 +57,11 @@ def api_create_room():
     return jsonify(rooms.view(code, question_store.active_profile.get())), 201
 
 
+@app.get("/api/rooms")
+def api_available_rooms():
+    return jsonify(rooms.available(question_store.active_profile.get()))
+
+
 @app.post("/api/rooms/<code>/join")
 def api_join_room(code):
     rooms.join(code, question_store.active_profile.get())

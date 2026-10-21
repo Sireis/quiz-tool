@@ -16,6 +16,7 @@
 <header>
   <div class="header-identity">
     <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg><span class="brand-name">Trainer</span></span>
+    <button id="shared-quick-join" type="button" hidden>Join Room</button>
     <div class="profile-picker">
       <select id="profile-select" aria-label="Lernprofil" title="Lernprofil wechseln" disabled><option>Standard</option></select>
       <button class="secondary" id="profile-add" type="button" aria-label="Neues Profil erstellen" title="Neues Profil erstellen">+</button>
@@ -133,7 +134,7 @@
     <span id="bookmark-status" role="status" aria-live="polite"></span>
   </div>
 
-  <div class="answer-area">
+  <div class="answer-area" id="answer-area">
     <label id="answer-label" for="answer-input">Deine Antwort</label>
     <textarea id="answer-input" placeholder="Antwort eingeben… (Strg+Enter zum Prüfen)"></textarea>
     <div class="btn-row">
@@ -145,15 +146,16 @@
   </div>
 
   <div id="result-card">
+    <div id="solo-result">
     <div class="result-header">
       <span class="result-verdict" id="result-verdict"></span>
       <div class="score-bar-wrap"><div class="score-bar" id="score-bar"></div></div>
     </div>
     <div id="result-feedback"></div>
+    </div>
     <section id="shared-comparison" hidden aria-label="Antwort der anderen Person">
-      <h3 id="shared-partner-name"></h3>
-      <p id="shared-partner-answer"></p>
-      <p id="shared-partner-feedback"></p>
+      <p id="shared-outcome" role="status"></p>
+      <div id="shared-answer-cards"></div>
     </section>
     <div class="expected-label">Musterlösung</div>
     <div id="expected-answer-text"></div>
