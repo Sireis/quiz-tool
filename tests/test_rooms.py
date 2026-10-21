@@ -103,6 +103,11 @@ class RoomTests(unittest.TestCase):
         self.assertEqual([p['points'] for p in state['participants']], [100, 100])
         for profile in (self.a, self.b):
             self.assertEqual(self.progress(profile)[str(question['id'])]['attempts'], 1)
+        self.assertEqual(state['question']['progress']['attempts'], 1)
+        self.assertIn(state['question']['preparation'], ('red', 'yellow', 'green'))
+        self.post('/api/bookmark', self.a, {'field': 'test', 'id': question['id'], 'bookmarked': True})
+        self.assertTrue(self.get(code, self.a).get_json()['question']['bookmarked'])
+        self.assertFalse(self.get(code, self.b).get_json()['question']['bookmarked'])
         self.assertEqual(self.progress('default'), {})
         self.assertEqual(self.progress(self.c), {})
         self.assertEqual(self.assess.call_count, 2)
@@ -233,7 +238,11 @@ class RoomTests(unittest.TestCase):
         code = self.post('/api/rooms', self.a, {'field': 'test'}).get_json()['code']
         rid = self.get(code, self.a).get_json()['round_id']
         self.assertEqual(self.submit(code, rid, self.a).status_code, 400)
-        self.assertEqual(self.client.get('/together').status_code, 200)
+        together = self.client.get('/together')
+        self.assertEqual(together.status_code, 200)
+        self.assertEqual(together.data, self.client.get('/').data)
+        for element_id in ('question-card', 'answer-input', 'result-card', 'shared-dialog'):
+            self.assertIn(f'id="{element_id}"'.encode(), together.data)
 
 
 if __name__ == '__main__':

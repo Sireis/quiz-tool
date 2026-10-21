@@ -95,6 +95,7 @@
       [`${edge.a.topic} · ${edge.b.topic}`, edge.concepts.join(' · ')], null);
   }
   async function startQuiz(item) {
+    if (globalThis.sharedPractice?.active) return;
     dialog.close();
     sel.topic = item.topic; sel.subtopic = item.subtopic;
     sel.set = sel.examen = null;

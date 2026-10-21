@@ -1,0 +1,24 @@
+<dialog id="shared-dialog" aria-labelledby="shared-heading">
+  <div class="shared-heading">
+    <h2 id="shared-heading">Zu zweit lernen</h2>
+    <button class="secondary" id="shared-close" type="button" aria-label="Schließen">×</button>
+  </div>
+  <p class="shared-help">Gleiche Frage, zwei eigene Antworten. Eure Lösungen und Rückmeldungen werden gemeinsam aufgedeckt.</p>
+  <label for="shared-profile">Dein Lernprofil</label><select id="shared-profile"></select>
+  <p class="shared-help">Wählt zwei unterschiedliche Profile. Beide Geräte müssen denselben Trainer-Server öffnen.</p>
+  <div class="shared-lobby-columns">
+    <form id="shared-create-form">
+      <h3>Raum erstellen</h3>
+      <label for="shared-field">Fach</label><select id="shared-field" required></select>
+      <label for="shared-topic">Thema</label><select id="shared-topic"><option value="">Alle Themen</option></select>
+      <label for="shared-mode">Spielweise</label><select id="shared-mode"><option value="coop">Kooperativ</option><option value="compete">Wettbewerb</option></select>
+      <button class="primary" type="submit" id="shared-create">Raum erstellen</button>
+    </form>
+    <form id="shared-join-form">
+      <h3>Raum beitreten</h3>
+      <label for="shared-code">Raumcode</label><input id="shared-code" required maxlength="8" pattern="[a-fA-F0-9]{8}" autocomplete="off" placeholder="8-stelliger Code">
+      <button class="primary" type="submit" id="shared-join">Beitreten</button>
+    </form>
+  </div>
+  <p id="shared-lobby-status" role="status" aria-live="polite"></p>
+</dialog>

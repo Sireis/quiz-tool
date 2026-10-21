@@ -250,6 +250,13 @@ def view(code, profile):
                             points=person['points'], correct=person['correct'])
             participants.append(item)
         question = {k: v for k, v in current['question'].items() if k != 'answer'}
+        token = store.active_profile.set(profile)
+        try:
+            question['progress'] = store.load_progress(room['field']).get(str(question['id']), {})
+            question['preparation'] = store.get_question_preparation(question['progress'])
+            question['bookmarked'] = any(question['id'] in ids for ids in store.load_bookmarks(room['field']).values())
+        finally:
+            store.active_profile.reset(token)
         own = current['submissions'].get(profile, {})
         response = {'code': code, 'field': room['field'], 'topic': room['topic'], 'mode': room['mode'],
                     'closed': room['closed'], 'round_id': current['id'], 'number': room['number'],

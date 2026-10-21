@@ -69,7 +69,7 @@
 <!-- ═══════════════ SIDEBAR ══════════════════════════════ -->
 <aside id="sidebar">
   <div class="sb-scroll">
-    <a class="secondary together-link" href="/together">Zu zweit lernen ↗</a>
+    <button class="secondary together-link" id="shared-open" type="button">Zu zweit lernen</button>
 
 
 
@@ -106,6 +106,17 @@
 
 <!-- ═══════════════ MAIN ══════════════════════════════════ -->
 <main>
+  <section class="card" id="shared-room" aria-label="Gemeinsame Sitzung" hidden>
+    <div class="shared-heading"><strong id="shared-title"></strong><span id="shared-round"></span></div>
+    <div id="shared-participants" aria-live="polite"></div>
+    <p id="shared-summary"></p>
+    <p id="shared-status" role="status" aria-live="polite"></p>
+    <div class="btn-row shared-actions">
+      <button class="secondary" id="shared-copy" type="button">Einladungslink kopieren</button>
+      <button class="secondary" id="shared-leave" type="button">Sitzung beenden</button>
+      <button class="secondary" id="shared-solo" type="button" hidden>Solo weiterlernen</button>
+    </div>
+  </section>
   <div class="card" id="question-card">
     <button class="secondary" id="bookmark-btn" type="button" aria-label="Für später merken" title="Für später merken" aria-pressed="false" onclick="toggleBookmark()" disabled>
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-6-4-6 4Z" /></svg>
@@ -128,7 +139,7 @@
     <div class="btn-row">
       <button class="primary" id="submit-btn" onclick="submitAnswer()">Antwort prüfen</button>
       <button class="secondary" id="reveal-btn" onclick="revealAnswer()">Antwort zeigen</button>
-      <button class="secondary" onclick="loadNextQuestion()">Überspringen →</button>
+      <button class="secondary" id="skip-btn" onclick="loadNextQuestion()">Überspringen →</button>
       <div id="loading"><div class="spinner"></div> Bewertung läuft…</div>
     </div>
   </div>
@@ -139,6 +150,11 @@
       <div class="score-bar-wrap"><div class="score-bar" id="score-bar"></div></div>
     </div>
     <div id="result-feedback"></div>
+    <section id="shared-comparison" hidden aria-label="Antwort der anderen Person">
+      <h3 id="shared-partner-name"></h3>
+      <p id="shared-partner-answer"></p>
+      <p id="shared-partner-feedback"></p>
+    </section>
     <div class="expected-label">Musterlösung</div>
     <div id="expected-answer-text"></div>
     <div id="chatgpt-followup" hidden>
@@ -151,7 +167,7 @@
       </div>
       <div id="chatgpt-status" role="status" aria-live="polite"></div>
     </div>
-    <button class="primary" onclick="loadNextQuestion()">Nächste Frage →</button>
+    <button class="primary" id="next-btn" onclick="loadNextQuestion()">Nächste Frage →</button>
   </div>
 </main>
 
@@ -272,7 +288,9 @@
     </div>
   </form>
 </dialog>
+{% include '_together.html' %}
 <script src="{{ url_for('static', filename='profiles.js') }}" defer></script>
+<script src="{{ url_for('static', filename='together.js') }}" defer></script>
 <script src="{{ url_for('static', filename='journey.js') }}" defer></script>
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation-layout.js') }}" defer></script>

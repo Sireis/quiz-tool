@@ -51,10 +51,11 @@ async function init() {
   await initProfiles();
   const fields = await fetch('/api/fields').then(r => r.json());
   renderFieldList(fields);
+  await globalThis.sharedPractice?.init(fields);
 
   const saved = localStorage.getItem('trainer_field');
   const initial = saved && fields.includes(saved) ? saved : fields[0];
-  await selectField(initial);
+  if (!globalThis.sharedPractice?.active) await selectField(initial);
   await Promise.all(fields.filter(f => f !== initial).map(async field => {
     try {
       const stats = await fetch(`/api/fields/${encodeURIComponent(field)}/stats`).then(r => r.json());
@@ -68,6 +69,7 @@ async function init() {
 //  SELECTION HANDLERS
 // ═══════════════════════════════════════════════════════════
 async function selectField(fieldId) {
+  if (globalThis.sharedPractice?.active) return;
   sel.field  = fieldId;
   sel.topic  = null;
   sel.subtopic = null;
@@ -91,6 +93,7 @@ async function selectField(fieldId) {
 }
 
 async function selectTopic(name) {
+  if (globalThis.sharedPractice?.active) return;
   const deselect = sel.topic === name && !sel.subtopic;
   sel.subtopic = null;
   if (deselect) {
@@ -110,6 +113,7 @@ async function selectTopic(name) {
 }
 
 async function selectExamen(examen) {
+  if (globalThis.sharedPractice?.active) return;
   sel.subtopic = null;
   if (sel.examen?.name === examen.name) {
     sel.examen = null;
@@ -128,6 +132,7 @@ async function selectExamen(examen) {
 }
 
 async function selectSet(set) {
+  if (globalThis.sharedPractice?.active) return;
   sel.subtopic = null;
   if (sel.set?.name === set.name && !!sel.set.bookmark === !!set.bookmark) {
     sel.set = null;
@@ -436,11 +441,12 @@ function clickTopicBreakdown(name) {
 }
 
 function jumpToQuestion(qid) {
+  if (globalThis.sharedPractice?.active) return;
   fetch(`/api/fields/${sel.field}/questions`)
     .then(r => r.json())
     .then(questions => {
       const q = questions.find(q => q.id === qid);
-      if (q) { displayQuestion(q); mobileGoMain(); }
+      if (q && !globalThis.sharedPractice?.active) { displayQuestion(q); mobileGoMain(); }
     });
 }
 
@@ -448,6 +454,7 @@ function jumpToQuestion(qid) {
 //  QUESTION LOADING
 // ═══════════════════════════════════════════════════════════
 async function loadNextQuestion() {
+  if (globalThis.sharedPractice?.active) return globalThis.sharedPractice.next();
   const requestId = ++questionRequest;
   currentQuestion = null;
   renderBookmark();
@@ -529,12 +536,14 @@ async function toggleBookmark() {
 //  SUBMIT
 // ═══════════════════════════════════════════════════════════
 async function submitAnswer() {
+  if (globalThis.sharedPractice?.active) return globalThis.sharedPractice.submit();
   const answer = document.getElementById('answer-input').value.trim();
   if (!answer) return;
   await requestAnswerResult('/api/assess', { answer }, true);
 }
 
 async function revealAnswer() {
+  if (globalThis.sharedPractice?.active) return;
   await requestAnswerResult('/api/reveal-answer');
 }
 

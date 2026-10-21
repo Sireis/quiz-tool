@@ -46,7 +46,7 @@ def api_create_profile():
 
 @app.get("/together")
 def together():
-    return render_template("together.html")
+    return render_template("index.html")
 
 
 @app.post("/api/rooms")
