@@ -1,8 +1,8 @@
 :root {
   color-scheme: dark;
-  --background:    #151823;
-  --surface:    #1d2232;
-  --panel:   #262c40;
+  --background:    #0d111c;
+  --surface:    #192131;
+  --panel:   #273249;
   --accent:   #b3a0de;
   --accent-light: #ded0fa;
   --secondary-accent:    #8abfce;
@@ -13,8 +13,10 @@
   --partial: #f3cf62;
   --wrong:   #f07887;
   --warn:    #b3a0de;
-  --border:  #30384e;
-  --border2: #414d69;
+  --border:  #303d55;
+  --border2: #4a5b79;
+  --shadow-raised: 0 16px 36px #03060d70, 0 3px 9px #03060d45, inset 0 1px 0 #ffffff0b;
+  --shadow-control: 0 5px 14px #03060d60, inset 0 1px 0 #ffffff08;
   --radius:  12px;
   --nav-h:   52px;
   --header-h: 64px;
@@ -647,11 +649,14 @@ main {
   /* Anchor every layer to the viewport as the surrounding panels resize. */
   background-attachment: fixed;
 }
-header, aside, #stats-panel { background: linear-gradient(160deg, #242b3af5, #1d2232ed); }
+header, aside, #stats-panel { background: linear-gradient(160deg, #1c2535fa, #131b29f5); }
+header { box-shadow: 0 5px 20px #03060d55; }
+aside { box-shadow: 6px 0 24px #03060d30; }
+#stats-panel { box-shadow: -6px 0 24px #03060d30; }
 header::after { opacity: .45; }
 .app-wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; letter-spacing: -.03em; }
 .brand-mark { width: 25px; height: 25px; color: #d3bcff; filter: drop-shadow(0 0 6px #b3a0de55); }
-.card { background: linear-gradient(135deg, #2d3449f5, #262c40f5); box-shadow: 0 12px 36px #00000020, 0 0 32px #a78bd710; }
+.card { background: linear-gradient(135deg, #2c374df7, #202a3df7); box-shadow: var(--shadow-raised); }
 #question-card { border-top-color: #756795; }
 #question-text { font-weight: 500; }
 .card-meta { letter-spacing: .06em; line-height: 1.6; }
@@ -689,7 +694,7 @@ button.secondary:hover { background: #333c55; }
 }
 .preparation-segment { background: color-mix(in srgb, var(--signal-color) 85%, var(--panel)); }
 .preparation-bar, .big-bar-wrap { background: #ffffff0a; }
-.metric-box { box-shadow: inset 0 1px 0 #ffffff05; }
+.metric-box { background: #262c40; border-color: #414d69; box-shadow: inset 0 1px 0 #ffffff05; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
@@ -1054,3 +1059,36 @@ header:has(#header-goal[hidden]) #header-ctx { grid-column: 3 / 6; }
 .field-preparation-chart .field-ring-red {
   filter: drop-shadow(0 0 2.75px color-mix(in srgb, var(--signal-color) 55%, transparent));
 }
+
+/* Dark wells and softly lit edges give the workspace distinct surface levels. */
+textarea, #shared-editor .cm-editor {
+  background: var(--background);
+  border-color: var(--border2);
+  box-shadow: 0 10px 26px #03060d65, inset 0 1px 3px #00000035;
+}
+textarea:focus, #shared-editor .cm-editor.cm-focused {
+  border-color: var(--secondary-accent);
+  box-shadow: 0 12px 30px #03060d75, 0 0 0 3px #8abfce12;
+}
+#result-card { box-shadow: var(--shadow-raised); }
+#expected-answer-text {
+  padding: 14px 16px;
+  border: 1px solid #90b9d629;
+  border-radius: 10px;
+  background: #101a27b3;
+  box-shadow: inset 0 1px 4px #03060d40;
+}
+.shared-answer-card { background: linear-gradient(145deg, #222d40, #182233); box-shadow: var(--shadow-control); }
+.shared-submitted-answer { box-shadow: inset 0 1px 4px #03060d55; }
+.sel-btn.active { background: linear-gradient(120deg, #35405a, #28334a); box-shadow: var(--shadow-control); }
+button.secondary { background: linear-gradient(145deg, #2b364c, #202a3d); box-shadow: var(--shadow-control); }
+button.secondary:hover { background: linear-gradient(145deg, #36435c, #2b374f); }
+.profile-picker select, #shared-dialog :is(input, select), #profile-name, .goal-inputs :is(input, select) {
+  background: var(--background);
+  box-shadow: inset 0 1px 3px #03060d60;
+}
+#profile-dialog, #shared-dialog, #selection-chatgpt {
+  background: linear-gradient(145deg, #263249, #182233);
+  box-shadow: 0 28px 80px #02050b99, inset 0 1px 0 #ffffff12;
+}
+#profile-dialog::backdrop, #shared-dialog::backdrop { background: #030711b3; backdrop-filter: blur(4px); }
