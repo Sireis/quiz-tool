@@ -6,15 +6,41 @@ Flask entry point. Routes call into question_store and assessor.
 import os
 from dataclasses import asdict
 
-from flask import Flask, abort, jsonify, render_template, request, send_from_directory
+from flask import Flask, abort, g, jsonify, render_template, request, send_from_directory
 from werkzeug.exceptions import HTTPException
 
 import assessor
 import learning_goals
 import question_store
+import profiles
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024
+
+
+@app.before_request
+def select_profile():
+    profile_id = request.headers.get("X-Trainer-Profile", "default")
+    if profile_id != "default":
+        profiles.profile_path(profile_id)
+    g.profile_token = question_store.active_profile.set(profile_id)
+
+
+@app.teardown_request
+def reset_profile(error):
+    token = g.pop("profile_token", None)
+    if token is not None:
+        question_store.active_profile.reset(token)
+
+
+@app.get("/api/profiles")
+def api_profiles():
+    return jsonify(profiles.list_profiles())
+
+
+@app.post("/api/profiles")
+def api_create_profile():
+    return jsonify(profiles.create_profile(_request_body().get("name"))), 201
 
 
 @app.errorhandler(ValueError)

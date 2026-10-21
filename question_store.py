@@ -6,6 +6,7 @@ import os
 import random
 import tempfile
 from contextlib import contextmanager
+from contextvars import ContextVar
 from datetime import datetime, timezone
 from pathlib import Path
 from threading import RLock
@@ -13,6 +14,20 @@ from threading import RLock
 FIELDS_PATH = Path(__file__).resolve().parent / "sets"
 REQUIRED_QUESTION_FIELDS = ("topic", "question", "answer")
 _progress_lock = RLock()
+active_profile = ContextVar("active_profile", default="default")
+PERSONAL_FILES = {"progress.json", "bookmarks.json", "goal.json"}
+
+
+def personal_path(field: str) -> Path:
+    """The default profile retains existing data in its original location."""
+    subject = field_path(field)
+    profile_id = active_profile.get()
+    if profile_id == "default":
+        return subject
+    import profiles
+    destination = profiles.profile_path(profile_id) / field
+    destination.mkdir(exist_ok=True)
+    return destination
 
 
 def field_path(field: str) -> Path:
@@ -29,7 +44,7 @@ def field_path(field: str) -> Path:
 
 
 def _load_json(field: str, filename: str, *, required: bool = False) -> dict:
-    path = field_path(field) / filename
+    path = (personal_path(field) if filename in PERSONAL_FILES else field_path(field)) / filename
     if not path.exists():
         if required:
             raise ValueError("Missing question bank")
@@ -122,7 +137,7 @@ def load_system_prompt(field: str) -> str:
 def progress_transaction(field: str, lock_filename: str = ".progress.lock"):
     """Lock the entire read-modify-write operation across threads and processes."""
     with _progress_lock:
-        with (field_path(field) / lock_filename).open("a") as lock:
+        with (personal_path(field) / lock_filename).open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
             try:
                 yield
@@ -136,7 +151,7 @@ def save_progress(field: str, progress: dict) -> None:
 
 
 def _save_json(field: str, filename: str, data: dict) -> None:
-    destination = field_path(field) / filename
+    destination = (personal_path(field) if filename in PERSONAL_FILES else field_path(field)) / filename
     temporary_path = None
     try:
         with tempfile.NamedTemporaryFile(

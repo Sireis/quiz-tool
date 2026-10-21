@@ -48,6 +48,7 @@ let questionRequest = 0;
 //  INIT
 // ═══════════════════════════════════════════════════════════
 async function init() {
+  await initProfiles();
   const fields = await fetch('/api/fields').then(r => r.json());
   renderFieldList(fields);
 

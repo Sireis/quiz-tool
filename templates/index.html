@@ -14,7 +14,13 @@
 
 <!-- ═══════════════ HEADER ════════════════════════════════ -->
 <header>
-  <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg><span class="brand-name">Trainer</span></span>
+  <div class="header-identity">
+    <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg><span class="brand-name">Trainer</span></span>
+    <div class="profile-picker">
+      <select id="profile-select" aria-label="Lernprofil" title="Lernprofil wechseln" disabled><option>Standard</option></select>
+      <button class="secondary" id="profile-add" type="button" aria-label="Neues Profil erstellen" title="Neues Profil erstellen">+</button>
+    </div>
+  </div>
   <span class="header-sep">/</span>
   <div id="header-ctx">
     <span class="ctx-seg" id="hctx-field">–</span>
@@ -63,6 +69,8 @@
 <!-- ═══════════════ SIDEBAR ══════════════════════════════ -->
 <aside id="sidebar">
   <div class="sb-scroll">
+
+
 
     <div>
       <div class="sb-section-label">Felder</div>
@@ -251,6 +259,19 @@
     <div id="journey-content" role="region" aria-label="Statistiken deiner Lernreise" tabindex="0" aria-live="polite"></div>
   </div>
 </dialog>
+<dialog id="profile-dialog" aria-labelledby="profile-heading">
+  <form id="profile-form">
+    <h2 id="profile-heading">Neues Lernprofil</h2>
+    <label for="profile-name">Profilname</label>
+    <input id="profile-name" required maxlength="50" autocomplete="off">
+    <p id="profile-status" role="status" aria-live="polite"></p>
+    <div class="btn-row">
+      <button class="primary" type="submit">Erstellen</button>
+      <button class="secondary" id="profile-cancel" type="button">Abbrechen</button>
+    </div>
+  </form>
+</dialog>
+<script src="{{ url_for('static', filename='profiles.js') }}" defer></script>
 <script src="{{ url_for('static', filename='journey.js') }}" defer></script>
 <script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>
 <script src="{{ url_for('static', filename='constellation-layout.js') }}" defer></script>

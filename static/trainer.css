@@ -23,6 +23,18 @@
   --resize-handle-width: 6px;
 }
 
+.profile-picker { display: flex; align-items: center; gap: 4px; flex: 0 0 auto; margin-left: auto; }
+.profile-picker select, #profile-name { min-width: 0; padding: 8px; color: var(--text); background: var(--background); border: 1px solid var(--border2); border-radius: 6px; }
+.profile-picker select { box-sizing: content-box; width: 16ch; flex: 0 0 auto; padding: 8px 6px; text-overflow: ellipsis; font: inherit; font-size: .75rem; }
+#profile-add { flex: 0 0 26px; width: 26px; min-height: 34px; padding: 0; font-size: 1.1rem; }
+#profile-dialog { margin: auto; width: min(380px, calc(100vw - 32px)); padding: 24px; color: var(--text); background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius); }
+#profile-dialog::backdrop { background: #0008; }
+#profile-form { display: grid; gap: 12px; }
+#profile-form h2 { font-size: 1rem; }
+#profile-form label { font-size: .8rem; }
+#profile-form .btn-row { flex-wrap: wrap; }
+#profile-status { font-size: .75rem; color: var(--muted); overflow-wrap: anywhere; }
+
 #selection-chatgpt { position: fixed; z-index: 100; bottom: calc(var(--nav-h) + 16px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: min(560px, calc(100vw - 24px)); max-height: 55dvh; overflow: auto; padding: 16px; border: 1px solid var(--secondary-accent); border-radius: var(--radius); background: var(--surface); box-shadow: 0 8px 32px #0008; }
 #selection-chatgpt[hidden] { display: none; }
 #selection-chatgpt-preview { max-height: 4.5em; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; margin-bottom: 10px; }
@@ -903,7 +915,8 @@ button.secondary:hover { background: #333c55; }
 /* A compact, persistent header tracker with an overlay for detail and settings. */
 header { z-index: 60; display: grid; grid-template-columns: var(--sidebar-width) var(--resize-handle-width) minmax(0, 1fr) var(--resize-handle-width) var(--stats-width); gap: 0; padding: 0; }
 header .app-wordmark, #header-ctx, #header-goal { grid-row: 1; }
-header .app-wordmark { grid-column: 1; min-width: 0; margin: 0 16px; overflow: hidden; }
+.header-identity { grid-column: 1; grid-row: 1; display: flex; flex-wrap: wrap; align-items: center; column-gap: 24px; row-gap: 2px; min-width: 0; padding: 0 8px; }
+header .app-wordmark { min-width: 0; margin: 0; gap: 10px; font-size: 1.15rem; }
 header .header-sep { display: none; }
 #header-ctx { grid-column: 5; padding: 0 16px; }
 header:has(#header-goal[hidden]) #header-ctx { grid-column: 3 / 6; }
@@ -932,7 +945,8 @@ header:has(#header-goal[hidden]) #header-ctx { grid-column: 3 / 6; }
 .goal-panel-actions { display: flex; align-items: center; gap: 8px; }
 #goal-close { font-size: 1.2rem; width: 34px; min-height: 34px; padding: 4px; flex: 0 0 34px; }
 @media (max-width: 700px) {
-  header { grid-template-columns: 25px minmax(0, 1fr) 40px; gap: 8px; padding: 0 12px; }
+  header { grid-template-columns: 170px minmax(0, 1fr) 32px; gap: 4px; padding: 0 8px; }
+  .header-identity { padding: 0; column-gap: 12px; row-gap: 2px; }
   header .app-wordmark { margin: 0; }
   #header-ctx { grid-column: 3; padding: 0; }
   header:has(#header-goal[hidden]) #header-ctx { grid-column: 2 / 4; }
