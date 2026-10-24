@@ -4,13 +4,17 @@ Flask entry point. Routes call into question_store and assessor.
 """
 
 import os
+import hashlib
 from dataclasses import asdict
+from functools import lru_cache
+from pathlib import Path
 
-from flask import Flask, abort, g, jsonify, render_template, request, send_from_directory
+from flask import Flask, abort, g, jsonify, render_template, request, send_from_directory, url_for
 from werkzeug.exceptions import HTTPException
 
 import assessor
 import learning_goals
+import learning_gaps
 import question_store
 import profiles
 import rooms
@@ -19,6 +23,22 @@ import realtime
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024
 sock = realtime.init_app(app)
+
+
+@lru_cache(maxsize=64)
+def _asset_digest(filename, modified, size):
+    return hashlib.sha256((Path(app.static_folder) / filename).read_bytes()).hexdigest()[:12]
+
+
+def static_asset(filename):
+    info = (Path(app.static_folder) / filename).stat()
+    return url_for('static', filename=filename,
+                   v=_asset_digest(filename, info.st_mtime_ns, info.st_size))
+
+
+@app.context_processor
+def asset_helpers():
+    return {'static_asset': static_asset}
 
 
 @app.before_request
@@ -196,7 +216,8 @@ def api_assess():
     )
 
     progress = question_store.record_attempt(
-        field, question_id, result.correct, result.score
+        field, question_id, result.correct, result.score,
+        response=learning_gaps.answer_record(student_answer, asdict(result)),
     )
 
     return jsonify({
@@ -205,6 +226,16 @@ def api_assess():
         "progress": progress,
         "preparation": question_store.get_question_preparation(progress),
     })
+
+
+@app.get("/api/fields/<field>/learning-gaps")
+def api_learning_gaps(field: str):
+    return jsonify(learning_gaps.preview(field))
+
+
+@app.post("/api/fields/<field>/learning-gaps")
+def api_analyze_learning_gaps(field: str):
+    return jsonify(learning_gaps.analyze(field, _request_body().get("fingerprint")))
 
 
 @app.post("/api/reveal-answer")

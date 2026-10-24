@@ -42,6 +42,7 @@ const cursors = StateField.define({
 });
 
 class SharedEditor {
+  static build = 'cursor-presence-3';
   constructor(parent, client, send, resync) {
     Object.assign(this, {parent, client, send, resync});
     this.view = null;
@@ -53,6 +54,7 @@ class SharedEditor {
     this.accepted = new Map();
     this.lock = new Compartment();
     this.cursorTimer = null;
+    this.lastCursor = null;
   }
   get version() { return this.view ? getSyncedVersion(this.view.state) : null; }
   get text() { return this.view?.state.doc.toString() || ''; }
@@ -63,6 +65,7 @@ class SharedEditor {
     this.inflight = false;
     this.remote.clear();
     this.accepted.clear();
+    this.lastCursor = null;
     this.view = new EditorView({parent: this.parent, state: EditorState.create({
       doc: doc.doc,
       extensions: [
@@ -80,6 +83,10 @@ class SharedEditor {
           '&.cm-focused': {outline: '2px solid var(--accent)', outlineOffset: '2px'},
         }),
         EditorView.updateListener.of(update => {
+          if (update.docChanged && this.lastCursor) {
+            this.lastCursor = {anchor: update.changes.mapPos(this.lastCursor.anchor, 1),
+              head: update.changes.mapPos(this.lastCursor.head, 1)};
+          }
           if (update.docChanged) queueMicrotask(() => this.push());
           if (update.docChanged || update.selectionSet || update.focusChanged) this.sendCursorSoon();
         }),
@@ -163,9 +170,13 @@ class SharedEditor {
     clearTimeout(this.cursorTimer);
     this.cursorTimer = setTimeout(() => {
       if (!this.connected || !this.view || this.pending) return;
-      const {anchor, head} = this.view.state.selection.main;
+      if (this.view.hasFocus) {
+        const {anchor, head} = this.view.state.selection.main;
+        this.lastCursor = {anchor, head};
+      }
+      if (!this.lastCursor) return;
       this.send({type: 'cursor', round_id: this.round, version: this.version,
-        anchor: this.view.hasFocus ? anchor : null, head: this.view.hasFocus ? head : null});
+        ...this.lastCursor});
     }, 60);
   }
   async flush() {
@@ -180,6 +191,13 @@ class SharedEditor {
     }
     return {answer: this.text.trim(), editor_version: this.version};
   }
+  diagnostics() {
+    return {build: SharedEditor.build, mounted: !!this.view, version: this.version,
+      pending: this.pending, focused: this.view?.hasFocus || false,
+      lastCursor: this.lastCursor, queuedCursors: this.remote.size,
+      activeCursors: this.view?.state.field(cursors).people.size || 0,
+      cursorElements: this.parent?.querySelectorAll('.collab-cursor').length || 0};
+  }
   destroy() {
     clearTimeout(this.cursorTimer);
     this.view?.destroy();
@@ -187,6 +205,7 @@ class SharedEditor {
     this.round = null;
     this.remote.clear();
     this.accepted.clear();
+    this.lastCursor = null;
     this.waiters.splice(0).forEach(resolve => resolve());
   }
 }

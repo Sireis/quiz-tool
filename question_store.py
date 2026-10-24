@@ -10,12 +10,13 @@ from contextvars import ContextVar
 from datetime import datetime, timezone
 from pathlib import Path
 from threading import RLock
+from uuid import uuid4
 
 FIELDS_PATH = Path(__file__).resolve().parent / "sets"
 REQUIRED_QUESTION_FIELDS = ("topic", "question", "answer")
 _progress_lock = RLock()
 active_profile = ContextVar("active_profile", default="default")
-PERSONAL_FILES = {"progress.json", "bookmarks.json", "goal.json"}
+PERSONAL_FILES = {"progress.json", "bookmarks.json", "goal.json", "learning-gaps.json"}
 
 
 def personal_path(field: str) -> Path:
@@ -147,6 +148,11 @@ def progress_transaction(field: str, lock_filename: str = ".progress.lock"):
 
 def save_progress(field: str, progress: dict) -> None:
     """Replace progress atomically; callers must lock read-modify-write operations."""
+    for entry in progress.values():
+        for event in entry.get("history", []):
+            response = event.get("response", {})
+            for key in ("question_id", "topic", "question", "reference_answer"):
+                response.pop(key, None)
     _save_json(field, "progress.json", progress)
 
 
@@ -231,7 +237,8 @@ def get_next_question(
 
 
 def record_attempt(field: str, question_id: str | int, correct: bool, score: float,
-                   attempt_id: str | None = None, source: dict | None = None) -> dict:
+                   attempt_id: str | None = None, source: dict | None = None,
+                   response: dict | None = None) -> dict:
     with progress_transaction(field):
         progress = load_progress(field)
         entry = progress.setdefault(str(question_id), _default_progress())
@@ -242,6 +249,9 @@ def record_attempt(field: str, question_id: str | int, correct: bool, score: flo
             entry["history"][-1]["attempt_id"] = attempt_id
         if source:
             entry["history"][-1]["source"] = source
+        if response is not None:
+            entry["history"][-1]["attempt_id"] = attempt_id or str(uuid4())
+            entry["history"][-1]["response"] = response
         save_progress(field, progress)
         return entry
 

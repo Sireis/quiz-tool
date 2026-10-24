@@ -5,8 +5,60 @@
     "last_seen": "2026-04-30T19:06:50.004477+00:00"
   },
   "2": {
-    "attempts": 1,
+    "attempts": 2,
     "correct": 1,
-    "last_seen": "2026-04-30T19:09:52.006771+00:00"
+    "last_seen": "2026-04-30T19:09:52.006771+00:00",
+    "history": [
+      {
+        "at": "2026-10-21T21:22:14.604906+00:00",
+        "correct": false,
+        "score": 0.1,
+        "attempt_id": "room:EA5C01D4:4321e02c-79a5-4cf4-8db6-da1a80e34e18:default",
+        "source": {
+          "type": "shared",
+          "mode": "coop",
+          "room": "EA5C01D4"
+        }
+      }
+    ],
+    "historical_attempts": 1,
+    "historical_last_result": null,
+    "historical_last_attempt": "2026-04-30T19:09:52.006771+00:00",
+    "streak": 0,
+    "best_streak": 0,
+    "last_result": "incorrect",
+    "last_score": 0.1,
+    "last_attempt": "2026-10-21T21:22:14.604906+00:00"
+  },
+  "3": {
+    "attempts": 2,
+    "correct": 1,
+    "streak": 1,
+    "last_result": "correct",
+    "last_score": 0.75,
+    "last_attempt": "2026-10-21T21:23:07.617807+00:00",
+    "history": [
+      {
+        "at": "2026-10-21T20:54:24.036302+00:00",
+        "correct": false,
+        "score": 0.3,
+        "attempt_id": "room:64FDAD21:3f8bd12a-5ef2-4300-9eaf-19b55d1d60ec:default"
+      },
+      {
+        "at": "2026-10-21T21:23:07.617807+00:00",
+        "correct": true,
+        "score": 0.75,
+        "attempt_id": "room:35020D3A:2c718b09-70b4-4a92-98d9-d60f3144ed71:default",
+        "source": {
+          "type": "shared",
+          "mode": "compete",
+          "room": "35020D3A"
+        }
+      }
+    ],
+    "historical_attempts": 0,
+    "historical_last_result": null,
+    "historical_last_attempt": null,
+    "best_streak": 1
   }
 }

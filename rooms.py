@@ -17,6 +17,7 @@ from uuid import uuid4
 import assessor
 import profiles
 import question_store as store
+import learning_gaps
 
 ROOMS_PATH = Path(__file__).resolve().parent / 'data' / 'rooms'
 _executor = ThreadPoolExecutor(max_workers=2)
@@ -177,7 +178,8 @@ def _record_results(room):
             result = submission['result']
             store.record_attempt(room['field'], current['question']['id'], result['correct'],
                                  result['score'], attempt_id=f"room:{room['code']}:{current['id']}:{profile}",
-                                 source={'type': 'shared', 'mode': room['mode'], 'room': room['code']})
+                                 source={'type': 'shared', 'mode': room['mode'], 'room': room['code']},
+                                 response=learning_gaps.answer_record(submission['answer'], result))
         finally:
             store.active_profile.reset(token)
         submission['recorded'] = True

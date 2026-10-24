@@ -94,6 +94,10 @@ class RoomTests(unittest.TestCase):
         self.assertNotIn('Good answer', json.dumps(state))
         self.assertNotIn('reference_answer', state)
         self.assertFalse(state['revealed'])
+        for pid, expected in ((self.a, ['Secret Alice']), (self.b, [])):
+            preview = self.client.get('/api/fields/test/learning-gaps',
+                                      headers={'X-Trainer-Profile': pid}).get_json()
+            self.assertEqual([a['student_answer'] for a in preview['attempts']], expected)
         self.submit(code, rid, self.b, 'Secret Bob')
         self.queue.run_one()
         state = self.get(code, self.a).get_json()
@@ -286,6 +290,11 @@ class RoomTests(unittest.TestCase):
             entry = next(iter(self.progress(pid).values()))
             self.assertEqual(entry['attempts'], 1)
             self.assertEqual(entry['history'][-1]['source']['mode'], 'coop')
+            preview = self.client.get('/api/fields/test/learning-gaps',
+                                      headers={'X-Trainer-Profile': pid}).get_json()
+            self.assertEqual(len(preview['attempts']), 1)
+            self.assertEqual(preview['attempts'][0]['student_answer'], 'Our complete answer')
+            self.assertEqual(preview['attempts'][0]['evidence_type'], 'shared')
         self.assertEqual(state['team_preparation'], {'prepared': 0, 'total': 2})
 
     def test_competition_rejects_shared_drafts_and_cycles_the_question_pool(self):

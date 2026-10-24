@@ -57,11 +57,18 @@ def _call_backend(system_prompt: str, prompt: str) -> str:
     raise AssessmentError("Unknown grading backend")
 
 
-def _call_gpt4all(system_prompt: str, prompt: str) -> str:
+def generate_analysis(system_prompt: str, prompt: str) -> str:
+    """Reuse the configured backend without the short local grading output cap."""
+    if BACKEND == "gpt4all":
+        return _call_gpt4all(system_prompt, prompt, max_tokens=2048)
+    return _call_backend(system_prompt, prompt)
+
+
+def _call_gpt4all(system_prompt: str, prompt: str, max_tokens: int = MAX_OUTPUT_TOKENS) -> str:
     with _model_lock:
         model = _get_gpt4all_model()
         with model.chat_session(system_prompt=system_prompt):
-            return model.generate(prompt, max_tokens=MAX_OUTPUT_TOKENS)
+            return model.generate(prompt, max_tokens=max_tokens)
 
 
 def _call_openai(system_prompt: str, prompt: str) -> str:

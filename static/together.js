@@ -18,6 +18,7 @@
   let reconnectAttempt = 0;
   let socketGeneration = 0;
   const client = globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2);
+  const traffic = {sent: {}, received: {}, lastError: null};
   const statusNames = {answering: 'Antwortet …', grading: 'Bewertung läuft …', graded: 'Antwort bereit', error: 'Bewertung wiederholen'};
 
   async function api(path, body) {
@@ -104,6 +105,7 @@
 
   function send(message) {
     if (socket?.readyState !== 1) return false;
+    traffic.sent[message.type] = (traffic.sent[message.type] || 0) + 1;
     socket.send(JSON.stringify(message));
     return true;
   }
@@ -129,6 +131,7 @@
       if (generation !== socketGeneration || !room) return;
       try {
         const message = JSON.parse(event.data);
+        traffic.received[message.type] = (traffic.received[message.type] || 0) + 1;
         if (message.type === 'updates') {
           editor?.receive(message);
         } else if (message.type === 'cursor') {
@@ -161,7 +164,7 @@
     socket.onerror = () => socket.close();
   }
 
-  function messageError(text) { message(text); }
+  function messageError(text) { traffic.lastError = text; message(text); }
 
   function render(next, sequence, editorDocument = null) {
     if (sequence < appliedNumber) return;
@@ -359,6 +362,13 @@
   }
 
   const controller = {
+    diagnostics() {
+      return {connected, socketState: socket?.readyState ?? null, room: room?.code,
+        mode: room?.mode, client: client.slice(-8), server: room?._transport || null,
+        participants: room?.participants.map(p => ({name: p.name, online: p.online})),
+        editor: editor?.diagnostics?.() || null,
+        sent: {...traffic.sent}, received: {...traffic.received}, lastError: traffic.lastError};
+    },
     get active() { return room !== null; },
     async submit() {
       if (!room || room.closed || busy || room.revealed) return;

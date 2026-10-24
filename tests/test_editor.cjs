@@ -96,3 +96,19 @@ test('a late cursor maps through already acknowledged edits', async () => {
     assert.equal(f.a.view.lastPresence.head, 5);
   } finally { f.a.destroy(); f.b.destroy(); }
 });
+
+test('switching tabs keeps the last shared caret visible until disconnect', async () => {
+  const f = await fixture();
+  try {
+    f.a.view.hasFocus = true;
+    f.a.sendCursorSoon();
+    await new Promise(resolve => setTimeout(resolve, 80));
+    const first = f.outgoing.find(entry => entry.message.type === 'cursor').message;
+    f.a.view.hasFocus = false;
+    f.a.sendCursorSoon();
+    await new Promise(resolve => setTimeout(resolve, 80));
+    const last = f.outgoing.filter(entry => entry.message.type === 'cursor').at(-1).message;
+    assert.equal(last.anchor, first.anchor, 'Switching away must not erase a connected participant’s caret');
+    assert.equal(last.head, first.head);
+  } finally { f.a.destroy(); f.b.destroy(); }
+});

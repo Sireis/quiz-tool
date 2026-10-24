@@ -1,6 +1,7 @@
 """Single-process WebSocket room events and ephemeral editing presence."""
 import json
 import logging
+import os
 from queue import Queue
 from threading import RLock, Thread
 from urllib.parse import urlsplit
@@ -46,6 +47,7 @@ class Hub:
 
     def state(self, peer):
         state = rooms.view(peer.code, peer.profile)
+        state['_transport'] = {'pid': os.getpid(), 'build': 'cursor-presence-3'}
         online = {p.profile for p in self.members(peer.code)}
         for index, person in enumerate(state['participants']):
             person['online'] = person['id'] in online

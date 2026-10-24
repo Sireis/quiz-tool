@@ -7,7 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='trainer.css') }}">
+  <link rel="stylesheet" href="{{ static_asset('trainer.css') }}">
 
 </head>
 <body>
@@ -204,6 +204,7 @@
     <div class="stats-explore-actions" role="group" aria-label="Fortschritt des ausgewählten Feldes erkunden">
       <button class="secondary" id="constellation-open" type="button">✦ Wissensnetz</button>
       <button class="secondary" id="journey-open" type="button">✧ Lernreise</button>
+      <button class="secondary" id="gaps-open" type="button">Lernlücken</button>
     </div>
   </div>
   <div id="stats-scroll">
@@ -280,6 +281,29 @@
     <div id="journey-content" role="region" aria-label="Statistiken deiner Lernreise" tabindex="0" aria-live="polite"></div>
   </div>
 </dialog>
+<dialog id="gaps-dialog" aria-labelledby="gaps-heading">
+  <div class="journey-heading">
+    <div><h2 id="gaps-heading">Meine Lernlücken</h2><p id="gaps-field"></p></div>
+    <button class="secondary" id="gaps-close" type="button" aria-label="Lernlücken schließen">×</button>
+  </div>
+  <p>Die KI sucht Zusammenhänge in deinen letzten gespeicherten Antworten. Hinweise sind vorläufig und mit Originalantworten belegt. Gemeinsame Antworten zeigen keine individuelle Beherrschung.</p>
+  <p id="gaps-scope"></p>
+  <div class="btn-row">
+    <button class="primary" id="gaps-analyze" type="button" disabled>Jetzt analysieren</button>
+  </div>
+  <p id="gaps-status" role="status" aria-live="polite"></p>
+  <details id="gaps-export">
+    <summary>Prompt für meine eigene KI exportieren</summary>
+    <p>Enthält Fragen, Musterlösungen, deine Antworten und Bewertungen. Kopieren oder Herunterladen sendet nichts an eine KI. Füge den Prompt in dein bevorzugtes Werkzeug ein.</p>
+    <label for="gaps-prompt">Vollständiger Analyseprompt</label>
+    <textarea id="gaps-prompt" rows="10" readonly></textarea>
+    <div class="btn-row">
+      <button class="secondary" id="gaps-copy" type="button" disabled>Prompt kopieren</button>
+      <button class="secondary" id="gaps-download" type="button" disabled>Als Text herunterladen</button>
+    </div>
+  </details>
+  <section id="gaps-report" aria-label="Ergebnis der Lernlückenanalyse" aria-live="polite"></section>
+</dialog>
 <dialog id="profile-dialog" aria-labelledby="profile-heading">
   <form id="profile-form">
     <h2 id="profile-heading">Neues Lernprofil</h2>
@@ -293,15 +317,16 @@
   </form>
 </dialog>
 {% include '_together.html' %}
-<script src="{{ url_for('static', filename='profiles.js') }}" defer></script>
-<script src="{{ url_for('static', filename='shared-editor.js') }}" defer></script>
-<script src="{{ url_for('static', filename='together.js') }}" defer></script>
-<script src="{{ url_for('static', filename='journey.js') }}" defer></script>
-<script src="{{ url_for('static', filename='sidebar-resize.js') }}" defer></script>
-<script src="{{ url_for('static', filename='constellation-layout.js') }}" defer></script>
-<script src="{{ url_for('static', filename='constellation.js') }}" defer></script>
-<script src="{{ url_for('static', filename='goals.js') }}" defer></script>
-<script src="{{ url_for('static', filename='trainer.js') }}" defer></script>
-<script src="{{ url_for('static', filename='selection-chatgpt.js') }}" defer></script>
+<script src="{{ static_asset('profiles.js') }}" defer></script>
+<script src="{{ static_asset('shared-editor.js') }}" defer></script>
+<script src="{{ static_asset('together.js') }}" defer></script>
+<script src="{{ static_asset('journey.js') }}" defer></script>
+<script src="{{ static_asset('sidebar-resize.js') }}" defer></script>
+<script src="{{ static_asset('constellation-layout.js') }}" defer></script>
+<script src="{{ static_asset('constellation.js') }}" defer></script>
+<script src="{{ static_asset('goals.js') }}" defer></script>
+<script src="{{ static_asset('trainer.js') }}" defer></script>
+<script src="{{ static_asset('learning-gaps.js') }}" defer></script>
+<script src="{{ static_asset('selection-chatgpt.js') }}" defer></script>
 </body>
 </html>
