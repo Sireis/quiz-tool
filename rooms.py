@@ -187,7 +187,8 @@ def _record_results(room):
             store.record_attempt(room['field'], current['question']['id'], result['correct'],
                                  result['score'], attempt_id=f"room:{room['code']}:{current['id']}:{profile}",
                                  source={'type': 'shared', 'mode': room['mode'], 'room': room['code']},
-                                 response=learning_gaps.answer_record(submission['answer'], result))
+                                 response=learning_gaps.answer_record(submission['answer'], result),
+                                 memory_updates=result.get('memory_updates'), memory_summary=result.get('memory_summary', ''))
         finally:
             store.active_profile.reset(token)
         submission['recorded'] = True
@@ -218,8 +219,15 @@ def _schedule(room):
 
 def _grade(code, round_id, profile, job, field, question, answer):
     try:
-        result = asdict(assessor.assess(store.load_system_prompt(field), question['question'],
-                                       question['answer'], answer))
+        token = store.active_profile.set(profile)
+        try:
+            with transaction(code, write=False) as room:
+                shared = room['mode'] == 'coop'
+            context = learning_gaps.grading_context(field, question['id'], shared=shared)
+            result = asdict(assessor.assess(store.load_system_prompt(field), question['question'],
+                                           question['answer'], answer, memory_context=context))
+        finally:
+            store.active_profile.reset(token)
         error = None
     except Exception:
         logging.getLogger(__name__).exception('Room grading failed')
@@ -323,7 +331,9 @@ def view(code, profile):
                                else 'grading' if submission else 'answering'),
                     'ready': pid in current['ready'], 'points': current.get('standings', {}).get(pid, 0)}
             if reveal:
-                item.update(answer=submission['answer'], result=submission['result'],
+                public_result = {key: value for key, value in submission['result'].items()
+                                 if pid == profile or key not in {'memory_updates', 'memory_summary'}}
+                item.update(answer=submission['answer'], result=public_result,
                             points=person['points'], correct=person['correct'])
             participants.append(item)
         question = {k: v for k, v in current['question'].items() if k != 'answer'}

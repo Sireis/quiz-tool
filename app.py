@@ -225,11 +225,13 @@ def api_assess():
         question=question["question"],
         answer=question["answer"],
         student_answer=student_answer,
+        memory_context=learning_gaps.grading_context(field, question["id"]),
     )
 
     progress = question_store.record_attempt(
         field, question_id, result.correct, result.score,
         response=learning_gaps.answer_record(student_answer, asdict(result)),
+        memory_updates=result.memory_updates, memory_summary=result.memory_summary,
     )
 
     return jsonify({

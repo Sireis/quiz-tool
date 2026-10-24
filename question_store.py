@@ -2,6 +2,7 @@
 
 import fcntl
 import json
+import logging
 import os
 import tempfile
 from contextlib import contextmanager
@@ -243,11 +244,13 @@ def get_next_question(
 
 def record_attempt(field: str, question_id: str | int, correct: bool, score: float,
                    attempt_id: str | None = None, source: dict | None = None,
-                   response: dict | None = None) -> dict:
+                   response: dict | None = None, memory_updates: list[dict] | None = None,
+                   memory_summary: str = "") -> dict:
     with progress_transaction(field):
         progress = load_progress(field)
         entry = progress.setdefault(str(question_id), _default_progress())
         if attempt_id and any(item.get("attempt_id") == attempt_id for item in entry.get("history", [])):
+            _flush_memory(field, progress)
             return entry
         _update_attempt(entry, correct, score)
         if attempt_id:
@@ -257,8 +260,19 @@ def record_attempt(field: str, question_id: str | int, correct: bool, score: flo
         if response is not None:
             entry["history"][-1]["attempt_id"] = attempt_id or str(uuid4())
             entry["history"][-1]["response"] = response
+            entry["history"][-1]["memory_pending"] = {"updates": memory_updates or [], "summary": memory_summary}
         save_progress(field, progress)
+        if response is not None:
+            _flush_memory(field, progress)
         return entry
+
+
+def _flush_memory(field: str, progress: dict) -> None:
+    import learning_gaps
+    try:
+        learning_gaps.flush_pending(field, progress)
+    except (OSError, ValueError, KeyError, TypeError):
+        logging.getLogger(__name__).exception("Learning memory update pending; assessment is saved")
 
 
 def _update_attempt(entry: dict, correct: bool, score: float) -> None:

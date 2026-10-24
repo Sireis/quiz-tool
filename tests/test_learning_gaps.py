@@ -13,347 +13,335 @@ import question_store as store
 from app import app
 
 
-class LearningGapTests(unittest.TestCase):
+class LearningMemoryTests(unittest.TestCase):
     def setUp(self):
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
-        root = Path(temp.name)
-        (root / "test").mkdir()
-        self.questions = [{"id": i, "topic": "Lernen", "question": f"Frage {i}",
-                           "answer": "Das Schema wird verändert."} for i in (1, 2)]
-        (root / "test" / "questions.json").write_text(json.dumps({"questions": self.questions}))
-        (root / "test" / "system-prompt.txt").write_text("Grade")
-        for target, attribute, value in ((store, "FIELDS_PATH", root),
-                                          (profiles, "PROFILES_PATH", root / "profiles")):
-            p = patch.object(target, attribute, value)
-            p.start()
-            self.addCleanup(p.stop)
+        self.root = Path(temp.name)
+        subject = self.root / 'test'
+        subject.mkdir()
+        self.questions = [dict(id=i, topic=f'Topic {i}', question=f'Question {i}', answer=f'Reference {i}')
+                          for i in (1, 2)]
+        (subject / 'questions.json').write_text(json.dumps({'questions': self.questions}))
+        (subject / 'system-prompt.txt').write_text('Grade fairly')
+        for target, key, value in ((store, 'FIELDS_PATH', self.root),
+                                    (profiles, 'PROFILES_PATH', self.root / 'profiles'),
+                                    (assessor, 'BACKEND', 'openai')):
+            patcher = patch.object(target, key, value)
+            patcher.start()
+            self.addCleanup(patcher.stop)
         self.client = app.test_client()
-        self.url = "/api/fields/test/learning-gaps"
-        self.grade = assessor.Assessment(False, False, "incorrect", 0, .2, "Begriffe verwechselt")
+        self.url = '/api/fields/test/learning-gaps'
 
-    def submit(self, question_id=1, answer="Assimilation verändert das Schema.", headers=None):
-        with patch.object(assessor, "assess", return_value=self.grade):
-            response = self.client.post("/api/assess", json={
-                "field": "test", "id": question_id, "answer": answer,
-            }, headers=headers)
-        self.assertEqual(response.status_code, 200)
-        return response.get_json()
+    def update(self, title='Concept A', status='gap', memory_id=None, related=None):
+        return dict(memory_id=memory_id, title=title, status=status,
+                    description='Concept A is confused with B; compare their mechanisms.',
+                    related_topics=related or ['Concept B'], next_step='Explain the distinction using an example.')
+
+    def grade(self, updates=None, correct=False, summary='Compare A and B before advancing.'):
+        return dict(score=1 if correct else .2, result='correct' if correct else 'incorrect',
+                    feedback='Semantic grading feedback', memory_updates=updates or [], memory_summary=summary)
+
+    def submit(self, qid=1, updates=None, correct=False, headers=None, answer='My explanation'):
+        with patch.object(assessor, '_call_backend', return_value=json.dumps(self.grade(updates, correct))) as model:
+            response = self.client.post('/api/assess', headers=headers,
+                                        json=dict(field='test', id=qid, answer=answer))
+        self.assertEqual(response.status_code, 200, response.get_json())
+        return response.get_json(), model
+
+    def state(self):
+        return store._load_json('test', 'learning-gaps.json')
 
     def preview(self, headers=None):
         return self.client.get(self.url, headers=headers).get_json()
 
-    def output(self, snapshot, status="tentative", quote="Schema"):
-        return {"summary": "Begrenzte Hinweise.", "findings": [{
-            "title": "Assimilation", "description": "Begriffe verwechselt.",
-            "status": status, "next_step": "Unterschied erklären.",
-            "evidence": [{"attempt_id": a["attempt_id"], "quote": quote}
-                         for a in snapshot["attempts"]],
-        }]}
+    def analysis(self, snapshot, findings=None, summary='Combined strategy'):
+        return dict(summary=summary, findings=findings or [], input_fingerprint=snapshot['fingerprint'])
 
-    def analyze(self, snapshot, output, headers=None):
-        with patch.object(assessor, "generate_analysis", return_value=json.dumps(output)) as model:
-            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"]}, headers=headers)
+    def analyze(self, snapshot, output):
+        with patch.object(assessor, 'generate_analysis', return_value=json.dumps(output)) as model:
+            response = self.client.post(self.url, json={'fingerprint': snapshot['fingerprint']})
         return response, model
 
-    def test_answers_store_only_attempt_text_and_resolve_current_question_bank(self):
-        self.submit()
-        snapshot = self.preview()
-        self.assertEqual(len(snapshot["attempts"]), 1)
-        attempt = snapshot["attempts"][0]
-        self.assertEqual(attempt["student_answer"], "Assimilation verändert das Schema.")
-        self.assertEqual(attempt["reference_answer"], self.questions[0]["answer"])
-        self.assertEqual(attempt["evidence_type"], "individual")
-        self.assertIn(attempt["student_answer"], snapshot["prompt"])
-        self.assertIsNone(snapshot["report"])
-        bank = store.field_path("test") / "questions.json"
-        response = store.load_progress("test")["1"]["history"][0]["response"]
-        self.assertEqual(set(response), {"student_answer", "feedback"})
-        self.questions[0]["question"] = "Neue Frage"
-        self.questions[0]["answer"] = "Neue Referenz"
-        bank.write_text(json.dumps({"questions": self.questions}))
-        changed = self.preview()
-        self.assertEqual(changed["attempts"][0]["question"], "Neue Frage")
-        self.assertEqual(changed["attempts"][0]["reference_answer"], "Neue Referenz")
-        self.assertNotEqual(changed["fingerprint"], snapshot["fingerprint"])
-        bank.write_text(json.dumps({"questions": []}))
-        self.assertEqual(self.preview()["attempts"], [])
-        self.assertEqual(self.preview()["missing_count"], 1)
-
-    def test_legacy_reveal_and_failed_grading_create_no_evidence(self):
-        store.record_attempt("test", 1, True, 1)
-        self.client.post("/api/reveal-answer", json={"field": "test", "id": 1})
-        with patch.object(assessor, "assess", side_effect=assessor.AssessmentError("Unavailable")):
-            self.client.post("/api/assess", json={"field": "test", "id": 1, "answer": "A"})
-        snapshot = self.preview()
-        self.assertEqual(snapshot["legacy_count"], 1)
-        self.assertEqual(snapshot["attempts"], [])
-        response, model = self.analyze(snapshot, {"summary": "Nur Fortschrittswerte vorhanden", "findings": []})
-        self.assertEqual(response.status_code, 200)
+    def test_each_answer_updates_global_file_with_no_second_model_request(self):
+        result, model = self.submit(updates=[self.update()])
         model.assert_called_once()
-        self.assertEqual(snapshot["deterministic"]["subject"]["total_attempts"], 1)
-        self.assertEqual(response.get_json()["findings"], [])
+        state = self.state()
+        self.assertEqual(state['schema_version'], 3)
+        self.assertNotIn('questions', state)
+        self.assertEqual(state['findings'][0]['title'], 'Concept A')
+        self.assertEqual(state['summary'], result['memory_summary'])
+        self.assertEqual(len(state['processed_attempt_ids']), 1)
+        event = store.load_progress('test')['1']['history'][0]
+        self.assertNotIn('memory_pending', event)
+        self.assertEqual(set(event['response']), {'student_answer', 'feedback'})
+        self.assertNotIn('question', state['findings'][0])
+        self.assertNotIn('reference_answer', state['findings'][0])
 
-    def test_valid_report_persists_without_altering_progress_and_uses_exported_prompt(self):
-        self.submit()
-        snapshot = self.preview()
-        before = store.load_progress("test")
-        response, model = self.analyze(snapshot, self.output(snapshot))
-        self.assertEqual(response.status_code, 200)
-        model.assert_called_once_with(learning_gaps.SYSTEM_PROMPT, snapshot["prompt"])
-        self.assertEqual(self.preview()["report"], response.get_json())
-        self.assertEqual(store.load_progress("test"), before)
-        saved = store._load_json("test", "learning-gaps.json")
-        self.assertNotIn("attempts", saved)
-        self.assertEqual(saved["attempt_ids"], [snapshot["attempts"][0]["attempt_id"]])
-        # Report evidence remains resolvable after it leaves the recent window.
-        with patch.object(learning_gaps, "MAX_ATTEMPTS", 0):
-            self.assertEqual(self.preview()["report"]["attempts"], snapshot["attempts"])
+    def test_next_grading_receives_memory_and_deterministic_context(self):
+        self.submit(updates=[self.update(status='understood')], correct=True)
+        _, model = self.submit(qid=2, updates=[self.update(title='Concept B', related=['Concept A', 'Concept C'])])
+        system, prompt = model.call_args.args
+        self.assertIn('frühere Leistungen dürfen die Note nicht beeinflussen', system)
+        context = json.loads(prompt.split('Lerngedächtnis und berechneter Fortschritt (nur Kontext):\n')[1])
+        self.assertEqual(context['memories'][0]['title'], 'Concept A')
+        self.assertEqual(context['deterministic']['subject']['total_attempts'], 1)
+        self.assertEqual(context['question_progress']['attempted'], 0)
+        self.assertEqual({m['title'] for m in self.state()['findings']}, {'Concept A', 'Concept B'})
 
-    def test_profile_isolation_includes_prompt_and_saved_report(self):
-        profile = profiles.create_profile("Learner")
-        headers = {"X-Trainer-Profile": profile["id"]}
-        self.submit(headers=headers)
-        snapshot = self.preview(headers)
-        response, _ = self.analyze(snapshot, self.output(snapshot), headers)
-        self.assertEqual(response.status_code, 200)
-        self.assertIsNotNone(self.preview(headers)["report"])
-        self.assertEqual(self.preview()["attempts"], [])
-        self.assertIsNone(self.preview()["report"])
-        self.assertEqual(self.preview()["memory_count"], 0)
+    def test_old_understanding_for_current_question_is_retrieved_before_unrelated_recent_memories(self):
+        self.submit(updates=[self.update(status='understood')], correct=True)
+        state = self.state()
+        for i in range(25):
+            state['findings'].append({**state['findings'][0], 'memory_id': f'unrelated-{i}',
+                                      'title': f'Unrelated {i}', 'evidence': [],
+                                      'related_topics': [], 'updated_at': '2099-01-01T00:00:00+00:00'})
+        store._save_json('test', 'learning-gaps.json', state)
+        context = json.loads(learning_gaps.grading_context('test', 1))
+        self.assertEqual(context['memories'][0]['title'], 'Concept A')
 
-    def test_old_duplicated_formats_remain_readable_and_compact_on_next_write(self):
-        self.submit()
-        snapshot = self.preview()
-        old_attempt = snapshot["attempts"][0]
-        path = store.field_path("test") / "progress.json"
-        progress = store.load_progress("test")
-        progress["1"]["history"][0]["response"].update({
-            "question_id": 1, "topic": "Old topic", "question": "Old question",
-            "reference_answer": "Old reference",
-        })
-        path.write_text(json.dumps(progress))
-        self.assertEqual(self.preview()["attempts"], snapshot["attempts"])
-        old_report = {**self.output(snapshot), "created_at": old_attempt["at"],
-                      "fingerprint": snapshot["fingerprint"], "attempts": [old_attempt]}
-        store._save_json("test", "learning-gaps.json", old_report)
-        self.assertEqual(self.preview()["report"]["attempt_ids"], [old_attempt["attempt_id"]])
-        payload = json.loads(self.preview()["prompt"].split("Belegdaten (chronologisch):\n")[1]
-                             .split("\n\ninput_fingerprint:")[0])
-        self.assertTrue(payload["attempts"][0]["already_reviewed"])
-        self.submit(question_id=2)
-        response = store.load_progress("test")["1"]["history"][0]["response"]
-        self.assertEqual(set(response), {"student_answer", "feedback"})
-        # Removing a question cannot crash an older saved report.
-        (store.field_path("test") / "questions.json").write_text(json.dumps({"questions": []}))
-        report = self.preview()["report"]
-        self.assertEqual(report["attempts"], [])
-        self.assertEqual(report["attempt_ids"], [old_attempt["attempt_id"]])
+    def test_cross_question_regression_and_connections_update_one_memory(self):
+        self.submit(updates=[self.update(status='understood')], correct=True)
+        memory_id = self.state()['findings'][0]['memory_id']
+        self.submit(qid=2, updates=[self.update(status='regressed', memory_id=memory_id,
+                                               related=['Concept B', 'Concept C'])])
+        state = self.state()
+        self.assertEqual(len(state['findings']), 1)
+        memory = state['findings'][0]
+        self.assertEqual(memory['status'], 'regressed')
+        self.assertEqual(memory['memory_id'], memory_id)
+        self.assertEqual(memory['related_topics'], ['Concept B', 'Concept C'])
+        self.assertIsNotNone(memory['last_understood_at'])
+        self.assertIsNotNone(memory['last_regression_at'])
+        ids = {r['attempt_id'] for r in memory['evidence']}
+        self.assertEqual(ids, set(state['processed_attempt_ids']))
+        evidence = self.preview()['report']['attempts']
+        self.assertEqual({a['question_id'] for a in evidence}, {1, 2})
 
-    def test_stale_preview_and_invalid_evidence_do_not_replace_report(self):
-        self.submit()
-        snapshot = self.preview()
-        report, _ = self.analyze(snapshot, self.output(snapshot))
-        self.submit(question_id=2)
-        snapshot = self.preview()
-        for change in ("quote", "id", "status", "json"):
-            output = self.output(snapshot)
-            if change == "quote": output["findings"][0]["evidence"][0]["quote"] = "invented"
-            if change == "id": output["findings"][0]["evidence"][0]["attempt_id"] = "unknown"
-            if change == "status": output["findings"][0]["status"] = "unknown"
-            if change == "json": output = []
-            response, _ = self.analyze(snapshot, output)
+    def test_partial_answer_can_show_understanding_of_one_concept_and_gap_in_another(self):
+        self.submit(updates=[self.update(status='understood'), self.update(title='Concept B', status='gap')])
+        self.assertEqual({m['status'] for m in self.state()['findings']}, {'understood', 'gap'})
+
+    def test_profile_isolation_applies_to_file_and_grading_context(self):
+        profile = profiles.create_profile('Other')
+        headers = {'X-Trainer-Profile': profile['id']}
+        self.submit(updates=[self.update(title='Private concept')], headers=headers)
+        self.assertIsNone(self.preview()['report'])
+        self.assertEqual(self.preview(headers)['report']['findings'][0]['title'], 'Private concept')
+        _, model = self.submit(qid=2)
+        self.assertNotIn('Private concept', model.call_args.args[1])
+
+    def test_reveal_and_failed_or_malformed_grades_do_not_create_memories(self):
+        self.client.post('/api/reveal-answer', json=dict(field='test', id=1))
+        for raw in ('invalid', json.dumps({**self.grade(), 'memory_updates': [dict(title='Incomplete')]})):
+            with patch.object(assessor, '_call_backend', return_value=raw):
+                response = self.client.post('/api/assess', json=dict(field='test', id=1, answer='A'))
             self.assertEqual(response.status_code, 502)
-            self.assertEqual(self.preview()["report"], report.get_json())
-        self.submit(question_id=2)
-        response, model = self.analyze(snapshot, self.output(snapshot))
-        self.assertEqual(response.status_code, 400)
-        model.assert_not_called()
+        self.assertEqual(store.load_progress('test'), {})
+        self.assertEqual(self.state(), {})
 
-    def test_recurring_needs_distinct_questions_and_individual_answers(self):
-        self.submit()
-        self.submit()
-        snapshot = self.preview()
-        response, _ = self.analyze(snapshot, self.output(snapshot, "recurring"))
-        self.assertEqual(response.status_code, 502)
-        self.submit(question_id=2)
-        snapshot = self.preview()
-        response, _ = self.analyze(snapshot, self.output(snapshot, "recurring"))
+    def test_legacy_grade_without_memory_fields_still_records_bound_feedback(self):
+        raw = dict(score=.5, result='partially_correct', feedback='Distinguish A and B.')
+        with patch.object(assessor, '_call_backend', return_value=json.dumps(raw)):
+            response = self.client.post('/api/assess', json=dict(field='test', id=1, answer='A'))
         self.assertEqual(response.status_code, 200)
-        store.record_attempt("test", 2, False, .2, attempt_id="shared", source={"mode": "coop"},
-                             response=learning_gaps.answer_record("Schema", vars(self.grade)))
-        # A recovery retry must not duplicate either progress or original answers.
-        store.record_attempt("test", 2, False, .2, attempt_id="shared", source={"mode": "coop"},
-                             response=learning_gaps.answer_record("Schema", vars(self.grade)))
-        snapshot = self.preview()
-        self.assertEqual(len(snapshot["attempts"]), 4)
-        self.assertEqual(sum(a["evidence_type"] == "shared" for a in snapshot["attempts"]), 1)
-        response, _ = self.analyze(snapshot, self.output(snapshot, "recurring"))
-        self.assertEqual(response.status_code, 502)
+        memory = self.state()['findings'][0]
+        self.assertEqual(memory['description'], raw['feedback'])
+        self.assertEqual(memory['status'], 'tentative')
 
-    def test_recent_window_is_bounded_without_truncating_answer_text(self):
-        for i in range(23):
-            self.submit(answer=f"Antwort {i}")
-        snapshot = self.preview()
-        self.assertEqual(snapshot["available"], 23)
-        self.assertEqual(len(snapshot["attempts"]), 20)
-        self.assertEqual(snapshot["attempts"][0]["student_answer"], "Antwort 3")
-        self.submit(answer="x" * 3000)
-        with patch.object(learning_gaps, "MAX_DATA_CHARS", 500):
+    def test_pending_update_recovers_without_regrading_after_memory_write_failure(self):
+        original = store._save_json
+        def fail_memory(field, filename, data):
+            if filename == 'learning-gaps.json':
+                raise OSError('Simulated interrupted memory write')
+            return original(field, filename, data)
+        with patch.object(store, '_save_json', side_effect=fail_memory):
+            result, model = self.submit(updates=[self.update()])
+        self.assertEqual(result['progress']['attempts'], 1)
+        model.assert_called_once()
+        self.assertIn('memory_pending', store.load_progress('test')['1']['history'][0])
+        self.assertEqual(self.state(), {})
+        with patch.object(assessor, '_call_backend') as model:
             snapshot = self.preview()
-        self.assertEqual(snapshot["attempts"], [])
-
-    def test_empty_findings_and_backend_failure(self):
-        self.submit()
-        snapshot = self.preview()
-        response, _ = self.analyze(snapshot, {"summary": "Keine ausreichenden Belege", "findings": []})
-        self.assertEqual(response.status_code, 200)
-        self.submit(question_id=2)
-        snapshot = self.preview()
-        with patch.object(assessor, "generate_analysis", side_effect=RuntimeError("failed")):
-            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"]})
-        self.assertEqual(response.status_code, 502)
-        self.assertEqual(self.preview()["report"]["findings"], [])
-
-    def test_prompt_combines_deterministic_facts_memory_and_deduplicated_history(self):
-        self.submit()
-        first = self.preview()
-        response, _ = self.analyze(first, self.output(first))
-        memory = response.get_json()["findings"][0]
-        for i in range(21):
-            self.submit(question_id=2, answer=f"Neue Antwort {i}")
-        snapshot = self.preview()
-        payload = json.loads(snapshot["prompt"].split("Belegdaten (chronologisch):\n")[1]
-                             .split("\n\ninput_fingerprint:")[0])
-        self.assertEqual(payload["deterministic"]["subject"]["total_attempts"], 22)
-        self.assertEqual(payload["deterministic"]["subject"]["preparation"],
-                         store.get_field_stats("test")["preparation"])
-        self.assertEqual(payload["memories"][0]["memory_id"], memory["memory_id"])
-        old_id = first["attempts"][0]["attempt_id"]
-        self.assertEqual(sum(a["attempt_id"] == old_id for a in payload["attempts"]), 1)
-        self.assertTrue(next(a for a in payload["attempts"] if a["attempt_id"] == old_id)["already_reviewed"])
-        self.assertEqual(snapshot["memory_attempt_count"], 1)
-        self.assertEqual(snapshot["new_attempt_count"], 20)
-        # An empty update must not forget an earlier gap outside the recent window.
-        response, _ = self.analyze(snapshot, {"summary": "Bisheriger Hinweis bleibt offen", "findings": []})
-        self.assertEqual(response.get_json()["findings"], [memory])
-        self.assertIn(old_id, [a["attempt_id"] for a in response.get_json()["attempts"]])
-
-    def test_reanalysis_reuses_saved_result_without_new_evidence_or_model_request(self):
-        self.submit()
-        snapshot = self.preview()
-        response, _ = self.analyze(snapshot, self.output(snapshot))
-        report = response.get_json()
-        for fingerprint in (snapshot["fingerprint"], self.preview()["fingerprint"]):
-            with patch.object(assessor, "generate_analysis") as model:
-                again = self.client.post(self.url, json={"fingerprint": fingerprint})
-            self.assertEqual(again.status_code, 200)
-            self.assertEqual(again.get_json(), report)
             model.assert_not_called()
-        self.assertEqual(len(report["reviewed_attempt_ids"]), 1)
+        self.assertEqual(len(snapshot['report']['findings']), 1)
+        self.assertNotIn('memory_pending', store.load_progress('test')['1']['history'][0])
 
-    def test_invalid_request_fingerprints_do_not_call_the_model(self):
-        self.submit()
-        with patch.object(assessor, "generate_analysis") as model:
-            for value in (None, [], {}, True, "invalid"):
-                response = self.client.post(self.url, json={"fingerprint": value})
-                self.assertEqual(response.status_code, 400)
-            model.assert_not_called()
+    def test_recovery_after_memory_commit_before_outbox_cleanup_is_idempotent(self):
+        original = store.save_progress
+        calls = 0
+        def fail_cleanup(field, progress):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise OSError('Interrupted cleanup')
+            return original(field, progress)
+        with patch.object(store, 'save_progress', side_effect=fail_cleanup):
+            self.submit(updates=[self.update()])
+        self.assertIn('memory_pending', store.load_progress('test')['1']['history'][0])
+        self.assertEqual(len(self.state()['findings'][0]['evidence']), 1)
+        self.preview()
+        self.assertEqual(len(self.state()['findings'][0]['evidence']), 1)
+        self.assertEqual(len(self.state()['processed_attempt_ids']), 1)
+        self.assertNotIn('memory_pending', store.load_progress('test')['1']['history'][0])
 
-    def test_memory_progresses_with_new_evidence_and_reopens_after_failure(self):
-        self.submit()
-        snapshot = self.preview()
-        response, _ = self.analyze(snapshot, self.output(snapshot))
-        memory_id = response.get_json()["findings"][0]["memory_id"]
-        self.grade = assessor.Assessment(False, True, "correct", 0, 1, "Richtig")
-        for question_id, status in ((2, "improving"), (1, "resolved")):
-            self.submit(question_id=question_id)
-            snapshot = self.preview()
-            output = self.output(snapshot, status)
-            output["findings"][0]["memory_id"] = memory_id
-            output["findings"][0]["evidence"] = [{"attempt_id": snapshot["attempts"][-1]["attempt_id"], "quote": "Schema"}]
-            response, _ = self.analyze(snapshot, output)
-            self.assertEqual(response.status_code, 200, response.get_json())
-            self.assertEqual(response.get_json()["findings"][0]["status"], status)
-            self.assertEqual(response.get_json()["findings"][0]["memory_id"], memory_id)
-        self.grade = assessor.Assessment(False, False, "incorrect", 0, .2, "Verwechselt")
-        self.submit(question_id=2)
-        snapshot = self.preview()
-        output = self.output(snapshot, "recurring")
-        output["findings"][0]["memory_id"] = memory_id
-        output["findings"][0]["evidence"] = [{"attempt_id": snapshot["attempts"][-1]["attempt_id"], "quote": "Schema"}]
-        response, _ = self.analyze(snapshot, output)
-        memory = response.get_json()["findings"][0]
-        self.assertEqual(memory["status"], "recurring")
-        self.assertEqual(len(memory["evidence"]), 4)
-        self.assertEqual(len({r["attempt_id"] for r in memory["evidence"]}), 4)
+    def test_room_retry_does_not_duplicate_attempt_or_memory(self):
+        for _ in range(2):
+            store.record_attempt('test', 1, False, .2, attempt_id='room:one',
+                                 response=dict(student_answer='A', feedback='Confusion'),
+                                 memory_updates=[self.update()])
+        self.assertEqual(store.load_progress('test')['1']['attempts'], 1)
+        self.assertEqual(len(self.state()['findings'][0]['evidence']), 1)
 
-    def test_import_uses_same_validation_and_persistence_without_backend_call(self):
-        self.submit()
-        snapshot = self.preview()
-        output = self.output(snapshot)
-        output["input_fingerprint"] = "wrong"
-        with patch.object(assessor, "generate_analysis") as model:
-            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"],
-                                                        "result": json.dumps(output)})
-            self.assertEqual(response.status_code, 502)
-            output["input_fingerprint"] = snapshot["fingerprint"]
-            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"],
-                                                        "result": json.dumps(output)})
-            self.assertEqual(response.status_code, 200)
-            self.assertEqual(response.get_json()["backend"], "external")
-            model.assert_not_called()
-        stored = store._load_json("test", "learning-gaps.json")
-        self.assertNotIn("attempts", stored)
-        self.assertNotIn("deterministic", stored)
-        self.assertEqual(len(stored["findings"]), 1)
-        self.assertEqual(self.preview()["report"], response.get_json())
+    def test_shared_evidence_stays_tentative_and_separate_from_private_understanding(self):
+        self.submit(updates=[self.update(status='understood')], correct=True)
+        store.record_attempt('test', 2, False, .2, attempt_id='shared-answer', source={'mode': 'coop'},
+                             response=dict(student_answer='A', feedback='Shared confusion'),
+                             memory_updates=[self.update(status='regressed')])
+        memories = self.state()['findings']
+        self.assertEqual({(m['scope'], m['status']) for m in memories},
+                         {('individual', 'understood'), ('shared', 'tentative')})
+        context = json.loads(learning_gaps.grading_context('test', 2, shared=True))
+        self.assertEqual(context['mode'], 'shared')
+        self.assertNotIn('memories', context)
+        self.assertNotIn('deterministic', context)
 
-    def test_inflight_changes_do_not_overwrite_memory_or_analyze_wrong_answers(self):
-        self.submit()
-        snapshot = self.preview()
-        def generate(*args):
-            self.submit(question_id=2)
-            return json.dumps(self.output(snapshot))
-        with patch.object(assessor, "generate_analysis", side_effect=generate):
-            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"]})
-        self.assertEqual(response.status_code, 400)
-        self.assertIsNone(self.preview()["report"])
-
-    def test_concurrent_analysis_saves_one_consistent_memory_update(self):
-        self.submit()
-        snapshot = self.preview()
+    def test_concurrent_answers_merge_memory_without_lost_evidence(self):
         barrier = Barrier(2)
         def generate(*args):
             barrier.wait(timeout=5)
-            return json.dumps(self.output(snapshot))
-        with patch.object(assessor, "generate_analysis", side_effect=generate):
-            with ThreadPoolExecutor(max_workers=2) as pool:
-                results = list(pool.map(lambda _: learning_gaps.analyze("test", snapshot["fingerprint"]), range(2)))
-        self.assertEqual(results[0], results[1])
-        self.assertEqual(len(self.preview()["report"]["findings"]), 1)
-        self.assertEqual(len(store._load_json("test", "learning-gaps.json")["reviewed_attempt_ids"]), 1)
+            return json.dumps(self.grade([self.update()]))
+        def submit(qid):
+            with app.test_client() as client:
+                return client.post('/api/assess', json=dict(field='test', id=qid, answer='A')).status_code
+        with patch.object(assessor, '_call_backend', side_effect=generate) as model:
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                self.assertEqual(list(executor.map(submit, (1, 2))), [200, 200])
+            self.assertEqual(model.call_count, 2)
+        self.assertEqual(len(self.state()['findings']), 1)
+        self.assertEqual(len(self.state()['findings'][0]['evidence']), 2)
+        self.assertEqual(len(self.state()['processed_attempt_ids']), 2)
 
-    def test_memory_cannot_be_resolved_using_wrong_or_shared_new_answers(self):
-        self.submit()
+    def test_on_demand_prompt_combines_global_memory_original_evidence_and_computed_facts(self):
+        self.submit(updates=[self.update(status='understood')], correct=True)
+        self.submit(qid=2, updates=[self.update(title='Concept B')])
         snapshot = self.preview()
-        response, _ = self.analyze(snapshot, self.output(snapshot))
-        memory_id = response.get_json()["findings"][0]["memory_id"]
-        self.submit(question_id=2)
+        payload = json.loads(snapshot['prompt'].split('Belegdaten (chronologisch):\n')[1]
+                             .split('\n\ninput_fingerprint:')[0])
+        self.assertEqual(payload['deterministic']['subject']['total_attempts'], 2)
+        self.assertEqual(len(payload['memories']), 2)
+        self.assertTrue(all(a['already_reviewed'] for a in payload['attempts']))
+        before = store.load_progress('test')
+        response, model = self.analyze(snapshot, self.analysis(snapshot))
+        self.assertEqual(response.status_code, 200)
+        model.assert_called_once_with(learning_gaps.SYSTEM_PROMPT, snapshot['prompt'])
+        self.assertEqual(store.load_progress('test'), before)
+        self.assertEqual(len(response.get_json()['findings']), 2)
+        self.assertNotIn('attempts', self.state())
+        self.assertNotIn('deterministic', self.state())
+
+    def test_analysis_can_refine_relationships_without_recounting_evidence(self):
+        self.submit(updates=[self.update(status='understood')], correct=True)
         snapshot = self.preview()
-        for status in ("improving", "resolved"):
-            output = self.output(snapshot, status)
-            output["findings"][0]["memory_id"] = memory_id
-            response, _ = self.analyze(snapshot, output)
-            self.assertEqual(response.status_code, 502)
-        store.record_attempt("test", 2, True, 1, attempt_id="coop-new", source={"mode": "coop"},
-                             response=learning_gaps.answer_record("Schema", {"feedback": "Richtig"}))
+        memory = snapshot['report']['findings'][0]
+        finding = {**memory, 'related_topics': ['Concept B', 'Concept C'],
+                   'description': 'A is understood; distinguish its relationship to C.',
+                   'status': 'resolved'}
+        response, _ = self.analyze(snapshot, self.analysis(snapshot, [finding]))
+        self.assertEqual(response.status_code, 200, response.get_json())
+        updated = response.get_json()['findings'][0]
+        self.assertEqual(updated['status'], 'understood')
+        self.assertEqual(updated['related_topics'], ['Concept B', 'Concept C'])
+        self.assertEqual(len(updated['evidence']), 1)
+
+    def test_external_import_uses_same_validated_memory_flow_without_backend_call(self):
+        self.submit(updates=[self.update()])
         snapshot = self.preview()
-        output = self.output(snapshot, "improving")
-        output["findings"][0]["memory_id"] = memory_id
-        response, _ = self.analyze(snapshot, output)
+        output = self.analysis(snapshot)
+        with patch.object(assessor, 'generate_analysis') as model:
+            response = self.client.post(self.url, json=dict(fingerprint=snapshot['fingerprint'], result=json.dumps(output)))
+            self.assertEqual(response.status_code, 200)
+            model.assert_not_called()
+        self.assertEqual(self.state()['backend'], 'external')
+        self.assertEqual(len(self.state()['findings']), 1)
+        self.submit(qid=2)
+        stale = self.client.post(self.url, json=dict(fingerprint=snapshot['fingerprint'], result=json.dumps(output)))
+        self.assertEqual(stale.status_code, 400)
+
+    def test_invented_citations_and_failed_analysis_preserve_automatic_memory(self):
+        self.submit(updates=[self.update()])
+        snapshot = self.preview()
+        original = self.state()
+        finding = {**snapshot['report']['findings'][0], 'evidence': [{'attempt_id': 'invented', 'quote': ''}]}
+        response, _ = self.analyze(snapshot, self.analysis(snapshot, [finding]))
         self.assertEqual(response.status_code, 502)
+        self.assertEqual(self.state(), original)
+        with patch.object(assessor, 'generate_analysis', side_effect=RuntimeError('Unavailable')):
+            response = self.client.post(self.url, json={'fingerprint': snapshot['fingerprint']})
+        self.assertEqual(response.status_code, 502)
+        self.assertEqual(self.state(), original)
+
+    def test_old_question_owned_format_is_read_and_migrated_to_cross_question_memory(self):
+        self.submit(updates=[self.update()])
+        self.submit(qid=2, updates=[self.update()])
+        state = self.state()
+        refs = state['findings'][0]['evidence']
+        legacy = {'schema_version': 2, 'questions': {
+            str(qid): {'findings': [{**state['findings'][0], 'memory_id': f'old-{qid}', 'evidence': [ref]}],
+                       'reviewed_attempt_ids': [ref['attempt_id']]}
+            for qid, ref in zip((1, 2), refs)
+        }}
+        store._save_json('test', 'learning-gaps.json', legacy)
+        snapshot = self.preview()
+        self.assertEqual(len(snapshot['report']['findings']), 1)
+        self.assertEqual(len(snapshot['report']['findings'][0]['evidence']), 2)
+        self.assertIn('questions', self.state())
+        self.submit(updates=[self.update()])
+        self.assertNotIn('questions', self.state())
+        self.assertEqual(self.state()['schema_version'], 3)
+        self.assertEqual(len(self.state()['findings'][0]['evidence']), 3)
+
+    def test_bank_edits_use_current_reference_without_storing_duplicate_question_text(self):
+        self.submit()
+        self.questions[0]['answer'] = 'Edited reference'
+        (self.root / 'test' / 'questions.json').write_text(json.dumps({'questions': self.questions}))
+        self.assertEqual(self.preview()['attempts'][0]['reference_answer'], 'Edited reference')
+        response = store.load_progress('test')['1']['history'][0]['response']
+        self.assertEqual(set(response), {'student_answer', 'feedback'})
+
+    def test_invalid_fingerprints_and_empty_history_never_call_analysis_model(self):
+        with patch.object(assessor, 'generate_analysis') as model:
+            for value in (None, [], {}, True, 'invalid'):
+                response = self.client.post(self.url, json={'fingerprint': value})
+                self.assertEqual(response.status_code, 400)
+            snapshot = self.preview()
+            response = self.client.post(self.url, json={'fingerprint': snapshot['fingerprint']})
+            self.assertEqual(response.status_code, 400)
+            model.assert_not_called()
+
+    def test_stale_model_result_does_not_overwrite_newer_automatic_memory(self):
+        self.submit(updates=[self.update()])
+        snapshot = self.preview()
+        def generate(*args):
+            self.submit(qid=2, updates=[self.update(title='Concept B')])
+            return json.dumps(self.analysis(snapshot, summary='Stale strategy'))
+        with patch.object(assessor, 'generate_analysis', side_effect=generate):
+            response = self.client.post(self.url, json={'fingerprint': snapshot['fingerprint']})
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual({m['title'] for m in self.state()['findings']}, {'Concept A', 'Concept B'})
+        self.assertNotEqual(self.state()['summary'], 'Stale strategy')
+
+    def test_recent_window_is_bounded_and_original_evidence_remains_resolvable(self):
+        self.submit(updates=[self.update()])
+        original_id = self.state()['processed_attempt_ids'][0]
+        for i in range(21):
+            self.submit(qid=2, answer=f'Answer {i}')
+        snapshot = self.preview()
+        self.assertEqual(len(snapshot['attempts']), 20)
+        self.assertEqual(snapshot['available'], 22)
+        self.assertIn(original_id, {a['attempt_id'] for a in snapshot['evidence_attempts']})
+        self.assertIn(original_id, {a['attempt_id'] for a in snapshot['report']['attempts']})
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

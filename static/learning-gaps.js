@@ -26,17 +26,20 @@
     root.replaceChildren();
     if (!report) return;
     const stale = report.fingerprint !== snapshot.fingerprint && report.input_fingerprint !== snapshot.fingerprint;
-    text(root, 'h3', 'Lerngedächtnis · letzte Analyse');
-    text(root, 'p', `${new Date(report.created_at).toLocaleString('de-DE')} · ${(report.attempt_ids || report.attempts).length} Antworten${stale ? ' · Andere Datengrundlage als die aktuelle Vorschau' : ''}`);
+    text(root, 'h3', 'Fachweites Lerngedächtnis');
+    text(root, 'p', `${new Date(report.updated_at || report.created_at).toLocaleString('de-DE')} · ${(report.reviewed_attempt_ids || report.attempt_ids || report.attempts).length} Antworten${stale ? ' · Andere Datengrundlage als die aktuelle Vorschau' : ''}`);
     text(root, 'p', report.summary);
+    if (report.unassigned_count) text(root, 'p', `${report.unassigned_count} frühere Hinweise sind gespeichert, können aber keiner vorhandenen Frage sicher zugeordnet werden.`);
     if (!report.findings.length) text(root, 'p', 'Keine ausreichend belegten Lernlücken gefunden. Das ist kein Nachweis vollständiger Beherrschung.');
-    const labels = {tentative: 'Vorläufiger Hinweis', recurring: 'Wiederkehrender Hinweis', improving: 'Anzeichen für Verbesserung', resolved: 'Vorläufig aufgelöst'};
+    const labels = {tentative: 'Vorläufiger Hinweis', recurring: 'Wiederkehrender Hinweis', improving: 'Anzeichen für Verbesserung', resolved: 'Vorläufig aufgelöst', understood: 'Verständnis gezeigt', gap: 'Hinweis auf Lernlücke', regressed: 'Rückschritt nach früherem Verständnis'};
     const attempts = new Map(report.attempts.map(item => [item.attempt_id, item]));
     for (const finding of report.findings) {
       const card = document.createElement('article');
       root.append(card);
       text(card, 'h4', finding.title);
       text(card, 'p', labels[finding.status]);
+      if (finding.related_topics?.length) text(card, 'p', `Zusammenhänge: ${finding.related_topics.join(' · ')}`);
+      if (finding.scope === 'shared') text(card, 'p', 'Gemeinsame Antwort: kein individueller Nachweis von Verständnis.');
       if (finding.updated_at) text(card, 'p', `Zuletzt überprüft: ${new Date(finding.updated_at).toLocaleString('de-DE')} · ${new Set(finding.evidence.map(e => e.attempt_id)).size} unterschiedliche Belege`);
       text(card, 'p', finding.description);
       text(card, 'p', `Gezielt üben: ${finding.next_step}`);

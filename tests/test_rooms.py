@@ -117,6 +117,30 @@ class RoomTests(unittest.TestCase):
         self.assertEqual(self.progress(self.c), {})
         self.assertEqual(self.assess.call_count, 2)
 
+    def test_competitive_memory_context_is_profile_specific_and_not_revealed_to_partner(self):
+        code, rid = self.start('compete')
+        self.assess.side_effect = [
+            assessor.Assessment(False, True, 'correct', 0, 1, 'Good', memory_summary='Private Alice strategy'),
+            assessor.Assessment(False, True, 'correct', 0, 1, 'Good', memory_summary='Private Bob strategy'),
+        ]
+        self.submit(code, rid, self.a, 'Alice answer')
+        self.queue.run_one()
+        self.submit(code, rid, self.b, 'Bob answer')
+        self.queue.run_one()
+        for pid, own_summary, other_summary in ((self.a, 'Private Alice strategy', 'Private Bob strategy'),
+                                                (self.b, 'Private Bob strategy', 'Private Alice strategy')):
+            state = self.get(code, pid).get_json()
+            self.assertTrue(state['revealed'])
+            own = next(p for p in state['participants'] if p['id'] == pid)
+            other = next(p for p in state['participants'] if p['id'] != pid)
+            self.assertEqual(own['result']['memory_summary'], own_summary)
+            self.assertNotIn('memory_summary', other['result'])
+            self.assertNotIn('memory_updates', other['result'])
+            self.assertNotIn(other_summary, json.dumps(state))
+        self.assertEqual(self.progress('default'), {})
+        self.assertEqual(self.progress(self.c), {})
+        self.assertEqual(self.assess.call_count, 2)
+
     def test_duplicate_submission_retry_and_ready_are_idempotent(self):
         code, rid = self.start('compete')
         for _ in range(4):
@@ -200,7 +224,7 @@ class RoomTests(unittest.TestCase):
     def test_background_grading_does_not_block_requests(self):
         code, rid = self.start()
         release = Event()
-        def slow_assessment(*args):
+        def slow_assessment(*args, **kwargs):
             release.wait(3)
             return assessor.Assessment(False, True, 'correct', 0, 1, 'Done')
         self.assess.side_effect = slow_assessment

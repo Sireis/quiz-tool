@@ -1110,3 +1110,4 @@ button.secondary:hover { background: linear-gradient(145deg, #36435c, #2b374f); 
 #gaps-report blockquote { margin: 10px 0; padding-left: 12px; border-left: 3px solid var(--accent); white-space: pre-wrap; }
 #gaps-dialog .btn-row { flex-wrap: wrap; }
 #gaps-open { grid-column: 1 / -1; }
+#memory-insight { margin: 14px 0; padding: 12px; border-left: 3px solid var(--accent); white-space: pre-wrap; }

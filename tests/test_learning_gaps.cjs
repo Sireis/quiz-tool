@@ -159,6 +159,19 @@ test('legacy progress without answer texts remains available as deterministic co
   assert.match(allText(app.element('facts')), /3 Versuche/);
 });
 
+test('global memory displays strengths, connected concepts and regressions across questions', async () => {
+  const app = setup();
+  app.context.response = preview({report: {...report, findings: [
+    {...report.findings[0], status: 'understood', related_topics: ['Topic B', 'Topic C']},
+    {...report.findings[0], status: 'regressed'},
+  ]}});
+  await app.element('open').onclick();
+  const output = allText(app.element('report'));
+  assert.match(output, /Verständnis gezeigt/);
+  assert.match(output, /Topic B · Topic C/);
+  assert.match(output, /Rückschritt nach früherem Verständnis/);
+});
+
 test('failed analysis retains saved report and export; a stale response cannot overwrite a new dialog', async () => {
   const app = setup();
   app.context.response = preview({report});

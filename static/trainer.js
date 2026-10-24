@@ -630,6 +630,11 @@ function showRequestError(error) {
 //  UI HELPERS
 // ═══════════════════════════════════════════════════════════
 function showResult(res) {
+  const memoryInsight = document.getElementById('memory-insight');
+  if (memoryInsight) {
+    memoryInsight.hidden = !res.memory_summary;
+    memoryInsight.textContent = res.memory_summary || '';
+  }
   const card = document.getElementById('result-card');
   const resultType = getResultType(res);
   card.className     = resultType;
@@ -681,6 +686,8 @@ function getResultType(res) {
 }
 
 function resetResultCard() {
+  const memoryInsight = document.getElementById('memory-insight');
+  if (memoryInsight) { memoryInsight.hidden = true; memoryInsight.textContent = ''; }
   document.getElementById('solo-result').hidden = false;
   const card = document.getElementById('result-card');
   card.style.display = 'none';
