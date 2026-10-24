@@ -62,8 +62,8 @@ in `static/`.
   assessments must not update progress.
 - Preparation ratings and adaptive selection are separate calculations.
   Preparation uses lifetime correct answers and the latest result; selection
-  prioritizes unanswered questions, then the lowest correct-answer streak capped
-  at two. Do not change one implicitly while modifying the other.
+  mixes four new questions with a due spaced review and excludes recent displays.
+  Do not change one implicitly while modifying the other.
 - Learning-goal study days begin at 06:00 in the requested timezone. Preserve
   timezone and daylight-saving handling and the stable daily workload baseline.
 - Competitive answers remain private from the other participant until both

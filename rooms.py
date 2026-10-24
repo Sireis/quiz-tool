@@ -11,6 +11,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 from dataclasses import asdict
+from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
 
@@ -18,6 +19,7 @@ import assessor
 import profiles
 import question_store as store
 import learning_gaps
+import spaced_repetition
 
 ROOMS_PATH = Path(__file__).resolve().parent / 'data' / 'rooms'
 _executor = ThreadPoolExecutor(max_workers=2)
@@ -102,20 +104,25 @@ def _new_round(room):
             progress.append(store.load_progress(room['field']))
         finally:
             store.active_profile.reset(token)
-    def rank(question):
-        return min(min(p.get(str(question['id']), {}).get('streak', 0), 2) for p in progress)
     if room['mode'] == 'compete':
         used = set(room.get('question_sequence', []))
         candidates = [q for q in questions if q['id'] not in used]
         if not candidates:
             room['question_sequence'] = []
             candidates = questions
+        previous = room.get('round', {}).get('question', {}).get('id')
+        alternatives = [q for q in candidates if q['id'] != previous]
+        question = random.choice(alternatives or candidates)
     else:
-        weakest = min(map(rank, questions))
-        candidates = [q for q in questions if rank(q) == weakest]
-    previous = room.get('round', {}).get('question', {}).get('id')
-    alternatives = [q for q in candidates if q['id'] != previous]
-    room['round'] = {'id': str(uuid4()), 'question': random.choice(alternatives or candidates),
+        selection = room.setdefault('selection', {})
+        previous = room.get('round', {}).get('question', {}).get('id')
+        if not selection and previous is not None:
+            selection['recent'] = [previous]
+        question = spaced_repetition.choose(
+            questions, progress, selection, datetime.now(timezone.utc),
+            extra_practice=True,
+        )
+    room['round'] = {'id': str(uuid4()), 'question': question,
                      'submissions': {}, 'ready': [], 'draft': '', 'draft_revision': 0,
                      'editor_updates': [],
                      'standings': {pid: p['points'] for pid, p in room['participants'].items()}}
@@ -159,6 +166,7 @@ def join(code, profile):
             room['participants'][profile] = _participant(profile)
             room['number'] = 0
             room['question_sequence'] = []
+            room.pop('selection', None)
             _new_round(room)
 
 

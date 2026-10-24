@@ -442,18 +442,20 @@ function clickTopicBreakdown(name) {
 
 function jumpToQuestion(qid) {
   if (globalThis.sharedPractice?.active) return;
-  fetch(`/api/fields/${sel.field}/questions`)
+  const requestId = ++questionRequest;
+  fetch(`${resolveQuestionUrl()}&id=${encodeURIComponent(qid)}`)
     .then(r => r.json())
-    .then(questions => {
-      const q = questions.find(q => q.id === qid);
-      if (q && !globalThis.sharedPractice?.active) { displayQuestion(q); mobileGoMain(); }
+    .then(q => {
+      if (!q.error && requestId === questionRequest && !globalThis.sharedPractice?.active) {
+        displayQuestion(q); mobileGoMain();
+      }
     });
 }
 
 // ═══════════════════════════════════════════════════════════
 //  QUESTION LOADING
 // ═══════════════════════════════════════════════════════════
-async function loadNextQuestion() {
+async function loadNextQuestion(extraPractice = false) {
   if (globalThis.sharedPractice?.active) return globalThis.sharedPractice.next();
   const requestId = ++questionRequest;
   currentQuestion = null;
@@ -461,22 +463,39 @@ async function loadNextQuestion() {
   document.getElementById('reveal-btn').disabled = true;
   setAnswerPending(false);
   resetResultCard();
+  document.getElementById('practice-complete').hidden = true;
+  document.getElementById('answer-area').hidden = false;
   document.getElementById('answer-input').value    = '';
   document.getElementById('answer-input').disabled = false;
   document.getElementById('answer-input').style.height = '';
   document.getElementById('submit-btn').disabled   = false;
 
-  const url = resolveQuestionUrl();
+  const url = resolveQuestionUrl(extraPractice);
   const q = await fetch(url).then(r => r.json()).catch(() => ({ error: 'Netzwerkfehler' }));
   if (requestId !== questionRequest) return;
   if (q.error) { document.getElementById('question-text').textContent = q.error; return; }
+  if (q.practice_complete) {
+    document.getElementById('question-text').textContent = q.recent_only
+      ? 'Die übrigen neuen oder fälligen Fragen hast du gerade gesehen. Du kannst zusätzlich üben.'
+      : 'Für diese Auswahl stehen gerade keine weiteren neuen oder fälligen Fragen an.';
+    document.getElementById('q-topic').textContent = '';
+    document.getElementById('q-subtopic').textContent = '';
+    document.getElementById('q-id').textContent = '';
+    document.getElementById('q-preparation').innerHTML = '';
+    document.getElementById('answer-area').hidden = true;
+    document.getElementById('practice-complete').hidden = false;
+    document.getElementById('practice-next-due').textContent = q.next_due
+      ? `Nächste Wiederholung: ${new Date(q.next_due).toLocaleString('de-DE')}` : '';
+    document.getElementById('extra-practice-btn').focus();
+    return;
+  }
   displayQuestion(q);
   // New content can change main's scroll height; always start at the top
   // so the question card and the buttons below it are both in view.
   document.querySelector('main').scrollTop = 0;
 }
 
-function resolveQuestionUrl() {
+function resolveQuestionUrl(extraPractice = false) {
   const f = sel.field;
   const filter = sel.examen?.name ?? sel.set?.name ?? '';
   const topic  = sel.topic || '';
@@ -484,10 +503,12 @@ function resolveQuestionUrl() {
          `?filter=${encodeURIComponent(filter)}` +
          `&filter_type=${sel.set?.bookmark ? 'bookmark' : ''}` +
          `&topic=${encodeURIComponent(topic)}` +
-         `&subtopic=${encodeURIComponent(sel.subtopic || '')}`;
+         `&subtopic=${encodeURIComponent(sel.subtopic || '')}` + (extraPractice ? '&extra=1' : '');
 }
 
 function displayQuestion(q) {
+  document.getElementById('practice-complete').hidden = true;
+  document.getElementById('answer-area').hidden = false;
   currentQuestion = q;
   renderBookmark();
   document.getElementById('q-preparation').innerHTML = preparationIndicator(q.preparation);

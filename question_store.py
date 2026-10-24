@@ -3,7 +3,6 @@
 import fcntl
 import json
 import os
-import random
 import tempfile
 from contextlib import contextmanager
 from contextvars import ContextVar
@@ -12,11 +11,13 @@ from pathlib import Path
 from threading import RLock
 from uuid import uuid4
 
+import spaced_repetition
+
 FIELDS_PATH = Path(__file__).resolve().parent / "sets"
 REQUIRED_QUESTION_FIELDS = ("topic", "question", "answer")
 _progress_lock = RLock()
 active_profile = ContextVar("active_profile", default="default")
-PERSONAL_FILES = {"progress.json", "bookmarks.json", "goal.json", "learning-gaps.json"}
+PERSONAL_FILES = {"progress.json", "bookmarks.json", "goal.json", "learning-gaps.json", "selection.json"}
 
 
 def personal_path(field: str) -> Path:
@@ -212,28 +213,32 @@ def get_question_by_id(field: str, question_id: str | int) -> dict | None:
 def get_next_question(
     field: str, group_name: str | None = None, topic: str | None = None,
     subtopic: str | None = None, group_type: str | None = None,
+    *, extra_practice: bool = False, question_id: int | None = None,
 ) -> dict | None:
-    """Prioritize unanswered questions, then the lowest streak capped at two."""
+    """Mix four new questions with one due review, avoiding recent displays."""
     questions = get_filtered_questions(field, group_name, topic, subtopic, group_type)
     if not questions:
         return None
-    progress = load_progress(field)
-    unattempted = [
-        question for question in questions
-        if progress.get(str(question["id"]), {}).get("attempts", 0) == 0
-    ]
-    if unattempted:
-        return random.choice(unattempted)
-
-    def selection_streak(question: dict) -> int:
-        entry = progress[str(question["id"])]
-        return min(entry.get("streak", 0), 2)
-
-    lowest_streak = min(map(selection_streak, questions))
-    weakest_questions = [
-        question for question in questions if selection_streak(question) == lowest_streak
-    ]
-    return random.choice(weakest_questions)
+    requested = None
+    if question_id is not None:
+        requested = next((q for q in questions if q["id"] == question_id), None)
+        if requested is None:
+            raise ValueError("Question is outside the current selection")
+    scope = json.dumps([group_name or None, topic or None, subtopic or None, group_type or None])
+    with progress_transaction(field):
+        selections = _load_json(field, "selection.json")
+        state = selections.setdefault(scope, {})
+        now = datetime.now(timezone.utc)
+        if requested is not None:
+            spaced_repetition.remember_display(state, requested["id"], now)
+            selected = {**requested, "selection_kind": "manual"}
+        else:
+            selected = spaced_repetition.choose(
+                questions, [load_progress(field)], state, now,
+                extra_practice=extra_practice,
+            )
+        _save_json(field, "selection.json", selections)
+        return selected
 
 
 def record_attempt(field: str, question_id: str | int, correct: bool, score: float,
@@ -257,7 +262,9 @@ def record_attempt(field: str, question_id: str | int, correct: bool, score: flo
 
 
 def _update_attempt(entry: dict, correct: bool, score: float) -> None:
-    timestamp = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(timezone.utc)
+    review = spaced_repetition.next_schedule(entry, correct, now)
+    timestamp = now.isoformat()
     if "history" not in entry:
         entry["history"] = []
         entry["historical_attempts"] = entry.get("attempts", 0)
@@ -274,6 +281,7 @@ def _update_attempt(entry: dict, correct: bool, score: float) -> None:
     entry["last_result"] = "correct" if correct else "incorrect"
     entry["last_score"] = score
     entry["last_attempt"] = timestamp
+    entry["review"] = review
 
 
 def _default_progress() -> dict:

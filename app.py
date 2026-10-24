@@ -173,11 +173,23 @@ def api_delete_goal(field: str):
 def api_next_question(field: str):
     topic = request.args.get("topic")
     group_name = request.args.get("filter")
-    question = question_store.get_next_question(field, group_name, topic, request.args.get("subtopic"), request.args.get("filter_type"))
+    requested_id = request.args.get("id")
+    if requested_id is not None:
+        requested_id = _require_question(field, requested_id)["id"]
+    question = question_store.get_next_question(
+        field, group_name, topic, request.args.get("subtopic"), request.args.get("filter_type"),
+        extra_practice=request.args.get("extra") == "1",
+        question_id=requested_id,
+    )
     progress = question_store.load_progress(field)
     if question is None:
         return jsonify({"error": "No questions available"}), 404
-    return jsonify(_question_view(question, progress.get(str(question["id"]), {}), question_store.load_bookmarks(field)))
+    if question.get("practice_complete"):
+        response = jsonify(question)
+    else:
+        response = jsonify(_question_view(question, progress.get(str(question["id"]), {}), question_store.load_bookmarks(field)))
+    response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 @app.post("/api/bookmark")
@@ -352,6 +364,7 @@ def _question_view(question: dict, progress: dict, bookmarks: dict) -> dict:
         "bookmarked": any(question["id"] in ids for ids in bookmarks.values()),
         "progress": progress,
         "preparation": question_store.get_question_preparation(progress),
+        "selection_kind": question.get("selection_kind"),
     }
 
 

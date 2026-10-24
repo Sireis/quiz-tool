@@ -12,6 +12,7 @@ from app import app
 import profiles
 import question_store as store
 import rooms
+import spaced_repetition
 
 
 class QueuedGrading:
@@ -227,9 +228,10 @@ class RoomTests(unittest.TestCase):
                 store.active_profile.reset(token)
         code, _ = self.start()
         # Alice has mastered Q1; Bob has not. Both questions are still eligible.
-        with patch.object(rooms.random, 'choice', side_effect=lambda choices: choices[0]) as choice:
+        with patch.object(spaced_repetition.random, 'choice', side_effect=lambda choices: choices[0]) as choice:
             with rooms.transaction(code) as room:
                 room['round']['question']['id'] = None
+                room['selection'] = {}
                 rooms._new_round(room)
         self.assertEqual({q['id'] for q in choice.call_args.args[0]}, {1, 2})
 
