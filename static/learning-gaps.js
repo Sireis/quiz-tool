@@ -25,18 +25,19 @@
     const root = el('report');
     root.replaceChildren();
     if (!report) return;
-    const stale = report.fingerprint !== snapshot.fingerprint;
-    text(root, 'h3', 'Letzte Analyse');
+    const stale = report.fingerprint !== snapshot.fingerprint && report.input_fingerprint !== snapshot.fingerprint;
+    text(root, 'h3', 'Lerngedächtnis · letzte Analyse');
     text(root, 'p', `${new Date(report.created_at).toLocaleString('de-DE')} · ${(report.attempt_ids || report.attempts).length} Antworten${stale ? ' · Andere Datengrundlage als die aktuelle Vorschau' : ''}`);
     text(root, 'p', report.summary);
     if (!report.findings.length) text(root, 'p', 'Keine ausreichend belegten Lernlücken gefunden. Das ist kein Nachweis vollständiger Beherrschung.');
-    const labels = {tentative: 'Vorläufiger Hinweis', recurring: 'Wiederkehrender Hinweis', improving: 'Anzeichen für Verbesserung'};
+    const labels = {tentative: 'Vorläufiger Hinweis', recurring: 'Wiederkehrender Hinweis', improving: 'Anzeichen für Verbesserung', resolved: 'Vorläufig aufgelöst'};
     const attempts = new Map(report.attempts.map(item => [item.attempt_id, item]));
     for (const finding of report.findings) {
       const card = document.createElement('article');
       root.append(card);
       text(card, 'h4', finding.title);
       text(card, 'p', labels[finding.status]);
+      if (finding.updated_at) text(card, 'p', `Zuletzt überprüft: ${new Date(finding.updated_at).toLocaleString('de-DE')} · ${new Set(finding.evidence.map(e => e.attempt_id)).size} unterschiedliche Belege`);
       text(card, 'p', finding.description);
       text(card, 'p', `Gezielt üben: ${finding.next_step}`);
       for (const evidence of finding.evidence) {
@@ -58,10 +59,28 @@
   }
 
   function controls() {
-    const available = Boolean(snapshot?.attempts.length);
+    const available = Boolean(snapshot?.can_analyze ?? snapshot?.attempts.length);
     el('analyze').disabled = busy || !available;
+    el('import').disabled = busy || !available;
     el('copy').disabled = !available;
     el('download').disabled = !available;
+  }
+
+  function renderFacts(data) {
+    const root = el('facts');
+    root.replaceChildren();
+    const facts = data.deterministic;
+    if (!facts) return;
+    const s = facts.subject;
+    text(root, 'h3', 'Berechneter Fortschritt');
+    text(root, 'p', `${s.attempted} von ${s.total} Fragen bearbeitet (${Math.round(s.completion_percent)}%) · ${s.total_attempts} Versuche · ${Math.round(s.success_rate)}% richtige Versuche`);
+    const c = s.preparation.counts;
+    text(root, 'p', `Vorbereitung: ${c.red} rot · ${c.yellow} gelb · ${c.green} grün. Farben und Trefferraten sind Fortschrittswerte; semantische Hinweise ergänzen sie.`);
+    const details = document.createElement('details');
+    root.append(details);
+    text(details, 'summary', 'Fortschritt nach Thema');
+    for (const topic of facts.topics) text(details, 'p', `${topic.name}: ${topic.attempted}/${topic.total} Fragen · ${Math.round(topic.success_rate)}% richtige Versuche`);
+    if (facts.omitted_topics) text(details, 'p', `${facts.omitted_topics} weitere Themen sind in diesem Ausschnitt nicht enthalten.`);
   }
 
   el('close').onclick = () => dialog.close();
@@ -76,6 +95,8 @@
     el('scope').textContent = '';
     el('status').textContent = 'Antworten werden geladen…';
     el('prompt').value = '';
+    el('result').value = '';
+    el('facts').replaceChildren();
     el('report').replaceChildren();
     el('export').open = false;
     controls();
@@ -84,9 +105,10 @@
       const data = await json(`/api/fields/${encodeURIComponent(field)}/learning-gaps`);
       if (request !== generation) return;
       snapshot = data;
+      renderFacts(data);
       el('prompt').value = data.prompt;
-      el('scope').textContent = `${data.attempts.length} der ${data.available} gespeicherten Antworten · die neuesten vollständigen Antworten, höchstens ${data.max_attempts}, begrenzt nach Textumfang. ${data.legacy_count} ältere Versuche ohne Antworttext und ${data.missing_count || 0} Antworten zu entfernten Fragen sind ausgeschlossen. Fragen und Musterlösungen stammen aus dem aktuellen Fragenkatalog. Analyse hier über ${data.backend}.`;
-      el('status').textContent = data.attempts.length
+      el('scope').textContent = `${data.attempts.length} der ${data.available} gespeicherten Antworten · ${data.new_attempt_count ?? data.attempts.length} davon noch nicht analysiert · ${data.memory_context_count || 0} von ${data.memory_count || 0} Erinnerungen und ${data.memory_attempt_count || 0} ältere Belege im Prompt. Höchstens ${data.max_attempts} aktuelle Antworten, begrenzt nach Textumfang. ${data.legacy_count} ältere Versuche ohne Antworttext und ${data.missing_count || 0} Antworten zu entfernten Fragen sind von der Textanalyse ausgeschlossen, vorhandene Fortschrittswerte bleiben berücksichtigt. Fragen und Musterlösungen stammen aus dem aktuellen Fragenkatalog. Analyse hier über ${data.backend}.`;
+      el('status').textContent = (data.can_analyze ?? data.attempts.length)
         ? 'Bereit. Erst „Jetzt analysieren“ sendet die angezeigten Belege an das konfigurierte KI-Backend.'
         : data.available ? 'Die neueste Antwort überschreitet das Textlimit der Analyse.'
           : data.missing_count ? 'Die gespeicherten Antworten gehören zu entfernten Fragen und können nicht analysiert werden.'
@@ -99,26 +121,34 @@
     }
   };
 
-  el('analyze').onclick = async () => {
-    if (busy || !snapshot?.attempts.length) return;
+  async function analyze(imported = false) {
+    if (busy || !(snapshot?.can_analyze ?? snapshot?.attempts.length)) return;
+    if (imported && !el('result').value.trim()) {
+      el('status').textContent = 'Bitte das JSON-Ergebnis deiner KI einfügen.';
+      el('result').focus();
+      return;
+    }
     const request = generation;
     busy = true;
     controls();
-    el('status').textContent = 'Lernlücken werden analysiert… Der Prompt bleibt exportierbar.';
+    el('status').textContent = imported ? 'Ergebnis wird geprüft…' : 'Lernlücken werden analysiert… Der Prompt bleibt exportierbar.';
     try {
       const report = await json(`/api/fields/${encodeURIComponent(field)}/learning-gaps`, {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({fingerprint: snapshot.fingerprint}),
+        body: JSON.stringify({fingerprint: snapshot.fingerprint,
+          ...(imported ? {result: el('result').value} : {})}),
       });
       if (request !== generation) return;
       renderReport(report);
-      el('status').textContent = 'Analyse gespeichert. Die Hinweise verändern deine Fortschrittswerte nicht.';
+      el('status').textContent = 'Lerngedächtnis gespeichert. Dieselben Antworten zählen nicht erneut als Belege. Deine Fortschrittswerte bleiben unverändert. Ansicht erneut öffnen, um den aktualisierten Prompt zu exportieren.';
     } catch (error) {
       if (request === generation) el('status').textContent = error.message;
     } finally {
       if (request === generation) { busy = false; controls(); }
     }
-  };
+  }
+  el('analyze').onclick = () => analyze();
+  el('import').onclick = () => analyze(true);
 
   el('copy').onclick = async () => {
     const request = generation;

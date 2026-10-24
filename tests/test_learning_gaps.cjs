@@ -49,6 +49,9 @@ const report = {created_at: '2026-10-10T12:00:00Z', fingerprint: 'first', attemp
 const preview = (overrides = {}) => ({attempts: [attempt], available: 1, legacy_count: 5,
   fingerprint: 'first', prompt: 'Instructions\nOriginal answers < & >', report: null,
   max_attempts: 20, backend: 'gpt4all', ...overrides});
+const facts = {subject: {attempted: 1, total: 2, completion_percent: 50,
+  total_attempts: 3, success_rate: 67, preparation: {counts: {red: 1, yellow: 1, green: 0}}},
+  topics: [{name: '<script>Topic</script>', attempted: 1, total: 2, success_rate: 67}], omitted_topics: 0};
 function allText(node) {
   return [node.textContent, ...(node.children || []).map(allText)].join(' ');
 }
@@ -109,6 +112,51 @@ test('reports retain their original attempt count and explain deleted evidence',
   assert.match(output, /Beleg ist nicht mehr verfügbar/);
   assert.match(app.element('scope').textContent, /1 Antworten zu entfernten Fragen/);
   assert.match(app.element('status').textContent, /entfernten Fragen/);
+});
+
+test('deterministic progress and persistent resolved memories use the same dialog and export', async () => {
+  const app = setup();
+  app.context.response = preview({can_analyze: true, deterministic: facts,
+    memory_count: 2, memory_context_count: 2, memory_attempt_count: 1, new_attempt_count: 1,
+    report: {...report, findings: [{...report.findings[0], memory_id: 'memory-1',
+      status: 'resolved', updated_at: '2026-10-11T12:00:00Z'}]}});
+  await app.element('open').onclick();
+  assert.match(allText(app.element('facts')), /1 von 2 Fragen/);
+  assert.match(allText(app.element('facts')), /67% richtige Versuche/);
+  assert.match(allText(app.element('facts')), /<script>Topic<\/script>/);
+  assert.match(allText(app.element('report')), /Vorläufig aufgelöst/);
+  assert.match(app.element('scope').textContent, /2 von 2 Erinnerungen/);
+  assert.equal(app.calls.length, 1);
+  await app.element('copy').onclick();
+  assert.equal(app.copied[0], app.element('prompt').value);
+});
+
+test('external results use the same POST and keep the entered JSON when validation fails', async () => {
+  const app = setup();
+  app.context.response = preview({can_analyze: true, deterministic: facts});
+  await app.element('open').onclick();
+  app.element('result').value = JSON.stringify({...report, input_fingerprint: 'first'});
+  const entered = app.element('result').value;
+  app.context.fetch = async (url, options) => {
+    app.calls.push({url, options});
+    return {ok: false, json: async () => ({error: 'Belege ungültig'})};
+  };
+  await app.element('import').onclick();
+  assert.deepEqual(JSON.parse(app.calls[1].options.body), {fingerprint: 'first', result: entered});
+  assert.equal(app.element('result').value, entered);
+  assert.equal(app.element('status').textContent, 'Belege ungültig');
+  assert.equal(app.element('import').disabled, false);
+  app.context.fetch = async () => ({ok: true, json: async () => report});
+  await app.element('import').onclick();
+  assert.match(allText(app.element('report')), /<b>Begriff<\/b>/);
+});
+
+test('legacy progress without answer texts remains available as deterministic context', async () => {
+  const app = setup();
+  app.context.response = preview({attempts: [], available: 0, can_analyze: true, deterministic: facts});
+  await app.element('open').onclick();
+  for (const id of ['analyze', 'copy', 'download', 'import']) assert.equal(app.element(id).disabled, false);
+  assert.match(allText(app.element('facts')), /3 Versuche/);
 });
 
 test('failed analysis retains saved report and export; a stale response cannot overwrite a new dialog', async () => {

@@ -1,7 +1,9 @@
 import json
 import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from threading import Barrier
 from unittest.mock import patch
 
 import assessor
@@ -86,9 +88,11 @@ class LearningGapTests(unittest.TestCase):
         snapshot = self.preview()
         self.assertEqual(snapshot["legacy_count"], 1)
         self.assertEqual(snapshot["attempts"], [])
-        response, model = self.analyze(snapshot, {})
-        self.assertEqual(response.status_code, 400)
-        model.assert_not_called()
+        response, model = self.analyze(snapshot, {"summary": "Nur Fortschrittswerte vorhanden", "findings": []})
+        self.assertEqual(response.status_code, 200)
+        model.assert_called_once()
+        self.assertEqual(snapshot["deterministic"]["subject"]["total_attempts"], 1)
+        self.assertEqual(response.get_json()["findings"], [])
 
     def test_valid_report_persists_without_altering_progress_and_uses_exported_prompt(self):
         self.submit()
@@ -116,6 +120,7 @@ class LearningGapTests(unittest.TestCase):
         self.assertIsNotNone(self.preview(headers)["report"])
         self.assertEqual(self.preview()["attempts"], [])
         self.assertIsNone(self.preview()["report"])
+        self.assertEqual(self.preview()["memory_count"], 0)
 
     def test_old_duplicated_formats_remain_readable_and_compact_on_next_write(self):
         self.submit()
@@ -133,6 +138,9 @@ class LearningGapTests(unittest.TestCase):
                       "fingerprint": snapshot["fingerprint"], "attempts": [old_attempt]}
         store._save_json("test", "learning-gaps.json", old_report)
         self.assertEqual(self.preview()["report"]["attempt_ids"], [old_attempt["attempt_id"]])
+        payload = json.loads(self.preview()["prompt"].split("Belegdaten (chronologisch):\n")[1]
+                             .split("\n\ninput_fingerprint:")[0])
+        self.assertTrue(payload["attempts"][0]["already_reviewed"])
         self.submit(question_id=2)
         response = store.load_progress("test")["1"]["history"][0]["response"]
         self.assertEqual(set(response), {"student_answer", "feedback"})
@@ -146,11 +154,13 @@ class LearningGapTests(unittest.TestCase):
         self.submit()
         snapshot = self.preview()
         report, _ = self.analyze(snapshot, self.output(snapshot))
+        self.submit(question_id=2)
+        snapshot = self.preview()
         for change in ("quote", "id", "status", "json"):
             output = self.output(snapshot)
             if change == "quote": output["findings"][0]["evidence"][0]["quote"] = "invented"
             if change == "id": output["findings"][0]["evidence"][0]["attempt_id"] = "unknown"
-            if change == "status": output["findings"][0]["status"] = "recurring"
+            if change == "status": output["findings"][0]["status"] = "unknown"
             if change == "json": output = []
             response, _ = self.analyze(snapshot, output)
             self.assertEqual(response.status_code, 502)
@@ -198,10 +208,151 @@ class LearningGapTests(unittest.TestCase):
         snapshot = self.preview()
         response, _ = self.analyze(snapshot, {"summary": "Keine ausreichenden Belege", "findings": []})
         self.assertEqual(response.status_code, 200)
+        self.submit(question_id=2)
+        snapshot = self.preview()
         with patch.object(assessor, "generate_analysis", side_effect=RuntimeError("failed")):
             response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"]})
         self.assertEqual(response.status_code, 502)
         self.assertEqual(self.preview()["report"]["findings"], [])
+
+    def test_prompt_combines_deterministic_facts_memory_and_deduplicated_history(self):
+        self.submit()
+        first = self.preview()
+        response, _ = self.analyze(first, self.output(first))
+        memory = response.get_json()["findings"][0]
+        for i in range(21):
+            self.submit(question_id=2, answer=f"Neue Antwort {i}")
+        snapshot = self.preview()
+        payload = json.loads(snapshot["prompt"].split("Belegdaten (chronologisch):\n")[1]
+                             .split("\n\ninput_fingerprint:")[0])
+        self.assertEqual(payload["deterministic"]["subject"]["total_attempts"], 22)
+        self.assertEqual(payload["deterministic"]["subject"]["preparation"],
+                         store.get_field_stats("test")["preparation"])
+        self.assertEqual(payload["memories"][0]["memory_id"], memory["memory_id"])
+        old_id = first["attempts"][0]["attempt_id"]
+        self.assertEqual(sum(a["attempt_id"] == old_id for a in payload["attempts"]), 1)
+        self.assertTrue(next(a for a in payload["attempts"] if a["attempt_id"] == old_id)["already_reviewed"])
+        self.assertEqual(snapshot["memory_attempt_count"], 1)
+        self.assertEqual(snapshot["new_attempt_count"], 20)
+        # An empty update must not forget an earlier gap outside the recent window.
+        response, _ = self.analyze(snapshot, {"summary": "Bisheriger Hinweis bleibt offen", "findings": []})
+        self.assertEqual(response.get_json()["findings"], [memory])
+        self.assertIn(old_id, [a["attempt_id"] for a in response.get_json()["attempts"]])
+
+    def test_reanalysis_reuses_saved_result_without_new_evidence_or_model_request(self):
+        self.submit()
+        snapshot = self.preview()
+        response, _ = self.analyze(snapshot, self.output(snapshot))
+        report = response.get_json()
+        for fingerprint in (snapshot["fingerprint"], self.preview()["fingerprint"]):
+            with patch.object(assessor, "generate_analysis") as model:
+                again = self.client.post(self.url, json={"fingerprint": fingerprint})
+            self.assertEqual(again.status_code, 200)
+            self.assertEqual(again.get_json(), report)
+            model.assert_not_called()
+        self.assertEqual(len(report["reviewed_attempt_ids"]), 1)
+
+    def test_invalid_request_fingerprints_do_not_call_the_model(self):
+        self.submit()
+        with patch.object(assessor, "generate_analysis") as model:
+            for value in (None, [], {}, True, "invalid"):
+                response = self.client.post(self.url, json={"fingerprint": value})
+                self.assertEqual(response.status_code, 400)
+            model.assert_not_called()
+
+    def test_memory_progresses_with_new_evidence_and_reopens_after_failure(self):
+        self.submit()
+        snapshot = self.preview()
+        response, _ = self.analyze(snapshot, self.output(snapshot))
+        memory_id = response.get_json()["findings"][0]["memory_id"]
+        self.grade = assessor.Assessment(False, True, "correct", 0, 1, "Richtig")
+        for question_id, status in ((2, "improving"), (1, "resolved")):
+            self.submit(question_id=question_id)
+            snapshot = self.preview()
+            output = self.output(snapshot, status)
+            output["findings"][0]["memory_id"] = memory_id
+            output["findings"][0]["evidence"] = [{"attempt_id": snapshot["attempts"][-1]["attempt_id"], "quote": "Schema"}]
+            response, _ = self.analyze(snapshot, output)
+            self.assertEqual(response.status_code, 200, response.get_json())
+            self.assertEqual(response.get_json()["findings"][0]["status"], status)
+            self.assertEqual(response.get_json()["findings"][0]["memory_id"], memory_id)
+        self.grade = assessor.Assessment(False, False, "incorrect", 0, .2, "Verwechselt")
+        self.submit(question_id=2)
+        snapshot = self.preview()
+        output = self.output(snapshot, "recurring")
+        output["findings"][0]["memory_id"] = memory_id
+        output["findings"][0]["evidence"] = [{"attempt_id": snapshot["attempts"][-1]["attempt_id"], "quote": "Schema"}]
+        response, _ = self.analyze(snapshot, output)
+        memory = response.get_json()["findings"][0]
+        self.assertEqual(memory["status"], "recurring")
+        self.assertEqual(len(memory["evidence"]), 4)
+        self.assertEqual(len({r["attempt_id"] for r in memory["evidence"]}), 4)
+
+    def test_import_uses_same_validation_and_persistence_without_backend_call(self):
+        self.submit()
+        snapshot = self.preview()
+        output = self.output(snapshot)
+        output["input_fingerprint"] = "wrong"
+        with patch.object(assessor, "generate_analysis") as model:
+            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"],
+                                                        "result": json.dumps(output)})
+            self.assertEqual(response.status_code, 502)
+            output["input_fingerprint"] = snapshot["fingerprint"]
+            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"],
+                                                        "result": json.dumps(output)})
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.get_json()["backend"], "external")
+            model.assert_not_called()
+        stored = store._load_json("test", "learning-gaps.json")
+        self.assertNotIn("attempts", stored)
+        self.assertNotIn("deterministic", stored)
+        self.assertEqual(len(stored["findings"]), 1)
+        self.assertEqual(self.preview()["report"], response.get_json())
+
+    def test_inflight_changes_do_not_overwrite_memory_or_analyze_wrong_answers(self):
+        self.submit()
+        snapshot = self.preview()
+        def generate(*args):
+            self.submit(question_id=2)
+            return json.dumps(self.output(snapshot))
+        with patch.object(assessor, "generate_analysis", side_effect=generate):
+            response = self.client.post(self.url, json={"fingerprint": snapshot["fingerprint"]})
+        self.assertEqual(response.status_code, 400)
+        self.assertIsNone(self.preview()["report"])
+
+    def test_concurrent_analysis_saves_one_consistent_memory_update(self):
+        self.submit()
+        snapshot = self.preview()
+        barrier = Barrier(2)
+        def generate(*args):
+            barrier.wait(timeout=5)
+            return json.dumps(self.output(snapshot))
+        with patch.object(assessor, "generate_analysis", side_effect=generate):
+            with ThreadPoolExecutor(max_workers=2) as pool:
+                results = list(pool.map(lambda _: learning_gaps.analyze("test", snapshot["fingerprint"]), range(2)))
+        self.assertEqual(results[0], results[1])
+        self.assertEqual(len(self.preview()["report"]["findings"]), 1)
+        self.assertEqual(len(store._load_json("test", "learning-gaps.json")["reviewed_attempt_ids"]), 1)
+
+    def test_memory_cannot_be_resolved_using_wrong_or_shared_new_answers(self):
+        self.submit()
+        snapshot = self.preview()
+        response, _ = self.analyze(snapshot, self.output(snapshot))
+        memory_id = response.get_json()["findings"][0]["memory_id"]
+        self.submit(question_id=2)
+        snapshot = self.preview()
+        for status in ("improving", "resolved"):
+            output = self.output(snapshot, status)
+            output["findings"][0]["memory_id"] = memory_id
+            response, _ = self.analyze(snapshot, output)
+            self.assertEqual(response.status_code, 502)
+        store.record_attempt("test", 2, True, 1, attempt_id="coop-new", source={"mode": "coop"},
+                             response=learning_gaps.answer_record("Schema", {"feedback": "Richtig"}))
+        snapshot = self.preview()
+        output = self.output(snapshot, "improving")
+        output["findings"][0]["memory_id"] = memory_id
+        response, _ = self.analyze(snapshot, output)
+        self.assertEqual(response.status_code, 502)
 
 
 if __name__ == "__main__":

@@ -235,7 +235,8 @@ def api_learning_gaps(field: str):
 
 @app.post("/api/fields/<field>/learning-gaps")
 def api_analyze_learning_gaps(field: str):
-    return jsonify(learning_gaps.analyze(field, _request_body().get("fingerprint")))
+    body = _request_body()
+    return jsonify(learning_gaps.analyze(field, body.get("fingerprint"), body.get("result")))
 
 
 @app.post("/api/reveal-answer")

@@ -286,7 +286,8 @@
     <div><h2 id="gaps-heading">Meine Lernlücken</h2><p id="gaps-field"></p></div>
     <button class="secondary" id="gaps-close" type="button" aria-label="Lernlücken schließen">×</button>
   </div>
-  <p>Die KI sucht Zusammenhänge in deinen letzten gespeicherten Antworten. Hinweise sind vorläufig und mit Originalantworten belegt. Gemeinsame Antworten zeigen keine individuelle Beherrschung.</p>
+  <p>Berechneter Fortschritt, neue Antworten und bisherige Lernhinweise fließen gemeinsam in die Analyse ein. Das Lerngedächtnis bleibt über Sitzungen erhalten und wird anhand neuer Belege überprüft. Gemeinsame Antworten zeigen keine individuelle Beherrschung.</p>
+  <section id="gaps-facts" aria-label="Berechneter Lernfortschritt"></section>
   <p id="gaps-scope"></p>
   <div class="btn-row">
     <button class="primary" id="gaps-analyze" type="button" disabled>Jetzt analysieren</button>
@@ -294,13 +295,16 @@
   <p id="gaps-status" role="status" aria-live="polite"></p>
   <details id="gaps-export">
     <summary>Prompt für meine eigene KI exportieren</summary>
-    <p>Enthält Fragen, Musterlösungen, deine Antworten und Bewertungen. Kopieren oder Herunterladen sendet nichts an eine KI. Füge den Prompt in dein bevorzugtes Werkzeug ein.</p>
+    <p>Enthält berechneten Fortschritt, bisherige Lernhinweise, Fragen, Musterlösungen und Antworten. Kopieren oder Herunterladen sendet nichts an eine KI. Füge den Prompt in dein bevorzugtes Werkzeug ein und übernimm dessen JSON-Ergebnis unten.</p>
     <label for="gaps-prompt">Vollständiger Analyseprompt</label>
     <textarea id="gaps-prompt" rows="10" readonly></textarea>
     <div class="btn-row">
       <button class="secondary" id="gaps-copy" type="button" disabled>Prompt kopieren</button>
       <button class="secondary" id="gaps-download" type="button" disabled>Als Text herunterladen</button>
     </div>
+    <label for="gaps-result">JSON-Ergebnis aus meiner KI</label>
+    <textarea id="gaps-result" rows="6" placeholder="Vollständiges JSON-Ergebnis mit input_fingerprint einfügen"></textarea>
+    <button class="secondary" id="gaps-import" type="button" disabled>Ergebnis prüfen und übernehmen</button>
   </details>
   <section id="gaps-report" aria-label="Ergebnis der Lernlückenanalyse" aria-live="polite"></section>
 </dialog>
