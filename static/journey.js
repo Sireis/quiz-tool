@@ -41,7 +41,62 @@ function journeyCalendarDates(now = new Date()) {
     return { date, row: (date.getDay() + 6) % 7 + 2, column: Math.floor((offset + i) / 7) + 2 };
   });
 }
-if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay, journeyCalendarDates, journeyTopicCount, journeyScope, journeyAnswerColor };
+// Replay assessments from the retained legacy baseline using lifetime correct answers.
+function journeyPreparation(questions, now = new Date()) {
+  const states = new Map();
+  const events = [];
+  const rating = p => !p.attempts || !p.correct ? 'red'
+    : p.last_result === 'incorrect' || p.correct === 1 ? 'yellow' : 'green';
+  const counts = { red: 0, yellow: 0, green: 0 };
+  questions.forEach(q => {
+    const p = q.progress || {};
+    const history = (p.history || []).filter(e => typeof e.correct === 'boolean' && Number.isFinite(Date.parse(e.at)));
+    const state = {
+      attempts: Math.max(0, (p.attempts || 0) - history.length),
+      correct: Math.max(0, (p.correct || 0) - history.filter(e => e.correct).length),
+      last_result: history.length ? p.historical_last_result : p.last_result,
+    };
+    states.set(q, state);
+    counts[rating(state)]++;
+    history.forEach(e => events.push({ ...e, question: q }));
+  });
+  events.sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
+  const today = new Date(now); today.setHours(12, 0, 0, 0);
+  const date = events.length ? new Date(events[0].at) : new Date(today);
+  date.setHours(12, 0, 0, 0);
+  const days = [];
+  let index = 0;
+  while (date <= today) {
+    const day = journeyDay(date);
+    while (index < events.length && journeyDay(events[index].at) <= day) {
+      const event = events[index++];
+      const state = states.get(event.question);
+      counts[rating(state)]--;
+      state.attempts++;
+      state.correct += Number(event.correct);
+      state.last_result = event.correct ? 'correct' : 'incorrect';
+      counts[rating(state)]++;
+    }
+    days.push({ day, ...counts });
+    date.setDate(date.getDate() + 1);
+  }
+  return days;
+}
+function journeyPreparationAreas(days, total) {
+  // Shared boundaries keep the three areas joined without gaps or overlaps.
+  const points = days.length === 1 ? [days[0], days[0]] : days;
+  const x = i => 55 + i / Math.max(1, points.length - 1) * 890;
+  const y = count => 225 - (total ? count / total : 0) * 200;
+  let lower = points.map(() => 0);
+  return ['red', 'yellow', 'green'].map(color => {
+    const upper = points.map((day, i) => lower[i] + day[color]);
+    const polygon = upper.map((count, i) => `${x(i)},${y(count)}`)
+      .concat(lower.map((count, i) => `${x(i)},${y(count)}`).reverse()).join(' ');
+    lower = upper;
+    return { color, points: polygon };
+  });
+}
+if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay, journeyCalendarDates, journeyTopicCount, journeyScope, journeyAnswerColor, journeyPreparation, journeyPreparationAreas };
 if (typeof document !== 'undefined') {
   const dialog = document.getElementById('journey-dialog');
   const content = document.getElementById('journey-content');
@@ -123,6 +178,7 @@ if (typeof document !== 'undefined') {
       <p id="journey-star-detail">${latest.length ? 'Dein Wissen hinterlässt Spuren.' : 'Dein erster beantworteter Versuch lässt hier einen Stern entstehen.'}</p></section>
       <section><h3>Jeder Schritt zählt</h3><div class="journey-milestones">${[25,50,75,100].map(pct => `<div class="journey-milestone ${coverage >= pct ? 'reached' : ''}"><strong>${pct}%</strong><span>${coverage >= pct ? 'Erreicht ✦' : `Noch ${Math.max(0, Math.ceil(total * pct / 100) - explored)} Fragen`}</span></div>`).join('')}</div></section>
       <section><h3>Dein letztes Jahr</h3><p>Abgegebene Antworten pro Tag · ${escape(Intl.DateTimeFormat().resolvedOptions().timeZone)}</p><div class="journey-calendar-scroll" tabindex="0" role="region" aria-label="Aktivität im letzten Jahr, horizontal scrollbar"><div class="journey-calendar" id="journey-calendar"></div></div><div class="journey-key" aria-label="Aktivität von weniger bis mehr"><span>Weniger</span>${[0,1,2,3,4].map(level => `<span class="journey-day level-${level}" aria-hidden="true"></span>`).join('')}<span>Mehr</span></div></section>
+      <section><h3>Vorbereitung im Verlauf</h3><p>Die gestapelten Flächen zeigen die Vorbereitung im Zeitverlauf: Grün = gut vorbereitet, Gelb = im Aufbau, Rot = Übungsbedarf einschließlich unbeantworteter Fragen. Verbunden sind die jeweiligen Tagesendstände. ${topic === null ? 'Alle Themen.' : 'Nur das ausgewählte Thema.'} Ältere Antworten ohne vollständige Historie bilden den Ausgangsstand.</p><div id="journey-preparation"></div><label class="journey-preparation-picker" for="journey-preparation-day">Tag auswählen<input id="journey-preparation-day" type="range" min="0" value="0" step="1"></label><p id="journey-preparation-detail" role="status"></p></section>
       <section><h3>Bewertungen im Verlauf</h3><p>Tagesdurchschnitt der dokumentierten Bewertungen. ${topic === null ? '' : 'Das ausgewählte Thema ist farbig, der Felddurchschnitt grau dargestellt. '}Die Fragen und ihre Schwierigkeit können sich unterscheiden.</p><div id="journey-trend"></div></section>
       <p class="journey-note">${undated ? `${number(undated)} ältere Antworten sind in den Gesamtzahlen enthalten, haben aber keine vollständige Versuchshistorie. Umrandete Sterne zeigen ihren letzten bekannten Zeitpunkt; sie zählen nicht zur täglichen Aktivität oder Bewertungskurve. ` : ''}Neue Versuche werden ab jetzt einzeln aufgezeichnet. Die Zahlen und Meilensteine beziehen sich auf ${topic === null ? 'das gesamte Feld' : 'das ausgewählte Thema'}; Fortschritt ist auf diesem Server gemeinsam gespeichert.</p>`;
     content.querySelectorAll('.journey-star').forEach(star => {
@@ -161,6 +217,33 @@ if (typeof document !== 'undefined') {
       button.onclick = show;
       button.onfocus = show;
     });
+    const preparationDays = journeyPreparation(topic === null ? fieldQuestions : fieldQuestions.filter(q => q.topic === topic));
+    const preparation = document.getElementById('journey-preparation');
+    const colors = {red: 'var(--wrong)', yellow: 'var(--partial)', green: 'var(--correct)'};
+    preparation.innerHTML = `<svg viewBox="0 0 1000 255" role="img" aria-label="Gestapeltes Flächendiagramm der täglichen Vorbereitung, Anzahl der Fragen"><text x="4" y="30">${total}</text><text x="4" y="230">0</text>${journeyPreparationAreas(preparationDays, total).map(area => `<polygon points="${area.points}" fill="${colors[area.color]}"/>`).join('')}<line id="journey-preparation-marker" x1="55" x2="55" y1="25" y2="225" stroke="var(--text)" stroke-width="2"/></svg><div class="journey-axis"><span>${escape(preparationDays[0]?.day || '')}</span><span>${escape(preparationDays.at(-1)?.day || '')}</span></div>`;
+    const picker = document.getElementById('journey-preparation-day');
+    picker.max = Math.max(0, preparationDays.length - 1);
+    picker.disabled = preparationDays.length < 2;
+    const showPreparation = index => {
+      const day = preparationDays[index];
+      if (!day) return;
+      const label = `${day.day}: ${day.green} grün · ${day.yellow} gelb · ${day.red} rot · ${total} Fragen`;
+      document.getElementById('journey-preparation-detail').textContent = label;
+      picker.setAttribute('aria-valuetext', label);
+      const x = preparationDays.length === 1 ? 500 : 55 + index / (preparationDays.length - 1) * 890;
+      const marker = document.getElementById('journey-preparation-marker');
+      marker.setAttribute('x1', x); marker.setAttribute('x2', x);
+    };
+    picker.value = picker.max;
+    picker.oninput = () => showPreparation(Number(picker.value));
+    const svg = preparation.querySelector('svg');
+    svg.onpointermove = event => {
+      const bounds = svg.getBoundingClientRect();
+      const share = Math.max(0, Math.min(1, ((event.clientX - bounds.left) / bounds.width * 1000 - 55) / 890));
+      picker.value = Math.round(share * (preparationDays.length - 1));
+      showPreparation(Number(picker.value));
+    };
+    showPreparation(Number(picker.value));
     const daily = [...days].sort(([a], [b]) => a.localeCompare(b));
     const trend = document.getElementById('journey-trend');
     if (!daily.length) { trend.textContent = 'Mit deinem nächsten Versuch beginnt deine Bewertungskurve.'; return; }

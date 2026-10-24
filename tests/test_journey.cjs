@@ -106,3 +106,50 @@ test('journey indicators reflect individual answer scores, not current preparati
   ]}}]);
   assert.deepEqual(data.events.map(e => journeyAnswerColor(e.score)), ['var(--wrong)', 'var(--correct)']);
 });
+
+test('preparation replays lifetime correct answers, failures and inactive days', () => {
+  const { journeyPreparation } = require('../static/journey.js');
+  const at = day => new Date(2026, 9, day, 12).toISOString();
+  const result = journeyPreparation([{progress: {attempts: 5, correct: 4, last_result: 'correct', history: [
+    {at: at(10), correct: true}, {at: at(11), correct: true},
+    {at: at(13), correct: false}, {at: at(14), correct: true}, {at: at(14), correct: true},
+  ]}}, {}], new Date(2026, 9, 15));
+  assert.deepEqual(result.map(({red, yellow, green}) => [red, yellow, green]), [
+    [1,1,0], [1,0,1], [1,0,1], [1,1,0], [1,0,1], [1,0,1],
+  ]);
+  assert.equal(result[0].day, '2026-10-10');
+  assert.equal(result.at(-1).day, '2026-10-15');
+});
+
+test('preparation preserves legacy totals and reorders recorded history', () => {
+  const { journeyPreparation } = require('../static/journey.js');
+  const result = journeyPreparation([{progress: {attempts: 6, correct: 4,
+    historical_last_result: 'incorrect', last_result: 'incorrect', history: [
+      {at: '2026-10-11T12:00:00Z', correct: false},
+      {at: '2026-10-10T12:00:00Z', correct: true},
+    ]}}, {progress: {attempts: 3, correct: 2, last_result: 'correct'}}], new Date('2026-10-12T12:00:00Z'));
+  assert.deepEqual(result.map(({red, yellow, green}) => [red, yellow, green]), [[0,0,2], [0,1,1], [0,1,1]]);
+});
+
+test('preparation handles untouched pools and local daylight saving dates', () => {
+  const { journeyPreparation } = require('../static/journey.js');
+  assert.deepEqual(journeyPreparation([{}, {}], new Date(2026, 9, 25)), [{day: '2026-10-25', red: 2, yellow: 0, green: 0}]);
+  const result = journeyPreparation([{progress: {attempts: 1, correct: 0, history: [
+    {at: new Date(2026, 9, 24, 23, 30).toISOString(), correct: false},
+  ]}}], new Date(2026, 9, 27));
+  assert.deepEqual(result.map(d => d.day), ['2026-10-24', '2026-10-25', '2026-10-26', '2026-10-27']);
+  assert.ok(result.every(d => d.red + d.yellow + d.green === 1));
+});
+
+test('stacked preparation areas share boundaries and span the timeline', () => {
+  const { journeyPreparationAreas } = require('../static/journey.js');
+  const areas = journeyPreparationAreas([{red: 2, yellow: 1, green: 0}, {red: 1, yellow: 1, green: 1}], 3);
+  const points = areas.map(a => a.points.split(' '));
+  assert.deepEqual(areas.map(a => a.color), ['red', 'yellow', 'green']);
+  assert.deepEqual(points[0].slice(0, 2), points[1].slice(2).reverse());
+  assert.deepEqual(points[1].slice(0, 2), points[2].slice(2).reverse());
+  assert.deepEqual(points[2].slice(0, 2), ['55,25', '945,25']);
+  const single = journeyPreparationAreas([{red: 1, yellow: 0, green: 0}], 1);
+  assert.equal(single[0].points, '55,25 945,25 945,225 55,225');
+  assert.ok(journeyPreparationAreas([{red: 0, yellow: 0, green: 0}], 0).every(a => !/NaN|Infinity/.test(a.points)));
+});

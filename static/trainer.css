@@ -857,6 +857,11 @@ button.secondary:hover { background: #333c55; }
 .journey-key span:last-child { margin-left: 4px; }
 #journey-trend svg text { fill: var(--muted); font: 12px 'IBM Plex Mono', monospace; }
 .journey-note { border-top: 1px solid var(--border2); padding-top: 18px; }
+#journey-preparation svg { width: 100%; display: block; }
+#journey-preparation svg text { fill: var(--muted); font: 12px 'IBM Plex Mono', monospace; }
+.journey-preparation-picker { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; color: var(--muted); font-size: .8rem; }
+.journey-preparation-picker input { flex: 1; min-width: 120px; }
+
 @media (max-width: 700px) {
   #journey-dialog { padding: calc(18px + env(safe-area-inset-top, 0px)) calc(18px + env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) calc(18px + env(safe-area-inset-left, 0px)); }
   .journey-metrics, .journey-milestones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
