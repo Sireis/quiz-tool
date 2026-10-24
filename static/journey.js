@@ -82,21 +82,7 @@ function journeyPreparation(questions, now = new Date()) {
   }
   return days;
 }
-function journeyPreparationAreas(days, total) {
-  // Shared boundaries keep the three areas joined without gaps or overlaps.
-  const points = days.length === 1 ? [days[0], days[0]] : days;
-  const x = i => 55 + i / Math.max(1, points.length - 1) * 890;
-  const y = count => 225 - (total ? count / total : 0) * 200;
-  let lower = points.map(() => 0);
-  return ['red', 'yellow', 'green'].map(color => {
-    const upper = points.map((day, i) => lower[i] + day[color]);
-    const polygon = upper.map((count, i) => `${x(i)},${y(count)}`)
-      .concat(lower.map((count, i) => `${x(i)},${y(count)}`).reverse()).join(' ');
-    lower = upper;
-    return { color, points: polygon };
-  });
-}
-if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay, journeyCalendarDates, journeyTopicCount, journeyScope, journeyAnswerColor, journeyPreparation, journeyPreparationAreas };
+if (typeof module !== 'undefined') module.exports = { journeyData, journeyDay, journeyCalendarDates, journeyTopicCount, journeyScope, journeyAnswerColor, journeyPreparation };
 if (typeof document !== 'undefined') {
   const dialog = document.getElementById('journey-dialog');
   const content = document.getElementById('journey-content');
@@ -171,16 +157,16 @@ if (typeof document !== 'undefined') {
       return `<circle class="journey-star ${historical ? 'journey-legacy' : ''} ${topic !== null && event.question.topic !== topic ? 'journey-muted' : ''}" cx="${x(event.at)}" cy="${y}" r="${historical ? 3 : 4}" style="--star-color:${journeyAnswerColor(event.score)}" tabindex="0" role="img" aria-label="${escape(label)}" data-detail="${escape(label)}"><title>${escape(label)}</title></circle>`;
     }).join('');
     const metrics = [[`${Math.round(coverage)}%`, topic === null ? 'des Feldes erkundet' : 'des Themas erkundet'], [number(explored), `von ${number(total)} Fragen`], [number(attempts), 'Antworten abgegeben'], [number(activeDays), 'dokumentierte Lerntage']];
-    content.innerHTML = `<p class="journey-scope">${topic === null ? 'Statistik für alle Themen' : `Statistik für „${escape(topic || 'Ohne Thema')}“ · Andere Themen bleiben in den Diagrammen grau sichtbar.`}</p><div class="journey-metrics">${metrics.map(([value,label]) => `<div class="metric-box ${value === '0' || value === '0%' ? 'journey-empty-metric' : ''}"><span class="m-val">${value}</span><span class="m-lbl">${label}</span></div>`).join('')}</div>
-      <section class="journey-galaxy"><h3>Deine Spuren im Wissensraum</h3><p>Jeder Stern ist ein Versuch. Seine Farbe zeigt die Bewertung dieses Versuchs: Rot unter 40%, Gelb ab 40%, Grün ab 70%. Ältere Versuche ohne gespeicherte Bewertung bleiben neutral. Wähle einen Stern für Details. ${topic === null ? '' : `„${escape(topic || 'Ohne Thema')}“ ist hervorgehoben; andere Themen bleiben grau sichtbar.`}</p>
+    content.innerHTML = `<section class="journey-panel journey-overview"><p class="journey-scope">${topic === null ? 'Statistik für alle Themen' : `Statistik für „${escape(topic || 'Ohne Thema')}“ · Andere Themen bleiben in den Diagrammen grau sichtbar.`}</p><div class="journey-metrics">${metrics.map(([value,label]) => `<div class="metric-box ${value === '0' || value === '0%' ? 'journey-empty-metric' : ''}"><span class="m-val">${value}</span><span class="m-lbl">${label}</span></div>`).join('')}</div></section>
+      <section class="journey-panel journey-galaxy"><h3>Deine Spuren im Wissensraum</h3><p>Jeder Stern ist ein Versuch. Seine Farbe zeigt die Bewertung dieses Versuchs: Rot unter 40%, Gelb ab 40%, Grün ab 70%. Ältere Versuche ohne gespeicherte Bewertung bleiben neutral. Wähle einen Stern für Details. ${topic === null ? '' : `„${escape(topic || 'Ohne Thema')}“ ist hervorgehoben; andere Themen bleiben grau sichtbar.`}</p>
       <svg viewBox="0 0 1000 280" role="group" aria-label="Zeitachse deiner Versuche"><path d="M55 140 Q280 70 500 140 T945 140" fill="none" stroke="#b3a0de" stroke-opacity=".2"/>${stars}</svg>
       <div class="journey-axis"><span>${latest.length ? dateLabel(start) : 'Noch keine Versuche'}</span><span>${latest.length ? dateLabel(end) : ''}</span></div>
       <p id="journey-star-detail">${latest.length ? 'Dein Wissen hinterlässt Spuren.' : 'Dein erster beantworteter Versuch lässt hier einen Stern entstehen.'}</p></section>
-      <section><h3>Jeder Schritt zählt</h3><div class="journey-milestones">${[25,50,75,100].map(pct => `<div class="journey-milestone ${coverage >= pct ? 'reached' : ''}"><strong>${pct}%</strong><span>${coverage >= pct ? 'Erreicht ✦' : `Noch ${Math.max(0, Math.ceil(total * pct / 100) - explored)} Fragen`}</span></div>`).join('')}</div></section>
-      <section><h3>Dein letztes Jahr</h3><p>Abgegebene Antworten pro Tag · ${escape(Intl.DateTimeFormat().resolvedOptions().timeZone)}</p><div class="journey-calendar-scroll" tabindex="0" role="region" aria-label="Aktivität im letzten Jahr, horizontal scrollbar"><div class="journey-calendar" id="journey-calendar"></div></div><div class="journey-key" aria-label="Aktivität von weniger bis mehr"><span>Weniger</span>${[0,1,2,3,4].map(level => `<span class="journey-day level-${level}" aria-hidden="true"></span>`).join('')}<span>Mehr</span></div></section>
-      <section><h3>Vorbereitung im Verlauf</h3><p>Die gestapelten Flächen zeigen die Vorbereitung im Zeitverlauf: Grün = gut vorbereitet, Gelb = im Aufbau, Rot = Übungsbedarf einschließlich unbeantworteter Fragen. Verbunden sind die jeweiligen Tagesendstände. ${topic === null ? 'Alle Themen.' : 'Nur das ausgewählte Thema.'} Ältere Antworten ohne vollständige Historie bilden den Ausgangsstand.</p><div id="journey-preparation"></div><label class="journey-preparation-picker" for="journey-preparation-day">Tag auswählen<input id="journey-preparation-day" type="range" min="0" value="0" step="1"></label><p id="journey-preparation-detail" role="status"></p></section>
-      <section><h3>Bewertungen im Verlauf</h3><p>Tagesdurchschnitt der dokumentierten Bewertungen. ${topic === null ? '' : 'Das ausgewählte Thema ist farbig, der Felddurchschnitt grau dargestellt. '}Die Fragen und ihre Schwierigkeit können sich unterscheiden.</p><div id="journey-trend"></div></section>
-      <p class="journey-note">${undated ? `${number(undated)} ältere Antworten sind in den Gesamtzahlen enthalten, haben aber keine vollständige Versuchshistorie. Umrandete Sterne zeigen ihren letzten bekannten Zeitpunkt; sie zählen nicht zur täglichen Aktivität oder Bewertungskurve. ` : ''}Neue Versuche werden ab jetzt einzeln aufgezeichnet. Die Zahlen und Meilensteine beziehen sich auf ${topic === null ? 'das gesamte Feld' : 'das ausgewählte Thema'}; Fortschritt ist auf diesem Server gemeinsam gespeichert.</p>`;
+      <section class="journey-panel"><h3>Jeder Schritt zählt</h3><div class="journey-milestones">${[25,50,75,100].map(pct => `<div class="journey-milestone ${coverage >= pct ? 'reached' : ''}"><strong>${pct}%</strong><span>${coverage >= pct ? 'Erreicht ✦' : `Noch ${Math.max(0, Math.ceil(total * pct / 100) - explored)} Fragen`}</span></div>`).join('')}</div></section>
+      <section class="journey-panel"><h3>Dein letztes Jahr</h3><p>Abgegebene Antworten pro Tag · ${escape(Intl.DateTimeFormat().resolvedOptions().timeZone)}</p><div class="journey-calendar-scroll" tabindex="0" role="region" aria-label="Aktivität im letzten Jahr, horizontal scrollbar"><div class="journey-calendar" id="journey-calendar"></div></div><div class="journey-key" aria-label="Aktivität von weniger bis mehr"><span>Weniger</span>${[0,1,2,3,4].map(level => `<span class="journey-day level-${level}" aria-hidden="true"></span>`).join('')}<span>Mehr</span></div></section>
+      <section class="journey-panel"><h3>Vorbereitung im Verlauf</h3><p>Die senkrechten Balken zeigen die Vorbereitung im Zeitverlauf: Grün = gut vorbereitet, Gelb = im Aufbau, Rot = Übungsbedarf einschließlich unbeantworteter Fragen. Jeder Balken zeigt den Stand am Tagesende. ${topic === null ? 'Alle Themen.' : 'Nur das ausgewählte Thema.'} Ältere Antworten ohne vollständige Historie bilden den Ausgangsstand.</p><div class="journey-preparation-scroll" tabindex="0" role="region" aria-label="Vorbereitung im Verlauf, horizontal scrollbar"><div id="journey-preparation"></div></div><p id="journey-preparation-detail" role="status"></p></section>
+      <section class="journey-panel"><h3>Bewertungen im Verlauf</h3><p>Tagesdurchschnitt der dokumentierten Bewertungen. ${topic === null ? '' : 'Das ausgewählte Thema ist farbig, der Felddurchschnitt grau dargestellt. '}Die Fragen und ihre Schwierigkeit können sich unterscheiden.</p><div id="journey-trend"></div></section>
+      <p class="journey-panel journey-note">${undated ? `${number(undated)} ältere Antworten sind in den Gesamtzahlen enthalten, haben aber keine vollständige Versuchshistorie. Umrandete Sterne zeigen ihren letzten bekannten Zeitpunkt; sie zählen nicht zur täglichen Aktivität oder Bewertungskurve. ` : ''}Neue Versuche werden ab jetzt einzeln aufgezeichnet. Die Zahlen und Meilensteine beziehen sich auf ${topic === null ? 'das gesamte Feld' : 'das ausgewählte Thema'}; Fortschritt ist auf diesem Server gemeinsam gespeichert.</p>`;
     content.querySelectorAll('.journey-star').forEach(star => {
       const show = () => { document.getElementById('journey-star-detail').textContent = star.dataset.detail; };
       star.addEventListener('click', show);
@@ -219,31 +205,18 @@ if (typeof document !== 'undefined') {
     });
     const preparationDays = journeyPreparation(topic === null ? fieldQuestions : fieldQuestions.filter(q => q.topic === topic));
     const preparation = document.getElementById('journey-preparation');
-    const colors = {red: 'var(--wrong)', yellow: 'var(--partial)', green: 'var(--correct)'};
-    preparation.innerHTML = `<svg viewBox="0 0 1000 255" role="img" aria-label="Gestapeltes Flächendiagramm der täglichen Vorbereitung, Anzahl der Fragen"><text x="4" y="30">${total}</text><text x="4" y="230">0</text>${journeyPreparationAreas(preparationDays, total).map(area => `<polygon points="${area.points}" fill="${colors[area.color]}"/>`).join('')}<line id="journey-preparation-marker" x1="55" x2="55" y1="25" y2="225" stroke="var(--text)" stroke-width="2"/></svg><div class="journey-axis"><span>${escape(preparationDays[0]?.day || '')}</span><span>${escape(preparationDays.at(-1)?.day || '')}</span></div>`;
-    const picker = document.getElementById('journey-preparation-day');
-    picker.max = Math.max(0, preparationDays.length - 1);
-    picker.disabled = preparationDays.length < 2;
-    const showPreparation = index => {
-      const day = preparationDays[index];
-      if (!day) return;
+    preparation.innerHTML = preparationDays.map(day => {
       const label = `${day.day}: ${day.green} grün · ${day.yellow} gelb · ${day.red} rot · ${total} Fragen`;
-      document.getElementById('journey-preparation-detail').textContent = label;
-      picker.setAttribute('aria-valuetext', label);
-      const x = preparationDays.length === 1 ? 500 : 55 + index / (preparationDays.length - 1) * 890;
-      const marker = document.getElementById('journey-preparation-marker');
-      marker.setAttribute('x1', x); marker.setAttribute('x2', x);
-    };
-    picker.value = picker.max;
-    picker.oninput = () => showPreparation(Number(picker.value));
-    const svg = preparation.querySelector('svg');
-    svg.onpointermove = event => {
-      const bounds = svg.getBoundingClientRect();
-      const share = Math.max(0, Math.min(1, ((event.clientX - bounds.left) / bounds.width * 1000 - 55) / 890));
-      picker.value = Math.round(share * (preparationDays.length - 1));
-      showPreparation(Number(picker.value));
-    };
-    showPreparation(Number(picker.value));
+      return `<div class="journey-preparation-column"><button type="button" class="preparation-bar journey-preparation-bar" aria-label="${escape(label)}" title="${escape(label)}" data-detail="${escape(label)}">${['green', 'yellow', 'red'].map(color => `<span class="preparation-segment preparation-${color}" style="height:${total ? day[color] / total * 100 : 0}%" aria-hidden="true"></span>`).join('')}</button><span class="journey-preparation-date">${escape(day.day.slice(5))}</span></div>`;
+    }).join('');
+    const detail = document.getElementById('journey-preparation-detail');
+    detail.textContent = 'Wähle einen Balken für Datum und Anzahl der Fragen.';
+    preparation.querySelectorAll('button').forEach(button => {
+      const show = () => { detail.textContent = button.dataset.detail; };
+      button.onpointerenter = show;
+      button.onclick = show;
+      button.onfocus = show;
+    });
     const daily = [...days].sort(([a], [b]) => a.localeCompare(b));
     const trend = document.getElementById('journey-trend');
     if (!daily.length) { trend.textContent = 'Mit deinem nächsten Versuch beginnt deine Bewertungskurve.'; return; }

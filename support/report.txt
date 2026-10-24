@@ -1,0 +1,56 @@
+
+============================================================
+  Summary
+============================================================
+  Prüfungsbogen : 15
+  Unique IDs    : 416
+  Matched       : 416
+  Unmatched     : 0
+
+============================================================
+  Topic frequency (sorted)
+============================================================
+   135  Navigation
+   135  Seemannschaft
+   105  Schifffahrtsrecht
+    75  Wetterkunde
+
+============================================================
+  Questions in multiple sets (learn these first)
+============================================================
+  3×  ID  188  [Schifffahrtsrecht] Erläutern Sie den Begriff "Vorfahrt beachten".
+  3×  ID  110  [Navigation] Wann kann man sich auf die Verfügbarkeit und Anzeige vn AIS-Signalen anderer Fah…
+  3×  ID  102  [Navigation] Wodurch können Radarechos von kleinen Fahrzeugen und Tonnen auf den Sichtschirme…
+  2×  ID   30  [Navigation] Wer veröffentlicht die Bekanntmachungen für Seefahrer (BfS) und was umfassen die…
+  2×  ID  386  [Seemannschaft] Welche Sicherheitsmaßnahmen sind vor und beim Tanken von Diesel zu treffen?
+  2×  ID  462  [Seemannschaft] Wie verhalten Sie sich, wenn Ihr Schiff leckgeschlagen ist?
+  2×  ID  212  [Schifffahrtsrecht] Wann liegt ein schaden- oder gefahrverursachendes Vorkommnis (Seeunfall) im Sinn…
+  2×  ID  106  [Navigation] Welche Aufgaben hat AIS?
+  2×  ID  223  [Schifffahrtsrecht] Welchen Zweck soll dasMARPOL-Übereinkommen erfüllen?
+  2×  ID  107  [Navigation] Welche Reichweite hat ein AIS-Bordgerät und wovon ist sie abhängig?
+  2×  ID  216  [Schifffahrtsrecht] Was sind Seeämter und was sind ihre Aufgaben?
+  2×  ID  488  [Seemannschaft] Was müssen Sie bedenken, wenn ein großes Schiff auf Ihr Sportboot zukommt?
+  2×  ID  123  [Schifffahrtsrecht] Die KVR regeln u. a. das Verhalten der Schiffsführungen bei Kollisionsgefahr.Was…
+  2×  ID   44  [Navigation] Was müssen Sie beachten, wenn Sie die mit Loggen ermittelte Fahrt z. B. für das …
+  2×  ID  172  [Schifffahrtsrecht] Eine Motoryacht, Länge 8 m, treibt nachts manövrierunfähig in der Nordsee und si…
+  2×  ID   53  [Navigation] Welche navigatorischen Vorbereitungen treffen Sie vor einer Fahrt in Dunkelheit?
+  2×  ID   76  [Navigation] Wie ist Kartennull (KN) in der Ost- und Nordsee und im Englischen Kanal definier…
+  2×  ID  189  [Schifffahrtsrecht] Erläutern Sie den Begriff "Vorfahrt haben".
+  2×  ID   38  [Navigation] 1. Was sind P-Nachrichten? 2. Wie verfährt man mit diesen Nachrichten im Bericht…
+  2×  ID  296  [Wetterkunde] 1. Was für Wetter muss meistens erwartet werden, wenn der Luftdruck über einen Z…
+  2×  ID   73  [Navigation] Weshalb und wie können die tatsächlichen Wasserstände von den Angaben in den Gez…
+  2×  ID  132  [Schifffahrtsrecht] Welche Lichter müssen manövrierbehinderte Fahrzeuge (außer Minenräumfahrzeuge) f…
+  2×  ID   33  [Navigation] Wer gibt die nautischen Warnnachrichten (NWN) heraus und von wem werden sie verb…
+  2×  ID  111  [Navigation] Wie ist die Genauigkeit von AIS-Daten zu beurteilen (Position und manuell eingeg…
+  2×  ID   26  [Navigation] Was ist die "Sichtweite" eines Feuers? Wovon hängt sie ab?
+  2×  ID  487  [Seemannschaft] Warum darf der Anker nicht zusammen mit seiner Leine am Ankerplatz über Bord gew…
+  2×  ID  112  [Navigation] Welche besondere Bedeutung hat AIS für die Sportschifffahrt im Vergleich mit der…
+  2×  ID  122  [Schifffahrtsrecht] Welche Atem-bzw.Blutalkoholkonzentration darf laut Verordnung zu den KVR nicht e…
+  2×  ID   93  [Navigation] Was ist das Grundprinzip von GPS?
+  2×  ID  105  [Navigation] Was bedeutet der Begriff AIS auf See?
+  2×  ID   45  [Navigation] Welche Fahrt zeigen GPS-Geräte an?
+
+============================================================
+  Unmatched IDs (not in bank)
+============================================================
+  None — all IDs covered.

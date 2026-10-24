@@ -140,16 +140,3 @@ test('preparation handles untouched pools and local daylight saving dates', () =
   assert.deepEqual(result.map(d => d.day), ['2026-10-24', '2026-10-25', '2026-10-26', '2026-10-27']);
   assert.ok(result.every(d => d.red + d.yellow + d.green === 1));
 });
-
-test('stacked preparation areas share boundaries and span the timeline', () => {
-  const { journeyPreparationAreas } = require('../static/journey.js');
-  const areas = journeyPreparationAreas([{red: 2, yellow: 1, green: 0}, {red: 1, yellow: 1, green: 1}], 3);
-  const points = areas.map(a => a.points.split(' '));
-  assert.deepEqual(areas.map(a => a.color), ['red', 'yellow', 'green']);
-  assert.deepEqual(points[0].slice(0, 2), points[1].slice(2).reverse());
-  assert.deepEqual(points[1].slice(0, 2), points[2].slice(2).reverse());
-  assert.deepEqual(points[2].slice(0, 2), ['55,25', '945,25']);
-  const single = journeyPreparationAreas([{red: 1, yellow: 0, green: 0}], 1);
-  assert.equal(single[0].points, '55,25 945,25 945,225 55,225');
-  assert.ok(journeyPreparationAreas([{red: 0, yellow: 0, green: 0}], 0).every(a => !/NaN|Infinity/.test(a.points)));
-});
