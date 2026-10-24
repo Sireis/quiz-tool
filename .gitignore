@@ -1,5 +1,8 @@
 .github
 
+*.json
+*.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -218,3 +221,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local learning profiles
+/data/profiles/
+/data/rooms/
+/node_modules/
+
+# Generated learning-gap reports contain personal answer text.
+/sets/*/learning-gaps.json
+/sets/*/.learning-gaps.lock
