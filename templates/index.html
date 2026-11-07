@@ -135,7 +135,7 @@
       <span class="sep">·</span>
       <span id="q-subtopic">–</span>
       <span class="sep">·</span>
-      <span id="q-id" style="color:var(--muted)">–</span>
+      <span id="q-id">–</span>
       <span id="q-preparation"></span>
     </div>
     <div id="question-text">Lade Frage…</div>
@@ -149,7 +149,6 @@
   <div class="answer-area" id="answer-area">
     <label id="answer-label" for="answer-input">Deine Antwort</label>
     <textarea id="answer-input" aria-describedby="draft-status" placeholder="Antwort eingeben… (Strg+Enter zum Prüfen)"></textarea>
-    <p class="practice-help" id="draft-status" role="status" aria-live="polite"></p>
     <div id="shared-editor" hidden></div>
     <div class="btn-row">
       <button class="primary" id="submit-btn" onclick="submitAnswer()">Antwort prüfen</button>
@@ -157,6 +156,7 @@
       <button class="secondary" id="skip-btn" onclick="loadNextQuestion()">Überspringen →</button>
       <div id="loading" role="status"><div class="spinner" aria-hidden="true"></div> Bewertung läuft…</div>
     </div>
+    <p class="practice-help" id="draft-status" role="status" aria-live="polite"></p>
   </div>
   <p id="answer-status" class="practice-help" role="status" aria-live="polite" aria-atomic="true"></p>
 
