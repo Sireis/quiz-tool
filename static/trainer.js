@@ -1,6 +1,7 @@
 // ═══════════════════════════════════════════════════════════
 //  MOBILE NAV
 // ═══════════════════════════════════════════════════════════
+const COMPACT_LAYOUT_MAX = 1000;
 let mobileView = 'main'; // 'sidebar' | 'main' | 'stats'
 
 function mobileToggle(view, moveFocus = true) {
@@ -34,7 +35,7 @@ function toggleStatistics() {
 }
 
 function syncPracticePanels(moveFocus = false) {
-  const mobile = window.innerWidth <= 700;
+  const mobile = window.innerWidth <= COMPACT_LAYOUT_MAX;
   const main = document.querySelector('main');
   const sidebar = document.getElementById('sidebar');
   const stats = document.getElementById('stats-panel');
@@ -64,7 +65,7 @@ function syncPracticePanels(moveFocus = false) {
 
 // Auto-navigate to main after making a selection on mobile
 function mobileGoMain() {
-  if (window.innerWidth <= 700) mobileToggle('main', false);
+  if (window.innerWidth <= COMPACT_LAYOUT_MAX) mobileToggle('main', false);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -643,7 +644,7 @@ function displayQuestion(q, field = sel.field) {
   document.getElementById('q-subtopic').textContent = q.subtopic || '';
   document.getElementById('q-id').textContent       = q.id;
   document.getElementById('question-text').textContent = q.question;
-  if (typeof window !== 'undefined' && window.innerWidth <= 700) mobileToggle('main', false);
+  if (typeof window !== 'undefined' && window.innerWidth <= COMPACT_LAYOUT_MAX) mobileToggle('main', false);
   document.getElementById('answer-input').focus();
 }
 
@@ -770,7 +771,9 @@ function showRequestError(error) {
   document.getElementById('result-feedback').textContent =
     error.message || 'Bewertung fehlgeschlagen. Bitte erneut versuchen.';
   document.getElementById('result-verdict').textContent = 'Fehler';
+  document.getElementById('result-verdict').className = 'result-verdict fail';
   document.getElementById('expected-answer-text').textContent = '';
+  document.getElementById('result-card').className = 'error';
   document.getElementById('result-card').style.display = 'block';
   document.getElementById('answer-status').textContent = 'Bewertung fehlgeschlagen. Deine Antwort bleibt erhalten. Bitte erneut prüfen – auch mit Strg+Enter.';
   document.getElementById('answer-input').focus();
@@ -952,7 +955,7 @@ function esc(s) {
 
 // Strg+Enter to submit
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && typeof window !== 'undefined' && window.innerWidth <= 700 && mobileView !== 'main' && !document.querySelector('dialog[open]')) {
+  if (e.key === 'Escape' && typeof window !== 'undefined' && window.innerWidth <= COMPACT_LAYOUT_MAX && mobileView !== 'main' && !document.querySelector('dialog[open]')) {
     e.preventDefault();
     mobileToggle('main');
     document.getElementById('mnav-main').focus();
