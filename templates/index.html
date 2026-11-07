@@ -10,13 +10,13 @@
   <link rel="stylesheet" href="{{ static_asset('trainer.css') }}">
 
 </head>
-<body>
+<body class="stats-collapsed">
 
 <!-- ═══════════════ HEADER ════════════════════════════════ -->
 <header>
   <div class="header-identity">
     <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg><span class="brand-name">Trainer</span></span>
-    <button id="shared-quick-join" type="button" hidden>Join Room</button>
+    <button id="shared-quick-join" type="button" aria-label="Raum beitreten" hidden>Beitreten</button>
     <div class="profile-picker">
       <select id="profile-select" aria-label="Lernprofil" title="Lernprofil wechseln" disabled><option>Standard</option></select>
       <button class="secondary" id="profile-add" type="button" aria-label="Neues Profil erstellen" title="Neues Profil erstellen">+</button>
@@ -68,14 +68,14 @@
 </header>
 
 <!-- ═══════════════ SIDEBAR ══════════════════════════════ -->
-<aside id="sidebar">
+<aside id="sidebar" tabindex="-1" aria-label="Fragen auswählen">
   <div class="sb-scroll">
     <button class="secondary together-link" id="shared-open" type="button">Zu zweit lernen</button>
 
 
 
     <div>
-      <div class="sb-section-label">Felder</div>
+      <div class="sb-section-label">Fächer</div>
       <div class="sb-list" id="fields-list"></div>
     </div>
 
@@ -106,7 +106,14 @@
      aria-controls="sidebar" title="Ziehen oder Pfeiltasten zum Ändern der Breite"></div>
 
 <!-- ═══════════════ MAIN ══════════════════════════════════ -->
-<main>
+<main id="practice-main" tabindex="-1" aria-label="Frage beantworten">
+  <div class="practice-toolbar">
+    <button class="secondary" id="stats-toggle" type="button" aria-expanded="false" aria-controls="stats-panel" onclick="toggleStatistics()">Statistik öffnen</button>
+  </div>
+  <div class="practice-notice" id="question-notice" hidden>
+    <p id="question-status" role="status" aria-live="polite"></p>
+    <button class="secondary" id="question-retry" type="button" onclick="retryQuestionLoad()" hidden>Erneut laden</button>
+  </div>
   <section class="card" id="shared-room" aria-label="Gemeinsame Sitzung" hidden>
     <div class="shared-heading"><strong id="shared-title"></strong><span id="shared-round"></span></div>
     <p id="shared-connection" role="status" aria-live="polite"></p>
@@ -141,15 +148,17 @@
 
   <div class="answer-area" id="answer-area">
     <label id="answer-label" for="answer-input">Deine Antwort</label>
-    <textarea id="answer-input" placeholder="Antwort eingeben… (Strg+Enter zum Prüfen)"></textarea>
+    <textarea id="answer-input" aria-describedby="draft-status" placeholder="Antwort eingeben… (Strg+Enter zum Prüfen)"></textarea>
+    <p class="practice-help" id="draft-status" role="status" aria-live="polite"></p>
     <div id="shared-editor" hidden></div>
     <div class="btn-row">
       <button class="primary" id="submit-btn" onclick="submitAnswer()">Antwort prüfen</button>
       <button class="secondary" id="reveal-btn" onclick="revealAnswer()">Antwort zeigen</button>
       <button class="secondary" id="skip-btn" onclick="loadNextQuestion()">Überspringen →</button>
-      <div id="loading"><div class="spinner"></div> Bewertung läuft…</div>
+      <div id="loading" role="status"><div class="spinner" aria-hidden="true"></div> Bewertung läuft…</div>
     </div>
   </div>
+  <p id="answer-status" class="practice-help" role="status" aria-live="polite" aria-atomic="true"></p>
 
   <div id="result-card">
     <div id="solo-result">
@@ -166,8 +175,10 @@
     </section>
     <div class="expected-label">Musterlösung</div>
     <div id="expected-answer-text"></div>
-    <div id="chatgpt-followup" hidden>
-      <label class="expected-label" for="chatgpt-prompt">Mit ChatGPT vertiefen</label>
+    <button class="primary" id="next-btn" onclick="loadNextQuestion()">Nächste Frage →</button>
+    <details id="chatgpt-followup" hidden>
+      <summary>Mit ChatGPT vertiefen</summary>
+      <label class="expected-label" for="chatgpt-prompt">Prompt bearbeiten</label>
       <textarea id="chatgpt-prompt" rows="8" aria-describedby="chatgpt-help" oninput="updateChatGptLink()"></textarea>
       <p id="chatgpt-help">Prompt nach Wunsch bearbeiten und ChatGPT in einem neuen Tab öffnen. Falls der Text dort nicht übernommen wird, „Prompt kopieren“ nutzen und einfügen.</p>
       <div class="btn-row">
@@ -175,8 +186,7 @@
         <button class="secondary" type="button" onclick="copyChatGptPrompt()">Prompt kopieren</button>
       </div>
       <div id="chatgpt-status" role="status" aria-live="polite"></div>
-    </div>
-    <button class="primary" id="next-btn" onclick="loadNextQuestion()">Nächste Frage →</button>
+    </details>
   </div>
 </main>
 
@@ -201,12 +211,13 @@
      aria-controls="stats-panel" title="Ziehen oder Pfeiltasten zum Ändern der Breite"></div>
 
 <!-- ═══════════════ STATS PANEL ══════════════════════════ -->
-<div id="stats-panel">
+<div id="stats-panel" tabindex="-1" role="region" aria-label="Lernstatistik">
+  <button class="secondary" id="stats-close" type="button" onclick="toggleStatistics()">Statistik schließen</button>
   <div id="stats-ctx-strip" class="ctx-field">
-    <div id="stats-ctx-title">Feld</div>
+    <div id="stats-ctx-title">Fach</div>
     <div id="stats-ctx-name">–</div>
-    <div class="stats-explore-label">Feld erkunden</div>
-    <div class="stats-explore-actions" role="group" aria-label="Fortschritt des ausgewählten Feldes erkunden">
+    <div class="stats-explore-label">Fach erkunden</div>
+    <div class="stats-explore-actions" role="group" aria-label="Fortschritt des ausgewählten Fachs erkunden">
       <button class="secondary" id="constellation-open" type="button">✦ Wissensnetz</button>
       <button class="secondary" id="journey-open" type="button">✧ Lernreise</button>
       <button class="secondary" id="gaps-open" type="button">Lernlücken</button>
@@ -226,19 +237,19 @@
 
 <!-- ═══════════════ MOBILE BOTTOM NAV ════════════════════ -->
 <nav id="mobile-nav" role="navigation" aria-label="Navigation">
-  <button class="mnav-btn" id="mnav-sidebar" onclick="mobileToggle('sidebar')" aria-label="Auswahl">
+  <button class="mnav-btn" id="mnav-sidebar" onclick="mobileToggle('sidebar')" aria-label="Auswahl" aria-controls="sidebar" aria-expanded="false">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
     </svg>
     Auswahl
   </button>
-  <button class="mnav-btn active" id="mnav-main" onclick="mobileToggle('main')" aria-label="Frage">
+  <button class="mnav-btn active" id="mnav-main" onclick="mobileToggle('main')" aria-label="Frage" aria-controls="practice-main" aria-current="page">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5" stroke-linecap="round"/>
     </svg>
     Frage
   </button>
-  <button class="mnav-btn" id="mnav-stats" onclick="mobileToggle('stats')" aria-label="Statistik">
+  <button class="mnav-btn" id="mnav-stats" onclick="mobileToggle('stats')" aria-label="Statistik" aria-controls="stats-panel" aria-expanded="false">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
     </svg>
