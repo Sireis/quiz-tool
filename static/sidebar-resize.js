@@ -1,6 +1,6 @@
 // Desktop panel widths are independent of the mobile overlay layout.
 (() => {
-  const desktop = window.matchMedia('(min-width: 701px)');
+  const desktop = window.matchMedia('(min-width: 1001px)');
   const storageKey = 'trainer_sidebar_widths';
   const minimumPanelWidth = 150;
   const maximumPanelWidth = 480;

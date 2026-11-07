@@ -211,3 +211,26 @@ test('automatic mobile navigation does not steal focus from the newly displayed 
   assert.equal(app.context.document.activeElement.id, 'answer-input');
   assert.equal(app.element('sidebar').inert, true);
 });
+
+test('tablet navigation keeps a full-width question and excludes offscreen statistics', () => {
+  const app = setup(); app.context.window.innerWidth = 768;
+  app.context.syncPracticePanels();
+  assert.equal(app.element('sidebar').inert, true);
+  assert.equal(app.element('stats-panel').inert, true);
+  assert.equal(app.element('main').inert, false);
+  app.context.mobileToggle('stats');
+  assert.equal(app.element('stats-panel').inert, false);
+  assert.equal(app.element('main').inert, true);
+  app.key('mnav-stats', 'Escape', false);
+  assert.equal(app.element('main').inert, false);
+});
+
+test('an assessment failure uses an explicit error state and clears stale success styling', () => {
+  const app = setup(); app.context.displayQuestion(question(1));
+  app.context.showRequestError(new Error('Dienst nicht erreichbar'));
+  assert.equal(app.element('result-card').className, 'error');
+  assert.equal(app.element('result-verdict').className, 'result-verdict fail');
+  assert.equal(app.element('answer-input').disabled, false);
+  app.context.showResult(assessment);
+  assert.equal(app.element('result-card').className, 'correct');
+});
