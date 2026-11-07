@@ -18,6 +18,10 @@ async function initProfiles() {
   const name = document.getElementById('profile-name');
   const status = document.getElementById('profile-status');
   const activate = id => {
+    if (globalThis.protectAnswerDraft && !protectAnswerDraft()) {
+      select.value = pageProfile;
+      return;
+    }
     localStorage.setItem('trainer_profile', id);
     location.reload();
   };

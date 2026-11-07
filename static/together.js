@@ -137,6 +137,7 @@
         } else if (message.type === 'cursor') {
           editor?.cursor(message);
         } else if (message.type === 'state' || message.type === 'sync') {
+          const newEditor = message.editor && editor && editor.round !== message.editor.round_id;
           if (message.type === 'sync') {
             connected = true;
             reconnectAttempt = 0;
@@ -145,7 +146,7 @@
             if (message.editor) editor?.sync(message.editor, own.color || '#c4abff');
           }
           $('shared-connection').textContent = connected ? 'Live verbunden' : 'Synchronisieren …';
-          render(message.state, ++requestNumber, message.editor);
+          render(message.state, ++requestNumber, message.editor, newEditor);
         } else if (message.type === 'error') {
           messageError(message.message);
           hello();
@@ -166,7 +167,7 @@
 
   function messageError(text) { traffic.lastError = text; message(text); }
 
-  function render(next, sequence, editorDocument = null) {
+  function render(next, sequence, editorDocument = null, newEditor = false) {
     if (sequence < appliedNumber) return;
     appliedNumber = sequence;
     const changed = !room || next.round_id !== room.round_id;
@@ -196,7 +197,8 @@
       Object.assign(currentQuestion, room.question);
       $('q-preparation').innerHTML = preparationIndicator(room.question.preparation);
     }
-    if (room.mode === 'coop' && editorDocument && editor && editor.round !== editorDocument.round_id) {
+    const editorChanged = room.mode === 'coop' && editorDocument && editor && editor.round !== editorDocument.round_id;
+    if (editorChanged) {
       editor.sync(editorDocument, own.color || '#c4abff');
     }
     if (room.mode === 'coop' && room.own_answer != null && editorDocument) {
@@ -208,6 +210,7 @@
     const waiting = room.participants.length < 2;
     $('answer-input').disabled = room.closed || busy || waiting || own.status !== 'answering';
     editor?.setWritable(connected && !room.closed && !busy && !waiting && own.status === 'answering');
+    if ((editorChanged || newEditor) && !room.closed && !waiting && own.status === 'answering') editor.view?.focus?.();
     $('submit-btn').disabled = room.closed || busy || !connected || waiting || !['answering', 'error'].includes(own.status);
     $('submit-btn').textContent = own.status === 'error' ? 'Bewertung erneut versuchen' : room.mode === 'coop' ? 'Gemeinsame Antwort prüfen' : 'Antwort abgeben';
     $('answer-label').textContent = room.mode === 'coop' ? 'Eure gemeinsame Antwort' : 'Deine Antwort';
@@ -254,6 +257,9 @@
   }
 
   async function attach(next, sequence) {
+    saveAnswerDraft();
+    $('draft-status').textContent = '';
+    questionNotice();
     // All normal API requests (bookmarks, statistics, goals) use this tab's room profile.
     pageProfile = profile;
     $('profile-select').value = profile;

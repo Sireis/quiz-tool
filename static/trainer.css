@@ -1119,3 +1119,35 @@ button.secondary:hover { background: linear-gradient(145deg, #36435c, #2b374f); 
 #gaps-dialog .btn-row { flex-wrap: wrap; }
 #gaps-open { grid-column: 1 / -1; }
 #memory-insight { margin: 14px 0; padding: 12px; border-left: 3px solid var(--accent); white-space: pre-wrap; }
+
+/* Keep retrieval practice central; analysis remains available on demand. */
+.practice-toolbar { display: flex; justify-content: flex-end; }
+.practice-notice, .practice-help { color: var(--muted); font-size: .875rem; line-height: 1.6; overflow-wrap: anywhere; }
+.practice-notice { display: grid; gap: 10px; }
+.practice-notice[hidden], .practice-help:empty { display: none; }
+main > .card, main > .answer-area, main > #result-card, main > .practice-toolbar, main > .practice-notice, main > .practice-help {
+  width: 100%; max-width: 75ch; align-self: center;
+}
+#answer-status { margin: 0; }
+#draft-status { margin: 8px 0; }
+#question-retry { justify-self: start; }
+#chatgpt-followup { margin: 20px 0 0; }
+#chatgpt-followup summary { color: var(--secondary-light); font-size: .875rem; cursor: pointer; padding: 8px 0; }
+#chatgpt-followup[open] summary { margin-bottom: 12px; }
+#stats-close { margin: 12px; align-self: flex-start; }
+button.breakdown-row, button.stats-q-item { width: 100%; text-align: start; font: inherit; color: var(--text); min-height: 44px; }
+button.breakdown-row { background: transparent; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; }
+button.breakdown-row .br-top { width: 100%; gap: 8px; }
+button.breakdown-row .br-name { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+button.breakdown-row .preparation-bar { width: 100%; }
+button.stats-q-item .sq-text { min-width: 0; overflow-wrap: anywhere; }
+#sidebar:focus-visible, #stats-panel:focus-visible, main:focus-visible { outline: 2px solid var(--accent-light); outline-offset: -3px; }
+summary:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 3px; }
+@media (min-width: 701px) {
+  body.stats-collapsed { grid-template-columns: var(--sidebar-width) var(--resize-handle-width) minmax(0, 1fr) 0 0; }
+  body.stats-collapsed #stats-panel, body.stats-collapsed #stats-resizer { display: none; }
+}
+@media (max-width: 700px) {
+  .practice-toolbar, #stats-close { display: none; }
+  #bookmark-btn { width: 44px; min-height: 44px; }
+}
