@@ -68,7 +68,7 @@ async function setup(saved = null, search = '', pathname = '/') {
     navigator: {clipboard: {writeText: async () => {}}}, confirm: () => true,
     setTimeout, clearTimeout, queueMicrotask,
     SharedEditor: class {
-      constructor() { this.view = {}; this.round = null; this.text = ''; this.version = 0; editors.push(this); }
+      constructor() { this.view = {focus: () => { this.focused = true; }}; this.round = null; this.text = ''; this.version = 0; editors.push(this); }
       sync(doc) { if (this.round !== doc.round_id) { this.text = doc.doc; this.round = doc.round_id; this.version = doc.version; } }
       setConnected() {} setWritable() {} receive() {} cursor() {} freeze(doc) { this.text = doc.doc; }
       async flush() { return {answer: this.text, editor_version: this.version}; }
@@ -231,6 +231,7 @@ test('cooperative submission flushes the socket editor revision and shows one sh
   assert.equal(app.editors[0].text, 'Partner started this');
   assert.equal(app.element('answer-input').hidden, true);
   assert.equal(app.element('shared-editor').hidden, false);
+  assert.equal(app.editors[0].focused, true);
   assert.equal(app.element('answer-label').textContent, 'Eure gemeinsame Antwort');
   app.editors[0].text = 'Our combined answer';
   app.editors[0].version = 4;

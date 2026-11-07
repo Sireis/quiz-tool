@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════════════════════
 let mobileView = 'main'; // 'sidebar' | 'main' | 'stats'
 
-function mobileToggle(view) {
+function mobileToggle(view, moveFocus = true) {
   mobileView = view;
   const sidebar = document.getElementById('sidebar');
   const stats   = document.getElementById('stats-panel');
@@ -23,11 +23,48 @@ function mobileToggle(view) {
     // wherever the previous panel/question happened to be scrolled to.
     document.querySelector('main').scrollTop = 0;
   }
+  syncPracticePanels(moveFocus);
+}
+
+let statisticsOpen = false;
+
+function toggleStatistics() {
+  statisticsOpen = !statisticsOpen;
+  syncPracticePanels(true);
+}
+
+function syncPracticePanels(moveFocus = false) {
+  const mobile = window.innerWidth <= 700;
+  const main = document.querySelector('main');
+  const sidebar = document.getElementById('sidebar');
+  const stats = document.getElementById('stats-panel');
+  const activePanel = mobile ? mobileView : 'main';
+  const previousFocus = document.activeElement;
+  sidebar.inert = mobile && activePanel !== 'sidebar';
+  stats.inert = mobile ? activePanel !== 'stats' : !statisticsOpen;
+  main.inert = mobile && activePanel !== 'main';
+  document.body.classList.toggle('stats-collapsed', !statisticsOpen);
+  const toggle = document.getElementById('stats-toggle');
+  toggle.setAttribute('aria-expanded', String(statisticsOpen));
+  toggle.textContent = statisticsOpen ? 'Statistik schließen' : 'Statistik öffnen';
+  document.getElementById('stats-resizer').inert = !statisticsOpen;
+  for (const name of ['sidebar', 'main', 'stats']) {
+    const button = document.getElementById(`mnav-${name}`);
+    button.setAttribute('aria-current', name === activePanel ? 'page' : 'false');
+    if (name !== 'main') button.setAttribute('aria-expanded', String(mobile && name === activePanel));
+  }
+  if (moveFocus) {
+    if (mobile) ({sidebar, main, stats})[activePanel].focus();
+    else if (!statisticsOpen && stats.contains(previousFocus)) toggle.focus();
+    else if (statisticsOpen) stats.focus();
+  } else if ([sidebar, stats, main].some(panel => panel.inert && panel.contains(previousFocus))) {
+    (mobile ? ({sidebar, main, stats})[activePanel] : main).focus();
+  }
 }
 
 // Auto-navigate to main after making a selection on mobile
 function mobileGoMain() {
-  if (window.innerWidth <= 700) mobileToggle('main');
+  if (window.innerWidth <= 700) mobileToggle('main', false);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -43,11 +80,74 @@ const sel = {
 
 let currentQuestion = null;
 let questionRequest = 0;
+let currentQuestionField = null;
+let answerState = 'idle';
+let questionLoading = false;
+let retryQuestion = null;
+
+function draftKey(field, id = 'last') {
+  const profile = typeof pageProfile === 'undefined' ? 'default' : pageProfile;
+  return `trainer_draft:${JSON.stringify([profile, field, id])}`;
+}
+
+function readDraft(field, id) {
+  try { return JSON.parse(localStorage.getItem(draftKey(field, id))); }
+  catch { return null; }
+}
+
+function saveAnswerDraft() {
+  if (!currentQuestion || globalThis.sharedPractice?.active || answerState === 'complete') return true;
+  const field = currentQuestionField || sel.field;
+  const text = document.getElementById('answer-input').value;
+  try {
+    if (text.trim()) {
+      localStorage.setItem(draftKey(field, currentQuestion.id), JSON.stringify(text));
+      localStorage.setItem(draftKey(field), JSON.stringify({id: currentQuestion.id}));
+      document.getElementById('draft-status').textContent = 'Entwurf in diesem Browser gespeichert.';
+    } else {
+      clearAnswerDraft(field, currentQuestion.id);
+      document.getElementById('draft-status').textContent = '';
+    }
+    return true;
+  } catch {
+    document.getElementById('draft-status').textContent = 'Entwurf kann nicht gespeichert werden. Bitte kopiere deine Antwort vor dem Verlassen.';
+    return false;
+  }
+}
+
+function protectAnswerDraft() {
+  return saveAnswerDraft() || confirm('Dein Entwurf konnte nicht gespeichert werden. Trotzdem die Frage verlassen?');
+}
+
+function clearAnswerDraft(field, id) {
+  localStorage.removeItem(draftKey(field, id));
+  if (readDraft(field)?.id === id) localStorage.removeItem(draftKey(field));
+}
+
+function questionNotice(text = '', retry = false) {
+  document.getElementById('question-status').textContent = text;
+  document.getElementById('question-notice').hidden = !text;
+  document.getElementById('question-retry').hidden = !retry;
+}
+
+function retryQuestionLoad() {
+  if (retryQuestion) return retryQuestion();
+}
 
 // ═══════════════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════════════
 async function init() {
+  try {
+    await initializeTrainer();
+  } catch {
+    retryQuestion = () => location.reload();
+    questionNotice('Der Trainer konnte nicht vollständig geladen werden. Bitte prüfe deine Verbindung und lade erneut.', true);
+  }
+}
+
+async function initializeTrainer() {
+  syncPracticePanels();
   await initProfiles();
   const fields = await fetch('/api/fields').then(r => r.json());
   renderFieldList(fields);
@@ -55,7 +155,12 @@ async function init() {
 
   const saved = localStorage.getItem('trainer_field');
   const initial = saved && fields.includes(saved) ? saved : fields[0];
-  if (!globalThis.sharedPractice?.active) await selectField(initial);
+  if (!initial) {
+    questionNotice('Keine Fragen vorhanden. Lege zuerst ein Fach mit Fragen an.');
+    document.getElementById('answer-area').hidden = true;
+    return;
+  }
+  if (!globalThis.sharedPractice?.active) await selectField(initial, true);
   await Promise.all(fields.filter(f => f !== initial).map(async field => {
     try {
       const stats = await fetch(`/api/fields/${encodeURIComponent(field)}/stats`).then(r => r.json());
@@ -68,7 +173,7 @@ async function init() {
 // ═══════════════════════════════════════════════════════════
 //  SELECTION HANDLERS
 // ═══════════════════════════════════════════════════════════
-async function selectField(fieldId) {
+async function selectField(fieldId, resume = false) {
   if (globalThis.sharedPractice?.active) return;
   sel.field  = fieldId;
   sel.topic  = null;
@@ -88,7 +193,7 @@ async function selectField(fieldId) {
     refreshGoal(fieldId),
   ]);
 
-  await Promise.all([refreshStats(), loadNextQuestion()]);
+  await Promise.all([refreshStats(), loadNextQuestion(false, resume)]);
   mobileGoMain();
 }
 
@@ -264,7 +369,10 @@ async function refreshStats() {
 
   let stats = null;
   try { stats = await fetch(url).then(r => r.json()); } catch {}
-  if (!stats) { scroll.innerHTML = '<div style="padding:14px;font-size:0.72rem;color:var(--wrong)">Fehler beim Laden.</div>'; return; }
+  if (!stats || stats.error) {
+    scroll.innerHTML = '<p role="status">Statistik konnte nicht geladen werden.</p><button class="secondary" type="button" onclick="refreshStats().catch(() => {})">Erneut laden</button>';
+    throw new Error('Statistik konnte nicht geladen werden.');
+  }
 
   renderStats(stats, ctxType, scroll);
   const fieldStats = ctxType === 'field' ? stats : await fetch(`/api/fields/${encodeURIComponent(field)}/stats`).then(r => r.json());
@@ -349,7 +457,7 @@ function resolveStatsCtx() {
 }
 
 const CTX_LABELS = {
-  field:  'Feld',
+  field:  'Fach',
   topic:  'Thema',
   examen: 'Prüfungssatz',
   set:    'Eigenes Set',
@@ -405,15 +513,15 @@ function renderStats(s, ctxType, container) {
     s.topics.forEach(t => {
       const counts = t.preparation.counts;
       const description = `Grün: ${counts.green}, Gelb: ${counts.yellow}, Rot: ${counts.red} (${t.total} Fragen)`;
-      html += `<div class="breakdown-row" onclick="clickTopicBreakdown(${esc(JSON.stringify(t.name))})">
-        <div class="br-top">
+      html += `<button type="button" class="breakdown-row" onclick="clickTopicBreakdown(${esc(JSON.stringify(t.name))})">
+        <span class="br-top">
           <span class="br-name">${esc(t.name)}</span>
           <span class="br-ratio" title="${description}">${['green', 'yellow', 'red'].map(color =>
             `<span>${preparationIndicator(color)} ${counts[color]}</span>`).join(' ')}</span>
-        </div>
-        <div class="preparation-bar" role="img" aria-label="${description}" title="${description}">${['green', 'yellow', 'red'].map(color =>
-          `<div class="preparation-segment preparation-${color}" style="width:${t.total ? counts[color] / t.total * 100 : 0}%"></div>`).join('')}</div>
-      </div>`;
+        </span>
+        <span class="preparation-bar" role="img" aria-label="${description}" title="${description}">${['green', 'yellow', 'red'].map(color =>
+          `<span class="preparation-segment preparation-${color}" style="width:${t.total ? counts[color] / t.total * 100 : 0}%"></span>`).join('')}</span>
+      </button>`;
     });
     html += `</div>`;
   }
@@ -422,11 +530,11 @@ function renderStats(s, ctxType, container) {
     html += `<div>
       <div class="stats-section-label">Fragen</div>`;
     s.questions.forEach(q => {
-      html += `<div class="stats-q-item" onclick="jumpToQuestion(${esc(JSON.stringify(q.id))})">
+      html += `<button type="button" class="stats-q-item" onclick="jumpToQuestion(${esc(JSON.stringify(q.id))})">
         ${preparationIndicator(q.preparation)}
         <span class="sq-text">${esc(q.question)}</span>
         <span class="sq-ratio">${q.attempts > 0 ? q.correct + '/' + q.attempts : '–'}</span>
-      </div>`;
+      </button>`;
     });
     html += `</div>`;
   }
@@ -441,40 +549,46 @@ function clickTopicBreakdown(name) {
 }
 
 function jumpToQuestion(qid) {
-  if (globalThis.sharedPractice?.active) return;
-  const requestId = ++questionRequest;
-  fetch(`${resolveQuestionUrl()}&id=${encodeURIComponent(qid)}`)
-    .then(r => r.json())
-    .then(q => {
-      if (!q.error && requestId === questionRequest && !globalThis.sharedPractice?.active) {
-        displayQuestion(q); mobileGoMain();
-      }
-    });
+  if (globalThis.sharedPractice?.active || answerState === 'pending') return;
+  return loadNextQuestion(false, false, qid).then(() => mobileGoMain());
 }
 
 // ═══════════════════════════════════════════════════════════
 //  QUESTION LOADING
 // ═══════════════════════════════════════════════════════════
-async function loadNextQuestion(extraPractice = false) {
+async function loadNextQuestion(extraPractice = false, resume = false, questionId = null) {
   if (globalThis.sharedPractice?.active) return globalThis.sharedPractice.next();
+  if (answerState === 'pending') return;
+  if (!protectAnswerDraft()) return;
   const requestId = ++questionRequest;
-  currentQuestion = null;
-  renderBookmark();
-  document.getElementById('reveal-btn').disabled = true;
+  const field = sel.field;
+  questionLoading = true;
   setAnswerPending(false);
-  resetResultCard();
-  document.getElementById('practice-complete').hidden = true;
-  document.getElementById('answer-area').hidden = false;
-  document.getElementById('answer-input').value    = '';
-  document.getElementById('answer-input').disabled = false;
-  document.getElementById('answer-input').style.height = '';
-  document.getElementById('submit-btn').disabled   = false;
-
-  const url = resolveQuestionUrl(extraPractice);
-  const q = await fetch(url).then(r => r.json()).catch(() => ({ error: 'Netzwerkfehler' }));
-  if (requestId !== questionRequest) return;
-  if (q.error) { document.getElementById('question-text').textContent = q.error; return; }
+  questionNotice('Frage wird geladen …');
+  const resumeId = resume ? readDraft(field)?.id : null;
+  const id = questionId ?? resumeId;
+  const url = resolveQuestionUrl(extraPractice) + (id != null ? `&id=${encodeURIComponent(id)}` : '');
+  let resumeMissing = false;
+  const q = await fetch(url).then(r => {
+    resumeMissing = resumeId != null && r.status === 404;
+    return r.json();
+  }).catch(() => ({ error: 'Netzwerkfehler' }));
+  if (requestId !== questionRequest || globalThis.sharedPractice?.active) return;
+  questionLoading = false;
+  setAnswerPending(false);
+  if (q.error) {
+    if (resumeMissing) return loadNextQuestion(extraPractice);
+    retryQuestion = () => loadNextQuestion(extraPractice, resume, questionId);
+    questionNotice('Frage konnte nicht geladen werden. Bitte erneut laden. Deine bisherige Antwort bleibt erhalten.', true);
+    return;
+  }
+  questionNotice();
+  retryQuestion = null;
   if (q.practice_complete) {
+    resetResultCard();
+    currentQuestion = null;
+    currentQuestionField = null;
+    renderBookmark();
     document.getElementById('question-text').textContent = q.recent_only
       ? 'Die übrigen neuen oder fälligen Fragen hast du gerade gesehen. Du kannst zusätzlich üben.'
       : 'Für diese Auswahl stehen gerade keine weiteren neuen oder fälligen Fragen an.';
@@ -489,7 +603,7 @@ async function loadNextQuestion(extraPractice = false) {
     document.getElementById('extra-practice-btn').focus();
     return;
   }
-  displayQuestion(q);
+  displayQuestion(q, field);
   // New content can change main's scroll height; always start at the top
   // so the question card and the buttons below it are both in view.
   document.querySelector('main').scrollTop = 0;
@@ -506,10 +620,22 @@ function resolveQuestionUrl(extraPractice = false) {
          `&subtopic=${encodeURIComponent(sel.subtopic || '')}` + (extraPractice ? '&extra=1' : '');
 }
 
-function displayQuestion(q) {
+function displayQuestion(q, field = sel.field) {
+  saveAnswerDraft();
   document.getElementById('practice-complete').hidden = true;
   document.getElementById('answer-area').hidden = false;
   currentQuestion = q;
+  currentQuestionField = field;
+  questionLoading = false;
+  if (!globalThis.sharedPractice?.active) {
+    resetResultCard();
+    answerState = 'idle';
+    const draft = readDraft(field, q.id);
+    document.getElementById('answer-input').value = typeof draft === 'string' ? draft : '';
+    document.getElementById('answer-input').style.height = '';
+    document.getElementById('draft-status').textContent = typeof draft === 'string' ? 'Dein gespeicherter Entwurf wurde wiederhergestellt.' : '';
+    setAnswerPending(false);
+  }
   renderBookmark();
   document.getElementById('q-preparation').innerHTML = preparationIndicator(q.preparation);
   document.getElementById('reveal-btn').disabled = false;
@@ -517,6 +643,7 @@ function displayQuestion(q) {
   document.getElementById('q-subtopic').textContent = q.subtopic || '';
   document.getElementById('q-id').textContent       = q.id;
   document.getElementById('question-text').textContent = q.question;
+  if (typeof window !== 'undefined' && window.innerWidth <= 700) mobileToggle('main', false);
   document.getElementById('answer-input').focus();
 }
 
@@ -534,7 +661,7 @@ function renderBookmark() {
 async function toggleBookmark() {
   if (!currentQuestion) return;
   const question = currentQuestion;
-  const field = sel.field;
+  const field = currentQuestionField || sel.field;
   document.getElementById('bookmark-btn').disabled = true;
   try {
     const result = await postJson('/api/bookmark', {
@@ -558,8 +685,13 @@ async function toggleBookmark() {
 // ═══════════════════════════════════════════════════════════
 async function submitAnswer() {
   if (globalThis.sharedPractice?.active) return globalThis.sharedPractice.submit();
+  if (questionLoading || answerState === 'pending' || answerState === 'complete') return;
   const answer = document.getElementById('answer-input').value.trim();
-  if (!answer) return;
+  if (!answer) {
+    document.getElementById('answer-status').textContent = 'Bitte gib zuerst deine Antwort ein.';
+    document.getElementById('answer-input').focus();
+    return;
+  }
   await requestAnswerResult('/api/assess', { answer }, true);
 }
 
@@ -569,13 +701,16 @@ async function revealAnswer() {
 }
 
 async function requestAnswerResult(endpoint, extraFields = {}, updateStats = false) {
-  if (!currentQuestion) return;
+  if (!currentQuestion || questionLoading || answerState === 'pending' || answerState === 'complete') return;
   const question = currentQuestion;
-  const field = sel.field;
-  setAnswerPending(true);
+  const field = currentQuestionField || sel.field;
+  saveAnswerDraft();
   resetResultCard();
+  answerState = 'pending';
+  setAnswerPending(true);
+  document.getElementById('answer-status').textContent = 'Deine Antwort wird geprüft …';
 
-  const isCurrentQuestion = () => currentQuestion === question && sel.field === field;
+  const isCurrentQuestion = () => currentQuestion === question && !globalThis.sharedPractice?.active;
   try {
     const result = await postJson(endpoint, { field, id: question.id, ...extraFields });
     if (!isCurrentQuestion()) return;
@@ -585,16 +720,20 @@ async function requestAnswerResult(endpoint, extraFields = {}, updateStats = fal
       question.preparation = result.preparation;
       question.progress = result.progress;
       document.getElementById('q-preparation').innerHTML = preparationIndicator(result.preparation);
-      await refreshStats();
-      await refreshGoal(field);
+      try { clearAnswerDraft(field, question.id); }
+      catch { /* A saved draft must not invalidate a successful assessment. */ }
+      document.getElementById('draft-status').textContent = '';
+      const refreshes = await Promise.allSettled([refreshStats(), refreshGoal(field)]);
+      if (isCurrentQuestion() && refreshes.some(result => result.status === 'rejected')) {
+        document.getElementById('answer-status').textContent = 'Deine Antwort wurde bewertet und gespeichert. Statistik oder Lernziel konnten nicht aktualisiert werden. Öffne sie später erneut.';
+      }
     }
   } catch (error) {
     if (!isCurrentQuestion()) return;
     showRequestError(error);
-    setAnswerPending(false);
   } finally {
     if (isCurrentQuestion()) {
-      document.getElementById('loading').classList.remove('visible');
+      setAnswerPending(false);
     }
   }
 }
@@ -613,23 +752,36 @@ async function postJson(endpoint, body) {
 }
 
 function setAnswerPending(pending) {
-  document.getElementById('submit-btn').disabled = pending;
-  document.getElementById('answer-input').disabled = pending;
+  const blocked = pending || questionLoading;
+  document.getElementById('submit-btn').disabled = blocked || answerState === 'complete';
+  document.getElementById('answer-input').disabled = blocked || answerState === 'complete';
+  document.getElementById('reveal-btn').disabled = blocked || !currentQuestion || answerState === 'complete';
+  document.getElementById('skip-btn').disabled = pending || questionLoading;
+  document.getElementById('next-btn').disabled = pending || questionLoading;
+  document.getElementById('profile-select').disabled = pending;
+  document.getElementById('profile-add').disabled = pending;
+  document.getElementById('answer-area').setAttribute('aria-busy', String(pending));
   document.getElementById('loading').classList.toggle('visible', pending);
 }
 
 function showRequestError(error) {
+  answerState = 'error';
+  setAnswerPending(false);
   document.getElementById('result-feedback').textContent =
     error.message || 'Bewertung fehlgeschlagen. Bitte erneut versuchen.';
   document.getElementById('result-verdict').textContent = 'Fehler';
   document.getElementById('expected-answer-text').textContent = '';
   document.getElementById('result-card').style.display = 'block';
+  document.getElementById('answer-status').textContent = 'Bewertung fehlgeschlagen. Deine Antwort bleibt erhalten. Bitte erneut prüfen – auch mit Strg+Enter.';
+  document.getElementById('answer-input').focus();
 }
 
 // ═══════════════════════════════════════════════════════════
 //  UI HELPERS
 // ═══════════════════════════════════════════════════════════
 function showResult(res) {
+  answerState = 'complete';
+  if (!globalThis.sharedPractice?.active) setAnswerPending(false);
   const memoryInsight = document.getElementById('memory-insight');
   if (memoryInsight) {
     memoryInsight.hidden = !res.memory_summary;
@@ -666,6 +818,8 @@ function showResult(res) {
 
   document.getElementById('result-feedback').textContent      = res.feedback;
   document.getElementById('expected-answer-text').textContent = res.answer;
+  document.getElementById('answer-status').textContent = `${verdict.textContent}. Feedback und Musterlösung stehen im Ergebnis.`;
+  if (!globalThis.sharedPractice?.active) document.getElementById('next-btn').focus();
 }
 
 function getResultType(res) {
@@ -686,6 +840,8 @@ function getResultType(res) {
 }
 
 function resetResultCard() {
+  answerState = 'idle';
+  document.getElementById('answer-status').textContent = '';
   const memoryInsight = document.getElementById('memory-insight');
   if (memoryInsight) { memoryInsight.hidden = true; memoryInsight.textContent = ''; }
   document.getElementById('solo-result').hidden = false;
@@ -693,6 +849,7 @@ function resetResultCard() {
   card.style.display = 'none';
   card.className = '';
   document.getElementById('chatgpt-followup').hidden = true;
+  document.getElementById('chatgpt-followup').open = false;
   document.getElementById('chatgpt-prompt').value = '';
   document.getElementById('chatgpt-status').textContent = '';
   updateChatGptLink();
@@ -750,6 +907,7 @@ function highlightSel(type, activeKey) {
   const listId = { field: 'fields-list', topic: 'topic-list', examen: 'examens-list', set: 'sets-list', bookmark: 'bookmarks-list' }[type];
   document.querySelectorAll(`#${listId} .sel-btn`).forEach(b => {
     b.classList.toggle('active', activeKey != null && b.dataset.selKey === activeKey);
+    b.setAttribute('aria-pressed', String(activeKey != null && b.dataset.selKey === activeKey));
   });
 }
 
@@ -774,7 +932,15 @@ function mkSelBtn(key, label, type, onClick) {
   btn.className = `sel-btn type-${type}`;
   btn.dataset.selKey = key;
   btn.innerHTML = `<span class="sel-preparation"></span><span class="sel-label">${esc(label)}</span><span class="sel-badge"></span>`;
-  btn.onclick = onClick;
+  btn.onclick = async () => {
+    if (answerState === 'pending') return;
+    if (!protectAnswerDraft()) return;
+    try { await onClick(); }
+    catch {
+      retryQuestion = onClick;
+      questionNotice('Die Auswahl konnte nicht vollständig geladen werden. Bitte erneut laden.', true);
+    }
+  };
   return btn;
 }
 
@@ -786,13 +952,30 @@ function esc(s) {
 
 // Strg+Enter to submit
 document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && typeof window !== 'undefined' && window.innerWidth <= 700 && mobileView !== 'main' && !document.querySelector('dialog[open]')) {
+    e.preventDefault();
+    mobileToggle('main');
+    document.getElementById('mnav-main').focus();
+    return;
+  }
   if (e.key !== 'Enter' || !e.ctrlKey) return;
-  if (e.target.id === 'chatgpt-prompt') return;
-  const resultCard = document.getElementById('result-card');
-  const visible = getComputedStyle(resultCard).display !== 'none';
+  if (!['answer-input', 'submit-btn', 'next-btn'].includes(e.target.id) || document.querySelector('dialog[open]')) return;
   e.preventDefault();
-  if (visible) loadNextQuestion();
+  if (questionLoading || answerState === 'pending') return;
+  if (answerState === 'complete') loadNextQuestion();
   else submitAnswer();
 });
+
+document.addEventListener('input', e => {
+  if (e.target.id === 'answer-input') saveAnswerDraft();
+});
+globalThis.addEventListener?.('pagehide', saveAnswerDraft);
+globalThis.addEventListener?.('beforeunload', event => {
+  if (!saveAnswerDraft()) {
+    event.preventDefault();
+    event.returnValue = '';
+  }
+});
+globalThis.addEventListener?.('resize', () => syncPracticePanels());
 
 init();
