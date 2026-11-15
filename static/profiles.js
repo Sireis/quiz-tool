@@ -35,7 +35,18 @@ async function initProfiles() {
   }
   select.replaceChildren(...profiles.map(profile => new Option(profile.name, profile.id)));
   select.value = pageProfile;
-  select.disabled = false;
+  const choices = document.getElementById('profile-options');
+  choices.replaceChildren(...profiles.map(profile => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'profile-option';
+    button.dataset.profileId = profile.id;
+    button.textContent = profile.name;
+    button.setAttribute('aria-pressed', String(profile.id === pageProfile));
+    button.onclick = () => activate(profile.id);
+    return button;
+  }));
+  setProfileControlsDisabled(false);
   select.addEventListener('change', () => activate(select.value));
   document.getElementById('profile-add').addEventListener('click', () => {
     dialog.showModal();
@@ -62,5 +73,21 @@ async function initProfiles() {
       status.textContent = error.message;
       submit.disabled = false;
     }
+  });
+}
+
+function setProfileControlsDisabled(disabled) {
+  const select = document.getElementById('profile-select');
+  select.disabled = disabled;
+  document.getElementById('profile-add').disabled = disabled;
+  const menu = document.getElementById('profile-menu');
+  menu.inert = disabled;
+  if (disabled) menu.open = false;
+  menu.querySelector('summary').setAttribute('aria-disabled', String(disabled));
+  const selected = [...select.options].find(option => option.value === select.value);
+  document.getElementById('profile-current').textContent = selected?.textContent || 'Standard';
+  menu.querySelector('summary').setAttribute('aria-label', `Lernprofil wechseln: ${selected?.textContent || 'Standard'}`);
+  document.querySelectorAll('.profile-option').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.profileId === select.value));
   });
 }

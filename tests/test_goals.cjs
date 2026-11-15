@@ -358,3 +358,18 @@ test('field quick views show daily counts, bonus tiers and capped progress', () 
   assert.match(bonus.html, /\+5/);
   assert.doesNotMatch(bonus.html, /NaN|Infinity/);
 });
+
+test('the persistent tracker keeps bonus text, uncapped percent and celebration tier', async () => {
+  const app = setup();
+  app.context.fetch = async () => ({ok: true, json: async () => status({today_count: 23, overachievement: 13, daily_complete: true})});
+  await app.context.refreshGoal('first');
+  assert.equal(app.element('header-goal-summary').hidden, false);
+  assert.equal(app.element('header-goal').dataset.tier, 'rainbow');
+  const html = app.element('header-goal-summary').innerHTML;
+  assert.match(html, /23 \/ 10/);
+  assert.match(html, /goal-header-bonus">\+13<\/span>/);
+  assert.doesNotMatch(html, /über Ziel/);
+  assert.match(html, /230%/);
+  assert.match(html, /13 Antworten über deinem Tagesziel/);
+  assert.match(html, /width:100%/);
+});

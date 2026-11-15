@@ -43,9 +43,10 @@
   function setRoomControls(active) {
     $('profile-select').disabled = active;
     $('profile-add').disabled = active;
+    globalThis.setProfileControlsDisabled?.(active);
     $('reveal-btn').hidden = active;
     $('skip-btn').hidden = active;
-    document.querySelectorAll('#sidebar .sb-scroll > div').forEach(section => {
+    document.querySelectorAll('#sidebar .sidebar-section').forEach(section => {
       section.inert = active;
       section.classList.toggle('shared-locked', active);
     });
@@ -126,6 +127,7 @@
     url.searchParams.set('profile', profile);
     url.searchParams.set('client', client);
     socket = new WebSocket(url);
+    const connection = socket;
     socket.onopen = hello;
     socket.onmessage = event => {
       if (generation !== socketGeneration || !room) return;
@@ -162,7 +164,7 @@
       render(room, appliedNumber);
       reconnectTimer = setTimeout(connect, Math.min(5000, 300 * 2 ** reconnectAttempt++));
     };
-    socket.onerror = () => socket.close();
+    socket.onerror = () => connection.close();
   }
 
   function messageError(text) { traffic.lastError = text; message(text); }
