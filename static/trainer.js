@@ -220,7 +220,7 @@ async function selectTopic(name) {
   highlightSel('bookmark', null);
   highlightSel('examen', null);
   updateHeaderCtx();
-  await Promise.all([refreshStats(), loadNextQuestion()]);
+  await Promise.all([refreshStats(), refreshGoal(sel.field), loadNextQuestion()]);
   mobileGoMain();
 }
 
@@ -239,7 +239,7 @@ async function selectExamen(examen) {
   highlightSel('bookmark', null);
   highlightSel('topic', null);
   updateHeaderCtx();
-  await Promise.all([refreshStats(), loadNextQuestion()]);
+  await Promise.all([refreshStats(), refreshGoal(sel.field), loadNextQuestion()]);
   mobileGoMain();
 }
 
@@ -258,7 +258,7 @@ async function selectSet(set) {
   highlightSel('examen', null);
   highlightSel('topic', null);
   updateHeaderCtx();
-  await Promise.all([refreshStats(), loadNextQuestion()]);
+  await Promise.all([refreshStats(), refreshGoal(sel.field), loadNextQuestion()]);
   mobileGoMain();
 }
 
@@ -388,6 +388,7 @@ async function refreshStats() {
   for (const [type, items] of [['topic', fieldStats.topics], ['set', fieldStats.sets], ['examen', fieldStats.examens], ['bookmark', fieldStats.bookmarks]]) {
     items.forEach(item => setSelectionPreparation(type, item.name, item.preparation.counts));
   }
+  await refreshSelectionGoalPreviews(field);
 }
 
 const PREPARATION_LABELS = { red: 'Noch nicht vorbereitet', yellow: 'In Vorbereitung', green: 'Gut vorbereitet' };
@@ -945,6 +946,12 @@ function mkSelBtn(key, label, type, onClick) {
   btn.className = `sel-btn type-${type}`;
   btn.dataset.selKey = key;
   btn.innerHTML = `<span class="sel-preparation"></span><span class="sel-label">${esc(label)}</span><span class="sel-badge"></span>`;
+  if (['topic', 'set', 'examen'].includes(type)) {
+    const preview = document.createElement('span');
+    preview.className = 'field-goal-preview';
+    preview.hidden = true;
+    btn.appendChild(preview);
+  }
   btn.onclick = async () => {
     if (answerState === 'pending') return;
     if (!protectAnswerDraft()) return;

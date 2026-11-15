@@ -18,7 +18,7 @@ FIELDS_PATH = Path(__file__).resolve().parent / "sets"
 REQUIRED_QUESTION_FIELDS = ("topic", "question", "answer")
 _progress_lock = RLock()
 active_profile = ContextVar("active_profile", default="default")
-PERSONAL_FILES = {"progress.json", "bookmarks.json", "goal.json", "learning-gaps.json", "selection.json"}
+PERSONAL_FILES = {"progress.json", "bookmarks.json", "goal.json", "scoped-goals.json", "learning-gaps.json", "selection.json"}
 
 
 def personal_path(field: str) -> Path:
@@ -81,13 +81,27 @@ def load_progress(field: str) -> dict:
     return _load_json(field, "progress.json")
 
 
-def load_goal(field: str) -> dict:
-    return _load_json(field, "goal.json")
+def load_goal(field: str, scope: str | None = None) -> dict:
+    if scope is None:
+        return _load_json(field, "goal.json")
+    return _load_json(field, "scoped-goals.json").get(scope, {})
 
 
-def save_goal(field: str, goal: dict) -> None:
+def load_scoped_goals(field: str) -> dict:
+    return _load_json(field, "scoped-goals.json")
+
+
+def save_goal(field: str, goal: dict, scope: str | None = None) -> None:
     with progress_transaction(field, ".goal.lock"):
-        _save_json(field, "goal.json", goal)
+        if scope is None:
+            _save_json(field, "goal.json", goal)
+        else:
+            goals = _load_json(field, "scoped-goals.json")
+            if goal:
+                goals[scope] = goal
+            else:
+                goals.pop(scope, None)
+            _save_json(field, "scoped-goals.json", goals)
 
 
 def load_sets(field: str) -> dict:

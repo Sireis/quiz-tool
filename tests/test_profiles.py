@@ -62,6 +62,22 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(question_store.load_goal("test"), {})
         self.assertEqual(self.client.get(url, headers=first).get_json()[0]["progress"]["attempts"], 1)
 
+    def test_scoped_learning_goals_are_isolated_by_profile(self):
+        first = self.create("First")
+        second = self.create("Second")
+        url = '/api/fields/test/goal?scope=topic&name=Topic'
+        self.assertEqual(self.client.put(url, headers=first, json={
+            "target_date": "2099-01-01", "strategy": "steady"
+        }).status_code, 200)
+        self.assertIsNotNone(self.client.get(url, headers=first).json["goal"])
+        self.assertIsNone(self.client.get(url, headers=second).json["goal"])
+        self.assertIsNone(self.client.get(url).json["goal"])
+        self.assertEqual(len(self.client.get('/api/fields/test/goals', headers=first).json), 1)
+        self.assertEqual(self.client.get('/api/fields/test/goals', headers=second).json, [])
+        self.assertEqual(self.client.get('/api/fields/test/goals').json, [])
+        self.client.delete(url, headers=second)
+        self.assertIsNotNone(self.client.get(url, headers=first).json["goal"])
+
     def test_validation_and_listing(self):
         for name in (None, "  ", "x" * 51, 42):
             self.assertEqual(self.client.post('/api/profiles', json={"name": name}).status_code, 400)

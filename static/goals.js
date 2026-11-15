@@ -1,8 +1,9 @@
-// A saved goal tracks every graded answer in the selected field automatically.
+// Goals count graded answers to questions in the selected scope.
 let goalState = null;
 let goalField = null;
 let goalRequest = 0;
 let goalPreviewRequest = 0;
+let goalSidebarRequest = 0;
 let goalExpanded = false;
 let goalTrackerEnabled = false;
 const goalTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
@@ -12,12 +13,31 @@ const GOAL_STRATEGIES = {
   frontloaded: { label: 'Mehr am Anfang', help: 'Übe am Anfang mehr und reduziere das Pensum zum Zieldatum hin.' },
 };
 
-function goalUrl(field, suffix = '') {
-  return `/api/fields/${encodeURIComponent(field)}/goal${suffix}?timezone=${encodeURIComponent(goalTimezone)}`;
+function selectedGoalScope() {
+  if (sel.examen) return { scope: 'examen', name: sel.examen.name };
+  if (sel.set && !sel.set.bookmark) return { scope: 'set', name: sel.set.name };
+  if (sel.topic) return { scope: 'topic', name: sel.topic, subtopic: sel.subtopic || '' };
+  return { scope: 'field' };
 }
 
-async function goalJson(field, options) {
-  const response = await fetch(goalUrl(field), options);
+function goalSelectionKey(field) {
+  const scope = selectedGoalScope();
+  return scope.scope === 'field' ? field : JSON.stringify([field, scope]);
+}
+
+function goalSelectionLabel(field) {
+  const scope = selectedGoalScope();
+  const kind = { topic: 'Thema', set: 'Übungssatz', examen: 'Prüfungssatz' }[scope.scope];
+  return kind ? `${field} › ${kind}: ${scope.name}${scope.subtopic ? ` › ${scope.subtopic}` : ''}` : field;
+}
+
+function goalUrl(field, suffix = '', scope = selectedGoalScope()) {
+  const params = new URLSearchParams({ timezone: goalTimezone, ...scope });
+  return `/api/fields/${encodeURIComponent(field)}/goal${suffix}?${params}`;
+}
+
+async function goalJson(field, options, scope = selectedGoalScope()) {
+  const response = await fetch(goalUrl(field, '', scope), options);
   const data = await response.json();
   if (!response.ok) throw new Error(data.error || 'Lernziel konnte nicht geladen werden.');
   return data;
@@ -26,9 +46,11 @@ async function goalJson(field, options) {
 async function refreshGoal(field) {
   if (sel.field !== field) return;
   const id = ++goalRequest;
-  if (goalField !== field) {
-    goalField = field;
-    try { goalTrackerEnabled = localStorage.getItem(`trainer_goal_visible:${field}`) === 'on'; }
+  const selection = goalSelectionKey(field);
+  if (goalField !== selection) {
+    goalField = selection;
+    ++goalPreviewRequest;
+    try { goalTrackerEnabled = localStorage.getItem(`trainer_goal_visible:${selection}`) === 'on'; }
     catch { goalTrackerEnabled = false; }
     goalState = null;
     goalExpanded = false;
@@ -42,19 +64,20 @@ async function refreshGoal(field) {
     document.getElementById('goal-expand').setAttribute('aria-expanded', 'false');
     document.getElementById('goal-card').hidden = true;
     document.getElementById('goal-form').hidden = true;
-    document.getElementById('goal-field').textContent = field;
+    document.getElementById('goal-field').textContent = goalSelectionLabel(field);
     document.getElementById('goal-summary').textContent = 'Lade Lernziel…';
     document.getElementById('goal-edit').disabled = true;
     document.getElementById('goal-status').textContent = '';
   }
   try {
     const data = await goalJson(field);
-    if (id !== goalRequest || sel.field !== field) return;
+    if (id !== goalRequest || sel.field !== field || selection !== goalSelectionKey(field)) return;
     goalState = data;
-    renderFieldGoalPreview(field, data);
+    if (selectedGoalScope().scope === 'field') renderFieldGoalPreview(field, data);
+    else refreshFieldGoalPreview(field);
     renderGoal();
   } catch (error) {
-    if (id !== goalRequest || sel.field !== field) return;
+    if (id !== goalRequest || sel.field !== field || selection !== goalSelectionKey(field)) return;
     document.getElementById('goal-summary').textContent = 'Lernziel nicht verfügbar.';
     document.getElementById('goal-status').textContent = error.message;
   }
@@ -62,7 +85,7 @@ async function refreshGoal(field) {
 
 // Sidebar previews do not change the selected field or header preference.
 async function refreshFieldGoalPreview(field) {
-  try { renderFieldGoalPreview(field, await goalJson(field)); }
+  try { renderFieldGoalPreview(field, await goalJson(field, undefined, { scope: 'field' })); }
   catch { /* Keep field selection available if a preview cannot be loaded. */ }
 }
 
@@ -79,14 +102,34 @@ function renderFieldGoalPreview(field, data) {
   const button = [...document.querySelectorAll('#fields-list .sel-btn')]
     .find(item => item.dataset.selKey === field);
   const preview = button?.querySelector('.field-goal-preview');
+  renderGoalPreview(preview, data.goal);
+}
+
+function renderGoalPreview(preview, goal) {
   if (!preview) return;
-  preview.hidden = !data.goal;
-  if (!data.goal) { preview.innerHTML = ''; return; }
-  const view = fieldGoalPreview(data.goal);
+  preview.hidden = !goal;
+  if (!goal) { preview.innerHTML = ''; return; }
+  const view = fieldGoalPreview(goal);
   preview.dataset.tier = view.tier;
   preview.title = view.label;
   preview.setAttribute('aria-label', view.label);
   preview.innerHTML = view.html;
+}
+
+async function refreshSelectionGoalPreviews(field) {
+  const id = ++goalSidebarRequest;
+  try {
+    const response = await fetch(`/api/fields/${encodeURIComponent(field)}/goals?timezone=${encodeURIComponent(goalTimezone)}`);
+    if (!response.ok) return;
+    const goals = await response.json();
+    if (id !== goalSidebarRequest || sel.field !== field) return;
+    for (const [scope, list] of [['topic', 'topic-list'], ['set', 'sets-list'], ['examen', 'examens-list']]) {
+      for (const button of document.querySelectorAll(`#${list} .sel-btn`)) {
+        const entry = goals.find(goal => goal.scope === scope && goal.name === button.dataset.selKey && !goal.subtopic);
+        renderGoalPreview(button.querySelector('.field-goal-preview'), entry?.goal);
+      }
+    }
+  } catch { /* Keep selection available when goal previews cannot be loaded. */ }
 }
 
 function goalCelebration(goal) {
@@ -125,7 +168,7 @@ function renderGoal() {
   edit.textContent = goal ? 'Bearbeiten' : 'Lernziel setzen';
   if (!goal) {
     card.dataset.tier = 'empty';
-    summary.textContent = 'Bis wann möchtest du dieses Feld lernen? Wähle ein Datum und einen Lernrhythmus – wir berechnen dein tägliches Pensum.';
+    summary.textContent = 'Bis wann möchtest du diese Auswahl lernen? Wähle ein Datum und einen Lernrhythmus – wir berechnen dein tägliches Pensum.';
     return;
   }
   const celebration = goalCelebration(goal);
@@ -167,7 +210,7 @@ function renderGoal() {
         <p class="goal-daily-status">${status}</p>
         <div class="goal-bonus-track" aria-hidden="true">${[100, 125, 150, 200, 300].map((threshold, index) =>
           `<span class="${celebration.percent >= threshold ? 'unlocked' : ''}" title="${threshold}%">${index >= 2 ? '◆' : '✦'}</span>`).join('')}</div>
-        <span class="goal-tracking-note">Alle Antworten in diesem Feld zählen automatisch.</span>
+        <span class="goal-tracking-note">Bewertete Antworten zu Fragen dieser Auswahl zählen automatisch.</span>
       </div>
     </div>
     <div class="goal-preparation">
@@ -187,6 +230,7 @@ function openGoalForm() {
   renderGoal();
   document.getElementById('goal-card').hidden = false;
   form.dataset.field = sel.field;
+  form.dataset.selection = goalSelectionKey(sel.field);
   const dateInput = document.getElementById('goal-date');
   dateInput.min = today;
   const suggestedDate = new Date(`${today}T12:00:00Z`);
@@ -216,7 +260,7 @@ function toggleGoalDetails() {
 
 function setGoalTrackerEnabled(enabled) {
   goalTrackerEnabled = enabled;
-  try { localStorage.setItem(`trainer_goal_visible:${sel.field}`, enabled ? 'on' : 'off'); }
+  try { localStorage.setItem(`trainer_goal_visible:${goalSelectionKey(sel.field)}`, enabled ? 'on' : 'off'); }
   catch { /* Storage is optional. */ }
 }
 
@@ -244,6 +288,7 @@ function closeGoalDetails(restoreFocus = true) {
 async function refreshGoalPreview() {
   const id = ++goalPreviewRequest;
   const field = sel.field;
+  const selection = goalSelectionKey(field);
   const form = document.getElementById('goal-form');
   const preview = document.getElementById('goal-preview');
   const dateInput = document.getElementById('goal-date');
@@ -258,19 +303,20 @@ async function refreshGoalPreview() {
     const response = await fetch(goalUrl(field, '/preview') +
       `&target_date=${encodeURIComponent(dateInput.value)}&strategy=${encodeURIComponent(strategy)}`);
     const data = await response.json();
-    if (id !== goalPreviewRequest || field !== sel.field || form.hidden) return;
+    if (id !== goalPreviewRequest || field !== sel.field || selection !== goalSelectionKey(field) || form.hidden) return;
     if (!response.ok) throw new Error(data.error || 'Pensum konnte nicht berechnet werden.');
     preview.textContent = data.complete ? 'Alle Fragen sind bereits gut vorbereitet.'
       : `Heute ca. ${data.daily_target} bewertete Antworten (${data.daily_remaining} noch offen). Insgesamt fehlen mindestens ${data.remaining_work} richtige Antworten bis Grün. Heute und das Zieldatum zählen als Lerntage.`;
   } catch (error) {
-    if (id === goalPreviewRequest && field === sel.field && !form.hidden) preview.textContent = error.message;
+    if (id === goalPreviewRequest && field === sel.field && selection === goalSelectionKey(field) && !form.hidden) preview.textContent = error.message;
   }
 }
 
 async function mutateGoal(remove = false) {
   const form = document.getElementById('goal-form');
   const field = form.dataset.field;
-  if (field !== sel.field) return;
+  const selection = form.dataset.selection;
+  if (field !== sel.field || selection !== goalSelectionKey(field)) return;
   const buttons = [...form.querySelectorAll('button')];
   buttons.forEach(button => { button.disabled = true; });
   const status = document.getElementById('goal-status');
@@ -285,15 +331,17 @@ async function mutateGoal(remove = false) {
         timezone: goalTimezone,
       }) }),
     });
-    if (sel.field !== field) return;
+    if (sel.field !== field || selection !== goalSelectionKey(field)) return;
     form.hidden = true;
     goalExpanded = false;
     setGoalTrackerEnabled(!remove);
     await refreshGoal(field);
+    await refreshSelectionGoalPreviews(field);
+    if (sel.field !== field || selection !== goalSelectionKey(field)) return;
     status.textContent = remove ? 'Lernziel entfernt.' : 'Lernziel gespeichert.';
-    if (sel.field === field && !remove) document.getElementById('goal-expand').focus();
+    if (sel.field === field && selection === goalSelectionKey(field) && !remove) document.getElementById('goal-expand').focus();
   } catch (error) {
-    if (sel.field === field) status.textContent = error.message;
+    if (sel.field === field && selection === goalSelectionKey(field)) status.textContent = error.message;
   } finally {
     buttons.forEach(button => { button.disabled = false; });
   }

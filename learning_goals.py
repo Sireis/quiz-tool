@@ -1,5 +1,6 @@
-"""One subject-wide learning goal, independent of grading and bookmarks."""
+"""Profile-specific learning goals for subjects and question selections."""
 
+import json
 import math
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -30,26 +31,64 @@ def _validate_plan(target_date: str, strategy: str, today: date) -> None:
         raise ValueError("Choose a valid workload strategy")
 
 
-def save_goal(field: str, target_date: str, strategy: str, timezone_name: str) -> dict:
+def _selection(
+    field: str, scope: str, name: str, subtopic: str,
+) -> tuple[str | None, list[dict], dict]:
+    if scope not in {"field", "topic", "set", "examen"}:
+        raise ValueError("Unknown goal scope")
+    questions, progress = question_store.get_all_questions(field)
+    if scope == "field":
+        if name or subtopic:
+            raise ValueError("Invalid field goal scope")
+        return None, questions, progress
+    if not isinstance(name, str) or not name or not isinstance(subtopic, str):
+        raise ValueError("Choose a goal selection")
+    if scope == "topic":
+        if not any(q["topic"] == name for q in questions):
+            raise ValueError("Unknown topic")
+        questions = [q for q in questions if q["topic"] == name
+                     and (not subtopic or q.get("subtopic") == subtopic)]
+    else:
+        if subtopic:
+            raise ValueError("Invalid group goal scope")
+        groups = question_store.load_sets(field) if scope == "set" else question_store.load_examens(field)
+        if name not in groups:
+            raise ValueError("Unknown question set")
+        ids = set(groups[name])
+        if ids - {q["id"] for q in questions}:
+            raise ValueError("Question set contains unknown IDs")
+        questions = [q for q in questions if q["id"] in ids]
+    return json.dumps([scope, name, subtopic], ensure_ascii=False), questions, progress
+
+
+def save_goal(
+    field: str, target_date: str, strategy: str, timezone_name: str,
+    scope: str = "field", name: str = "", subtopic: str = "",
+) -> dict:
     today = _now(timezone_name).date()
     _validate_plan(target_date, strategy, today)
-    if not question_store.load_questions(field)["questions"]:
+    key, questions, _ = _selection(field, scope, name, subtopic)
+    if not questions:
         raise ValueError("No questions available")
     goal = {"target_date": target_date, "strategy": strategy, "start_date": today.isoformat()}
-    question_store.save_goal(field, goal)
-    return get_goal(field, timezone_name)
+    question_store.save_goal(field, goal, key)
+    return get_goal(field, timezone_name, scope, name, subtopic)
 
 
-def preview_goal(field: str, target_date: str, strategy: str, timezone_name: str) -> dict:
+def preview_goal(
+    field: str, target_date: str, strategy: str, timezone_name: str,
+    scope: str = "field", name: str = "", subtopic: str = "",
+) -> dict:
     now = _now(timezone_name)
     _validate_plan(target_date, strategy, now.date())
     goal = {"target_date": target_date, "strategy": strategy, "start_date": now.date().isoformat()}
-    questions, progress = question_store.get_all_questions(field)
+    _, questions, progress = _selection(field, scope, name, subtopic)
     return _goal_view(goal, questions, progress, now)
 
 
-def delete_goal(field: str) -> None:
-    question_store.save_goal(field, {})
+def delete_goal(field: str, scope: str = "field", name: str = "", subtopic: str = "") -> None:
+    key, _, _ = _selection(field, scope, name, subtopic)
+    question_store.save_goal(field, {}, key)
 
 
 def _dated_events(entry: dict, now: datetime) -> list[tuple[datetime, dict]]:
@@ -146,13 +185,32 @@ def _goal_view(goal: dict, questions: list[dict], progress: dict, now: datetime)
     }
 
 
-def get_goal(field: str, timezone_name: str = "UTC") -> dict:
+def get_goal(
+    field: str, timezone_name: str = "UTC", scope: str = "field",
+    name: str = "", subtopic: str = "",
+) -> dict:
     now = _now(timezone_name)
-    questions, progress = question_store.get_all_questions(field)
-    goal = question_store.load_goal(field)
+    key, questions, progress = _selection(field, scope, name, subtopic)
+    goal = question_store.load_goal(field, key)
     response = {"goal": None, "total": len(questions), "today": now.date().isoformat()}
     if not goal:
         return response
     response["goal"] = _goal_view(goal, questions, progress, now)
     return response
+
+
+def get_goal_previews(field: str, timezone_name: str = "UTC") -> list[dict]:
+    """Return saved selection goals together for sidebar previews."""
+    now = _now(timezone_name)
+    previews = []
+    for key, goal in question_store.load_scoped_goals(field).items():
+        scope, name, subtopic = json.loads(key)
+        try:
+            _, questions, progress = _selection(field, scope, name, subtopic)
+        except ValueError:
+            # A deleted question group can retain its goal until restored.
+            continue
+        previews.append({"scope": scope, "name": name, "subtopic": subtopic,
+                         "goal": _goal_view(goal, questions, progress, now)})
+    return previews
 

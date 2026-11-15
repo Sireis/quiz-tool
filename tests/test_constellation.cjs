@@ -43,7 +43,7 @@ async function render(data = topics(), dimensions = {}) {
   const context = {
     document: { getElementById: id => ids[id], createElementNS: (_, tag) => new Element(tag), createElement: tag => new Element(tag) },
     sel: { field: 'Test' }, fetch: async () => ({ ok: true, json: async () => data }),
-    highlightSel() {}, updateHeaderCtx() {}, mobileGoMain() {}, refreshStats: async () => {},
+    highlightSel() {}, updateHeaderCtx() {}, mobileGoMain() {}, refreshStats: async () => {}, refreshGoal: async () => {},
     loadNextQuestion: async () => { quizLoads++; },
     DOMPoint: class { constructor(x, y) { this.x = x; this.y = y; } matrixTransform() { return this; } },
   };

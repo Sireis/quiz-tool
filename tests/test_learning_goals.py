@@ -41,6 +41,73 @@ class LearningGoalTests(unittest.TestCase):
     def progress(self, data):
         (self.root / "first" / "progress.json").write_text(json.dumps(data))
 
+    def test_scoped_goals_are_independent_and_use_only_selected_questions(self):
+        subject = self.root / "first"
+        (subject / "sets.json").write_text(json.dumps({"Same": [1, 1, 2]}))
+        (subject / "examens.json").write_text(json.dumps({"Same": [3]}))
+        self.progress({"1": {"attempts": 1, "correct": 1, "last_result": "correct",
+                             "last_attempt": "2026-10-12T09:00:00+00:00"},
+                       "3": {"attempts": 2, "correct": 2, "last_result": "correct",
+                             "last_attempt": "2026-10-11T09:00:00+00:00"}})
+        field_goal = self.save().json
+        base = "/api/fields/first/goal"
+        for scope, total, work, today in (("set", 2, 3, 1), ("examen", 1, 0, 0)):
+            query = {"scope": scope, "name": "Same"}
+            saved = self.client.put(base, query_string=query, json={
+                "target_date": "2026-10-16", "strategy": "frontloaded"})
+            self.assertEqual(saved.status_code, 200)
+            self.assertEqual(saved.json["total"], total)
+            self.assertEqual(saved.json["goal"]["remaining_work"], work)
+            self.assertEqual(saved.json["goal"]["today_count"], today)
+            preview = self.client.get(base + "/preview", query_string={
+                **query, "target_date": "2026-10-16", "strategy": "frontloaded"})
+            self.assertEqual(preview.json, saved.json["goal"])
+        self.client.delete(base, query_string={"scope": "set", "name": "Same"})
+        self.assertIsNone(self.client.get(base, query_string={"scope": "set", "name": "Same"}).json["goal"])
+        self.assertIsNotNone(self.client.get(base, query_string={"scope": "examen", "name": "Same"}).json["goal"])
+        self.assertEqual(self.client.get(base).json, field_goal)
+
+    def test_sidebar_goal_previews_include_saved_scopes_and_drop_deleted_groups(self):
+        subject = self.root / "first"
+        for filename in ("sets.json", "examens.json"):
+            (subject / filename).write_text(json.dumps({"Same": [1, 2]}))
+        base = "/api/fields/first/goal"
+        for scope, name in (("topic", "Topic"), ("set", "Same"), ("examen", "Same")):
+            self.client.put(base, query_string={"scope": scope, "name": name},
+                            json={"target_date": "2026-10-15"})
+        self.save()
+        response = self.client.get("/api/fields/first/goals?timezone=UTC")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual({entry["scope"] for entry in response.json}, {"topic", "set", "examen"})
+        for entry in response.json:
+            expected = self.client.get(base, query_string={
+                "scope": entry["scope"], "name": entry["name"]}).json["goal"]
+            self.assertEqual(entry["goal"], expected)
+        (subject / "sets.json").write_text("{}")
+        self.assertEqual({entry["scope"] for entry in self.client.get(
+            "/api/fields/first/goals").json}, {"topic", "examen"})
+        self.client.delete(base, query_string={"scope": "examen", "name": "Same"})
+        self.assertEqual(len(self.client.get("/api/fields/first/goals").json), 1)
+
+    def test_topic_and_subtopic_goals_and_scope_validation(self):
+        bank = self.root / "first" / "questions.json"
+        data = json.loads(bank.read_text())
+        data["questions"][0]["subtopic"] = "Child"
+        bank.write_text(json.dumps(data))
+        base = "/api/fields/first/goal"
+        for subtopic, total in (("", 4), ("Child", 1)):
+            query = {"scope": "topic", "name": "Topic", "subtopic": subtopic}
+            response = self.client.put(base, query_string=query, json={"target_date": "2026-10-15"})
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.json["total"], total)
+            self.assertEqual(self.client.get(base, query_string=query).json, response.json)
+        for query in ({"scope": "unknown"}, {"scope": "topic", "name": "Missing"},
+                      {"scope": "set", "name": "Missing"}, {"scope": "field", "name": "Topic"},
+                      {"scope": "topic", "name": "Topic", "subtopic": "Missing"}):
+            self.assertEqual(self.client.put(base, query_string=query, json={
+                "target_date": "2026-10-15"}).status_code, 400)
+        self.assertIsNone(self.client.get(base).json["goal"])
+
     def test_answers_before_goal_setup_count_from_legacy_progress(self):
         self.progress({
             "1": {"attempts": 1, "correct": 1, "last_result": "correct",

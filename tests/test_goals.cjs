@@ -19,7 +19,7 @@ function setup(storage = new Map([['trainer_goal_visible:first', 'on'], ['traine
   const calls = [];
   const context = {
     localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
-    Intl, Date, document: { getElementById: element, querySelectorAll: () => [],
+    Intl, Date, URLSearchParams, document: { getElementById: element, querySelectorAll: () => [],
       addEventListener(type, callback) { (events[type] ||= []).push(callback); } },
     fetch: async (url, options) => { calls.push({ url, options }); return { ok: true, json: async () =>
       url.includes('/preview') ? { daily_target: 2, daily_remaining: 2, remaining_work: 40, complete: false }
@@ -148,7 +148,6 @@ test('deleting a goal switches off the tracker and leaves normal selection avail
   app.context.fetch = async () => ({ ok: true, json: async () => status() });
   await app.context.refreshGoal('first');
   await app.context.openGoalForm();
-  app.run("sel.topic = 'Topic'");
   let deleted = false;
   app.context.fetch = async (url, options) => {
     if (options?.method === 'DELETE') deleted = true;
@@ -156,7 +155,7 @@ test('deleting a goal switches off the tracker and leaves normal selection avail
   };
   await app.element('goal-delete').onclick();
   assert.equal(deleted, true);
-  assert.equal(app.run('sel.topic'), 'Topic');
+  assert.equal(app.run('sel.topic'), null);
   assert.equal(app.element('goal-card').dataset.tier, 'empty');
   assert.equal(app.element('goal-form').hidden, true);
   assert.equal(app.element('goal-card').hidden, true);
@@ -372,4 +371,106 @@ test('the persistent tracker keeps bonus text, uncapped percent and celebration 
   assert.match(html, /230%/);
   assert.match(html, /13 Antworten über deinem Tagesziel/);
   assert.match(html, /width:100%/);
+});
+
+test('topic, subtopic, set and exam requests follow selection and keep field previews subject-wide', async () => {
+  const app = setup();
+  for (const [selection, scope, name, subtopic] of [
+    ["sel.topic = 'Thema & mehr'", 'topic', 'Thema & mehr', ''],
+    ["sel.subtopic = 'Unterthema'", 'topic', 'Thema & mehr', 'Unterthema'],
+    ["sel.topic = null; sel.set = {name: 'Satz'}", 'set', 'Satz', ''],
+    ["sel.set = null; sel.examen = {name: 'Satz'}", 'examen', 'Satz', ''],
+  ]) {
+    app.run(selection);
+    await app.context.refreshGoal('first');
+    const url = new URL(app.calls.filter(call => call.url.includes(`scope=${scope}`)).at(-1).url, 'http://trainer');
+    assert.equal(url.searchParams.get('scope'), scope);
+    assert.equal(url.searchParams.get('name'), name);
+    assert.equal(url.searchParams.get('subtopic') || '', subtopic);
+    assert.match(app.element('goal-field').textContent, /first ›/);
+  }
+  await app.context.refreshFieldGoalPreview('first');
+  assert.equal(new URL(app.calls.at(-1).url, 'http://trainer').searchParams.get('scope'), 'field');
+});
+
+test('switching scope closes drafts and blocks stale responses and stale form mutations', async () => {
+  const app = setup();
+  await app.context.refreshGoal('first');
+  await app.context.openGoalForm();
+  app.run("sel.topic = 'Topic'");
+  await app.context.mutateGoal(true);
+  assert.equal(app.calls.some(call => call.options?.method === 'DELETE'), false);
+  let resolveTopic;
+  app.context.fetch = url => url.includes('scope=topic')
+    ? new Promise(resolve => { resolveTopic = resolve; })
+    : Promise.resolve({ ok: true, json: async () => status({ today_count: 7 }) });
+  const topic = app.context.refreshGoal('first');
+  app.run("sel.topic = null; sel.examen = {name: 'Exam'}");
+  await app.context.refreshGoal('first');
+  resolveTopic({ ok: true, json: async () => status({ today_count: 99 }) });
+  await topic;
+  assert.match(app.element('goal-field').textContent, /Prüfungssatz: Exam/);
+  assert.match(app.element('goal-summary').innerHTML, /7<\/strong>/);
+  assert.equal(app.element('goal-form').hidden, true);
+});
+
+test('saving and deleting use the selected scope and preserve other visibility preferences', async () => {
+  const app = setup();
+  app.run("sel.set = {name: 'Practice'}");
+  await app.context.refreshGoal('first');
+  await app.context.openGoalForm();
+  const mutations = [];
+  app.context.fetch = async (url, options) => {
+    if (options) mutations.push({ url, method: options.method });
+    return { ok: true, json: async () => status() };
+  };
+  await app.context.mutateGoal();
+  await app.context.openGoalForm();
+  await app.context.mutateGoal(true);
+  assert.deepEqual(mutations.map(item => item.method), ['PUT', 'DELETE']);
+  for (const { url } of mutations) {
+    const params = new URL(url, 'http://trainer').searchParams;
+    assert.equal(params.get('scope'), 'set');
+    assert.equal(params.get('name'), 'Practice');
+  }
+  assert.equal(app.storage.get('trainer_goal_visible:first'), 'on');
+});
+
+test('sidebar previews show each saved scope, hide removed goals and ignore subtopic goals on parent rows', async () => {
+  const app = setup();
+  const rows = new Map(['topic', 'sets', 'examens'].map(list => [list, {
+    dataset: { selKey: 'Same' }, querySelector: () => app.element(`${list}-preview`),
+  }]));
+  app.context.document.querySelectorAll = selector => {
+    const match = selector.match(/^#(topic|sets|examens)-list/);
+    return match ? [rows.get(match[1])] : [];
+  };
+  app.context.fetch = async () => ({ ok: true, json: async () => [
+    {scope: 'topic', name: 'Same', subtopic: 'Child', goal: status().goal},
+    {scope: 'set', name: 'Same', subtopic: '', goal: status({today_count: 20}).goal},
+    {scope: 'examen', name: 'Same', subtopic: '', goal: status({today_count: 4}).goal},
+  ] });
+  await app.context.refreshSelectionGoalPreviews('first');
+  assert.equal(app.element('topic-preview').hidden, true);
+  assert.equal(app.element('sets-preview').hidden, false);
+  assert.match(app.element('sets-preview').innerHTML, /20\/10/);
+  assert.equal(app.element('sets-preview').dataset.tier, 'rainbow');
+  assert.match(app.element('examens-preview').innerHTML, /4\/10/);
+  assert.match(app.element('examens-preview').attrs['aria-label'], /Heute 4 Antworten/);
+  app.context.fetch = async () => ({ok: true, json: async () => []});
+  await app.context.refreshSelectionGoalPreviews('first');
+  assert.equal(app.element('sets-preview').hidden, true);
+  assert.equal(app.element('sets-preview').innerHTML, '');
+});
+
+test('sidebar previews ignore responses from an obsolete field', async () => {
+  const app = setup();
+  let resolve;
+  app.context.fetch = () => new Promise(done => { resolve = done; });
+  const pending = app.context.refreshSelectionGoalPreviews('first');
+  app.run("sel.field = 'second'");
+  app.context.document.querySelectorAll = () => { throw new Error('obsolete field must not update rows'); };
+  resolve({ok: true, json: async () => []});
+  await pending;
+  assert.equal(app.run('sel.field'), 'second');
 });

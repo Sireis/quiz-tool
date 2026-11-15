@@ -101,7 +101,7 @@
     sel.set = sel.examen = null;
     highlightSel('topic', item.topic); highlightSel('set', null); highlightSel('examen', null);
     updateHeaderCtx(); mobileGoMain();
-    await Promise.all([refreshStats(), loadNextQuestion()]);
+    await Promise.all([refreshStats(), refreshGoal(sel.field), loadNextQuestion()]);
   }
   function transform() {
     if (!world) return;

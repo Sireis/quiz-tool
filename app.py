@@ -142,16 +142,26 @@ def favicon():
 # ---------------------------------------------------------------------------
 
 
+def _goal_scope() -> dict:
+    return {key: request.args.get(key, default) for key, default in
+            (("scope", "field"), ("name", ""), ("subtopic", ""))}
+
+
 @app.get("/api/fields/<field>/goal")
 def api_goal(field: str):
-    return jsonify(learning_goals.get_goal(field, request.args.get("timezone", "UTC")))
+    return jsonify(learning_goals.get_goal(field, request.args.get("timezone", "UTC"), **_goal_scope()))
+
+
+@app.get("/api/fields/<field>/goals")
+def api_goal_previews(field: str):
+    return jsonify(learning_goals.get_goal_previews(field, request.args.get("timezone", "UTC")))
 
 
 @app.get("/api/fields/<field>/goal/preview")
 def api_goal_preview(field: str):
     return jsonify(learning_goals.preview_goal(
         field, request.args.get("target_date"), request.args.get("strategy", "steady"),
-        request.args.get("timezone", "UTC")
+        request.args.get("timezone", "UTC"), **_goal_scope()
     ))
 
 
@@ -159,13 +169,13 @@ def api_goal_preview(field: str):
 def api_save_goal(field: str):
     body = _request_body()
     return jsonify(learning_goals.save_goal(
-        field, body.get("target_date"), body.get("strategy", "steady"), body.get("timezone", "UTC")
+        field, body.get("target_date"), body.get("strategy", "steady"), body.get("timezone", "UTC"), **_goal_scope()
     ))
 
 
 @app.delete("/api/fields/<field>/goal")
 def api_delete_goal(field: str):
-    learning_goals.delete_goal(field)
+    learning_goals.delete_goal(field, **_goal_scope())
     return jsonify({"goal": None})
 
 
