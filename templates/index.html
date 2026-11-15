@@ -17,18 +17,11 @@
 <header>
   <div class="header-identity">
     <span class="app-wordmark"><svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M6 19L14 6L23 16L6 19L17 24L23 16" stroke="currentColor" stroke-opacity=".5"/><circle cx="14" cy="6" r="3" fill="currentColor"/><circle cx="6" cy="19" r="2.5" fill="#74b8d7"/><circle cx="23" cy="16" r="2.5" fill="currentColor"/><circle cx="17" cy="24" r="1.5" fill="#74b8d7"/></svg><span class="brand-name">Trainer</span></span>
-    <details class="profile-picker" id="profile-menu" data-popup>
-      <summary class="toolbar-button" aria-label="Lernprofil wechseln">
-        {{ icon('person') }}<span id="profile-current">Standard</span>{{ icon('chevron', 'control-chevron') }}
-      </summary>
-      <div class="control-popover profile-popover">
-        <div id="profile-options" role="group" aria-label="Lernprofil auswählen"></div>
-        <button id="profile-add" type="button">{{ icon('plus') }}Neues Profil</button>
-      </div>
-      <select id="profile-select" aria-label="Lernprofil" tabindex="-1" hidden disabled><option>Standard</option></select>
-    </details>
-    <button id="shared-quick-join" class="toolbar-button" type="button" aria-label="Raum beitreten" hidden>Beitreten</button>
-    <button class="toolbar-button" id="shared-open" type="button" aria-label="Zu zweit lernen" title="Zu zweit lernen">{{ icon('people') }}<span>Zu zweit</span></button>
+    <button id="shared-quick-join" type="button" aria-label="Raum beitreten" hidden>Beitreten</button>
+    <div class="profile-picker">
+      <select id="profile-select" aria-label="Lernprofil" title="Lernprofil wechseln" disabled><option>Standard</option></select>
+      <button class="secondary" id="profile-add" type="button" aria-label="Neues Profil erstellen" title="Neues Profil erstellen">+</button>
+    </div>
   </div>
   <span class="header-sep">/</span>
   <div id="header-ctx">
@@ -81,8 +74,12 @@
 <!-- ═══════════════ SIDEBAR ══════════════════════════════ -->
 <aside id="sidebar" tabindex="-1" aria-label="Fragen auswählen">
   <div class="sb-scroll">
-    <details class="sidebar-section" open>
-      <summary class="sb-section-label">Fächer{{ icon('chevron', 'control-chevron') }}</summary>
+    <button class="secondary together-link" id="shared-open" type="button">Zu zweit lernen</button>
+
+
+
+    <div>
+      <div class="sb-section-label">Fächer</div>
       <div class="sb-list" id="fields-list"></div>
     </details>
 
@@ -114,6 +111,9 @@
 
 <!-- ═══════════════ MAIN ══════════════════════════════════ -->
 <main id="practice-main" tabindex="-1" aria-label="Frage beantworten">
+  <div class="practice-toolbar">
+    <button class="secondary" id="stats-toggle" type="button" aria-expanded="false" aria-controls="stats-panel" onclick="toggleStatistics()">Statistik öffnen</button>
+  </div>
   <div class="practice-notice" id="question-notice" hidden>
     <p id="question-status" role="status" aria-live="polite"></p>
     <button class="secondary" id="question-retry" type="button" onclick="retryQuestionLoad()" hidden>Erneut laden</button>
@@ -159,9 +159,8 @@
       <div class="answer-secondary" role="group" aria-label="Weitere Lernaktionen">
       <button class="secondary" id="reveal-btn" onclick="revealAnswer()">Antwort zeigen</button>
       <button class="secondary" id="skip-btn" onclick="loadNextQuestion()">Überspringen →</button>
-      </div>
+      <div id="loading" role="status"><div class="spinner" aria-hidden="true"></div> Bewertung läuft…</div>
     </div>
-    <div id="loading" role="status"><div class="spinner" aria-hidden="true"></div> Bewertung läuft…</div>
     <p class="practice-help" id="draft-status" role="status" aria-live="polite"></p>
   </div>
   <p id="answer-status" class="practice-help" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -222,7 +221,12 @@
   <div id="stats-ctx-strip" class="ctx-field">
     <div id="stats-ctx-title">Fach</div>
     <div id="stats-ctx-name">–</div>
-
+    <div class="stats-explore-label">Fach erkunden</div>
+    <div class="stats-explore-actions" role="group" aria-label="Fortschritt des ausgewählten Fachs erkunden">
+      <button class="secondary" id="constellation-open" type="button">✦ Wissensnetz</button>
+      <button class="secondary" id="journey-open" type="button">✧ Lernreise</button>
+      <button class="secondary" id="gaps-open" type="button">Lernlücken</button>
+    </div>
   </div>
   <nav class="stats-analysis-actions" aria-label="Lernanalysen">
     <button class="secondary" id="journey-open" type="button">Lernreise</button>
