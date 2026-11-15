@@ -30,6 +30,10 @@ function mobileToggle(view, moveFocus = true) {
 let statisticsOpen = false;
 
 function toggleStatistics() {
+  if (window.innerWidth <= COMPACT_LAYOUT_MAX) {
+    mobileToggle(mobileView === 'stats' ? 'main' : 'stats');
+    return;
+  }
   statisticsOpen = !statisticsOpen;
   syncPracticePanels(true);
 }
@@ -46,8 +50,10 @@ function syncPracticePanels(moveFocus = false) {
   main.inert = mobile && activePanel !== 'main';
   document.body.classList.toggle('stats-collapsed', !statisticsOpen);
   const toggle = document.getElementById('stats-toggle');
-  toggle.setAttribute('aria-expanded', String(statisticsOpen));
-  toggle.textContent = statisticsOpen ? 'Statistik schließen' : 'Statistik öffnen';
+  const statisticsTrigger = toggle;
+  const statsVisible = mobile ? activePanel === 'stats' : statisticsOpen;
+  toggle.setAttribute('aria-expanded', String(statsVisible));
+  toggle.setAttribute('aria-label', statsVisible ? 'Statistik schließen' : 'Statistik anzeigen');
   document.getElementById('stats-resizer').inert = !statisticsOpen;
   for (const name of ['sidebar', 'main', 'stats']) {
     const button = document.getElementById(`mnav-${name}`);
@@ -56,7 +62,7 @@ function syncPracticePanels(moveFocus = false) {
   }
   if (moveFocus) {
     if (mobile) ({sidebar, main, stats})[activePanel].focus();
-    else if (!statisticsOpen && stats.contains(previousFocus)) toggle.focus();
+    else if (!statisticsOpen && stats.contains(previousFocus)) statisticsTrigger.focus();
     else if (statisticsOpen) stats.focus();
   } else if ([sidebar, stats, main].some(panel => panel.inert && panel.contains(previousFocus))) {
     (mobile ? ({sidebar, main, stats})[activePanel] : main).focus();
@@ -104,7 +110,7 @@ function saveAnswerDraft() {
     if (text.trim()) {
       localStorage.setItem(draftKey(field, currentQuestion.id), JSON.stringify(text));
       localStorage.setItem(draftKey(field), JSON.stringify({id: currentQuestion.id}));
-      document.getElementById('draft-status').textContent = 'Entwurf in diesem Browser gespeichert.';
+      document.getElementById('draft-status').textContent = '';
     } else {
       clearAnswerDraft(field, currentQuestion.id);
       document.getElementById('draft-status').textContent = '';
@@ -634,7 +640,7 @@ function displayQuestion(q, field = sel.field) {
     const draft = readDraft(field, q.id);
     document.getElementById('answer-input').value = typeof draft === 'string' ? draft : '';
     document.getElementById('answer-input').style.height = '';
-    document.getElementById('draft-status').textContent = typeof draft === 'string' ? 'Dein gespeicherter Entwurf wurde wiederhergestellt.' : '';
+    document.getElementById('draft-status').textContent = '';
     setAnswerPending(false);
   }
   renderBookmark();
@@ -709,7 +715,6 @@ async function requestAnswerResult(endpoint, extraFields = {}, updateStats = fal
   resetResultCard();
   answerState = 'pending';
   setAnswerPending(true);
-  document.getElementById('answer-status').textContent = 'Deine Antwort wird geprüft …';
 
   const isCurrentQuestion = () => currentQuestion === question && !globalThis.sharedPractice?.active;
   try {
@@ -761,6 +766,7 @@ function setAnswerPending(pending) {
   document.getElementById('next-btn').disabled = pending || questionLoading;
   document.getElementById('profile-select').disabled = pending;
   document.getElementById('profile-add').disabled = pending;
+  globalThis.setProfileControlsDisabled?.(pending);
   document.getElementById('answer-area').setAttribute('aria-busy', String(pending));
   document.getElementById('loading').classList.toggle('visible', pending);
 }
@@ -821,7 +827,7 @@ function showResult(res) {
 
   document.getElementById('result-feedback').textContent      = res.feedback;
   document.getElementById('expected-answer-text').textContent = res.answer;
-  document.getElementById('answer-status').textContent = `${verdict.textContent}. Feedback und Musterlösung stehen im Ergebnis.`;
+  document.getElementById('answer-status').textContent = '';
   if (!globalThis.sharedPractice?.active) document.getElementById('next-btn').focus();
 }
 
@@ -911,6 +917,10 @@ function highlightSel(type, activeKey) {
   document.querySelectorAll(`#${listId} .sel-btn`).forEach(b => {
     b.classList.toggle('active', activeKey != null && b.dataset.selKey === activeKey);
     b.setAttribute('aria-pressed', String(activeKey != null && b.dataset.selKey === activeKey));
+    if (activeKey != null && b.dataset.selKey === activeKey) {
+      const section = b.closest?.('details.sidebar-section');
+      if (section) section.open = true;
+    }
   });
 }
 

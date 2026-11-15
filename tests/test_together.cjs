@@ -98,7 +98,7 @@ async function setup(saved = null, search = '', pathname = '/') {
   await context.sharedPractice.init(['test']);
   await settle();
   return {
-    context, element, calls, storage, editors, discover: () => discover(), setAvailable(value) { available = value; }, setState(value) { current = value; }, async pushState() { sockets.at(-1).onmessage({data: JSON.stringify({type: 'state', state: current, editor: current.mode === 'coop' ? {round_id: current.round_id, doc: current.draft || '', version: 0} : null})}); await settle(); },
+    context, element, calls, storage, editors, sockets, discover: () => discover(), setAvailable(value) { available = value; }, setState(value) { current = value; }, async pushState() { sockets.at(-1).onmessage({data: JSON.stringify({type: 'state', state: current, editor: current.mode === 'coop' ? {round_id: current.round_id, doc: current.draft || '', version: 0} : null})}); await settle(); },
     async event(id, type) { await element(id).events[type]({preventDefault() {}}); await settle(); },
     async open() { await element('shared-open').events.click(); await settle(); },
     async start(mode = 'compete') {
@@ -250,4 +250,20 @@ test('cooperative submission flushes the socket editor revision and shows one sh
   assert.equal(app.element('shared-answer-cards').children[0].children[2].textContent, 'Final answer');
   assert.equal(app.element('answer-area').hidden, true);
   assert.match(app.element('shared-summary').textContent, /2\/10/);
+});
+
+test('late socket errors after leaving a room cannot fail or close a replacement connection', async () => {
+  const app = await setup();
+  await app.start('coop');
+  const previous = app.sockets.at(-1);
+  app.setState(state({mode: 'coop', closed: true}));
+  await app.pushState();
+  await app.event('shared-solo', 'click');
+  assert.doesNotThrow(() => previous.onerror());
+  app.setState(state({round_id: 'replacement-room'}));
+  await app.start();
+  const replacement = app.sockets.at(-1);
+  previous.onerror();
+  assert.notEqual(previous, replacement);
+  assert.equal(replacement.readyState, 1);
 });
